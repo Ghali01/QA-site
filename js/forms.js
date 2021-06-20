@@ -1,3 +1,4 @@
+// some animateion for inputs
 $(document).ready(
     function(){
 

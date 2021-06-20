@@ -1,7 +1,9 @@
+/* define some variables  */
 :root{
     --bg-color:#fff;
     --primary-color:rgb(255,93,0);
 }
+/* form style start */
 #reg-form{
     margin: 7% auto ;
     margin-bottom: 5%;
@@ -66,7 +68,7 @@ a{
     background-color: var(--bg-color);
 }
 
-
+/* media button start */
   
 a.l-btn {
     font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -97,6 +99,7 @@ a.l-btn {
     margin: -8px 7px -7px -30px;
     padding: 2 25px 0 0;
 }
+/* customize icon and colo for every media btn start */
 .fb:before{
     background-image: url("../img/icons/fb.png");
     content: "f";
@@ -130,6 +133,11 @@ a.go{
     color: gray;
     border: 1.5px solid gray;
 }
+/* customize icon and colo for every media btn end */
+/* media buttons end */
+/* form style end */
+
+/* nav bar style start */
 .navbar{
     background-color: rgb(56, 56, 56);
 }
@@ -164,3 +172,4 @@ a.go{
     color:var(--primary-color);
     text-align: center;
 }
+/* navbar style start */
