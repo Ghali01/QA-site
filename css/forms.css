@@ -7,11 +7,19 @@
 #reg-form{
     margin: 7% auto ;
     margin-bottom: 5%;
-    width: 300px;
-    height: 700px;
     border: 3px solid var(--primary-color);
     border-radius: 11px;
     padding: 5px 15px;
+}
+@media (min-width:768px){
+    #reg-form{
+    width: 700px;
+    }
+}
+@media (max-width:768px){
+    #reg-form{
+        margin: 7% 10px;
+    }
 }
 #reg-form .form-control{
     margin-bottom: 10px;
@@ -48,6 +56,7 @@ a{
     background-color: var(--primary-color);
     color: wheat;
     border: none;
+    
 }
 #reg-btn{
     box-shadow:none;
@@ -55,8 +64,23 @@ a{
 #sp-hr{
     height: 1.3px;
     margin-bottom: 0;
+    position: relative;
+}
+.vr-div{
+    width: 1.3px;
+    background-color: grey;
 }
 #or-span{
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    padding: 0;
+    font-size: 20px;
+    height: 15px;
+    transform: translateY(-14.25px);
+    background-color: var(--bg-color);
+}
+#or-span-sm{
     margin: 0 auto;
     display: block;
     text-align: center;
@@ -84,6 +108,7 @@ a.l-btn {
     margin: auto;
     display: block;
     width: 85%;
+    margin: auto;
     margin-bottom: 8px;
 }
 .connect:before {

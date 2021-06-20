@@ -1,7 +1,13 @@
-// some animateion for inputs
 $(document).ready(
     function(){
-
+        $(".vr-div").css({
+            height: $("#reg-form").height()
+        });
+        $("#or-span").css({
+            top:($("#reg-form").height()/2),
+            right:($("#or-span").width()/2)
+        });
+        console.log($("#or-span").width());
         $(".form-control").focus(
             function(){
                 $(this).prev().css({"z-index":2,color: "rgba(219, 99, 29, 0.925)"});

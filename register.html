@@ -12,15 +12,15 @@
     <body>
         <header>
         <!-- navbar stats -->
-        <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar navbar-expand-md navbar-dark  ">
         <div class="container">
             <a class="navbar-brand" href="#">Inerviwes Question</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler  " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto ">
+              <ul class="navbar-nav ms-auto mb-lg-0">
                 <li class="nav-item active">
                   <a class="nav-link" href="#">Sign Up</a>
                 </li>
@@ -37,8 +37,10 @@
         <!-- navbar end -->
        </header>
         <!-- sign up form start -->
-        <form id="reg-form" autocomplete="on" >
-            <div class="mb-3">
+        <form id="reg-form" autocomplete="on"  >
+            <div class="mb-3 row">
+                <!-- register by email section start -->
+            <div class="col-lg-6 col-md-6">
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Full Name</label>
                     <input type="text" class="form-control " id="exampleFormControlInput1" >
@@ -59,6 +61,7 @@
                     <input type="password" class="form-control" id="exampleFormControlInput1" >
              
                 </div>
+                
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Confirm Password</label>
                     <input type="password" class="form-control" id="exampleFormControlInput1" >
@@ -66,14 +69,33 @@
                 </div>
                 <p class="form-lable acc" >By clicking Register, I agree that I have read and accepted our <a href="#">Terms of Use and Privacy Policy</a></p>   
                 <button type="button" class="btn btn-primary" id="reg-btn">Sign Up</button>
-                <hr id="sp-hr">
+            </div>
+            <!-- register by email section end -->
+
+            <!-- break (or) section start -->
+            <div class="col-lg-1 col-md-1 d-none d-xxl-block d-xl-block d-lg-block d-md-block">
+                <div class="vr-div">
                 <span class="form-lable" id="or-span">or</span>
+
+                </div>
+            </div>
+            <div class="d-sm-block d-xs-block d-xxl-none d-xl-none d-lg-none d-md-none">
+                <hr id="sp-hr">
+                <span class="form-lable" id="or-span-sm">or</span> 
+            </div>
+            <!-- break (or) section end -->
+
+            <!-- media sign up section start -->
+            <div class=" col-lg-5 col-md-5">
+
                 <a href="" class="fb l-btn connect">Sign up with Facebook</a>      
                 <a href="" class="tw l-btn connect">Sign up with Twitter</a>      
                 <a href="" class="gi l-btn connect">Sign up with GitHub</a>      
                 <a href="" class="go l-btn connect">Sign up with Google</a>      
             
                 </div>
+            </div>
+            <!-- media sign up section end -->
 
         </form>
         <!-- sign up form end -->
