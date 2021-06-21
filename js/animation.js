@@ -9,14 +9,14 @@ $(document).ready(
             right:($("#or-span").width()/2)
         });
         console.log($("#or-span").width());
-        $(".form-control").focus(
+        $(".animeted-form .form-control").focus(
             function(){
                 $(this).prev().css({"z-index":2,color: "rgba(219, 99, 29, 0.925)"});
                 $(this).prev().animate({top:"0px",left:0,"font-size":"12px"},290);
             
         }
         );
-        $(".form-control").blur(
+        $(".animeted-form .form-control").blur(
             function(){
                 if(!$(this).val()){
             

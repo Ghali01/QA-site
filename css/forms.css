@@ -1,8 +1,24 @@
 /* define some variables  */
 :root{
-    --bg-color:#fff;
+
+    /* dark */
+    --bg-color:rgb(54, 54, 54);
     --primary-color:rgb(255,93,0);
-    --secodry-color:rgb(4,179,255);
+    --secodry-color:rgb(0, 179, 116);
+    --titles-colors:rgb(179, 179, 179);
+    --categories-color:rgb(245, 245, 245);
+    --navbar-color: rgb(73, 68, 64);
+    /* light */
+    /* --bg-color:#fff;
+    --primary-color:rgb(255,93,0);
+    --secodry-color:rgb(0, 179, 116);
+    --titles-colors:rgb(43, 43, 43);
+    --categories-color:rgb(78,78,78); 
+    --navbar-color: rgb(56, 56, 56);
+    
+    */}
+body{
+    background-color: var(--bg-color);
 }
 /* form style start */
 #reg-form{
@@ -48,6 +64,7 @@
 }
 .acc{
     font-size: 12px;
+    color: var(--titles-colors);
 }
 a{
     color: rgba(219, 99, 29, 0.925);
@@ -80,6 +97,7 @@ a{
     height: 15px;
     transform: translateY(-14.25px);
     background-color: var(--bg-color);
+    color: var(--titles-colors);
 }
 #or-span-sm{
     margin: 0 auto;
@@ -142,22 +160,22 @@ a.tw{
     background-color: #00acee;
 }
 .gi:before{
-    background-image: url("../img/icons/github.png");
+    background-image: url("../img/icons/github-dark.png");
     content: "gi";
 }
 a.gi{
-    background-color: white;
-    color: #000;
-    border: 1.5px solid black;
+    background-color: var(--bg-color);
+    color: var(--titles-colors);
+    border: 1.5px solid var(--titles-colors);
 }
 .go:before{
     background-image: url("../img/icons/google.png");
     content: "go";
 }
 a.go{
-    background-color: white;
-    color: gray;
-    border: 1.5px solid gray;
+    background-color: var(--bg-color);
+    color: var(--titles-colors);
+    border: 1.5px solid var(--titles-colors);
 }
 /* customize icon and colo for every media btn end */
 /* media buttons end */
@@ -165,7 +183,7 @@ a.go{
 
 /* nav bar style start */
 .navbar{
-    background-color: rgb(56, 56, 56);
+    background-color: var(--navbar-color);
 }
 .navbar-brand{
     color: rgb(214, 206, 204);
@@ -207,5 +225,7 @@ a.go{
     color:var(--primary-color);
     text-align: center;
 }
-
+.form-msg{
+    color: var(--titles-colors);
+}
 /* navbar style start */
