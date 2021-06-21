@@ -10,6 +10,12 @@
     background-color: rgb(56, 56, 56);
     
 }
+.navbar-brand{
+    color: rgb(214, 206, 204);
+}
+.navbar-brand:hover{
+    color: rgb(199,77,7) !important;
+}
 .search-nav-form{
     margin: 0;
     width: 75%;
@@ -100,7 +106,7 @@
     
 }
 .cateogry-item{
-    font-size: 1.5vw;
+    font-size: 15px;
     color: rgb(78, 78, 78);
     font-weight: 600;
     height: 40px;
@@ -115,8 +121,21 @@
 
 }
 .cateogry-active{
-    border-right: 4px solid var(--primary-color);
+    /* border-right: 4px solid var(--primary-color); */
     background-color: rgb(221, 221, 221);
+}
+.cateogry-act-border,.cateogry-border{
+    height: 40px;
+    width: 3px;
+    background-color: var(--primary-color);
+    position: relative;
+    left: 0;
+    top: -40px;
+    float: right;
+}
+.cateogry-border{
+    width: 0;
+    height: 0;
 }
 .left-column, .right-column{
     padding-top: 30px;
@@ -198,12 +217,12 @@
 }
 .answers-num-div{
     border:1px solid rgb(37, 170, 32);
-    width: 90px;
+    /* width: 90px; */
 }
 .votes-num-span,.answers-num-span{
     display: block;
     width: 100%;
-    font-size: 1.5vw;
+    font-size: 22px;
     text-align: center;
 }
 .answers-word,.votes-word{
@@ -215,7 +234,7 @@
 .added-by-div{
     padding-top: 20px;
     padding-left: 8px;
-    font-size:1vw;
+    font-size:12px;
     color: var(--titles-colors); 
 }
 .by-user-name{
@@ -224,7 +243,7 @@
 }
 .question-title{
     color: var(--secodry-color);
-    font-size: 1.2vw;
+    font-size: 15px;
     font-weight: bold;
     text-overflow: ellipsis;
     height: 90px;
@@ -242,7 +261,7 @@
 .question-date{
     display: block;
     float: right;
-    font-size: .7vw;
+    font-size: 10px;
     color: var(--titles-colors);
     padding-top:15px ;
 }

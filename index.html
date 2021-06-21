@@ -6,12 +6,12 @@
         <script src="js/jquery-3.6.0.min.js"></script>
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="css/font-all.min.css">
-        
+        <script src="js/animation.js"></script>        
     </head>
     <body>
         <head>
             <!-- navbar start -->
-            <nav class="navbar navbar-expand-sm navbar-dark">
+            <nav class="navbar navbar-expand-md navbar-dark">
                 <div class="container">
                     <a class="navbar-brand" href="#"> interviwe question</a>
                     <button class="navbar-toggler  " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,18 +53,36 @@
             </nav>
             <!-- navbar end -->
             <!-- content start -->
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-2 left-column">
+                    <!-- categories start -->
+                    <div class="d-none d-md-block col-md-2 left-column">
                         <h4 class="categores-title">categories</h4>
                         <ul class="categores-list">
-                            <li ><a href="#" class="cateogry-item cateogry-active">Cateogry 1</a></li>
-                            <li ><a href="#" class="cateogry-item">Cateogry 2</a></li>
-                            <li ><a href="#" class="cateogry-item">Cateogry 3</a></li>
-                            <li ><a href="#" class="cateogry-item">Cateogry 4</a></li>
-                            <li ><a href="#" class="cateogry-item">Cateogry 5</a></li>
+                            <li >
+                                <a href="#" class="cateogry-item cateogry-active">Cateogry 1</a> 
+                                <div class="cateogry-act-border"></div>
+                            </li>
+                            <li >
+                                <a href="#" class="cateogry-item">Cateogry 2</a>
+                                <div class="cateogry-border"></div>
+                            </li>
+                            <li >
+                                <a href="#" class="cateogry-item">Cateogry 3</a>
+                                <div class="cateogry-border"></div>
+                            </li>
+                            <li >
+                                <a href="#" class="cateogry-item">Cateogry 4</a>
+                                <div class="cateogry-border"></div>
+                            </li>
+                            <li >
+                                <a href="#" class="cateogry-item">Cateogry 5</a>
+                                <div class="cateogry-border"></div>
+                            </li>
                           
                         </ul>
+                    <!-- categories start -->
+
                         <div class="left-bottom-column">
                             left column
                             left column
@@ -74,9 +92,9 @@
                             left column
                         </div>
                     </div>
-                    <div class="col-7 center-column">
+                    <div class="col-12 col-md-10 col-xl-7  center-column">
                         <h2 class="center-title">Lastst Questions</h2>
-                        <button type="button" class="btn btn-primary suggest-btn">
+                        <button type="button" class="btn btn-primary btn-sm suggest-btn">
                                 Suggest<br>
                                 Question
                         </button>
@@ -91,12 +109,12 @@
                           <div class="row  question-item ">
                                 <div class="col-3">
                                     <div class="row">
-                                        <div class="col-4 votes-num-div nums-que">
+                                        <div class="col-5 votes-num-div nums-que">
                                             <span class="votes-num-span">200</span>
                                             <span class="votes-word">votes</span>
                                             
                                         </div>
-                                        <div class="col-8 answers-num-div nums-que">
+                                        <div class="col-7 answers-num-div nums-que">
                                             <span class="answers-num-span">5</span>
                                             <span class="answers-word">answers</span>
                                         </div>
@@ -125,7 +143,7 @@
                                 </div>
                           </div>
                         </div>
-                    <div class="col-3 right-column">
+                    <div class="d-none d-xl-block col-xl-3  right-column">
                         <div class="card">
                             <h5 class="card-header">Featured</h5>
                             <div class="card-body tags-div">
