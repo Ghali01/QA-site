@@ -8,6 +8,7 @@
     --titles-colors:rgb(179, 179, 179);
     --categories-color:rgb(245, 245, 245);
     --navbar-color: rgb(73, 68, 64);
+    --third-color:#3daebf;
     /* light */
     /* --bg-color:#fff;
     --primary-color:rgb(255,93,0);
@@ -15,6 +16,7 @@
     --titles-colors:rgb(43, 43, 43);
     --categories-color:rgb(78,78,78); 
     --navbar-color: rgb(56, 56, 56);
+    --third-color:#3daebf;
     
     */
 
@@ -22,6 +24,7 @@
 body{
     background-color: var(--bg-color);    
 }
+/* navbar start */
 .navbar{
     background-color: var( --navbar-color);
     
@@ -119,7 +122,23 @@ body{
     color: #cd7f32;
 }
 /* navbr  end */
+/* custom scroll start */
+.custom-scrollbar{
+    overflow: auto;
+}
+.custom-scrollbar::-webkit-scrollbar{
+    width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb{
+    background-color: var(--bg-color);
+}
+.custom-scrollbar::-webkit-scrollbar-track{
+    background-color: var(--secodry-color);
+    border-radius: 4px;
+}
+/*  custom scroll end */
 /* content start */
+/* categories column start */
 .categores-title{
     color: var(--titles-colors);
 }
@@ -161,21 +180,43 @@ body{
     height: 0;
 }
 .left-column, .right-column{
-    padding-top: 30px;
+    /* padding-top: 30px; */
+    position: fixed;
+    top: 70px;
+    height: 100%;
 }
+.left-column{
+    left: 0;
+}
+.right-column{
+    right: 0;
+}
+.left-column-w-b{
+    border-right: 1.5px solid gray;
+
+}
+/* categories column end */
+
 .left-bottom-column{
     border-top: .5px solid gray;
     margin-top: 45px;
 }
+/* center column start */
 .center-column{
     padding: 30px 5px;
+    padding-bottom:0 ;
     border-left: 1.5px solid gray;
+    border-right: 1.5px solid gray;
+    overflow-x: hidden;
 }
 
 .center-title{
     color: var(--titles-colors);
     float: left;
 }
+/* center column ene */
+/* center column (index) start */
+
 .suggest-btn{
     float: right;
     background-color: var(--primary-color);
@@ -199,6 +240,8 @@ body{
     border-color: var(--primary-color);
 
 }
+/* center column (index) end */
+/* right column  start */
 
 .tags-div{
     display: flex;
@@ -217,18 +260,26 @@ body{
     border-radius: 4px;
     border-top:  beige solid 1.5px !important;
 }
-.btn-outline-info{
+.btn-tag{
     padding: 3px 6px;
     margin: 0 8px 8px 0;
 }
-.btn-outline-info:hover{
+.btn-tag:hover{
     background-color: var(--primary-color);
-    border: none;
+    border-color: transparent;
+
     color: white;
+}
+.btn-tag:active,.btn-tag:hover{
+    background-color: var(--primary-color);
+    color: white;
+    border-color:transparent;
 }
 .card-header{
     color: var(--titles-colors);
 }
+/* right column  end */
+
 .btn:focus,.btn:active {
     outline: none !important;
     box-shadow: none !important;
@@ -241,10 +292,18 @@ body{
     color: var(--primary-color);
     border-color: var(--primary-color);
 }
-.btn-outline-info:active,.btn-outline-info:hover{
-    background-color: var(--primary-color);
-    color: white;
-    border:none;
+/* questions list in (index) */
+.question-item{
+    margin-top: 20px;
+    border-bottom: 1.5px solid var(--titles-colors);
+    padding-bottom: 10px;
+}
+.questions-list > div:first-child{
+    border-top: 1.5px solid var(--titles-colors);
+    padding: 20px;
+}
+.questions-list > div:last-child{
+    padding-bottom: 0;
 }
 .nums-que{
     text-align: center;
@@ -305,20 +364,22 @@ body{
     align-items: flex-start;
     width: 50%;
     padding: 10px;
-    height: 80px;
+    height: 80px;  
 }
+
 .question-date{
     display: block;
     float: right;
     font-size: 15px;
     color: var(--titles-colors);
     padding-top:15px ;
+/* questions list in (index) */
 }
 /* xl */
 @media (max-width:1200px){
     .center-column{
     padding: 30px 15px;
-
+    padding-bottom: 0%;
     }
 }
 /* md */
@@ -329,4 +390,144 @@ body{
     .cus-nav-item{
         margin-top: 10px;
     }
+    /* index */
+    .question-tags{
+        width: 100%;
+    }
 }
+/* qeustions page start */
+.question-dev-parent{
+    width: 100%;
+    border:1.5px solid var(--titles-colors);
+    border-radius: 5px;
+}
+.questions-gird-toolbar{
+    border-bottom:1.5px solid var(--titles-colors);
+    padding: 10px 5px;
+}
+.sort-by-word{
+    color: var(--categories-color);
+}
+.sort-select-qs{
+    display: inline-block;
+    width: 20%;
+    background-color: var(--secodry-color);
+    color: white;
+}
+.sort-select-qs:focus{
+    box-shadow: none !important;
+    border-color:var(--secodry-color) ;
+}
+.grid-indcator{
+    float: right;
+}
+.act-grid-incator{
+    font-weight: bold;
+    color: var(--third-color);
+    border-color: var(--third-color);
+    border-width: 2px;
+}
+/* qeustions page end */
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    height: 70px;
+    overflow: hidden;
+}
+.grid-questions{
+    display: flex;
+    /* padding: 10px; */
+    flex-wrap: wrap;
+}
+.question-item-grid{
+    width: 270px;
+    padding: 5px;
+    border: 1.1px solid var(--titles-colors);
+    border-radius: 6px;
+    margin: 10px;
+}
+.question-item-grid .answers-num-span,
+.question-item-grid .votes-num-span,
+.question-item-grid .votes-word,
+.question-item-grid .answers-word{
+    font-size: 12px;
+}
+.question-item-grid .nums-que{
+    width: 55px;
+    height: 45px;
+}
+.question-item-grid .question-tags{
+    width:100% ;
+    height: 40px;
+    padding: 0px;
+    flex-wrap: nowrap;
+    overflow: auto;
+}
+.question-item-grid .question-tags::-webkit-scrollbar{
+    height: 2px;
+    width: 2px;
+}
+.question-item-grid .added-by-div{
+    float: left;
+}
+
+/* The container must be positioned relative: */
+.custom-select {
+    position: relative;
+    font-family: Arial;
+  }
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element: */
+  }
+  
+  .select-selected {
+    background-color: DodgerBlue;
+  }
+  
+  /* Style the arrow inside the select element: */
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+  }
+  
+  /* Point the arrow upwards when the select box is open (active): */
+  .select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+  }
+  
+  /* style the items (options), including the selected item: */
+  .select-items div,.select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+  }
+  
+  /* Style items (options): */
+  .select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  
+  /* Hide the items when the select box is closed: */
+  .select-hide {
+    display: none;
+  }
+  
+  .select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }

@@ -18,15 +18,17 @@
                         <span class="navbar-toggler-icon"></span>
                       </button>
                     <div class="collapse navbar-collapse"  id="navbarSupportedContent">
-                        
+                        <!-- search bar start -->
                         <form class="d-flex search-nav-form">
-                            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
                             <div class="form-group has-search">
                                 <span class="fa fa-search form-control-feedback"></span>
                                 <input type="text" class="form-control search-input" placeholder="Search">
                               </div>
                         </form>
+                        <!-- search bar end -->
                         <ul class="navbar-nav ms-auto">
+                        <!-- itemes on the right start -->
+
                             <li class="nav-item cus-nav-item" >
                                 <img class="avatar-img" src="img/tmp/avatar.jpg" alt="avatar">
                                 <span class="points-sp">6,145</span>
@@ -44,6 +46,8 @@
                                 </div>
 
                             </li>
+                            <!-- itemes on the right start -->
+                            <!-- cateagors on sm start -->
                             <li class="nav-item d-md-none d-lg-none d-xl-none d-xxl-none">
                                 <a href="#" class="nav-link cateogry-in-nav active">Cateogry 1</a>
                             </li>
@@ -59,16 +63,21 @@
                             <li class="nav-item d-md-none d-lg-none d-xl-none d-xxl-none">
                                 <a href="#" class="nav-link cateogry-in-nav">Cateogry 5</a>
                             </li>
+                            <!-- cateagors on sm end -->
+
                         </ul>
                     </div>
     
                 </div>
             </nav>
+        </head>
+
             <!-- navbar end -->
             <!-- content start -->
             <div class="container-fluid">
                 <div class="row">
                     <!-- categories start -->
+                    <div class="d-none d-md-block col-md-2"></div>
                     <div class="d-none d-md-block col-md-2 left-column">
                         <h4 class="categores-title">categories</h4>
                         <ul class="categores-list">
@@ -105,6 +114,7 @@
                             left column
                         </div>
                     </div>
+                    <!-- cendet column start -->
                     <div class="col-12 col-md-10 col-xl-7  center-column">
                         <h2 class="center-title">Lastst Questions</h2>
                         <button type="button" class="btn btn-primary btn-sm suggest-btn">
@@ -119,55 +129,231 @@
                             <button type="button" class="btn btn-outline-primary">This month</button>
                           </div>
                           <div style="clear:both"></div>
+                          <!-- queststion start -->
+                          <div class="questions-list">
                           <div class="row  question-item ">
-                                <div class="col-3">
-                                    <div class="row">
-                                        <div class="col-5 votes-num-div nums-que">
-                                            <span class="votes-num-span">200</span>
-                                            <span class="votes-word">votes</span>
-                                            
-                                        </div>
-                                        <div class="col-7 answers-num-div nums-que">
-                                            <span class="answers-num-span">5</span>
-                                            <span class="answers-word">answers</span>
-                                        </div>
+                            <div class="col-3">
+                                <div class="row">
+                                    <div class="col-5 votes-num-div nums-que">
+                                        <span class="votes-num-span">200</span>
+                                        <span class="votes-word">votes</span>
+                                        
                                     </div>
-                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+                                    <div class="col-7 answers-num-div nums-que">
+                                        <span class="answers-num-span">5</span>
+                                        <span class="answers-word">answers</span>
+                                    </div>
                                 </div>
-                                <div class="col-9">
-                                    <div class="question-title">
+                                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+                            </div>
+                            <div class="col-9">
+                                <div class="question-title line-clamp" >
+                                    <p>      text text text text text text  
                                         text text text text text text  
                                         text text text text text text  
                                         text text text text text text  
                                         text text text text text text  
                                         text text text text text text  
                                         text text text text text text  
+                                        text text text text text text  
+                                        text text text text text text  
+                                        text text text text text text  
+                                        text text text text text text  
+                                        text text text text text text  
+                                        text text text text text text  
+                                        text text text text text text  
+                                  </p>
+                                </div>
+                                <div class="bottom-of-question">
+                                    <div class="question-tags custom-scrollbar">
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                     </div>
-                                    <div class="bottom-of-question">
-                                        <div class="question-tags">
-                                            <button type="button" class="btn btn-outline-info">Tag</button>
-                                            <button type="button" class="btn btn-outline-info">Tag</button>
-                                            <button type="button" class="btn btn-outline-info">Tag</button>
-                                            <button type="button" class="btn btn-outline-info">Tag</button>
-                                        </div>
-                                        <div class="question-date">last answer added in 0000/00/00 </div>
+                                    <div class="question-date">last answer added in 0000/00/00 </div>
 
-                                    </div>
                                 </div>
-                          </div>
+                            </div>
+                      </div><div class="row  question-item ">
+                        <div class="col-3">
+                            <div class="row">
+                                <div class="col-5 votes-num-div nums-que">
+                                    <span class="votes-num-span">200</span>
+                                    <span class="votes-word">votes</span>
+                                    
+                                </div>
+                                <div class="col-7 answers-num-div nums-que">
+                                    <span class="answers-num-span">5</span>
+                                    <span class="answers-word">answers</span>
+                                </div>
+                            </div>
+                            <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
                         </div>
+                        <div class="col-9">
+                            <div class="question-title line-clamp" >
+                                <p>      text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                                    text text text text text text  
+                              </p>
+                            </div>
+                            <div class="bottom-of-question">
+                                <div class="question-tags custom-scrollbar">
+                                    <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                    <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                    <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                    <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                    <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+
+                                </div>
+                                <div class="question-date">last answer added in 0000/00/00 </div>
+
+                            </div>
+                        </div>
+                  </div><div class="row  question-item ">
+                    <div class="col-3">
+                        <div class="row">
+                            <div class="col-5 votes-num-div nums-que">
+                                <span class="votes-num-span">200</span>
+                                <span class="votes-word">votes</span>
+                                
+                            </div>
+                            <div class="col-7 answers-num-div nums-que">
+                                <span class="answers-num-span">5</span>
+                                <span class="answers-word">answers</span>
+                            </div>
+                        </div>
+                        <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+                    </div>
+                    <div class="col-9">
+                        <div class="question-title line-clamp" >
+                            <p>      text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                                text text text text text text  
+                          </p>
+                        </div>
+                        <div class="bottom-of-question">
+                            <div class="question-tags custom-scrollbar">
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                            </div>
+                            <div class="question-date">last answer added in 0000/00/00 </div>
+
+                        </div>
+                    </div>
+              </div><div class="row  question-item ">
+                <div class="col-3">
+                    <div class="row">
+                        <div class="col-5 votes-num-div nums-que">
+                            <span class="votes-num-span">200</span>
+                            <span class="votes-word">votes</span>
+                            
+                        </div>
+                        <div class="col-7 answers-num-div nums-que">
+                            <span class="answers-num-span">5</span>
+                            <span class="answers-word">answers</span>
+                        </div>
+                    </div>
+                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+                </div>
+                <div class="col-9">
+                    <div class="question-title line-clamp" >
+                        <p>      text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                            text text text text text text  
+                      </p>
+                    </div>
+                    <div class="bottom-of-question">
+                        <div class="question-tags custom-scrollbar">
+                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                </div>
+                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                        </div>
+                       </div>
+                     </div>
+                            </div>
+                            <!-- questions end -->
+                </div>
+                    <!-- center column  -->
+                    <!-- right column start -->
                     <div class="d-none d-xl-block col-xl-3  right-column">
                         <div class="card tags-card">
                             <h5 class="card-header">Tags</h5>
                             <div class="card-body tags-div">
-                                <button type="button" class="btn btn-outline-info">Tag</button>
-                                <button type="button" class="btn btn-outline-info">Tag</button>
-                                <button type="button" class="btn btn-outline-info">Tag</button>
-                                <button type="button" class="btn btn-outline-info">Tag</button>
-                                <button type="button" class="btn btn-outline-info">Tag</button>
-                                <button type="button" class="btn btn-outline-info">Tag</button>
-                                <button type="button" class="btn btn-outline-info">Tag</button>
-
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                             </div>
                           </div>
                           <div class="right-bottom-column">
@@ -181,10 +367,10 @@
                             rigth column 
                           </div>
                         </div>
+                    <!-- right column start -->
 
                 </div>
             </div>
-        </head>
         <script src="js/bootstrap.min.js"></script>
 
     </body>

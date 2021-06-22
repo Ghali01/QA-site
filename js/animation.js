@@ -50,7 +50,24 @@ $(document).ready(
             $(".cateogry-act-border").animate({height:"40px"}); 
             
         });
+        $(document).scroll(function () { 
+            if($(document).scrollTop()!=0)
+                $(".left-column, .right-column").css("top","30px")
+            else
+                $(".left-column, .right-column").css("top","70px")
 
-}
+            });
+        // var iQue=0;
+// question-item-grid
+        // $(".question-item-grid").effect("scale",{percent:0},0);
+        // function sacleQueGrig(){
+        // $( document.getElementById("grid-questions").childNodes[iQue]).effect("scale",{percent:100},100);
+        // iQue++;
+        // if(document.getElementById("grid-questions").childNodes.length<iQue)
+        //     clearInterval(interVal)
+        // }
+        // var interVal=setInterval(sacleQueGrig, 100);
+
+        }
 
 );
