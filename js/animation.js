@@ -26,6 +26,10 @@ $(document).ready(
             }
         );
         // animation for forms end
+
+    
+        // categores column animation start
+    
         $(".categores-list").mouseleave(function () { 
             $(".cateogry-act-border").animate({height:"40px"}); 
 
@@ -50,6 +54,10 @@ $(document).ready(
             $(".cateogry-act-border").animate({height:"40px"}); 
             
         });
+
+        // categores column animation end
+
+
         $(document).scroll(function () { 
             if($(document).scrollTop()!=0)
                 $(".left-column, .right-column").css("top","30px")
@@ -57,17 +65,20 @@ $(document).ready(
                 $(".left-column, .right-column").css("top","70px")
 
             });
-        // var iQue=0;
-// question-item-grid
-        // $(".question-item-grid").effect("scale",{percent:0},0);
-        // function sacleQueGrig(){
-        // $( document.getElementById("grid-questions").childNodes[iQue]).effect("scale",{percent:100},100);
-        // iQue++;
-        // if(document.getElementById("grid-questions").childNodes.length<iQue)
-        //     clearInterval(interVal)
-        // }
-        // var interVal=setInterval(sacleQueGrig, 100);
 
+            startGridQueAni();//gird question animetion
+            
         }
 
 );
+//gird question animetion funcrion
+function startGridQueAni(){
+    var iQue=0;
+    function sacleQueGrid(){
+    $( document.getElementById("grid-questions").childNodes[iQue]).addClass("question-item-grid-ani");
+    iQue++;
+    if(document.getElementById("grid-questions").childNodes.length<iQue)
+        clearInterval(interVal)
+    }
+    var interVal=setInterval(sacleQueGrid, 100);
+}
