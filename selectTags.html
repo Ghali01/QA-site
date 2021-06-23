@@ -38,16 +38,31 @@
       <!-- navbar end  -->
       
       <!-- form start -->
-        <form id="reg-form" autocomplete="on" class="animeted-form" >
-            <h4 class="form-title">Reset Your Password</h4>
-            <p class="form-label form-msg">Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.
-
+        <form id="reg-form" autocomplete="on" class="animeted-form" style="width: 500px;" >
+            <h4 class="form-title">Complete You Register</h4>
+            <p class="form-label form-msg">
+                Plese select your department and the things that interest you
             </p>
             <div class="mb-3">
-            
+                <div class="card tags-card">
+                    <div class="card-header">  
+                        <select class="form-select custom-select" aria-label="Default sele" style="width: 30%;">
+                        <option selected>Devloper</option>
+                        <option value="1">HR</option>
+                        <option value="2">Designer</option>
+                      </select>
+                    </div>
+                    <div id="tags-reg" class="card-body tags-div animeted-tags-grid">
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                  </div>
                 
-                <button type="button" class="btn btn-primary" id="reg-btn">Return to sign in </button>
-            
+                
                 </div>
 
         </form>

@@ -8,19 +8,19 @@ $(document).ready(
             top:($("#reg-form").height()/2),
             right:($("#or-span").width()/2)
         });
-        console.log($("#or-span").width());
         $(".animeted-form .form-control").focus(
             function(){
-                $(this).prev().css({"z-index":2,color: "rgba(219, 99, 29, 0.925)"});
+                $(this).prev().css({"z-index":2});
+                $(this).prev().toggleClass("lbl-color-set");
                 $(this).prev().animate({top:"0px",left:0,"font-size":"12px"},290);
-            
         }
         );
         $(".animeted-form .form-control").blur(
             function(){
                 if(!$(this).val()){
             
-                $(this).prev().css({"z-index":0,color: "gray"});
+                $(this).prev().css({"z-index":0});
+                $(this).prev().toggleClass("lbl-color-set");
                 $(this).prev().animate({top:"28px",left:"8px","font-size":"16px"},290);
                 }
             }
@@ -66,19 +66,25 @@ $(document).ready(
 
             });
 
-            startGridQueAni();//gird question animetion
+            startGridQueAni("grid-questions",100);//gird question animetion
+            startGridQueAni("tags-reg",50);//gird question animetion
             
         }
 
 );
 //gird question animetion funcrion
-function startGridQueAni(){
+function startGridQueAni(parentId,duriton=100){
     var iQue=0;
     function sacleQueGrid(){
-    $( document.getElementById("grid-questions").childNodes[iQue]).addClass("question-item-grid-ani");
+    try{    
+    $( document.getElementById(parentId).childNodes[iQue]).addClass("item-grid-ani-"+duriton);
+   
     iQue++;
-    if(document.getElementById("grid-questions").childNodes.length<iQue)
+    if(document.getElementById(parentId).childNodes.length<iQue)
         clearInterval(interVal)
+    }catch(e){
+        clearInterval(interVal);
+    }
     }
     var interVal=setInterval(sacleQueGrid, 100);
 }
