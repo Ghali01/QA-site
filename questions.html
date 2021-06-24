@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -115,12 +116,18 @@
                         <div class="question-dev-parent">
                             <div class="questions-gird-toolbar">
                                 <span class="sort-by-word">Sort by: </span>
-                                <select class="form-select custom-select sort-select-qs " aria-label="Default sele">
-                                    <option selected>Date</option>
-                                    <option value="1">Votes</option>
-                                    <option value="2">Answers</option>
-                                  </select>
-                                  <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"> -->
+                                <div  class="custom-select" style="width: 20%; display: inline-block;">
+                                    <button class="btn btn-primary btn-select" >
+                                        <span class="selected-span"> date</span>
+                                        <i class="fas fa-caret-down select-arrow"></i>
+                                        
+                                    </button>
+                                    <ul class="custom-select-list">
+                                        <li class="custom-select-item">date</li>
+                                        <li class="custom-select-item">answers</li>
+                                        <li class="custom-select-item">votes</li>
+                                    </ul>
+                                </div>                   <!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups"> -->
                                     <div class="btn-group me-2 grid-indcator" role="group" aria-label="First group">
                                       <button type="button" class="btn btn-outline-primary">1</button>
                                       <button type="button" class="btn btn-outline-primary">2</button>

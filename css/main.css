@@ -5,10 +5,13 @@
     --bg-color:rgb(54, 54, 54);
     --primary-color:rgb(255,93,0);
     --secodry-color:rgb(0, 179, 116);
+    --tSecodry-color:rgb(1, 124, 81);
     --titles-colors:rgb(179, 179, 179);
     --categories-color:rgb(245, 245, 245);
     --navbar-color: rgb(73, 68, 64);
+    --editor-color: rgb(73, 68, 64);
     --third-color:#3daebf;
+    --secondry-editor-color:rgb(1, 73, 48);
     /* light */
     /* --bg-color:#fff;
     --primary-color:rgb(255,93,0);
@@ -404,11 +407,12 @@ body{
 .questions-gird-toolbar{
     border-bottom:1.5px solid var(--titles-colors);
     padding: 10px 5px;
+    min-height: 60px;
 }
 .sort-by-word{
     color: var(--categories-color);
-}
-.custom-select {
+ }
+/*.custom-select {
     display: inline-block;
     width: 20%;
     background-color: var(--secodry-color);
@@ -417,6 +421,49 @@ body{
 .custom-select:focus{
     box-shadow: none !important;
     border-color:var(--secodry-color) ;
+} */
+.custom-select .btn-select{
+    background-color: var(--secodry-color);
+    color: whitesmoke;
+    width: 100%;
+    text-align: start;
+    padding: 8px 5px;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+}
+.custom-select .btn-select-act{
+    border-radius: 4px 4px 0 0;
+
+}
+.custom-select{
+    position: relative;
+}
+.select-arrow{
+    position: absolute;
+    top: 13px;
+    right: 5px;
+}
+.custom-select .custom-select-list{
+    list-style: none;
+    background-color: var(--secodry-color);
+    color: whitesmoke;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    display: block;
+    visibility: hidden;
+    z-index: 10;
+    border-radius: 0 0 4px 4px;
+
+}
+.custom-select-item{
+    padding: 5px;
+    cursor: pointer;
+}
+.custom-select-item:hover{
+    background-color: var(--tSecodry-color);
+
 }
 .grid-indcator{
     float: right;
@@ -705,7 +752,7 @@ a.go{
 .navbar-brand:hover{
     color: rgb(199,77,7) !important;
 }
-.active{
+.navbar .active{
     background-color: var(--primary-color);
     border-radius: 17%;
 }
@@ -745,4 +792,105 @@ a.go{
 /* complete register */
 .animeted-tags-grid .btn-tag{
     transform: scale(0);
+}
+
+
+.TMCommandBar{
+    padding: 8px;
+    background-color: var(--primary-color);
+    border: 3px solid var(--tSecodry-color);
+    border-bottom: 3.5px solid var(--tSecodry-color);
+    border-radius: 7px 7px 0 0;
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 24px;
+}
+.TMCommandButton,
+.TMCommandButton_Active,
+.TMCommandButton_Inctive{
+    fill: var(--secondry-editor-color);
+    background-color: var(--primary-color);
+
+}
+.TMCommandDivider{
+    border-left: 1px solid var(--secondry-editor-color);
+    border-right: 1px solid var(--secondry-editor-color);
+
+}
+.TinyMDE{
+    background-color: var(--editor-color);
+    color: var(--titles-colors);
+    border: 3px solid var(--tSecodry-color);
+    border-top: none;
+    /* border-radius: 0 0 7px 7px; */
+    box-sizing: border-box;
+    min-height: 247px;
+    border-bottom: none;
+}
+.TMMark{
+    color: var(--titles-colors);
+
+}
+.editor-partnt{
+    height: 250px;
+    border-radius: 0 0 7px 7px;
+    border-bottom: 3px solid var(--tSecodry-color);
+
+}
+.editor-partnt::-webkit-scrollbar-thumb{
+    background-color: var(--primary-color);
+}
+
+.que-input{
+    background-color: var(--editor-color);
+    color: var(--titles-colors);
+    border: 2px solid var(--tSecodry-color);
+}
+
+.que-input:focus{
+    box-shadow: .3px .3px 5px var(--primary-color),-0.3px -0.3px 5px var(--primary-color);
+    border-color: transparent;
+    
+    background-color: var(--editor-color);
+    color: var(--titles-colors);
+}
+.add-tag-to-que-div{
+    /* position: relative; */
+}
+.que-title-input{
+    margin-bottom: 15px;
+}
+.que-tags-input{
+    margin-top: 15px;
+    margin-bottom:3px;
+}
+.tags-list{
+    position: absolute;
+    list-style: none;
+    padding: 4px 0px;
+    background-color: var(--editor-color);
+    min-height: 40px;
+    max-height:100px ;
+    color: var(--titles-colors);
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    display: none;
+    min-width: 200px;
+}
+.tags-list::-webkit-scrollbar-thumb{
+    background-color: var(--editor-color);
+}
+.tags-list-item{
+    
+    padding: 0 10px;
+    border-bottom: 2px solid var(--titles-colors);
+}
+.tags-list-item:hover,
+.current-list-tag{
+    background-color: var(--primary-color);
+    color: white;
+    border-bottom-color: var(--secodry-color);
+}
+.add-que-continer{
+    padding: 0 5px;
 }
