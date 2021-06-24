@@ -109,7 +109,7 @@ $(document).ready(
             //editor start
             var tinyMDE = new TinyMDE.Editor({element: 'editor',content:" "});
             var commandBar = new TinyMDE.CommandBar({element: 'editor-toolbar', editor: tinyMDE});
-            $(".tags-list").hide();
+            // $(".tags-list").hide();
             $("#que-tags-input").keydown(function (e) {
 
                 if(e.which==38||e.which==40)
