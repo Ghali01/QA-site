@@ -590,8 +590,11 @@ body{
 }
 @media (max-width:768px){
     #reg-form{
-        margin: 7% 10px;
+        margin: 7% auto;
     }
+}
+.form-parent{
+    padding: 0 10px;
 }
 #reg-form .form-control{
     margin-bottom: 10px;
