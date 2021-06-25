@@ -161,6 +161,11 @@ body{
     text-decoration: none;   
     white-space: nowrap;    
 }
+@media (min-width:768px) and (max-width:900px){
+    .cateogry-item{
+        font-size: 12.5px;
+    }    
+}
 .cateogry-item:hover,.cateogry-item:visited{
     color: var(--categories-color);
 
@@ -915,10 +920,15 @@ a.go{
     color: var(--categories-color);
     padding-right: 10px;
 }
+.icons-col{
+    padding: 0;
+}
 .sort-icon{
     display: block;
     color: var(--primary-color);
-    font-size: 85px;
+    font-size: 5vw;
+    margin: auto;
+    text-align: center;
 }
 .question-div{
     margin-bottom: 10px;
@@ -926,22 +936,53 @@ a.go{
     padding-bottom: 10px;
 }
 .votes-number-span{
-    font-size: 32px;
+    font-size: 1.5vw;
     color: var(--secodry-color);
+    margin: auto;
+    text-align: center;
+    display: block;
 }
+
+.bookmark-icon{
+    font-size: 3vw;
+    color: var(--secodry-color);
+    padding: 13px 0;
+    display: block;
+    text-align: center;
+}
+@media(min-width:950px )and (max-width:1200px){
+    .sort-icon{
+        font-size: 6vw;
+    }
+    .votes-number-span{
+        font-size: 2.5vw;
+    }
+    .bookmark-icon{
+    font-size: 4vw;
+    }
+}
+@media(max-width:950px){
+    .sort-icon{
+        font-size: 7vw;
+    }
+    .votes-number-span{
+        font-size: 2.8vw;
+    }
+    .bookmark-icon{
+    font-size: 4vw;
+    }
+
+}
+
 .sort-icon-up{
-    margin-bottom: -35px;
+    margin-bottom: -3vh;
 }
 .sort-icon-down{
-    margin-top: -35px;
+    margin-top: -3vh;
 }
+
 .question-content{
     color: var(--titles-colors);
-}
-.bookmark-icon{
-    font-size: 35px;
-    color: var(--secodry-color);
-    padding: 13px;
 }
 .question-content{
     margin-bottom: 10px;
@@ -967,6 +1008,7 @@ a.go{
 }
 .comments-div{
     margin: auto;
+    margin-top: 20px;
     width: 90%;
 }
 .comments-list{
@@ -994,5 +1036,20 @@ a.go{
     border-bottom: 1px solid var(--titles-colors);
 }
 .ans-added-by-div{
-    margin-left: 21px;
+    margin-right: 20px;
+    float: right;
+}
+.added-by-parent{
+    width: 100%;
+}
+.added-by-div .badge-num-span{
+    font-size: 14px;
+}
+.added-by-div .circular-badge{
+    margin-top: 2px;
+    height: 12px;
+    width: 12px;
+}
+.added-by-div .by-user-name{
+    white-space: nowrap;
 }
