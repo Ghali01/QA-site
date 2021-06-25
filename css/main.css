@@ -992,15 +992,14 @@ a.go{
     color: var(--navbar-color);
     padding: 4px;
 }
-.tags-div-of-que{
-    width: 70%;
-}
-.added-by-div{
+
+.added-by-div-q{
     background-color: var(--navbar-color);
     border: 3px solid var(--primary-color);
     border-radius: 7px;
-    width: 25%;
     padding: 10px;   
+    float: right;
+    margin-right: 20px;
 }
 .questtion-add-date{
     color: var(--titles-colors);

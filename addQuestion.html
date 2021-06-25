@@ -160,21 +160,40 @@
                         Add<br>Question
                  </button>
                     <div class="question-dev-parent" style="margin-top: 75px;">
-                        <div class="questions-gird-toolbar">
-                            <span class="sort-by-word">Similar Questions </span>
-                                <div class="btn-group me-2 grid-indcator" role="group" aria-label="First group">
-                                  <button type="button" class="btn btn-outline-primary">1</button>
-                                  <button type="button" class="btn btn-outline-primary">2</button>
-                                  <button type="button" class="btn btn-outline-primary">3</button>
-                                  <button type="button" class="btn btn-outline-primary act-grid-incator">4</button>
-                                  <button type="button" class="btn btn-outline-primary">5</button>
-                                  <button type="button" class="btn btn-outline-primary">6</button>
-                                  <button type="button" class="btn btn-outline-primary">7</button>
-                                    
-                                  <!-- </div> -->
+                      
+                    <div class="questions-gird-toolbar">
+                        <div class="row">
+                            <div class="col-4">
+                                <span class="sort-by-word">Sort by: </span>
+                                <div class="custom-select" style="width: 50%; display: inline-block;">
+                                    <button class="btn btn-primary btn-select">
+                                        <span class="selected-span"> date</span>
+                                        <i class="fas fa-caret-down select-arrow"></i>
+
+                                    </button>
+                                    <ul class="custom-select-list">
+                                        <li class="custom-select-item">date</li>
+                                        <li class="custom-select-item">answers</li>
+                                        <li class="custom-select-item">votes</li>
+                                    </ul>
                                 </div>
-                            
+                            </div>
+                            <div class="col-8">
+                                <div class="btn-group me-2 grid-indcator" role="group" aria-label="First group">
+                                    <button type="button" class="btn btn-outline-primary">1</button>
+                                    <button type="button" class="btn btn-outline-primary">2</button>
+                                    <button type="button" class="btn btn-outline-primary">3</button>
+                                    <button type="button" class="btn btn-outline-primary act-grid-incator">4</button>
+                                    <button type="button" class="btn btn-outline-primary">5</button>
+                                    <button type="button" class="btn btn-outline-primary">6</button>
+                                    <button type="button" class="btn btn-outline-primary">7</button>
+
+                                    <!-- </div> -->
+                                </div>
+                            </div>
+
                         </div>
+                    </div>
                         <div id="grid-questions" class="grid-questions">
                             <div class="container-fluid  question-item-grid ">
                                 <div class="row">
