@@ -421,6 +421,7 @@ body{
 .selected-span,.custom-select-item{
     text-overflow: ellipsis;
     white-space: nowrap;
+    overflow: hidden;
 }
  
 .custom-select .btn-select{
@@ -1205,4 +1206,22 @@ a.go{
     border-bottom: 1.5px solid var(--titles-colors);
     padding-bottom: 10px;
 
+}
+.select-toolbar-sm{
+    width: 23%;
+}
+.margin-toolbar-row{
+     margin-top: 10px;
+}
+@media (max-width:992px){
+    .grid-indcator-lg-m{
+        margin-top: 10px;
+    }
+}
+.question-options-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.primary-button-sm{
+    font-size: 12px;
 }
