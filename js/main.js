@@ -68,9 +68,13 @@ $(document).ready(
 
             startGridQueAni("grid-questions",100);//gird question animetion
             startGridQueAni("tags-reg",50);//gird question animetion
-            // custom select
+            // custom select 
             $(".btn-select").click(function(e){
                 e.preventDefault();
+                $(".custom-select-list").css({
+                visibility:"hidden"
+
+                });
                 $(this).next().css({
                 visibility:"visible"
 
@@ -96,20 +100,22 @@ $(document).ready(
             event.stopPropagation();
             });
             $(".custom-select-item").click( function(){
-                    $(this).parent().prev().text($(this).text());
-                    $(this).parent().prev().append("<i class=\"fas fa-caret-down select-arrow\"></i>")
-                    $(this).parent().css({
-                        visibility:"hidden"
-        
-                        });
-                    $(this).parent().prev().toggleClass("btn-select-act");
+                $(this).parent().prev().text("");
+                $(this).parent().prev().append("<span class=\"selected-span\">"+ $(this).text()+"</span>");
+                $(this).parent().prev().append("<i class=\"fas fa-caret-down select-arrow\"></i>")
+                $(this).parent().css({
+                    visibility:"hidden"
+    
+                    });
+                $(this).parent().prev().toggleClass("btn-select-act");
                 }
             );
             // custom select end
             //editor start
+            if(document.getElementById("editor")!=undefined){
             var tinyMDE = new TinyMDE.Editor({element: 'editor',content:" "});
             var commandBar = new TinyMDE.CommandBar({element: 'editor-toolbar', editor: tinyMDE});
-            // $(".tags-list").hide();
+            }
             $("#que-tags-input").keydown(function (e) {
 
                 if(e.which==38||e.which==40)

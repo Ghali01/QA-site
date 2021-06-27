@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/font-all.min.css">
+    <script src="js/main.js"></script>
+    <script src="https://unpkg.com/tiny-markdown-editor@0.1.4/dist/tiny-mde.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/tiny-markdown-editor@0.1.4/dist/tiny-mde.min.css" />
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+    <header>
+        <!-- navbar start -->
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#"> interviwe question</a>
+                <button class="navbar-toggler  " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <form class="d-flex search-nav-form">
+                        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+                        <div class="form-group has-search">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <input type="text" class="form-control search-input" placeholder="Search">
+                        </div>
+                    </form>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item cus-nav-item">
+                            <img class="avatar-img" src="img/tmp/avatar.jpg" alt="avatar">
+                            <span class="points-sp">6,145</span>
+                            <div class="badges">
+                                <div class="badge ">
+                                    <div class=" circular-badge gold-badge"></div>
+                                    <span class="badge-num-span gold-badge-span">25</span>
+                                </div>
+                                <div class="badge ">
+                                    <div class=" circular-badge silver-badge"></div>
+                                    <span class=" badge-num-span silver-badge-span">210</span>
+                                </div>
+                                <div class="badge ">
+                                    <div class=" circular-badge bronze-badge"></div>
+                                    <span class="badge-num-span bronze-badge-span">101</span>
+                                </div>
+                            </div>
+
+                        </li>
+                        <li class="nav-item d-md-none d-lg-none d-xl-none d-xxl-none">
+                            <a href="#" class="nav-link cateogry-in-nav active">Cateogry 1</a>
+                        </li>
+                        <li class="nav-item d-md-none d-lg-none d-xl-none d-xxl-none">
+                            <a href="#" class="nav-link cateogry-in-nav">Cateogry 2</a>
+                        </li>
+                        <li class="nav-item d-md-none d-lg-none d-xl-none d-xxl-none">
+                            <a href="#" class="nav-link cateogry-in-nav">Cateogry 3</a>
+                        </li>
+                        <li class="nav-item d-md-none d-lg-none d-xl-none d-xxl-none">
+                            <a href="#" class="nav-link cateogry-in-nav">Cateogry 4</a>
+                        </li>
+                        <li class="nav-item d-md-none d-lg-none d-xl-none d-xxl-none">
+                            <a href="#" class="nav-link cateogry-in-nav">Cateogry 5</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <!-- navbar end -->
+    <!-- content start -->
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <!-- categories start -->
+            <div class="d-none d-md-block col-md-2"></div>
+            <div class="d-none d-md-block col-md-2 left-column left-column-w-b">
+                <h4 class="categores-title">categories</h4>
+                <ul class="categores-list">
+                    <li>
+                        <a href="#" class="cateogry-item cateogry-active">sub Cateogry 1</a>
+                        <div class="cateogry-act-border"></div>
+                    </li>
+                    <li>
+                        <a href="#" class="cateogry-item">sub Cateogry 2</a>
+                        <div class="cateogry-border"></div>
+                    </li>
+                    <li>
+                        <a href="#" class="cateogry-item">sub Cateogry 3</a>
+                        <div class="cateogry-border"></div>
+                    </li>
+                    <li>
+                        <a href="#" class="cateogry-item"> sub Cateogry 4</a>
+                        <div class="cateogry-border"></div>
+                    </li>
+                    <li>
+                        <a href="#" class="cateogry-item">sub Cateogry 5</a>
+                        <div class="cateogry-border"></div>
+                    </li>
+
+                </ul>
+                <!-- categories start -->
+
+                <div class="left-bottom-column">
+                    left column
+                    left column
+                    left column
+                    left column
+                    left column
+                    left column
+                </div>
+            </div>
+            <!-- center column start  -->
+            <div class="col-12 col-md-10 col-xl-7  center-column" style="border: none;">
+                <h2 class="center-title" style="float:none;">Suggest Category/Tag</h2>
+                <div class="add-que-continer"></div>
+                <input type="text" class="form-control custom-input" placeholder="Category/Tag name...">
+                <textarea type="text" class="form-control custom-input suggest-msg-inp custom-scrollbar" placeholder="Write Something..."></textarea>
+            
+                <button type="button" class="btn btn-primary btn-sm primary-button add-que-button">
+                    Suggest
+                </button>
+
+            </div>
+            <!-- center column end  -->
+
+            <!-- right column start  -->
+            <div class="d-none d-xl-block col-xl-3  right-column">
+                <div class="card tags-card">
+                    <h5 class="card-header">Tags</h5>
+                    <div class="card-body tags-div">
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                </div>
+                <div class="right-bottom-column">
+                    rigth column
+                    rigth column
+                    rigth column
+                    rigth column
+                    rigth column
+                    rigth column
+                    rigth column
+                    rigth column
+                </div>
+            </div>
+
+            <!-- right column end  -->
+
+        </div>
+
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
