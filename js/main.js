@@ -68,6 +68,7 @@ $(document).ready(
 
             startGridQueAni("grid-questions",100);//gird question animetion
             startGridQueAni("tags-reg",50);//gird question animetion
+            startGridQueAni("grid-tags",50);//gird question animetion
             // custom select 
             $(".btn-select").click(function(e){
                 e.preventDefault();

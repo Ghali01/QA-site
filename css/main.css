@@ -529,7 +529,8 @@ body{
     height: 70px;
     overflow: hidden;
 }
-.grid-questions{
+.grid-questions,
+.grid{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -1311,4 +1312,16 @@ a.go{
     border: none;
     border-bottom: 2.5px solid var(--titles-colors);
     padding-bottom: 14px;
+}
+.grid-tags{
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 8px 15px;
+    min-height: 200px;
+    
+}
+.grid-tags .btn-tag{
+    font-size: 20px;
+    margin: 7px;
+    transform: scale(0);
 }
