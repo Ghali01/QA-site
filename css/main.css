@@ -974,7 +974,8 @@ a.go{
     margin: auto;
     text-align: center;
 }
-.question-div{
+.question-div,
+.answer-div{
     margin-bottom: 10px;
     border-bottom: 2px solid var(--titles-colors);
     padding-bottom: 10px;
@@ -1263,6 +1264,7 @@ a.go{
 }
 .question-item-grid-pd{
     padding: 5px;
+    padding-bottom: 0;
 }
 .que-left-col{
     padding: 0 15px;
@@ -1294,4 +1296,19 @@ a.go{
 .primary-radio:checked{
     background-color: var(--primary-color);
     
+}
+.answers-num-span-grid{
+    margin: 0 7px;
+    margin-top: 5px;
+    font-size: 14px;
+    border: 1px solid var(--titles-colors);
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    padding: 3px;
+
+}
+.question-options-bottom-wb{
+    border: none;
+    border-bottom: 2.5px solid var(--titles-colors);
+    padding-bottom: 14px;
 }
