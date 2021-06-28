@@ -802,12 +802,12 @@ a.go{
 .navbar-brand:hover{
     color: rgb(199,77,7) !important;
 }
-.navbar .active{
+.navbar .custom-nav-active{
     background-color: var(--primary-color);
     border-radius: 17%;
 }
 @media(max-width:768px){
-    .active{
+    .custom-nav-active{
         background-color: transparent;
     
     }
