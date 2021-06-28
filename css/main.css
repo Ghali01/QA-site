@@ -235,6 +235,15 @@ body{
     /* color: var(--secodry-color); */
     background-color: var(--primary-color);
 }
+.secondry-button,
+.secondry-button:active,
+.secondry-button:focus,
+.secondry-button:hover{
+    background-color: var(--secodry-color);
+    border: none;
+    color: white;
+
+}
 .my-btn-group{
     margin-top:10px;
     float:right;
@@ -1090,15 +1099,36 @@ a.go{
 .sort-by-toolbar{
     margin-top: 7px;
 }
-.secondry-link{
-    color: var(--secodry-color);
+
+.custom-link{
     font-size: 15px;
     text-decoration: none;
     background-color: var(--bg-color);
 }
+.custom-link-sm{
+    font-size: 13px;
+}
+.primary-link{
+    color: var(--primary-color);
+
+}
+
+.primary-link:hover,.primary-link:visited{
+    color: var(--primary-color);
+    
+}
+.secondry-link{
+    color: var(--secodry-color);
+
+}
+
 .secondry-link:hover,.secondry-link:visited{
     color: var(--secodry-color);
     
+}
+.link-break{
+    display: inline;
+    color:var(--titles-colors);
 }
 .suggest-cate-btn{
     background-color: var(--secodry-color);
@@ -1221,7 +1251,47 @@ a.go{
 .question-options-bottom{
     display: flex;
     justify-content: space-between;
+    padding: 0 5px;
+    padding-top: 6px;
+    border-top: 1px solid var(--titles-colors);
 }
 .primary-button-sm{
     font-size: 12px;
+}
+.question-item-grid-opts{
+    padding: 5px 0;
+}
+.question-item-grid-pd{
+    padding: 5px;
+}
+.que-left-col{
+    padding: 0 15px;
+}
+.ans-opts-spans{
+    margin: 0 15px;
+}
+.link-button{
+    padding: 0;
+    display: inline;
+    background-color: transparent;
+    border: none;
+}
+.custom-dialog{
+    background-color: var(--navbar-color);
+    color: var(--titles-colors);
+}
+.close-dialog-ico{
+    color: var(--titles-colors);
+    font-size: 23px;
+}
+.custom-radio{
+    background-color: var(--bg-color);
+}
+.custom-radio:checked{
+    box-shadow: none;
+    border: none;
+}
+.primary-radio:checked{
+    background-color: var(--primary-color);
+    
 }
