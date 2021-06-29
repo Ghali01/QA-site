@@ -191,6 +191,7 @@ $(document).ready(
                     
             });
         }
+        
 
 );
 //gird question animetion funcrion

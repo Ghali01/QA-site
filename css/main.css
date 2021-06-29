@@ -9,6 +9,7 @@
     --titles-colors:rgb(179, 179, 179);
     --categories-color:rgb(245, 245, 245);
     --navbar-color: rgb(73, 68, 64);
+    --footer-color: rgb(36, 36, 36);
     --editor-color: rgb(73, 68, 64);
     --third-color:#3daebf;
     --secondry-editor-color:rgb(1, 73, 48);
@@ -189,9 +190,10 @@ body{
 }
 .left-column, .right-column{
     /* padding-top: 30px; */
-    position: fixed;
+    position: sticky;
     top: 70px;
     height: 100%;
+    /* margin-bottom: 145px; */
 }
 .left-column{
     left: 0;
@@ -1128,6 +1130,12 @@ a.go{
     color: var(--secodry-color);
     
 }
+.footer-link,
+.footer-link:hover,
+.footer-link:visited{
+    color: var(--titles-colors);
+    background-color: var(--footer-color);
+}
 .link-break{
     display: inline;
     color:var(--titles-colors);
@@ -1324,4 +1332,36 @@ a.go{
     font-size: 20px;
     margin: 7px;
     transform: scale(0);
+}
+.main-foot{
+    background-color: var(--footer-color);
+    height: 130px;
+    margin: 0;
+    margin-top: 35px;
+    border-top: 2px solid var(--titles-colors);
+    padding-top: 12px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+
+}
+.footer-links{
+    list-style: none;
+    display: inline-block;
+}
+
+.footer-link:hover,
+.footer-link:visited{
+    color: var(--primary-color) ;
+    cursor: pointer;
+}
+.footer-break{
+    display: inline-block;
+    width: 1.5px;
+    height: 100px;
+    background-color: var(--titles-colors);
+    position: relative;
+    top: 9px;
+    margin: 0 15px;
 }
