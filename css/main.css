@@ -531,6 +531,7 @@ body{
     height: 70px;
     overflow: hidden;
 }
+/* grid Questions start */
 .grid-questions,
 .grid{
     display: flex;
@@ -545,18 +546,6 @@ body{
     margin: 10px;
     transform: scale(0);
  
-}
-.item-grid-ani-100{
-    animation-name: que-grid-scale  ;
-    animation-duration: .1s;
-    animation-fill-mode: forwards;
-    
-}
-.item-grid-ani-50{
-    animation-name: que-grid-scale  ;
-    animation-duration: .05s;
-    animation-fill-mode: forwards;
-    
 }
 .question-item-grid .answers-num-span,
 .question-item-grid .votes-num-span,
@@ -585,7 +574,20 @@ body{
     height: 27px;
     padding: 0 3px;
 }
-
+/* grid Questions end */
+/* grid animetion start */
+.item-grid-ani-100{
+    animation-name: que-grid-scale  ;
+    animation-duration: .1s;
+    animation-fill-mode: forwards;
+    
+}
+.item-grid-ani-50{
+    animation-name: que-grid-scale  ;
+    animation-duration: .05s;
+    animation-fill-mode: forwards;
+    
+}
   @keyframes que-grid-scale {
       from{
           /* visibility:visible; */
@@ -596,29 +598,8 @@ body{
 
       }
   }
+/* grid animetion ens */
 
-  /* define some variables  */
-:root{
-
-    /* dark */
-    --bg-color:rgb(54, 54, 54);
-    --primary-color:rgb(255,93,0);
-    --secodry-color:rgb(0, 179, 116);
-    --titles-colors:rgb(179, 179, 179);
-    --categories-color:rgb(245, 245, 245);
-    --navbar-color: rgb(73, 68, 64);
-    /* light */
-    /* --bg-color:#fff;
-    --primary-color:rgb(255,93,0);
-    --secodry-color:rgb(0, 179, 116);
-    --titles-colors:rgb(43, 43, 43);
-    --categories-color:rgb(78,78,78); 
-    --navbar-color: rgb(56, 56, 56);
-    
-    */}
-body{
-    background-color: var(--bg-color);
-}
 /* form style start */
 #reg-form{
     margin: 7% auto ;
@@ -847,7 +828,7 @@ a.go{
     transform: scale(0);
 }
 
-
+/* text editor start */
 .TMCommandBar{
     padding: 8px;
     background-color: var(--primary-color);
@@ -893,7 +874,9 @@ a.go{
 .editor-partnt::-webkit-scrollbar-thumb{
     background-color: var(--primary-color);
 }
+/* text editor end */
 
+/* custom input start */
 .que-input,.custom-input{
     background-color: var(--editor-color);
     color: var(--titles-colors);
@@ -907,7 +890,9 @@ a.go{
     background-color: var(--editor-color);
     color: var(--titles-colors);
 }
+/* custom input end */
 
+/* tags input and list start */
 .que-title-input{
     margin-bottom: 15px;
 }
@@ -942,6 +927,9 @@ a.go{
     color: white;
     border-bottom-color: var(--secodry-color);
 }
+/* tags input and list end */
+
+/* question style start */
 .add-que-continer{
     padding: 0 5px;
 }
@@ -1100,10 +1088,25 @@ a.go{
 .added-by-div .by-user-name{
     white-space: nowrap;
 }
+.question-item-grid-opts{
+    padding: 5px 0;
+}
+.question-item-grid-pd{
+    padding: 5px;
+    padding-bottom: 0;
+}
+.que-left-col{
+    padding: 0 15px;
+}
+.ans-opts-spans{
+    margin: 0 15px;
+}
+/* question style start */
+
 .sort-by-toolbar{
     margin-top: 7px;
 }
-
+/* custom link start */
 .custom-link{
     font-size: 15px;
     text-decoration: none;
@@ -1136,6 +1139,8 @@ a.go{
     color: var(--titles-colors);
     background-color: var(--footer-color);
 }
+/* custom link end */
+
 .link-break{
     display: inline;
     color:var(--titles-colors);
@@ -1178,10 +1183,7 @@ a.go{
 .inline-date{
     display: inline !important;
 }
-/* .search-div-toolbar{
-    display: inline;
-    width: 40%;
-} */
+
 .filter-toolbar-btn-group button{
     font-size: 13px;
     min-height: 40px;
@@ -1268,19 +1270,7 @@ a.go{
 .primary-button-sm{
     font-size: 12px;
 }
-.question-item-grid-opts{
-    padding: 5px 0;
-}
-.question-item-grid-pd{
-    padding: 5px;
-    padding-bottom: 0;
-}
-.que-left-col{
-    padding: 0 15px;
-}
-.ans-opts-spans{
-    margin: 0 15px;
-}
+
 .link-button{
     padding: 0;
     display: inline;
@@ -1333,6 +1323,7 @@ a.go{
     margin: 7px;
     transform: scale(0);
 }
+/* footer start */
 .main-foot{
     background-color: var(--footer-color);
     height: 130px;
@@ -1365,3 +1356,4 @@ a.go{
     top: 9px;
     margin: 0 15px;
 }
+/* footer end */
