@@ -41,7 +41,7 @@
       <!-- form start -->
       <div class="form-parent">
 
-        <form class="animeted-form" id="reg-form" autocomplete="on"  >
+        <form class="animeted-form" id="reg-form" autocomplete="on" method="POST" >
             <h4 class="form-title">Reset Your Password</h4>
             <p class="form-label form-msg">Enter your user account's verified email address and we will send you a password reset link.</p>
             <div class="mb-3">
@@ -49,11 +49,11 @@
                 
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" >
+                    <input type="email" class="form-control" id="email-input" name="email" >
              
                 </div>
             
-                <button type="button" class="btn btn-primary" id="reg-btn">Reset Password</button>
+                <input type="button" class="btn btn-primary" id="reg-btn" value="Reset Password">
             
                 </div>
 

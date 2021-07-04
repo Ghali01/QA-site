@@ -40,23 +40,26 @@
         <!-- sign in form start -->
         <div class="form-parent">
 
-        <form id="reg-form" autocomplete="on" class="animeted-form">
+        <form id="reg-form" autocomplete="on" method="POST" class="animeted-form">
             <div class="mb-3 row">
               <!-- log in by email section start -->
               <div class="col-lg-6 col-md-6">
          
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Email</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" >
+                    <input type="email" class="form-control" id="email-input" name="email"  >
              
                 </div>
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Password</label>
-                    <input type="password" class="form-control" id="exampleFormControlInput1" >
+                    <input type="password" class="form-control" id="password-input" name="password" maxlength="50" >
              
                 </div>
                 <p class="form-lable forget-pass"  > <a href="#">Forget Password?</a></p>   
-                <button type="button" class="btn btn-primary" id="reg-btn">Sign In</button>
+                <input type="checkbox" class="rem-checkbox" id="rem-checkbox">
+                <label for="rem-checkbox" class="rem-lable">Remember Me</label>
+               
+                <input type="submit" class="btn btn-primary form-btn" id="log-btn" value="Sign In">
               </div>
               
             <!-- break (or) section start -->

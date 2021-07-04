@@ -13,6 +13,7 @@
     --editor-color: rgb(73, 68, 64);
     --third-color:#3daebf;
     --secondry-editor-color:rgb(1, 73, 48);
+    --error-color:red;
     /* light */
     /* --bg-color:#fff;
     --primary-color:rgb(255,93,0);
@@ -629,12 +630,13 @@ body{
     z-index: 1;
     background-color: rgba(255, 255, 255, 0);
     position: relative;
-
+    color: rgb(150, 150, 150);
 }
 #reg-form .form-control:focus{
     border-bottom: 3px solid var(--secodry-color);
     box-shadow: none;
 }
+
 .lbl{
     padding:0 5px;
     font-size: 16px;
@@ -649,22 +651,25 @@ body{
     color: var(--secodry-color);
 }
 .acc{
+    margin-top: 27px;
     font-size: 12px;
     color: var(--titles-colors);
 }
 .acc a{
     color: var(--secodry-color);
 }
-#reg-btn{
+.form-btn,
+.form-btn:hover,
+.form-btn:active,
+.form-btn:focus{
     width: 100%;
     background-color: var(--primary-color);
     color: wheat;
+    box-shadow:none;
     border: none;
     
 }
-#reg-btn{
-    box-shadow:none;
-}
+
 #sp-hr{
     height: 1.3px;
     margin-bottom: 0;
@@ -697,6 +702,10 @@ body{
     background-color: var(--bg-color);
     color: var(--titles-colors);
 
+}
+.rem-lable{
+    color: var(--secodry-color);
+    font-size: 12px;
 }
 
 /* media button start */
@@ -774,6 +783,7 @@ a.go{
 }
 /* customize icon and colo for every media btn end */
 /* media buttons end */
+
 /* form style end */
 
 /* nav bar style start */
@@ -1357,3 +1367,9 @@ a.go{
     margin: 0 15px;
 }
 /* footer end */
+.error-span{
+    color: var(--error-color);
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+}

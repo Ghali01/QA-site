@@ -1,3 +1,5 @@
+var addedTags = [];
+
 $(document).ready(
     // animation for forms start
     function () {
@@ -96,8 +98,13 @@ $(document).ready(
 
                 }
             }
+            $(".tags-list").css({display:"none"});
+            
         });
         $(".custom-select").click(function (event) {
+            event.stopPropagation();
+        });
+        $(".tags-list").click(function (event) {
             event.stopPropagation();
         });
         $(".custom-select-item").click(function () {
@@ -117,7 +124,8 @@ $(document).ready(
             var tinyMDE = new TinyMDE.Editor({ element: 'editor', content: " " });
             var commandBar = new TinyMDE.CommandBar({ element: 'editor-toolbar', editor: tinyMDE });
         }
-        var addedTags = [];
+
+        // tag list start
         $("#que-tags-input").keydown(function (e) {
 
             if (e.which == 38 || e.which == 40)
@@ -125,18 +133,18 @@ $(document).ready(
             else if (e.which == 13) {
                 var tagText = $(".current-list-tag").text();
                 $(this).val("");
-                var buttonTag = document.createElement("button");
-                $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100"]);
-                $(buttonTag).attr("type", "button");
-                $(buttonTag).text(tagText);
-                $("#tags-div-ol").append(buttonTag);
-                addedTags.push(tagText);
+                $(".current-list-tag").removeClass("current-list-tag");
+                if(tagText)
+                addTagBtn(tagText);
+                
             }
 
         })
         var currentPos = 0;
         $("#que-tags-input").keyup(function (e) {
-
+            if(!(e.which==40|| e.which==38))
+                currentPos=0;
+                            
             if ($(this).text().length == 1)
                 $(".current-list-tag").removeClass("current-list-tag");
 
@@ -159,7 +167,6 @@ $(document).ready(
             if (e.which == 38) {
                 if (hasHover == null) {
                     $(this).next().children().last().addClass("current-list-tag");
-                    currentPos=found;
                 }
                 else {
                     $(hasHover).removeClass("current-list-tag");
@@ -167,6 +174,7 @@ $(document).ready(
                     currentPos--;
 
                 }
+                console.log(currentPos);
                 
                 if (currentPos <= 0) {
                     currentPos = found;
@@ -194,8 +202,9 @@ $(document).ready(
 
                     $(hasHover).removeClass("current-list-tag");
                     $(hasHover).nextAll("li:visible").first().addClass("current-list-tag");
-                }
-                currentPos++;
+                      currentPos++;
+                     }
+         
                 
                 if (currentPos > found) {
                     currentPos = 1;
@@ -208,8 +217,7 @@ $(document).ready(
 
                 }
 
-
-                else if (currentPos >= 3)
+                if (currentPos >= 3)
                     $(this).next().animate({
                         scrollTop: '+=' + ($(".tags-list-item").height() + 2)
                     }, 200);
@@ -217,8 +225,43 @@ $(document).ready(
                 }
 
         });
+        $(".tags-list-item").click(function(){
+            
+            var tagText = $(this).text();
+          
+            addTagBtn(tagText);
+            $(this).parent().css({display:'none'});
+        });
+        // tag list end
 
+        // form validtion start
+            // register
+            var oldPass=""
+            var oldPassC=""
+            $("#password-input").keyup(function (e) { 
+                if(oldPass!=$(this).val())
+                    $("#pass8-error, #pass-dm-error").slideUp();
+                oldPass=$(this).val();
+            });
+            $("#confirmPassword-input").keyup(function (e) { 
+                if(oldPassC!=$(this).val())
+                    $("#pass-dm-error").slideUp();
+                oldPassC=$(this).val();
+            });
+            $("#pass8-error, #pass-dm-error").slideUp(0);
+            $("#reg-btn").click(function(e){
+                if($("#password-input").val().length<8){
+                    $("#pass8-error").slideDown();
+                    e.preventDefault();
 
+                }
+                else if($("#password-input").val()!=$("#confirmPassword-input").val()){
+                    $("#pass-dm-error").slideDown();
+                    e.preventDefault();
+
+                }
+            })
+        // form validtion end
     }
 
 
@@ -238,4 +281,13 @@ function startGridQueAni(parentId, duriton = 100) {
         }
     }
     var interVal = setInterval(sacleQueGrid, 100);
+}
+function addTagBtn(tagText){
+ 
+    var buttonTag = document.createElement("button");
+    $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100"]);
+    $(buttonTag).attr("type", "button");
+    $(buttonTag).text(tagText);
+    $("#tags-div-ol").append(buttonTag);
+    addedTags.push(tagText);
 }
