@@ -40,42 +40,51 @@
        </header>
         <!-- sign up form start -->
         <div class="form-parent">
-        <form id="reg-form" autocomplete="on" method="POST"  class="animeted-form"  >
+        <form id="reg-form" autocomplete="on" method="POST"  class="animeted-form auth-form"  >
             <div class="mb-3 row">
                 <!-- register by email section start -->
             <div class="col-lg-6 col-md-6">
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Full Name</label>
-                    <input type="text" class="form-control " id="fullName-input" name="fullName" maxlength="40">
+                    <input type="text" class="form-control form-input" id="fullName-input" name="fullName" maxlength="40" >
              
+                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                        <span class="error-val"></span>
+                    </P>              
                 </div>
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">User Name</label>
-                    <input type="text" class="form-control" id="userName-input" name=userName maxlength="20">
+                    <input type="text" class="form-control form-input" id="userName-input" name=userName maxlength="20">
              
+                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                        <span class="error-val"></span>
+                    </P>              
                 </div>
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Email</label>
-                    <input type="email" class="form-control" id="email-input" name="email">
+                    <input type="email" class="form-control form-input" id="email-input" name="email">
              
+                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                        <span class="error-val"></span>
+                    </P>              
                 </div>
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Password</label>
-                    <input type="password" class="form-control" id="password-input" name="password" maxlength="50">
-             
+                    <input type="password" class="form-control form-input" id="password-input" name="password" maxlength="50">
+                    <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                        <span class="error-val"></span>
+                    </p>              
                 </div>
-                <span class="error-span" id="pass8-error"><i class="fas fa-exclamation"></i>
-                                            Password Shuold Be 8 Charters at lastst
-                </span>
+                
                 <div class="inp-div">
                     <label class="lbl form-lable" id="lbl1">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword-input" name="confirmPassword" maxlength="50" >
-             
+                    <input type="password" class="form-control form-input" id="confirmPassword-input" name="confirmPassword" maxlength="50" >
+
+                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                        <span class="error-val"></span>
+                    </P>              
                 </div>
 
-                <span class="error-span" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                    Password does not match
-                </span> 
                 <p class="form-lable acc" >By clicking Register, I agree that I have read and accepted our <a href="#">Terms of Use and Privacy Policy</a></p>   
                 <input type="button" class="btn btn-primary form-btn" id="reg-btn" value="Sign Up">
             </div>

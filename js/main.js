@@ -98,8 +98,8 @@ $(document).ready(
 
                 }
             }
-            $(".tags-list").css({display:"none"});
-            
+            $(".tags-list").css({ display: "none" });
+
         });
         $(".custom-select").click(function (event) {
             event.stopPropagation();
@@ -134,17 +134,17 @@ $(document).ready(
                 var tagText = $(".current-list-tag").text();
                 $(this).val("");
                 $(".current-list-tag").removeClass("current-list-tag");
-                if(tagText)
-                addTagBtn(tagText);
-                
+                if (tagText)
+                    addTagBtn(tagText);
+
             }
 
         })
         var currentPos = 0;
         $("#que-tags-input").keyup(function (e) {
-            if(!(e.which==40|| e.which==38))
-                currentPos=0;
-                            
+            if (!(e.which == 40 || e.which == 38))
+                currentPos = 0;
+
             if ($(this).text().length == 1)
                 $(".current-list-tag").removeClass("current-list-tag");
 
@@ -175,7 +175,7 @@ $(document).ready(
 
                 }
                 console.log(currentPos);
-                
+
                 if (currentPos <= 0) {
                     currentPos = found;
 
@@ -195,17 +195,17 @@ $(document).ready(
             }
             else if (e.which == 40) {
                 if (hasHover == null) {
-                    currentPos=1;
+                    currentPos = 1;
                     $(this).next().children().first("li:visible").addClass("current-list-tag");
                 }
                 else {
 
                     $(hasHover).removeClass("current-list-tag");
                     $(hasHover).nextAll("li:visible").first().addClass("current-list-tag");
-                      currentPos++;
-                     }
-         
-                
+                    currentPos++;
+                }
+
+
                 if (currentPos > found) {
                     currentPos = 1;
 
@@ -221,46 +221,67 @@ $(document).ready(
                     $(this).next().animate({
                         scrollTop: '+=' + ($(".tags-list-item").height() + 2)
                     }, 200);
-            
-                }
+
+            }
 
         });
-        $(".tags-list-item").click(function(){
-            
+        $(".tags-list-item").click(function () {
+
             var tagText = $(this).text();
-          
+
             addTagBtn(tagText);
-            $(this).parent().css({display:'none'});
+            $(this).parent().css({ display: 'none' });
         });
         // tag list end
 
         // form validtion start
-            // register
-            var oldPass=""
-            var oldPassC=""
-            $("#password-input").keyup(function (e) { 
-                if(oldPass!=$(this).val())
-                    $("#pass8-error, #pass-dm-error").slideUp();
-                oldPass=$(this).val();
-            });
-            $("#confirmPassword-input").keyup(function (e) { 
-                if(oldPassC!=$(this).val())
-                    $("#pass-dm-error").slideUp();
-                oldPassC=$(this).val();
-            });
-            $("#pass8-error, #pass-dm-error").slideUp(0);
-            $("#reg-btn").click(function(e){
-                if($("#password-input").val().length<8){
-                    $("#pass8-error").slideDown();
-                    e.preventDefault();
+        // register
+        var oldPass = ""
+        var oldPassC = ""
+        $("#password-input").keyup(function (e) {
+            if (oldPass != $(this).val()){
+                $(this).next().slideUp();
+                $("#confirmPassword-input").next().slideUp();
+            }
+            oldPass = $(this).val();
+        });
+        $("#confirmPassword-input").keyup(function (e) {
+            if (oldPassC != $(this).val())
+                $(this).next().slideUp();
+            oldPassC = $(this).val();
+        });
+        $(".error-p").slideUp(0);
+        $("#reg-btn").click(function (e) {
+            var isEmpyty=false;
+            $("#reg-form .form-input").map(function () {
+                if (!$(this).val() && !$(this).next().hasClass("r-error-span")) {
+                   $(this).next().find(".error-val").text("This Field is required"); 
+                   $(this).next().slideDown();
+                    isEmpyty=true;
+                    $(this).focus(function(){
+                        $(this).next().slideUp();
 
+                    });
                 }
-                else if($("#password-input").val()!=$("#confirmPassword-input").val()){
-                    $("#pass-dm-error").slideDown();
-                    e.preventDefault();
+                
+                });
+            if(isEmpyty){
+                e.preventDefault();
+            }
+            else if ($("#password-input").val().length < 8) {
+                $("#password-input").next().find(".error-val").text("Password should be 8 charters or more"); 
+                $("#password-input").next().slideDown();
+             
+                e.preventDefault(); 
 
-                }
-            })
+            }
+            else if ($("#password-input").val() != $("#confirmPassword-input").val()) {
+                $("#confirmPassword-input").next().find(".error-val").text("Password does not match"); 
+                $("#confirmPassword-input").next().slideDown();
+                e.preventDefault();
+
+            }
+        })
         // form validtion end
     }
 
@@ -282,8 +303,8 @@ function startGridQueAni(parentId, duriton = 100) {
     }
     var interVal = setInterval(sacleQueGrid, 100);
 }
-function addTagBtn(tagText){
- 
+function addTagBtn(tagText) {
+
     var buttonTag = document.createElement("button");
     $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100"]);
     $(buttonTag).attr("type", "button");
