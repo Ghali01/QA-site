@@ -166,9 +166,10 @@
                     <div class="content-tab " id="profile-content" style="display: block;">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-12 col-md-4  col-lg-3 ">
+                                <div class="col-12 col-sm-4  col-lg-3 ">
                                     <div class="pres-info">
                                         <img class="avt-img" src="/img/tmp/avatar.jpg" alt="person name">
+                                        <h3 class="pers-name" style="display: block;">User Name</h3>
                                         <h4 class=" pers-rep">11452</h4>
                                         <div class="badges pers-badges">
                                             <div class="badge ">
@@ -186,8 +187,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-8 col-lg-9">
-                                    <div class="QA-parent">
+                                <div class="col-12 col-sm-8 col-lg-9">
+                                    <div class="QA-parent ">
                                         <div class="tabs-flat">
                                             <ul class="tabs-flat-lits">
                                                 <li class="tab-flat act-tab" data-content="#que-content"
@@ -195,12 +196,13 @@
                                                 <li class="tab-flat" data-content="#ans-content"
                                                     data-content-parent="#QA-p-content">Answers</li>
                                             </ul>
-                                            <div class="contents QA-p-content" id="QA-p-content">
+                                            <div class="contents QA-p-content custom-scrollbar" id="QA-p-content">
                                                 <div class="content-tab" id="que-content" style="display: block;">
-                                                    <div class="questions-list pl-questions-list">
+                                                    <div class="qustions-list pl-questions-list">
                                                         <div class="row  question-item ">
-                                                            <div class="col-3">
-                                                                <div class="row">
+
+                                                            <div class=" d-none d-md-block col-3 col-md-4 col-lg-3">
+                                                                <div class="  row">
                                                                     <div class="col-5 votes-num-div nums-que">
                                                                         <span class="votes-num-span">200</span>
                                                                         <span class="votes-word">votes</span>
@@ -214,23 +216,26 @@
                                                                 <div class="added-by-div">add by <a class="by-user-name"
                                                                         href="#">User User</a></div>
                                                             </div>
-                                                            <div class="col-9">
+                                                            <div class="col-12 col-md-8 col-lg-9">
                                                                 <div class="question-title line-clamp">
                                                                     <p> text text text text text text
                                                                         text text text text text text
                                                                         text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
                                                                     </p>
+                                                                </div>
+                                                                <div class=" d-block d-md-none vp-num-ques">
+                                                                    <div class=" votes-num-div nums-que">
+                                                                        <span class="votes-num-span">200</span>
+                                                                        <span class="votes-word">votes</span>
+
+                                                                    </div>
+                                                                    <div class=" answers-num-div nums-que">
+                                                                        <span class="answers-num-span">5</span>
+                                                                        <span class="answers-word">answers</span>
+                                                                    </div>
+                                                                    <div class="added-by-div">add by <a
+                                                                            class="by-user-name" href="#">User User</a>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="bottom-of-question">
                                                                     <div class="question-tags custom-scrollbar">
@@ -252,8 +257,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="row  question-item ">
-                                                            <div class="col-3">
-                                                                <div class="row">
+
+                                                            <div class=" d-none d-md-block col-3 col-md-4 col-lg-3">
+                                                                <div class="  row">
                                                                     <div class="col-5 votes-num-div nums-que">
                                                                         <span class="votes-num-span">200</span>
                                                                         <span class="votes-word">votes</span>
@@ -267,77 +273,26 @@
                                                                 <div class="added-by-div">add by <a class="by-user-name"
                                                                         href="#">User User</a></div>
                                                             </div>
-                                                            <div class="col-9">
+                                                            <div class="col-12 col-md-8 col-lg-9">
                                                                 <div class="question-title line-clamp">
                                                                     <p> text text text text text text
                                                                         text text text text text text
                                                                         text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
                                                                     </p>
                                                                 </div>
-                                                                <div class="bottom-of-question">
-                                                                    <div class="question-tags custom-scrollbar">
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-info btn-tag">Tag</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-info btn-tag">Tag</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-info btn-tag">Tag</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-info btn-tag">Tag</button>
-                                                                        <button type="button"
-                                                                            class="btn btn-outline-info btn-tag">Tag</button>
-
-                                                                    </div>
-                                                                    <div class="question-date">last answer added in
-                                                                        0000/00/00 </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row  question-item ">
-                                                            <div class="col-3">
-                                                                <div class="row">
-                                                                    <div class="col-5 votes-num-div nums-que">
+                                                                <div class=" d-block d-md-none vp-num-ques">
+                                                                    <div class=" votes-num-div nums-que">
                                                                         <span class="votes-num-span">200</span>
                                                                         <span class="votes-word">votes</span>
 
                                                                     </div>
-                                                                    <div class="col-7 answers-num-div nums-que">
+                                                                    <div class=" answers-num-div nums-que">
                                                                         <span class="answers-num-span">5</span>
                                                                         <span class="answers-word">answers</span>
                                                                     </div>
-                                                                </div>
-                                                                <div class="added-by-div">add by <a class="by-user-name"
-                                                                        href="#">User User</a></div>
-                                                            </div>
-                                                            <div class="col-9">
-                                                                <div class="question-title line-clamp">
-                                                                    <p> text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                    </p>
+                                                                    <div class="added-by-div">add by <a
+                                                                            class="by-user-name" href="#">User User</a>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="bottom-of-question">
                                                                     <div class="question-tags custom-scrollbar">
@@ -359,8 +314,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="row  question-item ">
-                                                            <div class="col-3">
-                                                                <div class="row">
+
+                                                            <div class=" d-none d-md-block col-3 col-md-4 col-lg-3">
+                                                                <div class="  row">
                                                                     <div class="col-5 votes-num-div nums-que">
                                                                         <span class="votes-num-span">200</span>
                                                                         <span class="votes-word">votes</span>
@@ -374,23 +330,26 @@
                                                                 <div class="added-by-div">add by <a class="by-user-name"
                                                                         href="#">User User</a></div>
                                                             </div>
-                                                            <div class="col-9">
+                                                            <div class="col-12 col-md-8 col-lg-9">
                                                                 <div class="question-title line-clamp">
                                                                     <p> text text text text text text
                                                                         text text text text text text
                                                                         text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
-                                                                        text text text text text text
                                                                     </p>
+                                                                </div>
+                                                                <div class=" d-block d-md-none vp-num-ques">
+                                                                    <div class=" votes-num-div nums-que">
+                                                                        <span class="votes-num-span">200</span>
+                                                                        <span class="votes-word">votes</span>
+
+                                                                    </div>
+                                                                    <div class=" answers-num-div nums-que">
+                                                                        <span class="answers-num-span">5</span>
+                                                                        <span class="answers-word">answers</span>
+                                                                    </div>
+                                                                    <div class="added-by-div">add by <a
+                                                                            class="by-user-name" href="#">User User</a>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="bottom-of-question">
                                                                     <div class="question-tags custom-scrollbar">
@@ -411,9 +370,227 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="row  question-item ">
+
+                                                            <div class=" d-none d-md-block col-3 col-md-4 col-lg-3">
+                                                                <div class="  row">
+                                                                    <div class="col-5 votes-num-div nums-que">
+                                                                        <span class="votes-num-span">200</span>
+                                                                        <span class="votes-word">votes</span>
+
+                                                                    </div>
+                                                                    <div class="col-7 answers-num-div nums-que">
+                                                                        <span class="answers-num-span">5</span>
+                                                                        <span class="answers-word">answers</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="added-by-div">add by <a class="by-user-name"
+                                                                        href="#">User User</a></div>
+                                                            </div>
+                                                            <div class="col-12 col-md-8 col-lg-9">
+                                                                <div class="question-title line-clamp">
+                                                                    <p> text text text text text text
+                                                                        text text text text text text
+                                                                        text text text text text text
+                                                                    </p>
+                                                                </div>
+                                                                <div class=" d-block d-md-none vp-num-ques">
+                                                                    <div class=" votes-num-div nums-que">
+                                                                        <span class="votes-num-span">200</span>
+                                                                        <span class="votes-word">votes</span>
+
+                                                                    </div>
+                                                                    <div class=" answers-num-div nums-que">
+                                                                        <span class="answers-num-span">5</span>
+                                                                        <span class="answers-word">answers</span>
+                                                                    </div>
+                                                                    <div class="added-by-div">add by <a
+                                                                            class="by-user-name" href="#">User User</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bottom-of-question">
+                                                                    <div class="question-tags custom-scrollbar">
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-info btn-tag">Tag</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-info btn-tag">Tag</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-info btn-tag">Tag</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-info btn-tag">Tag</button>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-info btn-tag">Tag</button>
+                                                                    </div>
+                                                                    <div class="question-date">last answer added in
+                                                                        0000/00/00 </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
-                                                <div class="content-tab" id="ans-content">2</div>
+                                                <div class="content-tab" id="ans-content">
+                                                    <div class="questions-list questions-ans-list pl-questions-ans-list">
+                                                        <div class="ans-que-item">
+                                                            <div class="row  question-item ">
+                                                                <div class="col-3">
+                                                                    <div class="row">
+                                                                        <div class="col-5 votes-num-div nums-que">
+                                                                            <span class="votes-num-span">200</span>
+                                                                            <span class="votes-word">votes</span>
+                                    
+                                                                        </div>
+                                                                        <div class="col-7 answers-num-div nums-que">
+                                                                            <span class="answers-num-span">5</span>
+                                                                            <span class="answers-word">answers</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+                                                                </div>
+                                                                <div class="col-9">
+                                                                    <div class="question-title line-clamp">
+                                                                        <p> text text text text text text
+                                                                            text text text text text text
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="bottom-of-question">
+                                                                        <div class="question-tags custom-scrollbar">
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                        </div>
+                                                                        <div class="question-date">last answer added in <time class="inline-date">0000/00/00</time> </div>
+                                    
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row answer-row">
+                                                                <div class="col-2 tree-line-col" >
+                                                                    <div class="tree-line">
+                                                                        <div class="col-5 votes-num-div nums-que nums-ans">
+                                                                            <span class="votes-num-span">246</span>
+                                                                            <span class="votes-word">votes</span>
+                                    
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <p class="question-answer-txt line-clamp">  text text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text text </p>
+                                                                    <button class="btn btn-primary primary-button primary-button-radius " >See Answer</button>
+                                                                    <div class="question-date">added in <time class="inline-date">0000/00/00</time> </div>
+                                                                
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="ans-que-item">
+                                                            <div class="row  question-item ">
+                                                                <div class="col-3">
+                                                                    <div class="row">
+                                                                        <div class="col-5 votes-num-div nums-que">
+                                                                            <span class="votes-num-span">200</span>
+                                                                            <span class="votes-word">votes</span>
+                                    
+                                                                        </div>
+                                                                        <div class="col-7 answers-num-div nums-que">
+                                                                            <span class="answers-num-span">5</span>
+                                                                            <span class="answers-word">answers</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+                                                                </div>
+                                                                <div class="col-9">
+                                                                    <div class="question-title line-clamp">
+                                                                        <p> text text text text text text
+                                                                            text text text text text text
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="bottom-of-question">
+                                                                        <div class="question-tags custom-scrollbar">
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                        </div>
+                                                                        <div class="question-date">last answer added in <time class="inline-date">0000/00/00</time> </div>
+                                    
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row answer-row">
+                                                                <div class="col-2 tree-line-col" >
+                                                                    <div class="tree-line">
+                                                                        <div class="col-5 votes-num-div nums-que nums-ans">
+                                                                            <span class="votes-num-span">246</span>
+                                                                            <span class="votes-word">votes</span>
+                                    
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <p class="question-answer-txt line-clamp">  text text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text text </p>
+                                                                    <button class="btn btn-primary primary-button primary-button-radius " >See Answer</button>
+                                                                    <div class="question-date">added in <time class="inline-date">0000/00/00</time> </div>
+                                                                
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="ans-que-item">
+                                                            <div class="row  question-item ">
+                                                                <div class="col-3">
+                                                                    <div class="row">
+                                                                        <div class="col-5 votes-num-div nums-que">
+                                                                            <span class="votes-num-span">200</span>
+                                                                            <span class="votes-word">votes</span>
+                                    
+                                                                        </div>
+                                                                        <div class="col-7 answers-num-div nums-que">
+                                                                            <span class="answers-num-span">5</span>
+                                                                            <span class="answers-word">answers</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+                                                                </div>
+                                                                <div class="col-9">
+                                                                    <div class="question-title line-clamp">
+                                                                        <p> text text text text text text
+                                                                            text text text text text text
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="bottom-of-question">
+                                                                        <div class="question-tags custom-scrollbar">
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                            <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                                                        </div>
+                                                                        <div class="question-date">last answer added in <time class="inline-date">0000/00/00</time> </div>
+                                    
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row answer-row">
+                                                                <div class="col-2 tree-line-col" >
+                                                                    <div class="tree-line">
+                                                                        <div class="col-5 votes-num-div nums-que nums-ans">
+                                                                            <span class="votes-num-span">246</span>
+                                                                            <span class="votes-word">votes</span>
+                                    
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-10">
+                                                                    <p class="question-answer-txt line-clamp">  text text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text text </p>
+                                                                    <button class="btn btn-primary primary-button primary-button-radius " >See Answer</button>
+                                                                    <div class="question-date">added in <time class="inline-date">0000/00/00</time> </div>
+                                                                
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                    
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

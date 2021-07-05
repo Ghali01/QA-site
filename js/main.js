@@ -338,8 +338,7 @@ $(document).ready(
                     "animation-direction": "normal",
                 });
             }, 200);
-
-            $($(this).data("content-parent") + " .content-tab").css("display", "none");
+            $($(this).data("content-parent") + "> .content-tab").css("display", "none");
             let conId = $(this).data("content");
             $(conId).css("display", "block");
 
@@ -348,9 +347,8 @@ $(document).ready(
         $(".tab-flat").click(function () {
                 $(this).siblings().removeClass("act-tab");
                 $(this).addClass("act-tab");
-                $($(this).data("content-parent") + " .content-tab").css("display", "none");
+                $($(this).data("content-parent") + " > .content-tab").css("display", "none");
                 $($(this).data("content")).css("display","block");
-                console.log($(this).data("content-parent") + " .content-tab");
             }
         );
         // tabs end

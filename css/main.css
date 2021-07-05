@@ -339,6 +339,7 @@ body{
 .questions-list > div:last-child{
     padding-bottom: 0;
 }
+
 .nums-que{
     text-align: center;
     height: 60px;
@@ -347,15 +348,25 @@ body{
     padding: 0;
     width: 94px;
 }
+.vp-num-ques .nums-que{
+    margin: 0;
+    height: auto;
+    display: inline-block;
+}
+.vp-num-ques .added-by-div{
+    display: inline-block;
+}
 .answers-num-div{
     border:1px solid #57af76;
-    /* width: 90px; */
 }
 .votes-num-span,.answers-num-span{
     display: block;
     width: 100%;
     font-size: 19px;
     text-align: center;
+}
+.vp-num-ques .votes-num-span,.vp-num-ques .answers-num-span{
+    display: inline;
 }
 .answers-word,.votes-word{
     font-weight: bold;
@@ -398,7 +409,7 @@ body{
     align-items: flex-start;
     width: 55%;
     padding: 10px;
-    height: 80px;
+    height: 60px;
 }
 
 .question-date{
@@ -580,6 +591,11 @@ body{
 }
 .question-tags::-webkit-scrollbar{
     height: 5px;
+}
+@media (max-width:1149px) {
+    .pl-questions-list .question-tags{
+        width: 100%;
+    }
 }
 .question-item-grid .added-by-div{
     float: left;
@@ -1508,11 +1524,15 @@ a.go{
     width:100%;
     border-radius: 20px;
 }
-.pers-rep{
+.pers-rep,
+.pers-name{
     display: block;
     text-align: center;
     width: 100%;
     color: var(--titles-colors);
+}
+.pers-name{
+    color: var(--categories-color);
 }
 .pers-badges{
     display: flex;
@@ -1543,6 +1563,18 @@ a.go{
         height: 45px;
     }
 }
+@media (min-width:576px) and (max-width:768px) {
+    .pers-badges .circular-badge{
+        width: 9px;
+        height: 9px;
+    }
+    .pers-badges .badge-num-span{
+        font-size: 11.5px;
+    }
+    .pers-badges{
+        height: 45px;
+    }
+}
 
 
 /* profile end */
@@ -1552,11 +1584,12 @@ a.go{
 .QA-p-content{
     margin: 0;
     background-color: var(--navbar-color);
-    min-height: 200px;
+    height: 350px;
     border: 2px solid var(--primary-color);
     border-top: none;
     border-radius: 7px;
-
+    overflow: auto;
+    overflow-x: hidden;
 }
 .tabs-flat-lits{
     list-style: none;
@@ -1584,6 +1617,11 @@ a.go{
 }
 .pl-questions-list{
     overflow-x: hidden;
+}
+.pl-questions-list .question-item,
+.pl-questions-ans-list .ans-que-item{
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .pl-questions-list >div:last-child{
     border-bottom: none;
