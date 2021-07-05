@@ -238,8 +238,9 @@ $(document).ready(
         // register
         var oldPass = ""
         var oldPassC = ""
+        var oldEmail = ""
         $("#password-input").keyup(function (e) {
-            if (oldPass != $(this).val()){
+            if (oldPass != $(this).val()) {
                 $(this).next().slideUp();
                 $("#confirmPassword-input").next().slideUp();
             }
@@ -250,39 +251,109 @@ $(document).ready(
                 $(this).next().slideUp();
             oldPassC = $(this).val();
         });
+        $("#email-input").keyup(function (e) {
+            if (oldEmail != $(this).val())
+                $(this).next().slideUp();
+            oldEmail = $(this).val();
+        });
         $(".error-p").slideUp(0);
         $("#reg-btn").click(function (e) {
-            var isEmpyty=false;
+            var isEmpyty = false;
+            const emailPatt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gm;
             $("#reg-form .form-input").map(function () {
                 if (!$(this).val() && !$(this).next().hasClass("r-error-span")) {
-                   $(this).next().find(".error-val").text("This Field is required"); 
-                   $(this).next().slideDown();
-                    isEmpyty=true;
-                    $(this).focus(function(){
+                    $(this).next().find(".error-val").text("This Field is required");
+                    $(this).next().slideDown();
+                    isEmpyty = true;
+                    $(this).focus(function () {
                         $(this).next().slideUp();
 
                     });
                 }
-                
-                });
-            if(isEmpyty){
+
+            });
+            if (isEmpyty) {
                 e.preventDefault();
+            } else if (!emailPatt.test($("#email-input").val())) {
+                $("#email-input").next().find(".error-val").text("Email not valid");
+                $("#email-input").next().slideDown();
+                e.preventDefault();
+
             }
             else if ($("#password-input").val().length < 8) {
-                $("#password-input").next().find(".error-val").text("Password should be 8 charters or more"); 
+                $("#password-input").next().find(".error-val").text("Password should be 8 charters or more");
                 $("#password-input").next().slideDown();
-             
-                e.preventDefault(); 
+                e.preventDefault();
 
             }
             else if ($("#password-input").val() != $("#confirmPassword-input").val()) {
-                $("#confirmPassword-input").next().find(".error-val").text("Password does not match"); 
+                $("#confirmPassword-input").next().find(".error-val").text("Password does not match");
                 $("#confirmPassword-input").next().slideDown();
                 e.preventDefault();
 
             }
         })
         // form validtion end
+
+        // tabs start
+        // buttons tab
+        $('.tab-btn').click(function () {
+
+
+            $(".act-tab").css({
+                "animation-name": "tab-ani",
+                "animation-duration": ".2s",
+                "animation-fill-mode": "forwards",
+                "animation-direction": "reverse"
+
+            });
+            ;
+            let clicked = this;
+
+            const tr = setTimeout(function () {
+                $(".act-tab").css({
+                    "animation-name": "none",
+                    "animation-duration": "0s",
+                    "animation-fill-mode": "backwards",
+                    "animation-direction": "normal"
+
+                });
+                $(clicked).siblings().removeClass("act-tab");
+            }, 200);
+
+            $(this).css({
+                "animation-name": "tab-ani",
+                "animation-duration": ".2s",
+                "animation-fill-mode": "forwards",
+                "animation-direction": "normal"
+
+            });
+
+            const ta = setTimeout(function () {
+                $(clicked).addClass("act-tab");
+                $(clicked).css({
+                    "animation-name": "none",
+                    "animation-duration": "0s",
+                    "animation-fill-mode": "backwards",
+                    "animation-direction": "normal",
+                });
+            }, 200);
+
+            $($(this).data("content-parent") + " .content-tab").css("display", "none");
+            let conId = $(this).data("content");
+            $(conId).css("display", "block");
+
+        });
+        // flat tabs
+        $(".tab-flat").click(function () {
+                $(this).siblings().removeClass("act-tab");
+                $(this).addClass("act-tab");
+                $($(this).data("content-parent") + " .content-tab").css("display", "none");
+                $($(this).data("content")).css("display","block");
+                console.log($(this).data("content-parent") + " .content-tab");
+            }
+        );
+        // tabs end
     }
 
 

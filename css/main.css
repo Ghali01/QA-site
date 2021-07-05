@@ -1547,7 +1547,7 @@ a.go{
 
 /* profile end */
 .QA-parent{
-    margin-top: 20px;
+    margin: 20px 0;
 }
 .QA-p-content{
     margin: 0;
@@ -1581,4 +1581,14 @@ a.go{
 }
 .tabs-flat .act-tab{
     border-bottom: none;
+}
+.pl-questions-list{
+    overflow-x: hidden;
+}
+.pl-questions-list >div:last-child{
+    border-bottom: none;
+}
+.pl-questions-list >div:first-child{
+    padding-top: 10px;
+    border-top: none;
 }
