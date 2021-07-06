@@ -410,6 +410,7 @@ body{
     width: 55%;
     padding: 10px;
     height: 60px;
+    overflow-y: hidden;
 }
 
 .question-date{
@@ -551,10 +552,18 @@ body{
 /* qeustions page end */
 .line-clamp {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;  
-    height: 70px;
+    height: 27px;
     overflow: hidden;
+}
+.line-clamp-2{
+    --webkit-line-clamp:2;
+    height: 50px;
+}
+.line-clamp-3{
+    --webkit-line-clamp:3;
+    height: 70px;
 }
 /* grid Questions start */
 .grid-questions,
@@ -581,6 +590,11 @@ body{
 .question-item-grid .nums-que{
     width: 55px;
     height: 45px;
+}
+.question-item-grid .question-title{
+    
+    --webkit-line-clamp:3;
+    height: 70px;
 }
 .question-item-grid .question-tags{
     width:100% ;
@@ -1252,6 +1266,22 @@ a.go{
     border-bottom-left-radius: 13px;
     margin: 0;
 }
+@media (max-width:345px){
+    .tree-line{
+        font-size: 13.5px;
+    }
+}
+@media (max-width:992px){
+    .pl-questions-ans-list .answer-row .tree-line-col{
+        padding-left: 20px;
+    }
+}
+
+@media (max-width:650px){
+    .pl-questions-ans-list .answer-row .tree-line-col{
+        padding-left: 5px;
+    }
+}
 .nums-ans{
     width: 80%;
     padding-top: 23px;
@@ -1288,6 +1318,10 @@ a.go{
     border-bottom: 1.5px solid var(--titles-colors);
     padding-bottom: 10px;
 
+}
+.ans-que-item .question-title{
+    --webkit-line-clamp:2;
+    height: 50px;
 }
 .questions-ans-list > div:last-child{
     border-bottom: 1.5px solid var(--titles-colors);
@@ -1630,3 +1664,130 @@ a.go{
     padding-top: 10px;
     border-top: none;
 }
+.num-in-tb{
+    
+    padding: 4px;
+    margin: 0px;
+    display: inline-block;
+    font-size: 20px;
+    padding: 3px 6px;
+    padding-right: 12px;
+    border-right:  inherit;
+    height: 100%
+}
+.num-tag {
+    margin-left: 0;
+    padding: 0 6px;
+}
+.badges-gird-header{
+    margin-top: 35px;
+    border-bottom: 2px solid white;
+}
+.badges-header-circural{
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 50%;
+}
+.badges-header-title{
+    display: inline-block;
+    color: white;
+    margin:0 12px ;
+    font-size: 32px;
+    position: relative;
+    bottom: 3px;
+}
+
+.badges-gird-header-gold{
+    border-bottom-color: gold;
+}
+.badges-gird-header-gold .badges-header-circural{
+    background-color: gold;
+}
+.badges-gird-header-gold .badges-header-title{
+    color: gold;
+}
+
+.badges-gird-header-silver{
+    border-bottom-color: silver;
+}
+.badges-gird-header-silver .badges-header-circural{
+    background-color: silver;
+}
+.badges-gird-header-silver .badges-header-title{
+    color: silver;
+}
+
+.badges-gird-header-bronze{
+    border-bottom-color: #cd7f32;
+}
+.badges-gird-header-bronze .badges-header-circural{
+    background-color: #cd7f32;
+}
+.badges-gird-header-bronze .badges-header-title{
+    color: #cd7f32;
+}
+.badges-grid{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1px;
+    padding-top: 15px;
+}
+@media (max-width:576px) {
+    .badges-grid{
+        justify-content: space-evenly;
+    }
+}
+.badge-grid-item{
+    color: var(--categories-color);
+    background-color: var(--navbar-color);
+    padding: 7px;
+    border-radius: 10px;
+    margin: 15px 10px 0 10px;
+   
+}
+.badge-item-circural{
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 50%;
+}
+.badges-grid-gold .badge-item-circural{
+    background-color: gold;
+}
+.badges-grid-silver .badge-item-circural{
+    background-color: silver;
+}
+.badges-grid-bronze .badge-item-circural{
+    background-color: #cd7f32;
+}
+/* side list start */
+.side-options-list{
+    list-style: none;
+    color: var(--categories-color);
+    padding: 0;
+    border-right: 2px solid var(--primary-color);
+    /* border-left: 2px solid var(--titles-colors); */
+    display: inline-block;
+    height: 500px;
+
+
+}
+.side-list-item{
+    /* margin-bottom: 10px; */
+    padding: 14px 8px;
+    padding-bottom: 4px;
+    cursor: pointer;
+}
+.side-list-item-act{
+    background-color: rgba(221, 221, 221,.15);
+    border-bottom:2px solid var(--primary-color)
+}
+.side-list-contents{
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+/* side-list-end */

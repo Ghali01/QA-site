@@ -349,9 +349,20 @@ $(document).ready(
                 $(this).addClass("act-tab");
                 $($(this).data("content-parent") + " > .content-tab").css("display", "none");
                 $($(this).data("content")).css("display","block");
+                console.log($(this).data("content"));
             }
         );
         // tabs end
+        $(".num-tag").hover(
+            function () {
+                // over
+                $(this).find(".num-in-tb").css("border-right","1px solid #fff");
+            }, function () {
+                // out
+                $(this).find(".num-in-tb").css("border-right","inherit");
+
+            }
+        );
     }
 
 
