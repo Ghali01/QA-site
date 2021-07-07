@@ -352,6 +352,16 @@ $(document).ready(
                 console.log($(this).data("content"));
             }
         );
+        //tabs button simple
+        $('.tab-btn-sim').click(function () {
+
+            $(this).siblings().removeClass("act-tab-sim");
+            $(this).addClass("act-tab-sim");
+            $($(this).data("content-parent") + "> .content-tab").css("display", "none");
+            let conId = $(this).data("content");
+            $(conId).css("display", "block");
+
+        });
         // tabs end
         $(".num-tag").hover(
             function () {

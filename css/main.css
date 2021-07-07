@@ -1544,6 +1544,19 @@ a.go{
     }
 
 }
+ .tab-btn-sim{
+    color: var(--titles-colors);
+    padding: 3px 8px;
+
+}
+.tab-btn-sim:hover{
+    color: var(--categories-color);
+}
+.tabs-btns .act-tab-sim{
+    background-color: var(--primary-color);
+    color: var(--categories-color);
+    border-radius: 40px;
+}
 /* tabs end */
 /* profile start */
 .pres-info{
