@@ -135,7 +135,7 @@ $(document).ready(
                 $(this).val("");
                 $(".current-list-tag").removeClass("current-list-tag");
                 if (tagText)
-                    addTagBtn(tagText);
+                    addTagBtn(tagText,$(this).data("tags-div"));
 
             }
 
@@ -373,8 +373,33 @@ $(document).ready(
 
             }
         );
-    }
+            // side list start
+            $(".side-list-item").click(function(){
+                $(this).siblings().removeClass("side-list-item-act");
+                $(this).addClass("side-list-item-act");
+                $($(this).data("content-p")+" .side-list-content").css("display", "none");
+                $($(this).data("content-p")+" "+$(this).data("content")).css("display", "block");
+            })
+            // side list end
+            $(".btn-tag-removeable").hover(function () {
+                    // over
+                    $(this).find(".remove-tag-btn").css("border-color", "white");    
+                }, function () {
+                    // out
+                    $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
 
+                }
+            );
+            $(".remove-tag-btn").click(function (e) { 
+                $(this).parent().addClass("remove-grid-item");
+                let clicked=this;
+                function aniCallBack(){
+                $(clicked).parent().css("display","none");
+                    
+                }
+                let aniTimeOut=setTimeout(aniCallBack,185);
+            });
+        }
 
 );
 //gird question animetion funcrion
@@ -393,12 +418,37 @@ function startGridQueAni(parentId, duriton = 100) {
     }
     var interVal = setInterval(sacleQueGrid, 100);
 }
-function addTagBtn(tagText) {
-
-    var buttonTag = document.createElement("button");
-    $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100"]);
+function addTagBtn(tagText,tagsDivId) {
+/*                                         <div class="btn remove-tag-btn">
+                                            <i class="fas fa-times"></i>
+                                        </div>
+                                         */
+    let buttonTag = document.createElement("button");
+    $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100","btn-tag-removeable"]);
     $(buttonTag).attr("type", "button");
     $(buttonTag).text(tagText);
-    $("#tags-div-ol").append(buttonTag);
+    let removeBtn=document.createElement("div");
+    $(removeBtn).addClass(["btn" ,"remove-tag-btn"]);
+    $(removeBtn).append("<i class=\"fas fa-times\"></i>");
+    $(buttonTag).append(removeBtn);
+    $(tagsDivId).append(buttonTag);
+    $(buttonTag).hover(function () {
+        // over
+        $(this).find(".remove-tag-btn").css("border-color", "white");    
+    }, function () {
+        // out
+        $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
+
+    }
+);
+    $(removeBtn).click(function (e) { 
+        $(this).parent().addClass("remove-grid-item");
+        let clicked=this;
+        function aniCallBack(){
+        $(clicked).parent().css("display","none");
+            
+        }
+        let aniTimeOut=setTimeout(aniCallBack,185);
+    });
     addedTags.push(tagText);
 }

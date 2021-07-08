@@ -2049,14 +2049,12 @@ a.go{
     color: var(--categories-color);
     padding: 0;
     border-right: 2px solid var(--primary-color);
-    /* border-left: 2px solid var(--titles-colors); */
-    display: inline-block;
     height: 500px;
-
-
+    float: left;
+    width: 100%;
+    padding-left: 8px;
 }
 .side-list-item{
-    /* margin-bottom: 10px; */
     padding: 14px 8px;
     padding-bottom: 4px;
     cursor: pointer;
@@ -2066,8 +2064,73 @@ a.go{
     border-bottom:2px solid var(--primary-color)
 }
 .side-list-contents{
-    display: inline-block;
-    padding: 0;
-    margin: 0;
+    padding: 10px;
 }
+.side-list-content{
+    display: none;
+}
+
 /* side-list-end */
+.btn-tag-removeable{
+    position: relative;
+    font-size: 24px !important;
+    padding-right: 30px;
+
+}
+.remove-tag-btn{
+    position: absolute;
+    top: -1px;
+    font-size: 14px;
+    right: 0px;
+    padding: 0;
+    border: none;
+
+    border-left:.5px solid var(--third-color) ;
+    border-bottom:.5px solid var(--third-color) ;
+    border-bottom-left-radius: 100px;
+    padding:0 3px 3px 5px;
+    color: inherit ;
+}
+.remove-tag-btn:hover{
+    color: white;
+    border-color: white;
+}
+.remove-grid-item{
+    animation-name: remove-grid-ani;
+    animation-duration: .2s;
+    animation-fill-mode: forwards;
+
+}
+@keyframes remove-grid-ani {
+    form{
+        transform: scale(1);
+        display: block;
+    }
+    to{
+        transform: scale(0.1);
+        display: none;
+    }
+}
+.your-tags{
+    display: inline-block;
+    width: 100%;
+}
+.your-tags #que-tags-inpot{
+    width: 100%;
+    margin-left: 15px;
+}
+.side-list-col{
+    width: 10%;
+    padding: 0;
+}
+.side-list-content-col{
+    width: 90%;
+    padding: 0;
+}
+.your-tags .save-tag-btn{
+    float: right;
+    margin-right: 8px;
+}
+.your-tags .grid-tags{
+    min-height: 410px;
+}
