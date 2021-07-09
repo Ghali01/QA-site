@@ -441,6 +441,11 @@ body{
         width: 100%;
     }
 }
+@media (min-width:576px) and (max-width:1200px){
+    .cus-nav-item{
+        margin-left: 15px;
+    }
+}
 /* qeustions page start */
 .question-dev-parent{
     width: 100%;
@@ -459,6 +464,8 @@ body{
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    display: inline-block;
+    width: 100%;
 }
  
 .custom-select .btn-select{
