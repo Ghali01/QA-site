@@ -19,7 +19,7 @@
     <header>
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="#"> interviwe question</a>
                 <button class="navbar-toggler  " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -88,41 +88,76 @@
     <div class="container-fluid">
 
         <div class="row">
-            <!-- categories start -->
-            <div class="d-none d-md-block col-md-2 left-column left-column-w-b">
+            <!-- categories start -->            <div class="d-none d-md-block col-md-2 left-column">
                 <h4 class="categores-title">categories</h4>
                 <ul class="categores-list">
-                    <li>
-                        <a href="#" class="cateogry-item cateogry-active">sub Cateogry 1</a>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item cateogry-active">Cateogry 1</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-act-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="#" class="cateogry-item">sub Cateogry 2</a>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 2</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
-                    <li>
-                        <a href="#" class="cateogry-item">sub Cateogry 3</a>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 3</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
-                    <li>
-                        <a href="#" class="cateogry-item"> sub Cateogry 4</a>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 4</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
-                    <li>
-                        <a href="#" class="cateogry-item">sub Cateogry 5</a>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 5</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
 
                 </ul>
-                <!-- categories start -->
 
                 <div class="left-bottom-column">
-                    left column
-                    left column
-                    left column
-                    left column
-                    left column
-                    left column
+                    <div class="cus-card ">
+                        <h5 class="cus-card-header">column title</h5>
+                        <div class="cus-card-body ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
+                                amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
+                                aspernatur dolore laudantium corporis provident?</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!-- center column start  -->
@@ -140,10 +175,12 @@
             <!-- center column end  -->
 
             <!-- right column start  -->
-            <div class="d-none d-xl-block col-xl-3  right-column">
-                <div class="card tags-card">
-                    <h5 class="card-header">Tags</h5>
-                    <div class="card-body tags-div">
+          <div class="d-none d-xl-block col-xl-3  right-column">
+                <div class="cus-card tags-card">
+                    <h5 class="cus-card-header">Tags</h5>
+                    <div class="cus-card-body tags-div">
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
@@ -151,17 +188,18 @@
                     </div>
                 </div>
                 <div class="right-bottom-column">
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
+                    <div class="cus-card ">
+                        <h5 class="cus-card-header">column title</h5>
+                        <div class="cus-card-body ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
+                                amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
+                                aspernatur dolore laudantium corporis provident?</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
+  
             <!-- right column end  -->
 
         </div>

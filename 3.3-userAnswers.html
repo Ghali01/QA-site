@@ -13,10 +13,10 @@
 </head>
 
 <body>
-    <header>
+    <header class="header-nav">
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="#"> interviwe question</a>
                 <button class="navbar-toggler  " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -88,44 +88,81 @@
             <div class="d-none d-md-block col-md-2 left-column">
                 <h4 class="categores-title">categories</h4>
                 <ul class="categores-list">
-                    <li>
+                    <li class="category-li">
                         <a href="#" class="cateogry-item cateogry-active">Cateogry 1</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-act-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
                     </li>
-                    <li>
+                    <li class="category-li">
                         <a href="#" class="cateogry-item">Cateogry 2</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
-                    <li>
+                    <li class="category-li">
                         <a href="#" class="cateogry-item">Cateogry 3</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
-                    <li>
+                    <li class="category-li">
                         <a href="#" class="cateogry-item">Cateogry 4</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
-                    <li>
+                    <li class="category-li">
                         <a href="#" class="cateogry-item">Cateogry 5</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                            <li class="subcategory-item">sub cateogry</li>
+                        </ul>
+
                     </li>
 
                 </ul>
-                <!-- categories start -->
 
                 <div class="left-bottom-column">
-                    left column
-                    left column
-                    left column
-                    left column
-                    left column
-                    left column
+                    <div class="cus-card ">
+                        <h5 class="cus-card-header">column title</h5>
+                        <div class="cus-card-body ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
+                                amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
+                                aspernatur dolore laudantium corporis provident?</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
             <!-- cendet column start -->
             <div class="col-12 col-md-10 col-xl-7  center-column">
                 <h2 class="center-title">Your Answers</h2>
 
-                <div class="btn-group my-btn-group" role="group" aria-label="Basic outlined example">
+                <div class="btn-group my-btn-group mb-btn-group" role="group" aria-label="Basic outlined example">
                     <button type="button" class="btn btn-outline-primary btn-group-item">1</button>
                     <button type="button" class="btn btn-outline-primary btn-group-item">2</button>
                     <button type="button" class="btn btn-outline-primary btn-group-item">3</button>
@@ -142,172 +179,279 @@
                 <div style="clear:both"></div>
                 <!-- queststion start -->
                 <div class="questions-list questions-ans-list">
-                    <div class="ans-que-item">
-                        <div class="row  question-item ">
-                            <div class="col-3">
-                                <div class="row">
-                                    <div class="col-5 votes-num-div nums-que">
-                                        <span class="votes-num-span">200</span>
-                                        <span class="votes-word">votes</span>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
 
-                                    </div>
-                                    <div class="col-7 answers-num-div nums-que">
-                                        <span class="answers-num-span">5</span>
-                                        <span class="answers-word">answers</span>
-                                    </div>
-                                </div>
-                                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
-                            </div>
-                            <div class="col-9">
-                                <div class="question-title line-clamp">
-                                    <p> text text text text text text
-                                        text text text text text text
-                                    </p>
-                                </div>
-                                <div class="bottom-of-question">
-                                    <div class="question-tags custom-scrollbar">
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                    </div>
-                                    <div class="question-date">last answer added in <time class="inline-date">0000/00/00</time> </div>
 
                                 </div>
-                            </div>
+
                         </div>
-                        <div class="row answer-row">
-                            <div class="col-2 tree-line-col" >
-                                <div class="tree-line">
-                                    <div class="col-5 votes-num-div nums-que nums-ans">
-                                        <span class="votes-num-span">246</span>
-                                        <span class="votes-word">votes</span>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-10">
-                                <p class="question-answer-txt line-clamp">  text text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text text </p>
-                                <button class="btn btn-primary primary-button primary-button-radius " >See Answer</button>
-                                <div class="question-date">added in <time class="inline-date">0000/00/00</time> </div>
-                            
-                            </div>
-                            
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
                         </div>
                     </div>
-                    <div class="ans-que-item">
-                        <div class="row  question-item ">
-                            <div class="col-3">
-                                <div class="row">
-                                    <div class="col-5 votes-num-div nums-que">
-                                        <span class="votes-num-span">200</span>
-                                        <span class="votes-word">votes</span>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
 
-                                    </div>
-                                    <div class="col-7 answers-num-div nums-que">
-                                        <span class="answers-num-span">5</span>
-                                        <span class="answers-word">answers</span>
-                                    </div>
-                                </div>
-                                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
-                            </div>
-                            <div class="col-9">
-                                <div class="question-title line-clamp">
-                                    <p> text text text text text text
-                                        text text text text text text
-                                    </p>
-                                </div>
-                                <div class="bottom-of-question">
-                                    <div class="question-tags custom-scrollbar">
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                    </div>
-                                    <div class="question-date">last answer added in <time class="inline-date">0000/00/00</time> </div>
 
                                 </div>
-                            </div>
+
                         </div>
-                        <div class="row answer-row">
-                            <div class="col-2 tree-line-col" >
-                                <div class="tree-line">
-                                    <div class="col-5 votes-num-div nums-que nums-ans">
-                                        <span class="votes-num-span">246</span>
-                                        <span class="votes-word">votes</span>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-10">
-                                <p class="question-answer-txt line-clamp">  text text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text text </p>
-                                <button class="btn btn-primary primary-button primary-button-radius " >See Answer</button>
-                                <div class="question-date">added in <time class="inline-date">0000/00/00</time> </div>
-                            
-                            </div>
-                            
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
                         </div>
                     </div>
-                    <div class="ans-que-item">
-                        <div class="row  question-item ">
-                            <div class="col-3">
-                                <div class="row">
-                                    <div class="col-5 votes-num-div nums-que">
-                                        <span class="votes-num-span">200</span>
-                                        <span class="votes-word">votes</span>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
 
-                                    </div>
-                                    <div class="col-7 answers-num-div nums-que">
-                                        <span class="answers-num-span">5</span>
-                                        <span class="answers-word">answers</span>
-                                    </div>
-                                </div>
-                                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
-                            </div>
-                            <div class="col-9">
-                                <div class="question-title line-clamp">
-                                    <p> text text text text text text
-                                        text text text text text text
-                                    </p>
-                                </div>
-                                <div class="bottom-of-question">
-                                    <div class="question-tags custom-scrollbar">
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                    </div>
-                                    <div class="question-date">last answer added in <time class="inline-date">0000/00/00</time> </div>
 
                                 </div>
-                            </div>
+
                         </div>
-                        <div class="row answer-row">
-                            <div class="col-2 tree-line-col" >
-                                <div class="tree-line">
-                                    <div class="col-5 votes-num-div nums-que nums-ans">
-                                        <span class="votes-num-span">246</span>
-                                        <span class="votes-word">votes</span>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-10">
-                                <p class="question-answer-txt line-clamp">  text text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text texttext text text text text text text text text text </p>
-                                <button class="btn btn-primary primary-button primary-button-radius " >See Answer</button>
-                                <div class="question-date">added in <time class="inline-date">0000/00/00</time> </div>
-                            
-                            </div>
-                            
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
                         </div>
                     </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+                    <div class="row  answer-item ">
+                        <div class="col-1 votes-ans-col">
+                                <div class=" votes-num-div-a">
+                                    <span class="votes-num-span">200</span>
+
+
+                                </div>
+
+                        </div>
+                        <div class="col-11 col-md-9">
+                            <a href="#" class="question-title question-a-title line-clamp">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                                eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                            </a>
+                        </div>
+                        <div class="col-12 col-md-2 date-ans-col">
+                            <time class="answer-date">00/00/0000</time>
+                        </div>
+                    </div>
+
+
 
                 </div>
                 <!-- questions end -->
             </div>
             <!-- center column  -->
             <!-- right column start -->
+
             <div class="d-none d-xl-block col-xl-3  right-column">
-                <div class="card tags-card">
-                    <h5 class="card-header">Tags</h5>
-                    <div class="card-body tags-div">
+                <div class="cus-card tags-card">
+                    <h5 class="cus-card-header">Tags</h5>
+                    <div class="cus-card-body tags-div">
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
@@ -317,16 +461,18 @@
                     </div>
                 </div>
                 <div class="right-bottom-column">
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
+                    <div class="cus-card ">
+                        <h5 class="cus-card-header">column title</h5>
+                        <div class="cus-card-body ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
+                                amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
+                                aspernatur dolore laudantium corporis provident?</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+
             <!-- right column start -->
 
         </div>

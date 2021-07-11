@@ -1,127 +1,151 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-all.min.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/jquery-3.6.0.min.js"></script>
-        <script src="js/main.js"></script>
 
-    </head>
-    <body>
-        <header>
-        <!-- navbar stats -->
-        <nav class="navbar navbar-expand-md navbar-dark  ">
-        <div class="container">
-            <a class="navbar-brand" href="#">Inerviwes Question</a>
-            <button class="navbar-toggler  " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ms-auto mb-lg-0 text-center">
-                <li class="nav-item active custom-nav-active">
-                  <a class="nav-link" href="#">Sign Up</a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Sign In</a>
-                </li>           
-             
-            </ul>
-            </div>
-          
-        </div>  
-        </nav>
-        <!-- navbar end -->
-       </header>
-        <!-- sign up form start -->
-        <div class="form-parent">
-        <form id="reg-form" autocomplete="on" method="POST"  class="animeted-form auth-form"  >
-            <div class="mb-3 row">
-                <!-- register by email section start -->
-            <div class="col-lg-6 col-md-6">
-                <div class="inp-div">
-                    <label class="lbl form-lable" id="lbl1">Full Name</label>
-                    <input type="text" class="form-control form-input" id="fullName-input" name="fullName" maxlength="40" >
-             
-                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                        <span class="error-val"></span>
-                    </P>              
-                </div>
-                <div class="inp-div">
-                    <label class="lbl form-lable" id="lbl1">User Name</label>
-                    <input type="text" class="form-control form-input" id="userName-input" name=userName maxlength="20">
-             
-                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                        <span class="error-val"></span>
-                    </P>              
-                </div>
-                <div class="inp-div">
-                    <label class="lbl form-lable" id="lbl1">Email</label>
-                    <input type="email" class="form-control form-input" id="email-input" name="email">
-             
-                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                        <span class="error-val"></span>
-                    </P>              
-                </div>
-                <div class="inp-div">
-                    <label class="lbl form-lable" id="lbl1">Password</label>
-                    <input type="password" class="form-control form-input" id="password-input" name="password" maxlength="50">
-                    <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                        <span class="error-val"></span>
-                    </p>              
-                </div>
-                
-                <div class="inp-div">
-                    <label class="lbl form-lable" id="lbl1">Confirm Password</label>
-                    <input type="password" class="form-control form-input" id="confirmPassword-input" name="confirmPassword" maxlength="50" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/main.js"></script>
 
-                    <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                        <span class="error-val"></span>
-                    </P>              
-                </div>
+</head>
 
-                <p class="form-lable acc" >By clicking Register, I agree that I have read and accepted our <a href="#">Terms of Use and Privacy Policy</a></p>   
-                <input type="button" class="btn btn-primary form-btn" id="reg-btn" value="Sign Up">
-            </div>
-            <!-- register by email section end -->
+<body>
+  <header>
+    <!-- navbar start -->
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Inerviwes Question</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <!-- break (or) section start -->
-            <div class="col-lg-1 col-md-1 d-none d-xxl-block d-xl-block d-lg-block d-md-block">
-                <div class="vr-div">
-                <span class="form-lable" id="or-span">or</span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
 
-                </div>
-            </div>
-            <div class="d-sm-block d-xs-block d-xxl-none d-xl-none d-lg-none d-md-none">
-                <hr id="sp-hr">
-                <span class="form-lable" id="or-span-sm">or</span> 
-            </div>
-            <!-- break (or) section end -->
+            <li class="nav-item active custom-nav-active">
+              <a class="nav-link" href="#">Sign In</a>
+            </li>
 
-            <!-- media sign up section start -->
-            <div class=" col-lg-5 col-md-5">
-
-                <a href="" class="fb l-btn connect">Sign up with Facebook</a>      
-                <a href="" class="tw l-btn connect">Sign up with Twitter</a>      
-                <a href="" class="gi l-btn connect">Sign up with GitHub</a>      
-                <a href="" class="go l-btn connect">Sign up with Google</a>      
-            
-                </div>
-            </div>
-        </form>
-
+          </ul>
         </div>
-            <!-- media sign up section end -->
 
-        <!-- sign up form end -->
+      </div>
+    </nav>
+    <!-- navbar end -->
+  </header>
+  <div class="container-fluid">
+    <!-- sign in form start -->
+    <div class="row">
+      <div class="d-none d-md-block col-12 col-md-8">
+        <div class="side-content-p">
+          <h2 class="side-conten-title">Welcome to Interviews Questions....</h2>
+          <ul  class="side-content-list">
+              
+            <li class="side-content-item">Lorem ipsum dolor sit amet consectetur </li>
+            <li class="side-content-item">adipisicing elit. Dolorem minima, facere numquam nulla quas asperiores </li>
+            <li class="side-content-item">doloribus quod molestias aspernatur eligendi tempore. </li>
+            <li class="side-content-item">Nulla sed atque recusandae porro veniam expedita esse enim. </li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="col-12 col-md-4">
+   
+        <div class="form-parent">
+            <form id="reg-form" autocomplete="on" method="POST"  class="animeted-form auth-form"  >
+                <div class="mb-3">
+                    <!-- register by email section start -->
+                <div class="">
+                    <div class="inp-div">
+                        <label class="lbl form-lable" id="lbl1">Full Name</label>
+                        <input type="text" class="form-control form-input" id="fullName-input" name="fullName" maxlength="40" >
+                 
+                        <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                            <span class="error-val"></span>
+                        </P>              
+                    </div>
+                    <div class="inp-div">
+                        <label class="lbl form-lable" id="lbl1">User Name</label>
+                        <input type="text" class="form-control form-input" id="userName-input" name=userName maxlength="20">
+                 
+                        <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                            <span class="error-val"></span>
+                        </P>              
+                    </div>
+                    <div class="inp-div">
+                        <label class="lbl form-lable" id="lbl1">Email</label>
+                        <input type="email" class="form-control form-input" id="email-input" name="email">
+                 
+                        <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                            <span class="error-val"></span>
+                        </P>              
+                    </div>
+                    <div class="inp-div">
+                        <label class="lbl form-lable" id="lbl1">Password</label>
+                        <input type="password" class="form-control form-input" id="password-input" name="password" maxlength="50">
+                        <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                            <span class="error-val"></span>
+                        </p>              
+                    </div>
+                    
+                    <div class="inp-div">
+                        <label class="lbl form-lable" id="lbl1">Confirm Password</label>
+                        <input type="password" class="form-control form-input" id="confirmPassword-input" name="confirmPassword" maxlength="50" >
+    
+                        <P class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                            <span class="error-val"></span>
+                        </P>              
+                    </div>
+    
+                    <p class="form-lable acc" >By clicking Register, I agree that I have read and accepted our <a href="#">Terms of Use and Privacy Policy</a></p>   
+                    <input type="button" class="btn btn-primary form-btn" id="reg-btn" value="Sign Up">
+                </div>
+                <!-- register by email section end -->
+    
+                
+                </div>
+                <div class="d-block">
+                    <hr id="sp-hr">
+                    <span class="form-lable" id="or-span-sm">or</span> 
+                </div>
+                <!-- break (or) section end -->
+    
+                <!-- media sign up section start -->
+                <div class="">
+    
+                    <a href="" class="fb l-btn connect">Sign up with Facebook</a>      
+                    <a href="" class="tw l-btn connect">Sign up with Twitter</a>      
+                    <a href="" class="gi l-btn connect">Sign up with GitHub</a>      
+                    <a href="" class="go l-btn connect">Sign up with Google</a>      
+                
+                    </div>
+                </div>
+      </div>
+      
+      <div class="d-md-none col-12 col-md-8">
+        <div class="side-content-p">
+          <h2 class="side-conten-title">Welcome to Interviews Questions....</h2>
+          <ul  class="side-content-list">
+              
+            <li class="side-content-item">Lorem ipsum dolor sit amet consectetur </li>
+            <li class="side-content-item">adipisicing elit. Dolorem minima, facere numquam nulla quas asperiores </li>
+            <li class="side-content-item">doloribus quod molestias aspernatur eligendi tempore. </li>
+            <li class="side-content-item">Nulla sed atque recusandae porro veniam expedita esse enim. </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
+  <script src="js/bootstrap.min.js"></script>
+</body>
 
-        <script src="js/bootstrap.min.js"></script>
-    </body>
 </html>

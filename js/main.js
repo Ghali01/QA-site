@@ -40,15 +40,15 @@ $(document).ready(
             // over
             if (!$(this).hasClass("cateogry-active")) {
                 $(".cateogry-act-border").animate({ height: 0 });
-                $(this).next().css("width", "3px")
-                $(this).next().animate({ height: "40px" });
+                $(this).nextAll(".cateogry-border").css("width", "3px")
+                $(this).nextAll(".cateogry-border").animate({ height: "40px" });
 
             }
         }, function () {
             // out
             if (!$(this).hasClass("cateogry-active")) {
-                $(this).next().css("width", "0px")
-                $(this).next().animate({ height: "0px" });
+                $(this).nextAll(".cateogry-border").css("width", "0px")
+                $(this).nextAll(".cateogry-border").animate({ height: "0px" });
             }
         }
         );
@@ -57,15 +57,20 @@ $(document).ready(
 
         });
 
-        // categores column animation end
-
-
-        $(document).scroll(function () {
-            if ($(document).scrollTop() != 0)
-                $(".left-column, .right-column").css("top", "30px")
-            else
-                $(".left-column, .right-column").css("top", "70px")
-
+        $(".subcategories-list").slideUp(0);
+        $(".category-li .down-icon").click(function (e) { 
+            if( !$(this).hasClass("down-icon-a")){
+            $(this).css("animation-name","none");
+            $(this).css("animation-name","down-icon-ani");
+        
+        }else{
+            $(this).css("animation-name","none");
+            // $(this).css("animation-direction","reverse");
+            $(this).css("animation-name","down-icon-ani2");
+            
+        }
+            $(this).toggleClass("down-icon-a");
+            $(this).nextAll(".subcategories-list").slideToggle();
         });
 
         startGridQueAni("grid-questions", 100);//gird question animetion
@@ -391,6 +396,7 @@ $(document).ready(
                 }
             );
             $(".remove-tag-btn").click(function (e) { 
+                console.log("test");
                 $(this).parent().addClass("remove-grid-item");
                 let clicked=this;
                 function aniCallBack(){
@@ -398,6 +404,12 @@ $(document).ready(
                     
                 }
                 let aniTimeOut=setTimeout(aniCallBack,185);
+            });
+            $(".add-comment-span").click(function(){
+                if($(this).nextAll(".add-comment-div").css("display")=="none")
+                    $(this).nextAll(".add-comment-div").css("display","block")
+                else
+                    $(this).nextAll(".add-comment-div").css("display","none")
             });
         }
 
@@ -419,10 +431,6 @@ function startGridQueAni(parentId, duriton = 100) {
     var interVal = setInterval(sacleQueGrid, 100);
 }
 function addTagBtn(tagText,tagsDivId) {
-/*                                         <div class="btn remove-tag-btn">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                         */
     let buttonTag = document.createElement("button");
     $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100","btn-tag-removeable"]);
     $(buttonTag).attr("type", "button");
