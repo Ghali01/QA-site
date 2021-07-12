@@ -21,6 +21,7 @@
     --editor-background-color:#2d2d2d;
     --secondry-editor-color:#697075;
     --editor-icons-color:#c7c9ce;
+    --black: rgb(38,38,38);
     --black-025: #393939;
     --black-050: #3d3d3d;
     --black-075: #404345;
@@ -71,6 +72,15 @@
     --green-100: #3d6048;
     --theme-tag-color: var(--powder-700);
     --theme-tag-background-color: var(--powder-100);
+    --gold: rgb(255, 234, 131);
+    --gold-lighter: #5e553c;
+    --gold-dark: rgb(86,82,63);
+    --silver: #b5b7bc;
+    --bronze-dark:#4b443a;
+    --silver-lighter: #424242;
+    --bronze: #caa789;
+    --silver-dark:#424242;
+    --bronze-lighter: #4d433b;
     /* light */
     /* --bg-color:#fff;
     --primary-color:rgb(255,93,0);
@@ -181,25 +191,25 @@ body{
     margin-left: 5px;
 }
 .gold-badge{
-    color: gold;
-    background-color: gold;
+    color: var(--gold);
+    background-color: var(--gold);
 }
 .gold-badge-span{
-    color: gold;
+    color: var(--gold);
 }
 .silver-badge{
-    color: silver;
-    background-color: silver;
+    color: var(--silver);
+    background-color: var(--silver);
 }
 .silver-badge-span{
-    color: silver;
+    color: var(--silver);
 }
 .bronze-badge{
-    color:#cd7f32;
-    background-color: #cd7f32;
+    color:var(--bronze);
+    background-color: var(--bronze);
 }
 .bronze-badge-span{
-    color: #cd7f32;
+    color: var(--bronze);
 }
 /* navbr  end */
 /* custom scroll start */
@@ -1957,7 +1967,7 @@ a.go{
 .pers-badges-2{
     display: flex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     height: auto !important;
 }
 .badge-div{
@@ -1976,45 +1986,46 @@ a.go{
     display: block;
 }
 .pers-badges-2 .circular-badge{
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
     background-color: white;
     display: inline-block;
     float: none;
-    margin-top: 6px;
+    /* margin-top: 6px; */
 }
 .badge-div{
     display: flex;
+    align-items: center;
 }
 .pers-badges-2 .badge-num-span{
     font-size: 14px;
-    color: black;
+    color: var(--black-700);
     width: auto;
     text-align: center;
     flex-grow: 2;
 }
 
 .badge-div-gold{
-    background-color: rgb(255, 234, 131);
-    border-color: gold;
+    background-color: var(--gold-dark);
+    border-color: var(--gold);
 }
 .badge-div-gold .circular-badge{
-    background-color: gold;
+    background-color: var(--gold);
 }
 
 .badge-div-silver{
-    background-color: #e8e8e8;
-    border-color: silver;
+    background-color: var(--silver-dark);
+    border-color: var(--silver);
 }
 .badge-div-silver .circular-badge{
-    background-color: silver;
+    background-color: var(--silver);
 }
 .badge-div-bronze{
-    border-color: #cd7f32;
-    background-color: #f0ba85;
+    border-color: var(--bronze);
+    background-color: var(--bronze-dark);
 }
 .badge-div-bronze .circular-badge{
-    background-color: #cd7f32;
+    background-color: var(--bronze);
 }
 @media (min-width:768px) and (max-width:1210px) {
     .pers-badges-2 .circular-badge{
@@ -2070,9 +2081,25 @@ a.go{
     padding-top: 10px;
     min-height: 177px;
 }
+.badges-list-header{
+    display: flex;
+    justify-content: center;
+}
 .badge-icon{
-    margin: auto;
+    /* margin: auto; */
     display: block;
+}
+.badges-list-spans{
+    margin: 0 8px;
+}
+.badge-list-ns{
+    display: block;
+    font-size: 20px;
+    color: var(--black-800);
+
+}
+.badge-list-ws{
+    color: var(--titles-colors);
 }
 .badge-row{
     position: relative;
@@ -2085,9 +2112,11 @@ a.go{
     height: 30px;
     padding-top: 3px;
     display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 .badge-row .badge-item-circural{
-    margin-top: 7px;
+    margin: 3px 5px 0 0px;
 }
 .badge-row .badge-grid-item .badge-item-name{
     text-align: center;
@@ -2107,13 +2136,13 @@ a.go{
     font-size: 13px;
 }
 .badges-list-gold .badge-item-circural{
-    background-color: gold;
+    background-color: var(--gold);
 }
 .badges-list-silver .badge-item-circural{
-    background-color: silver;
+    background-color: var(--silver);
 }
 .badges-list-bronze .badge-item-circural{
-    background-color: #cd7f32;
+    background-color: var(--bronze);
 }
 .title-prof{
     color: var(--titles-colors);
@@ -2287,33 +2316,33 @@ a.go{
 }
 
 .badges-gird-header-gold{
-    border-bottom-color: gold;
+    border-bottom-color: var(--gold);
 }
 .badges-gird-header-gold .badges-header-circural{
-    background-color: gold;
+    background-color: var(--gold);
 }
 .badges-gird-header-gold .badges-header-title{
-    color: gold;
+    color: var(--gold);
 }
 
 .badges-gird-header-silver{
-    border-bottom-color: silver;
+    border-bottom-color: var(--silver);
 }
 .badges-gird-header-silver .badges-header-circural{
-    background-color: silver;
+    background-color: var(--silver);
 }
 .badges-gird-header-silver .badges-header-title{
-    color: silver;
+    color: var(--silver);
 }
 
 .badges-gird-header-bronze{
-    border-bottom-color: #cd7f32;
+    border-bottom-color: var(--bronze);
 }
 .badges-gird-header-bronze .badges-header-circural{
-    background-color: #cd7f32;
+    background-color: var(--bronze);
 }
 .badges-gird-header-bronze .badges-header-title{
-    color: #cd7f32;
+    color: var(--bronze);
 }
 .badges-grid{
     display: flex;
@@ -2328,9 +2357,9 @@ a.go{
 }
 .badge-grid-item{
     color: var(--categories-color);
-    background-color: var(--navbar-color);
+    background-color: var(--black);
     padding: 7px;
-    border-radius: 10px;
+    border-radius: 5px;
     margin: 15px 10px 0 10px;
    
 }
@@ -2342,13 +2371,13 @@ a.go{
     border-radius: 50%;
 }
 .badges-grid-gold .badge-item-circural{
-    background-color: gold;
+    background-color: var(--gold);
 }
 .badges-grid-silver .badge-item-circural{
-    background-color: silver;
+    background-color: var(--silver);
 }
 .badges-grid-bronze .badge-item-circural{
-    background-color: #cd7f32;
+    background-color: var(--bronze);
 }
 /* side list start */
 .side-options-list{
@@ -2493,4 +2522,17 @@ a.go{
 }
 .add-tags-q .tags-div{
     min-height: 66px;
+}
+@media (min-width:1150px) {
+    .pers-col{
+        width: 20%;
+    }
+}
+@media (min-width:800px) and (max-width:992px) {
+    .pers-col{
+        width: 30%;
+    }
+}
+.badge-div .badge-num-span{
+    margin-left: 0;
 }

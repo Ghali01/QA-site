@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <header>
+    <header class="header-nav">
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
@@ -84,7 +84,8 @@
     <div class="container-fluid">
 
         <div class="row">
-            <!-- categories start -->            <div class="d-none d-md-block col-md-2 left-column">
+            <!-- categories start -->
+            <div class="d-none d-md-block col-md-2 left-column">
                 <h4 class="categores-title">categories</h4>
                 <ul class="categores-list">
                     <li class="category-li">
@@ -162,268 +163,255 @@
                 <div class="question-dev-parent">
                     <div class="questions-gird-toolbar">
                         <div class="row">
-                            <div class="col-4">
-                                <span class="sort-by-word">Sort by: </span>
-                                <div class="custom-select" style="width: 50%; display: inline-block;">
-                                    <button class="btn btn-primary btn-select">
-                                        <span class="selected-span"> date</span>
-                                        <i class="fas fa-caret-down select-arrow"></i>
+                            <div class="col-12 col-sm-9">
 
-                                    </button>
-                                    <ul class="custom-select-list custom-scrollbar">
-                                        <li class="custom-select-item">date</li>
-                                        <li class="custom-select-item">answers</li>
-                                        <li class="custom-select-item">votes</li>
-                                    </ul>
+                                <div class="sort-by-toolbar">
+                                    <span class="sort-by-word">Sort by: </span>
+                                    <div class="custom-select" style="width: 20%; display: inline-block;">
+                                        <button class="btn btn-primary btn-select">
+                                            <span class="selected-span"> date</span>
+                                            <i class="fas fa-caret-down select-arrow"></i>
+
+                                        </button>
+                                        <ul class="custom-select-list custom-scrollbar">
+                                            <li class="custom-select-item">date</li>
+                                            <li class="custom-select-item">answers</li>
+                                            <li class="custom-select-item">votes</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-8">
+                            <div class="col-12 col-sm-3">
                                 <div class="btn-group me-2 grid-indcator" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-outline-primary">1</button>
-                                    <button type="button" class="btn btn-outline-primary">2</button>
-                                    <button type="button" class="btn btn-outline-primary">3</button>
-                                    <button type="button" class="btn btn-outline-primary act-grid-incator">4</button>
-                                    <button type="button" class="btn btn-outline-primary">5</button>
-                                    <button type="button" class="btn btn-outline-primary">6</button>
-                                    <button type="button" class="btn btn-outline-primary">7</button>
+                                    <button type="button" class="btn btn-outline-primary btn-group-item">1</button>
+                                    <button type="button" class="btn btn-outline-primary btn-group-item">2</button>
+                                    <button type="button" class="btn btn-outline-primary btn-group-item">3</button>
+                                    <button type="button"
+                                        class="btn btn-outline-primary btn-group-item act-grid-incator">4</button>
+                                    <button type="button" class="btn btn-outline-primary btn-group-item">5</button>
+                                    <button type="button" class="btn btn-outline-primary btn-group-item">6</button>
+                                    <button type="button" class="btn btn-outline-primary btn-group-item">7</button>
 
-                                    <!-- </div> -->
                                 </div>
                             </div>
 
                         </div>
                     </div>
-                    <div id="grid-questions" class="grid-questions">
-                        <div class="container-fluid  question-item-grid ">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class=" votes-num-div nums-que">
+
+                    <div class="questions-list">
+
+                        <div class="row  question-item ">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="col-5 votes-num-div nums-que">
                                         <span class="votes-num-span">200</span>
                                         <span class="votes-word">votes</span>
 
                                     </div>
-                                    <div class="col answers-num-div nums-que">
+                                    <div class="col-5 answers-num-div nums-que">
                                         <span class="answers-num-span">5</span>
                                         <span class="answers-word">answers</span>
                                     </div>
                                 </div>
 
-                                <div class="col-9">
-                                    <div class="question-title line-clamp">
-                                        <p>
-                                            text text text text text text
-                                        </p>
-                                    </div>
+                            </div>
+                            <div class="col-10">
+                                <a href="#" class="question-title line-clamp">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                    expedita
+                                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                </a>
+                                <div class="bottom-of-question">
                                     <div class="question-tags custom-scrollbar">
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row bottom-question-content">
-                                <div class="col">
-                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
-                                    </div>
+                                    <div class="question-date">last answer added in 0000/00/00 </div>
 
                                 </div>
-                                <div class="col">
-                                    <div class="question-date"> 0000/00/00 </div>
-
-                                </div>
-
                             </div>
                         </div>
-                        <div class="container-fluid  question-item-grid ">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class=" votes-num-div nums-que">
+                        <div class="row  question-item ">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="col-5 votes-num-div nums-que">
                                         <span class="votes-num-span">200</span>
                                         <span class="votes-word">votes</span>
 
                                     </div>
-                                    <div class="col answers-num-div nums-que">
+                                    <div class="col-5 answers-num-div nums-que">
                                         <span class="answers-num-span">5</span>
                                         <span class="answers-word">answers</span>
                                     </div>
                                 </div>
 
-                                <div class="col-9">
-                                    <div class="question-title line-clamp">
-                                        <p>
-                                            text text text text text text
-                                        </p>
-                                    </div>
+                            </div>
+                            <div class="col-10">
+                                <a href="#" class="question-title line-clamp">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                    expedita
+                                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                </a>
+                                <div class="bottom-of-question">
                                     <div class="question-tags custom-scrollbar">
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row bottom-question-content">
-                                <div class="col">
-                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
-                                    </div>
+                                    <div class="question-date">last answer added in 0000/00/00 </div>
 
                                 </div>
-                                <div class="col">
-                                    <div class="question-date"> 0000/00/00 </div>
-
-                                </div>
-
                             </div>
                         </div>
-                        <div class="container-fluid  question-item-grid ">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class=" votes-num-div nums-que">
+                        <div class="row  question-item ">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="col-5 votes-num-div nums-que">
                                         <span class="votes-num-span">200</span>
                                         <span class="votes-word">votes</span>
 
                                     </div>
-                                    <div class="col answers-num-div nums-que">
+                                    <div class="col-5 answers-num-div nums-que">
                                         <span class="answers-num-span">5</span>
                                         <span class="answers-word">answers</span>
                                     </div>
                                 </div>
 
-                                <div class="col-9">
-                                    <div class="question-title line-clamp">
-                                        <p>
-                                            text text text text text text
-                                        </p>
-                                    </div>
+                            </div>
+                            <div class="col-10">
+                                <a href="#" class="question-title line-clamp">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                    expedita
+                                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                </a>
+                                <div class="bottom-of-question">
                                     <div class="question-tags custom-scrollbar">
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row bottom-question-content">
-                                <div class="col">
-                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
-                                    </div>
+                                    <div class="question-date">last answer added in 0000/00/00 </div>
 
                                 </div>
-                                <div class="col">
-                                    <div class="question-date"> 0000/00/00 </div>
-
-                                </div>
-
                             </div>
                         </div>
-                        <div class="container-fluid  question-item-grid ">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class=" votes-num-div nums-que">
+                        <div class="row  question-item ">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="col-5 votes-num-div nums-que">
                                         <span class="votes-num-span">200</span>
                                         <span class="votes-word">votes</span>
 
                                     </div>
-                                    <div class="col answers-num-div nums-que">
+                                    <div class="col-5 answers-num-div nums-que">
                                         <span class="answers-num-span">5</span>
                                         <span class="answers-word">answers</span>
                                     </div>
                                 </div>
 
-                                <div class="col-9">
-                                    <div class="question-title line-clamp">
-                                        <p>
-                                            text text text text text text
-                                        </p>
-                                    </div>
+                            </div>
+                            <div class="col-10">
+                                <a href="#" class="question-title line-clamp">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                    expedita
+                                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                </a>
+                                <div class="bottom-of-question">
                                     <div class="question-tags custom-scrollbar">
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row bottom-question-content">
-                                <div class="col">
-                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
-                                    </div>
+                                    <div class="question-date">last answer added in 0000/00/00 </div>
 
                                 </div>
-                                <div class="col">
-                                    <div class="question-date"> 0000/00/00 </div>
-
-                                </div>
-
                             </div>
                         </div>
-                        <div class="container-fluid  question-item-grid ">
-                            <div class="row">
-                                <div class="col-3">
-                                    <div class=" votes-num-div nums-que">
+                        <div class="row  question-item ">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="col-5 votes-num-div nums-que">
                                         <span class="votes-num-span">200</span>
                                         <span class="votes-word">votes</span>
 
                                     </div>
-                                    <div class="col answers-num-div nums-que">
+                                    <div class="col-5 answers-num-div nums-que">
                                         <span class="answers-num-span">5</span>
                                         <span class="answers-word">answers</span>
                                     </div>
                                 </div>
 
-                                <div class="col-9">
-                                    <div class="question-title line-clamp">
-                                        <p>
-                                            text text text text text text
-                                        </p>
-                                    </div>
+                            </div>
+                            <div class="col-10">
+                                <a href="#" class="question-title line-clamp">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                    expedita
+                                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                </a>
+                                <div class="bottom-of-question">
                                     <div class="question-tags custom-scrollbar">
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row bottom-question-content">
-                                <div class="col">
-                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
-                                    </div>
+                                    <div class="question-date">last answer added in 0000/00/00 </div>
 
                                 </div>
-                                <div class="col">
-                                    <div class="question-date"> 0000/00/00 </div>
-
-                                </div>
-
                             </div>
                         </div>
+                        <div class="row  question-item ">
+                            <div class="col-2">
+                                <div class="row">
+                                    <div class="col-5 votes-num-div nums-que">
+                                        <span class="votes-num-span">200</span>
+                                        <span class="votes-word">votes</span>
+
+                                    </div>
+                                    <div class="col-5 answers-num-div nums-que">
+                                        <span class="answers-num-span">5</span>
+                                        <span class="answers-word">answers</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-10">
+                                <a href="#" class="question-title line-clamp">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                    expedita
+                                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                </a>
+                                <div class="bottom-of-question">
+                                    <div class="question-tags custom-scrollbar">
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                                    </div>
+                                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
                     <!-- center column end  -->
 
@@ -432,28 +420,9 @@
             </div>
             <!-- right column start  -->
             <div class="d-none d-xl-block col-xl-3  right-column">
-                <div class="card tags-card">
-                    <h5 class="card-header">Tags</h5>
-                    <div class="card-body tags-div">
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
-                        <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
+                <div class="cus-card tags-card">
+                    <h5 class="cus-card-header">Tags</h5>
+                    <div class="cus-card-body tags-div">
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
                         <button type="button" class="btn btn-outline-info btn-tag">Tag</button>
@@ -463,21 +432,20 @@
                     </div>
                 </div>
                 <div class="right-bottom-column">
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
-                    rigth column
+                    <div class="cus-card ">
+                        <h5 class="cus-card-header">column title</h5>
+                        <div class="cus-card-body ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
+                                amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
+                                aspernatur dolore laudantium corporis provident?</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-            <!-- right column end  -->
+                 <!-- right column end  -->
         </div>
     </div>
-
     <script src="js/bootstrap.min.js"></script>
 
 </body>
