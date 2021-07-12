@@ -43,3 +43,6 @@ function addCateClick (e) {
     // listToAddId=$(this).parent().next(".categories-list").attr("id");
 
 }
+function searchTagTable(){
+    
+}

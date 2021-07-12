@@ -17,3 +17,10 @@
     color: white;
     cursor:pointer;
 }
+.toolbar-tag-table{
+    margin: 16px 0;
+}
+.table-indcator{
+    float: right;
+    margin: 10px;
+}
