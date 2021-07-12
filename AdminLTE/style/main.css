@@ -1,0 +1,19 @@
+:root{
+    --primary-color:#007bff;
+}
+.add-cate-m-btn{
+    float: right;
+    font-size: 20px;
+    padding: 3px 10px;
+}
+.categories-list{
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.category-list-item:hover,
+.categories-list .active{
+    background-color: var(--primary-color);
+    color: white;
+    cursor:pointer;
+}
