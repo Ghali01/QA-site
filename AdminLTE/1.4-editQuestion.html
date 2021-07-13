@@ -20,7 +20,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="css/main.css">
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
+  <!-- Summernote -->
+  <script src="plugins/summernote/summernote-bs4.min.js"></script>
+  <!-- summernote -->
+  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <script src="js/main.js"></script>
+
 </head>
 
 <body class="sidebar-mini sidebar-collapse">
@@ -368,12 +373,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Search Questions</h1>
+              <h1 class="m-0">Edit Question</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item "><a href="#">Q/A</a></li>
-                <li class="breadcrumb-item active"><a href="#">Questons</a></li>
+                <li class="breadcrumb-item active"><a href="#">Home</a></li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -385,196 +389,116 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Questions</h3>
+                  <h3 class="card-title">Question Title</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <div class="row toolbar-tag-table">
-                    <div class="col-3">
-                      <form>
-                        <div class="input-group">
-                          <input type="search" class="form-control form-control-md search-inp-t"
-                            placeholder="Search by title or id">
-                          <div class="input-group-append">
-                            <button type="submit" class="btn btn-md btn-default">
-                              <i class="fa fa-search"></i>
-                            </button>
-                          </div>
-                        </div>
-
-                    </div>
-                    <div class="col-4">
-                      <div class="sort-by-sea">  
-                        <span class="sortby-wrd">
-                        Sort By:
-                        </span>
-                        <input type="checkbox" name="sortby-date" id="sortby-date">
-                        <label for="sortby-date">Date</label>
-                        <input type="checkbox" name="sortby-answers" id="sortby-answers">
-                        <label for="sortby-answers">Answers</label>
+                  <div class="row">
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>Category lvl 1</label>
+                        <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
                       </div>
-                      </form>
+                    </div>
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>Category lvl 2</label>
+                        <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>Category lvl 3</label>
+                        <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>Category lvl 4</label>
+                        <select class="form-control">
+                          <option>option 1</option>
+                          <option>option 2</option>
+                          <option>option 3</option>
+                          <option>option 4</option>
+                          <option>option 5</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-                  <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th style="width:13%">Title</th>
-                        <th style="width: 30%;">Text</th>
-                        <th style="width: 11%;">Aouthr</th>
-                        <th style="width: 11%;">Date</th>
-                        <th style="width: 10%;">Answers</th>
-                        <th style="width: 10%;">Id</th>
-                        <th style="width: 15%;">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          lorem ipsum
-                        </td>
-                        <td>
-                          <p class="que-table-con">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga repellendus aut ipsum quod minus veritatis doloremque repudiandae dolores dolore sequi! Praesentium asperiores quidem alias temporibus quam sed sapiente in dolores!
-                          </p>
-                        </td>
-                        <td>
-                          <a href="#">
-                            User User
-                          </a>
-                        </td>
-                        <td>00-00-0000</td>
-                        <td>15</td>
-                        <td>3235485</td>
-                        <td>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-edit btn-app-icon"></i>Edit
-                          </a>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-external-link-alt btn-app-icon"></i>Show
-                          </a>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="fas fa-angle-right btn-app-icon"></i>Answers
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="far fa-comment-alt"></i>Comments
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          lorem ipsum
-                        </td>
-                        <td>
-                          <p class="que-table-con">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga repellendus aut ipsum quod minus veritatis doloremque repudiandae dolores dolore sequi! Praesentium asperiores quidem alias temporibus quam sed sapiente in dolores!
-                          </p>
-                        </td>
-                        <td>
-                          <a href="#">
-                            User User
-                          </a>
-                        </td>
-                        <td>00-00-0000</td>
-                        <td>15</td>
-                        <td>32352528</td>
-                        <td>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-edit btn-app-icon"></i>Edit
-                          </a>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-external-link-alt btn-app-icon"></i>Show
-                          </a>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="fas fa-angle-right btn-app-icon"></i>Answers
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="far fa-comment-alt"></i>Comments
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          lorem ipsum
-                        </td>
-                        <td>
-                          
-                          <p class="que-table-con">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga repellendus aut ipsum quod minus veritatis doloremque repudiandae dolores dolore sequi! Praesentium asperiores quidem alias temporibus quam sed sapiente in dolores!
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error esse fuga omnis dolorem necessitatibus in nobis, incidunt cumque sed fugiat, quibusdam blanditiis facilis quam inventore consectetur quod repellat! Minima, similique.
-                          </p>
-              
-                        </td>
-                        <td>
-                          <a href="#">
-                            User User
-                          </a>
-                        </td>
-                        <td>00-00-0000</td>
-                        <td>15</td>
-                        <td>3255485</td>
-                        <td>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-edit btn-app-icon"></i>Edit
-                          </a>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-external-link-alt btn-app-icon"></i>Show
-                          </a>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="fas fa-angle-right btn-app-icon"></i>Answers
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="far fa-comment-alt"></i>Comments
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
+                  <div id="summernote">Hello Summernote</div>
 
-                  </table>
-                  <div class="dataTables_paginate paging_simple_numbers table-indcator" id="example2_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="example2_previous">
-                        <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
-                          Previous
-                        </a>
-                      </li>
-                      <li class="paginate_button page-item active">
-                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
-                          1
-                        </a>
-                      </li>
-                      <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
-                          2
-                        </a>
-                      </li>
-                      <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
-                          3
-                        </a>
-                      </li>
-                      <li class="paginate_button page-item previous disabled" id="example2_next">
-                        <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
-                          Next
-                        </a>
-                      </li>
+                  <div class="add-tag-to-que-div">
+                    <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
+                      class="form-control que-input que-tags-input" placeholder="Add Tags">
+                    <ul class="tags-list custom-scrollbar">
+                      <li class="tags-list-item">Tag 1 </li>
+                      <li class="tags-list-item">Tag 2 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Tag 3 </li>
+                      <li class="tags-list-item">Teg 4 </li>
+                      <li class="tags-list-item">Teg 5 </li>
                     </ul>
+
+
+                    <div class="card add-tags-q">
+                      <h5 class="card-header">Tags</h5>
+                      <div class="card-body tags-div" id="tags-div-ol">
+
+                        <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
+                          Tag
+                          <div class="btn remove-tag-btn">
+                            <i class="fas fa-times"></i>
+                          </div>
+                        </button>
+
+                      </div>
+                    </div>
+
+                  
+                  
                   </div>
+                  <button  class="btn btn-primary float-right" >Save</button>
                 </div>
-                <!-- /.card-body -->
               </div>
             </div>
 

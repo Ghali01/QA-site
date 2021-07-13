@@ -509,6 +509,8 @@ body{
 .vp-num-ques .added-by-div{
     display: inline-block;
 }
+
+
 .answers-num-div{
     border:1px solid #57af76;
 }
@@ -1685,14 +1687,20 @@ a.go{
     background-color: var(--primary-color);
     
 }
+.await-item-ans .question-item{
+    padding-bottom: 0;
+}
 .answers-num-span-grid{
     margin: 0 7px;
     margin-top: 5px;
     font-size: 14px;
-    border: 1px solid var(--titles-colors);
+    border: 1px solid var(--titlesO-colors);
     border-bottom: none;
     border-radius: 5px 5px 0 0;
     padding: 3px;
+    display: inline-block;
+    width: auto;
+    color: var(--black-600);
 
 }
 .question-options-bottom-wb{

@@ -1,10 +1,189 @@
-$(document).ready(function () {
+var addedTags = [];
 
+$(document).ready(function () {
+    $('#summernote').summernote();
     $(".category-list-item").click(CategoryListClick);
     $(".categories-list").children().first().click();
 
     $(".add-cate-m-btn").click(addCateClick);
 
+    $(".btn-select").click(function (e) {
+        e.preventDefault();
+        $(".custom-select-list").css({
+            visibility: "hidden"
+
+        });
+        $(this).next().css({
+            visibility: "visible"
+
+        });
+        if (!$(this).hasClass("btn-select-act"))
+            $(this).toggleClass("btn-select-act");
+    }
+    );
+    $(window).click(function () {
+        const lists = document.querySelectorAll(".custom-select-list");
+        for (var i = 0; i < lists.length; i++) {
+            if ($(lists[i]).css("visibility") === "visible") {
+                $(lists[i]).css({
+                    visibility: "hidden"
+
+                });
+                $(lists[i]).prev().toggleClass("btn-select-act");
+
+            }
+        }
+        $(".tags-list").css({ display: "none" });
+
+    });
+    $(".custom-select").click(function (event) {
+        event.stopPropagation();
+    });
+    $(".tags-list").click(function (event) {
+        event.stopPropagation();
+    });
+    $(".custom-select-item").click(function () {
+        $(this).parent().prev().text("");
+        $(this).parent().prev().append("<span class=\"selected-span\">" + $(this).text() + "</span>");
+        $(this).parent().prev().append("<i class=\"fas fa-caret-down select-arrow\"></i>")
+        $(this).parent().css({
+            visibility: "hidden"
+
+        });
+        $(this).parent().prev().toggleClass("btn-select-act");
+    }
+    );
+    // custom select end
+    
+            // tag list start
+            $("#que-tags-input").keydown(function (e) {
+
+                if (e.which == 38 || e.which == 40)
+                    e.preventDefault();
+                else if (e.which == 13) {
+                    var tagText = $(".current-list-tag").text();
+                    $(this).val("");
+                    $(".current-list-tag").removeClass("current-list-tag");
+                    if (tagText)
+                        addTagBtn(tagText,$(this).data("tags-div"));
+    
+                }
+    
+            })
+            var currentPos = 0;
+            $("#que-tags-input").keyup(function (e) {
+                console.log(e.which);
+                if (!(e.which == 40 || e.which == 38))
+                    currentPos = 0;
+    
+                if ($(this).text().length == 1)
+                    $(".current-list-tag").removeClass("current-list-tag");
+    
+                var found = 0;
+                var hasHover = null;
+                $(this).next().children().map(function (c) {
+                    if (!$(this).text().startsWith($("#que-tags-input").val()) || addedTags.includes($(this).text()))
+                        $(this).hide()
+                    else {
+                        found++;
+                        $(this).show();
+                    }
+                    if ($(this).hasClass("current-list-tag"))
+                        hasHover = this;
+                });
+                if ($(this).val() == "" || found == 0)
+                    $(this).next().css({ display: "none" });
+                else
+                    $(this).next().css({ display: "block" });
+                if (e.which == 38) {
+                    if (hasHover == null) {
+                        $(this).next().children().last().addClass("current-list-tag");
+                    }
+                    else {
+                        $(hasHover).removeClass("current-list-tag");
+                        $(hasHover).prevAll("li:visible").first().addClass("current-list-tag");
+                        currentPos--;
+    
+                    }
+                    console.log(currentPos);
+    
+                    if (currentPos <= 0) {
+                        currentPos = found;
+    
+                        $(this).next().animate({
+                            scrollTop: $(this).next().prop("scrollHeight")
+                        }, 200);
+                        $(".current-list-tag").removeClass("current-list-tag");
+                        $(hasHover).removeClass("current-list-tag");
+                        $(this).next().children().last().addClass("current-list-tag");
+    
+                    }
+                    else if (currentPos <= found - 3)
+                        $(this).next().animate({
+                            scrollTop: "-=" + ($(".tags-list-item").height() + 2)
+                        }, 200);
+    
+                }
+                else if (e.which == 40) {
+                    if (hasHover == null) {
+                        currentPos = 1;
+                        $(this).next().children().first("li:visible").addClass("current-list-tag");
+                    }
+                    else {
+    
+                        $(hasHover).removeClass("current-list-tag");
+                        $(hasHover).nextAll("li:visible").first().addClass("current-list-tag");
+                        currentPos++;
+                    }
+    
+    
+                    if (currentPos > found) {
+                        currentPos = 1;
+    
+                        $(this).next().animate({
+                            scrollTop: '0'
+                        }, 200);
+                        $(hasHover).removeClass("current-list-tag");
+                        $(this).next().children().first().addClass("current-list-tag");
+    
+                    }
+    
+                    if (currentPos >= 3)
+                        $(this).next().animate({
+                            scrollTop: '+=' + ($(".tags-list-item").height() + 2)
+                        }, 200);
+    
+                }
+    
+            });
+            $(".tags-list-item").click(function () {
+    
+                var tagText = $(this).text();
+    
+                addTagBtn(tagText);
+                $(this).parent().css({ display: 'none' });
+            });
+            // tag list end
+    
+            $(".btn-tag-removeable").hover(function () {
+                // over
+                $(this).find(".remove-tag-btn").css("border-color", "white");    
+            }, function () {
+                // out
+                $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
+
+            }
+        );
+        $(".remove-tag-btn").click(function (e) { 
+            console.log("test");
+            $(this).parent().addClass("remove-grid-item");
+            let clicked=this;
+            function aniCallBack(){
+            $(clicked).parent().css("display","none");
+                
+            }
+            let aniTimeOut=setTimeout(aniCallBack,185);
+        });    
     }
 );
 function CategoryListClick(e) { 
@@ -40,9 +219,36 @@ function addCateClick (e) {
     $("#add-cate-id").val(prevLiActId);
     $("#add-cate-lvl").val(lvl)   
     
-    // listToAddId=$(this).parent().next(".categories-list").attr("id");
 
 }
-function searchTagTable(){
-    
+
+function addTagBtn(tagText,tagsDivId) {
+    let buttonTag = document.createElement("button");
+    $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100","btn-tag-removeable"]);
+    $(buttonTag).attr("type", "button");
+    $(buttonTag).text(tagText);
+    let removeBtn=document.createElement("div");
+    $(removeBtn).addClass(["btn" ,"remove-tag-btn"]);
+    $(removeBtn).append("<i class=\"fas fa-times\"></i>");
+    $(buttonTag).append(removeBtn);
+    $(tagsDivId).append(buttonTag);
+    $(buttonTag).hover(function () {
+        // over
+        $(this).find(".remove-tag-btn").css("border-color", "white");    
+    }, function () {
+        // out
+        $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
+
+    }
+);
+    $(removeBtn).click(function (e) { 
+        $(this).parent().addClass("remove-grid-item");
+        let clicked=this;
+        function aniCallBack(){
+        $(clicked).parent().css("display","none");
+            
+        }
+        let aniTimeOut=setTimeout(aniCallBack,185);
+    });
+    addedTags.push(tagText);
 }
