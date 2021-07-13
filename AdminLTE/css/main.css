@@ -67,8 +67,8 @@
     --green-025: #2e4233;
     --green-050: #344b3a;
     --green-100: #3d6048;
-    --theme-tag-color: var(--powder-700);
-    --theme-tag-background-color: var(--powder-100);
+    --theme-tag-color: #c2c7d0;
+    --theme-tag-background-color: #343a40;
     --gold: rgb(255, 234, 131);
     --gold-lighter: #5e553c;
     --gold-dark: rgb(86,82,63);
@@ -256,4 +256,19 @@
 }
 .add-tags-q{
     margin-top: 16px;
+}
+.question-title-inp{
+    margin-bottom: 16px;
+}
+.data-meta-que .d-group{
+    margin: 0 16px;
+    display: inline-block;
+}
+.data-meta-que .data{
+    font-size: 14px;
+}
+.edit-comment{
+    width: 100%;
+    min-height: 200px;
+    border: 1px solid var(--black-100);
 }
