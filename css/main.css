@@ -1273,6 +1273,7 @@ a.go{
     margin-bottom:10px ;
 }
 .add-que-button{
+    margin-top: 15px;
     
     float: right;
 }
@@ -2543,4 +2544,7 @@ a.go{
 }
 .badge-div .badge-num-span{
     margin-left: 0;
+}
+.btn-tag-removeable:hover .remove-tag-btn{
+    border-color: var(--powder-800);
 }

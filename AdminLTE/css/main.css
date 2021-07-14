@@ -97,6 +97,12 @@
     color: white;
     cursor:pointer;
 }
+.categories-list .active .del-cate-btn,
+.category-list-item:hover .del-cate-btn{
+    color: white;
+    border-color: white ;
+    background-color: var(--primary-color); 
+}
 .toolbar-tag-table{
     margin: 16px 0;
 }
@@ -278,7 +284,7 @@
 }
 .btn-app-sm{
     width: 35px;
-    height: 30px;
+    height: 35px;
     font-size: 8px;
     padding-top: 3px;
 }

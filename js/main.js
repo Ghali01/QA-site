@@ -386,15 +386,7 @@ $(document).ready(
                 $($(this).data("content-p")+" "+$(this).data("content")).css("display", "block");
             })
             // side list end
-            $(".btn-tag-removeable").hover(function () {
-                    // over
-                    $(this).find(".remove-tag-btn").css("border-color", "white");    
-                }, function () {
-                    // out
-                    $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
 
-                }
-            );
             $(".remove-tag-btn").click(function (e) { 
                 console.log("test");
                 $(this).parent().addClass("remove-grid-item");
@@ -440,15 +432,7 @@ function addTagBtn(tagText,tagsDivId) {
     $(removeBtn).append("<i class=\"fas fa-times\"></i>");
     $(buttonTag).append(removeBtn);
     $(tagsDivId).append(buttonTag);
-    $(buttonTag).hover(function () {
-        // over
-        $(this).find(".remove-tag-btn").css("border-color", "white");    
-    }, function () {
-        // out
-        $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
 
-    }
-);
     $(removeBtn).click(function (e) { 
         $(this).parent().addClass("remove-grid-item");
         let clicked=this;

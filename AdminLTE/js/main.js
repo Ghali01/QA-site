@@ -189,6 +189,7 @@ $(document).ready(function () {
             let aniTimeOut=setTimeout(aniCallBack,185);
         });    
         $(".del-cate-btn").click(deleteCateBtn);
+        $(".ban-user-btn").click(banUserBtn);
     }
 );
 function CategoryListClick(e) { 
@@ -277,4 +278,8 @@ function deleteCateBtn(){
 function deleteTagBtn(){
     $("#del-tag-id").val($(this).data("tag-id"));
     $("#del-tag-name").text($(this).data("tag-name"));
+}
+function banUserBtn(){
+    $("#ban-user-name").text($(this).data("user-name"));
+    $("#ban-user-id").val($(this).data("user-id"));
 }
