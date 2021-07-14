@@ -2548,3 +2548,15 @@ a.go{
 .btn-tag-removeable:hover .remove-tag-btn{
     border-color: var(--powder-800);
 }
+.dropdown-subs{
+    background-color: transparent;
+    border: none;
+}
+.dropdown-subs .dropdown-item {
+    color: var(--categories-color);
+    background-color: transparent;
+}
+.dropdown-subs .dropdown-item:hover{
+    background-color:transparent;
+    color: var(--primary-color);
+}
