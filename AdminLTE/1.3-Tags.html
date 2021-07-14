@@ -255,7 +255,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     Users
                                 </p>
                             </a>
-                           
+
                         </li>
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
@@ -391,12 +391,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-9">
+                                            <button class="btn btn-default add-btn" data-lvl="1" data-toggle="modal"
+                                                data-target="#add-tag-modal">+</button>
+                                        </div>
                                     </div>
                                     <table id="example1" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th style="width:10%">Tag Name</th>
                                                 <th>Summary</th>
+                                                <th style="width: 6%;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -412,6 +417,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     native iOS apps sharing business logic with Android apps. Language
                                                     development costs are borne by JetBrains, while the Kotlin
                                                     Foundation protects the Kotlin trademark</td>
+                                                <td>
+                                                    <button class="btn btn-app cus-btn-app d-block del-tag-btn" data-lvl="2" data-toggle="modal" data-target="#del-tag-modal"
+                                                    data-tag-id="51" data-tag-name="Android">
+                                                        <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                                                    </button>
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Flutter</td>
@@ -419,6 +430,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     Google. It is used to develop cross platform applications for
                                                     Android, iOS, Linux, Mac, Windows, Google Fuchsia, and the web from
                                                     a single codebase. </td>
+                                                <td>
+
+                                                    <button class="btn btn-app cus-btn-app d-block del-tag-btn" data-lvl="2" data-toggle="modal" data-target="#del-tag-modal"
+                                                    data-tag-id="56" data-tag-name="Flutter">
+                                                        <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                                                    </button>
+                                                </td>
                                             </tr>
 
 
@@ -482,6 +500,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
         </aside>
         <!-- /.control-sidebar -->
+        <!-- Modal -->
+        <div class="modal fade" id="add-tag-modal" tabindex="-1" role="dialog" aria-labelledby="add-tag-modalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="add-tag-modalLabel">Add Tag</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="text" class="form-control" placeholder="Category Name">
+                            <textarea  class="form-control" placeholder="Description" style="margin-top: 20px;"></textarea>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- add modal end -->
+
+        <!-- delet category modal -->
+        <div class="modal fade" id="del-tag-modal" tabindex="-1" role="dialog" 
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="del-tag-modalLabel">Delete Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <p>Do you want delete <span class="f-bold" id="del-tag-name"></span> Tag?
+                            </p>
+                            <input type="hidden" name="cate-id" id="del-tag-id">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>

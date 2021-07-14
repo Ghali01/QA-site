@@ -80,7 +80,8 @@
     --bronze-lighter: #4d433b;
 
 }
-.add-cate-m-btn{
+.add-cate-m-btn,
+.add-btn{
     float: right;
     font-size: 20px;
     padding: 3px 10px;
@@ -274,4 +275,17 @@
     width: 100%;
     min-height: 200px;
     border: 1px solid var(--black-100);
+}
+.btn-app-sm{
+    width: 35px;
+    height: 30px;
+    font-size: 8px;
+    padding-top: 3px;
+}
+.btn-app-sm .btn-app-icon{
+    font-size: 5px;
+}
+.del-cate-name,
+.f-bold{
+    font-weight: bold;
 }

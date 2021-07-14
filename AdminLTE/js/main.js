@@ -1,12 +1,16 @@
 var addedTags = [];
 
 $(document).ready(function () {
+    // todo
+    try{
+
     $('#summernote').summernote();
+    }catch(e){}
     $(".category-list-item").click(CategoryListClick);
     $(".categories-list").children().first().click();
 
     $(".add-cate-m-btn").click(addCateClick);
-
+    $(".del-tag-btn").click(deleteTagBtn);
     $(".btn-select").click(function (e) {
         e.preventDefault();
         $(".custom-select-list").css({
@@ -184,6 +188,7 @@ $(document).ready(function () {
             }
             let aniTimeOut=setTimeout(aniCallBack,185);
         });    
+        $(".del-cate-btn").click(deleteCateBtn);
     }
 );
 function CategoryListClick(e) { 
@@ -202,7 +207,20 @@ function CategoryListClick(e) {
         $(cateLi).addClass(["list-group-item" ,"category-list-item"]);
         $(cateLi).attr("data-sub", JSON.stringify(element['sub']));
         $(cateLi).attr("data-cate-id", element['id']);
-        $(cateLi).text(element['name']);
+        let spanName=document.createElement("span");
+        $(spanName).text(element['name']);
+        $(spanName).addClass("category-name");
+        $(cateLi).append(spanName);
+        let deleteBtn=document.createElement("button");
+        $(deleteBtn).addClass(["btn ","btn-app" , "cus-btn-app" ,"btn-app-sm ","float-right" ,"del-cate-btn"]);
+    //  data-lvl="2" data-toggle="modal" data-target="#add-cate-modal"
+
+        $(deleteBtn).attr("data-lvl","2");
+        $(deleteBtn).attr("data-toggle","modal");
+        $(deleteBtn).attr("data-target","#del-cate-modal");
+        $(deleteBtn).append('<i class="far fa-trash-alt btn-app-icon"></i>Delete');
+        $(deleteBtn).click(deleteCateBtn);        
+        $(cateLi).append(deleteBtn);
         $(cateLi).click(CategoryListClick);
         $(nextList).append(cateLi);            
     });
@@ -251,4 +269,12 @@ function addTagBtn(tagText,tagsDivId) {
         let aniTimeOut=setTimeout(aniCallBack,185);
     });
     addedTags.push(tagText);
+}
+function deleteCateBtn(){
+    $("#del-cate-id").val($(this).parent().data("cate-id"));
+    $("#del-cate-name").text($(this).prevAll(".category-name").text());
+}
+function deleteTagBtn(){
+    $("#del-tag-id").val($(this).data("tag-id"));
+    $("#del-tag-name").text($(this).data("tag-name"));
 }

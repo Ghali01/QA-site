@@ -250,7 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Users
                 </p>
               </a>
-         
+
             </li>
             <li class="nav-item ">
               <a href="#" class="nav-link ">
@@ -369,7 +369,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-3 list-col">
               <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                  Categories lvl 1 <button class="btn btn-default add-cate-m-btn" data-lvl="1" data-toggle="modal" data-target="#add-cate-modal">+</button>
+                  Categories lvl 1 <button class="btn btn-default add-cate-m-btn" data-lvl="1" data-toggle="modal"
+                    data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list" id="categories-list-1">
                   <li class="list-group-item category-list-item  " data-cate-id="1" data-sub='[
@@ -420,7 +421,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                      ]
                   }
-               ]'>An item</li>
+               ]'>
+                    <span class="category-name">An item</span>
+
+                    <button class="btn btn-app  cus-btn-app btn-app-sm float-right del-cate-btn" data-lvl="2"
+                      data-toggle="modal" data-target="#del-cate-modal">
+                      <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                    </button>
+                  </li>
 
                 </ul>
               </div>
@@ -428,7 +436,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-3 list-col">
               <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                  Categories lvl 2 <button class="btn btn-default add-cate-m-btn" data-lvl="2" data-toggle="modal" data-target="#add-cate-modal">+</button>
+                  Categories lvl 2 <button class="btn btn-default add-cate-m-btn" data-lvl="2" data-toggle="modal"
+                    data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list " id="categories-list-2">
 
@@ -438,7 +447,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-3 list-col">
               <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                  Categories lvl 3 <button class="btn btn-default add-cate-m-btn" data-lvl="3" data-toggle="modal" data-target="#add-cate-modal">+</button>
+                  Categories lvl 3 <button class="btn btn-default add-cate-m-btn" data-lvl="3" data-toggle="modal"
+                    data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list" id="categories-list-3">
 
@@ -448,7 +458,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-3 list-col">
               <div class="card" style="width: 18rem;">
                 <div class="card-header">
-                  Categories lvl 4 <button class="btn btn-default add-cate-m-btn" data-lvl="4" data-toggle="modal" data-target="#add-cate-modal">+</button>
+                  Categories lvl 4 <button class="btn btn-default add-cate-m-btn" data-lvl="4" data-toggle="modal"
+                    data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list" id="categories-list-4">
 
@@ -473,34 +484,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </aside>
     <!-- /.control-sidebar -->
     <!-- add modal start -->
-          <!-- Modal -->
-          <div class="modal fade" id="add-cate-modal" tabindex="-1" role="dialog" aria-labelledby="add-cate-modalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="add-cate-modalLabel">Add Category</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <form >
-                  <input type="hidden" name="lvl" id="add-cate-lvl">
-                  <input type="hidden" name="cate-id" id="add-cate-id">
-                  <input type="text" class="form-control" placeholder="Category Name">
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
-              </div>
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="add-cate-modal" tabindex="-1" role="dialog" aria-labelledby="add-cate-modalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="add-cate-modalLabel">Add Category</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <input type="hidden" name="lvl" id="add-cate-lvl">
+              <input type="hidden" name="cate-id" id="add-cate-id">
+              <input type="text" class="form-control" placeholder="Category Name">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Add</button>
           </div>
         </div>
-
-
+      </div>
+    </div>
     <!-- add modal end -->
+
+    <!-- delet category modal -->
+    <div class="modal fade" id="del-cate-modal" tabindex="-1" role="dialog" aria-labelledby="del-cate-modalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="del-cate-modalLabel">Delete Category</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <p>Do you want delete <span class="del-cate-name" id="del-cate-name"></span> and everything related to it?
+              </p>
+              <input type="hidden" name="cate-id" id="del-cate-id">
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <!-- ./wrapper -->
 
