@@ -7,6 +7,7 @@
     --tPrimary-color:rgb(192, 70, 0);
     --secodry-color:#3ca4ff;
     --tSecodry-color:#1f74be;
+    --white-90:rgb(215,215,215);
     --titles-colors:rgb(179, 179, 179);
     --titlesO-colors:rgba(179, 179, 179,.4);
     --categories-color:rgb(245, 245, 245);
@@ -255,8 +256,7 @@ body{
     padding-right: 0;
 }
 .subcategory-item{
-    padding: 3px;
-    padding-bottom: 4px;
+    padding: 0 3px;
     cursor: pointer;
 }
 .subcategory-item:hover{
@@ -898,10 +898,10 @@ body{
     }
 }
 .side-conten-title{
-    color: var(--titles-colors);
+    color: var(--white-90);
 }
 .side-content-item{
-    color: var(--titlesO-colors);
+    color: var(--titles-colors);
     font-size: 20px;
 }
 /* side content end */
@@ -957,7 +957,7 @@ body{
     color: var(--titles-colors);
 }
 .acc a{
-    color: var(--secodry-color);
+    color: var(--primary-color);
 }
 .form-btn,
 .form-btn:hover,
@@ -1130,12 +1130,19 @@ a.go{
 .nav-link:hover{
     color: rgb(199,77,7) !important;
 }
-.forget-pass{
+.forget-pass
+.acc-link{
     margin: 6px auto;
     text-align: center;
     display: block;
+    color: var(--primary-color);
+    text-decoration: none;
     font-size: 13px;
 
+}
+.forget-pass:hover,
+.acc a:hover{
+    color: var(--primary-color);
 }
 .form-title{
     margin: auto;
@@ -2559,4 +2566,13 @@ a.go{
 .dropdown-subs .dropdown-item:hover{
     background-color:transparent;
     color: var(--primary-color);
+}
+.subcategory-item a,
+.subcategory-item a:hover,
+.subcategory-item a:visited,
+.subcategory-item a:active{
+    color: var(--categories-color);
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
 }
