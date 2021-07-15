@@ -136,12 +136,17 @@ $(document).ready(
             if (e.which == 38 || e.which == 40)
                 e.preventDefault();
             else if (e.which == 13) {
-                var tagText = $(".current-list-tag").text();
+                let tagText = $(".current-list-tag").text();
+                let tagId=$(".current-list-tag").data("tag-id");
                 $(this).val("");
                 $(".current-list-tag").removeClass("current-list-tag");
                 if (tagText)
                     addTagBtn(tagText,$(this).data("tags-div"));
-
+                    let tagsId = JSON.parse($("#tags-input").val());
+                    tagsId.push(tagId)
+                    console.log(tagsId);
+                    $("#tags-input").val("["+tagsId.toString()+"]");
+                
             }
 
         })

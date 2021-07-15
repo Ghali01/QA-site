@@ -19,13 +19,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="css/main.css">
   <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- Summernote -->
-  <script src="plugins/summernote/summernote-bs4.min.js"></script>
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
-  <script src="js/main.js"></script>
 
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="js/main.js"></script>
 </head>
 
 <body class="sidebar-mini sidebar-collapse">
@@ -254,7 +250,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Users
                 </p>
               </a>
-         
+
             </li>
             <li class="nav-item ">
               <a href="#" class="nav-link ">
@@ -353,7 +349,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Edit Question</h1>
+              <h1 class="m-0">Polls Management</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -372,113 +368,103 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Question Title</h3>
-                  <div class="data-meta-que">
-                    <div class="d-group">
-                      <span class="title">ID: </span>
-                      <span class="data">
-                        <a href="#">
-                          2145541
-                        </a>
-                      </span>
-                    </div>
-                    <div class="d-group">
-                      <span class="title">Added By: </span>
-                      <span class="data">
-                        <a href="#">User User</a>
-                      </span>
-                    </div>
-                  </div>
+                  <h3 class="card-title">Polls</h3>
+
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
-
-                  <div class="row">
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 1</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 2</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 3</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 4</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
+                  <div>
+                    <a class="btn btn-default add-btn" data-lvl="1" data-toggle="modal"
+                    data-target="#add-tag-modal" style="margin-bottom: 10px;">+</a>
                   </div>
-                  <input type="text" class="form-control question-title-inp" placeholder="Question Title">
-                  <div id="summernote">Hello Summernote</div>
+                  <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th style="width:15%">Title</th>
+                        <th style="width:30%">description</th>
+                        <th style="width:5%;">Participants</th>
+                        <th style="width: 5%;">Participation rate</th>
+                        <th style="width: 25%;">Target(s)</th>
+                        <th style="width: 20%;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Poll Title</td>
+                        <td>
+                          <p class="line-clamp-5">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente consectetur, autem dolor necessitatibus nam inventore illum eum corrupti architecto, tempore, fugiat sed reiciendis earum atque explicabo id libero laboriosam soluta.
+                          </p>
+                        </td>
+                        <td>7200</td>
+                        <td>70%</td>
+                        <td>
+                            <h6 class="tiltle">Tags</h6>
+                          
+                            <div class="polls-targets">
+                        <a type="button" class="btn btn-outline-info btn-tag">Tag</a>
+                        <a type="button" class="btn btn-outline-info btn-tag">Tag</a>
+                        <a type="button" class="btn btn-outline-info btn-tag">Tag</a>
+                              
+                            </div>
+                            <h6 class="tiltle">Categories</h6>
 
-                  <div class="add-tag-to-que-div">
-                    <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
-                      class="form-control que-input que-tags-input" placeholder="Add Tags">
-                    <ul class="tags-list custom-scrollbar">
-                      
-                      <li class="tags-list-item" data-tag-id="1">Tag 1 </li>
-                      <li class="tags-list-item" data-tag-id="2">Tag 2 </li>
-                      <li class="tags-list-item" data-tag-id="3">Tag 3 </li>
-                      <li class="tags-list-item" data-tag-id="4">Teg 4 </li>
-                      <li class="tags-list-item" data-tag-id="5">Teg 5 </li>
+                            <div class="polls-targets">
+                              <a href="#" class="btn btn-light cate-grid-item"> Category</a>
+                              <a href="#" class="btn btn-light cate-grid-item"> Category</a>
+                              <a href="#" class="btn btn-light cate-grid-item"> Category</a>
+                            </div>
+                            <a href="#" class="float-right" style="font-size: 14px;"> See All</a>
+                            
+                        </td>
+                        <td>
+
+                          <a class="btn btn-app cus-btn-app">
+                            <i class="fas fa-edit btn-app-icon"></i>Edit
+                          </a>
+                          <a class="btn btn-app cus-btn-app">
+                            <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                          </a>
+                          <a class="btn btn-app cus-btn-app">
+                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                          </a>
+                          <a class="btn btn-app cus-btn-app">
+                            <i class="fas fa-lock btn-app-icon"></i>Lock
+                          </a>
+                        </td>
+                        
+                      </tr>
+                    </tbody>
+
+                  </table>
+                  <div class="dataTables_paginate paging_simple_numbers table-indcator" id="example2_paginate">
+                    <ul class="pagination">
+                      <li class="paginate_button page-item previous disabled" id="example2_previous">
+                        <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
+                          Previous
+                        </a>
+                      </li>
+                      <li class="paginate_button page-item active">
+                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                          1
+                        </a>
+                      </li>
+                      <li class="paginate_button page-item ">
+                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                          2
+                        </a>
+                      </li>
+                      <li class="paginate_button page-item ">
+                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                          3
+                        </a>
+                      </li>
+                      <li class="paginate_button page-item previous disabled" id="example2_next">
+                        <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
+                          Next
+                        </a>
+                      </li>
                     </ul>
-
-
-                    <div class="card add-tags-q">
-                      <h5 class="card-header">Tags</h5>
-                      <div class="card-body tags-div" id="tags-div-ol">
-
-                        <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
-                          Tag
-                          <div class="btn remove-tag-btn">
-                            <i class="fas fa-times"></i>
-                          </div>
-                        </button>
-
-                      </div>
-                      <input type="hidden" name="tags" id="tags-input" value="[]">
-
-                    </div>
-
-
-
                   </div>
-                  <button class="btn btn-primary float-right">Save</button>
                 </div>
               </div>
             </div>

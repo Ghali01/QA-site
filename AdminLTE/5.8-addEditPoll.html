@@ -25,7 +25,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <script src="js/main.js"></script>
-
 </head>
 
 <body class="sidebar-mini sidebar-collapse">
@@ -254,7 +253,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Users
                 </p>
               </a>
-         
+
             </li>
             <li class="nav-item ">
               <a href="#" class="nav-link ">
@@ -353,7 +352,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Edit Question</h1>
+              <h1 class="m-0">add Poll</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -372,113 +371,227 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Question Title</h3>
-                  <div class="data-meta-que">
-                    <div class="d-group">
-                      <span class="title">ID: </span>
-                      <span class="data">
-                        <a href="#">
-                          2145541
-                        </a>
-                      </span>
-                    </div>
-                    <div class="d-group">
-                      <span class="title">Added By: </span>
-                      <span class="data">
-                        <a href="#">User User</a>
-                      </span>
-                    </div>
-                  </div>
+                  <h3 class="card-title">Poll</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
+                  <form>
+                    <input type="text" class="form-control" placeholder="Titile...">
+                  </form>
+                  <div id="summernote"></div>
+                  <div class="row targets-row">
+                    <div class="col-6 targets-col">
 
-                  <div class="row">
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 1</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 2</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 3</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 4</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="text" class="form-control question-title-inp" placeholder="Question Title">
-                  <div id="summernote">Hello Summernote</div>
-
-                  <div class="add-tag-to-que-div">
-                    <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
-                      class="form-control que-input que-tags-input" placeholder="Add Tags">
-                    <ul class="tags-list custom-scrollbar">
-                      
-                      <li class="tags-list-item" data-tag-id="1">Tag 1 </li>
-                      <li class="tags-list-item" data-tag-id="2">Tag 2 </li>
-                      <li class="tags-list-item" data-tag-id="3">Tag 3 </li>
-                      <li class="tags-list-item" data-tag-id="4">Teg 4 </li>
-                      <li class="tags-list-item" data-tag-id="5">Teg 5 </li>
-                    </ul>
+                      <div class="add-tag-to-que-div">
+                        <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
+                          class="form-control que-input que-tags-input" placeholder="Add Tags">
+                        <ul class="tags-list custom-scrollbar">
+                          <li class="tags-list-item" data-tag-id="1">Tag 1 </li>
+                          <li class="tags-list-item" data-tag-id="2">Tag 2 </li>
+                          <li class="tags-list-item" data-tag-id="3">Tag 3 </li>
+                          <li class="tags-list-item" data-tag-id="4">Teg 4 </li>
+                          <li class="tags-list-item" data-tag-id="5">Teg 5 </li>
+                        </ul>
 
 
-                    <div class="card add-tags-q">
-                      <h5 class="card-header">Tags</h5>
-                      <div class="card-body tags-div" id="tags-div-ol">
+                        <div class="card add-tags-q">
+                          <h5 class="card-header">Tags</h5>
+                          <div class="card-body tags-div" id="tags-div-ol">
 
-                        <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
-                          Tag
-                          <div class="btn remove-tag-btn">
-                            <i class="fas fa-times"></i>
+                            <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
+                              Tag
+                              <div class="btn remove-tag-btn">
+                                <i class="fas fa-times"></i>
+                              </div>
+                            </button>
+
                           </div>
-                        </button>
+                        <input type="hidden" name="tags" id="tags-input" value="[]">
+                          
+                        </div>
+
+
 
                       </div>
-                      <input type="hidden" name="tags" id="tags-input" value="[]">
-
                     </div>
+                    <div class="col-6 targets-col">
 
+                      <div class="row cate-selectes">
+                        <div class="col-2 cate-sel-col">
+                          <div class="form-group">
+                            <label>Category lvl 1</label>
+                            <select class="form-control cate-select">
+                              <option value="0">All</option>
+                              <option value="1" data-sub='[
+                          {
+                             "name":"category 2.1",
+                             "id":"1",
+                             "sub":[
+                                
+                             ]
+                          },
+                          {
+                             "name":"category 2.2",
+                             "id":"2",
+                             "sub":[
+                                {
+                                   "name":"category 3.1",
+                                   "id":"1",
+                                   "sub":[
+                                      {
+                                         "name":"category 4.1",
+                                         "id":"1"
+                                      },
+                                      {
+                                         "name":"category 4.2",
+                                         "id":"2"
+                                      }
+                                   ]
+                                },
+                                {
+                                   "name":"category 3.2",
+                                   "id":"2",
+                                   "sub":[
+                                      {
+                                         "name":"category  2 4.1",
+                                         "id":"1",
+                                         "sub":[
+                                            
+                                         ]
+                                      },
+                                      {
+                                         "name":"category  2 4.2",
+                                         "id":"2",
+                                         "sub":[
+                                            
+                                         ]
+                                      }
+                                   ]
+                                }
+                             ]
+                          }
+                       ]'>option 1</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-2 cate-sel-col">
+                          <div class="form-group">
+                            <label>Category lvl 2</label>
+                            <select class="form-control cate-select">
 
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-2 cate-sel-col">
+                          <div class="form-group">
+                            <label>Category lvl 3</label>
+                            <select class="form-control cate-select" value="5">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-2 cate-sel-col">
+                          <div class="form-group">
+                            <label>Category lvl 4</label>
+                            <select class="form-control cate-select">
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-2">
+                          <button class="btn btn-app add-cate-btn ">
+                            <i class="fas fa-plus"></i>Add
+                          </button>
+                        </div>
+                      </div>
+                      <div class="card add-tags-q">
+                        <h5 class="card-header">Categiries</h5>
+                        <div class="card-body tags-div" id="cate-div-ol">
 
+                          <button type="button" class="btn btn-light cate-grid-item cate-item-removeable">
+                            Category
+                            <div class="btn remove-cate-btn">
+                              <i class="fas fa-times"></i>
+                            </div>
+                          </button>
+
+                        </div>
+                        <input type="hidden" name="categories" id="cates-input" value="[]">
+                      </div>
+                    </div>
                   </div>
-                  <button class="btn btn-primary float-right">Save</button>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Poll Items</h3>
+                        </div>
+                        <div class="card-body polls-items">
+                          <div class="poll-item">
+                            <h6 class="float-right">CheckBox List</h6>
+                            <textarea class="form-control polls-que" placeholder="question text..." ></textarea>
+                            <ul class="poll-choesies">
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                                </button>
+                              </li>
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                                </button>
+                              </li>
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                                </button>
+                              </li>
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                                </button>
+                              </li>
+                            </ul>
+                            <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                          </div>
+                            <div class="poll-item">
+                            <h6 class="float-right">Radio List</h6>
+
+                            <textarea class="form-control polls-que" placeholder="question text..." ></textarea>
+                            <ul class="poll-choesies">
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                                </button>
+                              </li>
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
+                                </button>
+                              </li>
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                                </button>
+                              </li>
+                              <li class="poll-choies">
+                                <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                <button class="btn btn-app btn-app-xs del-cho-btn">
+                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                                </button>
+                              </li>
+                            </ul>
+                            <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -20,12 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="css/main.css">
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- Summernote -->
-  <script src="plugins/summernote/summernote-bs4.min.js"></script>
-  <!-- summernote -->
-  <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <script src="js/main.js"></script>
-
 </head>
 
 <body class="sidebar-mini sidebar-collapse">
@@ -254,7 +249,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   Users
                 </p>
               </a>
-         
+
             </li>
             <li class="nav-item ">
               <a href="#" class="nav-link ">
@@ -353,7 +348,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Edit Question</h1>
+              <h1 class="m-0">User Premissions</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -372,113 +367,104 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Question Title</h3>
-                  <div class="data-meta-que">
-                    <div class="d-group">
-                      <span class="title">ID: </span>
-                      <span class="data">
-                        <a href="#">
-                          2145541
-                        </a>
-                      </span>
-                    </div>
-                    <div class="d-group">
-                      <span class="title">Added By: </span>
-                      <span class="data">
-                        <a href="#">User User</a>
-                      </span>
-                    </div>
-                  </div>
+                  <h3 class="card-title">{User Name} Premissions</h3>
+
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
-
-                  <div class="row">
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 1</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 2</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 3</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="form-group">
-                        <label>Category lvl 4</label>
-                        <select class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <input type="text" class="form-control question-title-inp" placeholder="Question Title">
-                  <div id="summernote">Hello Summernote</div>
-
-                  <div class="add-tag-to-que-div">
-                    <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
-                      class="form-control que-input que-tags-input" placeholder="Add Tags">
-                    <ul class="tags-list custom-scrollbar">
-                      
-                      <li class="tags-list-item" data-tag-id="1">Tag 1 </li>
-                      <li class="tags-list-item" data-tag-id="2">Tag 2 </li>
-                      <li class="tags-list-item" data-tag-id="3">Tag 3 </li>
-                      <li class="tags-list-item" data-tag-id="4">Teg 4 </li>
-                      <li class="tags-list-item" data-tag-id="5">Teg 5 </li>
-                    </ul>
-
-
-                    <div class="card add-tags-q">
-                      <h5 class="card-header">Tags</h5>
-                      <div class="card-body tags-div" id="tags-div-ol">
-
-                        <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
-                          Tag
-                          <div class="btn remove-tag-btn">
-                            <i class="fas fa-times"></i>
+                  <form>
+                    <div class="row">
+                      <div class="col-2">
+                        <fieldset class="perms-set">
+                          <legend class="prem-group-l">Group 1</legend>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm1">
+                            <label class="prem-label" for="perm1">Option 1</label>
                           </div>
-                        </button>
+                          <div class="perm-div">
 
+                            <input class="perm-check" type="checkbox" id="perm2">
+                            <label class="prem-label" for="perm2">Option 2</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm3">
+                            <label class="prem-label" for="perm3">Option 3</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm4">
+                            <label class="prem-label" for="perm4">Option 4</label>
+                          </div>
+                        </fieldset>
                       </div>
-                      <input type="hidden" name="tags" id="tags-input" value="[]">
+                      <div class="col-2">
+                        <fieldset class="perms-set">
+                          <legend class="prem-group-l">Group 2</legend>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm5">
+                            <label class="prem-label" for="perm5">Option 5</label>
+                          </div>
+                          <div class="perm-div">
 
+                            <input class="perm-check" type="checkbox" id="perm6">
+                            <label class="prem-label" for="perm6">Option 6</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm7">
+                            <label class="prem-label" for="perm7">Option 7</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm8">
+                            <label class="prem-label" for="perm8">Option 8</label>
+                          </div>
+                        </fieldset>
+                      </div>
+                      <div class="col-2">
+                        <fieldset class="perms-set">
+                          <legend class="prem-group-l">Group 3</legend>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm9">
+                            <label class="prem-label" for="perm9">Option 9</label>
+                          </div>
+                          <div class="perm-div">
+
+                            <input class="perm-check" type="checkbox" id="perm10">
+                            <label class="prem-label" for="perm10">Option 10</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm11">
+                            <label class="prem-label" for="perm11">Option 11</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm12">
+                            <label class="prem-label" for="perm12">Option 12</label>
+                          </div>
+                        </fieldset>
+                      </div>
+                      <div class="col-2">
+                        <fieldset class="perms-set">
+                          <legend class="prem-group-l">Group 4</legend>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm13">
+                            <label class="prem-label" for="perm13">Option 13</label>
+                          </div>
+                          <div class="perm-div">
+
+                            <input class="perm-check" type="checkbox" id="perm14">
+                            <label class="prem-label" for="perm14">Option 14</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm15">
+                            <label class="prem-label" for="perm15">Option 15</label>
+                          </div>
+                          <div class="perm-div">
+                            <input class="perm-check" type="checkbox" id="perm16">
+                            <label class="prem-label" for="perm16">Option 16</label>
+                          </div>
+                        </fieldset>
+                      </div>
                     </div>
-
-
-
-                  </div>
-                  <button class="btn btn-primary float-right">Save</button>
+                    <hr>
+                    <input type="submit" value="Save" class="btn btn-primary save-btn">
+                  </form>
                 </div>
               </div>
             </div>
@@ -487,6 +473,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
+
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

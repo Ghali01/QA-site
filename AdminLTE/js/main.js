@@ -65,13 +65,17 @@ $(document).ready(function () {
                 if (e.which == 38 || e.which == 40)
                     e.preventDefault();
                 else if (e.which == 13) {
-                    var tagText = $(".current-list-tag").text();
+                    let tagText = $(".current-list-tag").text();
+                    let tagId=$(".current-list-tag").data("tag-id");
                     $(this).val("");
                     $(".current-list-tag").removeClass("current-list-tag");
                     if (tagText)
                         addTagBtn(tagText,$(this).data("tags-div"));
-    
-                }
+                        let tagsId = JSON.parse($("#tags-input").val());
+                        tagsId.push(tagId)
+                        console.log(tagsId);
+                        $("#tags-input").val("["+tagsId.toString()+"]");
+                    }
     
             })
             var currentPos = 0;
@@ -169,16 +173,8 @@ $(document).ready(function () {
             });
             // tag list end
     
-            $(".btn-tag-removeable").hover(function () {
-                // over
-                $(this).find(".remove-tag-btn").css("border-color", "white");    
-            }, function () {
-                // out
-                $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
-
-            }
-        );
-        $(".remove-tag-btn").click(function (e) { 
+            
+        $(".remove-tag-btn ,.remove-cate-btn").click(function (e) { 
             console.log("test");
             $(this).parent().addClass("remove-grid-item");
             let clicked=this;
@@ -190,6 +186,10 @@ $(document).ready(function () {
         });    
         $(".del-cate-btn").click(deleteCateBtn);
         $(".ban-user-btn").click(banUserBtn);
+        $(".cate-select").change(onCateSelectChange);
+        $(".add-cate-btn").click(addCateBtnClick);
+        $(".del-cho-btn").click(deleteChoiceBtn);
+        $(".add-cho-btn").click(addChoiceBtn);
     }
 );
 function CategoryListClick(e) { 
@@ -242,24 +242,14 @@ function addCateClick (e) {
 }
 
 function addTagBtn(tagText,tagsDivId) {
-    let buttonTag = document.createElement("button");
+    let buttonTag = document.createElement("a");
     $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100","btn-tag-removeable"]);
-    $(buttonTag).attr("type", "button");
     $(buttonTag).text(tagText);
     let removeBtn=document.createElement("div");
     $(removeBtn).addClass(["btn" ,"remove-tag-btn"]);
     $(removeBtn).append("<i class=\"fas fa-times\"></i>");
     $(buttonTag).append(removeBtn);
     $(tagsDivId).append(buttonTag);
-    $(buttonTag).hover(function () {
-        // over
-        $(this).find(".remove-tag-btn").css("border-color", "white");    
-    }, function () {
-        // out
-        $(this).find(".remove-tag-btn").css("border-color", "var(--third-color)");    
-
-    }
-);
     $(removeBtn).click(function (e) { 
         $(this).parent().addClass("remove-grid-item");
         let clicked=this;
@@ -282,4 +272,78 @@ function deleteTagBtn(){
 function banUserBtn(){
     $("#ban-user-name").text($(this).data("user-name"));
     $("#ban-user-id").val($(this).data("user-id"));
+}
+function onCateSelectChange(){
+    $(this).parentsUntil(".row").last().nextAll(".cate-sel-col").css("visibility", "hidden");
+    if (!parseInt($(this).val())==0)
+       $(this).parentsUntil(".row").last().next(".cate-sel-col").css("visibility", "visible");
+    let nextSelect=$(this).parentsUntil(".row").last().next(".cate-sel-col").find(".cate-select");
+    let subs= $(this).find("[value="+$(this).val()+"]").data("sub");
+    $(nextSelect).html("");
+    
+    let allOpt =document.createElement("option");
+    $(allOpt).text("All");
+    $(allOpt).val("0");
+    $(nextSelect).append(allOpt);
+    try{
+    subs.forEach(element => {
+        let opt =document.createElement("option");
+        $(opt).text(element['name']);
+        $(opt).val(element['id']);
+        $(opt).attr("data-sub", JSON.stringify(element['sub']));
+        $(nextSelect).append(opt);
+    });
+}catch(e){}
+}
+function addCateBtnClick(){
+    let cateName=null;
+    let cateId=null;
+ 
+    $(".cate-selectes .cate-sel-col:visible").find(".cate-select").map(function(){
+        if(parseInt($(this).val())<=0){
+            if($(this).parentsUntil(".row").last().prev(".cate-sel-col").length){
+            let prevSel=$(this).parentsUntil(".row").last().prev(".cate-sel-col").find(".cate-select");
+            cateId=prevSel.val();
+            cateName=prevSel.find("[value="+cateId+"]").text();
+            }
+        }
+    }
+    );
+    if(!cateId){
+        cateId=0;
+        cateName="All"
+    } 
+    // console.log(cateId);
+    // console.log(cateName);
+    let catesId=JSON.parse($("#cates-input").val());
+    console.log( typeof catesId);
+    if(!(cateId in catesId)){
+    let buttonTag = document.createElement("a");
+    $(buttonTag).addClass(["btn", "btn-light","cate-grid-item" ,"cate-item-removeable", "item-grid-ani-100"]);
+    $(buttonTag).text(cateName);
+    let removeBtn=document.createElement("div");
+    $(removeBtn).addClass(["btn" ,"remove-cate-btn"]);
+    $(removeBtn).append("<i class=\"fas fa-times\"></i>");
+    $(buttonTag).append(removeBtn);
+    $("#cate-div-ol").append(buttonTag);
+    $(removeBtn).click(function (e) { 
+        $(this).parent().addClass("remove-grid-item");
+        let clicked=this;
+        function aniCallBack(){
+        $(clicked).parent().css("display","none");
+            
+        }
+        let aniTimeOut=setTimeout(aniCallBack,185);
+    });
+    catesId.push(cateId);
+    $("#cates-input").val("["+catesId.toString()+"]")
+
+}
+}
+function deleteChoiceBtn(){
+    $(this).parent().remove();
+}
+function addChoiceBtn(){
+    $(this).prevAll(".poll-choesies").append("");
+
 }
