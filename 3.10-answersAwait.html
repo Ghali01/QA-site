@@ -17,7 +17,13 @@
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"> interviews questions</a>
+                <a class="navbar-brand d-none d-sm-inline" href="#"> interviews questions</a>
+                <form class="d-flex search-nav-form">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control search-input" placeholder="Search">
+                    </div>
+                </form>
                 <button class="navbar-toggler  " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -25,12 +31,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- search bar start -->
-                    <form class="d-flex search-nav-form">
-                        <div class="form-group has-search">
-                            <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control search-input" placeholder="Search">
-                        </div>
-                    </form>
+                  
                     <!-- search bar end -->
                     <ul class="navbar-nav ms-auto">
                         <!-- itemes on the right start -->
@@ -56,47 +57,47 @@
                         </li>
                         <!-- itemes on the right start -->
                         <!-- cateagors on sm start -->
-                   
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 1</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 1</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 2</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 2</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 3</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 3</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 4</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 4</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <!-- cateagors on sm end -->
 
                     </ul>
@@ -104,10 +105,8 @@
 
             </div>
         </nav>
-        <!-- navbar end -->
-        <!-- content start -->
     </header>
-    <div class="container-fluid">
+    <div class="container-fluid contnet-container">
 
         <div class="row">
             <!-- categories start -->
@@ -262,7 +261,25 @@
                                     </div>
                                     <div class="col-3">
                                         <div class="sort-by-toolbar" style="display: inline;">
-
+                                            <div class="custom-select" style="width: 50%; display: inline-block;">
+                                                <button class="btn btn-primary btn-select">
+                                                    <span class="selected-span"> date</span>
+                                                    <i class="fas fa-caret-down select-arrow"></i>
+    
+                                                </button>
+                                                <ul class="custom-select-list custom-scrollbar">
+                                                    <li class="custom-select-item">
+                                                        <a href="#" class="custom-link select-link">
+                                                            Newest
+                                                        </a>
+                                                    </li>
+                                                    <li class="custom-select-item">
+                                                        <a href="#" class="custom-link select-link">
+                                                            Oldest
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -366,11 +383,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
                         <div class="await-item await-item-ans">
@@ -421,11 +436,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
                         <div class="await-item await-item-ans">
@@ -476,11 +489,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
                         <div class="await-item await-item-ans">
@@ -531,11 +542,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
                         <div class="await-item await-item-ans">
@@ -586,11 +595,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
                         <div class="await-item await-item-ans">
@@ -641,11 +648,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
                         <div class="await-item await-item-ans">
@@ -696,11 +701,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
                         <div class="await-item await-item-ans">
@@ -751,11 +754,9 @@
                                     class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                         class="fas fa-check"></i> Accept All</button>
                                 <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
                                         class="fas fa-times"></i> Ignore</button>
-                                <button
-                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn"><i
-                                        class="fas fa-external-link-alt"></i> Show</button>
+                                  
                             </div>
                         </div>
 
@@ -765,6 +766,37 @@
                     <!-- center column end  -->
 
                 </div>
+                <footer class="main-foot">
+                    <div class="continer">
+                        <div class="row">
+                            <div class="col-3">
+                                <ul class="footer-links">
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link">
+                                            About us
+                                        </a>
+                                    </li>
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link">
+                                            Contact us
+                                        </a>
+                                    </li>
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link">
+                                            Advertise with us
+                                        </a>
+                                    </li>
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link" href="#">
+                                            Services
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="footer-break"></div>
+                            </div>
+                        </div>
+                    </div>
+                  </footer>
             </div>
             <script src="js/bootstrap.min.js"></script>
 

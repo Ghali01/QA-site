@@ -20,7 +20,13 @@
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"> interviews questions</a>
+                <a class="navbar-brand d-none d-sm-inline" href="#"> interviews questions</a>
+                <form class="d-flex search-nav-form">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control search-input" placeholder="Search">
+                    </div>
+                </form>
                 <button class="navbar-toggler  " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -28,12 +34,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- search bar start -->
-                    <form class="d-flex search-nav-form">
-                        <div class="form-group has-search">
-                            <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control search-input" placeholder="Search">
-                        </div>
-                    </form>
+
                     <!-- search bar end -->
                     <ul class="navbar-nav ms-auto">
                         <!-- itemes on the right start -->
@@ -59,47 +60,47 @@
                         </li>
                         <!-- itemes on the right start -->
                         <!-- cateagors on sm start -->
-                   
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 1</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 1</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 2</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 2</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 3</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 3</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Cateogry 4</a>
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 4</a>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                                 <li><a class="dropdown-item" href="#">sub cateogry</a></li>
                             </ul>
                         </li>
-                        
+
                         <!-- cateagors on sm end -->
 
                     </ul>
@@ -111,10 +112,11 @@
     <!-- navbar end -->
     <!-- content start -->
 
-    <div class="container-fluid">
+    <div class="container-fluid  contnet-container">
 
         <div class="row">
-            <!-- categories start -->            <div class="d-none d-md-block col-md-2 left-column">
+            <!-- categories start -->
+            <div class="d-none d-md-block col-md-2 left-column">
                 <h4 class="categores-title">categories</h4>
                 <ul class="categores-list">
                     <li class="category-li">
@@ -122,11 +124,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-act-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
                     </li>
@@ -135,11 +137,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -149,11 +151,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -163,11 +165,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -177,11 +179,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -212,7 +214,6 @@
                     <span class="que-data">1 month</span>
                     <span class="que-data-title">Viwes: </span>
                     <span class="que-data">19,000</span>
-                    <time class="questtion-add-date">00-00-0000</time>
                 </div>
                 <div class="question-await">
                     <div class="question-div">
@@ -250,7 +251,7 @@
                                             <!-- Button trigger modal -->
                                             <button type="button" class="link-button" data-bs-toggle="modal"
                                                 data-bs-target="#reportModal">
-                                                <a href="#" class="custom-link custom-link-sm primary-link">Report</a>
+                                                <a href="#" class="custom-link custom-link-sm primary-link que-opt">Report</a>
                                             </button>
 
 
@@ -262,6 +263,10 @@
 
                                     <div class="added-by-div-q que-added-by-div">
                                         <div>
+
+                                            <div class="questtion-add-date">
+                                                Added in <time>00-00-0000</time>
+                                            </div>
                                             <img class="avatar-img" src="img/tmp/avatar.jpg" alt="avatar">
                                             <a class="by-user-name" href="#">User User</a>
                                             <span class="points-sp">6,145</span>
@@ -290,17 +295,19 @@
 
 
                     <div class="question-options-bottom" style="border: none;">
-                        <button class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                        <button
+                            class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
                                 class="fas fa-check"></i> Accept</button>
-                        <button class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
-                                class="fas fa-times"></i> Ignore</button>
+                        <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Ignore</button>
                     </div>
                 </div>
             </div>
             <!-- center column end  -->
 
             <!-- right column start  -->
-          <div class="d-none d-xl-block col-xl-3  right-column">
+            <div class="d-none d-xl-block col-xl-3  right-column">
                 <div class="cus-card tags-card">
                     <h5 class="cus-card-header">Tags</h5>
                     <div class="cus-card-body tags-div">
@@ -324,11 +331,41 @@
 
                 </div>
             </div>
-  
+
             <!-- right column end  -->
 
         </div>
-
+        <footer class="main-foot">
+            <div class="continer">
+                <div class="row">
+                    <div class="col-3">
+                        <ul class="footer-links">
+                            <li class="footer link-item">
+                                <a class="custom-link footer-link">
+                                    About us
+                                </a>
+                            </li>
+                            <li class="footer link-item">
+                                <a class="custom-link footer-link">
+                                    Contact us
+                                </a>
+                            </li>
+                            <li class="footer link-item">
+                                <a class="custom-link footer-link">
+                                    Advertise with us
+                                </a>
+                            </li>
+                            <li class="footer link-item">
+                                <a class="custom-link footer-link" href="#">
+                                    Services
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="footer-break"></div>
+                    </div>
+                </div>
+            </div>
+          </footer>
     </div>
     <!-- Report Modal -->
     <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -363,6 +400,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <script src="js/bootstrap.min.js"></script>
 

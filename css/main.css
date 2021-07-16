@@ -63,6 +63,7 @@
     --powder-200: #43525f;
     --powder-300: #4c6071;
     --btn-background:var(--blue-500);
+    --btn-h-background:var(--blue-400);
     --powder-400: #577489;
     --powder-500: #688eac;
     --powder-600: #7badd3;
@@ -373,13 +374,14 @@ body{
     padding: .8em;
 }
 .primary-button{
-    background-color: var(--primary-color);
+    background-color: var(--btn-background);
     border: none;
+    padding: .8em;
     /* font-size: 13px; */
 }
 .primary-button:hover{
     /* color: var(--secodry-color); */
-    background-color: var(--primary-color);
+    background-color: var(--btn-h-background);
 }
 .secondry-button,
 .secondry-button:active,
@@ -472,7 +474,7 @@ body{
     box-shadow: none !important;
 }
 .primary-button:active,.primary-button:focus{
-    background-color: var(--primary-color);
+    background-color: var(--btn-h-background);
 }
 .btn-outline-primary:focus,.btn-outline-primary:active{
     background-color: var(--bg-color);
@@ -917,7 +919,7 @@ body{
 #reg-form{
     margin: 7%  ;
     margin-bottom: 5%;
-    border: 3px solid var(--primary-color);
+    border: 1.5px solid var(--primary-color);
     border-radius: 11px;
     padding: 5px 15px;
     width: 300px;
@@ -935,13 +937,14 @@ body{
     margin-bottom: 10px;
     border: none;
     outline: none;
-    border-bottom: 3px solid rgb(150, 150, 150);
+    border-bottom: 3px solid var(--powder-600);
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: transparent;
     position: relative;
-    color: rgb(150, 150, 150);
+    color: rgb(202, 202, 202);
+    
 }
-#reg-form .form-control:focus{
+#reg-form .form-control:focus, #reg-form .form-control:placeholder-shown{
     border-bottom: 3px solid var(--secodry-color);
     box-shadow: none;
 }
@@ -954,7 +957,7 @@ body{
     height: 12px;
     top: 28px;
     left: 8px; 
-    color: gray;
+    color: var(--powder-600);
 }
 .lbl-color-set{
     color: var(--secodry-color);
@@ -1030,6 +1033,7 @@ a.l-btn {
     font-size: 14px;
     padding: 13px 30px 15px 44px;
     color: #fff;
+    white-space: nowrap;
     /* text-shadow: 0 -1px 0 rgba(0,0,20,.4); */
     text-decoration: none;
     line-height: 1;
@@ -1138,15 +1142,17 @@ a.go{
 .nav-link:hover{
     color: rgb(199,77,7) !important;
 }
-.forget-pass
-.acc-link{
+.forget-pass{
     margin: 6px auto;
     text-align: center;
     display: block;
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
     text-decoration: none;
     font-size: 13px;
 
+}
+.acc-link{
+    color: var(--primary-color);
 }
 .forget-pass:hover,
 .acc a:hover{
@@ -1297,7 +1303,7 @@ a.go{
     margin-top: 10px;
 }
 .que-title{
-    color: var(--secodry-color);
+    color: var(--white-90);
 }
 .que-data-title{
     color: var(--titles-colors);
@@ -1401,20 +1407,19 @@ a.go{
     background-color: var(--navbar-color);
     /* border: 3px solid var(--primary-color); */
     border-radius: 7px;
-    padding: 10px;   
+    padding: 7px;   
     float: right;
-    margin-right: 20px;
+    margin-right: 0px;
     /* box-shadow: .1px .1px 4px var(--black-200),
     -.1px -.1px 4px var(--black-200),
     -.1px .1px 4px var(--black-200),
     .1px -.1px 4px var(--black-200) ; */
 }
 .questtion-add-date{
-    color: var(--titles-colors);
-    margin: 0 10px;
-}
-.que-opt{
-    color: var(--titles-colors) !important;
+    color: var(--black-600);
+    margin: 0;
+    margin-bottom: 4px;
+    font-size: 13px;
 }
 .comments-div{
     margin: auto;
@@ -1456,9 +1461,11 @@ a.go{
 .add-comm-btn{
     float: right;
     margin-top: 10px;
+    background-color: var(--btn-background);
+    padding: .6em;
 }
 .ans-added-by-div{
-    margin-right: 20px;
+    /* margin-right: 20px; */
     float: right;
 }
 .added-by-parent{
@@ -1497,7 +1504,7 @@ a.go{
 .custom-link{
     font-size: 15px;
     text-decoration: none;
-    background-color: var(--bg-color);
+    background-color: transparent;
 }
 .custom-link-sm{
     font-size: 13px;
@@ -1639,6 +1646,7 @@ a.go{
     }   
 }
 .primary-button-radius{
+    padding: .5em;
     border-radius: 15px;
 }
 .ans-que-item{
@@ -2231,15 +2239,13 @@ a.go{
     border: 1.5px solid var(--titles-colors);
     border-radius: 4px;
     color: var(--categories-color);
-    position: relative;
-    bottom: 22px;
-    left: -10px;
+ 
 }
 .tops-list .question-title{
     display: inline-block;
-    width: 60%;
+    width: 80%;
     height: 25px;
-
+    margin: 0 8px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -2640,4 +2646,82 @@ a.go{
         font-size: 11px;
         padding-top: 10px;
     }
+}
+.questions-list{
+    margin-bottom: 80px;
+}
+@media (max-width:576px) {
+    .search-nav-form{
+        width: 85%;
+    }
+}
+@media (max-width:400px) {
+    .search-nav-form{
+        width: 80%;
+    }
+}
+
+@media (max-width:300px) {
+    .search-nav-form{
+        width: 70%;
+    }
+}
+.comment-add-date{
+    color: var(--blue-600);
+    font-size: 14px;
+    white-space: nowrap;
+}
+.select-link,
+.select-link:hover{
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+@media (max-width:768px) {
+    .tops-list .question-title{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        -webkit-line-clamp: 2;
+        height: 40px;
+    }
+}
+
+@media (max-width:567px) {
+    .tops-list .question-title{
+    width: 100%;
+    }
+}
+.top-item-flex{
+    display: flex;
+    align-items: center;
+}
+
+.que-opt{
+    color: var(--titles-colors) !important;
+}
+.que-opt:hover{
+    color: var(--white-90)  !important;
+}
+@media (min-width:1200px) {
+    .navbar-brand{
+        width: 16vw;
+        margin: 0;
+    }
+    .search-nav-form{
+        width: 58vw;
+    }
+}
+.or-div{
+    margin: 20px 0;
+}
+.await-item .question-item{
+    position: relative;
+}
+.await-item .question-item .question-date{
+    bottom: 8px;
+}
+.ignore-btn{
+    background-color: var(--primary-color);
 }
