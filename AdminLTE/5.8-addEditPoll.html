@@ -405,8 +405,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </button>
 
                           </div>
-                        <input type="hidden" name="tags" id="tags-input" value="[]">
-                          
+                          <input type="hidden" name="tags" id="tags-input" value="[]">
+
                         </div>
 
 
@@ -523,73 +523,134 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="card-header">
                           <h3 class="card-title">Poll Items</h3>
                         </div>
-                        <div class="card-body polls-items">
-                          <div class="poll-item">
-                            <h6 class="float-right">CheckBox List</h6>
-                            <textarea class="form-control polls-que" placeholder="question text..." ></textarea>
-                            <ul class="poll-choesies">
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                        <div class="card-body ">
+                          <div class="polls-items " id="polls-items">
+                            <div class="poll-item  " >
+                              <button class="btn mov-poll-item">
+                                <i class="fas fa-arrows-alt"></i>
                                 </button>
-                              </li>
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                              <button class="btn del-poll-item">
+                                <i class="far fa-times-circle"></i>
+                              </button>
+                              <h6 class="float-right poll-item-title " >CheckBox List</h6>
+                        
+                              <input type="hidden" name="item-type" value="CL">
+                              <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                              <ul class="poll-choesies">
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                              <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                            </div>
+                            <div class="poll-item ">
+                              <button class="btn mov-poll-item">
+                                <i class="fas fa-arrows-alt"></i>
                                 </button>
-                              </li>
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon"></i>
+                              <button class="btn del-poll-item">
+                                <i class="far fa-times-circle"></i>
+                              </button>
+                              <h6 class="float-right poll-item-title">Radio List</h6>
+                              <input type="hidden" name="item-type" value="RL">
+                              <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                              <ul class="poll-choesies">
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                              <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                            </div>
+                            <div class="poll-item ">
+                              <button class="btn mov-poll-item">
+                                <i class="fas fa-arrows-alt"></i>
                                 </button>
-                              </li>
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon"></i>
-                                </button>
-                              </li>
-                            </ul>
-                            <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                              <button class="btn del-poll-item">
+                                <i class="far fa-times-circle"></i>
+                              </button>
+                              <h6 class="float-right poll-item-title">Radio List</h6>
+                              <input type="hidden" name="item-type" value="RL">
+                              <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                              <ul class="poll-choesies">
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                                <li class="poll-choies">
+                                  <input type="text" class="form-control choies-inp" placeholder="Option...">
+                                  <button class="btn btn-app btn-app-xs del-cho-btn">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>
+                                  </button>
+                                </li>
+                              </ul>
+                              <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                            </div>
+                            
+                   
                           </div>
-                            <div class="poll-item">
-                            <h6 class="float-right">Radio List</h6>
+                          <button class="btn btn-outline-primary float-right " id="add-CL-btn">Add CheckBox List</button>
+                          <button class="btn btn-outline-primary float-right " id="add-RL-btn">Add Radio List</button>
 
-                            <textarea class="form-control polls-que" placeholder="question text..." ></textarea>
-                            <ul class="poll-choesies">
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon"></i>
-                                </button>
-                              </li>
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
-                                </button>
-                              </li>
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon"></i>
-                                </button>
-                              </li>
-                              <li class="poll-choies">
-                                <input type="text" class="form-control choies-inp" placeholder="Option...">
-                                <button class="btn btn-app btn-app-xs del-cho-btn">
-                                  <i class="far fa-trash-alt btn-app-icon"></i>
-                                </button>
-                              </li>
-                            </ul>
-                            <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
-                          </div>
-                          
+
                         </div>
                       </div>
+                      <button class="btn btn-primary float-right" >Save</button>
+                      <button class="btn btn-primary float-right" style="margin: 0 10px;">Publish</button>
                     </div>
                   </div>
                 </div>

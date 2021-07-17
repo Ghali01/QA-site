@@ -355,6 +355,7 @@ body{
 
 .center-column{
     padding: 30px 5px;
+    padding-left: 0;
     padding-bottom:0 ;
     border-left: 1.5px solid gray;
     /* border-right: 1.5px solid gray; */
@@ -365,6 +366,7 @@ body{
 .center-title ,.title{
     color: var(--titles-colors);
     float: left;
+    margin-left: 5px;
 }
 /* center column ene */
 /* center column (index) start */
@@ -824,6 +826,7 @@ body{
 .answer-item{
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left: 5px;
 }
 .answer-item:nth-child(odd){
     background-color: var(--black-050);
@@ -1793,6 +1796,7 @@ a.go{
 }
 /* tabs start */
 .tabs-btns{
+    margin: 5px;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -2724,4 +2728,53 @@ a.go{
 }
 .ignore-btn{
     background-color: var(--primary-color);
+}
+.poll-desc{
+    color: var(--titles-colors);
+    display: block;
+    padding: 3px;
+    padding-bottom: 16px;
+    margin: 0;
+    width: 100%;
+    text-align: justify;
+    border-bottom: .5px solid var(--black-300) ;
+}
+.poll-items,
+.poll-choieses{
+    list-style: none;
+}
+.poll-items{
+    padding: 0;
+}
+.pool-que{
+    display: block;
+    color: var(--titles-colors);
+    padding: 4px;
+
+}
+.poll-choise label{
+    cursor: pointer;
+    color: rgb(206, 206, 206)
+}
+.poll-item{
+    padding-bottom: 8px;
+}
+.poll-item:nth-child(odd){
+    background-color: var(--black-050);
+}
+.mt-15{
+    margin-top: 15px;
+}
+.submit-poll-btn{
+    margin-top: 15px;
+    float: right;
+}
+.poll-choise input{
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+}
+.poll-choise{
+    display: flex;
+    align-items: center;
 }

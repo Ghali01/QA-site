@@ -366,6 +366,7 @@
 }
 .polls-items{
     display: flex;
+    align-items: flex-start;
     flex-wrap: wrap;
 }
 .poll-item{
@@ -403,4 +404,30 @@ textarea.polls-que{
 .note-editable{
     min-height: 50px;
     height: 200px;
+}
+#add-RL-btn,
+#add-CL-btn{
+    margin: 8px;
+}
+.del-poll-item,
+.mov-poll-item{
+    margin: 0;
+    margin-left: 4px;
+    font-size: 18px;
+    color: rgb(71, 71, 71);
+    padding: 0;
+}
+.del-poll-item:hover,
+.mov-poll-item:hover{
+    color: #000;
+}
+.poll-item-title{
+    margin-top: 2px;
+}
+.del-poll-item{
+    float: right;
+
+}
+.poll-item-draging{
+    opacity: .5;
 }
