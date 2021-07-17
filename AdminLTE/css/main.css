@@ -400,3 +400,7 @@ textarea.polls-que{
     margin-top: 10px;
     height: 37px;
 }
+.note-editable{
+    min-height: 50px;
+    height: 200px;
+}
