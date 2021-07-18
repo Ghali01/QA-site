@@ -431,3 +431,23 @@ textarea.polls-que{
 .poll-item-draging{
     opacity: .5;
 }
+.poll-que{
+    display: block;
+    clear: both;
+    font-size: 14px;
+}
+.choice-prog{
+    /* display: inline-block; */
+    width: 100%;
+}
+.poll-choies-r{
+    display: flex;
+    align-items: center;
+}
+.choice-prog{
+    margin: 0 10px !important;
+    width: 220px;
+}
+.choise-span{
+    font-weight: bold;
+}
