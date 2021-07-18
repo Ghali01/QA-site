@@ -84,6 +84,9 @@
     --bronze: #caa789;
     --silver-dark:#424242;
     --bronze-lighter: #4d433b;
+    --unchecked-color:transparent;
+    --checked-color:var(--powder-400);
+
     /* light */
     /* --bg-color:#fff;
     --primary-color:rgb(255,93,0);
@@ -2777,4 +2780,57 @@ a.go{
 .poll-choise{
     display: flex;
     align-items: center;
+}
+.custom-checkbox-inp{
+    display: none;
+}
+.custom-checkbox-inp:checked ~ .custom-checkbox{
+    background-color: var(--checked-color);
+}
+.custom-checkbox{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 10px;
+    padding: 0;
+    border-radius: 3px;
+    background-color: var(--unchecked-color);
+    border: .5px solid var(--categories-color);    
+}
+.custom-checkbox .check-mark{
+    color: var(--categories-color);
+    padding: 0;
+    /* display: inline-block; */
+    margin: 0 auto;
+    position: relative;
+    bottom: 2.2px;
+    left: 1px;
+    visibility: hidden;
+}
+.custom-checkbox-inp:checked ~ .custom-checkbox .check-mark{
+    visibility: visible;
+}
+
+.custom-radiobox{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: var(--unchecked-color);
+    border: .5px solid var(--categories-color);
+    border-radius: 50%;
+    margin: 0 10px;
+}
+.custom-radiobox-inp{
+    display: none;
+}
+.custom-radiobox-inp:checked ~ .custom-radiobox .radio-mark{
+    visibility: visible;
+}
+.custom-radiobox .radio-mark{
+    width: 10px;
+    height: 10px;
+    margin: 4.55px auto;
+    background-color: var(--checked-color);
+    border-radius: 50%;
+    visibility: hidden;
 }
