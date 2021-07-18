@@ -260,7 +260,7 @@ $(document).ready(
         $("#reg-btn").click(function (e) {
             var isEmpyty = false;
             const emailPatt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gm;
-            $("#reg-form .form-input").map(function () {
+            $("#reg-form .form-input:not(.no-req)").map(function () {
                 if (!$(this).val() && !$(this).next().hasClass("r-error-span")) {
                     $(this).next().find(".error-val").text("This Field is required");
                     $(this).next().slideDown();
