@@ -217,29 +217,13 @@ $(document).ready(function () {
         $(this).removeClass("poll-item-draging");
     });
     $("#polls-items").on("dragover", function (e) {
+        e.preventDefault();
         $(currentPollItem).after($.find(".poll-item-draging"));
         getCurrentIteM(e.pageX,e.pageY)
     }
     );
-    function getCurrentIteM(x,y){
-        $(".poll-item").map( function (elementOrValue, indexOrKey) {
-            var offset = $(this).offset();
-            let xs = offset.left;
-            let xe = xs +$(this).width();
-            let ys = offset.top;
-            let ye = ys + $(this).height();
-            // console.log(...$.find(".poll-item-draging"));
-            if(x>xs&&x<xe&&y>ys&&y<ye){
-                // console.log($(...$.find(".poll-item-draging")).prev().get(0));
-                // console.log($(this));
-                if(this ==$(...$.find(".poll-item-draging")).prev().get(0))
-                    $(this).before($.find(".poll-item-draging"));
-                else
-                    $(this).after($.find(".poll-item-draging"));
-            }
-        });
-    }
-    
+
+    $(".del-table-item").click(deleteTableItem);
 }
 );
 function CategoryListClick(e) {
@@ -482,4 +466,30 @@ function enablePollMove() {
 }
 function disablePollMove() {
     $(this).parent().attr("draggable", "false");
+}
+
+function getCurrentIteM(x,y){
+    $(".poll-item").map( function (elementOrValue, indexOrKey) {
+        var offset = $(this).offset();
+        let xs = offset.left;
+        let xe = xs +$(this).width();
+        let ys = offset.top;
+        let ye = ys + $(this).height();
+        // console.log(...$.find(".poll-item-draging"));
+        if(x>xs&&x<xe&&y>ys&&y<ye){
+            // console.log($(...$.find(".poll-item-draging")).prev().get(0));
+            // console.log($(this));
+            if(this ==$(...$.find(".poll-item-draging")).prev().get(0))
+                $(this).before($.find(".poll-item-draging"));
+            else
+                $(this).after($.find(".poll-item-draging"));
+        }
+    });
+
+
+}
+
+function deleteTableItem(){
+    $("#del-id-span").text($(this).data("tid"));
+    $("#del-id-inp").val($(this).data("tid"));
 }

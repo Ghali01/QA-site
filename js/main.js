@@ -112,17 +112,7 @@ $(document).ready(
         $(".tags-list").click(function (event) {
             event.stopPropagation();
         });
-        $(".custom-select-item").click(function () {
-            $(this).parent().prev().text("");
-            $(this).parent().prev().append("<span class=\"selected-span\">" + $(this).text() + "</span>");
-            $(this).parent().prev().append("<i class=\"fas fa-caret-down select-arrow\"></i>")
-            $(this).parent().css({
-                visibility: "hidden"
-
-            });
-            $(this).parent().prev().toggleClass("btn-select-act");
-        }
-        );
+        $(".custom-select-item").click(customSelected);
         // custom select end
         //editor start
         if (document.getElementById("editor") != undefined) {
@@ -408,8 +398,8 @@ $(document).ready(
                 else
                     $(this).nextAll(".add-comment-div").css("display","none")
             });
+            $(" .category-select-toolbar .custom-select-item").click(onSelectCategory)
         }
-
 );
 //gird question animetion funcrion
 function startGridQueAni(parentId, duriton = 100) {
@@ -448,4 +438,37 @@ function addTagBtn(tagText,tagsDivId) {
         let aniTimeOut=setTimeout(aniCallBack,185);
     });
     addedTags.push(tagText);
+}
+
+
+function onSelectCategory(){
+    let parentC=$(this).parentsUntil(".category-select-toolbar").last().parent();
+    parentC.data("cur-val",$(this).data("cate-id"));
+    parentC.nextAll(".category-select-toolbar").css('visibility',"hidden");
+    parentC.next(".category-select-toolbar").css('visibility',"visible");
+    let subs = $(this).data("sub");
+    let nextList=parentC.next(".category-select-toolbar").find(".custom-select-list");
+    $(nextList).html('');
+    if (subs)
+    subs.forEach(element => {
+        let cateLi = document.createElement('li');
+        $(cateLi).addClass("custom-select-item");
+        $(cateLi).attr("data-sub", JSON.stringify(element['sub']));
+        $(cateLi).attr("data-cate-id", element['id']);
+        $(cateLi).text(element["name"]);
+        $(cateLi).click(customSelected);
+        $(cateLi).click(onSelectCategory);
+        
+        $(nextList).append(cateLi);
+    });
+}
+function customSelected () {
+    $(this).parent().prev().text("");
+    $(this).parent().prev().append("<span class=\"selected-span\">" + $(this).text() + "</span>");
+    $(this).parent().prev().append("<i class=\"fas fa-caret-down select-arrow\"></i>")
+    $(this).parent().css({
+        visibility: "hidden"
+
+    });
+    $(this).parent().prev().toggleClass("btn-select-act");
 }

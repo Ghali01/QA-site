@@ -1255,7 +1255,7 @@ a.go{
 
 /* tags input and list start */
 .que-title-input{
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 .que-tags-input{
     margin-top: 15px;
@@ -2832,5 +2832,8 @@ a.go{
     margin: 4.55px auto;
     background-color: var(--checked-color);
     border-radius: 50%;
+    visibility: hidden;
+}
+.category-select-toolbar:not(:first-child){
     visibility: hidden;
 }

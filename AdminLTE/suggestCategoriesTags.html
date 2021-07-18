@@ -348,12 +348,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Users</h1>
+              <h1 class="m-0">Suggest Categories and Tags</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item active"><a href="#">Home</a></li>
-                <li class="breadcrumb-item "><a href="#">Users</a></li>
               </ol>
             </div><!-- /.col -->
           </div><!-- /.row -->
@@ -366,65 +365,70 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Users Management</h3>
-              </div>
-              <div class="card-body">
-                <table class="table table-bordered table-striped">
-                  <thead>
-                    <th style="width: 10%;">User name</th>
-                    <th style="width: 10%;">Full name</th>
-                    <th style="width: 8%;">ID</th>
-                    <th style="width: 20%;">Email</th>
-                    <th style="width: 10%;">Permissions</th>
-                    <th style="width: 10%;">Report By</th>
-                    <th style="width: 32%;">Action</th>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        User User
-                      </td>
-                      <td>Name Name</td>
-                      <td>212522</td>
-                      <td>User@gmail.com</td>
-                      <td>Permissions</td>
-                      <td>
-                        <a href="#">
-                          User User
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Card Title</h3>
+                  
+                </div>
+                <div class="card-body">
+                  <table class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th style="width:20%;">Title</th>
+                        <th style="width:75%;">Text Message</th>
+                        <th style="width:5%;">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>message title</td>
+                        <td >
+                          <p class="msg-sug">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, nihil expedita rem, laborum facilis consequatur quas nesciunt nisi pariatur alias eius distinctio explicabo doloremque, neque mollitia. Quasi quidem dolore cupiditate?
+                          </p>
+                        </td>
+                        <td>
+                          <button class="btn btn-app cus-btn-app">
+                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                  <div class="dataTables_paginate paging_simple_numbers table-indcator" id="example2_paginate">
+                    <ul class="pagination">
+                      <li class="paginate_button page-item previous disabled" id="example2_previous">
+                        <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
+                          Previous
                         </a>
-                      </td>
-                      <td>
-                        <div class="actions-btns">
-
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-user btn-app-icon"></i>Profile
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="fas fa-external-link-alt btn-app-icon"></i>Questions
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="fas fa-angle-right btn-app-icon"></i>Answers
-                          </a>
-                          <a class="btn btn-app cus-btn-app">
-                            <i class="fas fa-user-slash btn-app-icon"></i>Ban
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-70">
-                            <i class="far fas fa-user-minus btn-app-icon"></i>Prune
-                          </a>
-                          <a class="btn btn-app cus-btn-app app-btn-80">
-                            <i class="fas fa-address-card btn-app-icon"></i>Permissions
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                      </li>
+                      <li class="paginate_button page-item active">
+                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                          1
+                        </a>
+                      </li>
+                      <li class="paginate_button page-item ">
+                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                          2
+                        </a>
+                      </li>
+                      <li class="paginate_button page-item ">
+                        <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                          3
+                        </a>
+                      </li>
+                      <li class="paginate_button page-item previous disabled" id="example2_next">
+                        <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
+                          Next
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
-            </div>
+            
           </div>
           <!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -442,29 +446,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       </div>
     </aside>
     <!-- /.control-sidebar -->
-    <div class="modal fade" id="del-modal" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="del-modalLabel">Ban User</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <p>Do you want Delete the Question with ID <span class="del-id-span" id="del-id-span"></span>
-              </p>
-              <input type="hidden" name="del-id" id="del-id-inp">
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
 
   </div>
   <!-- ./wrapper -->
