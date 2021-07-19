@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font-all.min.css">
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <header class="header-nav">
+        <!-- navbar start -->
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand d-none d-sm-inline" href="#"> interviews questions</a>
+                <form class="d-flex search-nav-form">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control search-input" placeholder="Search">
+                    </div>
+                </form>
+                <button class="navbar-toggler  " type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- search bar start -->
+                  
+                    <!-- search bar end -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- itemes on the right start -->
+
+                        <li class="nav-item cus-nav-item">
+                            <img class="avatar-img" src="img/tmp/avatar.jpg" alt="avatar">
+                            <span class="points-sp">6,145</span>
+                            <div class="badges">
+                                <div class="badge ">
+                                    <div class=" circular-badge gold-badge"></div>
+                                    <span class="badge-num-span gold-badge-span">25</span>
+                                </div>
+                                <div class="badge ">
+                                    <div class=" circular-badge silver-badge"></div>
+                                    <span class=" badge-num-span silver-badge-span">210</span>
+                                </div>
+                                <div class="badge ">
+                                    <div class=" circular-badge bronze-badge"></div>
+                                    <span class="badge-num-span bronze-badge-span">101</span>
+                                </div>
+                            </div>
+
+                        </li>
+                        <!-- itemes on the right start -->
+                        <!-- cateagors on sm start -->
+
+                        <li class="nav-item dropdown d-sm-none  ">
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 1</a>
+                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown d-sm-none  ">
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 2</a>
+                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown d-sm-none  ">
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 3</a>
+                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown d-sm-none  ">
+                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 4</a>
+                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- cateagors on sm end -->
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid contnet-container">
+
+        <div class="row">
+            <!-- categories start -->
+            <div class="d-none d-md-block col-md-2 left-column">
+                <h4 class="categores-title">categories</h4>
+                <ul class="categores-list">
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item cateogry-active">Cateogry 1</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
+                        <div class="cateogry-act-border"></div>
+                        <ul class="subcategories-list">
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                        </ul>
+                    </li>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 2</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
+                        <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                        </ul>
+
+                    </li>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 3</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
+                        <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                        </ul>
+
+                    </li>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 4</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
+                        <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                        </ul>
+
+                    </li>
+                    <li class="category-li">
+                        <a href="#" class="cateogry-item">Cateogry 5</a>
+                        <i class="fas fa-chevron-down down-icon"></i>
+                        <div class="cateogry-border"></div>
+                        <ul class="subcategories-list">
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+                <div class="left-bottom-column">
+                    <div class="cus-card ">
+                        <h5 class="cus-card-header">column title</h5>
+                        <div class="cus-card-body ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
+                                amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
+                                aspernatur dolore laudantium corporis provident?</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- center column start  -->
+            <div class="col-12 col-md-10 center-column" style="border: none;">
+                <h2 class="center-title" style="float:none;">Answers in wait</h2>
+                <div class="question-dev-parent">
+                    <div class="questions-gird-toolbar">
+                        <div class="row">
+                            <div class="col-12 col-lg-12">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <div class="categoriis-lists">
+
+                                            <div class="custom-select category-select-toolbar" data-cur-val="1">
+                                                <button class="btn btn-primary btn-select">
+                                                    <span class="selected-span"> category lvl 1</span>
+                                                    <i class="fas fa-caret-down select-arrow"></i>
+        
+                                                </button>
+                                                <ul class="custom-select-list custom-scrollbar">
+                                                    <li class="custom-select-item" data-cate-id="1" data-sub='[
+                                                    {
+                                                       "name":"category 2.1",
+                                                       "id":"1",
+                                                       "sub":[
+                                                          
+                                                       ]
+                                                    },
+                                                    {
+                                                       "name":"category 2.2",
+                                                       "id":"2",
+                                                       "sub":[
+                                                          {
+                                                             "name":"category 3.1",
+                                                             "id":"1",
+                                                             "sub":[
+                                                                {
+                                                                   "name":"category 4.1",
+                                                                   "id":"1"
+                                                                },
+                                                                {
+                                                                   "name":"category 4.2",
+                                                                   "id":"2"
+                                                                }
+                                                             ]
+                                                          },
+                                                          {
+                                                             "name":"category 3.2",
+                                                             "id":"2",
+                                                             "sub":[
+                                                                {
+                                                                   "name":"category  2 4.1",
+                                                                   "id":"1",
+                                                                   "sub":[
+                                                                      
+                                                                   ]
+                                                                },
+                                                                {
+                                                                   "name":"category  2 4.2",
+                                                                   "id":"2",
+                                                                   "sub":[
+                                                                      
+                                                                   ]
+                                                                }
+                                                             ]
+                                                          }
+                                                       ]
+                                                    }
+                                                 ]'>
+                                                        An item
+                                                    </li>
+        
+                                                </ul>
+                                            </div>
+                                            <div class="custom-select category-select-toolbar">
+                                                <button class="btn btn-primary btn-select">
+                                                    <span class="selected-span"> category lvl 2</span>
+                                                    <i class="fas fa-caret-down select-arrow"></i>
+        
+                                                </button>
+                                                <ul class="custom-select-list custom-scrollbar">
+                                                </ul>
+                                            </div>
+                                            <div class="custom-select category-select-toolbar" data-cur-val="1">
+                                                <button class="btn btn-primary btn-select">
+                                                    <span class="selected-span"> category lvl 3</span>
+                                                    <i class="fas fa-caret-down select-arrow"></i>
+        
+                                                </button>
+                                                <ul class="custom-select-list custom-scrollbar">
+        
+                                                </ul>
+                                            </div>
+                                            <div class="custom-select category-select-toolbar" data-cur-val="1">
+                                                <button class="btn btn-primary btn-select">
+                                                    <span class="selected-span"> category lvl 4</span>
+                                                    <i class="fas fa-caret-down select-arrow"></i>
+        
+                                                </button>
+                                                <ul class="custom-select-list custom-scrollbar">
+                                                </ul>
+                                            </div>
+        
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="sort-by-toolbar" style="display: inline;">
+                                            <div class="custom-select" style="width: 50%; display: inline-block;">
+                                                <button class="btn btn-primary btn-select">
+                                                    <span class="selected-span"> date</span>
+                                                    <i class="fas fa-caret-down select-arrow"></i>
+    
+                                                </button>
+                                                <ul class="custom-select-list custom-scrollbar">
+                                                    <li class="custom-select-item">
+                                                        <a href="#" class="custom-link select-link">
+                                                            Newest
+                                                        </a>
+                                                    </li>
+                                                    <li class="custom-select-item">
+                                                        <a href="#" class="custom-link select-link">
+                                                            Oldest
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row margin-toolbar-row">
+                            <div class="col-6 col-lg-4">
+                                <div class="form-group has-search search-div-toolbar">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                    <input type="text" class="form-control custom-input search-input-toolbar"
+                                        placeholder="Search">
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-4">
+                                <div class="add-tag-to-que-div">
+                                    <input id="que-tags-input" type="text" class="form-control que-input que-tags-input"
+                                        placeholder="Search By Tags" style="margin: 0;">
+                                    <ul class="tags-list custom-scrollbar">
+                                        <li class="tags-list-item">Tag 1 </li>
+                                        <li class="tags-list-item">Tag 2 </li>
+                                        <li class="tags-list-item">Tag 3 </li>
+                                        <li class="tags-list-item">Tag 3 </li>
+                                        <li class="tags-list-item">Tag 3 </li>
+                                        <li class="tags-list-item">Tag 3 </li>
+                                        <li class="tags-list-item">Tag 3 </li>
+                                        <li class="tags-list-item">Tag 3 </li>
+                                        <li class="tags-list-item">Teg 4 </li>
+                                        <li class="tags-list-item">Teg 5 </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="btn-group my-btn-group" style="margin-bottom: 12px;" role="group"
+                                aria-label="Basic outlined example">
+                                <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item active">Await</a>
+
+                                <a href="#"
+                                    class="btn btn-outline-primary btn-group-item btn-option-item ">Accepted</a>
+                                <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item">Rejected</a>
+                                    
+                            </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="await-list">
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+                        <div class="await-item await-item-ans">
+                            <div class="row  question-item ">
+                                <div class="col-2">
+                                    <div class="row">
+                                        <div class="col-5 votes-num-div nums-que">
+                                            <span class="votes-num-span">200</span>
+                                            <span class="votes-word">votes</span>
+
+                                        </div>
+                                        <div class="col-5 answers-num-div nums-que">
+                                            <span class="answers-num-span">5</span>
+                                            <span class="answers-word">answers</span>
+                                        </div>
+                                    </div>
+                                    <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a>
+                                    </div>
+                                    <span class="answers-num-span-grid">00 Answers</span>
+
+                                </div>
+                                <div class="col-10">
+                                    <a href="#" class="question-title line-clamp">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora,
+                                        expedita
+                                        eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium
+                                        ipsa.
+                                        Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                                    </a>
+                                    <div class="bottom-of-question">
+                                        <div class="question-tags custom-scrollbar">
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                            <button class="btn btn-outline-info btn-tag">Tag</button>
+                                        </div>
+                                 
+                                        <div class="question-date">last answer added in 0000/00/00 </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="question-options-bottom">
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn"><i
+                                        class="fas fa-check"></i> Accept All</button>
+                                <button
+                                    class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn"><i
+                                        class="fas fa-times"></i> Reject All</button>
+                                  
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                    <!-- center column end  -->
+
+                </div>
+                <footer class="main-foot">
+                    <div class="continer">
+                        <div class="row">
+                            <div class="col-3">
+                                <ul class="footer-links">
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link">
+                                            About us
+                                        </a>
+                                    </li>
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link">
+                                            Contact us
+                                        </a>
+                                    </li>
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link">
+                                            Advertise with us
+                                        </a>
+                                    </li>
+                                    <li class="footer link-item">
+                                        <a class="custom-link footer-link" href="#">
+                                            Services
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="footer-break"></div>
+                            </div>
+                        </div>
+                    </div>
+                  </footer>
+            </div>
+            <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
