@@ -1355,7 +1355,8 @@ a.go{
     }
 }
 .question-div,
-.answer-div{
+.answer-div,
+.post-div{
     margin-bottom: 10px;
     border-bottom: 2px solid var(--titles-colors);
     padding-bottom: 10px;
@@ -1415,13 +1416,13 @@ a.go{
     margin-top: -3vh;
 }
 
-.question-content{
+.post-content{
     color: var(--titles-colors);
 }
-.question-content{
+.post-content{
     margin-bottom: 10px;
 }
-.question-content code{
+.post-content code{
     background-color: var(--titles-colors);
     color: var(--navbar-color);
     padding: 4px;
