@@ -1326,8 +1326,11 @@ a.go{
     float: right;
     margin-top: 10px;
 }
-.que-title{
+.que-title,
+.pos-title{
     color: var(--white-90);
+    font-size: 27px;
+    float: none;
 }
 .que-data-title{
     color: var(--titles-colors);
@@ -1917,15 +1920,16 @@ a.go{
     }
 
 }
- .tab-btn-sim{
+ .tab-btn-sim, .tab-btn-a{
     color: var(--titles-colors);
     padding: 3px 8px;
 
 }
-.tab-btn-sim:hover{
+.tab-btn-sim:hover, .tab-btn-a:hover{
     color: var(--categories-color);
 }
-.tabs-btns .act-tab-sim{
+.tabs-btns .act-tab-sim,
+.tabs-btns .active{
     background-color: var(--primary-color);
     color: var(--categories-color);
     border-radius: 40px;
@@ -2968,3 +2972,8 @@ details.changes {
     text-decoration: underline;
 
 }
+/* .share-btns{
+    background-color: rgb(36, 34, 34);
+    border-radius: 5px;
+    padding: 8px;
+} */

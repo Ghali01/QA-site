@@ -8,6 +8,8 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="css/font-all.min.css">
     <script src="js/main.js"></script>
+
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tiny-markdown-editor@0.1.4/dist/tiny-mde.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/tiny-markdown-editor@0.1.4/dist/tiny-mde.min.css" />
     <link rel="stylesheet" href="css/main.css">
@@ -205,8 +207,8 @@
             </div>
             <!-- center column start  -->
             <div class="col-12 col-md-10 col-xl-7  center-column" style="border: none;">
-                <h5 class="que-title center-title" style="float:none;">Question Title Question Title Question Title
-                    Question Title Question Title Question Title Question Title Question Title Question Title </h5>
+                <h1 class="que-title center-title">Question Title Question Title Question Title
+                    Question Title Question Title Question Title Question Title Question Title Question Title </h1>
                 <div class="que-data-div">
                     <span class="que-data-title">Asked:</span>
                     <span class="que-data">1 Yers 2 month</span>
@@ -256,7 +258,7 @@
                                             class="custom-link custom-link-sm primary-link que-opt que-opt-sug">Suggest
                                             Edit</a>
                                         <div class="link-break">|</div>
-                                        <a href="#" class="custom-link custom-link-sm primary-link que-opt">Share</a>
+                                        <a href="#" class="custom-link custom-link-sm primary-link que-opt" id="share-btn">Share</a>
                                         <div class="link-break">|</div>
                                         <a href="#" class="custom-link custom-link-sm primary-link que-opt">Follow</a>
                                         <div class="link-break">|</div>
@@ -270,7 +272,7 @@
 
 
                                     </div>
-                                    <div class="share-btns">
+                                    <div class="share-btns" id="share-btns">
                                         <!-- Twitter -->
                                         <a href="https://twitter.com/share?url={}" target="_blank"
                                             class="share-btn twitter">
