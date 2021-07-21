@@ -2518,7 +2518,7 @@ a.go{
     padding: 0;
 }
 .side-list-content-col{
-    width: 90%;
+    width: 89%;
     padding: 0;
 }
 .your-tags .save-tag-btn{
@@ -2977,3 +2977,6 @@ details.changes {
     border-radius: 5px;
     padding: 8px;
 } */
+.a-prof-page .center-column{
+    padding-right: 0;
+}
