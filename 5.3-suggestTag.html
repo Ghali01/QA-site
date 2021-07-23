@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class="suggest-page">
 
     <header class="header-nav">
         <!-- navbar start -->
@@ -34,7 +34,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- search bar start -->
-                  
+
                     <!-- search bar end -->
                     <ul class="navbar-nav ms-auto">
                         <!-- itemes on the right start -->
@@ -115,7 +115,8 @@
     <div class="container-fluid  contnet-container">
 
         <div class="row">
-            <!-- categories start -->            <div class="d-none d-md-block col-md-2 left-column">
+            <!-- categories start -->
+            <div class="d-none d-md-block col-md-2 left-column">
                 <h4 class="categores-title">categories</h4>
                 <ul class="categores-list">
                     <li class="category-li">
@@ -123,11 +124,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-act-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
                     </li>
@@ -136,11 +137,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -150,11 +151,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -164,11 +165,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -178,11 +179,11 @@
                         <i class="fas fa-chevron-down down-icon"></i>
                         <div class="cateogry-border"></div>
                         <ul class="subcategories-list">
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
-                                                       <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
+                            <li class="subcategory-item"> <a href="#">sub cateogry</a> </li>
 
                         </ul>
 
@@ -204,11 +205,104 @@
             </div>
             <!-- center column start  -->
             <div class="col-12 col-md-10 col-xl-7  center-column" style="border: none;">
-                <h2 class="center-title" style="float:none;">Suggest Category/Tag</h2>
-                <div class="add-que-continer"></div>
-                <input type="text" class="form-control custom-input" placeholder="Category/Tag name...">
-                <textarea type="text" class="form-control custom-input suggest-msg-inp custom-scrollbar" placeholder="Write Something..."></textarea>
-            
+                <h2 class="center-title" style="float:none;">Suggest Tag</h2>
+                <div class="categoriis-lists">
+
+                    <div class="custom-select category-select-toolbar" data-cur-val="1">
+                        <button class="btn btn-primary btn-select">
+                            <span class="selected-span"> category lvl 1</span>
+                            <i class="fas fa-caret-down select-arrow"></i>
+
+                        </button>
+                        <ul class="custom-select-list custom-scrollbar">
+                            <li class="custom-select-item" data-cate-id="1" data-sub='[
+                            {
+                               "name":"category 2.1",
+                               "id":"1",
+                               "sub":[
+                                  
+                               ]
+                            },
+                            {
+                               "name":"category 2.2",
+                               "id":"2",
+                               "sub":[
+                                  {
+                                     "name":"category 3.1",
+                                     "id":"1",
+                                     "sub":[
+                                        {
+                                           "name":"category 4.1",
+                                           "id":"1"
+                                        },
+                                        {
+                                           "name":"category 4.2",
+                                           "id":"2"
+                                        }
+                                     ]
+                                  },
+                                  {
+                                     "name":"category 3.2",
+                                     "id":"2",
+                                     "sub":[
+                                        {
+                                           "name":"category  2 4.1",
+                                           "id":"1",
+                                           "sub":[
+                                              
+                                           ]
+                                        },
+                                        {
+                                           "name":"category  2 4.2",
+                                           "id":"2",
+                                           "sub":[
+                                              
+                                           ]
+                                        }
+                                     ]
+                                  }
+                               ]
+                            }
+                         ]'>
+                                An item
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="custom-select category-select-toolbar">
+                        <button class="btn btn-primary btn-select">
+                            <span class="selected-span"> category lvl 2</span>
+                            <i class="fas fa-caret-down select-arrow"></i>
+
+                        </button>
+                        <ul class="custom-select-list custom-scrollbar">
+                        </ul>
+                    </div>
+                    <div class="custom-select category-select-toolbar" data-cur-val="1">
+                        <button class="btn btn-primary btn-select">
+                            <span class="selected-span"> category lvl 3</span>
+                            <i class="fas fa-caret-down select-arrow"></i>
+
+                        </button>
+                        <ul class="custom-select-list custom-scrollbar">
+
+                        </ul>
+                    </div>
+                    <div class="custom-select category-select-toolbar" data-cur-val="1">
+                        <button class="btn btn-primary btn-select">
+                            <span class="selected-span"> category lvl 4</span>
+                            <i class="fas fa-caret-down select-arrow"></i>
+
+                        </button>
+                        <ul class="custom-select-list custom-scrollbar">
+                        </ul>
+                    </div>
+
+                </div>
+                <input type="text" class="form-control custom-input" placeholder="Tag name...">
+                <textarea type="text" class="form-control custom-input suggest-msg-inp custom-scrollbar"
+                    placeholder="Write Something..."></textarea>
+
                 <button type="button" class="btn btn-primary btn-sm primary-button add-que-button">
                     Suggest
                 </button>
@@ -217,7 +311,7 @@
             <!-- center column end  -->
 
             <!-- right column start  -->
-          <div class="d-none d-xl-block col-xl-3  right-column">
+            <div class="d-none d-xl-block col-xl-3  right-column">
                 <div class="cus-card tags-card">
                     <h5 class="cus-card-header">Tags</h5>
                     <div class="cus-card-body tags-div">
@@ -241,7 +335,7 @@
 
                 </div>
             </div>
-  
+
             <!-- right column end  -->
 
         </div>
@@ -275,7 +369,7 @@
                     </div>
                 </div>
             </div>
-          </footer>
+        </footer>
     </div>
     <script src="js/bootstrap.min.js"></script>
 

@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font-all.min.css">
     <script src="js/main.js"></script>
+    <script src="https://unpkg.com/tiny-markdown-editor@0.1.4/dist/tiny-mde.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/tiny-markdown-editor@0.1.4/dist/tiny-mde.min.css" />
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 
-<body class="a-prof-page">
+<body class="contact-page">
+
     <header class="header-nav">
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
@@ -106,10 +109,11 @@
             </div>
         </nav>
     </header>
-
     <!-- navbar end -->
     <!-- content start -->
-    <div class="container-fluid contnet-container">
+
+    <div class="container-fluid  contnet-container">
+
         <div class="row">
             <!-- categories start -->
             <div class="d-none d-md-block col-md-2 left-column">
@@ -199,86 +203,56 @@
 
                 </div>
             </div>
-            <!-- center column start -->
-            <div class="col-12 col-md-10   center-column">
-                <div class="tabs-btns">
-                    <a class="btn tab-btn-a " >Profile</a>
-                    <a class="btn tab-btn-a" >Badges</a>
-                    <a class="btn tab-btn-a" >Followres</a>
-                    <a class="btn tab-btn-a" >Favorite
-                        Queestions</a>
-                    <a class="btn tab-btn-a active" >Settings</a>
-                </div>
-                
-                
-                <div class="settings-content " id="settings-content">
-                    <div class="row">
-                        <div class="col-2 side-list-col">
-                            <ul class="side-options-list">
-                                <li class="side-list-item side-list-item-act" data-content-p="#settings-contents"
-                                    data-content="#profile-side-content">Your Profile</li>
-                                <li class="side-list-item" data-content-p="#settings-contents"
-                                    data-content="#tags-side-content">Your Tags</li>
-                            </ul>
+            <!-- center column start  -->
+            <div class="col-12 col-md-10 col-xl-7  center-column" style="border: none;">
+                <h2 class="center-title" style="float:none;">Contact Us</h2>
+                <form action="">
+                    <div class="row sender-data">
+                        <div class="col-6">
+                        <input type="text" class="form-control custom-input" placeholder="Full Name">
+    
                         </div>
-                        <div class="col-9 side-list-content-col">
-                            <div class="side-list-contents" id="settings-contents">
-                                <div class="side-list-content" id="profile-side-content" style="display: block;">
-                                    <input type="text" class="form-control custom-input" placeholder="Display Name ">
-                                </div>
-                                <div class="side-list-content" id="tags-side-content">
-                                    <div class="your-tags">
-                                        <input id="que-tags-input" data-tags-div="#grid-tags" type="text"
-                                            class="form-control que-input que-tags-input" placeholder="Add Tags">
-                                        <ul class="tags-list custom-scrollbar">
-                                            <li class="tags-list-item">Tag 1 </li>
-                                            <li class="tags-list-item">Tag 2 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Tag 3 </li>
-                                            <li class="tags-list-item">Teg 4 </li>
-                                            <li class="tags-list-item">Teg 5 </li>
-                                        </ul>
-                                        <div id="grid-tags" class=" grid grid-tags">
-                                            <button type="button"
-                                                class="btn btn-outline-info btn-tag btn-tag-removeable">
-                                                Tag
-                                                <div class="btn remove-tag-btn">
-                                                    <i class="fas fa-times"></i>
-                                                </div>
-                                            </button>
-
-                                        </div>
-                                        <button
-                                            class="btn btn-primary primary-button primary-button-radius save-tag-btn">Save
-                                            Changes</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-6">
+                        <input type="text" class="form-control custom-input" placeholder="Email">
                         </div>
                     </div>
-                </div>
+                    <input type="text" class="form-control custom-input" placeholder="Subject">
+                    <textarea type="text" class="form-control custom-input msg-inp custom-scrollbar"
+                        placeholder="Write Something..."></textarea>
+    
+                    <input type="submit" class="btn btn-primary btn-sm primary-button add-que-button" value="Send">
+                </form>
+
             </div>
             <!-- center column end  -->
 
+            <!-- right column start  -->
+            <div class="d-none d-xl-block col-xl-3  right-column">
+                <div class="cus-card tags-card">
+                    <h5 class="cus-card-header">Tags</h5>
+                    <div class="cus-card-body tags-div">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                </div>
+                <div class="right-bottom-column">
+                    <div class="cus-card ">
+                        <h5 class="cus-card-header">column title</h5>
+                        <div class="cus-card-body ">
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
+                                amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
+                                aspernatur dolore laudantium corporis provident?</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- right column end  -->
 
         </div>
         <footer class="main-foot">
@@ -311,9 +285,8 @@
                     </div>
                 </div>
             </div>
-          </footer>
+        </footer>
     </div>
-
     <script src="js/bootstrap.min.js"></script>
 
 </body>

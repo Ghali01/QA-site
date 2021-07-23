@@ -12,7 +12,7 @@
 
 </head>
 
-<body class="a-prof-page">
+<body class="a-prof-page favi-page">
     <header class="header-nav">
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
@@ -202,68 +202,183 @@
             <!-- center column start -->
             <div class="col-12 col-md-10   center-column">
                 <div class="tabs-btns">
-                    <a class="btn tab-btn-a " >Profile</a>
-                    <a class="btn tab-btn-a" >Badges</a>
-                    <a class="btn tab-btn-a" >Followres</a>
-                    <a class="btn tab-btn-a active" >Favorite
+                    <a class="btn tab-btn-a ">Profile</a>
+                    <a class="btn tab-btn-a">Badges</a>
+                    <a class="btn tab-btn-a">Followres</a>
+                    <a class="btn tab-btn-a active">Favorite
                         Queestions</a>
-                    <a class="btn tab-btn-a" >Settings</a>
+                    <a class="btn tab-btn-a">Settings</a>
                 </div>
                 <div class="favque-content " id="favque-content">
                     <div class="question-dev-parent">
                         <div class="questions-gird-toolbar">
-                            <div class="row">
-                                <div class="col-12 col-md-7">
-                                    <div class="row">
-                                        <div class="col-7">
-                                            <div class="form-group has-search search-div-toolbar">
-                                                <span class="fa fa-search form-control-feedback"></span>
-                                                <input type="text"
-                                                    class="form-control custom-input search-input-toolbar"
-                                                    placeholder="Search">
-                                            </div>
-                                        </div>
-                                        <div class="col-5">
 
-                                            <span class="sort-by-word">Sort by: </span>
-                                            <div class="custom-select" style="width: 50%; display: inline-block;">
-                                                <button class="btn btn-primary btn-select">
-                                                    <span class="selected-span"> date</span>
-                                                    <i class="fas fa-caret-down select-arrow"></i>
+                            <div class="categoriis-lists">
 
-                                                </button>
-                                                <ul class="custom-select-list custom-scrollbar">
-                                                    <li class="custom-select-item">date</li>
-                                                    <li class="custom-select-item">answers</li>
-                                                    <li class="custom-select-item">votes</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="custom-select category-select-toolbar" data-cur-val="1">
+                                    <button class="btn btn-primary btn-select">
+                                        <span class="selected-span"> category lvl 1</span>
+                                        <i class="fas fa-caret-down select-arrow"></i>
 
+                                    </button>
+                                    <ul class="custom-select-list custom-scrollbar">
+                                        <li class="custom-select-item" data-cate-id="1" data-sub='[
+                                        {
+                                           "name":"category 2.1",
+                                           "id":"1",
+                                           "sub":[
+                                              
+                                           ]
+                                        },
+                                        {
+                                           "name":"category 2.2",
+                                           "id":"2",
+                                           "sub":[
+                                              {
+                                                 "name":"category 3.1",
+                                                 "id":"1",
+                                                 "sub":[
+                                                    {
+                                                       "name":"category 4.1",
+                                                       "id":"1"
+                                                    },
+                                                    {
+                                                       "name":"category 4.2",
+                                                       "id":"2"
+                                                    }
+                                                 ]
+                                              },
+                                              {
+                                                 "name":"category 3.2",
+                                                 "id":"2",
+                                                 "sub":[
+                                                    {
+                                                       "name":"category  2 4.1",
+                                                       "id":"1",
+                                                       "sub":[
+                                                          
+                                                       ]
+                                                    },
+                                                    {
+                                                       "name":"category  2 4.2",
+                                                       "id":"2",
+                                                       "sub":[
+                                                          
+                                                       ]
+                                                    }
+                                                 ]
+                                              }
+                                           ]
+                                        }
+                                     ]'>
+                                            An item
+                                        </li>
+
+                                    </ul>
                                 </div>
-                                <div class="col-12 col-md-5">
-                                    <div class="btn-group me-2 grid-indcator" role="group" aria-label="First group">
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-group-item">1</button>
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-group-item">2</button>
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-group-item">3</button>
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-group-item act-grid-incator">4</button>
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-group-item">5</button>
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-group-item">6</button>
-                                        <button type="button"
-                                            class="btn btn-outline-primary btn-group-item">7</button>
+                                <div class="custom-select category-select-toolbar">
+                                    <button class="btn btn-primary btn-select">
+                                        <span class="selected-span"> category lvl 2</span>
+                                        <i class="fas fa-caret-down select-arrow"></i>
 
-                                    </div>
-
+                                    </button>
+                                    <ul class="custom-select-list custom-scrollbar">
+                                    </ul>
                                 </div>
+                                <div class="custom-select category-select-toolbar" data-cur-val="1">
+                                    <button class="btn btn-primary btn-select">
+                                        <span class="selected-span"> category lvl 3</span>
+                                        <i class="fas fa-caret-down select-arrow"></i>
+
+                                    </button>
+                                    <ul class="custom-select-list custom-scrollbar">
+
+                                    </ul>
+                                </div>
+                                <div class="custom-select category-select-toolbar" data-cur-val="1">
+                                    <button class="btn btn-primary btn-select">
+                                        <span class="selected-span"> category lvl 4</span>
+                                        <i class="fas fa-caret-down select-arrow"></i>
+
+                                    </button>
+                                    <ul class="custom-select-list custom-scrollbar">
+                                    </ul>
+                                </div>
+
+
+                                <!-- <input type="text" class="form-control custom-input search-inp" placeholder="Search..."> -->
                             </div>
 
+                            <div class="row filters-row">
+
+
+                                <div class="col-4 col-md-2    ">
+
+                                    <div class="custom-select">
+                                        <button class="btn btn-primary btn-select">
+                                            <span class="selected-span">Most Votes</span>
+                                            <i class="fas fa-caret-down select-arrow"></i>
+
+                                        </button>
+                                        <ul class="custom-select-list custom-scrollbar">
+                                            <li class="custom-select-item">
+                                                <a href="#" class="custom-link select-link">
+                                                    Most Votes
+                                                </a>
+                                            </li>
+                                            <li class="custom-select-item">
+                                                <a href="#" class="custom-link select-link">
+                                                    Least Votes
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-2">
+
+                                    <div class="custom-select">
+                                        <button class="btn btn-primary btn-select">
+                                            <span class="selected-span">Most Views</span>
+                                            <i class="fas fa-caret-down select-arrow"></i>
+
+                                        </button>
+                                        <ul class="custom-select-list custom-scrollbar">
+                                            <li class="custom-select-item">
+                                                <a href="#" class="custom-link select-link">
+                                                    Most Views
+                                                </a>
+                                            </li>
+                                            <li class="custom-select-item">
+                                                <a href="#" class="custom-link select-link">
+                                                    Least Viwes
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-md-3    ">
+
+                                    <div class="custom-select">
+                                        <button class="btn btn-primary btn-select">
+                                            <span class="selected-span">Most Answers</span>
+                                            <i class="fas fa-caret-down select-arrow"></i>
+
+                                        </button>
+                                        <ul class="custom-select-list custom-scrollbar">
+                                            <li class="custom-select-item">
+                                                <a href="#" class="custom-link select-link">
+                                                    Most Answers
+                                                </a>
+                                            </li>
+                                            <li class="custom-select-item">
+                                                <a href="#" class="custom-link select-link">
+                                                    Least Answers
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="questions-list">
                             <div class="row  question-item ">
@@ -759,7 +874,7 @@
                     </div>
 
                 </div>
-                
+
             </div>
             <!-- center column end  -->
 
@@ -795,7 +910,7 @@
                     </div>
                 </div>
             </div>
-          </footer>
+        </footer>
     </div>
 
     <script src="js/bootstrap.min.js"></script>

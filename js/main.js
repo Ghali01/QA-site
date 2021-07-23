@@ -399,6 +399,9 @@ $(document).ready(
                     $(this).nextAll(".add-comment-div").css("display","none")
             });
             $(" .category-select-toolbar .custom-select-item").click(onSelectCategory)
+            $(".btn.tag-star").click(function (e) { 
+                $(this).toggleClass("favorited");
+            });
         }
 );
 //gird question animetion funcrion
