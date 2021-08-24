@@ -1,6 +1,6 @@
 var addedTags = [];
 
-$(document).ready(
+$(
     // animation for forms start
     function () {
         $(".vr-div").css({

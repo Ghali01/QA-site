@@ -25,12 +25,15 @@ SECRET_KEY = 'django-insecure-9=lqwkpp6g!ae@)35f365ffs*v5b%kvno4xrzzof&y1%37=zgo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+
+]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -115,6 +118,11 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'e38c42231ecdb6'
+EMAIL_HOST_PASSWORD = '55aa5553a66d85'
+EMAIL_PORT = '2525'
 
 
 # Static files (CSS, JavaScript, Images)

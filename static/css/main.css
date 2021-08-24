@@ -1836,7 +1836,7 @@ a.go{
     margin: 0 15px;
 }
 /* footer end */
-.error-p{
+.error-p,.error-p-s{
     color: var(--error-color);
     font-size: 12px;
     font-weight: bold;
