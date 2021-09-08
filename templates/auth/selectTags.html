@@ -1,0 +1,48 @@
+{% extends 'utilities/auth/_base.html' %}
+{% block title %}Select Your Tags{% endblock %}
+{% block content %}
+<div class="form-parent">
+
+    <form id="reg-form" method="POST" autocomplete="on" class="animeted-form tags-form">
+        {% csrf_token %}
+        <h4 class="form-title">Complete You Register</h4>
+        <p class="form-label form-msg">
+            Plese select the things that interest you
+        </p>
+        <p class="error-p-s" style="position: static;">
+            {% for msg in messages %}
+            {{msg}}
+            {% endfor %}
+          </p>
+       
+
+        <div class="mb-3">
+            <div class="add-tag-to-que-div">
+                <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
+                    class="form-control que-input que-tags-input" autocomplete="off" placeholder="Add Tags">
+                <ul class="tags-list custom-scrollbar" data-tags-div="#tags-div-ol">
+                    {% for tag in tags %}
+                    <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}} </li>
+                    {% endfor %}
+                </ul>
+
+
+                <div class="cus-card tags-card add-tags-q">
+                    <h5 class="cus-card-header">Tags</h5>
+                    <div class="cus-card-body tags-div " id="tags-div-ol">
+
+
+                    </div>
+                    <input type="hidden" name="tags" id="tags-input" value="[]">
+
+                </div>
+                <input type="submit" value="Save" class="btn btn-primary primary-button save-tags-btn">
+            </div>
+
+
+
+        </div>
+
+    </form>
+</div>
+{% endblock %}

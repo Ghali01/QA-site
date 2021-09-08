@@ -1,15 +1,14 @@
 <div class="d-none d-xl-block col-xl-3  right-column">
+    {% if request.user.is_authenticated and not request.uesr.is_anonymous %}
     <div class="cus-card tags-card">
         <h5 class="cus-card-header">Tags</h5>
         <div class="cus-card-body tags-div">
-            <button class="btn btn-outline-info btn-tag">Tag</button>
-            <button class="btn btn-outline-info btn-tag">Tag</button>
-            <button class="btn btn-outline-info btn-tag">Tag</button>
-            <button class="btn btn-outline-info btn-tag">Tag</button>
-            <button class="btn btn-outline-info btn-tag">Tag</button>
-            <button class="btn btn-outline-info btn-tag">Tag</button>
+            {% for tag in request.user.profile.tags.all %}
+            <a class="btn btn-outline-info btn-tag">{{tag.name}}</a>
+            {% endfor %}
         </div>
     </div>
+    {% endif %}
     <div class="right-bottom-column">
         <div class="cus-card ">
             <h5 class="cus-card-header">column title</h5>

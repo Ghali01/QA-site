@@ -1,0 +1,25 @@
+{% extends 'utilities/auth/_base.html' %}
+{% block title %}Email Sent{% endblock %}
+{% block content %} 
+<div class="form-parent">
+
+  <form id="reg-form" method="POST" autocomplete="on" style="margin: 7% auto;" class="animeted-form">
+    {% csrf_token %}
+    <h4 class="form-title">Change Your Email</h4>
+    <div class="mb-3">
+      <div class="inp-div">
+        <label class="lbl form-lable" id="lbl1">Email</label>
+        <input type="email" class="form-control form-input"  name="email">
+        <p class="error-p-s" style="position: static;">
+          {% for msg in messages %}
+          {{msg}}
+          {% endfor %}
+        </p>
+     
+        <input type="submit" class="btn btn-primary primary-button form-btn" value="Resend Email" />
+
+      </div>
+
+  </form>
+</div>
+{% endblock %}

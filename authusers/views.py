@@ -1,0 +1,170 @@
+from django.shortcuts import redirect, render
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from .models import TempUser,UserProfile
+from random import randint
+from django.db.utils import IntegrityError
+from django.http import HttpResponse
+from django.urls import reverse
+from django.contrib.auth import authenticate,login,logout as _logout
+from content.models import Tag
+import json
+from interviewsquestions.utilities.authDecoratros import forActiveUser
+def genRandomStr():
+    str=''
+    for i in range(0,99):
+        str+=chr(randint(65,90))
+    return str
+
+
+
+def index(request):
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        if request.user.profile.tags.count()>0:
+            return redirect(reverse('content:index'))
+        else:
+            return redirect(reverse('authusers:select-tags'))
+    else:
+        return redirect(reverse('authusers:register-page'))
+
+
+def registerPage(request):
+    if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_active:
+        return redirect(reverse('authusers:auth-index'))
+    if request.user.is_authenticated and not request.user.is_anonymous and not request.user.is_active:
+        return redirect(reverse('authusers:email-sent'))
+
+    if request.method== 'POST':
+        fullName=request.POST['fullName'] if 'fullName' in request.POST else None
+        userName=request.POST['userName'] if 'userName' in request.POST else None
+        email=request.POST['email'] if 'email' in request.POST else None
+        password=request.POST['password'] if 'password' in request.POST else None
+        confirmPassword=request.POST['confirmPassword'] if 'confirmPassword' in request.POST else None
+        emailTaken=User.objects.filter(email=email).exists()
+        if fullName and userName and email and password and confirmPassword and password==confirmPassword and 'website' in request.POST and not emailTaken:
+            website=request.POST['website']
+            try:
+                user=User.objects.create_user(userName,email,password,first_name=fullName,is_active=False)
+                login(request,user)
+                code=genRandomStr()
+                TempUser.objects.create(user=user,code=code,website=website)
+                msg= f"your confirm link: {request.build_absolute_uri(reverse('authusers:confirm-user',kwargs={'code':code}))}"
+                send_mail("intervies questions",msg ,'interviewsquestions@gmail.com',[email])
+                return redirect(reverse('authusers:email-sent') )
+            except IntegrityError:
+                messages.error(request,'User name is alredy exists',extra_tags='user-name')
+
+        elif not fullName:
+            messages.error(request,'Full name is requrid',extra_tags='full-name')
+        elif not userName:
+            messages.error(request,'User name is requrid',extra_tags='user-name')
+        elif not email:
+            messages.error(request,'Email is requrid',extra_tags='email')
+        elif emailTaken:
+            messages.error(request,'Email is taken',extra_tags='email')
+        elif not password:
+            messages.error(request,'Password is requrid',extra_tags='password')
+        elif not confirmPassword:
+            messages.error(request,'Confirm Password is requrid',extra_tags='conf-pass')
+        elif not password== confirmPassword:
+            messages.error(request,'Password does not match',extra_tags='conf-pass')
+    return render(request,'auth/register.html')
+def emailSent(request):
+    
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        if not request.user.is_active:
+            contxt={
+                'email':request.user.email
+            }
+            return render(request,'auth/emailSent.html',contxt)
+    return redirect(reverse('authusers:auth-index'))
+def confirmUser(request,code):
+    try:
+        tmpUser=TempUser.objects.get(code=code)
+        user=tmpUser.user
+        user.is_active=True
+        user.save()
+        profile=UserProfile()
+        profile.user=user
+        profile.website=tmpUser.website
+        profile.save()
+        tmpUser.delete()
+    
+        return redirect(reverse('authusers:auth-index'))
+    except TempUser.DoesNotExist:
+        return HttpResponse('invaid code')
+def loginPage(request):
+    if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_active:
+        return redirect(reverse('authusers:auth-index'))
+    elif request.user.is_authenticated and not request.user.is_anonymous and not request.user.is_active:
+        return redirect(reverse('authusers:email-sent'))
+    
+
+    if request.method == 'POST':
+        if 'email' in request.POST and 'password' in request.POST:
+            user=authenticate(request,email=request.POST['email'],password=request.POST['password'])
+       
+            if user:
+                if not user.is_active:
+                    return redirect(reverse('authusers:email-sent'))
+                login(request,user)
+                if not 'remember' in request.POST:
+                    request.session.set_expiry(0)
+                return redirect(reverse('authusers:auth-index'))
+            else:
+                messages.error(request,"email or passowrd in not valid")
+    return render(request,'auth/login.html')
+def logout(request):
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        _logout(request)
+    return redirect(reverse('authusers:login-page'))
+def selectTags(request):
+    if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_active:
+        if request.user.profile.tags.count()>0:
+            return redirect(reverse('authusers:auth-index'))
+
+        if request.method=='POST':
+            if 'tags' in request.POST:
+                userTags=json.loads(request.POST['tags'])
+                if userTags:
+                    userProfile=request.user.profile
+                    try:
+                        for tagId in userTags:
+                            userProfile.tags.add(Tag.objects.get(pk=int(tagId)))
+                        return redirect(reverse('authusers:auth-index'))
+                    except(Tag.DoesNotExist,ValueError):
+                        pass
+                else:
+                    messages.error(request,'you have to add 1 tag or more')
+        tags=Tag.objects.all()
+        contxt={
+            'tags':tags
+        }
+        return render(request,'auth/selectTags.html',contxt)
+    elif request.user.is_authenticated and not request.user.is_anonymous and not request.user.is_active:
+        return redirect(reverse('authusers:email-sent'))
+    else:
+        return redirect(reverse('authusers:login-page'))
+def chnageEmail(request):
+    if request.user.is_authenticated and not request.user.is_anonymous and not request.user.is_active:
+        if request.method=='POST':
+            if 'email' in request.POST:
+                if request.POST['email']:
+                    if not User.objects.filter(email=request.POST['email']).exists() or request.user.email==request.POST['email']:
+                        request.user.email=request.POST['email']
+                        request.user.save()
+                        
+                        code=request.user.tmp.code
+                        msg= f"your confirm link: {request.build_absolute_uri(reverse('authusers:confirm-user',kwargs={'code':code}))}"
+                        send_mail("intervies questions",msg ,'interviewsquestions@gmail.com',[request.POST['email']])
+
+                        return redirect(reverse('authusers:email-sent'))
+                    else:
+                        messages.error(request,'email is taken')
+                else:
+                    messages.error(request,'Email ir requrid')
+        return render(request,'auth/changeEmail.html')
+    else:
+        return redirect(reverse('authusers:auth-index'))
+    

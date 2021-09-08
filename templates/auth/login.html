@@ -19,10 +19,14 @@
     <div class="order-1 order-md-2 col-12 col-md-4">
       <div class="form-parent">
         <form id="reg-form" autocomplete="on" method="POST" class="animeted-form">
+          {% csrf_token %}
           <div class="mb-3 ">
             <!-- log in by email section start -->
             <div class="">
 
+              <p class="error-p" id="login-error"><i class="fas fa-exclamation"></i>
+                <span class="error-val">can not login</span>
+            </p>
               <div class="inp-div">
                 <label class="lbl form-lable" id="lbl1">Email</label>
                 <input type="email" class="form-control" id="email-input" name="email">
@@ -33,8 +37,13 @@
                 <input type="password" class="form-control" id="password-input" name="password" maxlength="50">
 
               </div>
+              <p class="error-p-s" style="position: static;">
+                {% for msg in messages %}
+                {{msg}}
+                {% endfor %}
+              </p>
               <p class="form-lable "> <a href="#" class="forget-pass">Forget Password?</a></p>
-              <input type="checkbox" class="rem-checkbox" id="rem-checkbox">
+              <input type="checkbox" name="remember" class="rem-checkbox" id="rem-checkbox">
               <label for="rem-checkbox" class="rem-lable">Remember Me</label>
 
               <input type="submit" class="btn btn-primary form-btn" id="log-btn" value="Sign In">
@@ -49,12 +58,13 @@
             <!-- media sign up section start -->
             <div class="">
 
-              <a href="" class="fb l-btn connect">Log In with Facebook</a>
-              <a href="" class="tw l-btn connect">Log In with Twitter</a>
-              <a href="" class="gi l-btn connect">Log In with GitHub</a>
-              <a href="" class="go l-btn connect">Log In with Google</a>
+              <button  type="button" class="fb l-btn connect" id="fb-login-btn">Log In with Facebook</button>
+              <button type="button" class="tw l-btn connect">Log In with Twitter</button>
+              <button type="button" class="gi l-btn connect">Log In with GitHub</button>
+              <button type="button" class="go l-btn connect">Log In with Google</button>
 
             </div>
+
           </div>
           <!-- media sign up section end -->
 

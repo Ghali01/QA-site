@@ -1,6 +1,6 @@
 var addedTags = [];
 
-$(
+$(document).ready(
     // animation for forms start
     function () {
         $(".vr-div").css({
@@ -105,11 +105,23 @@ $(
             }
             $(".tags-list").css({ display: "none" });
 
+            $('.nav-drop-down.opend').animate({
+                top: '22px',
+                opacity: 0,
+            
+            },300,function(){
+                $('.nav-drop-down').removeClass('opend');
+                $('.nav-drop-down').hide();
+
+            });
         });
         $(".custom-select").click(function (event) {
             event.stopPropagation();
         });
         $(".tags-list").click(function (event) {
+            event.stopPropagation();
+        });
+        $(".nav-drop-down").click(function (event) {
             event.stopPropagation();
         });
         $(".custom-select-item").click(customSelected);
@@ -121,21 +133,26 @@ $(
         }
 
         // tag list start
+        
+        $("#que-tags-input").keypress(e=>{
+            if(e.which==13)
+                e.preventDefault();
+        });
         $("#que-tags-input").keydown(function (e) {
 
             if (e.which == 38 || e.which == 40)
                 e.preventDefault();
             else if (e.which == 13) {
-                let tagText = $(".current-list-tag").text();
-                let tagId=$(".current-list-tag").data("tag-id");
+                let tagText = $(".current-list-tag").last().text();
+                // console.log($(".current-list-tag"));
+                let tagId=$(".current-list-tag").last().data("tag-id");
                 $(this).val("");
                 $(".current-list-tag").removeClass("current-list-tag");
                 if (tagText)
-                    addTagBtn(tagText,$(this).data("tags-div"));
+                    addTagBtn(tagText,tagId,$(this).data("tags-div"));
                     let tagsId = JSON.parse($("#tags-input").val());
                     tagsId.push(tagId)
-                    console.log(tagsId);
-                    $("#tags-input").val("["+tagsId.toString()+"]");
+                    $("#tags-input").val(JSON.stringify(tagsId));
                 
             }
 
@@ -151,11 +168,13 @@ $(
             var found = 0;
             var hasHover = null;
             $(this).next().children().map(function (c) {
-                if (!$(this).text().startsWith($("#que-tags-input").val()) || addedTags.includes($(this).text()))
-                    $(this).hide()
+                let tagsId = JSON.parse($("#tags-input").val());                
+                if (!$(this).text().startsWith($("#que-tags-input").val()) || tagsId.includes($(this).data('tag-id')))
+                    $(this).css('display','none');
                 else {
                     found++;
-                    $(this).show();
+                    $(this).css('display','block');
+
                 }
                 if ($(this).hasClass("current-list-tag"))
                     hasHover = this;
@@ -166,15 +185,31 @@ $(
                 $(this).next().css({ display: "block" });
             if (e.which == 38) {
                 if (hasHover == null) {
-                    $(this).next().children().last().addClass("current-list-tag");
+                    currentPos=found;
+                    let lis=[...$(this).next().children()].reverse();
+                    let lastOne=undefined;
+                    for(let liTag of lis){
+                        if ($(liTag).css('display')=='block'){
+                            lastOne=liTag;
+                            break;
+                        }
+                    }
+                    $(lastOne).addClass("current-list-tag");
                 }
                 else {
                     $(hasHover).removeClass("current-list-tag");
-                    $(hasHover).prevAll("li:visible").first().addClass("current-list-tag");
+                    let lis=[...$(hasHover).prevAll()].reverse();
+                    let lastOne=undefined;
+                    for(let liTag of lis){
+                        if ($(liTag).css('display')=='block'){
+                            lastOne=liTag;
+                            break;
+                        }
+                    }
+                    $(lastOne).addClass("current-list-tag");
                     currentPos--;
 
                 }
-                console.log(currentPos);
 
                 if (currentPos <= 0) {
                     currentPos = found;
@@ -196,12 +231,28 @@ $(
             else if (e.which == 40) {
                 if (hasHover == null) {
                     currentPos = 1;
-                    $(this).next().children().first("li:visible").addClass("current-list-tag");
+                    let lis=[...$(this).next().children()];
+                    let firstOne=undefined;
+                    for(let liTag of lis){
+                        if ($(liTag).css('display')=='block'){
+                            firstOne=liTag;
+                            break;
+                        }
+                    }
+                    $(firstOne).addClass("current-list-tag");
                 }
                 else {
 
                     $(hasHover).removeClass("current-list-tag");
-                    $(hasHover).nextAll("li:visible").first().addClass("current-list-tag");
+                    let lis=[...$(hasHover).nextAll()];
+                    let firstOne=undefined;
+                    for(let liTag of lis){
+                        if ($(liTag).css('display')=='block'){
+                            firstOne=liTag;
+                            break;
+                        }
+                    }
+                    $(firstOne).addClass("current-list-tag");
                     currentPos++;
                 }
 
@@ -227,9 +278,12 @@ $(
         });
         $(".tags-list-item").click(function () {
 
-            var tagText = $(this).text();
-
-            addTagBtn(tagText);
+            let tagText = $(this).text();
+            let tagId=$(this).data("tag-id");
+            let tagsId = JSON.parse($("#tags-input").val());
+            tagsId.push(tagId)
+            $("#tags-input").val(JSON.stringify(tagsId));
+            addTagBtn(tagText,tagId,$(this).parent().data("tags-div"));
             $(this).parent().css({ display: 'none' });
         });
         // tag list end
@@ -382,16 +436,7 @@ $(
             })
             // side list end
 
-            $(".remove-tag-btn").click(function (e) { 
-                console.log("test");
-                $(this).parent().addClass("remove-grid-item");
-                let clicked=this;
-                function aniCallBack(){
-                $(clicked).parent().css("display","none");
-                    
-                }
-                let aniTimeOut=setTimeout(aniCallBack,185);
-            });
+            $(".remove-tag-btn").click(removeTagBtn);
             $(".add-comment-span").click(function(){
                 if($(this).nextAll(".add-comment-div").css("display")=="none")
                     $(this).nextAll(".add-comment-div").css("display","block")
@@ -399,8 +444,49 @@ $(
                     $(this).nextAll(".add-comment-div").css("display","none")
             });
             $(" .category-select-toolbar .custom-select-item").click(onSelectCategory)
+      
+      
             $(".btn.tag-star").click(function (e) { 
                 $(this).toggleClass("favorited");
+            });
+        
+
+            $('.nav-drop-down').hide();
+
+            $('#drop-d-btn-nav').click(function(e){
+                if (!$('.nav-drop-down').hasClass('opend'))
+                   {
+                    $('.nav-drop-down').show();
+                    $('.nav-drop-down').animate({
+                        top: '50px',
+                        opacity: 1,
+                    
+                    },300,function(){
+                        $('.nav-drop-down').addClass('opend')
+                    
+                    });
+}                else{
+
+                    $('.nav-drop-down').animate({
+                        top: '22px',
+                        opacity: 0,
+                    
+                    },300,function(){
+                        $('.nav-drop-down').removeClass('opend')
+                        $('.nav-drop-down').hide();
+                    });}
+            });
+      
+
+
+            $.ajaxSetup({ cache: true });
+            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+              FB.init({
+                appId: '174872554664322',
+                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+              });     
+            //   $('#loginbutton,#feedbutton').removeAttr('disabled');
+            //   FB.getLoginStatus(updateStatusCallback);
             });
         }
 );
@@ -420,30 +506,37 @@ function startGridQueAni(parentId, duriton = 100) {
     }
     var interVal = setInterval(sacleQueGrid, 100);
 }
-function addTagBtn(tagText,tagsDivId) {
+function addTagBtn(tagText,tagId,tagsDivId) {
     let buttonTag = document.createElement("button");
     $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100","btn-tag-removeable"]);
     $(buttonTag).attr("type", "button");
     $(buttonTag).text(tagText);
+    $(buttonTag).data('tag-id', tagId);
     let removeBtn=document.createElement("div");
     $(removeBtn).addClass(["btn" ,"remove-tag-btn"]);
     $(removeBtn).append("<i class=\"fas fa-times\"></i>");
     $(buttonTag).append(removeBtn);
     $(tagsDivId).append(buttonTag);
 
-    $(removeBtn).click(function (e) { 
-        $(this).parent().addClass("remove-grid-item");
-        let clicked=this;
-        function aniCallBack(){
-        $(clicked).parent().css("display","none");
-            
-        }
-        let aniTimeOut=setTimeout(aniCallBack,185);
-    });
+    $(removeBtn).click(removeTagBtn);
     addedTags.push(tagText);
 }
 
-
+function removeTagBtn(e) { 
+    let tagId=$(this).parent().data('tag-id'); 
+    let tagsId = JSON.parse($("#tags-input").val());
+    tagsId.splice(tagsId.indexOf(tagId));
+    $("#tags-input").val(JSON.stringify(tagsId));
+    
+    $(this).parent().addClass("remove-grid-item");
+    let clicked=this;
+    function aniCallBack(){
+    $(clicked).parent().remove();
+    // $(clicked).parent().css("display","none");
+        
+    }
+    let aniTimeOut=setTimeout(aniCallBack,185);
+}
 function onSelectCategory(){
     let parentC=$(this).parentsUntil(".category-select-toolbar").last().parent();
     parentC.data("cur-val",$(this).data("cate-id"));

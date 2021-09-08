@@ -33,7 +33,10 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'main.apps.MainConfig',
+
+    'dashboard.apps.DashboardConfig',
+    'authusers.apps.AuthusersConfig',
+    'content.apps.ContentConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,6 +90,9 @@ DATABASES = {
 }
 
 
+AUTHENTICATION_BACKENDS=['interviewsquestions.utilities.loginBackend.LoginByEmail']
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -119,10 +125,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-EMAIL_HOST = 'smtp.mailtrap.io'
-EMAIL_HOST_USER = 'e38c42231ecdb6'
-EMAIL_HOST_PASSWORD = '55aa5553a66d85'
-EMAIL_PORT = '2525'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'moho.stmp@gmail.com'
+EMAIL_HOST_PASSWORD = '1234qwER'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS=True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -137,3 +144,11 @@ STATICFILES_DIRS=[
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL='/media/'
+MEDIA_ROOT=BASE_DIR.joinpath('media')
+
+import django.contrib.messages.constants as messages
+MESSAGE_TAGS={
+    messages.ERROR:'danger'
+}

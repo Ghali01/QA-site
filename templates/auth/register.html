@@ -31,11 +31,11 @@
                             <input type="text" class="form-control form-input" id="fullName-input" name="fullName"
                                 maxlength="40">
 
-                            <p class="error-p-s" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                                <span class="error-val">
+                            <p class="error-p-s" id="pass-dm-error">
+                                
                                     {% for msg in messages %}
                                     {% if 'full-name' in msg.extra_tags %}
-                                    {{msg}}
+                                    <i class="fas fa-exclamation"></i> {{msg}}
                                     {% endif %}
                                     {% endfor %}
                                 </span>
@@ -49,12 +49,11 @@
                             <input type="text" class="form-control form-input" id="userName-input" name="userName"
                                 maxlength="20">
 
-                                <p class="error-p-s" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                                    <span class="error-val">
+                                <p class="error-p-s" id="pass-dm-error">
     
                                         {% for msg in messages %}
                                         {% if 'user-name' in msg.extra_tags %}
-                                        {{msg}}
+                                        <i class="fas fa-exclamation"></i> {{msg}}
                                         {% endif %}
                                         {% endfor %}
                                     </span>
@@ -67,12 +66,11 @@
                             <label class="lbl form-lable" id="lbl1">Email</label>
                             <input type="email" class="form-control form-input" id="email-input" name="email">
                             
-                            <p class="error-p-s" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                                <span class="error-val">
+                            <p class="error-p-s" id="pass-dm-error">
 
                                     {% for msg in messages %}
                                     {% if 'email' in msg.extra_tags %}
-                                    {{msg}}
+                                    <i class="fas fa-exclamation"></i> {{msg}}
                                     {% endif %}
                                     {% endfor %}
                                 </span>
@@ -85,12 +83,11 @@
                             <label class="lbl form-lable" id="lbl1">Password</label>
                             <input type="password" class="form-control form-input" id="password-input" name="password"
                                 maxlength="50">
-                                <p class="error-p-s" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                                    <span class="error-val">
+                                <p class="error-p-s" id="pass-dm-error">
     
                                         {% for msg in messages %}
                                         {% if 'password' in msg.extra_tags %}
-                                        {{msg}}
+                                        <i class="fas fa-exclamation"></i> {{msg}}
                                         {% endif %}
                                         {% endfor %}
                                     </span>
@@ -105,12 +102,11 @@
                             <input type="password" class="form-control form-input" id="confirmPassword-input"
                                 name="confirmPassword" maxlength="50">
 
-                                <p class="error-p-s" id="pass-dm-error"><i class="fas fa-exclamation"></i>
-                                    <span class="error-val">
-    
+                                <p class="error-p-s" id="pass-dm-error">
+                                
                                         {% for msg in messages %}
                                         {% if 'conf-pass' in msg.extra_tags %}
-                                        {{msg}}
+                                        <i class="fas fa-exclamation"></i> {{msg}}
                                         {% endif %}
                                         {% endfor %}
                                     </span>

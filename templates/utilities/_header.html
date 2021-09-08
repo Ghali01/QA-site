@@ -1,4 +1,4 @@
-
+{% load categories %}
     <header class="header-nav">
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
@@ -21,9 +21,20 @@
                     <!-- search bar end -->
                     <ul class="navbar-nav ms-auto">
                         <!-- itemes on the right start -->
+                        <li class="nav-item drop-down-nl">
+                            <button class="btn drop-down-icon" id="drop-d-btn-nav">
+                            <i class="far fa-caret-square-down "></i>
 
+                            </button>
+                            <ul class="nav-drop-down">
+                                <li>
+                                    <a href="{% url 'authusers:logout' %}" class="drop-link">
+                                        <i class="fas fa-sign-out-alt"></i> <p>logout</p></a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="nav-item cus-nav-item">
-                            <img class="avatar-img" src="img/tmp/avatar.jpg" alt="avatar">
+                            <img class="avatar-img" src="{{request.user.profile.image.url}}" alt="avatar">
                             <span class="points-sp">6,145</span>
                             <div class="badges">
                                 <div class="badge ">
@@ -44,46 +55,8 @@
                         <!-- itemes on the right start -->
                         <!-- cateagors on sm start -->
 
-                        <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 1</a>
-                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 2</a>
-                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 3</a>
-                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item dropdown d-sm-none  ">
-                            <a href="#" class="nav-link dropdown-toggle cateogry-in-nav active" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Cateogry 4</a>
-                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                                <li><a class="dropdown-item" href="#">sub cateogry</a></li>
-                            </ul>
-                        </li>
-
+                        <!--  -->
+                        {% categories_mob %}
                         <!-- cateagors on sm end -->
 
                     </ul>

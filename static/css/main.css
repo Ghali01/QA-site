@@ -170,6 +170,45 @@ body{
     height: 35px;
     border-radius: 5px;
 }
+
+.drop-down-nl{
+    position: relative;
+}
+.drop-down-icon,
+    .drop-down-icon:hover,
+    .drop-down-icon:focus{
+    margin: 6.5px 12px 0;
+    font-size: 22px;
+    color: var(--blue-400);
+    padding: 0;
+}
+.nav-drop-down{
+    list-style: none;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: var(--navbar-color);
+    position: absolute;
+    top: 22px;
+    opacity: 0;
+}
+
+.nav-drop-down .drop-link{
+    color: var(--orange-400);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.nav-drop-down .drop-link:focus,
+.nav-drop-down .drop-link:visited{
+    color: var(--orange-500);
+}
+
+.nav-drop-down .drop-link p{
+    margin: 0 6px;
+    margin-top: -1px ;
+    
+}
+
 .points-sp{
     color: rgb(214, 214, 214);
     font-size: 15px;
@@ -3228,4 +3267,18 @@ p.info{
 }
 .feature-desc{
     display: inline;
+}
+.tags-form{
+    margin: 7% auto !important;
+    width: 800px !important;
+    height: 350px; 
+}
+
+.save-tags-btn{
+    float: right;
+    margin-top: 10px;
+
+}
+.tags-div-mb{
+    margin-bottom: 60px;
 }

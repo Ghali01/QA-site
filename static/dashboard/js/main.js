@@ -14,6 +14,8 @@ $(document).ready(function () {
     $(".add-cate-m-btn").click(addCateClick);
     $(".edit-tag-btn").click(editTagBtn);
     $(".del-tag-btn").click(deleteTagBtn);
+    $('#search-tags').keyup(searchTags);
+    $('#search-users').keyup(searchUsers);
     $(".btn-select").click(function (e) {
         e.preventDefault();
         $(".custom-select-list").css({
@@ -513,6 +515,8 @@ function deleteTableItem(){
 }
 
 function onCategorySelectChange(){
+
+    $('#add-cate-id').val($(this).val());
     subs=($(this).find(`option[value="${$(this).val()}"]`).data('sub'));
     $(this).parent().nextAll(".col-2").css("visibility", "hidden");
     nextSelect=$(this).parent().next(".col-2").find(".category-select");
@@ -530,11 +534,116 @@ function onCategorySelectChange(){
             `);
         }        
     }
+    getCategoryTags($(this).val());
+    }
+function getCategoryTags(id){
+    $("#tags-table").html('');
+    $.get(jsonTagsUrl+"?cate-id="+id, {},
+        function (data, textStatus, jqXHR) {
+            despalyTags(data);
+        },
+    );
 }
-
-
+function searchTags(){
+    $("#tags-table").html('');
+    let searchText=$(this).val();
+    let _this=this;
+    $.get(jsonTagsSearchUrl+`?search-text=${searchText}&cate-id=${$('#add-cate-id').val()}`, {},
+        function (data, textStatus, jqXHR) {
+    
+            if ($(_this).val()==searchText)
+                despalyTags(data);
+        },
+    );
+}
+        
+function despalyTags(tags){
+    tags=JSON.parse(tags);
+    $("#tags-table").html('');
+            
+    for (let item of tags ){
+        let tr=document.createElement('tr');
+        $(tr).html(`
+        <td>${item.name}</td>
+        <td>${item.description}<td>
+            <button class="btn btn-app cus-btn-app d-block del-tag-btn" data-lvl="2" data-toggle="modal" data-target="#del-tag-modal"
+            data-tag-id="${item.id}" data-tag-name="${item.name}">
+                <i class="far fa-trash-alt btn-app-icon"></i>Delete
+            </button>
+            <button class="btn btn-app cus-btn-app d-block edit-tag-btn" data-lvl="2" data-toggle="modal" data-target="#edit-tag-modal"
+            data-tag-id="${item.id}">
+                <i class="fas fa-pen btn-app-icon"></i>Edit
+            </button>
+        </td>
+   
+        `);
+        $(tr).find(".edit-tag-btn").click(editTagBtn);
+        $(tr).find(".del-tag-btn").click(deleteTagBtn);
+        $("#tags-table").append(tr);
+    }
+}
 function editTagBtn(){
     $('#edit-tag-id').val($(this).data('tag-id'));
     $('#edit-tag-name').val($(this).parent().prev().prev().text());
     $('#edit-tag-desc').val($(this).parent().prev().text());
+}
+
+function searchUsers(){
+    $('#users').html('');
+    if($(this).val()){
+        let searchText=$(this).val(),_this=this;
+    $.get(`${searchUserLink}?search-text=${searchText}`, {},
+        function (data, textStatus, jqXHR) {
+            if(searchText==$(_this).val())
+            {     
+                $('#users').html('');
+                let users=JSON.parse(data);
+                for (let user of users){
+                    let tr=document.createElement('tr');
+                    $(tr).html(`
+                    <td>
+                    ${user.userName}
+                  </td>
+                  <td>${user.fullName}</td>
+                  <td>${user.id}</td>
+                  <td>${user.email}</td>
+                  <td>${user.perm}</td>
+                  <td>
+                    <div class="actions-btns" data-item-id="${user.id}">
+
+                      <a class="btn btn-app cus-btn-app">
+                        <i class="fas fa-user btn-app-icon"></i>Profile
+                      </a>
+                      <a class="btn btn-app cus-btn-app app-btn-70">
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>Questions
+                      </a>
+                      <a class="btn btn-app cus-btn-app app-btn-70">
+                        <i class="fas fa-angle-right btn-app-icon"></i>Answers
+                      </a>
+                      <button class="btn btn-app cus-btn-app ban-user-btn"
+                      data-toggle="modal" data-lvl="2" data-target="#ban-modal"
+                      data-user-id="415251" data-user-name="User User">
+                        <i class="fas fa-user-slash btn-app-icon"></i>Ban
+                      </button>
+                      <a class="btn btn-app cus-btn-app app-btn-70">
+                        <i class="far fas fa-user-minus btn-app-icon"></i>Prune
+                      </a>
+                      <button class="btn btn-app cus-btn-app app-btn-80 permission-btn" data-lvl="2" data-toggle="modal" data-target="#permissions-modal">
+                        <i class="fas fa-address-card btn-app-icon"></i>Permissions
+                      </button>
+                    </div>
+                  </td>
+             
+                    `);
+                    $(tr).find('.permission-btn').click(premissionBtnClick);
+                    $('#users').append(tr);
+                }
+            }
+      },
+    );
+}
+}
+
+function  premissionBtnClick(){
+    $('#prem-user-id').val($(this).parent().data('item-id'));
 }

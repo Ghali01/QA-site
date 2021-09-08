@@ -1,0 +1,569 @@
+{% extends 'utilities/_base.html' %}
+{% block titile %}Index{% endblock %}
+
+{% block content %} 
+    <h2 class="center-title">Lastst Questions</h2>
+    <a href="#" class="btn btn-primary btn-sm primary-button suggest-btn">
+        Suggest Question
+    </a>
+    <div style="clear:both"></div>
+    <div class="row filters-row">
+        <div class="col-4 col-sm-3 col-lg-2">
+            <div class="custom-select">
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">All</span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            My Tags
+                        </a>
+                    </li>
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            All
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2">
+            
+            <div class="custom-select">
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">Most Votes</span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            Most Votes
+                        </a>
+                    </li>
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            Least Votes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2">
+            
+            <div class="custom-select">
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">Most Views</span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            Most Views
+                        </a>
+                    </li>
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            Least Viwes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-4 col-sm-3 col-lg-2">
+            
+            <div class="custom-select ans-fil ">
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">Most Answers</span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            Most Answers
+                        </a>
+                    </li>
+                    <li class="custom-select-item">
+                        <a href="#" class="custom-link select-link">
+                            Least Answers
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="btn-group my-btn-group" style="margin-bottom: 12px;" role="group"
+            aria-label="Basic outlined example">
+            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item active">All time</a>
+            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item">Today</a>
+            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item">This week</a>
+            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item">This month</a>
+        </div>
+    <div style="clear:both"></div>
+    <!-- queststion start -->
+    <div class="questions-list">
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row  question-item ">
+            <div class="col-3 que-nums-col">
+                <div class="row">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <div class="added-by-div">add by <a class="by-user-name" href="#">User User</a></div>
+            </div>
+            <div class="col-9 que-col">
+                <div class="vp-num-ques">
+                    <div class="nums-que">
+                        <span class="que-num-span">200</span>
+                        <span class="que-word">votes</span>
+
+                    </div>
+                    <div class="nums-que">
+                        <span class="que-num-span">500</span>
+                        <span class="que-word">views</span>
+                    </div>
+                    <div class="answered-num-div nums-que">
+                        <span class="answered-num-span">5</span>
+                        <span class="answered-word">answers</span>
+                    </div>
+                </div>
+                <a href="#" class="question-title line-clamp">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil iure tempora, expedita
+                    eveniet porro cupiditate corrupti ipsam suscipit provident. Totam, laudantium ipsa.
+                    Distinctio est fugiat repudiandae expedita consequatur nihil tenetur.
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                        <button class="btn btn-outline-info btn-tag">Tag</button>
+                    </div>
+                    <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">User
+                            User</a></div>
+
+                    <div class="question-date">last answer added in 0000/00/00 </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- questions end -->
+{% endblock %}

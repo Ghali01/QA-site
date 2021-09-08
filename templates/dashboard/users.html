@@ -1,0 +1,104 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% block title %}Users Management{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Users Management</h3>
+              <div class="input-group float-right" style="width: 270px;">
+                <input type="search" class="form-control form-control-md "
+                    id="search-users" placeholder="search by usernam or id...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-md btn-default">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <script>
+                    var searchUserLink="{% url 'dashboard:search-users' %}";
+                </script>
+            </div>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <th style="width: 10%;">User name</th>
+                  <th style="width: 10%;">Full name</th>
+                  <th style="width: 8%;">ID</th>
+                  <th style="width: 20%;">Email</th>
+                  <th style="width: 20%;">Permissions</th>
+                  <th style="width: 32%;">Action</th>
+                </thead>
+                <tbody  id="users">
+               
+               
+               
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <div class="modal fade" id="ban-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ban-modalLabel">Ban User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <p>Do you want Ban <span class="f-bold" id="ban-user-name"></span>?
+            </p>
+            <input type="hidden" name="user-id" id="ban-user-id">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Ban</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="permissions-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="permissions-modalLabel">User Premissions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" id="perm-form" action="{% url 'dashboard:set-user-perm' %}">
+              {% csrf_token %}
+            <input type="hidden" name="user-id" id="prem-user-id">
+            <input type="radio" name="perm" id="su-admin" value="SA"> <label for="su-admin">Super Admin</label>
+            <br>
+            <input type="radio" name="perm" id="admin" value="A"> <label for="admin">Admin</label>
+            <br>
+            <input type="radio" name="perm" id="moderator" value="M"> <label for="moderator">Moderator</label>
+            <br>
+            <input type="radio" name="perm" id="basic-user" value="U"> <label for="basic-user">User</label>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-primary" form="perm-form"  value="Set">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

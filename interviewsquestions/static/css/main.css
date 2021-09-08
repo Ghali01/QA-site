@@ -170,6 +170,45 @@ body{
     height: 35px;
     border-radius: 5px;
 }
+
+.drop-down-nl{
+    position: relative;
+}
+.drop-down-icon,
+    .drop-down-icon:hover,
+    .drop-down-icon:focus{
+    margin: 6.5px 12px 0;
+    font-size: 22px;
+    color: var(--blue-400);
+    padding: 0;
+}
+.nav-drop-down{
+    list-style: none;
+    padding: 8px;
+    border-radius: 5px;
+    background-color: var(--navbar-color);
+    position: absolute;
+    top: 22px;
+    opacity: 0;
+}
+
+.nav-drop-down .drop-link{
+    color: var(--orange-400);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.nav-drop-down .drop-link:focus,
+.nav-drop-down .drop-link:visited{
+    color: var(--orange-500);
+}
+
+.nav-drop-down .drop-link p{
+    margin: 0 6px;
+    margin-top: -1px ;
+    
+}
+
 .points-sp{
     color: rgb(214, 214, 214);
     font-size: 15px;
@@ -1047,7 +1086,7 @@ body{
 
 /* media button start */
   
-a.l-btn {
+ button.l-btn {
     font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
     display: inline-block;
     font-size: 14px;
@@ -1064,6 +1103,7 @@ a.l-btn {
     width: 85%;
     margin: auto;
     margin-bottom: 8px;
+    border: none;
 }
 .connect:before {
     display: inline-block;
@@ -1085,7 +1125,7 @@ a.l-btn {
     background-size: 20px;
 }
 
-a.fb{
+button.fb{
     background: #3A5A97;
 }
 .tw:before{
@@ -1094,7 +1134,7 @@ a.fb{
     background-size: 20px;
 
 }
-a.tw{
+button.tw{
     background-color: #00acee;
 }
 .gi:before{
@@ -1103,7 +1143,7 @@ a.tw{
     background-size: 20px;
 
 }
-a.gi{
+button.gi{
     background-color: var(--bg-color);
     color: var(--titles-colors);
     border: 1.5px solid var(--titles-colors);
@@ -1114,7 +1154,7 @@ a.gi{
     background-size: 20px;
 
 }
-a.go{
+button.go{
     background-color: var(--bg-color);
     color: var(--titles-colors);
     border: 1.5px solid var(--titles-colors);
@@ -3228,4 +3268,18 @@ p.info{
 }
 .feature-desc{
     display: inline;
+}
+.tags-form{
+    margin: 7% auto !important;
+    width: 800px !important;
+    height: 350px; 
+}
+
+.save-tags-btn{
+    float: right;
+    margin-top: 10px;
+
+}
+.tags-div-mb{
+    margin-bottom: 60px;
 }

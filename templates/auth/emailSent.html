@@ -4,14 +4,16 @@
 <div class="form-parent">
         
     <form id="reg-form" autocomplete="on"  style="margin: 7% auto;" class="animeted-form" >
-          <h4 class="form-title">Reset Your Password</h4>
-          <p class="form-label form-msg">Check your email for a link to reset your password. If it doesn’t appear within a few minutes, check your spam folder.
+          <h4 class="form-title">Confirm Your Email</h4>
+          <p class="form-label form-msg">We Send confirm message to <b>{{email}}</b>
+            <br>
+            <a href="{% url 'authusers:set-email' %}" class="custom-link secondry-link">Change Email</a>
 
           </p>
           <div class="mb-3">
           
               
-              <a class="btn btn-primary primary-button form-btn" href="{% url 'register-page' %}" >Return to sign in </a>
+              <a class="btn btn-primary primary-button form-btn" href="{% url 'authusers:logout' %}" >Return to sign up </a>
           
               </div>
 

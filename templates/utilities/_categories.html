@@ -1,0 +1,21 @@
+<ul class="categores-list">
+
+    {% for cate in categories %}
+    <li class="category-li">
+        <a href="{% url 'content:index' categoryID=cate.id %}" class="cateogry-item">
+
+            {{cate.name}}
+        </a>
+        <i class="fas fa-chevron-down down-icon"></i>
+        <!-- <div class="cateogry-act-border"></div> -->
+        <ul class="subcategories-list">
+            {% for subCate in cate.toArray %}
+
+            <li class="subcategory-item"> <a href="{% url 'content:index' categoryID=subCate.id %}">{{subCate.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+
+</ul>

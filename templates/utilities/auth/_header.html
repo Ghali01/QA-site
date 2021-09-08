@@ -2,13 +2,14 @@
     <!-- navbar start -->
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">Inerviwes Question</a>
+        <a class="navbar-brand" href="{% url 'content:index' %}">Inerviwes Question</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          {% if not request.user.is_authenticated %}
           <ul class="navbar-nav ms-auto text-center">
             <li class="nav-item 
             {% if 'register' in request.path %}
@@ -17,7 +18,7 @@
             {% endif %}
       
             ">
-              <a class="nav-link" href="{% url 'register-page' %}">Sign Up</a>
+              <a class="nav-link" href="{% url 'authusers:register-page' %}">Sign Up</a>
             </li>
 
             <li class="nav-item 
@@ -26,10 +27,11 @@
             custom-nav-active
                         {% endif %}
 ">
-              <a class="nav-link" href="{% url 'login-page' %}">Sign In</a>
+              <a class="nav-link" href="{% url 'authusers:login-page' %}">Sign In</a>
             </li>
 
           </ul>
+          {% endif %}
         </div>
 
       </div>
