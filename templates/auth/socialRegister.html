@@ -1,0 +1,121 @@
+{% extends 'utilities/auth/_base.html' %}
+{% block title %}{% endblock %}
+
+{% block content %} 
+<div class="form-parent">
+    <form id="reg-form" autocomplete="on" method="POST" action="{{submitUrl}}" class="animeted-form center-form auth-form">
+      <div class="mb-3">
+        {% csrf_token %}
+        <!-- register by email section start -->
+        <img src="{{image}}" class="form-img" alt="">
+
+        <p class="error-p-s" style="position: static; margin-top: 16px;">
+            {% for msg in messages %}
+            {{msg}}
+            {% endfor %}
+          </p>
+        <input type="hidden" name="user-id" value="{{userID}}">
+        <div class="">
+          <div class="inp-div">
+            <label class="lbl form-lable lbl-foucsed" id="lbl1">Full Name</label>
+            <input type="text" class="form-control form-input" id="fullName-input" name="fullName" maxlength="40" readonly value="{{fullName}}">
+            <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                <span class="error-val"></span>
+            </p>
+  
+            <p class="error-p-s"  >
+                                
+                {% for msg in messages %}
+                {% if 'full-name' in msg.extra_tags %}
+                <i class="fas fa-exclamation"></i> {{msg}}
+                {% endif %}
+                {% endfor %}
+        </p>
+
+          </div>
+          <div class="inp-div">
+            <label class="lbl form-lable" id="lbl1">User Name</label>
+            <input type="text" class="form-control form-input" id="userName-input" name=userName  maxlength="20">
+            <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                <span class="error-val"></span>
+            </p>
+  
+            <p class="error-p-s" >
+    
+                {% for msg in messages %}
+                {% if 'user-name' in msg.extra_tags %}
+                <i class="fas fa-exclamation"></i> {{msg}}
+                {% endif %}
+                {% endfor %}
+        </p>
+=
+          </div>
+          <div class="inp-div">
+            <label class="lbl form-lable lbl-foucsed" id="lbl1">Email</label>
+            <input type="email" class="form-control form-input" id="email-input" name="email" readonly value="{{email}}">
+            <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                <span class="error-val"></span>
+            </p>
+            <p class="error-p-s" id="pass-dm-error">
+
+                {% for msg in messages %}
+                {% if 'email' in msg.extra_tags %}
+                <i class="fas fa-exclamation"></i> {{msg}}
+                {% endif %}
+                {% endfor %}
+        </p>
+
+          </div>
+          <div class="inp-div">
+            <label class="lbl form-lable" id="lbl1">Password</label>
+            <input type="password" class="form-control form-input" id="password-input" name="password"
+              maxlength="50" value="12345678">
+              <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                <span class="error-val"></span>
+            </p>
+              <p class="error-p-s" id="pass-dm-error">
+    
+                {% for msg in messages %}
+                {% if 'password' in msg.extra_tags %}
+                <i class="fas fa-exclamation"></i> {{msg}}
+                {% endif %}
+                {% endfor %}
+            </span>
+        </p>
+  
+          </div>
+
+          <div class="inp-div">
+            <label class="lbl form-lable" id="lbl1">Confirm Password</label>
+            <input type="password" class="form-control form-input" id="confirmPassword-input"
+              name="confirmPassword" maxlength="50" value="12345678">
+              <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
+                <span class="error-val"></span>
+            </p>
+              <p class="error-p-s">
+                                
+                {% for msg in messages %}
+                {% if 'conf-pass' in msg.extra_tags %}
+                <i class="fas fa-exclamation"></i> {{msg}}
+                {% endif %}
+                {% endfor %}
+        </p>
+  
+          </div>
+          <div class="inp-div">
+            <label class="lbl form-lable" id="lbl1">Website (Optional)</label>
+            <input type="url" class="form-control form-input no-req" id="website-input"
+              name="website" maxlength="50">
+          </div>
+
+          <p class="form-lable acc">By clicking Register, I agree that I have read and accepted our <a href="#"
+              class="acc-link">Terms of Use and Privacy Policy</a></p>
+          <input type="submit" class="btn btn-primary primary-button form-btn" id="reg-btn" value="Sign Up">
+        </div>
+        <!-- register by email section end -->
+
+
+      </div>
+    </form>
+  </div>
+{% endblock %}

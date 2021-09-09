@@ -987,6 +987,9 @@ body{
     padding: 5px 15px;
     width: 300px;
 }
+.center-form{
+    margin: 7% auto !important;
+}
 
 @media (max-width:768px){
     #reg-form{
@@ -1025,6 +1028,21 @@ body{
 .lbl-color-set{
     color: var(--secodry-color);
 }
+.lbl-foucsed{
+    color: var(--secodry-color);
+    z-index: 2;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+}
+.form-img{
+    display: block;
+    margin: auto;
+    border-radius: 10px;
+    /* border: 1.3px solid var(--secodry-color) ; */
+    width: 150px;
+}
+
 .acc{
     margin-top: 27px;
     font-size: 12px;

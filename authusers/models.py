@@ -22,6 +22,6 @@ class UserProfile(models.Model):
     image=models.ImageField(upload_to=MEDIA_ROOT.joinpath('profile'),default='profile/default.jpg')
     tags=models.ManyToManyField(Tag)
     permission=models.CharField(max_length=3,choices=permissionsChoies,default='U')
-
+    socialID=models.CharField(max_length=150,unique=True)
 
 

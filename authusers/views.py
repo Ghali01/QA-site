@@ -1,3 +1,4 @@
+from interviewsquestions.settings import MEDIA_ROOT
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -11,6 +12,8 @@ from django.contrib.auth import authenticate,login,logout as _logout
 from content.models import Tag
 import json
 from interviewsquestions.utilities.authDecoratros import forActiveUser
+import requests
+from google.auth import jwt
 def genRandomStr():
     str=''
     for i in range(0,99):
@@ -20,7 +23,7 @@ def genRandomStr():
 
 
 def index(request):
-    if request.user.is_authenticated and not request.user.is_anonymous:
+    if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_active:
         if request.user.profile.tags.count()>0:
             return redirect(reverse('content:index'))
         else:
@@ -167,4 +170,138 @@ def chnageEmail(request):
         return render(request,'auth/changeEmail.html')
     else:
         return redirect(reverse('authusers:auth-index'))
-    
+
+
+def addSocialUser(request,registerPage,imageUrl):
+    fullName=request.POST['fullName'] if 'fullName' in request.POST else None
+    userName=request.POST['userName'] if 'userName' in request.POST else None
+    email=request.POST['email'] if 'email' in request.POST else None
+    password=request.POST['password'] if 'password' in request.POST else None
+    confirmPassword=request.POST['confirmPassword'] if 'confirmPassword' in request.POST else None
+    emailTaken= User.objects.filter(email=email).exists()
+    if fullName and userName and email and password and confirmPassword and password==confirmPassword and 'website' in request.POST and not emailTaken:
+        website=request.POST['website']
+        try:
+            user=User.objects.create_user(userName,email,password,first_name=fullName,is_active=True)
+            profile=UserProfile()
+            profile.user=user
+            profile.website=website
+            profile.socialID= request.POST["user-id"]
+            imgResponse=requests.get(imageUrl)
+            with open(str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg','wb') as imgF:
+                for chunk in imgResponse.iter_content(chunk_size=1024):
+                    if chunk:
+                        imgF.write(chunk)
+
+            profile.image.name=str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg'
+            profile.save()
+            login(request,user)
+            return redirect(reverse('authusers:auth-index'))
+            
+        except IntegrityError:
+            messages.error(request,'User name is alredy exists',extra_tags='user-name')
+
+    elif not fullName:
+        messages.error(request,'Full name is requrid',extra_tags='full-name')
+    elif not userName:
+        messages.error(request,'User name is requrid',extra_tags='user-name')
+    elif not email:
+        messages.error(request,'Email is requrid',extra_tags='email')
+    elif emailTaken:
+        messages.error(request,'Email is taken',extra_tags='email')
+    elif not password:
+        messages.error(request,'Password is requrid',extra_tags='password')
+    elif not confirmPassword:
+        messages.error(request,'Confirm Password is requrid',extra_tags='conf-pass')
+    elif not password== confirmPassword:
+        messages.error(request,'Password does not match',extra_tags='conf-pass')
+    return registerPage
+
+
+def addFacebookUser(request):
+    if request.method=='POST':
+        return addSocialUser(request,redirect(reverse('authusers:facebok-login'))
+        ,f'https://graph.facebook.com/{request.POST["user-id"]}/picture?width=150&height=150')
+    else:
+        return redirect(reverse('authusers:auth-index'))
+
+def facebookLogin(request):
+    if not request.user.is_authenticated:
+        userID=token=None
+        if 'user-id' in request.POST and 'token' in request.POST:
+            request.session['fb-token']=request.POST["token"]
+            request.session['fb-user-id']=request.POST["user-id"]
+            token=request.POST["token"]
+            userID=request.POST["user-id"]
+        else:
+            token=request.session['fb-token']
+            userID=request.session['fb-user-id']
+        
+        try:
+            profile=UserProfile.objects.get(socialID=userID)
+            login(request,profile.user)
+            return redirect(reverse('authusers:auth-index'))
+            
+        except UserProfile.DoesNotExist:
+            pass
+        respone=requests.get(f'https://graph.facebook.com/{userID}',
+        params={
+            'access_token':token,
+            'fields':'id,name,email,picture'
+            })
+        data=respone.json()
+             
+        context={
+            'fullName':data['name'],
+            'email':data['email'],
+            'image':f'https://graph.facebook.com/{userID}/picture?width=150&height=150',
+            'userID':userID,
+            'submitUrl':reverse('authusers:facebok-register')
+        }
+        return render(request,'auth/socialRegister.html',context)
+
+    return redirect(reverse('authusers:auth-index'))
+
+def addGoogleUser(request):
+    if request.method=='POST':
+        jwtD=request.session['go-jwt']
+        data=jwt.decode(jwtD,verify=False)
+
+        return addSocialUser(request,redirect(reverse('authusers:google-login'))
+        ,data['picture'])
+    else:
+        return redirect(reverse('authusers:auth-index'))
+
+
+
+def googelLogin(request):
+    if not request.user.is_authenticated:
+        jwtD=None
+        if 'jwt' in request.POST:
+            request.session['go-jwt']=request.POST["jwt"]
+            jwtD=request.POST["jwt"]
+        else:
+            jwtD=request.session['go-jwt']
+
+        data=jwt.decode(jwtD,verify=False)
+        userID=data['sub']
+        try:
+            profile=UserProfile.objects.get(socialID=userID)
+            login(request,profile.user)
+            return redirect(reverse('authusers:auth-index'))
+            
+        except UserProfile.DoesNotExist:
+            pass
+        
+             
+        context={
+            'fullName':data['name'],
+            'email':data['email'],
+            'image':data['picture'],
+            'userID':userID,
+            'submitUrl':reverse('authusers:google-register')
+        }
+        return render(request,'auth/socialRegister.html',context)
+
+    else:
+        return redirect(reverse('authusers:auth-index'))

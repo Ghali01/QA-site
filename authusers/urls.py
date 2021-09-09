@@ -10,5 +10,9 @@ urlpatterns=[
     path('login',views.loginPage,name='login-page'),
     path('select-tags',views.selectTags,name='select-tags'),
     path('set-email',views.chnageEmail,name='set-email'),
-    path('logout',views.logout,name='logout')
+    path('logout',views.logout,name='logout'),
+    path('facebook-login',views.facebookLogin,name='facebok-login'),
+    path('facebook-register',views.addFacebookUser,name='facebok-register'),
+    path('google-login',views.googelLogin,name='google-login'),
+    path('google-register',views.addGoogleUser,name='google-register'),
 ]

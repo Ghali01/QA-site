@@ -487,6 +487,12 @@ $(document).ready(
                 $('#fb-login-btn').click(fbLoginBtn);
 
             });
+            $.getScript("https://accounts.google.com/gsi/client", function (script, textStatus, jqXHR) {
+            $('#go-login-btn').click(function(){
+                $('#go-login-btn-api').find('[role=button]').click();
+            });
+
+        });
         }
 
     }
@@ -575,10 +581,24 @@ function fbLoginBtn() {
         if (response.status == 'connected') {
             console.log(response.authResponse.accessToken);
             console.log(response.authResponse.userID);
-            
+            let form =$('#social-form')
+            $(form).attr('method','POST');           
+            $(form).attr('action','/facebook-login');           
+            $(form).append(`<input type="hidden" name="user-id" value="${response.authResponse.userID}">`);
+            $(form).append(`<input type="hidden" name="token" value="${response.authResponse.accessToken}">`);
+            $(form).submit();
         }
         else {
             $('#login-error').slideDown();
         }
     }, { scope: 'public_profile,email' });
 }
+
+function googleLoginCallback(response) {
+    let form =$('#social-form')
+    $(form).attr('method','POST');           
+    $(form).attr('action','/google-login');           
+    $(form).append(`<input type="hidden" name="jwt" value="${response.credential}">`);
+    $(form).submit();
+
+ }
