@@ -58,17 +58,17 @@ $(document).ready(
         });
 
         $(".subcategories-list").slideUp(0);
-        $(".category-li .down-icon").click(function (e) { 
-            if( !$(this).hasClass("down-icon-a")){
-            $(this).css("animation-name","none");
-            $(this).css("animation-name","down-icon-ani");
-        
-        }else{
-            $(this).css("animation-name","none");
-            // $(this).css("animation-direction","reverse");
-            $(this).css("animation-name","down-icon-ani2");
-            
-        }
+        $(".category-li .down-icon").click(function (e) {
+            if (!$(this).hasClass("down-icon-a")) {
+                $(this).css("animation-name", "none");
+                $(this).css("animation-name", "down-icon-ani");
+
+            } else {
+                $(this).css("animation-name", "none");
+                // $(this).css("animation-direction","reverse");
+                $(this).css("animation-name", "down-icon-ani2");
+
+            }
             $(this).toggleClass("down-icon-a");
             $(this).nextAll(".subcategories-list").slideToggle();
         });
@@ -108,8 +108,8 @@ $(document).ready(
             $('.nav-drop-down.opend').animate({
                 top: '22px',
                 opacity: 0,
-            
-            },300,function(){
+
+            }, 300, function () {
                 $('.nav-drop-down').removeClass('opend');
                 $('.nav-drop-down').hide();
 
@@ -133,9 +133,9 @@ $(document).ready(
         }
 
         // tag list start
-        
-        $("#que-tags-input").keypress(e=>{
-            if(e.which==13)
+
+        $("#que-tags-input").keypress(e => {
+            if (e.which == 13)
                 e.preventDefault();
         });
         $("#que-tags-input").keydown(function (e) {
@@ -145,15 +145,15 @@ $(document).ready(
             else if (e.which == 13) {
                 let tagText = $(".current-list-tag").last().text();
                 // console.log($(".current-list-tag"));
-                let tagId=$(".current-list-tag").last().data("tag-id");
+                let tagId = $(".current-list-tag").last().data("tag-id");
                 $(this).val("");
                 $(".current-list-tag").removeClass("current-list-tag");
                 if (tagText)
-                    addTagBtn(tagText,tagId,$(this).data("tags-div"));
-                    let tagsId = JSON.parse($("#tags-input").val());
-                    tagsId.push(tagId)
-                    $("#tags-input").val(JSON.stringify(tagsId));
-                
+                    addTagBtn(tagText, tagId, $(this).data("tags-div"));
+                let tagsId = JSON.parse($("#tags-input").val());
+                tagsId.push(tagId)
+                $("#tags-input").val(JSON.stringify(tagsId));
+
             }
 
         })
@@ -168,12 +168,12 @@ $(document).ready(
             var found = 0;
             var hasHover = null;
             $(this).next().children().map(function (c) {
-                let tagsId = JSON.parse($("#tags-input").val());                
+                let tagsId = JSON.parse($("#tags-input").val());
                 if (!$(this).text().startsWith($("#que-tags-input").val()) || tagsId.includes($(this).data('tag-id')))
-                    $(this).css('display','none');
+                    $(this).css('display', 'none');
                 else {
                     found++;
-                    $(this).css('display','block');
+                    $(this).css('display', 'block');
 
                 }
                 if ($(this).hasClass("current-list-tag"))
@@ -185,12 +185,12 @@ $(document).ready(
                 $(this).next().css({ display: "block" });
             if (e.which == 38) {
                 if (hasHover == null) {
-                    currentPos=found;
-                    let lis=[...$(this).next().children()].reverse();
-                    let lastOne=undefined;
-                    for(let liTag of lis){
-                        if ($(liTag).css('display')=='block'){
-                            lastOne=liTag;
+                    currentPos = found;
+                    let lis = [...$(this).next().children()].reverse();
+                    let lastOne = undefined;
+                    for (let liTag of lis) {
+                        if ($(liTag).css('display') == 'block') {
+                            lastOne = liTag;
                             break;
                         }
                     }
@@ -198,11 +198,11 @@ $(document).ready(
                 }
                 else {
                     $(hasHover).removeClass("current-list-tag");
-                    let lis=[...$(hasHover).prevAll()].reverse();
-                    let lastOne=undefined;
-                    for(let liTag of lis){
-                        if ($(liTag).css('display')=='block'){
-                            lastOne=liTag;
+                    let lis = [...$(hasHover).prevAll()].reverse();
+                    let lastOne = undefined;
+                    for (let liTag of lis) {
+                        if ($(liTag).css('display') == 'block') {
+                            lastOne = liTag;
                             break;
                         }
                     }
@@ -231,11 +231,11 @@ $(document).ready(
             else if (e.which == 40) {
                 if (hasHover == null) {
                     currentPos = 1;
-                    let lis=[...$(this).next().children()];
-                    let firstOne=undefined;
-                    for(let liTag of lis){
-                        if ($(liTag).css('display')=='block'){
-                            firstOne=liTag;
+                    let lis = [...$(this).next().children()];
+                    let firstOne = undefined;
+                    for (let liTag of lis) {
+                        if ($(liTag).css('display') == 'block') {
+                            firstOne = liTag;
                             break;
                         }
                     }
@@ -244,11 +244,11 @@ $(document).ready(
                 else {
 
                     $(hasHover).removeClass("current-list-tag");
-                    let lis=[...$(hasHover).nextAll()];
-                    let firstOne=undefined;
-                    for(let liTag of lis){
-                        if ($(liTag).css('display')=='block'){
-                            firstOne=liTag;
+                    let lis = [...$(hasHover).nextAll()];
+                    let firstOne = undefined;
+                    for (let liTag of lis) {
+                        if ($(liTag).css('display') == 'block') {
+                            firstOne = liTag;
                             break;
                         }
                     }
@@ -279,11 +279,11 @@ $(document).ready(
         $(".tags-list-item").click(function () {
 
             let tagText = $(this).text();
-            let tagId=$(this).data("tag-id");
+            let tagId = $(this).data("tag-id");
             let tagsId = JSON.parse($("#tags-input").val());
             tagsId.push(tagId)
             $("#tags-input").val(JSON.stringify(tagsId));
-            addTagBtn(tagText,tagId,$(this).parent().data("tags-div"));
+            addTagBtn(tagText, tagId, $(this).parent().data("tags-div"));
             $(this).parent().css({ display: 'none' });
         });
         // tag list end
@@ -399,12 +399,12 @@ $(document).ready(
         });
         // flat tabs
         $(".tab-flat").click(function () {
-                $(this).siblings().removeClass("act-tab");
-                $(this).addClass("act-tab");
-                $($(this).data("content-parent") + " > .content-tab").css("display", "none");
-                $($(this).data("content")).css("display","block");
-                console.log($(this).data("content"));
-            }
+            $(this).siblings().removeClass("act-tab");
+            $(this).addClass("act-tab");
+            $($(this).data("content-parent") + " > .content-tab").css("display", "none");
+            $($(this).data("content")).css("display", "block");
+            console.log($(this).data("content"));
+        }
         );
         //tabs button simple
         $('.tab-btn-sim').click(function () {
@@ -420,75 +420,82 @@ $(document).ready(
         $(".num-tag").hover(
             function () {
                 // over
-                $(this).find(".num-in-tb").css("border-right","1px solid #fff");
+                $(this).find(".num-in-tb").css("border-right", "1px solid #fff");
             }, function () {
                 // out
-                $(this).find(".num-in-tb").css("border-right","inherit");
+                $(this).find(".num-in-tb").css("border-right", "inherit");
 
             }
         );
-            // side list start
-            $(".side-list-item").click(function(){
-                $(this).siblings().removeClass("side-list-item-act");
-                $(this).addClass("side-list-item-act");
-                $($(this).data("content-p")+" .side-list-content").css("display", "none");
-                $($(this).data("content-p")+" "+$(this).data("content")).css("display", "block");
-            })
-            // side list end
+        // side list start
+        $(".side-list-item").click(function () {
+            $(this).siblings().removeClass("side-list-item-act");
+            $(this).addClass("side-list-item-act");
+            $($(this).data("content-p") + " .side-list-content").css("display", "none");
+            $($(this).data("content-p") + " " + $(this).data("content")).css("display", "block");
+        })
+        // side list end
 
-            $(".remove-tag-btn").click(removeTagBtn);
-            $(".add-comment-span").click(function(){
-                if($(this).nextAll(".add-comment-div").css("display")=="none")
-                    $(this).nextAll(".add-comment-div").css("display","block")
-                else
-                    $(this).nextAll(".add-comment-div").css("display","none")
-            });
-            $(" .category-select-toolbar .custom-select-item").click(onSelectCategory)
-      
-      
-            $(".btn.tag-star").click(function (e) { 
-                $(this).toggleClass("favorited");
-            });
-        
-
-            $('.nav-drop-down').hide();
-
-            $('#drop-d-btn-nav').click(function(e){
-                if (!$('.nav-drop-down').hasClass('opend'))
-                   {
-                    $('.nav-drop-down').show();
-                    $('.nav-drop-down').animate({
-                        top: '50px',
-                        opacity: 1,
-                    
-                    },300,function(){
-                        $('.nav-drop-down').addClass('opend')
-                    
-                    });
-}                else{
-
-                    $('.nav-drop-down').animate({
-                        top: '22px',
-                        opacity: 0,
-                    
-                    },300,function(){
-                        $('.nav-drop-down').removeClass('opend')
-                        $('.nav-drop-down').hide();
-                    });}
-            });
-      
+        $(".remove-tag-btn").click(removeTagBtn);
+        $(".add-comment-span").click(function () {
+            if ($(this).nextAll(".add-comment-div").css("display") == "none")
+                $(this).nextAll(".add-comment-div").css("display", "block")
+            else
+                $(this).nextAll(".add-comment-div").css("display", "none")
+        });
+        $(" .category-select-toolbar .custom-select-item").click(onSelectCategory)
 
 
+        $(".btn.tag-star").click(function (e) {
+            $(this).toggleClass("favorited");
+        });
+
+
+        $('.nav-drop-down').hide();
+
+        $('#drop-d-btn-nav').click(function (e) {
+            if (!$('.nav-drop-down').hasClass('opend')) {
+                $('.nav-drop-down').show();
+                $('.nav-drop-down').animate({
+                    top: '50px',
+                    opacity: 1,
+
+                }, 300, function () {
+                    $('.nav-drop-down').addClass('opend')
+
+                });
+            } else {
+
+                $('.nav-drop-down').animate({
+                    top: '22px',
+                    opacity: 0,
+
+                }, 300, function () {
+                    $('.nav-drop-down').removeClass('opend')
+                    $('.nav-drop-down').hide();
+                });
+            }
+        });
+
+        if (location.pathname == '/login') {
             $.ajaxSetup({ cache: true });
-            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-              FB.init({
-                appId: '174872554664322',
-                version: 'v2.7' // or v2.1, v2.2, v2.3, ...
-              });     
-            //   $('#loginbutton,#feedbutton').removeAttr('disabled');
-            //   FB.getLoginStatus(updateStatusCallback);
+            $.getScript('https://connect.facebook.net/en_US/sdk.js', function () {
+                FB.init({
+                    appId: '227023055931495',
+                    version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+                });
+                $('#fb-login-btn').click(fbLoginBtn);
+
             });
+            $.getScript("https://accounts.google.com/gsi/client", function (script, textStatus, jqXHR) {
+            $('#go-login-btn').click(function(){
+                $('#go-login-btn-api').find('[role=button]').click();
+            });
+
+        });
         }
+
+    }
 );
 //gird question animetion funcrion
 function startGridQueAni(parentId, duriton = 100) {
@@ -506,14 +513,14 @@ function startGridQueAni(parentId, duriton = 100) {
     }
     var interVal = setInterval(sacleQueGrid, 100);
 }
-function addTagBtn(tagText,tagId,tagsDivId) {
+function addTagBtn(tagText, tagId, tagsDivId) {
     let buttonTag = document.createElement("button");
-    $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100","btn-tag-removeable"]);
+    $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100", "btn-tag-removeable"]);
     $(buttonTag).attr("type", "button");
     $(buttonTag).text(tagText);
     $(buttonTag).data('tag-id', tagId);
-    let removeBtn=document.createElement("div");
-    $(removeBtn).addClass(["btn" ,"remove-tag-btn"]);
+    let removeBtn = document.createElement("div");
+    $(removeBtn).addClass(["btn", "remove-tag-btn"]);
     $(removeBtn).append("<i class=\"fas fa-times\"></i>");
     $(buttonTag).append(removeBtn);
     $(tagsDivId).append(buttonTag);
@@ -522,43 +529,43 @@ function addTagBtn(tagText,tagId,tagsDivId) {
     addedTags.push(tagText);
 }
 
-function removeTagBtn(e) { 
-    let tagId=$(this).parent().data('tag-id'); 
+function removeTagBtn(e) {
+    let tagId = $(this).parent().data('tag-id');
     let tagsId = JSON.parse($("#tags-input").val());
     tagsId.splice(tagsId.indexOf(tagId));
     $("#tags-input").val(JSON.stringify(tagsId));
-    
+
     $(this).parent().addClass("remove-grid-item");
-    let clicked=this;
-    function aniCallBack(){
-    $(clicked).parent().remove();
-    // $(clicked).parent().css("display","none");
-        
+    let clicked = this;
+    function aniCallBack() {
+        $(clicked).parent().remove();
+        // $(clicked).parent().css("display","none");
+
     }
-    let aniTimeOut=setTimeout(aniCallBack,185);
+    let aniTimeOut = setTimeout(aniCallBack, 185);
 }
-function onSelectCategory(){
-    let parentC=$(this).parentsUntil(".category-select-toolbar").last().parent();
-    parentC.data("cur-val",$(this).data("cate-id"));
-    parentC.nextAll(".category-select-toolbar").css('visibility',"hidden");
-    parentC.next(".category-select-toolbar").css('visibility',"visible");
+function onSelectCategory() {
+    let parentC = $(this).parentsUntil(".category-select-toolbar").last().parent();
+    parentC.data("cur-val", $(this).data("cate-id"));
+    parentC.nextAll(".category-select-toolbar").css('visibility', "hidden");
+    parentC.next(".category-select-toolbar").css('visibility', "visible");
     let subs = $(this).data("sub");
-    let nextList=parentC.next(".category-select-toolbar").find(".custom-select-list");
+    let nextList = parentC.next(".category-select-toolbar").find(".custom-select-list");
     $(nextList).html('');
     if (subs)
-    subs.forEach(element => {
-        let cateLi = document.createElement('li');
-        $(cateLi).addClass("custom-select-item");
-        $(cateLi).attr("data-sub", JSON.stringify(element['sub']));
-        $(cateLi).attr("data-cate-id", element['id']);
-        $(cateLi).text(element["name"]);
-        $(cateLi).click(customSelected);
-        $(cateLi).click(onSelectCategory);
-        
-        $(nextList).append(cateLi);
-    });
+        subs.forEach(element => {
+            let cateLi = document.createElement('li');
+            $(cateLi).addClass("custom-select-item");
+            $(cateLi).attr("data-sub", JSON.stringify(element['sub']));
+            $(cateLi).attr("data-cate-id", element['id']);
+            $(cateLi).text(element["name"]);
+            $(cateLi).click(customSelected);
+            $(cateLi).click(onSelectCategory);
+
+            $(nextList).append(cateLi);
+        });
 }
-function customSelected () {
+function customSelected() {
     $(this).parent().prev().text("");
     $(this).parent().prev().append("<span class=\"selected-span\">" + $(this).text() + "</span>");
     $(this).parent().prev().append("<i class=\"fas fa-caret-down select-arrow\"></i>")
@@ -568,3 +575,30 @@ function customSelected () {
     });
     $(this).parent().prev().toggleClass("btn-select-act");
 }
+
+function fbLoginBtn() {
+    FB.login(function (response) {
+        if (response.status == 'connected') {
+            console.log(response.authResponse.accessToken);
+            console.log(response.authResponse.userID);
+            let form =$('#social-form')
+            $(form).attr('method','POST');           
+            $(form).attr('action','/facebook-login');           
+            $(form).append(`<input type="hidden" name="user-id" value="${response.authResponse.userID}">`);
+            $(form).append(`<input type="hidden" name="token" value="${response.authResponse.accessToken}">`);
+            $(form).submit();
+        }
+        else {
+            $('#login-error').slideDown();
+        }
+    }, { scope: 'public_profile,email' });
+}
+
+function googleLoginCallback(response) {
+    let form =$('#social-form')
+    $(form).attr('method','POST');           
+    $(form).attr('action','/google-login');           
+    $(form).append(`<input type="hidden" name="jwt" value="${response.credential}">`);
+    $(form).submit();
+
+ }
