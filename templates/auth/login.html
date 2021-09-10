@@ -56,66 +56,15 @@
               <span class="form-lable" id="or-span-sm">or</span>
             </div>
             <!-- media sign up section start -->
-            <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+            <!-- <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
             <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
-            <script>
-              
-           const firebaseConfig = {
-              apiKey: "AIzaSyAQnPB-ugjO0tBi2qc5iU1V3gBV3eUcZpw",
-              authDomain: "interviews-questions-325418.firebaseapp.com",
-              projectId: "interviews-questions-325418",
-              storageBucket: "interviews-questions-325418.appspot.com",
-              messagingSenderId: "557756022910",
-              appId: "1:557756022910:web:e74b3f1fc48ad5422e182f",
-              measurementId: "G-HR3G4RW79Y"
-            };
+          -->
             
-            // Initialize Firebase
-            const app = firebase.initializeApp(firebaseConfig);
-
-          </script>
-            <script>
-
-              function test(){
-
-                var provider = new firebase.auth.GithubAuthProvider();
-                provider.addScope('user:profile');                    
-                firebase
-                                    .auth()
-                                    .signInWithPopup(provider)
-                                    .then((result) => {
-                                      /** @type {firebase.auth.OAuthCredential} */
-                                      var credential = result.credential;
-                                      console.log(credential);
-                                      
-                                      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-                                      var token = credential.accessToken;
-                                      
-                                      // The signed-in user info.
-                                      var user = result.user;
-                                      console.log(user);
-                                      console.log(user.displayName);
-                                      // ...
-                                    }).catch((error) => {
-                                      // Handle Errors here.
-                                      var errorCode = error.code;
-                                      var errorMessage = error.message;
-                                      console.log(errorMessage);
-                                      
-                                      // The email of the user's account used.
-                                      var email = error.email;
-                                      // The firebase.auth.AuthCredential type that was used.
-                                      var credential = error.credential;
-                                      // ...
-                                    });
-              
-              }
-            </script>
             <div class="">
               
               <button  type="button" class="fb l-btn connect" id="fb-login-btn">Log In with Facebook</button>
               <button type="button" class="tw l-btn connect">Log In with Twitter</button>
-              <button type="button" class="gi l-btn connect" onclick="test()" >Log In with GitHub</button>
+              <button type="button" class="gi l-btn connect" id="gi-login-btn" >Log In with GitHub</button>
               <button type="button" class="go l-btn connect" id="go-login-btn">Log In with Google</button>
               <div id="g_id_onload"
               data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"

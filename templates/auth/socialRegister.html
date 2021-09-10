@@ -14,11 +14,22 @@
             {{msg}}
             {% endfor %}
           </p>
-        <input type="hidden" name="user-id" value="{{userID}}">
+      
+      
+          <input type="hidden" name="user-id" value="{{userID}}">
+          <input type="hidden" name="provider" value="{{provider}}">
+      
         <div class="">
           <div class="inp-div">
-            <label class="lbl form-lable lbl-foucsed" id="lbl1">Full Name</label>
-            <input type="text" class="form-control form-input" id="fullName-input" name="fullName" maxlength="40" readonly value="{{fullName}}">
+            <label class="lbl form-lable
+            {% if fullName %}
+            lbl-foucsed
+            {% endif %} 
+             " id="lbl1">Full Name</label>
+            <input type="text" class="form-control form-input" id="fullName-input" name="fullName" maxlength="40" 
+            {% if fullName %}
+            readonly value="{{fullName}}"
+            {% endif %}>
             <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
                 <span class="error-val"></span>
             </p>

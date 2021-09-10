@@ -14,5 +14,6 @@ urlpatterns=[
     path('facebook-login',views.facebookLogin,name='facebok-login'),
     path('facebook-register',views.addFacebookUser,name='facebok-register'),
     path('google-login',views.googelLogin,name='google-login'),
-    path('google-register',views.addGoogleUser,name='google-register'),
+    path('github-login',views.githubLogin,name='github-login'),
+    path('social-register',views.regisetSocialUser,name='social-register'),
 ]

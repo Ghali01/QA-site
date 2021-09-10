@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "interviews-questions-325418",
+  "private_key_id": "ce75b17d4ef3540b61034b3d99c1491fba14a672",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDPMfyrPWHFMDYb\nFWSPppkY427cZ5ILvZ1AXYg6gSczbRE0tAo1oEoB4os4moEjcM5b3oyMHHKSZk4t\nTihd+VLtwCu7b8GGo0YCKhwzPLYOe6mp+E28kcz6GDiitAJGyzGteRNHx5QLE6i0\nWgmu7jBpUYQ6/5rnMy1HuZlkWNQaCMHkOOQQI5pCUTOrUqU1uy9BPnJMbqNhkUok\nWxsIshqyXAvA3jnP5R3hVMGIVCsibJ+k/hUrJp93tByul0hzp288vNhXH2YDIaPP\nJnvXuXvE/chCKW4wK0Yys45bAZlzU5gqGu5/IkbubWDx/2sp7HJx+2dQN/TiDlLu\nPv7fFZXjAgMBAAECggEABinQ/9EIHwMDoQOeZa2JgVWGnzTPgdzmmBsQKdlcrqlw\naRZv9U9q1CqGhK0H6WN6J/5zRNm1yMgVTEC2b7Eyd9MPGfjFk3k45GiXRSjpq32f\nOuihe1oE9G2TBbgAF1YFCMmAutJjg37WtmK1Rghc1U0w90ZSN81sa+VH/FWuHYYW\ndVIPoZc1PqPi+DmbMygqC5Ozb8ANzGT0vvTNNKeRToOi+So748f9OipnshD4M1f3\na+2KD2kLzC/e2K+Zk3uQVL1nRbWTzNJ63R5I6QoxiKlSNWfJiwEX+Vw0NFABg8EC\nMDKgHB50sPjhnAJsF9isk7rGVQ1ejukSxDv9XK9zGQKBgQDs8aRnUh/JJq9jb7mN\ngc2WD5zOst0vzDeqTDJj6OiuFn8U0iAjsEuWTcaIS2YYkHpmdSwuOrhz/SNPRxzO\nVIpKdn/FnvnMW+5E1WZnjilBpmLXmyhDvk2uBNbEWMkuDmjkGTP4Q2gtTLgLS8qC\nTLN3EyXdMNsNRSF4r92u8vZpqwKBgQDf29wgV3p7ccIJeMf7b3b+aBhYwZ7nrFzS\nvaCFCHFANqBMYSgurW/FJKReVqVrftFcEKM4jvrpuYJrPQE8+7S02n799OZvpTG0\ng88tQqfarA0i2dMD3YbML61w+XXVEbmqH+WK6pCx5tYnHLcHsCVtCW7G4PYiu+YA\nOBvmMLF8qQKBgQCZ86/UiiGo+v++Zhtz/EDuHZrPGpxosBIDDps3G2ADrQ5JIvZK\n+gNC16oFaKgfkdBVvhBEwVaT1ogYvKXU0k1AcJo4d0DrLVg1VUrCQjZAN7HFUUTq\nLz4dsXsx/FZLHIW+nzmLN5D6zfxPKqGb4+Y/mith+pp5ls9WsT4irC67HQKBgQDA\nFP062xUD20atre+a9bfa8CMD9Y+OJr23LnMP84CJotXE9BDwjG09cgV/1UU3iafH\nIZeMLlNqPX2E2uG3HBugm2MgMgWQguS1iew5X9p7renPn6yKwoipp7dhGwxaeU0g\nhyIFIuRpYjMbeG4ssJ5Mgy2EhP9uKmBei8aUq+9/kQKBgDgb7LPafGvEFGysjgeI\n4JTOmQ2Bu/HZdd3fBlDGKbjzcgW09wJSPjFP/qWVDxUmtYPT8gaBaohiZtPSrnrj\nRLe2G/q9aJo6SettdwrtVGrapjAMO0OdXRIH38LiFeiCIZ1N7zPsBUYyB2R39/ZW\nBDDY5eTQYv6LRkxk1ran9h4F\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-c0t4t@interviews-questions-325418.iam.gserviceaccount.com",
+  "client_id": "106051911549578350318",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-c0t4t%40interviews-questions-325418.iam.gserviceaccount.com"
+}

@@ -494,7 +494,7 @@ $(document).ready(
 
         });
         }
-
+            $('#gi-login-btn').click(githubLoginClick);
     }
 );
 //gird question animetion funcrion
@@ -601,4 +601,10 @@ function googleLoginCallback(response) {
     $(form).append(`<input type="hidden" name="jwt" value="${response.credential}">`);
     $(form).submit();
 
+ }
+
+ function githubLoginClick(){
+    console.log('t');
+    location.href=`https://github.com/login/oauth/authorize?client_id=325f252be688f7172df1&scope=user&redirect_uri=${location.protocol}//${location.host}/github-login`;
+    
  }
