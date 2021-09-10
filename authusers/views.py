@@ -369,7 +369,7 @@ def regisetSocialUser(request):
                             if chunk:
                                 imgF.write(chunk)
 
-                    profile.image.name=str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg'
+                    profile.image.name=f'profile/{userName}.jpg'
                     profile.save()
                     socialUser.delete()
                     login(request,user)

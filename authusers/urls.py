@@ -12,7 +12,6 @@ urlpatterns=[
     path('set-email',views.chnageEmail,name='set-email'),
     path('logout',views.logout,name='logout'),
     path('facebook-login',views.facebookLogin,name='facebok-login'),
-    path('facebook-register',views.addFacebookUser,name='facebok-register'),
     path('google-login',views.googelLogin,name='google-login'),
     path('github-login',views.githubLogin,name='github-login'),
     path('social-register',views.regisetSocialUser,name='social-register'),

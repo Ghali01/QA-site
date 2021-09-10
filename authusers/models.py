@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
     website=models.CharField(max_length=70,null=True)
     about=models.TextField(null=True)
-    image=models.ImageField(upload_to=MEDIA_ROOT.joinpath('profile'),default='profile/default.jpg')
+    image=models.ImageField(upload_to='profile/',default='profile/default.jpg')
     tags=models.ManyToManyField(Tag)
     permission=models.CharField(max_length=3,choices=permissionsChoies,default='U')
     socialID=models.CharField(max_length=150,unique=True,null=True)
