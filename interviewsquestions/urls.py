@@ -7,6 +7,7 @@ urlpatterns = [
     path('',include('authusers.urls',namespace='authusers')),
     path('',include('content.urls',namespace='content')),
     path('dashboard/',include('dashboard.urls',namespace='dashboard',)),
+    path('moderators/',include('moderators.urls',namespace='moderators')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

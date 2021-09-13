@@ -1,0 +1,75 @@
+{% extends 'utilities/_base.html' %}
+{% load contentUtilities %}
+{% block title %}{{question.title}}{% endblock %}
+
+{% block content %} 
+<div class="column-no-border">
+<h1 class="que-title center-title">{{question.title}}</h1>
+    <div class="que-data-div">
+        <span class="que-data-title">Asked:</span>
+        <span class="que-data">{{question.getDuration}}</span>
+        
+    </div>
+    <div class="question-await">
+        <div class="question-div">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="post-content">
+                        {{question.post.text|safe}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-4 col-sm-6 col-md-8">
+                        <div class="que-left-col">
+                            <div class="tags-div ">
+                                {% for tag in question.tags.all %}
+                                {% tagLink tag %}
+                                {% endfor %}
+                            </div>
+                            <div class="que-opts-spans">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="link-button" data-bs-toggle="modal"
+                                    data-bs-target="#reportModal">
+                                    <a href="#" class="custom-link custom-link-sm primary-link que-opt">Report</a>
+                                </button>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-8 col-sm-6 col-md-4">
+
+                        <div class="added-by-div-q que-added-by-div">
+                            <div>
+
+                                <div class="questtion-add-date">
+                                    Added in <time>{{question.formatedDate}}</time>
+                                </div>
+                                {% authodPostData question.post.author %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="question-options-bottom" style="border: none;">
+            {% if not question.isAccepted %}
+            <button
+            class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-que-st-m-btn no-animate" data-action="A" data-que-id="{{question.id}}" >
+            <i class="fas fa-check"></i> Accept</button>
+            {% endif %}
+            {% if not question.isAccepted and not question.isRejected %}
+            <button
+                class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn chang-que-st-m-btn no-animate" data-action="R" data-que-id="{{question.id}}" ><i
+                    class="fas fa-times"></i> Reject</button>
+                {% endif %}
+
+        </div>
+    </div>
+    </div>
+{% include 'utilities/_reportModal.html' %}
+{% endblock %}

@@ -1,5 +1,3 @@
-from authusers import views
-from django.http.response import HttpResponse
 from django.urls import reverse
 from django.shortcuts import redirect
 def forActiveUser(viwe):
@@ -19,4 +17,13 @@ def userHasTags(view):
             return view(request,*args,**kwargs)
         else:
             return redirect(reverse('authusers:select-tags'))
+    return decorator
+
+
+def forModerator(view):
+    def decorator(request,*args,**kwargs):
+        if request.user.profile.isModerator:
+            return view(request,*args,**kwargs)
+        else:
+            return redirect(reverse('content:index'))
     return decorator

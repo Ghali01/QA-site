@@ -3,7 +3,7 @@
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-none d-sm-inline" href="#"> interviews questions</a>
+                <a class="navbar-brand d-none d-sm-inline" href="{% url 'content:index' %}"> interviews questions</a>
                 <form class="d-flex search-nav-form">
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
@@ -30,6 +30,22 @@
                                 <li>
                                     <a href="{% url 'authusers:logout' %}" class="drop-link">
                                         <i class="fas fa-sign-out-alt"></i> <p>logout</p></a>
+                                </li>
+                                <li >
+                                    <span class="drop-link n-sl-btn">Moderator <i class="fas fa-caret-down"></i></span>      
+                                    <ul class="n-sub-list">
+                                        <li>
+                                            <a href="{% url 'moderators:suggested-questions-await' page=1 %}" class="drop-link">
+                                                 <p>Questions</p></a>
+                                        </li> <li>
+                                            <a href="#" class="drop-link">
+                                                 <p>Answers</p></a>
+                                        </li> <li>
+                                            <a href="#" class="drop-link">
+                                                 <p>Edits</p></a>
+                                        </li>
+                                    </ul>
+    
                                 </li>
                             </ul>
                         </li>

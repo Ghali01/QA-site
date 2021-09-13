@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'dashboard.apps.DashboardConfig',
     'authusers.apps.AuthusersConfig',
     'content.apps.ContentConfig',
+    'moderators.apps.ModeratorsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

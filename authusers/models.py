@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.query_utils import Q
-from content.models import Tag
 from interviewsquestions.settings import MEDIA_ROOT
+from content.models import Tag
+
 class TempUser(models.Model):
 
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='tmp')
@@ -34,6 +34,8 @@ class UserProfile(models.Model):
     socialID=models.CharField(max_length=150,unique=True,null=True)
     provider=models.CharField(max_length=20,choices=providerChoises,null=True)
 
+    def isModerator(self):
+        return self.permission=='M'
 
 class SocialUser(models.Model):
     fullName=models.CharField(max_length=100,null=True)

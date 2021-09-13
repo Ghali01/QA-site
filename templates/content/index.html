@@ -3,11 +3,17 @@
 
 {% block content %} 
     <h2 class="center-title">Lastst Questions</h2>
-    <a href="#" class="btn btn-primary btn-sm primary-button suggest-btn">
+
+    <a href="{% url 'content:add-question' %}" class="btn btn-primary btn-sm primary-button suggest-btn">
         Suggest Question
     </a>
     <div style="clear:both"></div>
-    <div class="row filters-row">
+    {% for msg in messages %}
+    <p class="success-p-s">
+        {{msg}}
+    </p>
+    {% endfor %}
+        <div class="row filters-row">
         <div class="col-4 col-sm-3 col-lg-2">
             <div class="custom-select">
                 <button class="btn btn-primary btn-select">

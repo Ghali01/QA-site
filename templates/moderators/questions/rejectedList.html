@@ -1,0 +1,35 @@
+{% load contentUtilities %}
+<div class="await-list">
+    {% for que in questions %}
+    <div class="await-item">
+        <div class="row  question-item ">
+
+            <div class="col-12">
+                <a href="{% url 'moderators:review-suggested-questions' questionID=que.id %}" class="question-title line-clamp">
+                    {{que.title}}
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+
+                        {% for tag in que.tags.all %}
+                        {% tagLink tag %}
+                        {% endfor %}
+                    </div>
+                    <div class="question-date">Rejected by <a class="by-user-name" href="#">{{que.modeWhoReject.username}}</a> | suggested  in {{que.formatedDate}} </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="question-options-bottom">
+            
+                    <button
+                    class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-que-st-m-btn" data-action="A" data-que-id="{{que.id}}" >
+                    <i class="fas fa-check"></i> Accept</button>
+          
+        </div>
+    </div>
+
+{% endfor %}
+</div>

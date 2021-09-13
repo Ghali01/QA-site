@@ -3,99 +3,92 @@
 
 {% block content %}
 <div class="row">
-    <div class="order-2 order-md-1 col-12 col-md-8">
-      <div class="side-content-p">
-        <h2 class="side-conten-title">Welcome to Interviews Questions....</h2>
-        <ul  class="side-content-list">
-            
-          <li class="side-content-item">Lorem ipsum dolor sit amet consectetur </li>
-          <li class="side-content-item">adipisicing elit. Dolorem minima, facere numquam nulla quas asperiores </li>
-          <li class="side-content-item">doloribus quod molestias aspernatur eligendi tempore. </li>
-          <li class="side-content-item">Nulla sed atque recusandae porro veniam expedita esse enim. </li>
+  <div class="order-2 order-md-1 col-12 col-md-8">
+    <div class="side-content-p">
+      <h2 class="side-conten-title">Welcome to Interviews Questions....</h2>
+      <ul class="side-content-list">
 
-        </ul>
-      </div>
+        <li class="side-content-item">Lorem ipsum dolor sit amet consectetur </li>
+        <li class="side-content-item">adipisicing elit. Dolorem minima, facere numquam nulla quas asperiores </li>
+        <li class="side-content-item">doloribus quod molestias aspernatur eligendi tempore. </li>
+        <li class="side-content-item">Nulla sed atque recusandae porro veniam expedita esse enim. </li>
+
+      </ul>
     </div>
-    <div class="order-1 order-md-2 col-12 col-md-4">
-      <div class="form-parent">
-        <form id="reg-form" autocomplete="on" method="POST" class="animeted-form">
-          {% csrf_token %}
-          <div class="mb-3 ">
-            <!-- log in by email section start -->
-            <div class="">
+  </div>
+  <div class="order-1 order-md-2 col-12 col-md-4">
+    <div class="form-parent">
+      <form id="reg-form" autocomplete="on" method="POST" class="animeted-form">
+        {% csrf_token %}
+        <div class="mb-3 ">
+          <!-- log in by email section start -->
+          <div class="">
 
-              <p class="error-p" id="login-error"><i class="fas fa-exclamation"></i>
-                <span class="error-val">can not login</span>
+            <p class="error-p" id="login-error"><i class="fas fa-exclamation"></i>
+              <span class="error-val">can not login</span>
             </p>
-              <div class="inp-div">
-                <label class="lbl form-lable" id="lbl1">Email</label>
-                <input type="email" class="form-control" id="email-input" name="email">
+            <div class="inp-div">
+              <label class="lbl form-lable" id="lbl1">Email</label>
+              <input type="email" class="form-control" id="email-input" name="email">
 
-              </div>
-              <div class="inp-div">
-                <label class="lbl form-lable" id="lbl1">Password</label>
-                <input type="password" class="form-control" id="password-input" name="password" maxlength="50">
-
-              </div>
-              <p class="error-p-s" style="position: static;">
-                {% for msg in messages %}
-                {{msg}}
-                {% endfor %}
-              </p>
-              <p class="form-lable "> <a href="#" class="forget-pass">Forget Password?</a></p>
-              <input type="checkbox" name="remember" class="rem-checkbox" id="rem-checkbox">
-              <label for="rem-checkbox" class="rem-lable">Remember Me</label>
-
-              <input type="submit" class="btn btn-primary form-btn" id="log-btn" value="Sign In">
             </div>
+            <div class="inp-div">
+              <label class="lbl form-lable" id="lbl1">Password</label>
+              <input type="password" class="form-control" id="password-input" name="password" maxlength="50">
 
-
-
-            <div class="d-block or-div">
-              <hr id="sp-hr">
-              <span class="form-lable" id="or-span-sm">or</span>
             </div>
-            <!-- media sign up section start -->
-            <!-- <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+            <p class="error-p-s" style="position: static;">
+              {% for msg in messages %}
+              {{msg}}
+              {% endfor %}
+            </p>
+            <p class="form-lable "> <a href="#" class="forget-pass">Forget Password?</a></p>
+            <input type="checkbox" name="remember" class="rem-checkbox" id="rem-checkbox">
+            <label for="rem-checkbox" class="rem-lable">Remember Me</label>
+
+            <input type="submit" class="btn btn-primary form-btn" id="log-btn" value="Sign In">
+          </div>
+
+
+
+          <div class="d-block or-div">
+            <hr id="sp-hr">
+            <span class="form-lable" id="or-span-sm">or</span>
+          </div>
+          <!-- media sign up section start -->
+          <!-- <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
             <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
           -->
-            
-            <div class="">
-              
-              <button  type="button" class="fb l-btn connect" id="fb-login-btn">Log In with Facebook</button>
-              <button type="button" class="tw l-btn connect">Log In with Twitter</button>
-              <button type="button" class="gi l-btn connect" id="gi-login-btn" >Log In with GitHub</button>
-              <button type="button" class="go l-btn connect" id="go-login-btn">Log In with Google</button>
-              <div id="g_id_onload"
-              data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
-              data-callback="googleLoginCallback"
-              data-auto_prompt="false">
-         </div>
-         <div  class="g_id_signin" style="display: none;" id="go-login-btn-api"
-              data-type="standard"
-              data-size="large"
-              data-theme="filled_black"
-              data-text="sign_in_with"
-              data-shape="rectangular"
-              data-logo_alignment="left"
-              >
-         </div>
-      
 
+          <div class="">
+
+            <button type="button" class="fb l-btn connect" id="fb-login-btn">Log In with Facebook</button>
+            <button type="button" class="tw l-btn connect">Log In with Twitter</button>
+            <button type="button" class="gi l-btn connect" id="gi-login-btn">Log In with GitHub</button>
+            <button type="button" class="go l-btn connect" id="go-login-btn">Log In with Google</button>
+            <div id="g_id_onload"
+              data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
+              data-callback="googleLoginCallback" data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard" data-size="large"
+              data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
             </div>
 
+
           </div>
-          <!-- media sign up section end -->
 
-        </form>
-        <form method="POST" id="social-form">
-          {% csrf_token %}
-        </form>
-        <!-- sign in form end -->
+        </div>
+        <!-- media sign up section end -->
 
-      </div>
+      </form>
+      <form method="POST" id="social-form">
+        {% csrf_token %}
+      </form>
+      <!-- sign in form end -->
+
     </div>
-    
-  
   </div>
+
+
+</div>
 {% endblock %}

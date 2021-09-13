@@ -1,5 +1,5 @@
 var addedTags = [];
-
+var editor;
 $(document).ready(
     // animation for forms start
     function () {
@@ -128,8 +128,17 @@ $(document).ready(
         // custom select end
         //editor start
         if (document.getElementById("editor") != undefined) {
-            var tinyMDE = new TinyMDE.Editor({ element: 'editor', content: " " });
-            var commandBar = new TinyMDE.CommandBar({ element: 'editor-toolbar', editor: tinyMDE });
+            // tinyMDE = new TinyMDE.Editor({ element: 'editor', content: "" });
+            // var commandBar = new TinyMDE.CommandBar({ element: 'editor-toolbar', editor: tinyMDE });
+            const Editor = toastui.Editor;
+            editor = new Editor({
+                el: document.querySelector('#editor'),
+                // height: '300px',
+                initialValue: '',
+                theme: 'dark'
+              });
+              $('.ProseMirror ').addClass('custom-scrollbar');
+                  
         }
 
         // tag list start
@@ -443,7 +452,7 @@ $(document).ready(
             else
                 $(this).nextAll(".add-comment-div").css("display", "none")
         });
-        $(" .category-select-toolbar .custom-select-item").click(onSelectCategory)
+        $(" .category-select-toolbar .custom-select-item , .categoriis-lists .custom-select-item").click(onSelectCategory)
 
 
         $(".btn.tag-star").click(function (e) {
@@ -477,7 +486,7 @@ $(document).ready(
             }
         });
 
-        if (location.pathname == '/login') {
+        if (location.pathname == '/login'|| location.pathname == '/register') {
             $.ajaxSetup({ cache: true });
             $.getScript('https://connect.facebook.net/en_US/sdk.js', function () {
                 FB.init({
@@ -495,7 +504,18 @@ $(document).ready(
         });
         }
             $('#gi-login-btn').click(githubLoginClick);
-    }
+            $('.add-post-btn').click(postFormSubmit);
+            $('.n-sub-list').slideUp(0);
+            $('.n-sl-btn').click(function (e) { 
+                $(this).next().slideDown()                
+            });
+            $('.filter li').click(filterChange);
+            $('#mode-fil-btn').click(moderatorFilter)
+            $('.filter-tags-div .btn-tag').click(removeSearchTag)
+            $('.page-btn').click(pgClick);
+            $('.chang-que-st-m-btn').click(changeQueStMod);
+            $('.column-no-border').parent().css('border','none');
+        }
 );
 //gird question animetion funcrion
 function startGridQueAni(parentId, duriton = 100) {
@@ -526,7 +546,8 @@ function addTagBtn(tagText, tagId, tagsDivId) {
     $(tagsDivId).append(buttonTag);
 
     $(removeBtn).click(removeTagBtn);
-    addedTags.push(tagText);
+    if ($(tagsDivId).hasClass('filter-tags-div'))
+        $(buttonTag).click(removeSearchTag);
 }
 
 function removeTagBtn(e) {
@@ -564,6 +585,9 @@ function onSelectCategory() {
 
             $(nextList).append(cateLi);
         });
+
+    let par= $(this).parentsUntil('.categoriis-lists').last().parent();
+    $(par).find('#category-id').val($(this).data("cate-id"));
 }
 function customSelected() {
     $(this).parent().prev().text("");
@@ -579,8 +603,6 @@ function customSelected() {
 function fbLoginBtn() {
     FB.login(function (response) {
         if (response.status == 'connected') {
-            console.log(response.authResponse.accessToken);
-            console.log(response.authResponse.userID);
             let form =$('#social-form')
             $(form).attr('method','POST');           
             $(form).attr('action','/facebook-login');           
@@ -604,7 +626,111 @@ function googleLoginCallback(response) {
  }
 
  function githubLoginClick(){
-    console.log('t');
     location.href=`https://github.com/login/oauth/authorize?client_id=325f252be688f7172df1&scope=user&redirect_uri=${location.protocol}//${location.host}/github-login`;
     
  }
+
+ var perventPostForm=true;
+ function postFormSubmit(e){
+    if (perventPostForm){
+        e.preventDefault();
+    }
+    $('#post-body').val(editor.getHTML());
+    perventPostForm=false;
+    $("#post-form").submit();
+}
+
+function filterChange(){
+    $(this).parent().next('input').val($(this).data('value'));
+    $(this).parent().prev('button').find('.selected-span').text($(this).text());
+}
+
+
+var filterInSearch=(filterObject)=>{
+    let searchText='';
+    for(let key in filterObject){
+        searchText+= `${key}=${filterObject[key]}&`;
+    }
+    searchText=searchText.slice(0,-1);
+    location.search=searchText;
+}
+
+function moderatorFilter(){
+    let filterObject={
+        'category':$('#category-id').val().trim(),
+        'order':$('#order-input').val(),
+        'tags':$('#tags-input').val(),
+        
+
+    };
+    if ($('#search-input').val())
+        filterObject['search']=$('#search-input').val();
+    filterInSearch(filterObject);
+}
+
+function removeSearchTag(){
+    console.log('t');
+    let tagId = $(this).parent().data('tag-id');
+    let tagsId = JSON.parse($("#tags-input").val());
+    tagsId.splice(tagsId.indexOf(tagId));
+    $("#tags-input").val(JSON.stringify(tagsId));
+
+    $(this).addClass("remove-grid-item");
+    let clicked = this;
+    function aniCallBack() {
+        $(clicked).remove();
+        // $(clicked).parent().css("display","none");
+
+    }
+    let aniTimeOut = setTimeout(aniCallBack, 185);
+
+}
+
+function pgClick(){
+    path=location.pathname;
+    path=path.slice(0,path.lastIndexOf('/')+1)
+    path+=$(this).text();
+    location.pathname=path;
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function changeQueStMod(){
+    let clicked=this;
+    let item=$(this).parentsUntil('.await-item').parent();
+    $.post("/moderators/change-suggested-question", {
+        'csrfmiddlewaretoken': getCookie('csrftoken'),
+        'que-id':$(this).data('que-id'),
+        'status':$(this).data('action'),
+    },
+        function (data, textStatus, jqXHR) {
+            // console.log(data);
+            if(data=='done'){
+                if (!$(clicked).hasClass('no-animate')){
+                    console.log(1);
+                
+                    item.addClass('ani-await-item');
+                setTimeout(_=>$(item).remove(),500);
+            }
+            else{
+                console.log(2);
+                location.reload();
+            }
+            }
+        },
+    );
+}
