@@ -3,6 +3,7 @@ var editor;
 $(document).ready(
     // animation for forms start
     function () {
+        $('.column-no-border').parent().css('border','none');
         $(".vr-div").css({
             height: $("#reg-form").height()
         });
@@ -134,11 +135,11 @@ $(document).ready(
             editor = new Editor({
                 el: document.querySelector('#editor'),
                 // height: '300px',
+                autofocus:false,
                 initialValue: '',
-                theme: 'dark'
+                theme: 'dark',
               });
               $('.ProseMirror ').addClass('custom-scrollbar');
-                  
         }
 
         // tag list start
@@ -513,8 +514,11 @@ $(document).ready(
             $('#mode-fil-btn').click(moderatorFilter)
             $('.filter-tags-div .btn-tag').click(removeSearchTag)
             $('.page-btn').click(pgClick);
-            $('.chang-que-st-m-btn').click(changeQueStMod);
-            $('.column-no-border').parent().css('border','none');
+            $('.chang-que-st-m-btn').click(changePostStMod);
+            $('.one-click-filter li').click(oneClickFilterChange);
+            $('.sort-icon').click(voteBtnClick);
+            $('.add-ans-button').click(addAnswerBtn);
+            $('.add-ans-continer').slideUp(0);
         }
 );
 //gird question animetion funcrion
@@ -641,8 +645,9 @@ function googleLoginCallback(response) {
 }
 
 function filterChange(){
-    $(this).parent().next('input').val($(this).data('value'));
-    $(this).parent().prev('button').find('.selected-span').text($(this).text());
+        
+        $(this).parent().next('input').val($(this).data('value'));
+        $(this).parent().prev('button').find('.selected-span').text($(this).text());
 }
 
 
@@ -669,7 +674,6 @@ function moderatorFilter(){
 }
 
 function removeSearchTag(){
-    console.log('t');
     let tagId = $(this).parent().data('tag-id');
     let tagsId = JSON.parse($("#tags-input").val());
     tagsId.splice(tagsId.indexOf(tagId));
@@ -709,28 +713,83 @@ function getCookie(name) {
     return cookieValue;
 }
 
-function changeQueStMod(){
+function changePostStMod(){
     let clicked=this;
     let item=$(this).parentsUntil('.await-item').parent();
-    $.post("/moderators/change-suggested-question", {
+    $.post("/moderators/change-suggested-post", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
         'que-id':$(this).data('que-id'),
         'status':$(this).data('action'),
     },
         function (data, textStatus, jqXHR) {
-            // console.log(data);
             if(data=='done'){
                 if (!$(clicked).hasClass('no-animate')){
-                    console.log(1);
                 
                     item.addClass('ani-await-item');
                 setTimeout(_=>$(item).remove(),500);
             }
             else{
-                console.log(2);
                 location.reload();
             }
             }
         },
     );
+}
+
+function changePostsStMod(){
+    let clicked=this;
+    let item=$(this).parentsUntil('.await-item').parent();
+    $.post("/moderators/change-suggested-post", {
+        'csrfmiddlewaretoken': getCookie('csrftoken'),
+        'que-id':$(this).data('que-id'),
+        'status':$(this).data('action'),
+    },
+        function (data, textStatus, jqXHR) {
+            if(data=='done'){
+                if (!$(clicked).hasClass('no-animate')){
+                
+                    item.addClass('ani-await-item');
+                setTimeout(_=>$(item).remove(),500);
+            }
+            else{
+                location.reload();
+            }
+            }
+        },
+    );
+}
+
+
+function oneClickFilterChange(){
+    let searchObject={};
+    [...$('.one-click-filter')].forEach(filter => 
+        searchObject[$(filter).find('input').attr('name')]=$(filter).find('input').val()
+    );
+    filterInSearch(searchObject)
+}
+
+
+function voteBtnClick(){
+    let type= $(this).hasClass('sort-icon-up')?'up':'down';
+    let clicked=this;
+    $.get("/post-vote", {'type':type, 'post-id':$(this).data('post-id')},
+        function (data, textStatus, jqXHR) {
+            data=JSON.parse(data);
+            if(data.resault=='done'){
+                $(clicked).siblings('.sort-icon').removeClass('sort-icon-act')
+                $(clicked).addClass('sort-icon-act');
+                $(clicked).siblings('.votes-number-span').text(data.votes);
+            }
+        },
+    );
+        
+}
+
+function addAnswerBtn(){
+    $('.add-ans-continer').slideDown();
+    $(this).off('click');
+    $(this).click(()=>{
+        $('#answer-body').val(editor.getHTML());
+        $('#answer-form').submit();
+    });
 }

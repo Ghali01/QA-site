@@ -6,7 +6,7 @@
         <div class="row  question-item ">
 
             <div class="col-12">
-                <a href="#" class="question-title line-clamp">
+                <a href="{% url 'content:question-page' questionID=que.question.id %}" class="question-title line-clamp">
                     {{que.title}}
                 </a>
                 <div class="bottom-of-question">

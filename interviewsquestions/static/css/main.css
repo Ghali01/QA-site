@@ -1401,11 +1401,15 @@ button.go{
     padding: 0;
 }
 .sort-icon{
-    display: block;
+    display: block !important;
     color: var(--primary-color);
     font-size: 70px;
     margin: auto;
     text-align: center;
+    cursor: pointer;
+}
+.sort-icon-act{
+    color: var(--secodry-color);
 }
 @media (max-width:450px) {
     .sort-icon{
@@ -1431,7 +1435,7 @@ button.go{
     font-size: 30px;
     color: var(--secodry-color);
     padding: 13px 0;
-    display: block;
+    display: block !important;
     text-align: center;
 }
 
@@ -1479,6 +1483,7 @@ button.go{
 }
 .post-content{
     margin-bottom: 10px;
+    min-height: 150px;
 }
 .post-content code{
     background-color: var(--titles-colors);

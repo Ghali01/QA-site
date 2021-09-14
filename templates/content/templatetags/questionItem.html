@@ -1,0 +1,52 @@
+{% load contentUtilities %}
+<div class="row  question-item ">
+    <div class="col-3 que-nums-col">
+        <div class="row">
+            <div class="col-4  nums-que">
+                <span class="que-num-span">{{question.post.votes}}</span>
+                <span class="que-word">votes</span>
+
+            </div>
+            <div class="col-4  nums-que">
+                <span class="que-num-span">{{question.views}}</span>
+                <span class="que-word">views</span>
+            </div>
+            <div class="col-4 answered-num-div nums-que">
+                <span class="answered-num-span">5</span>
+                <span class="answered-word">answers</span>
+            </div>
+        </div>
+        <div class="added-by-div">add by <a class="by-user-name" href="#">{{question.post.author.username}}</a></div>
+    </div>
+    <div class="col-9 que-col">
+        <div class="vp-num-ques">
+            <div class="nums-que">
+                <span class="que-num-span">{{question.post.votes}}</span>
+                <span class="que-word">votes</span>
+
+            </div>
+            <div class="nums-que">
+                <span class="que-num-span">{{question.views}}</span>
+                <span class="que-word">views</span>
+            </div>
+            <div class="answered-num-div nums-que">
+                <span class="answered-num-span">5</span>
+                <span class="answered-word">answers</span>
+            </div>
+        </div>
+        <a href="{% url 'content:question-page' questionID=question.id %}" class="question-title line-clamp">
+            {{question.title}}
+        </a>
+        <div class="bottom-of-question">
+            <div class="question-tags custom-scrollbar">
+                {% for tag in question.tags.all %}
+                {% tagLink tag %}
+                {% endfor %}
+            </div>
+            <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">{{question.post.author.username}}</a></div>
+
+            <div class="question-date">last answer added in 0000/00/00 </div>
+
+        </div>
+    </div>
+</div>

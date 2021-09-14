@@ -1,0 +1,282 @@
+
+{% extends 'utilities/_base_no_right.html' %}
+{% block title %}Questions Await{% endblock %}
+
+{% block content %} 
+    <h2 class="center-title" style="float:left;">Questions in wait</h2>
+    
+    <div class="btn-group my-btn-group" style="margin: 8px 10px; float:left;" role="group"
+    aria-label="Basic outlined example">
+    <a href="{% url 'moderators:suggested-questions-await' page=1 %}"
+        class="btn btn-outline-primary btn-group-item btn-option-item 
+        {% if mode == 'S' %}
+        active
+        {% endif %}
+        ">Await</a>
+
+    <a href="{% url 'moderators:suggested-questions-accepted' page=1 %}"
+        class="btn btn-outline-primary btn-group-item btn-option-item 
+        {% if mode == 'A' %}
+        active
+        {% endif %}
+       
+        ">Accepted</a>
+    <a href="{% url 'moderators:suggested-questions-rejected' page=1 %}"
+        class="btn btn-outline-primary btn-group-item btn-option-item
+        {% if mode == 'R' %}
+        active
+        {% endif %}
+       
+        ">Rejected</a>
+
+</div>
+<div style='clear:both;'></div>
+    <div class="question-dev-parent">
+        <div class="questions-gird-toolbar">
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <div class="row">
+                        <div class="col-9">
+                            
+                        <div class="categoriis-lists">
+
+                            <div class="custom-select category-select-toolbar" data-cur-val="1">
+                                <button class="btn btn-primary btn-select">
+                                    <span class="selected-span">
+                                        {% if category.getLvl == 1 %}
+                                        {{category.name}}
+                                        {% elif category.getLvl > 1 %}
+                                        {{category.getFirstParent.name}}
+
+                                        {% elif not category %}
+                                        {{categories.first.name}}
+                                        {% endif %}
+                                    </span>
+                                    <i class="fas fa-caret-down select-arrow"></i>
+
+                                </button>
+                                <ul class="custom-select-list custom-scrollbar">
+                                    {% for cate in categories %}
+                                    <li class="custom-select-item" data-cate-id="{{cate.id}}" data-sub='{{cate.subs}}'>
+                                        {{cate.name}}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="custom-select category-select-toolbar" {% if category.getLvl >= 1 %}
+                                style='visibility: visible;'
+                                {% endif %}
+                                >
+                                <button class="btn btn-primary btn-select">
+                                    <span class="selected-span">
+
+                                        {% if category.getLvl == 2 %}
+                                        {{category.name}}
+                                        {% elif category.getLvl > 2 %}
+                                        {{category.getSecondParent.name}}
+                                        {% else %}
+                                        Select Category
+                                        {% endif %}
+
+                                    </span>
+                                    <i class="fas fa-caret-down select-arrow"></i>
+
+                                </button>
+                                <ul class="custom-select-list custom-scrollbar">
+                                    {% if category %}
+                                    {% for subCate in category.getFirstParent.subCategoies %}
+                                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                                        data-sub='{{subCate.subs}}'>
+                                        {{subCate.name}}
+                                    </li>
+                                    {% empty %}
+                                    {% if category.getLvl == 1 %}
+
+                                    {% for subCate in category.subCategoies %}
+                                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                                        data-sub='{{subCate.subs}}'>
+                                        {{subCate.name}}
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 2 %}
+                                style='visibility: visible;'
+                                {% endif %}>
+                                <button class="btn btn-primary btn-select">
+                                    <span class="selected-span">
+
+                                        {% if category.getLvl == 3 %}
+                                        {{category.name}}
+                                        {% elif category.getLvl > 3 %}
+                                        {{category.getThirdParent.name}}
+                                        {% else %}
+                                        Select Category
+                                        {% endif %}
+
+                                    </span>
+                                    <i class="fas fa-caret-down select-arrow"></i>
+
+                                </button>
+                                <ul class="custom-select-list custom-scrollbar">
+                                    {% if category %}
+                                    {% for subCate in category.getSecondParent.subCategoies %}
+                                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                                        data-sub='{{subCate.subs}}'>
+                                        {{subCate.name}}
+                                    </li>
+                                    {% empty %}
+                                    {% if category.getLvl == 2 %}
+
+                                    {% for subCate in category.subCategoies %}
+                                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                                        data-sub='{{subCate.subs}}'>
+                                        {{subCate.name}}
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 3 %}
+                                style='visibility: visible;'
+                                {% endif %}>
+                                <button class="btn btn-primary btn-select">
+                                    <span class="selected-span">
+
+                                        {% if category.getLvl == 4 %}
+                                        {{category.name}}
+                                        {% else %}
+                                        Select Category
+                                        {% endif %}
+
+                                    </span>
+                                    <i class="fas fa-caret-down select-arrow"></i>
+
+                                </button>
+                                <ul class="custom-select-list custom-scrollbar">
+                                    {% if category %}
+                                    {% for subCate in category.getThirdParent.subCategoies %}
+                                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                                        data-sub='{{subCate.sub}}'>
+                                        {{subCate.name}}
+                                    </li>
+                                    {% empty %}
+                                    {% if category.getLvl == 3 %}
+                                    {% for subCate in category.subCategoies %}
+                                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                                        data-sub='{{subCate.subs}}'>
+                                        {{subCate.name}}
+                                    </li>
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                            <input type="hidden" name="category-id" id="category-id" value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}
+                                ">
+
+                        </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="sort-by-toolbar" style="display: inline;">
+                                <div class="custom-select filter" style="width: 40%; display: inline-block;">
+                                    <button class="btn btn-primary btn-select">
+                                        <span class="selected-span">
+                                            {% if order == 'O' %}
+                                            Oldest
+                                            {% else %}
+                                            Newest
+                                            {% endif %}
+                                        </span>
+                                        <i class="fas fa-caret-down select-arrow"></i>
+
+                                    </button>
+                                    <ul class="custom-select-list custom-scrollbar ">
+                                        <li class="custom-select-item" data-value="N">
+                                                Newest
+                                        </li>
+                                        <li class="custom-select-item" data-value="O">
+                                                Oldest
+                                        </li>
+                                    </ul>
+                                    <input type="hidden" name="order" id="order-input" value="{{order|default:'N'}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row margin-toolbar-row">
+                <div class="col-6 col-lg-4">
+                    <div class="form-group has-search search-div-toolbar">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control custom-input search-input-toolbar"
+                            placeholder="Search" id="search-input" value="{{searchVal|default:''}}">
+                    </div>
+                </div>
+                <div class="col-6 col-lg-4">
+                    <div class="add-tag-to-que-div">
+                        <input id="que-tags-input" type="text" class="form-control que-input que-tags-input"
+                            placeholder="Search By Tags" style="margin: 0;"  data-tags-div="#tags-div-ol" autocomplete="off">
+                            <ul class="tags-list custom-scrollbar" data-tags-div="#tags-div-ol">
+                            {% for tag in tags %}
+                            <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}} </li>
+                            {% endfor %}
+                        </ul>
+                        <div class=" tags-div filter-tags-div" id="tags-div-ol">
+                        
+                            {% for tag in tagsF %}
+                            <a class="btn btn-outline-info btn-tag btn-tag-removeable">{{tag.name}}</a>
+                            {% endfor %}
+                        </div>
+                        
+                        <input type="hidden" name="tags" id="tags-input" value="[{% for tag in tagsF %}{{tag.id}}{% endfor %}]" >
+
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4" >
+                    <button class="btn btn-primary primary-button  mode-fil-btn" id="mode-fil-btn">Filter</button>
+                    <div class="btn-group my-btn-group" style="margin-bottom: 12px;" role="group"
+                        aria-label="Basic outlined example">
+
+                        {% for pg in pages %}
+                        
+                        <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item  page-btn
+                        {% if pg == currentPage %}
+                        active
+                        {% endif %}
+                        ">{{pg}}</button>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        {% if mode == 'S' %}
+        {% include 'moderators/answers/awaitList.html' %}
+        {% elif mode == 'A' %}
+        {% elif mode == 'R' %}
+        {% endif %}
+       
+
+        <!-- center column end  -->
+
+
+
+    </div>
+
+{% endblock %}

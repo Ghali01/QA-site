@@ -1,10 +1,12 @@
+{% load contentUtilities %}
+
 <div class="d-none d-xl-block col-xl-3  right-column">
     {% if request.user.is_authenticated and not request.uesr.is_anonymous %}
     <div class="cus-card tags-card">
         <h5 class="cus-card-header">Tags</h5>
         <div class="cus-card-body tags-div">
             {% for tag in request.user.profile.tags.all %}
-            <a class="btn btn-outline-info btn-tag">{{tag.name}}</a>
+            {% tagLink tag %}
             {% endfor %}
         </div>
     </div>

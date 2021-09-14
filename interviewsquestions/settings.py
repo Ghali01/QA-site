@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'content.apps.ContentConfig',
     'moderators.apps.ModeratorsConfig',
     'django.contrib.admin',
+    'django.contrib.humanize',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
