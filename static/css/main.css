@@ -16,6 +16,7 @@
     --editor-color: rgb(73, 68, 64);
     --third-color:#3daebf;
     --error-color:red;
+    --success-color:rgb(14, 187, 57);
     --light-color:rgb(121, 138, 138);
     --select-color:#495e70;
     --select-h-color:#36434e;
@@ -1296,7 +1297,7 @@ button.go{
 
 }
 .editor-partnt{
-    height: 250px;
+    height: 301px;
     border-radius: 0 0 7px 7px;
     border-bottom: 1px solid var(--secondry-editor-color);
 
@@ -1330,7 +1331,7 @@ button.go{
     margin: 15px 0;
 }
 .que-tags-input{
-    margin-top: 15px;
+    margin-top: 23px;
     margin-bottom:3px;
 }
 .tags-list{
@@ -1400,11 +1401,15 @@ button.go{
     padding: 0;
 }
 .sort-icon{
-    display: block;
+    display: block !important;
     color: var(--primary-color);
     font-size: 70px;
     margin: auto;
     text-align: center;
+    cursor: pointer;
+}
+.sort-icon-act{
+    color: var(--secodry-color);
 }
 @media (max-width:450px) {
     .sort-icon{
@@ -1430,7 +1435,7 @@ button.go{
     font-size: 30px;
     color: var(--secodry-color);
     padding: 13px 0;
-    display: block;
+    display: block !important;
     text-align: center;
 }
 
@@ -1478,6 +1483,7 @@ button.go{
 }
 .post-content{
     margin-bottom: 10px;
+    min-height: 150px;
 }
 .post-content code{
     background-color: var(--titles-colors);
@@ -1899,6 +1905,13 @@ button.go{
     font-size: 12px;
     font-weight: bold;
     position: absolute;
+}
+.success-p,.success-p-s{
+    color: var(--success-color);
+    font-size: 20px;
+    font-weight: bold;
+    /* position: absolute; */
+    margin: 4px;
 }
 /* tabs start */
 .tabs-btns{
@@ -3300,4 +3313,64 @@ p.info{
 }
 .tags-div-mb{
     margin-bottom: 60px;
+}
+
+
+.pd-container{
+    padding: 0 8px;
+}
+
+.n-sl-btn{
+    display: block;
+    min-width: 100px;
+    position: relative;
+    cursor: pointer;
+}
+.n-sl-btn i{
+    position: absolute;
+    right: 0;
+    top: 3px;
+}
+.n-sub-list{
+    list-style: none;
+    padding: 1px 10px;
+}
+
+@media (max-width:991px) {
+    .mode-fil-btn{
+        margin-top: 8px;
+    }
+}
+
+.filter-tags-div{
+    padding: 8px 4px;
+}
+.filter-tags-div .btn-tag{
+    padding: 3px 5px;
+    margin: 0 4px;
+    height: 25px;
+    font-size: 13px !important;
+
+}
+.filter-tags-div .btn-tag .remove-tag-btn{
+    display: none;
+}
+
+.filter-tags-div{
+    min-height: 42px;
+}
+.ani-await-item{
+    animation-name: await-item-ani ;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes await-item-ani {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(1500px);
+        display: none;
+    }
 }
