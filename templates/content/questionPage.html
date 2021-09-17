@@ -113,40 +113,21 @@
             </div>
             <div class="comments-div">
                 <ul class="comments-list">
-                    <li class="comment-item">
-                        <p class="comment-content">comment content comment content comment content comment
-                            content </p>
-                        <div class="sperat-div">|</div>
-                        <a class="by-user-name" href="#">User User</a>
-                        <div class="sperat-div">|</div>
-                        <time class="comment-add-date">00-00-0000</time>
-
+                    {% for comment in question.post.comments.all|slice:':3' %}
+                    {% commentItem comment %}
+                    {% endfor %}
+                    {% if question.post.comments.all.count > 3 %}
+                    <li>
+                        <p class="all-comment-span" data-post-id="{{question.post.id}}">All comment</p>
                     </li>
-                    <li class="comment-item">
-                        <p class="comment-content">comment content comment content comment content comment
-                            content comment content comment content comment content comment content comment
-                            content comment content </p>
-                        <div class="sperat-div">|</div>
-                        <a class="by-user-name" href="#">User User</a>
-                        <div class="sperat-div">|</div>
-                        <time class="comment-add-date">00-00-0000</time>
-
-                    </li>
-                    <li class="comment-item">
-                        <p class="comment-content">comment content comment content </p>
-                        <div class="sperat-div">|</div>
-                        <a class="by-user-name" href="#">User User</a>
-                        <div class="sperat-div">|</div>
-                        <time class="comment-add-date">00-00-0000</time>
-
-                    </li>
+                    {% endif %}
                 </ul>
                 {% if request.user.is_authenticated and not request.user.is_anonymous %}
 
                 <p class="add-comment-span">Add comment</p>
                 <div class="add-comment-div">
-                    <input type="text" class="form-control que-input" placeholder="Add Comment...">
-                    <button class="btn btn-secondary btn-sm secondry-button add-comm-btn">Add
+                    <input type="text" class="form-control que-input" placeholder="Add Comment..." maxlength="300">
+                    <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{question.post.id}}">Add
                         comment</button>
                 </div>
                 {% endif %}
@@ -256,43 +237,24 @@
                     </div>
                     <div class="comments-div">
                         <ul class="comments-list">
-                            <li class="comment-item">
-                                <p class="comment-content">comment content comment content comment content
-                                    comment
-                                    content </p>
-                                <div class="sperat-div">|</div>
-                                <a class="by-user-name" href="#">User User</a>
-                                <div class="sperat-div">|</div>
-                                <time class="comment-add-date">00-00-0000</time>
-
+                           
+                            {% for comment in ans.post.comments.all|slice:':3' %}
+                            {% commentItem comment %}
+                            {% endfor %}
+                            {% if ans.post.comments.all.count > 3 %}
+                            <li>
+                                <p class="all-comment-span" data-post-id="{{ans.post.id}}">All comment</p>
                             </li>
-                            <li class="comment-item">
-                                <p class="comment-content">comment content comment content comment content
-                                    comment
-                                    content comment content comment content comment content comment content
-                                    comment
-                                    content comment content </p>
-                                <div class="sperat-div">|</div>
-                                <a class="by-user-name" href="#">User User</a>
-                                <div class="sperat-div">|</div>
-                                <time class="comment-add-date">00-00-0000</time>
-
-                            </li>
-                            <li class="comment-item">
-                                <p class="comment-content">comment content comment content </p>
-                                <div class="sperat-div">|</div>
-                                <a class="by-user-name" href="#">User User</a>
-                                <div class="sperat-div">|</div>
-                                <time class="comment-add-date">00-00-0000</time>
-
-                            </li>
+                            {% endif %}
+        
+                            
                         </ul>
                         {% if request.user.is_authenticated and not request.user.is_anonymous %}
 
                         <p class="add-comment-span">Add comment</p>
                         <div class="add-comment-div">
                             <input type="text" class="form-control que-input" placeholder="Add Comment...">
-                            <button class="btn btn-secondary btn-sm secondry-button add-comm-btn">Add
+                            <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{ans.post.id}}">Add
                                 comment</button>
                         </div>
                         {% endif %}
@@ -463,43 +425,23 @@
                     </div>
                     <div class="comments-div">
                         <ul class="comments-list">
-                            <li class="comment-item">
-                                <p class="comment-content">comment content comment content comment content
-                                    comment
-                                    content </p>
-                                <div class="sperat-div">|</div>
-                                <a class="by-user-name" href="#">User User</a>
-                                <div class="sperat-div">|</div>
-                                <time class="comment-add-date">00-00-0000</time>
+                            {% for comment in ans.post.comments.all|slice:':3'%}
+                            {% commentItem comment %}
+                            {% endfor %}
 
+                            {% if ans.post.comments.all.count > 3 %}
+                            <li>
+                                <p class="all-comment-span" data-post-id="{{ans.post.id}}">All comment</p>
                             </li>
-                            <li class="comment-item">
-                                <p class="comment-content">comment content comment content comment content
-                                    comment
-                                    content comment content comment content comment content comment content
-                                    comment
-                                    content comment content </p>
-                                <div class="sperat-div">|</div>
-                                <a class="by-user-name" href="#">User User</a>
-                                <div class="sperat-div">|</div>
-                                <time class="comment-add-date">00-00-0000</time>
-
-                            </li>
-                            <li class="comment-item">
-                                <p class="comment-content">comment content comment content </p>
-                                <div class="sperat-div">|</div>
-                                <a class="by-user-name" href="#">User User</a>
-                                <div class="sperat-div">|</div>
-                                <time class="comment-add-date">00-00-0000</time>
-
-                            </li>
+                            {% endif %}
+        
                         </ul>
                         {% if request.user.is_authenticated and not request.user.is_anonymous %}
 
                         <p class="add-comment-span">Add comment</p>
                         <div class="add-comment-div">
                             <input type="text" class="form-control que-input" placeholder="Add Comment...">
-                            <button class="btn btn-secondary btn-sm secondry-button add-comm-btn">Add
+                            <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{ans.post.id}}">Add
                                 comment</button>
                         </div>
                         {% endif %}

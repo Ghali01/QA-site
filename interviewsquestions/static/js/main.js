@@ -136,8 +136,9 @@ $(document).ready(
                 el: document.querySelector('#editor'),
                 // height: '300px',
                 autofocus:false,
-                initialValue: '',
+                initialValue: $('#editor').data('init-val'),
                 theme: 'dark',
+                initialEditType:'wysiwyg'
               });
               $('.ProseMirror ').addClass('custom-scrollbar');
         }
@@ -162,7 +163,7 @@ $(document).ready(
                     addTagBtn(tagText, tagId, $(this).data("tags-div"));
                 let tagsId = JSON.parse($("#tags-input").val());
                 tagsId.push(tagId)
-                $("#tags-input").val(JSON.stringify(tagsId));
+                $("#tags-input").val(JSON.stringify(tagsId)).trigger('change');
 
             }
 
@@ -292,7 +293,7 @@ $(document).ready(
             let tagId = $(this).data("tag-id");
             let tagsId = JSON.parse($("#tags-input").val());
             tagsId.push(tagId)
-            $("#tags-input").val(JSON.stringify(tagsId));
+            $("#tags-input").val(JSON.stringify(tagsId)).trigger('change');
             addTagBtn(tagText, tagId, $(this).parent().data("tags-div"));
             $(this).parent().css({ display: 'none' });
         });
@@ -521,6 +522,14 @@ $(document).ready(
             $('.sort-icon').click(voteBtnClick);
             $('.add-ans-button').click(addAnswerBtn);
             $('.add-ans-continer').slideUp(0);
+            $('.see-more-btn-index').click(seeMoreIndex);
+            $('.loading-circle').hide();
+            $('.button-filter button').click(btnFilterClick);
+            $('.see-more-btn-add-que').click(seeMoreAddQue)
+            $('#que-title').keyup(queTitleChange);
+            $('.add-que-h-inp').change(queTitleChange);
+            $('.add-comm-btn').click(addCommentBtn);
+            $('.all-comment-span').click(seeAllComments);
         }
 );
 //gird question animetion funcrion
@@ -560,7 +569,7 @@ function removeTagBtn(e) {
     let tagId = $(this).parent().data('tag-id');
     let tagsId = JSON.parse($("#tags-input").val());
     tagsId.splice(tagsId.indexOf(tagId));
-    $("#tags-input").val(JSON.stringify(tagsId));
+    $("#tags-input").val(JSON.stringify(tagsId)).trigger('change');
 
     $(this).parent().addClass("remove-grid-item");
     let clicked = this;
@@ -593,7 +602,7 @@ function onSelectCategory() {
         });
 
     let par= $(this).parentsUntil('.categoriis-lists').last().parent();
-    $(par).find('#category-id').val($(this).data("cate-id"));
+    $(par).find('#category-id').val($(this).data("cate-id")).trigger('change');
 }
 function customSelected() {
     $(this).parent().prev().text("");
@@ -679,7 +688,7 @@ function removeSearchTag(){
     let tagId = $(this).parent().data('tag-id');
     let tagsId = JSON.parse($("#tags-input").val());
     tagsId.splice(tagsId.indexOf(tagId));
-    $("#tags-input").val(JSON.stringify(tagsId));
+    $("#tags-input").val(JSON.stringify(tagsId)).trigger('change');
 
     $(this).addClass("remove-grid-item");
     let clicked = this;
@@ -788,7 +797,7 @@ function changeAnswersStMod(){
 
 function oneClickFilterChange(){
     let searchObject={};
-    [...$('.one-click-filter')].forEach(filter => 
+    [...$('.filter')].forEach(filter => 
         searchObject[$(filter).find('input').attr('name')]=$(filter).find('input').val()
     );
     filterInSearch(searchObject)
@@ -818,4 +827,116 @@ function addAnswerBtn(){
         $('#answer-body').val(editor.getHTML());
         $('#answer-form').submit();
     });
+}
+var pageIndc=1;
+function seeMoreIndex(){
+    $(this).next().show();
+    let clicked=this;
+    $.get(`/see-more/${pageIndc++}${$(this).data('category-id')?'/'+$(this).data('category-id'):''}`+location.search, {},
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data=JSON.parse(data);
+            console.log(data.remPages);
+            if (parseInt(data.remPages)<=0){
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+    },
+    );
+}
+
+function btnFilterClick(){
+    $(this).parent().find('input').val($(this).data('value'));
+    let searchObject={};
+    [...$('.filter')].forEach(filter => 
+        searchObject[$(filter).find('input').attr('name')]=$(filter).find('input').val()
+    );
+    filterInSearch(searchObject)
+   
+}
+function seeMoreAddQue(){
+    $(this).next().show();
+    let clicked=this;
+    $.get(`/similar-questions/${pageIndc++}`,
+     {
+         'que-title':$('#que-title').val(),
+         'category-id':$('#category-id').val(),
+         'tags':$('#tags-input').val(),
+
+     },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data=JSON.parse(data);
+            if (parseInt(data.remPages)<=0){
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+    },
+    );
+
+}
+
+function queTitleChange(){
+    pageIndc=0;
+    if($(this).val()) {
+        $('#similar-ques').css('display','block');
+    $('.loading-circle').show();
+    $(this).next().show();
+    $('.questions-list').html('');
+    $.get(`/similar-questions/${pageIndc++}`,
+     {
+         'que-title':$('#que-title').val(),
+         'category-id':$('#category-id').val(),
+         'tags':$('#tags-input').val(),
+
+     },
+        function (data, textStatus, jqXHR) {
+            $('.loading-circle').hide();
+            data=JSON.parse(data);
+            if (parseInt(data.remPages)<=0){
+                $('.see-more-btn-add-que').hide()
+            }
+            $('.see-more-btn-add-que').prev().append(data.html);
+            if(!data.html){
+                        // $('#similar-ques').css('display','none');
+
+            }
+        },
+    );
+    }else{
+        // $('#similar-ques').css('display','none');
+
+    }
+}
+
+
+function addCommentBtn(){
+    let csrf= getCookie('csrftoken');
+    let clicked=this;
+    if ($(this).prev('input').val())
+    $.post("/add-comment",{
+        'csrfmiddlewaretoken':csrf,
+        'post-id':$(this).data('post-id'),
+        'text':$(this).prev('input').val()
+    },
+        function (data, textStatus, jqXHR) {
+            $(clicked).prev('input').val('')
+            $(clicked).parent().siblings('.comments-list').children().last().before(data);
+        },
+    );
+}
+
+
+// 
+
+function seeAllComments(){
+    let clicked=this;
+    let ul=$(clicked).parent().parent();
+    $.get("/all-comment",{'post-id':$(this).data('post-id')},
+        function (data, textStatus, jqXHR) {
+            ul.html('');
+            ul.append(data);
+            // $(clicked).hide();
+        },
+    );
 }

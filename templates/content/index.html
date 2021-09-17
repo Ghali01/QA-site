@@ -18,7 +18,13 @@
         <div class="col-4 col-sm-3 col-lg-2">
             <div class="custom-select filter one-click-filter">
                 <button class="btn btn-primary btn-select">
-                    <span class="selected-span">All</span>
+                    <span class="selected-span">
+                        {% if tagsFilter == 'M' %}
+                        My Tags
+                        {% else %}
+                        All
+                        {% endif %}
+                    </span>
                     <i class="fas fa-caret-down select-arrow"></i>
 
                 </button>
@@ -30,14 +36,21 @@
                             All
                     </li>
                 </ul>
-                <input type="hidden" id="tag-filter" name="tags">
+                <input type="hidden" id="tag-filter" name="tags" value="{% if tagsFilter == 'M' %}M{% else %}A{% endif %}">
             </div>
         </div>
         <div class="col-4 col-sm-3 col-lg-2">
             
             <div class="custom-select filter one-click-filter">
                 <button class="btn btn-primary btn-select">
-                    <span class="selected-span">Most Votes</span>
+                    <span class="selected-span">
+                        {% if votesFilter == 'L' %}
+                        Least Votes
+                        {% else %}
+                        Most Votes
+                        {% endif %}
+                    
+                    </span>
                     <i class="fas fa-caret-down select-arrow"></i>
 
                 </button>
@@ -49,14 +62,21 @@
                             Least Votes
                     </li>
                 </ul>
-                <input type="hidden" id="votes-filter" name="votes">
+                <input type="hidden" id="votes-filter" name="votes" value="{% if votesFilter == 'L' %}L{% else %}M{% endif %}">
             </div>
         </div>
         <div class="col-4 col-sm-3 col-lg-2 ">
             
             <div class="custom-select filter one-click-filter">
                 <button class="btn btn-primary btn-select">
-                    <span class="selected-span">Most Views</span>
+                    <span class="selected-span">
+                        {% if viewsFilter == 'L' %}
+                        Least Views
+                        {% else %}
+                        Most Views
+                        {% endif %}
+
+                    </span>
                     <i class="fas fa-caret-down select-arrow"></i>
 
                 </button>
@@ -68,14 +88,21 @@
                             Least Viwes
                     </li>
                 </ul>
-                <input type="hidden" id="views-filter" name="views">
+                <input type="hidden" id="views-filter" name="views" value="{% if viewsFilter == 'L' %}L{% else %}M{% endif %}">
             </div>
         </div>
         <div class="col-4 col-sm-3 col-lg-2">
             
             <div class="custom-select ans-fil filter one-click-filter">
                 <button class="btn btn-primary btn-select">
-                    <span class="selected-span">Most Answers</span>
+                    <span class="selected-span">
+                        {% if answersFilter == 'L' %}
+                        Least Answers
+                        {% else %}
+                        Most Answers
+                        {% endif %}
+
+                    </span>
                     <i class="fas fa-caret-down select-arrow"></i>
 
                 </button>
@@ -87,17 +114,18 @@
                             Least Answers
                     </li>
                 </ul>
-                <input type="hidden" id="answers-filter" name="answers">
+                <input type="hidden" id="answers-filter" name="answers" value="{% if viewsFilter == 'L' %}L{% else %}M{% endif %}">
             </div>
         </div>
 
     </div>
-    <div class="btn-group my-btn-group" style="margin-bottom: 12px;" role="group"
+    <div class="btn-group my-btn-group filter button-filter " style="margin-bottom: 12px;" role="group"
             aria-label="Basic outlined example">
-            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item active">All time</a>
-            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item">Today</a>
-            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item">This week</a>
-            <a href="#" class="btn btn-outline-primary btn-group-item btn-option-item">This month</a>
+            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item active" data-value="A">All time</button>
+            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item" data-value="T">Today</button>
+            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item" data-value="W">This week</button>
+            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item" data-value="M">This month</button>
+        <input type="hidden" name="time">
         </div>
     <div style="clear:both"></div>
     <!-- queststion start -->
@@ -108,5 +136,15 @@
        
         
     </div>
+    {% if pageCount > 1 %}
+    <button class="btn see-more-btn see-more-btn-index" data-category-id="{% if categoryID %}{{categoryID}}{% endif %}">See more</button>
+    <div class="loading-circle">
+        <div class="primary-circle">
+            <div class="secondary-circle"></div>
+            <div class="background-circle"></div>
+        </div>
+
+    </div>
+    {% endif %}
     <!-- questions end -->
 {% endblock %}

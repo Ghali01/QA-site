@@ -200,7 +200,7 @@ rejected
                     </div>
                     <div class="col-3">
                         <div class="sort-by-toolbar" style="display: inline;">
-                            <div class="custom-select filter" style="width: 40%; display: inline-block;">
+                            <div class="custom-select time-order-f-mod filter" style="width: 40%; display: inline-block;">
                                 <button class="btn btn-primary btn-select">
                                     <span class="selected-span">
                                         {% if order == 'O' %}
@@ -220,7 +220,7 @@ rejected
                                         Oldest
                                     </li>
                                 </ul>
-                                <input type="hidden" name="order" id="order-input" value="{{order|default:'N'}}">
+                                <input type="hidden" name="order" id="order-input" value="{% if order == 'O' %}O{% else %}N{% endif %}">
                             </div>
                         </div>
                     </div>
@@ -254,7 +254,12 @@ rejected
                     </div>
 
                     <input type="hidden" name="tags" id="tags-input"
-                        value="[{% for tag in tagsF %}{{tag.id}}{% endfor %}]">
+                        value="[
+                        {% for tag in tagsF %}
+                        {{tag.id}}{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                        
+                        ]">
 
                 </div>
             </div>

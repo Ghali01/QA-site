@@ -2,7 +2,7 @@
 
     {% for cate in categories %}
     <li class="category-li">
-        <a href="{% url 'content:index' categoryID=cate.id %}" class="cateogry-item">
+        <a href="{% url 'content:index-with-cate' categoryID=cate.id %}" class="cateogry-item">
 
             {{cate.name}}
         </a>
@@ -11,7 +11,7 @@
         <ul class="subcategories-list">
             {% for subCate in cate.toArray %}
 
-            <li class="subcategory-item"> <a href="{% url 'content:index' categoryID=subCate.id %}">{{subCate.name}}</a>
+            <li class="subcategory-item"> <a href="{% url 'content:index-with-cate' categoryID=subCate.id %}">{{subCate.name}}</a>
             </li>
             {% endfor %}
         </ul>

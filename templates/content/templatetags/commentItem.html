@@ -1,0 +1,8 @@
+<li class="comment-item">
+    <p class="comment-content">{{comment.text}}</p>
+    <div class="sperat-div">|</div>
+    <a class="by-user-name" href="{% url 'profiles:profile-page' userID=comment.author.id %}">{{comment.author.username}}</a>
+    <div class="sperat-div">|</div>
+    <time class="comment-add-date">{{comment.getFormatedDate}}</time>
+
+</li>

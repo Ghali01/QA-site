@@ -44,9 +44,9 @@
                 {% endfor %}
             </div>
             <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
-
-            <div class="question-date">last answer added in 0000/00/00 </div>
-
+            {% if question.getLastAnswerDate  %}
+            <div class="question-date">last answer added in {{question.getLastAnswerDate}} </div>
+            {% endif %}
         </div>
     </div>
 </div>

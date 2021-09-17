@@ -21,3 +21,6 @@ def getVote(post,user):
             return 'down'
     except Voter.DoesNotExist:
         return False
+@register.inclusion_tag('content/templatetags/commentItem.html')
+def commentItem(comment):
+    return{'comment':comment}

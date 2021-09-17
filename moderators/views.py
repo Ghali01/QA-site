@@ -42,7 +42,8 @@ def suggestedQuestionsAwait(request,page,mode):
     if 'category' in request.GET and request.GET['category']:
         try:
             category=Category.objects.get(pk=request.GET['category'])
-            questions=questions.filter(category=category)
+            questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
+
         except Category.DoesNotExist:
             pass
     if 'search' in request.GET and request.GET['search']:
@@ -61,12 +62,15 @@ def suggestedQuestionsAwait(request,page,mode):
         except JSONDecodeError:
             pass
   
-    if category:
-        questions=questions.union(*subCategoriesSuggestedQuestions(category.getAllSubCategories(),request,mode))
-    
+  
     if 'order' in request.GET:
-        if  mode==PostLog.types.Suggest:
-            questions=SuggestedQuestion.orderBySuggestDate(questions,asc=False if request.GET['order']=='N' else True)
+        order=request.GET['order']
+    if  mode==PostLog.types.Suggest:
+        questions=SuggestedQuestion.orderBySuggestDate(questions,asc=True if 'order' in request.GET and request.GET['order']=='O' else False)
+    if  mode==PostLog.types.Accept:
+        questions=SuggestedQuestion.orderByAcceptDate(questions,asc=True if 'order' in request.GET and request.GET['order']=='O' else False)
+    if  mode==PostLog.types.Reject:
+        questions=SuggestedQuestion.orderByRejectDate(questions,asc=True if 'order' in request.GET and request.GET['order']=='O' else False)
     questions=list(questions)
     page=1 if page==0 else page
     count=len(questions)
@@ -93,77 +97,6 @@ def suggestedQuestionsAwait(request,page,mode):
     return render(request,'moderators/questions/questions.html',contxt)
 
 
-def subCategoriesQuestions(subCategories,request,mode):
-    questions=[]
-    for subCategory in subCategories:
-        answers=Answer.objects.filter(question__category=subCategory)
-        print(subCategory)
-        if  mode==PostLog.types.Suggest:
-            answers=answers.exclude(
-                    post__logs__type=PostLog.types.Accept
-                ).exclude(
-                    post__logs__type=PostLog.types.Reject
-                )
-        if 'search' in request.GET and request.GET['search']:
-            answers=answers.filter(Q(tquestion__itle__contains=request.GET['search'])  | Q(question__post__text__contains=request.GET['search']))
-        # if 'order' in request.GET and request.GET['order']=='O':
-        #     questions=questions.order_by('-date')
-        #     order=request.GET['order']
-        if 'tags' in request.GET:
-            try:
-                tagsIDs=json.loads(request.GET['tags'])
-                for tagID in tagsIDs:
-                    try:    
-                        tag=Tag.objects.get(pk=tagID)
-                        answers = answers.filter(question__tags=tag)
-                    except Tag.DoesNotExist:
-                        pass
-            except JSONDecodeError:
-                pass
-        for ans in answers:
-            questions.append(ans.question)
-    return questions
-
-
-def subCategoriesSuggestedQuestions(subCategories,request,mode):
-    sets=[]
-    for subCategory in subCategories:
-        questions=SuggestedQuestion.objects.filter(category=subCategory)
-        if  mode==PostLog.types.Suggest:
-            questions=questions.exclude(
-                post__logs__type=PostLog.types.Accept
-            ).exclude(
-                post__logs__type=PostLog.types.Reject
-            )
-            
-        elif mode==PostLog.types.Accept:
-            questions=questions.filter(
-                post__logs__type=PostLog.types.Accept
-            )
-        elif mode==PostLog.types.Reject:
-          questions=questions.filter(
-            post__logs__type=PostLog.types.Reject
-        ).exclude(
-            post__logs__type=PostLog.types.Accept
-
-        )
-
-        if 'search' in request.GET and request.GET['search']:
-            questions=questions.filter(Q(title__contains=request.GET['search'])  | Q(post__text__contains=request.GET['search']))
-        if 'order' in request.GET and request.GET['order']=='O':
-            questions=questions.order_by('-date')
-        if 'tags' in request.GET:
-            try:
-                tagsIDs=json.loads(request.GET['tags'])
-                for tagID in tagsIDs:
-                    try:    
-                        questions = questions.filter(tags=Tag.objects.get(pk=tagID))
-                    except Tag.DoesNotExist:
-                        pass
-            except JSONDecodeError:
-                pass
-        sets.append(questions)
-    return sets
 
 @forActiveUser
 @forModerator
@@ -244,15 +177,12 @@ def suggestedAnswersAwait(request,page,mode):
     if 'category' in request.GET and request.GET['category']:
         try:
             category=Category.objects.get(pk=request.GET['category'])
-            answers=answers.filter(question__category=category)
+            answers=answers.filter(Q(question__category=category)|Q(question__category__parent=category)|Q(question__category__parent__parent=category)|Q(question__category__parent__parent__parent=category))
         except Category.DoesNotExist:
             pass
     if 'search' in request.GET and request.GET['search']:
         answers=answers.filter(Q(tquestion__itle__contains=request.GET['search'])  | Q(question__post__text__contains=request.GET['search']))
         searchVal=request.GET['search']
-    # if 'order' in request.GET and request.GET['order']=='O':
-    #     questions=questions.order_by('-date')
-    #     order=request.GET['order']
     if 'tags' in request.GET:
         try:
             tagsIDs=json.loads(request.GET['tags'])
@@ -267,11 +197,20 @@ def suggestedAnswersAwait(request,page,mode):
             pass
     questions=[]
   
-    if category:
-        questions+=subCategoriesQuestions(category.getAllSubCategories(),request,mode)
+
     for ans in answers:
         questions.append(ans.question)
     questions=set(questions)
+    if 'order' in request.GET:
+        order=request.GET['order']
+    if  mode==PostLog.types.Suggest:
+        questions=Question.orderByLastSuggesAnstDate(questions,asc=True if 'order' in request.GET and request.GET['order']=='O' else False)
+    if  mode==PostLog.types.Accept:
+        questions=Question.orderByLastAccepAnstDate(questions,asc=True if 'order' in request.GET and request.GET['order']=='O' else False)
+    if  mode==PostLog.types.Reject:
+        questions=Question.orderByLastRejectAnsDate(questions,asc=True if 'order' in request.GET and request.GET['order']=='O' else False)
+
+   
     page=1 if page==0 else page
     count=len(questions)+0
     toN=page*25

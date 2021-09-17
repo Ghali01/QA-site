@@ -21,7 +21,7 @@
                     <!-- search bar end -->
                     <ul class="navbar-nav ms-auto">
                         <!-- itemes on the right start -->
-                        <li class="nav-item drop-down-nl">
+                        <li class="nav-item drop-down-nl d-none d-sm-block" >
                             <button class="btn drop-down-icon" id="drop-d-btn-nav">
                             <i class="far fa-caret-square-down "></i>
 
@@ -71,7 +71,15 @@
                         <!-- itemes on the right start -->
                         <!-- cateagors on sm start -->
 
-                        <!--  -->
+
+                        <li class="nav-item dropdown d-sm-none  ">
+                            <span class="nav-link dropdown-toggle cateogry-in-nav active" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Moderator</span>
+                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-questions-await' page=1 %}">Questions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-answers-await' page=1 %}">Answers</a></li>
+                            </ul>
+                        </li>
                         {% categories_mob %}
                         <!-- cateagors on sm end -->
 

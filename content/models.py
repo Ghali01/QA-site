@@ -1,3 +1,4 @@
+from interviewsquestions.utilities.datetime import timeDaltaToInt
 from django.db import models
 from django.db.models.deletion import CASCADE
 from interviewsquestions.utilities.database import languageField
@@ -166,7 +167,60 @@ class Question(models.Model):
             post__logs__type=PostLog.types.Accept
 
         )
+    @staticmethod
+    def orderByLastSuggesAnstDate(questions,asc=True):
+        questions=list(questions)
+        orderd=[]
+        for i in range(len(questions)):
+            currentItem=questions[0] if questions else None
+            for que in questions:
+                date=que.getSuggestedAnswers().last().post.logs.get(type=PostLog.types.Suggest).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.getSuggestedAnswers().last().post.logs.get(type=PostLog.types.Suggest).time)<0:
+                        currentItem=que
+                else:
+                    if timeDaltaToInt(date -currentItem.getSuggestedAnswers().last().post.logs.get(type=PostLog.types.Suggest).time)>0:
+                        currentItem=que
+            questions.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
+    def orderByLastAccepAnstDate(questions,asc=True):
+        questions=list(questions)
+        orderd=[]
+        for i in range(len(questions)):
+            currentItem=questions[0] if questions else None
+            for que in questions:
+                date=que.getAcceptedAnswers().last().post.logs.get(type=PostLog.types.Accept).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.getAcceptedAnswers().last().post.logs.get(type=PostLog.types.Accept).time)<0:
+                        currentItem=que
+                else:
+                    if timeDaltaToInt(date -currentItem.getAcceptedAnswers().last().post.logs.get(type=PostLog.types.Accept).time)>0:
+                        currentItem=que
+            questions.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
+    def orderByLastRejectAnsDate(questions,asc=True):
+        questions=list(questions)
+        orderd=[]
+        for i in range(len(questions)):
+            currentItem=questions[0] if questions else None
+            for que in questions:
+                date=que.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time)<0:
+                        currentItem=que
+                else:
+                    if timeDaltaToInt(date -currentItem.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time)>0:
+                        currentItem=que
+            questions.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
 
+    def getLastAnswerDate(self):
+        acceptedAnswers=self.getAcceptedAnswers()
+        if acceptedAnswers:
+            return acceptedAnswers.last().post.logs.get(type=PostLog.types.Suggest).time.date().strftime('%Y/%m/%d')
 class SuggestedQuestion(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE)
     title=models.CharField(max_length=200)
@@ -212,23 +266,52 @@ class SuggestedQuestion(models.Model):
     @staticmethod
     def orderBySuggestDate(questions,asc=True):
         questions=list(questions)
-        currentItem=questions[0] if questions else None
+        orderd=[]
         for i in range(len(questions)):
-            date=questions[i].post.logs.get(type=PostLog.types.Suggest).time.date()
-            # print(questions[i].title)
-            for j in range(i,len(questions)):
-                print(i,j)
+            currentItem=questions[0] if questions else None
+            for que in questions:
+                date=que.post.logs.get(type=PostLog.types.Suggest).time
                 if asc:
-                    if (date -currentItem.post.logs.get(type=PostLog.types.Suggest).time.date()).days>0:
-                        currentItem=questions[j]
-                        questions.insert(0,currentItem)
-                        questions.remove(currentItem)
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Suggest).time)<0:
+                        currentItem=que
                 else:
-                    if (date -currentItem.post.logs.get(type=PostLog.types.Suggest).time.date()).days>0:
-                        currentItem=questions[j]
-                        questions.insert(0,currentItem)
-                        questions.remove(currentItem)
-        return questions
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Suggest).time)>0:
+                        currentItem=que
+            questions.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
+    def orderByAcceptDate(questions,asc=True):
+        questions=list(questions)
+        orderd=[]
+        for i in range(len(questions)):
+            currentItem=questions[0] if questions else None
+            for que in questions:
+                date=que.post.logs.get(type=PostLog.types.Accept).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Accept).time)<0:
+                        currentItem=que
+                else:
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Accept).time)>0:
+                        currentItem=que
+            questions.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
+    def orderByRejectDate(questions,asc=True):
+        questions=list(questions)
+        orderd=[]
+        for i in range(len(questions)):
+            currentItem=questions[0] if questions else None
+            for que in questions:
+                date=que.post.logs.get(type=PostLog.types.Reject).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Reject).time)<0:
+                        currentItem=que
+                else:
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Reject).time)>0:
+                        currentItem=que
+            questions.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
 class PostLog(models.Model):
     typeChoices=[
         ('S','Suggest'),
@@ -282,3 +365,13 @@ class Answer(models.Model):
         return self.post.logs.last().type==PostLog.types.Reject
     def isJustSuggested(self):
         return self.post.logs.last().type==PostLog.types.Suggest
+
+
+class Comment(models.Model):
+    text= models.CharField(max_length=300)
+    author=models.ForeignKey(User,on_delete=models.CASCADE)
+    post=models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    date=models.DateField(auto_now_add=True)
+
+    def getFormatedDate(self):
+        return self.date.strftime('%Y/%m/%d')
