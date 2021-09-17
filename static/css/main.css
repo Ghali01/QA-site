@@ -1538,7 +1538,7 @@ button.go{
     padding-bottom: 10px;
     border-bottom: 1px solid var(--titles-colors);
 }
-.add-comment-span{
+.add-comment-span,.all-comment-span{
     color: var(--secodry-color);
     font-size: 12px;
     cursor: pointer;
@@ -2762,7 +2762,7 @@ button.go{
     }
 }
 .questions-list{
-    margin-bottom: 80px;
+    margin-bottom: 16px;
 }
 @media (max-width:576px) {
     .search-nav-form{
@@ -3350,7 +3350,7 @@ p.info{
     margin: 0 4px;
     height: 25px;
     font-size: 13px !important;
-
+    margin-top: 4px;
 }
 .filter-tags-div .btn-tag .remove-tag-btn{
     display: none;
@@ -3385,4 +3385,98 @@ p.info{
 .answer-await .question-options-bottom-wb{
     border-bottom: none;
     padding-bottom: 0;
+}
+
+
+.loading-circle{
+    width: 46px;
+    height: 46px;
+    /* border: 3px solid #fff ; */
+    margin: auto;
+    border-radius: 50%;
+    position: relative;
+}
+
+.loading-circle div{
+    margin: auto;
+}
+.loading-circle .primary-circle{
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    position: absolute;
+    top: 4px;
+    left: 4.5px;
+}
+.loading-circle .secondary-circle{
+    width: 20px;
+    height: 10px;
+    background-color: var(--secodry-color);
+    /* background: linear-gradient(180deg,var(--secodry-color)0%,var(--primary-color)100%); */
+    position: absolute;
+    top: 15px;
+    transform-origin: 100% 50%;
+    border-radius: 2px;
+    /* transform: rotate(10deg); */
+    /* z-index: 10; */
+    animation-name: loading-ani;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-delay: 0s;
+    animation-timing-function: linear;
+}
+.loading-circle .background-circle{
+    width: 35px;
+    height: 35px;
+    background-color: var(--black-050);
+    border-radius: 50%;
+    top: 2.6px;
+    left: 2.48px;
+    position: absolute;
+}
+
+@keyframes loading-ani {
+    0%{
+        transform: rotate(0deg);
+
+    }
+    
+    100%{
+    transform: rotate(360deg);
+
+    }
+}
+
+.see-more-btn{
+    display: block;
+    width: 100%;
+    color: var(--tSecodry-color) !important;
+    text-align: center;
+    font-size: 15px;
+}
+
+#similar-ques{
+    display: none;
+}
+
+@media (max-width:1060px) {
+    .time-order-f-mod{
+        width: 60% !important;
+    }
+}
+@media (max-width:600px) {
+    .time-order-f-mod{
+        width: 80% !important;
+    }
+}
+@media (max-width:450px) {
+    .time-order-f-mod{
+        width: 100% !important;
+    }
+}
+@media (max-width:380px) {
+    .time-order-f-mod{
+        width: 130% !important;
+    }
 }
