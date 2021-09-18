@@ -530,6 +530,7 @@ $(document).ready(
             $('.add-que-h-inp').change(queTitleChange);
             $('.add-comm-btn').click(addCommentBtn);
             $('.all-comment-span').click(seeAllComments);
+            $('.chang-edit-st-m-btn').click(changeSugEditStatus);
         }
 );
 //gird question animetion funcrion
@@ -779,7 +780,6 @@ function changeAnswersStMod(){
         'mode':$(this).data('mode')
     },
         function (data, textStatus, jqXHR) {
-            console.log(data);
             if(data=='done'){
                 if (!$(clicked).hasClass('no-animate')){
                 
@@ -921,8 +921,12 @@ function addCommentBtn(){
     },
         function (data, textStatus, jqXHR) {
             $(clicked).prev('input').val('')
-            $(clicked).parent().siblings('.comments-list').children().last().before(data);
-        },
+            if($(clicked).parent().siblings('.comments-list').children().last().find('p').hasClass('all-comment-span'))
+                $(clicked).parent().siblings('.comments-list').children().last().before(data);
+            else
+                $(clicked).parent().siblings('.comments-list').append(data);
+
+            },
     );
 }
 
@@ -939,4 +943,31 @@ function seeAllComments(){
             // $(clicked).hide();
         },
     );
+}
+
+function changeSugEditStatus(){
+    console.log('t');
+    let clicked=this;
+    let item=$(this).parentsUntil('.await-item').parent();
+    $.post("/moderators/change-suggested-edit", {
+        'csrfmiddlewaretoken': getCookie('csrftoken'),
+        'edit-id':$(this).data('edit-id'),
+        'status':$(this).data('action'),
+    },
+        function (data, textStatus, jqXHR) {
+            console.log(data);
+            if(data=='done'){
+            
+                if (!$(clicked).hasClass('no-animate')){
+                
+                    item.addClass('ani-await-item');
+                setTimeout(_=>$(item).remove(),500);
+            }
+            else{
+                location.reload();
+            }
+            }
+        },
+    );
+
 }

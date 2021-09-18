@@ -1,3 +1,4 @@
+from django.db.models.base import Model
 from interviewsquestions.utilities.datetime import timeDaltaToInt
 from django.db import models
 from django.db.models.deletion import CASCADE
@@ -97,7 +98,10 @@ class Post(models.Model):
     class types:
         Question='Q'
         Answer='A'
-    
+    def isQuestion(self):
+        return self.type==Post.types.Question
+    def isAnswer(self):
+        return self.type==Post.types.Answer
     def getVotes(self):
         if self.votes < 1000:
             return self.votes
@@ -105,6 +109,11 @@ class Post(models.Model):
             return int(self.votes/1000)+'K'
         else:
             return int(self.votes/1000000)+'M'
+    def getQuestion(self):
+        if self.type==Post.types.Question:
+            return self.question
+        else:
+            return self.answer.question
 class Question(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE,related_name='question')
     title=models.CharField(max_length=200)
@@ -312,23 +321,93 @@ class SuggestedQuestion(models.Model):
             questions.remove(currentItem)
             orderd.append(currentItem)
         return orderd
+
+class SuggestedEdit(models.Model):
+    statusChoisies=[
+        ('S','Suggested'),
+        ('A','Rejected'),
+        ('R','Acceptd'),
+    ]
+    post=models.ForeignKey(Post,on_delete=models.CASCADE)
+    status=models.CharField(max_length=1,choices=statusChoisies)
+    class staties:
+        Suggest='S'
+        Accept='A'
+        Reject='R'
+    def getSuggestedDate(self):
+        return self.logs.get(type=PostLog.types.SuggestEdit).time.date().strftime('%Y/%m/%d')
+    def userWhoSugget(self):
+        return self.logs.get(type=PostLog.types.SuggestEdit).author
+    def text(self):
+        return self.logs.get(type=PostLog.types.SuggestEdit).text
+    @staticmethod
+    def orderBySuggestDate(edits,asc=True):
+        edits=list(edits)
+        orderd=[]
+        for i in range(len(edits)):
+            currentItem=edits[0] if edits else None
+            for edit in edits:
+                date=edit.logs.get(type=PostLog.types.SuggestEdit).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.logs.get(type=PostLog.types.SuggestEdit).time)<0:
+                        currentItem=edit
+                else:
+                    if timeDaltaToInt(date -currentItem.logs.get(type=PostLog.types.SuggestEdit).time)>0:
+                        currentItem=edit
+            edits.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
+    def orderByAcceptDate(edits,asc=True):
+        edits=list(edits)
+        orderd=[]
+        for i in range(len(edits)):
+            currentItem=edits[0] if edits else None
+            for edit in edits:
+                date=edit.logs.get(type=PostLog.types.AcceptEdit).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.logs.get(type=PostLog.types.AcceptEdit).time)<0:
+                        currentItem=edit
+                else:
+                    if timeDaltaToInt(date -currentItem.logs.get(type=PostLog.types.AcceptEdit).time)>0:
+                        currentItem=edit
+            edits.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
+    def orderByRejectDate(edits,asc=True):
+        edits=list(edits)
+        orderd=[]
+        for i in range(len(edits)):
+            currentItem=edits[0] if edits else None
+            for edit in edits:
+                date=edit.logs.get(type=PostLog.types.RejectEdit).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.logs.get(type=PostLog.types.RejectEdit).time)<0:
+                        currentItem=edit
+                else:
+                    if timeDaltaToInt(date -currentItem.logs.get(type=PostLog.types.RejectEdit).time)>0:
+                        currentItem=edit
+            edits.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
+
 class PostLog(models.Model):
     typeChoices=[
         ('S','Suggest'),
         ('A','Accept'),
         ('R','Reject'),
-        ('E','Edit'),
+        ('SE','Suggest Edit'),
         ('AE','Accept Edit'),
+        ('RE','Reject Edit'),
         ('P','Publish'),
         ('UP','Unpublish'),
     ]
     post=models.ForeignKey(Post,on_delete=models.CASCADE,related_name='logs')
     text=models.TextField(null=True)
-    title=models.CharField(max_length=200,null=True)
     moderator=models.ForeignKey(User,on_delete=CASCADE,related_name='logs', null=True)
     author=models.ForeignKey(User,on_delete=CASCADE)
     time=models.DateTimeField(auto_now_add=True)
     type=models.CharField(max_length=4,choices=typeChoices)
+    edit=models.ForeignKey(SuggestedEdit,on_delete=models.CASCADE,null=True,related_name='logs')
     class Meta:
         ordering=['time']
         indexes=[
@@ -338,8 +417,9 @@ class PostLog(models.Model):
         Suggest='S'
         Accept='A'
         Reject='R'
-        Edit='E'
+        SuggestEdit='SE'
         AcceptEdit='AE'
+        RejectEdit='RE'
         Publish='P'
         Unpublish='UP'
 class Voter(models.Model):
@@ -354,13 +434,13 @@ class Voter(models.Model):
 
 
 class Answer(models.Model):
-    post=models.OneToOneField(Post,on_delete=models.CASCADE)
+    post=models.OneToOneField(Post,on_delete=models.CASCADE ,related_name='answer')  
     question=models.ForeignKey(Question,on_delete=CASCADE,related_name='answers')
     def formatedDate(self):
         return self.post.logs.get(type=PostLog.types.Suggest).time.date().strftime('%Y/%m/%d')
 
     def isAccepted(self):
-        return self.post.logs.last().type==PostLog.types.Accept
+        return self.post.logs.filter(type=PostLog.types.Accept).exists()
     def isRejected(self):
         return self.post.logs.last().type==PostLog.types.Reject
     def isJustSuggested(self):
@@ -375,3 +455,4 @@ class Comment(models.Model):
 
     def getFormatedDate(self):
         return self.date.strftime('%Y/%m/%d')
+

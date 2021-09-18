@@ -4,16 +4,23 @@
 
 {% block content %} 
     <h2 class="center-title">Lastst Questions</h2>
-
+    {% if request.user.is_authenticated and not request.user.is_anonymous %}
+    
     <a href="{% url 'content:add-question' %}" class="btn btn-primary btn-sm primary-button suggest-btn">
         Suggest Question
     </a>
+    {% else %}
+    <a href="{% url 'authusers:login-page' %}" class="btn btn-primary btn-sm primary-button suggest-btn">
+        Login
+    </a>
+    {% endif %}
     <div style="clear:both"></div>
     {% for msg in messages %}
     <p class="success-p-s">
         {{msg}}
     </p>
     {% endfor %}
+    {% if request.user.is_authenticated and not request.user.is_anonymous %}
         <div class="row filters-row">
         <div class="col-4 col-sm-3 col-lg-2">
             <div class="custom-select filter one-click-filter">
@@ -119,12 +126,34 @@
         </div>
 
     </div>
+    {% endif %}
     <div class="btn-group my-btn-group filter button-filter " style="margin-bottom: 12px;" role="group"
             aria-label="Basic outlined example">
-            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item active" data-value="A">All time</button>
-            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item" data-value="T">Today</button>
-            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item" data-value="W">This week</button>
-            <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item" data-value="M">This month</button>
+            <button class="btn btn-outline-primary btn-group-item btn-option-item 
+            {% if not  timeFilter == 'T' and not timeFilter == 'W' and not timeFilter == 'M'  %}
+            active
+            {% endif %}
+            " 
+            
+            data-value="A">All time</button>
+            <button  class="btn btn-outline-primary btn-group-item btn-option-item
+            {% if timeFilter == 'T' %}
+            active
+            {% endif %}
+        
+            " data-value="T">Today</button>
+            <button  class="btn btn-outline-primary btn-group-item btn-option-item
+            {% if timeFilter == 'W' %}
+            active
+            {% endif %}
+        
+            " data-value="W">This week</button>
+            <button  class="btn btn-outline-primary btn-group-item btn-option-item
+            {% if timeFilter == 'M' %}
+            active
+            {% endif %}
+        
+            " data-value="M">This month</button>
         <input type="hidden" name="time">
         </div>
     <div style="clear:both"></div>

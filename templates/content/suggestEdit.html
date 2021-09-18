@@ -1,0 +1,30 @@
+{% extends 'utilities/_base.html' %}
+{% block title %}Suggest Edit{% endblock %}
+
+{% block content %}
+<div class="pd-container" >
+
+
+    <h2 class="center-title" style="float:none;">Suggest Edit</h2>
+
+    <form id="post-form" method="POST" >
+        {% csrf_token %}
+    <div class="editor-partnt custom-scrollbar">
+        <div id="editor" class="custom-scrollbar" data-init-val="{{post.text}}"></div>
+    </div>
+    <p class="error-p-s">
+        {% for msg in messages %}
+            {% if 'body' in msg.tags %}
+                {{msg}}
+            {% endif %}
+        {% endfor %}
+    </p>
+   
+    <input type="hidden" name="post-body" id="post-body">
+    <button class="btn btn-primary btn-sm primary-button add-que-button add-post-btn">
+        Suggest Edit
+    </button>
+    </form>
+    
+</div>
+{% endblock %}

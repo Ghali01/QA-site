@@ -12,4 +12,9 @@ urlpatterns=[
     path('answers/R/<int:page>',lambda r,page:views.suggestedAnswersAwait(r,page,"R"),name='suggested-answers-rejected'),
     path('change-suggested-answers',views.changeSuggestAnswers,name='change-suggested-answers'),
     path('change-suggested-answer',views.changeSuggestAnswer,name='change-suggested-answer'),
-]
+    path('edits/S/<int:page>',lambda r,page:views.suggestedEditsAwait(r,page,"S"),name='suggested-edits-await'),
+    path('edits/A/<int:page>',lambda r,page:views.suggestedEditsAwait(r,page,"A"),name='suggested-edits-accepted'),
+    path('edits/R/<int:page>',lambda r,page:views.suggestedEditsAwait(r,page,"R"),name='suggested-edits-rejected'),
+    path('review-edit/<int:editID>',views.reviewEdit,name='review-edit'),
+    path('change-suggested-edit',views.changeSuggestedEditStatus,name='change-suggested-edit')
+   ]

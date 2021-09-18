@@ -7,69 +7,68 @@ from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from interviewsquestions.utilities.authDecoratros import forActiveUser, forModerator,userHasTags
-from content.models import Category, PostLog,Tag,SuggestedQuestion,Post,Question, Voter,Answer,Comment
+from content.models import Category, PostLog, SuggestedEdit,Tag,SuggestedQuestion,Post,Question, Voter,Answer,Comment
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.db.models.expressions import F,Q
 from django.db.models import Count
 from django.template.loader import render_to_string
 import json
-@forActiveUser
-@userHasTags
+# @forActiveUser
+# @userHasTags
 def index(request,categoryID=-1):
-    if request.user.is_authenticated and not request.user.is_anonymous:
-        tagsFilter=viewsFilter=votesFilter=answersFilter=None
-        category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
-        questions=Question.objects.all()
-        if category:
-            questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
-        if 'time' in request.GET:
-            if request.GET['time']=='T':
-                logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date=datetime.datetime.now().date())
-                questions=questions.filter(post__logs__in=logs)
-            elif request.GET['time']=='W':
-                logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=7),datetime.datetime.now().date()))
-                questions=questions.filter(post__logs__in=logs)
-            elif request.GET['time']=='M':               
-                logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=30),datetime.datetime.now().date()))
-                questions=questions.filter(post__logs__in=logs)
-            
-        if 'tags' in request.GET and request.GET['tags']=='M':
-            tagsFilter=request.GET['tags']
-            for tag in request.user.profile.tags.all():
-                questions=questions.filter(tags=tag)
+    tagsFilter=viewsFilter=votesFilter=answersFilter=timeFilter=None
+    category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
+    questions=Question.objects.all()
+    if category:
+        questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
+    if 'time' in request.GET:
+        timeFilter=request.GET['time']
+        if request.GET['time']=='T':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date=datetime.datetime.now().date())
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='W':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=7),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='M':               
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=30),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
+        
+    if 'tags' in request.GET and request.GET['tags']=='M' and request.user.is_authenticated and not request.user.is_anonymous:
+        tagsFilter=request.GET['tags']
+        for tag in request.user.profile.tags.all():
+            questions=questions.filter(tags=tag)
 
-        questions=questions.annotate(Count(F('answers')))
-        orderFields=[
-            '-post__ActiveDate',
-            ('-post__votes' if request.GET['votes']=='M' else 'post__votes') if 'votes' in request.GET else None,
-            ('-views' if request.GET['views']=='M' else 'views') if 'views' in request.GET else None,
-            ('-answers__count' if request.GET['answers']=='M' else 'answers__count') if 'answers' in request.GET else None,
+    questions=questions.annotate(Count(F('answers')))
+    orderFields=[
+        '-post__ActiveDate',
+        ('-post__votes' if request.GET['votes']=='M' else 'post__votes') if 'votes' in request.GET else None,
+        ('-views' if request.GET['views']=='M' else 'views') if 'views' in request.GET else None,
+        ('-answers__count' if request.GET['answers']=='M' else 'answers__count') if 'answers' in request.GET else None,
 
-        ]
-        orderFields=list(filter(lambda it: not it == None ,orderFields))
-        questions=questions.order_by(*orderFields)
-        if 'votes' in request.GET:
-            votesFilter=request.GET['votes']
-        if 'views' in request.GET:
-            viewsFilter=request.GET['views']
-        if 'answers' in request.GET:
-            answersFilter=request.GET['answers']
-        pageCount=ceil(questions.count()/15)  
-        questions=questions[:15]
-        contxt={
-            'category':category,
-            'questions':questions,
-            'votesFilter':votesFilter,
-            'viewsFilter':viewsFilter,
-            'answersFilter':answersFilter,
-            'tagsFilter':tagsFilter,
-            'categoryID':categoryID if not categoryID==-1 else None,
-            'pageCount':pageCount
-        }
-        return render(request,'content/index.html',contxt)
-    else:
-        return redirect(reverse('login-page'))
+    ]
+    orderFields=list(filter(lambda it: not it == None ,orderFields))
+    questions=questions.order_by(*orderFields)
+    if 'votes' in request.GET:
+        votesFilter=request.GET['votes']
+    if 'views' in request.GET:
+        viewsFilter=request.GET['views']
+    if 'answers' in request.GET:
+        answersFilter=request.GET['answers']
+    pageCount=ceil(questions.count()/15)  
+    questions=questions[:15]
+    contxt={
+        'category':category,
+        'questions':questions,
+        'votesFilter':votesFilter,
+        'viewsFilter':viewsFilter,
+        'answersFilter':answersFilter,
+        'tagsFilter':tagsFilter,
+        'categoryID':categoryID if not categoryID==-1 else None,
+        'pageCount':pageCount,
+        'timeFilter':timeFilter
+    }
+    return render(request,'content/index.html',contxt)
 
 def seeMoreQueIndex(request,page,categoryID=-1):
      if request.user.is_authenticated and not request.user.is_anonymous:
@@ -137,7 +136,7 @@ def addQuestionPage(request):
                             tags.append(Tag.objects.get(pk=tagID))
                     question.tags.add(*tags)
                     question.save()
-                    PostLog.objects.create(post=post,text=post.text,title=question.title,author=request.user,type=PostLog.types.Suggest)
+                    PostLog.objects.create(post=post,text=post.text,author=request.user,type=PostLog.types.Suggest)
                     messages.success(request,'The question has been submitted, it will be reviewed soon.')
                     return redirect(reverse('content:index'))
 
@@ -305,3 +304,23 @@ def allPostComment(request):
             pass
     return HttpResponse('error')
     
+@forActiveUser
+@userHasTags
+def suggestPostEdit(request,postID):
+    if request.method=='POST':
+        if 'post-body' in request.POST:
+            post=get_object_or_404(Post,id=postID)
+            edit=SuggestedEdit.objects.create(status=SuggestedEdit.staties.Suggest,post=post)
+            log=PostLog.objects.create(post=post,
+            text=request.POST['post-body'],
+            author=request.user,
+            type=PostLog.types.SuggestEdit,
+            edit=edit)
+            messages.success(request,'The edit has been submitted, it will be reviewed soon.')
+            return redirect(reverse('content:question-page',kwargs={'questionID':post.getQuestion().id})+'#mgss')
+
+    post=get_object_or_404(Post,id=postID)
+    contxt={
+        'post':post
+    }
+    return render(request,'content/suggestEdit.html',contxt)

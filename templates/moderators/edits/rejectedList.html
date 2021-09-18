@@ -1,0 +1,36 @@
+{% load contentUtilities %}
+<div class="await-list">
+    {% for edit in edits %}
+    <div class="await-item">
+        <div class="row  question-item ">
+
+            <div class="col-12">
+                <a href="{% url 'content:question-page' questionID=edit.post.getQuestion.id %}" class="question-title line-clamp">
+                    {{edit.post.getQuestion.title}}
+                </a>
+                <div class="bottom-of-question">
+                    <div class="question-tags custom-scrollbar">
+                        {% for tag in edit.post.getQuestion.tags.all %}
+                        {% tagLink tag %}
+                        {% endfor %}
+                    </div>
+                    
+                    <div class="question-date"> Suggested By  <a class="by-user-name" href="{% url 'profiles:profile-page' userID=edit.userWhoSugget.id %}">{{edit.userWhoSugget.username}}</a> in {{edit.getSuggestedDate}} </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="question-options-bottom">
+            <a href="{% url 'moderators:review-edit' editID=edit.id %}" class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn">
+                <i class="fas fa-external-link-alt"></i> Show The Edit</a>
+
+            <button class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-edit-st-m-btn" data-action="A" data-edit-id="{{edit.id}}"><i
+                    class="fas fa-check"></i> Accept</button>
+      
+                    
+        </div>
+    </div>
+    {% endfor %}
+</div>

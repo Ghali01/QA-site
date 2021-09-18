@@ -1,0 +1,78 @@
+{% extends 'utilities/_base.html' %}
+{% load questions %}
+{% load contentUtilities %}
+{% block title %}{% endblock %}
+{% block content %}
+{% if edit.post.isQuestion %}
+    {% question edit.post.question request %}
+{% else %}   
+    {% answer edit.post.answer request %}
+{% endif %}
+<div class="column-no-border">
+<h3 class="title">Suggested Edit</h3>
+<div style="clear: both;"></div>
+<div class="answers-list">
+    <div class="post-await">
+        <div class="post-div">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="post-content">
+
+                        
+                        {{edit.text|safe}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-4 col-sm-6 col-md-8">
+                        <div class="que-left-col">
+
+                            <div class="que-opts-spans">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="link-button" data-bs-toggle="modal"
+                                    data-bs-target="#reportModal">
+                                    <a href="#" class="custom-link custom-link-sm primary-link que-opt">Report</a>
+                                </button>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-8 col-sm-6 col-md-4">
+
+                        <div class="added-by-div-q ans-added-by-div">
+                            <div>
+                                <div class="questtion-add-date">
+                                    Suggested in <time>{{edit.getSuggestedDate}}</time>
+                                </div>
+                                    {% authodPostData edit.userWhoSugget %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-options-bottom question-options-bottom-wb">
+
+            <button class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn">
+                <i class="fas fa-pen"></i> Edit</button>
+
+                {% if edit.status == 'S' or edit.status == 'R' %}
+                <button class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-edit-st-m-btn no-animate" data-action="A" data-edit-id="{{edit.id}}"><i
+                    class="fas fa-check"></i> Accept</button>
+                {% endif %}
+                {% if edit.status == 'S'  %}
+                    <button class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn chang-edit-st-m-btn no-animate"data-action="R" data-edit-id="{{edit.id}}"><i
+                    class="fas fa-times"></i> Reject</button>
+                {% endif %}
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+{% endblock %}

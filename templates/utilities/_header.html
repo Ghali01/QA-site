@@ -41,7 +41,7 @@
                                             <a href="{% url 'moderators:suggested-answers-await' page=1 %}" class="drop-link">
                                                  <p>Answers</p></a>
                                         </li> <li>
-                                            <a href="#" class="drop-link">
+                                            <a href="{% url 'moderators:suggested-edits-await' page=1 %}" class="drop-link">
                                                  <p>Edits</p></a>
                                         </li>
                                     </ul>
@@ -78,6 +78,7 @@
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="{% url 'moderators:suggested-questions-await' page=1 %}">Questions</a></li>
                                 <li><a class="dropdown-item" href="{% url 'moderators:suggested-answers-await' page=1 %}">Answers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-edits-await' page=1 %}">Answers</a></li>
                             </ul>
                         </li>
                         {% categories_mob %}

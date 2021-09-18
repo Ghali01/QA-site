@@ -1,0 +1,123 @@
+{% load contentUtilities %}
+{% load questions %}
+<div class="question-div">
+    <div class="row">
+
+        {% if request.user.is_authenticated and not request.user.is_anonymous %}
+        <div class="col-1 icons-col">
+
+            {% with ans.post|getVote:request.user as V %}
+
+            <i class="fas fa-sort-up sort-icon sort-icon-up
+                    {% if V == 'up' %}
+                    sort-icon-act
+                    {% endif %}
+                    " data-post-id="{{ans.post.id}}"></i>
+            <span class="votes-number-span">{{ans.post.getVotes}}</span>
+            <i class="fas fa-sort-down sort-icon sort-icon-down
+                    {% if V == 'down' %}
+                    sort-icon-act
+                    {% endif %}
+                
+                    " data-post-id="{{ans.post.id}}"></i>
+            <i class="far fa-bookmark bookmark-icon"></i>
+            {% endwith %}
+        </div>
+        {% endif %}
+
+
+        <div class="
+                                    {% if request.user.is_authenticated and not request.user.is_anonymous  %}
+                
+                col-11
+                {% else %}
+                col-12
+                {% endif %}
+    ">
+            <div class="post-content">
+                {{ans.post.text|safe}}
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-4 col-sm-6 col-md-8">
+
+                <div class="ans-opts-spans">
+
+                    <a href="{% url 'content:suggest-post-edit' postID=ans.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">Suggest
+                        Edit</a>
+                    <div class="link-break">|</div>
+                    <a href="#" class="custom-link custom-link-sm primary-link que-opt">Follow</a>
+                    <div class="link-break">|</div>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="link-button" data-bs-toggle="modal"
+                        data-bs-target="#reportModal">
+                        <a href="#" class="custom-link custom-link-sm primary-link que-opt">Report</a>
+                    </button>
+                    <div class="share-btns" id="share-btns">
+                        <!-- Twitter -->
+                        <a href="https://twitter.com/share?url={}" target="_blank" class="share-btn twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={}" target="_blank"
+                            class="share-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/shareArticle?url={}" target="_blank"
+                            class="share-btn linkedin">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+
+                        <!-- Email -->
+                        <a href="mailto:?subject=HMTL%20Share%20Buttons&body={}" target="_blank"
+                            class="share-btn email">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-8 col-sm-6 col-md-4">
+                <div class="added-by-div-q ans-added-by-div ">
+
+                    <div class="questtion-add-date">
+                        Added in <time>{{ans.formatedDate}}</time>
+                    </div>
+
+                    {% authodPostData ans.post.author %}
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="comments-div">
+                <ul class="comments-list">
+                   
+                    {% for comment in ans.post.comments.all|slice:':3' %}
+                    {% commentItem comment %}
+                    {% endfor %}
+                    {% if ans.post.comments.all.count > 3 %}
+                    <li>
+                        <p class="all-comment-span" data-post-id="{{ans.post.id}}">All comment</p>
+                    </li>
+                    {% endif %}
+
+                    
+                </ul>
+                {% if request.user.is_authenticated and not request.user.is_anonymous %}
+
+                <p class="add-comment-span">Add comment</p>
+                <div class="add-comment-div">
+                    <input type="text" class="form-control que-input" placeholder="Add Comment...">
+                    <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{ans.post.id}}">Add
+                        comment</button>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
