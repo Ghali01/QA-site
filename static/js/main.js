@@ -514,7 +514,9 @@ $(document).ready(
             $('#mode-fil-btn').click(moderatorFilter)
             $('.filter-tags-div .btn-tag').click(removeSearchTag)
             $('.page-btn').click(pgClick);
-            $('.chang-que-st-m-btn').click(changePostStMod);
+            $('.chang-que-st-m-btn').click(changeQueStMod);
+            $('.chang-anss-st-m-btn').click(changeAnswersStMod);
+            $('.chang-ans-st-m-btn').click(changeAnswerStMod);
             $('.one-click-filter li').click(oneClickFilterChange);
             $('.sort-icon').click(voteBtnClick);
             $('.add-ans-button').click(addAnswerBtn);
@@ -713,7 +715,7 @@ function getCookie(name) {
     return cookieValue;
 }
 
-function changePostStMod(){
+function changeQueStMod(){
     let clicked=this;
     let item=$(this).parentsUntil('.await-item').parent();
     $.post("/moderators/change-suggested-question", {
@@ -735,16 +737,40 @@ function changePostStMod(){
         },
     );
 }
-
-function changePostsStMod(){
+function changeAnswerStMod(){
     let clicked=this;
     let item=$(this).parentsUntil('.await-item').parent();
-    $.post("/moderators/change-suggested-question", {
+    $.post("/moderators/change-suggested-answer", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
-        'que-id':$(this).data('que-id'),
+        'ans-id':$(this).data('ans-id'),
         'status':$(this).data('action'),
     },
         function (data, textStatus, jqXHR) {
+            if(data=='done'){
+                if (!$(clicked).hasClass('no-animate')){
+                
+                    item.addClass('ani-await-item');
+                setTimeout(_=>$(item).remove(),500);
+            }
+            else{
+                location.reload();
+            }
+            }
+        },
+    );
+}
+
+function changeAnswersStMod(){
+    let clicked=this;
+    let item=$(this).parentsUntil('.await-item').parent();
+    $.post("/moderators/change-suggested-answers", {
+        'csrfmiddlewaretoken': getCookie('csrftoken'),
+        'que-id':$(this).data('que-id'),
+        'status':$(this).data('action'),
+        'mode':$(this).data('mode')
+    },
+        function (data, textStatus, jqXHR) {
+            console.log(data);
             if(data=='done'){
                 if (!$(clicked).hasClass('no-animate')){
                 
