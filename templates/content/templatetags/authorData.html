@@ -1,5 +1,7 @@
+<div>
+
 <img class="avatar-img" src="{{author.profile.image.url}}" alt="avatar">
-<a class="by-user-name" href="#">{{author.username}}</a>
+<a class="by-user-name" href="{% url 'profiles:profile-page' userID=author.id %}">{{author.username}}</a>
 <span class="points-sp">6,145</span>
 </div>
 <div class="badges">

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'authusers.apps.AuthusersConfig',
     'content.apps.ContentConfig',
     'moderators.apps.ModeratorsConfig',
+    'profiles.apps.ProfilesConfig',
     'django.contrib.admin',
     'django.contrib.humanize',
     'django.contrib.auth',

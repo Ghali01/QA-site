@@ -3374,3 +3374,15 @@ p.info{
         display: none;
     }
 }
+
+
+.added-by-div-2{
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+}
+
+.answer-await .question-options-bottom-wb{
+    border-bottom: none;
+    padding-bottom: 0;
+}

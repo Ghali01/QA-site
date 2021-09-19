@@ -1,27 +1,45 @@
 
 {% extends 'utilities/_base_no_right.html' %}
-{% block title %}Questions Await{% endblock %}
+{% block title %}Answers 
+{% if mode == 'S' %}
+in wait
+{% elif mode == 'A' %}
+accepted
+{% elif mode == 'R' %}
+rejected
+{% endif %}
+{% endblock %}
 
 {% block content %} 
-    <h2 class="center-title" style="float:left;">Questions in wait</h2>
+    <h2 class="center-title" style="float:left;">Answers 
+        
+        {% if mode == 'S' %}
+        in wait
+        {% elif mode == 'A' %}
+        accepted
+        {% elif mode == 'R' %}
+        rejected
+        {% endif %}
+       
+    </h2>
     
     <div class="btn-group my-btn-group" style="margin: 8px 10px; float:left;" role="group"
     aria-label="Basic outlined example">
-    <a href="{% url 'moderators:suggested-questions-await' page=1 %}"
+    <a href="{% url 'moderators:suggested-answers-await' page=1 %}"
         class="btn btn-outline-primary btn-group-item btn-option-item 
         {% if mode == 'S' %}
         active
         {% endif %}
         ">Await</a>
 
-    <a href="{% url 'moderators:suggested-questions-accepted' page=1 %}"
+    <a href="{% url 'moderators:suggested-answers-accepted' page=1 %}"
         class="btn btn-outline-primary btn-group-item btn-option-item 
         {% if mode == 'A' %}
         active
         {% endif %}
        
         ">Accepted</a>
-    <a href="{% url 'moderators:suggested-questions-rejected' page=1 %}"
+    <a href="{% url 'moderators:suggested-answers-rejected' page=1 %}"
         class="btn btn-outline-primary btn-group-item btn-option-item
         {% if mode == 'R' %}
         active
@@ -269,7 +287,9 @@
         {% if mode == 'S' %}
         {% include 'moderators/answers/awaitList.html' %}
         {% elif mode == 'A' %}
+        {% include 'moderators/answers/acceptedList.html' %}
         {% elif mode == 'R' %}
+        {% include 'moderators/answers/rejectedList.html' %}
         {% endif %}
        
 

@@ -1,8 +1,25 @@
 {% extends 'utilities/_base_no_right.html' %}
-{% block title %}Questions Await{% endblock %}
+{% block title %}Questions 
+{% if mode == 'S' %}
+in wait
+{% elif mode == 'A' %}
+accepted
+{% elif mode == 'R' %}
+rejected
+{% endif %}
+{% endblock %}
 
 {% block content %}
-<h2 class="center-title" style="float:left;">Questions in wait</h2>
+<h2 class="center-title" style="float:left;">Questions 
+    {% if mode == 'S' %}
+    in wait
+    {% elif mode == 'A' %}
+    accepted
+    {% elif mode == 'R' %}
+    rejected
+    {% endif %}
+  
+</h2>
 
 <div class="btn-group my-btn-group" style="margin: 8px 10px; float:left;" role="group"
     aria-label="Basic outlined example">

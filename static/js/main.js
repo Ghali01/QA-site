@@ -716,7 +716,7 @@ function getCookie(name) {
 function changePostStMod(){
     let clicked=this;
     let item=$(this).parentsUntil('.await-item').parent();
-    $.post("/moderators/change-suggested-post", {
+    $.post("/moderators/change-suggested-question", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
         'que-id':$(this).data('que-id'),
         'status':$(this).data('action'),
@@ -739,7 +739,7 @@ function changePostStMod(){
 function changePostsStMod(){
     let clicked=this;
     let item=$(this).parentsUntil('.await-item').parent();
-    $.post("/moderators/change-suggested-post", {
+    $.post("/moderators/change-suggested-question", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
         'que-id':$(this).data('que-id'),
         'status':$(this).data('action'),

@@ -15,7 +15,9 @@
                         {% tagLink tag %}
                         {% endfor %}
                     </div>
-                    <div class="question-date">Rejected by <a class="by-user-name" href="#">{{que.modeWhoReject.username}}</a> | suggested  in {{que.formatedDate}} </div>
+                <div class="added-by-div added-by-div-2 ">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
+                </div>
+                    <div class="question-date">Rejected by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.modeWhoReject.id %}">{{que.modeWhoReject.username}}</a> | suggested  in {{que.formatedDate}} </div>
 
                 </div>
 

@@ -17,7 +17,7 @@
                 </div>
                 <div class="added-by-div">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
                 </div>
-                <span class="answers-num-span-grid">{{que.getSuggestedAnswers.count}} Answers</span>
+                <span class="answers-num-span-grid">{{que.getRejectedAnswers.count}} Answers</span>
 
             </div>
             <div class="col-10">
@@ -26,7 +26,6 @@
                 </a>
                 <div class="bottom-of-question">
                     <div class="question-tags custom-scrollbar">
-
                         {% for tag in que.tags.all %}
                         {% tagLink tag %}
                         {% endfor %}
@@ -40,13 +39,12 @@
         </div>
 
         <div class="question-options-bottom">
+      
+            
             <button class="btn btn-primary primary-button primary-button-sm primary-button-radius chang-anss-st-m-btn await-btn" data-action="A" data-que-id="{{que.id}}" data-mode="{{mode}}"><i
-                    class="fas fa-check"></i> Accept All</button>
-            <button
-                class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn chang-anss-st-m-btn ignore-btn" data-action="R" data-que-id="{{que.id}}" data-mode="{{mode}}"><i
-                    class="fas fa-times"></i> Reject All</button>
-
+                class="fas fa-check"></i> Accept All</button>
         </div>
     </div>
     {% endfor %}
+  
 </div>

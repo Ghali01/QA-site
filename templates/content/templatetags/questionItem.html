@@ -12,11 +12,11 @@
                 <span class="que-word">views</span>
             </div>
             <div class="col-4 answered-num-div nums-que">
-                <span class="answered-num-span">5</span>
+                <span class="answered-num-span">{{question.getAcceptedAnswers.count}}</span>
                 <span class="answered-word">answers</span>
             </div>
         </div>
-        <div class="added-by-div">add by <a class="by-user-name" href="#">{{question.post.author.username}}</a></div>
+        <div class="added-by-div">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
     </div>
     <div class="col-9 que-col">
         <div class="vp-num-ques">
@@ -43,7 +43,7 @@
                 {% tagLink tag %}
                 {% endfor %}
             </div>
-            <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="#">{{question.post.author.username}}</a></div>
+            <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
 
             <div class="question-date">last answer added in 0000/00/00 </div>
 

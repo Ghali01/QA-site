@@ -16,11 +16,13 @@ def index(request,categoryID=-1):
         questions=Question.objects.all()
         if category:
             questions=questions.filter(category=category)
+                
         if 'tags' in request.GET and request.GET['tags']=='M':
             tagsFilter=request.GET['tags']
             for tag in request.user.profile.tags.all():
                 questions=questions.filter(tags=tag)
-        
+        if category:
+               questions=questions.union(*subCategoryQuestions(category,request))
         questions=questions[:20]  
         contxt={
             'category':category,
@@ -30,6 +32,18 @@ def index(request,categoryID=-1):
     else:
         return redirect(reverse('login-page'))
 
+
+def subCategoryQuestions(category,request):
+    sets=[]
+    for subCate in category.getAllSubCategories():
+        questions=Question.objects.filter(category=subCate)
+
+        if 'tags' in request.GET and request.GET['tags']=='M':
+            tagsFilter=request.GET['tags']
+            for tag in request.user.profile.tags.all():
+                questions=questions.filter(tags=tag)
+        sets.append(questions)
+    return sets
 @forActiveUser
 @userHasTags
 def addQuestionPage(request):
