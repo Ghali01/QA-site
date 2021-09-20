@@ -65,27 +65,32 @@ $(document).ready(function () {
     // custom select end
 
     // tag list start
+    
+    $("#que-tags-input").keypress(e => {
+        if (e.which == 13)
+            e.preventDefault();
+    });
     $("#que-tags-input").keydown(function (e) {
 
         if (e.which == 38 || e.which == 40)
             e.preventDefault();
         else if (e.which == 13) {
-            let tagText = $(".current-list-tag").text();
-            let tagId = $(".current-list-tag").data("tag-id");
+            let tagText = $(".current-list-tag").last().text();
+            // console.log($(".current-list-tag"));
+            let tagId = $(".current-list-tag").last().data("tag-id");
             $(this).val("");
             $(".current-list-tag").removeClass("current-list-tag");
             if (tagText)
-                addTagBtn(tagText, $(this).data("tags-div"));
+                addTagBtn(tagText, tagId, $(this).data("tags-div"));
             let tagsId = JSON.parse($("#tags-input").val());
             tagsId.push(tagId)
-            console.log(tagsId);
-            $("#tags-input").val("[" + tagsId.toString() + "]");
+            $("#tags-input").val(JSON.stringify(tagsId)).trigger('change');
+
         }
 
     })
     var currentPos = 0;
     $("#que-tags-input").keyup(function (e) {
-        console.log(e.which);
         if (!(e.which == 40 || e.which == 38))
             currentPos = 0;
 
@@ -95,11 +100,13 @@ $(document).ready(function () {
         var found = 0;
         var hasHover = null;
         $(this).next().children().map(function (c) {
-            if (!$(this).text().startsWith($("#que-tags-input").val()) || addedTags.includes($(this).text()))
-                $(this).hide()
+            let tagsId = JSON.parse($("#tags-input").val());
+            if (!$(this).text().startsWith($("#que-tags-input").val()) || tagsId.includes($(this).data('tag-id')))
+                $(this).css('display', 'none');
             else {
                 found++;
-                $(this).show();
+                $(this).css('display', 'block');
+
             }
             if ($(this).hasClass("current-list-tag"))
                 hasHover = this;
@@ -110,15 +117,31 @@ $(document).ready(function () {
             $(this).next().css({ display: "block" });
         if (e.which == 38) {
             if (hasHover == null) {
-                $(this).next().children().last().addClass("current-list-tag");
+                currentPos = found;
+                let lis = [...$(this).next().children()].reverse();
+                let lastOne = undefined;
+                for (let liTag of lis) {
+                    if ($(liTag).css('display') == 'block') {
+                        lastOne = liTag;
+                        break;
+                    }
+                }
+                $(lastOne).addClass("current-list-tag");
             }
             else {
                 $(hasHover).removeClass("current-list-tag");
-                $(hasHover).prevAll("li:visible").first().addClass("current-list-tag");
+                let lis = [...$(hasHover).prevAll()].reverse();
+                let lastOne = undefined;
+                for (let liTag of lis) {
+                    if ($(liTag).css('display') == 'block') {
+                        lastOne = liTag;
+                        break;
+                    }
+                }
+                $(lastOne).addClass("current-list-tag");
                 currentPos--;
 
             }
-            console.log(currentPos);
 
             if (currentPos <= 0) {
                 currentPos = found;
@@ -140,12 +163,28 @@ $(document).ready(function () {
         else if (e.which == 40) {
             if (hasHover == null) {
                 currentPos = 1;
-                $(this).next().children().first("li:visible").addClass("current-list-tag");
+                let lis = [...$(this).next().children()];
+                let firstOne = undefined;
+                for (let liTag of lis) {
+                    if ($(liTag).css('display') == 'block') {
+                        firstOne = liTag;
+                        break;
+                    }
+                }
+                $(firstOne).addClass("current-list-tag");
             }
             else {
 
                 $(hasHover).removeClass("current-list-tag");
-                $(hasHover).nextAll("li:visible").first().addClass("current-list-tag");
+                let lis = [...$(hasHover).nextAll()];
+                let firstOne = undefined;
+                for (let liTag of lis) {
+                    if ($(liTag).css('display') == 'block') {
+                        firstOne = liTag;
+                        break;
+                    }
+                }
+                $(firstOne).addClass("current-list-tag");
                 currentPos++;
             }
 
@@ -171,27 +210,22 @@ $(document).ready(function () {
     });
     $(".tags-list-item").click(function () {
 
-        var tagText = $(this).text();
-
-        addTagBtn(tagText);
+        let tagText = $(this).text();
+        let tagId = $(this).data("tag-id");
+        let tagsId = JSON.parse($("#tags-input").val());
+        tagsId.push(tagId)
+        $("#tags-input").val(JSON.stringify(tagsId)).trigger('change');
+        addTagBtn(tagText, tagId, $(this).parent().data("tags-div"));
         $(this).parent().css({ display: 'none' });
     });
     // tag list end
 
 
-    $(".remove-tag-btn ,.remove-cate-btn").click(function (e) {
-        console.log("test");
-        $(this).parent().addClass("remove-grid-item");
-        let clicked = this;
-        function aniCallBack() {
-            $(clicked).parent().css("display", "none");
-
-        }
-        let aniTimeOut = setTimeout(aniCallBack, 185);
-    });
+    $(".remove-tag-btn ,.remove-cate-btn").click(removeTagBtn);
     $(".del-cate-btn").click(deleteCateBtn);
     $(".ban-user-btn").click(banUserBtn);
     $(".cate-select").change(onCateSelectChange);
+    // $(".cate-select").trigger('');
     $(".add-cate-btn").click(addCateBtnClick);
     $(".del-cho-btn").click(deleteChoiceBtn);
     $(".add-cho-btn").click(addChoiceBtn);
@@ -291,26 +325,40 @@ function addCateClick(e) {
 
 }
 
-function addTagBtn(tagText, tagsDivId) {
-    let buttonTag = document.createElement("a");
+function addTagBtn(tagText, tagId, tagsDivId) {
+    let buttonTag = document.createElement("button");
     $(buttonTag).addClass(["btn", "btn-outline-info", "btn-tag", "item-grid-ani-100", "btn-tag-removeable"]);
+    $(buttonTag).attr("type", "button");
     $(buttonTag).text(tagText);
+    $(buttonTag).data('tag-id', tagId);
     let removeBtn = document.createElement("div");
     $(removeBtn).addClass(["btn", "remove-tag-btn"]);
     $(removeBtn).append("<i class=\"fas fa-times\"></i>");
     $(buttonTag).append(removeBtn);
     $(tagsDivId).append(buttonTag);
-    $(removeBtn).click(function (e) {
-        $(this).parent().addClass("remove-grid-item");
-        let clicked = this;
-        function aniCallBack() {
-            $(clicked).parent().css("display", "none");
 
-        }
-        let aniTimeOut = setTimeout(aniCallBack, 185);
-    });
-    addedTags.push(tagText);
+    $(removeBtn).click(removeTagBtn);
+    if ($(tagsDivId).hasClass('filter-tags-div'))
+        $(buttonTag).click(removeSearchTag);
 }
+
+function removeTagBtn(e) {
+    let tagId = $(this).parent().data('tag-id');
+    let tagsId = JSON.parse($("#tags-input").val());
+    tagsId.splice(tagsId.indexOf(tagId));
+    $("#tags-input").val(JSON.stringify(tagsId)).trigger('change');
+
+    $(this).parent().addClass("remove-grid-item");
+    let clicked = this;
+    function aniCallBack() {
+        $(clicked).parent().remove();
+        // $(clicked).parent().css("display","none");
+
+    }
+    let aniTimeOut = setTimeout(aniCallBack, 185);
+}
+
+
 function deleteCateBtn() {
     $("#del-cate-id").val($(this).parent().data("cate-id"));
     $("#del-cate-name").text($(this).prevAll(".category-name").text());
@@ -333,11 +381,12 @@ function onCateSelectChange() {
     if (!parseInt($(this).val()) == 0)
         $(this).parentsUntil(".row").last().next(".cate-sel-col").css("visibility", "visible");
     let nextSelect = $(this).parentsUntil(".row").last().next(".cate-sel-col").find(".cate-select");
-    let subs = $(this).find("[value=" + $(this).val() + "]").data("sub");
+    console.log($(this).val());
+    let subs = $(this).find(`[value= ${$(this).val()} ]`).data("sub");
     $(nextSelect).html("");
 
     let allOpt = document.createElement("option");
-    $(allOpt).text("All");
+    $(allOpt).text("Select Category");
     $(allOpt).val("0");
     $(nextSelect).append(allOpt);
     try {
@@ -349,6 +398,8 @@ function onCateSelectChange() {
             $(nextSelect).append(opt);
         });
     } catch (e) { }
+
+    $(this).parentsUntil('.row').parent().find('#category-id').val($(this).val());
 }
 function addCateBtnClick() {
     let cateName = null;

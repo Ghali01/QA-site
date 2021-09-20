@@ -1,0 +1,45 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% block title %}Edit Comment{% endblock %}
+
+{% block content %} 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Edit Comment</h3>
+              <div class="data-meta-que">
+                <div class="d-group">
+                  <span class="title">ID: </span>
+                  <span class="data"> 
+                    <a href="{% url 'content:question-page' questionID=comment.post.getQuestion.id %}{% if comment.post.isAnswer %}#answer-{{comment.post.answer.id}}{% endif %}">
+                      {{comment.id}}
+                    </a> 
+                   </span>
+                </div>
+                <div class="d-group">
+                  <span class="title">Added By: </span>
+                  <span class="data">
+                    <a href="{% url 'profiles:profile-page' userID=comment.author.id %}">{{comment.author.username}}</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+              <textarea class=" form-control edit-comment" name="comment-text">{{comment.text}}</textarea>
+            
+              
+              <button type="submit"  class="btn btn-primary float-right" >Save</button>
+            </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+
+{% endblock %}

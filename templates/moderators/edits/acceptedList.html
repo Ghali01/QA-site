@@ -1,21 +1,21 @@
 {% load contentUtilities %}
 <div class="await-list">
-    {% for edit in edits %}
+    {% for que in questions %}
     <div class="await-item">
         <div class="row  question-item ">
 
             <div class="col-12">
-                <a href="{% url 'content:question-page' questionID=edit.post.getQuestion.id %}" class="question-title line-clamp">
-                    {{edit.post.getQuestion.title}}
+                <a href="{% url 'content:question-page' questionID=que.id %}" class="question-title line-clamp">
+                    {{que.title}}
                 </a>
                 <div class="bottom-of-question">
                     <div class="question-tags custom-scrollbar">
-                        {% for tag in edit.post.getQuestion.tags.all %}
+                        {% for tag in que.tags.all %}
                         {% tagLink tag %}
                         {% endfor %}
                     </div>
                     
-                    <div class="question-date"> Suggested By  <a class="by-user-name" href="{% url 'profiles:profile-page' userID=edit.userWhoSugget.id %}">{{edit.userWhoSugget.username}}</a> in {{edit.getSuggestedDate}} </div>
+                    <div class="question-date"> Suggested By  <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a> in {{edit.getSuggestedDate}} </div>
 
                 </div>
 
@@ -27,16 +27,16 @@
             <details class="changes">
                 <summary>Change Logs was accepted by you</summary>
                 <ul class="changes-list">
-                    {% for log in edit.post.logs.all %}
+                    {% for log in que.allLogs %}
                     {% if log.moderator == request.user %}
                     <li>
-                                        
+                        ({{log.post.get_type_display}})
                         {{log.get_type_display}} 
                         By
                         <a href="{% url 'profiles:profile-page' userID=log.author.id %}" class="custom-link secondry-link">{{log.author}}</a>
                         in
                         <time class="change-date"> {{log.time}} </time>
-                        <a href="#" class="custom-link primary-link more-link">More Details</a>
+                        <!-- <a href="#" class="custom-link primary-link more-link">More Details</a> -->
 
                     </li>
                     {% endif %}

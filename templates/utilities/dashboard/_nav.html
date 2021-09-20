@@ -103,13 +103,20 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{% url 'dashboard:questions' page=1 %}" class="nav-link
+                {% if 'questions' in request.path %}
+                active
+                {% endif %} ">
                   <i class="far fa-question-circle"></i>
                   <p>Questions</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{% url 'dashboard:all-answers-page' page=1 %}" class="nav-link
+                {% if 'answers' in request.path %}
+                active
+                {% endif %} 
+                ">
 
                   <i class="far fa-comment-alt"></i>
                   <p>Answers</p>

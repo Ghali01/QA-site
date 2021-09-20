@@ -39,7 +39,7 @@
         </a>
         <div class="bottom-of-question">
             <div class="question-tags custom-scrollbar">
-                {% for tag in question.tags.all %}
+                {% for tag in question.tags.all|slice:':5' %}
                 {% tagLink tag %}
                 {% endfor %}
             </div>

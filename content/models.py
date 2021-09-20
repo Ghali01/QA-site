@@ -209,18 +209,18 @@ class Question(models.Model):
             questions.remove(currentItem)
             orderd.append(currentItem)
         return orderd
-    def orderByLastRejectAnsDate(questions,asc=True):
+    def orderByAcceptDate(questions,asc=True):
         questions=list(questions)
         orderd=[]
         for i in range(len(questions)):
             currentItem=questions[0] if questions else None
             for que in questions:
-                date=que.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time
+                date=que.post.logs.get(type=PostLog.types.Accept).time
                 if asc:
-                    if timeDaltaToInt(date -currentItem.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time)<0:
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Accept).time)<0:
                         currentItem=que
                 else:
-                    if timeDaltaToInt(date -currentItem.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time)>0:
+                    if timeDaltaToInt(date -currentItem.post.logs.get(type=PostLog.types.Accept).time)>0:
                         currentItem=que
             questions.remove(currentItem)
             orderd.append(currentItem)
@@ -230,6 +230,12 @@ class Question(models.Model):
         acceptedAnswers=self.getAcceptedAnswers()
         if acceptedAnswers:
             return acceptedAnswers.last().post.logs.get(type=PostLog.types.Suggest).time.date().strftime('%Y/%m/%d')
+    def allLogs(self):
+        allLogs=[]
+        allLogs+=list(self.post.logs.all())
+        for ans in self.answers.all():
+            allLogs+=list(ans.post.logs.all())
+        return allLogs
 class SuggestedQuestion(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE)
     title=models.CharField(max_length=200)
@@ -422,6 +428,7 @@ class PostLog(models.Model):
         RejectEdit='RE'
         Publish='P'
         Unpublish='UP'
+    
 class Voter(models.Model):
     user=models.ForeignKey(User,on_delete=CASCADE)
     post=models.ForeignKey(Post,on_delete=CASCADE)

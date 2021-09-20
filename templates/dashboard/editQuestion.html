@@ -1,0 +1,151 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% block title %}{{question.title}}{% endblock %}
+
+{% block content %} 
+{% include 'utilities/_messages.html' %}
+<div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">{{question.title}}</h3>
+              <div class="data-meta-que">
+                <div class="d-group">
+                  <span class="title">ID: </span>
+                  <span class="data">
+                    <a target="_blank" href="{% url 'content:question-page' questionID=question.id %}">
+                    {{question.id}}
+                    </a>
+                  </span>
+                </div>
+                <div class="d-group">
+                  <span class="title">Added By: </span>
+                  <span class="data">
+                    <a target="_blank" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+              <div class="row">
+                <div class="col-2 cate-sel-col">
+                  <div class="form-group">
+                    <label>Category lvl 1</label>
+                    <select class="form-control cate-select" >
+                        {% for cate in categories %}
+                        <option value="{{cate.id}}" data-sub="{{cate.subs}}"
+                        
+                        {% if question.category.id == cate.id %}
+                        selected
+                        {% endif %}
+                        >{{cate.name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-2 cate-sel-col"
+                {% if question.category.getLvl >= 2 %}
+                style="visibility: visible;"
+                {% endif %}
+                >
+                  <div class="form-group">
+                    <label>Category lvl 2</label>
+                    <select class="form-control cate-select"
+                    >
+                        {% for cate in question.category.getFirstParent.subCategoies %}
+                        <option value="{{cate.id}}" data-sub="{{cate.subs}}"
+                        {% if question.category.id == cate.id or question.category.getSecondParent.id == cate.id %}
+                        selected
+                        {% endif %}
+                     >{{cate.name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-2  cate-sel-col"
+                {% if question.category.getLvl >= 3 %}
+                style="visibility: visible;"
+                {% endif %}
+>
+                  <div class="form-group">
+                    <label>Category lvl 3</label>
+                    <select class="form-control cate-select">                    
+                    {% for cate in question.category.getSecondParent.subCategoies %}
+                    <option value="{{cate.id}}" data-sub="{{cate.subs}}"                     
+                    {% if question.category.id == cate.id or question.category.getThirdParent.id == cate.id %}
+                    selected
+                    {% endif %}
+                    >{{cate.name}}</option>
+                    {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-2  cate-sel-col"   
+                {% if question.category.getLvl == 4 %}
+                style="visibility: visible;"
+                {% endif %}
+ >
+                  <div class="form-group">
+                    <label>Category lvl 4</label>
+                    <select class="form-control cate-select"
+                    >
+                        
+                        {% for cate in question.category.getThirdParent.subCategoies %}
+                        <option value="{{cate.id}}" data-sub="{{cate.subs}}"
+                        
+                        {% if question.category.id == cate.id %}
+                        selected
+                        {% endif %}
+                        >{{cate.name}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <input type="hidden" name="category-id" id="category-id" form="que-frm" value="{{question.category.id}}">
+              </div>
+              <form method="POST" id="que-frm">
+                  {% csrf_token %}
+              <input type="text" class="form-control question-title-inp" placeholder="Question Title" value="{{question.title}}" name="que-title">
+              <textarea name="que-body" id="summernote">{{question.post.text|safe}}</textarea>
+            </form>
+              <div class="add-tag-to-que-div">
+                <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
+                  class="form-control que-input que-tags-input" placeholder="Add Tags" autocomplete="off">
+                <ul class="tags-list custom-scrollbar">
+                    {% for tag in tags %}
+                  <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}}</li>
+                    {% endfor %}
+                </ul>
+
+
+                <div class="card add-tags-q">
+                  <h5 class="card-header">Tags</h5>
+                  <div class="card-body tags-div" id="tags-div-ol">
+                    {% for tag in question.tags.all %}
+                    <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable" data-tag-id="{{tag.id}}">
+                    {{tag.name}}
+                      <div class="btn remove-tag-btn">
+                        <i class="fas fa-times"></i>
+                      </div>
+                    </button>
+                    {% endfor %}
+                  </div>
+                  <input type="hidden" name="tags" id="tags-input" value="[{% for tag in question.tags.all %}{{tag.id}}{% if not forloop.last %},{% endif %}{% endfor %}]"
+                  form="que-frm">
+
+                </div>
+
+
+
+              </div>
+              <button type="submit" form="que-frm" class="btn btn-primary float-right">Save</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+{% endblock %}

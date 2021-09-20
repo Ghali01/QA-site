@@ -499,7 +499,7 @@ body{
     margin: 0 8px 8px 0;
     background-color: var(--theme-tag-background-color);
     color: var(--theme-tag-color);
-
+    white-space: nowrap;
     border: none;
     border-radius: 3px;
     font-size: 12px;
@@ -658,11 +658,11 @@ body{
 .question-tags{
     float: left;   
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: flex-start;
     width: 55%;
     padding: 10px;
-    height: 60px;
+    min-height: 60px;
     overflow-y: hidden;
 }
 .que-col{

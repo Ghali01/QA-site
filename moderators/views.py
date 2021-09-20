@@ -400,6 +400,64 @@ def suggestedEditsAwait(request,page,mode):
         'mode':mode
     }
     return render(request,'moderators/edits/edits.html',contxt)
+@forActiveUser
+@forModerator
+def suggestedEditsAccepted(request,page,mode):
+    categoires=Category.objects.filter(parent=None)
+    tags=Tag.objects.all()
+    category=searchVal=order=None
+    tagsF=[]
+    questions=Question.objects.filter(post__logs__type=PostLog.types.AcceptEdit)
+    if 'category' in request.GET and request.GET['category']:
+        try:
+            category=Category.objects.get(pk=request.GET['category'])
+            questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category)|Q(category=category))
+            
+        except Category.DoesNotExist:
+            pass
+    if 'search' in request.GET and request.GET['search']:
+        searchVal=request.GET['search']
+        questions=questions.filter(Q(post__text=searchVal)|Q(title=searchVal))
+    if 'tags' in request.GET:
+        try:
+            tagsIDs=json.loads(request.GET['tags'])
+            for tagID in tagsIDs:
+                try:    
+                    tag=Tag.objects.get(pk=tagID)
+                    questions=questions(tags=tag)
+                    tagsF.append(tag)
+                except Tag.DoesNotExist:
+                    pass
+        except JSONDecodeError:
+            pass
+ 
+    if 'order' in request.GET:
+        order=request.GET['order']
+        questions=Question.orderByLastAccepAnstDate(questions,asc=True if 'order' in request.GET and request.GET['order']=='O' else False)
+
+    page=1 if page==0 else page
+    count=len(questions)+0
+    toN=page*25
+    fromN=toN-25 if toN>25 else 0
+    indcStart=page-3 if page>=4 else 1
+    pagesCuont=ceil(count/25)
+    remPages=ceil((count-fromN)/25)
+    if page>pagesCuont and remPages and len(questions): return redirect(reverse('moderators:suggested-edits-await',kwargs={'page':1}))
+    questions=list(questions)[fromN:toN]
+    pages=range(indcStart,indcStart+7 if remPages>=7 else page+remPages )
+    contxt={
+        'categories':categoires,
+        'tags':tags,
+        'questions':questions,
+        'category':category,
+        'searchVal':searchVal,
+        'tagsF':tagsF,
+        'order':order,
+        'currentPage':page,
+        'pages': pages if len(pages)>1 else [],
+        'mode':mode
+    }
+    return render(request,'moderators/edits/edits.html',contxt)
 
 @forActiveUser
 @forModerator

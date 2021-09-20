@@ -1,5 +1,5 @@
 from django.urls import path
-from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews
+from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews
 app_name='dashboard'
 urlpatterns=[
     path('',mainViews.index,name='index'),
@@ -18,4 +18,14 @@ urlpatterns=[
     path('users',usersViews.usersPage,name='users'),
     path('search-users',usersViews.searchUsers,name='search-users'),
     path('set-user-perm',usersViews.setUserPermission,name='set-user-perm'),
+    path('questions/<int:page>',questionsViews.questions,name='questions'),
+    path('del-que',questionsViews.deleteQuestion,name='delete-questison'),
+    path('question/<int:questionID>',questionsViews.editQuestion,name='edit-question-page'),
+    path('answers/<int:page>',questionsViews.answers,name='all-answers-page'),
+    path('answers/<int:page>/<int:questionID>',questionsViews.answers,name='question-answers-page'),
+    path('del-ans',questionsViews.deleteAnswer,name='delete-answer'),
+    path('edit-answer/<int:answerID>',questionsViews.editAnswer,name='edit-answer-page'),
+    path('post-comments/<int:page>/<int:postID>',questionsViews.postComments,name='post-comments'),
+    path('del-comment',questionsViews.deleteComment,name='delete-comment'),
+    path('edit-comment/<int:commentID>',questionsViews.editComment,name='edit-comment')
 ]

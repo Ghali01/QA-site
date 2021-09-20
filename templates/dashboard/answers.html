@@ -1,0 +1,138 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load dashboardLib %}
+{% block title %}Answers{% endblock %}
+
+{% block content %} 
+{% include 'utilities/_messages.html' %}
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Answers</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <div class="row toolbar-tag-table">
+                <div class="col-3">
+
+                    <form>
+                        <div class="input-group">
+                      <input type="search" name="search" class="form-control form-control-md search-inp-t"
+                        placeholder="Search by id">
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-md btn-default">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </div>
+                 </div>
+                </form>
+
+                </div>
+
+            </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th style="width: 48%;">Text</th>
+                    <th style="width: 11%;">Aouthr</th>
+                    <th style="width: 11%;">Date</th>
+                    <th style="width: 10%;">Id</th>
+                    <th style="width: 20%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for ans in answers %}
+                    <tr>
+                    <td>
+                      <p class="ans-table-con">
+                        {{ans.post.text|html2text}}
+                    </p>
+                   </td>
+                    <td>
+                        <a href="{% url 'profiles:profile-page' userID=ans.post.author.id %}">
+                            {{ans.post.author.username}}
+                          </a>
+                  
+                    </td>
+                    <td>{{ans.formatedDate}}</td>
+                    <td>{{ans.id}}</td>
+                    <td>
+                      <a href="{% url 'dashboard:edit-answer-page' answerID=ans.id %}" class="btn btn-app cus-btn-app">
+                        <i class="fas fa-edit btn-app-icon"></i>Edit
+                      </a>
+                      <a href="{% url 'content:question-page' questionID=ans.question.id %}#answer-{{ans.id}}" class="btn btn-app cus-btn-app" >
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                      </a>
+                      <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
+                      data-toggle="modal" data-target="#del-modal" data-tid="{{ans.id}}">
+                        <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                      </button>
+                      <a href="{% url 'dashboard:post-comments' postID=ans.post.id page=1 %}" class="btn btn-app cus-btn-app app-btn-70">
+                        <i class="far fa-comment-alt"></i>Comments
+                      </a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+
+              </table>
+              
+              <div class="dataTables_paginate paging_simple_numbers table-indcator" id="example2_paginate">
+                <ul class="pagination">
+                    {% for pg in pages %}
+                  <li class="paginate_button page-item 
+                  {% if pg == currentPage %}
+                  active
+                  {%  endif %}
+                  ">
+                    <a href="
+                    {% if isAnswerQuestions %}
+                    {% url 'dashboard:question-answers-page' questionID=QID page=pg %}
+                    {% else %}
+                    {% url 'dashboard:all-answers-page' page=pg %}
+                    {% endif %}
+                    " aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                      {{pg}}
+                    </a>
+                  </li>
+                 {% endfor %}
+                </ul>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div><!--/.container-fluid -->
+    
+    <div class="modal fade" id="del-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="del-modalLabel">Ban User</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" id="delete-form" action="{% url 'dashboard:delete-answer' %}" >
+                  {% csrf_token %}
+                <p>Do you want Delete the Answer with ID <span class="del-id-span" id="del-id-span"></span>
+                </p>
+
+                <input type="hidden" name="del-id" id="del-id-inp">
+                <input type="hidden" name="page" value="{{currentPage}}">
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

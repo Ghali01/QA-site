@@ -1,0 +1,44 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% block title %}Edit Answer{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Answer</h3>
+                    <div class="data-meta-que">
+                        <div class="d-group">
+                            <span class="title">ID: </span>
+                            <span class="data">
+                                <a target="_blank" href="{% url 'content:question-page' questionID=answer.question.id %}#answer-{{answer.id}}">
+                                    {{answer.id}}
+                                </a>
+                            </span>
+                        </div>
+                        <div class="d-group">
+                            <span class="title">Added By: </span>
+                            <span class="data">
+                                <a target="_blank" href="{% url 'profiles:profile-page' userID=answer.post.author.id %}">{{answer.post.author.username}}</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <form method="POST">
+                    {% csrf_token %}
+                    <textarea id="summernote" name="answer-body">{{answer.post.text}}</textarea>
+
+
+
+                    <button type="submit" class="btn btn-primary float-right">Save</button>
+                </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->
+{% endblock %}

@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}">
     <!-- jQuery -->
     <script src="{% static 'dashboard/plugins/jquery/jquery.min.js' %}"></script>
+    {% if 'question' in request.path or 'edit-answer' in request.path %}
+  <!-- Summernote -->
+  <script src="{% static 'dashboard/plugins/summernote/summernote-bs4.min.js' %}"></script>
+  <!-- summernote -->
+  <link rel="stylesheet" href="{% static 'dashboard/plugins/summernote/summernote-bs4.min.css' %}">
+    {% endif %}
     <script src="{% static 'dashboard/js/main.js' %}"></script>
 </head>
 
