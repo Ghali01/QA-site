@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="row">
-            <div class=" col-4 col-sm-6 col-md-8">
+            <div class="col-md-8 post-l-col">
 
                 <div class="ans-opts-spans">
 
@@ -82,15 +82,24 @@
                 </div>
 
             </div>
-            <div class="col-8 col-sm-6 col-md-4">
-                <div class="added-by-div-q ans-added-by-div ">
-
-                    <div class="questtion-add-date">
-                        Added in <time>{{ans.formatedDate}}</time>
+            <div class="col-md-4 post-r-col">
+                <div class="authors-dvs">
+                    <div class="added-by-div-q que-added-by-div">
+                        <div class="questtion-add-date">
+                            Added in <time>{{ans.formatedDate}}</time>
+                        </div>
+                        {% authodPostData ans.post.author %}
+    
                     </div>
-
-                    {% authodPostData ans.post.author %}
-                    <!-- </div> -->
+                    {% if ans.post.isEdited %}
+                    <div class="added-by-div-q que-added-by-div">
+                        <div class="questtion-add-date">
+                            Edited in <time>{{ans.formatedDate}}</time>
+                        </div>
+                        {% authodPostData ans.post.getLastEditAuthor %}
+    
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="comments-div">

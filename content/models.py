@@ -114,6 +114,10 @@ class Post(models.Model):
             return self.question
         else:
             return self.answer.question
+    def isEdited(self):
+        return self.logs.filter(type=PostLog.types.AcceptEdit).exists()
+    def getLastEditAuthor(self):
+        return self.logs.filter(type=PostLog.types.AcceptEdit).order_by('time').last().author
 class Question(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE,related_name='question')
     title=models.CharField(max_length=200)

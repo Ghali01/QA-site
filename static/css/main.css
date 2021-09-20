@@ -113,7 +113,7 @@ body{
 .header-nav{
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
 }
 .navbar{
     background-color: var( --navbar-color);
@@ -3479,4 +3479,35 @@ p.info{
     .time-order-f-mod{
         width: 130% !important;
     }
+}
+
+@media (min-width:400px) and (max-width:530px) {
+    .added-by-div-q .by-user-name{
+        font-size: 14px;
+
+    }
+    .added-by-div-q .points-sp{
+        font-size: 12px ;
+    }
+    .added-by-div-q .questtion-add-date{
+        font-size: 12px;
+    }
+}
+
+@media (max-width:400px) {
+    .post-l-col{
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .post-r-col{
+        width: 100%;
+    }
+}
+.authors-dvs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+.authors-dvs > div:first-child{
+    margin-bottom: 10px;
 }

@@ -71,47 +71,45 @@ def index(request,categoryID=-1):
     return render(request,'content/index.html',contxt)
 
 def seeMoreQueIndex(request,page,categoryID=-1):
-     if request.user.is_authenticated and not request.user.is_anonymous:
-        category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
-        questions=Question.objects.all()
-        if category:
-            questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
-        if 'time' in request.GET:
-            if request.GET['time']=='T':
-                logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date=datetime.datetime.now().date())
-                questions=questions.filter(post__logs__in=logs)
-            elif request.GET['time']=='W':
-                logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=7),datetime.datetime.now().date()))
-                questions=questions.filter(post__logs__in=logs)
-            elif request.GET['time']=='M':
-               
-                logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=30),datetime.datetime.now().date()))
-                questions=questions.filter(post__logs__in=logs)
+    category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
+    questions=Question.objects.all()
+    if category:
+        questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
+    if 'time' in request.GET:
+        if request.GET['time']=='T':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date=datetime.datetime.now().date())
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='W':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=7),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='M':
             
-        if 'tags' in request.GET and request.GET['tags']=='M':
-            tagsFilter=request.GET['tags']
-            for tag in request.user.profile.tags.all():
-                questions=questions.filter(tags=tag)
-        questions=questions.annotate(Count(F('answers')))
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=30),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
         
-        orderFields=[
+    if 'tags' in request.GET and request.GET['tags']=='M':
+        for tag in request.user.profile.tags.all():
+            questions=questions.filter(tags=tag)
+    questions=questions.annotate(Count(F('answers')))
+    
+    orderFields=[
 
-            '-post__ActiveDate',
-            ('-post__votes' if request.GET['votes']=='M' else 'post__votes') if 'votes' in request.GET else None,
-            ('-views' if request.GET['views']=='M' else 'views') if 'views' in request.GET else None,
-            ('-answers__count' if request.GET['answers']=='M' else 'answers__count') if 'answers' in request.GET else None,
+        '-post__ActiveDate',
+        ('-post__votes' if request.GET['votes']=='M' else 'post__votes') if 'votes' in request.GET else None,
+        ('-views' if request.GET['views']=='M' else 'views') if 'views' in request.GET else None,
+        ('-answers__count' if request.GET['answers']=='M' else 'answers__count') if 'answers' in request.GET else None,
 
-        ]
-        orderFields=list(filter(lambda it: not it == None ,orderFields))
-        questions=questions.order_by(*orderFields)
+    ]
+    orderFields=list(filter(lambda it: not it == None ,orderFields))
+    questions=questions.order_by(*orderFields)
 
-        remPages=int(ceil(questions.count()/15)-page-1)
-        questions=questions[page*15:(page*15)+15]
+    remPages=int(ceil(questions.count()/15)-page-1)
+    questions=questions[page*15:(page*15)+15]
 
-        htmlStr=''
-        for que in questions:
-            htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
-        return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
+    htmlStr=''
+    for que in questions:
+        htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
+    return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
         
 @forActiveUser
 @userHasTags

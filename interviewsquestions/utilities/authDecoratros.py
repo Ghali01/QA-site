@@ -22,7 +22,7 @@ def userHasTags(view):
 
 def forModerator(view):
     def decorator(request,*args,**kwargs):
-        if request.user.profile.isModerator:
+        if request.user.profile.isModerator():
             return view(request,*args,**kwargs)
         else:
             return redirect(reverse('content:index'))
