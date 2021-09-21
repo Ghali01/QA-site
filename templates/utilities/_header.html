@@ -28,8 +28,9 @@
                             </button>
                             <ul class="nav-drop-down">
                                 <li>
-                                    <a href="{% url 'authusers:logout' %}" class="drop-link">
-                                        <i class="fas fa-sign-out-alt"></i> <p>logout</p></a>
+                                    <a href="{% url 'profiles:user-questions' userID=request.user.id %}" class="drop-link">
+                                     <p>My Questions</p>
+                                    </a>
                                 </li>
                                 {% if request.user.profile.isModerator %}
                                 <li >
@@ -49,6 +50,11 @@
     
                                 </li>
                                 {% endif %}
+                                <li>
+                                    <a href="{% url 'authusers:logout' %}" class="drop-link">
+                                        <i class="fas fa-sign-out-alt"></i> <p>logout</p></a>
+                                </li>
+                            
                             </ul>
                         </li>
                         <li class="nav-item cus-nav-item">

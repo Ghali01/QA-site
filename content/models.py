@@ -1,4 +1,3 @@
-from django.db.models.base import Model
 from interviewsquestions.utilities.datetime import timeDaltaToInt
 from django.db import models
 from django.db.models.deletion import CASCADE
@@ -6,6 +5,7 @@ from interviewsquestions.utilities.database import languageField
 from django.contrib.auth.models import User
 import datetime
 import json
+from django.utils import timezone
 class Category(models.Model):
     name =models.CharField(max_length=60)
     parent=models.ForeignKey('self',on_delete=models.CASCADE,null=True)
@@ -161,7 +161,7 @@ class Question(models.Model):
             elif days % 365 >=30 :
                 return str(int(days/365))+' years '+ str(int(days%365/30)) + ' months'
     def formatedDate(self):
-        return self.post.logs.get(type=PostLog.types.Suggest).time.date().strftime('%Y/%m/%d')
+        return timezone.localdate(self.post.logs.get(type=PostLog.types.Suggest).time).strftime('%Y/%m/%d')
 
     def getSuggestedAnswers(self):
         return self.answers.filter(post__logs__type=PostLog.types.Suggest).exclude(
@@ -213,6 +213,22 @@ class Question(models.Model):
             questions.remove(currentItem)
             orderd.append(currentItem)
         return orderd
+    def orderByLastRejectAnstDate(questions,asc=True):
+        questions=list(questions)
+        orderd=[]
+        for i in range(len(questions)):
+            currentItem=questions[0] if questions else None
+            for que in questions:
+                date=que.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time
+                if asc:
+                    if timeDaltaToInt(date -currentItem.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time)<0:
+                        currentItem=que
+                else:
+                    if timeDaltaToInt(date -currentItem.getRejectedAnswers().last().post.logs.get(type=PostLog.types.Reject).time)>0:
+                        currentItem=que
+            questions.remove(currentItem)
+            orderd.append(currentItem)
+        return orderd
     def orderByAcceptDate(questions,asc=True):
         questions=list(questions)
         orderd=[]
@@ -233,7 +249,8 @@ class Question(models.Model):
     def getLastAnswerDate(self):
         acceptedAnswers=self.getAcceptedAnswers()
         if acceptedAnswers:
-            return acceptedAnswers.last().post.logs.get(type=PostLog.types.Suggest).time.date().strftime('%Y/%m/%d')
+            
+            return timezone.localdate(acceptedAnswers.last().post.logs.get(type=PostLog.types.Suggest).time).strftime('%Y/%m/%d')
     def allLogs(self):
         allLogs=[]
         allLogs+=list(self.post.logs.all())
@@ -270,7 +287,7 @@ class SuggestedQuestion(models.Model):
             elif days % 365 >=30 :
                 return str(int(days/365))+' years '+ str(int(days%365/30)) + ' months'
     def formatedDate(self):
-        return self.post.logs.get(type=PostLog.types.Suggest).time.date().strftime('%Y/%m/%d')
+        return timezone.localdate(self.post.logs.get(type=PostLog.types.Suggest).time).strftime('%Y/%m/%d')
 
     def modeWhoAccept(self):
         return self.post.logs.filter(type=PostLog.types.Accept).first().moderator
@@ -345,7 +362,7 @@ class SuggestedEdit(models.Model):
         Accept='A'
         Reject='R'
     def getSuggestedDate(self):
-        return self.logs.get(type=PostLog.types.SuggestEdit).time.date().strftime('%Y/%m/%d')
+        return timezone.localdate(self.logs.get(type=PostLog.types.SuggestEdit).time).strftime('%Y/%m/%d')
     def userWhoSugget(self):
         return self.logs.get(type=PostLog.types.SuggestEdit).author
     def text(self):
@@ -418,6 +435,7 @@ class PostLog(models.Model):
     time=models.DateTimeField(auto_now_add=True)
     type=models.CharField(max_length=4,choices=typeChoices)
     edit=models.ForeignKey(SuggestedEdit,on_delete=models.CASCADE,null=True,related_name='logs')
+    originLog=models.ForeignKey('self',on_delete=models.CASCADE,null=True)
     class Meta:
         ordering=['time']
         indexes=[
@@ -432,7 +450,12 @@ class PostLog(models.Model):
         RejectEdit='RE'
         Publish='P'
         Unpublish='UP'
-    
+    def hasModerator(self):
+        return not self.moderator is None
+    def formatedTime(self):
+        return timezone.localtime(self.time).strftime('%Y/%m/%d %H:%M')
+    def formatedDate(self):
+        return timezone.localtime(self.time).strftime('%Y/%m/%d')
 class Voter(models.Model):
     user=models.ForeignKey(User,on_delete=CASCADE)
     post=models.ForeignKey(Post,on_delete=CASCADE)
@@ -448,7 +471,7 @@ class Answer(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE ,related_name='answer')  
     question=models.ForeignKey(Question,on_delete=CASCADE,related_name='answers')
     def formatedDate(self):
-        return self.post.logs.get(type=PostLog.types.Suggest).time.date().strftime('%Y/%m/%d')
+        return timezone.localdate(self.post.logs.get(type=PostLog.types.Suggest).time).strftime('%Y/%m/%d')
 
     def isAccepted(self):
         return self.post.logs.filter(type=PostLog.types.Accept).exists()

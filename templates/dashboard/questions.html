@@ -92,6 +92,9 @@
                       <a href="{% url 'dashboard:post-comments' postID=que.post.id page=1 %}" class="btn btn-app cus-btn-app app-btn-70">
                         <i class="far fa-comment-alt"></i>Comments
                       </a>
+                      <a href="{% url 'dashboard:post-logs' postID=que.post.id  %}" class="btn btn-app cus-btn-app app-btn-70">
+                        <i class="fas fa-clipboard-list"></i>Logs
+                      </a>
                     </td>
                   </tr>
                   {% endfor %}

@@ -263,6 +263,11 @@ $(document).ready(function () {
     );
 
     $(".del-table-item").click(deleteTableItem);
+  
+    let now= new Date(),
+    dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
+
+    document.cookie=`utcOffset=${ -1*(now.getTimezoneOffset()/60)}; expires=${dateNextWeek.toGMTString()}; path=/`;
 }
 );
 function CategoryListClick(e) {

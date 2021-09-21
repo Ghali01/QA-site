@@ -1,0 +1,71 @@
+{% extends 'utilities/_base.html' %}
+{% load contentUtilities %}
+{% block title %}{{question.title}}{% endblock %}
+
+{% block content %} 
+<div class="column-no-border">
+    <div class="que-data-div">
+        <span class="que-data-title">Time:</span>
+        <span class="que-data">{{log.formatedTime}}</span>
+        
+    </div>
+    <div class="question-await">
+        <div class="question-div">
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="post-content">
+                        {% if log.text %}
+                        {{log.text|safe}}
+                        {% else %}
+                        {{log.originLog.text|safe}}
+                        {% endif %}
+                   
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-4 col-sm-6 col-md-8">
+                        <div class="que-left-col">
+                   
+                            <div class="que-opts-spans">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="link-button" data-bs-toggle="modal"
+                                    data-bs-target="#reportModal">
+                                    <a href="#" class="custom-link custom-link-sm primary-link que-opt">Report</a>
+                                </button>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" col-8 col-sm-6 col-md-4">
+                        <div class="authors-dvs">
+                            <div class="added-by-div-q que-added-by-div">
+                                <div class="questtion-add-date">
+                                    Added in <time>{{log.originLog.formatedDate|default:log.formatedDate}}</time>
+                                </div>
+                                {% authodPostData log.originLog.author|default:log.author %}
+            
+                            </div>
+                            {% if log.hasModerator %}
+                            <div class="added-by-div-q que-added-by-div">
+                                <div class="questtion-add-date">
+                                    {{log.get_type_display}} in <time>{{log.formatedDate}}</time>
+                                </div>
+                                {% authodPostData log.moderator %}
+            
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+{% include 'utilities/_reportModal.html' %}
+{% endblock %}

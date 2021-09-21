@@ -1,8 +1,6 @@
 import datetime
 from json.decoder import JSONDecodeError
 from math import ceil
-from typing_extensions import ParamSpec
-from django.db.models.query import QuerySet
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse

@@ -1,13 +1,13 @@
 from json.decoder import JSONDecodeError
-import re
 from django.core.checks.messages import CRITICAL
 from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import reverse
 from dashboard.decorators import forSuperAdmin
-from content.models import Comment, Question,Post,Category,Tag,Answer
+from content.models import Comment, PostLog, Question,Post,Category,Tag,Answer
 from math import ceil
 from django.contrib import messages
 from django.db.models import Count
+from interviewsquestions.utilities.datetime import getTimezoneName
 import json
 @forSuperAdmin
 def questions(request,page):
@@ -220,3 +220,19 @@ def editComment(request,commentID):
         'comment':comment
     }
     return render(request,'dashboard/editComment.html',contxt)
+
+@forSuperAdmin
+def postLogs(request,postID):
+    logs=PostLog.objects.filter(post_id=postID)
+    contxt={
+        'logs':logs
+    }
+    return render(request,'dashboard/postLogs.html',contxt)
+
+@forSuperAdmin
+def reviewLog(request,logID):
+    log =get_object_or_404(PostLog,id=logID)
+    contxt={
+        'log':log
+    }
+    return render(request,'dashboard/reviewLog.html',contxt)

@@ -27,5 +27,7 @@ urlpatterns=[
     path('edit-answer/<int:answerID>',questionsViews.editAnswer,name='edit-answer-page'),
     path('post-comments/<int:page>/<int:postID>',questionsViews.postComments,name='post-comments'),
     path('del-comment',questionsViews.deleteComment,name='delete-comment'),
-    path('edit-comment/<int:commentID>',questionsViews.editComment,name='edit-comment')
+    path('edit-comment/<int:commentID>',questionsViews.editComment,name='edit-comment'),
+    path('post-logs/<int:postID>',questionsViews.postLogs,name='post-logs'),
+    path('review-log/<int:logID>',questionsViews.reviewLog,name='review-log')
 ]

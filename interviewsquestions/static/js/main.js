@@ -531,6 +531,12 @@ $(document).ready(
             $('.add-comm-btn').click(addCommentBtn);
             $('.all-comment-span').click(seeAllComments);
             $('.chang-edit-st-m-btn').click(changeSugEditStatus);
+            $('.see-more-btn-user-que').click(seeMoreUserQue);
+            $('.search-usr-que').keyup(searchUsrQuestions);
+            let now= new Date(),
+                dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
+
+            document.cookie=`utcOffset=${ -1*(now.getTimezoneOffset()/60)}; expires=${dateNextWeek.toGMTString()}; path=/`;
         }
 );
 //gird question animetion funcrion
@@ -970,4 +976,51 @@ function changeSugEditStatus(){
         },
     );
 
+}
+
+
+function seeMoreUserQue(){
+    $(this).next().show();
+    let clicked=this;
+    $.get(`/profile/see-more-your-questions/${$(this).data('user-id')}/${pageIndc++}`,
+     {
+        'views':$('#views-inp').val(),
+        'votes':$('#votes-inp').val(),
+        'answers':$('#answers-inp').val(),
+        'search':$('#search-inp').val()
+     },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data=JSON.parse(data);
+            if (parseInt(data.remPages)<=0){
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+    },
+    );
+
+
+}
+function searchUsrQuestions(){
+    pageIndc=0;
+    $('.loading-circle').show();
+    $('.questions-list').html('');
+    $.get(`/profile/see-more-your-questions/${$(this).data('user-id')}/${pageIndc++}`,
+     {
+        'views':$('#views-inp').val(),
+        'votes':$('#votes-inp').val(),
+        'answers':$('#answers-inp').val(),
+        'search':$('#search-inp').val()
+     },
+        function (data, textStatus, jqXHR) {
+            $('.loading-circle').hide();
+            data=JSON.parse(data);
+            console.log(data);
+            if (parseInt(data.remPages)<=0){
+                $('.see-more-btn-user-que').hide()
+            }
+            $('.questions-list').append(data.html);
+    },
+    );
+   
 }

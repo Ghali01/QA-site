@@ -207,7 +207,7 @@ body{
 .nav-drop-down .drop-link p{
     margin: 0 6px;
     margin-top: -1px ;
-    
+    white-space: nowrap;
 }
 
 .points-sp{
@@ -3510,4 +3510,9 @@ p.info{
 }
 .authors-dvs > div:first-child{
     margin-bottom: 10px;
+}
+@media (max-width:576px) {
+    .mb-to-sm {
+        margin-top: 10px;
+    }
 }

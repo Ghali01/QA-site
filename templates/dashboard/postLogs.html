@@ -1,0 +1,79 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load dashboardLib %}
+{% load tz %}
+{% block title %}Post Logs{% endblock %}
+{% block content %} 
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Post Logs</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+          
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th style="width:13%">Type</th>
+                    <th style="width: 48%;">Text</th>
+                    <th style="width: 11%;">Aouthr</th>
+                    <th style="width: 11%;">Moderator</th>
+                    <th style="width: 10%;">Time</th>
+                    <th style="width: 6%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                  <tr>
+                    <td>
+                     {{log.get_type_display}}
+                    </td>
+                    <td>
+                      <p class="que-table-con">
+                        {% if log.text %}
+                        {{log.text|html2text}}
+                        {% else %}
+                        {{log.originLog.text|html2text}}
+                        {% endif %}
+                    </p>
+                    </td>
+                    <td>
+                      <a href="{% url 'profiles:profile-page' userID=log.author.id %}">
+                        {{log.author.username}}
+                      </a>
+                    </td>
+                    <td>
+                    {% if log.hasModerator %}
+                        <a href="{% url 'profiles:profile-page' userID=log.moderator.id %}">
+                        {{log.moderator.username}}
+                      </a>
+                    {% endif %}
+                    </td>
+                    <td>{{log.formatedTime}}</td>
+                    <td>
+                      <a href="{% url 'dashboard:review-log' logID=log.id %}" class="btn btn-app cus-btn-app">
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                      </a>
+
+                    </td>
+                  </tr>
+                  {% endfor %}
+                
+                </tbody>
+
+              </table>
+              
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+
+
+{% endblock %}
