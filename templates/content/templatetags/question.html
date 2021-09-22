@@ -127,15 +127,15 @@
                 </li>
                 {% endif %}
             </ul>
-            {% if request.user.is_authenticated and not request.user.is_anonymous %}
+            {#% if request.user.is_authenticated and not request.user.is_anonymous %#}
 
             <p class="add-comment-span">Add comment</p>
             <div class="add-comment-div">
-                <input type="text" class="form-control que-input" placeholder="Add Comment..." maxlength="300">
+                <input type="text" class="form-control que-input add-comm-inp" placeholder="Add Comment..." maxlength="300">
                 <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{question.post.id}}">Add
                     comment</button>
             </div>
-            {% endif %}
+            {#% endif %#}
 
         </div>
     </div>

@@ -405,3 +405,11 @@ def regisetSocialUser(request):
 
  
     return redirect(reverse('authusers:auth-index'))
+
+
+
+def checkAuthentication(request):
+    if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_active:
+        return HttpResponse('1')
+    else:
+        return HttpResponse('0')

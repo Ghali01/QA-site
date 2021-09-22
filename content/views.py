@@ -40,12 +40,11 @@ def index(request,categoryID=-1):
     questions=questions.annotate(Count(F('answers')))
     orderFields=[
         '-post__ActiveDate',
-        ('-post__votes' if request.GET['votes']=='M' else 'post__votes') if 'votes' in request.GET else None,
-        ('-views' if request.GET['views']=='M' else 'views') if 'views' in request.GET else None,
-        ('-answers__count' if request.GET['answers']=='M' else 'answers__count') if 'answers' in request.GET else None,
+        'post__votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-post__votes',
+        'views' if 'views' in request.GET and request.GET['views']=='L' else '-views',
+        'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count' ,
 
     ]
-    orderFields=list(filter(lambda it: not it == None ,orderFields))
     questions=questions.order_by(*orderFields)
     if 'votes' in request.GET:
         votesFilter=request.GET['votes']
@@ -93,12 +92,12 @@ def seeMoreQueIndex(request,page,categoryID=-1):
     orderFields=[
 
         '-post__ActiveDate',
-        ('-post__votes' if request.GET['votes']=='M' else 'post__votes') if 'votes' in request.GET else None,
-        ('-views' if request.GET['views']=='M' else 'views') if 'views' in request.GET else None,
-        ('-answers__count' if request.GET['answers']=='M' else 'answers__count') if 'answers' in request.GET else None,
+   
+        'post__votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-post__votes',
+        'views' if 'views' in request.GET and request.GET['views']=='L' else '-views',
+        'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count',
 
     ]
-    orderFields=list(filter(lambda it: not it == None ,orderFields))
     questions=questions.order_by(*orderFields)
 
     remPages=int(ceil(questions.count()/15)-page-1)
@@ -270,7 +269,7 @@ def similarQuestions(request,page):
 def addCommentToPost(requset):
     if 'post-id' in requset.POST and 'text' in requset.POST:
         if requset.POST['text']:
-            # try:
+            try:
                 comment=Comment.objects.create( text=requset.POST['text'],
                                                 post=Post.objects.get(pk=int(requset.POST['post-id'])),
                                                 author=requset.user    
@@ -280,8 +279,8 @@ def addCommentToPost(requset):
                 }
                 html=render_to_string('content/templatetags/commentItem.html',contxt)
                 return HttpResponse(html)
-            # except(ValueError,Post.DoesNotExist):
-            #     pass
+            except(ValueError,Post.DoesNotExist):
+                pass
 
     return HttpResponse('error')
 
@@ -320,3 +319,45 @@ def suggestPostEdit(request,postID):
         'post':post
     }
     return render(request,'content/suggestEdit.html',contxt)
+def tagsPage(request):
+    categories=Category.objects.filter(parent=None)
+    tags=Tag.objects.all()
+    category=ansFilter=queFilter=None
+    if 'category' in request.GET:
+        try:
+            category=Category.objects.get(pk=int(request.GET['category']))
+            tags=tags.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
+        except(Category.DoesNotExist,ValueError):
+            pass
+    
+    tags=tags.annotate(answersCount=Count(F('questions__answers')),questionsCount=Count(F('questions')))
+    orderFields=[
+        'answersCount' if 'answers' in request.GET and request.GET['answers']=='L' else '-answersCount',
+        'questionsCount' if 'questions' in request.GET and request.GET['questions']=='L' else '-questionsCount'
+
+    ]
+    tags=tags.order_by(*orderFields)
+    
+    contxt={
+        'categories':categories,
+        'category':category,
+        'queFilter':queFilter,
+        'ansFilter':ansFilter,
+        'tags':tags
+    }
+    return render(request,'content/categoryTags.html',contxt)
+@forActiveUser
+def toggleTagToFav(request):
+    if 'tag-id' in request.POST:
+        try:
+            userTags=request.user.profile.tags
+            tag=Tag.objects.get(pk=int(request.POST['tag-id']))
+            if tag in userTags.all():
+                userTags.remove(tag)
+                return HttpResponse('removed')
+            else:
+                userTags.add(tag)
+                return HttpResponse('added')
+        except(Tag.DoesNotExist,ValueError):
+            pass
+    return HttpResponse('error')

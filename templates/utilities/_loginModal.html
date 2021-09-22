@@ -1,0 +1,58 @@
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog login-dialog  modal-dialog-centered ">
+            <div class="modal-content custom-dialog">
+       
+                
+                <div class="modal-body">
+                    
+
+
+                    <div class="login-modal-btns">
+                        <a href="{% url 'authusers:login-page' %}" class="btn log-w-email-btn">
+                            <i class="far fa-envelope"></i>
+                            Login with email </a>
+                        <button type="button" class="fb l-btn connect" id="fb-login-btn">Log In with Facebook</button>
+                        <button type="button" class="tw l-btn connect">Log In with Twitter</button>
+                        <button type="button" class="gi l-btn connect" id="gi-login-btn">Log In with GitHub</button>
+                        <button type="button" class="go l-btn connect" id="go-login-btn">Log In with Google</button>
+                        <div id="g_id_onload"
+                          data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
+                          data-callback="googleLoginCallback" data-auto_prompt="false">
+                        </div>
+                        <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard" data-size="large"
+                          data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+                        </div>
+            
+            
+                      </div>
+                            </div>
+   
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+        $.ajaxSetup({ cache: true });
+            $.getScript('https://connect.facebook.net/en_US/sdk.js', function () {
+                FB.init({
+                    appId: '227023055931495',
+                    version: 'v2.7' // or v2.1, v2.2, v2.3, ...
+                });
+                $('#fb-login-btn').click(fbLoginBtn);
+            });
+            $.getScript("https://accounts.google.com/gsi/client", function (script, textStatus, jqXHR) {
+            $('#go-login-btn').click(function(){
+                $('#go-login-btn-api').find('[role=button]').click();
+            });
+
+        });
+    </script>
+
+    <form method="POST" id="social-form">
+        {% csrf_token %}
+      </form>

@@ -1,12 +1,16 @@
 <ul class="categores-list">
-
+    {% if categories %}
+    <h4 class="categores-title">categories</h4>
+    {% endif %}
     {% for cate in categories %}
     <li class="category-li">
         <a href="{% url 'content:index-with-cate' categoryID=cate.id %}" class="cateogry-item">
 
             {{cate.name}}
         </a>
+        {% if cate.subCategoies %}
         <i class="fas fa-chevron-down down-icon"></i>
+        {% endif %}
         <!-- <div class="cateogry-act-border"></div> -->
         <ul class="subcategories-list">
             {% for subCate in cate.toArray %}

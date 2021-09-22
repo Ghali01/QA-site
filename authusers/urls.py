@@ -15,4 +15,5 @@ urlpatterns=[
     path('google-login',views.googelLogin,name='google-login'),
     path('github-login',views.githubLogin,name='github-login'),
     path('social-register',views.regisetSocialUser,name='social-register'),
+    path('check-auth',views.checkAuthentication,name='check-auth')
 ]

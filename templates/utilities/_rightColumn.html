@@ -3,7 +3,13 @@
 <div class="d-none d-xl-block col-xl-3  right-column">
     {% if request.user.is_authenticated and not request.uesr.is_anonymous %}
     <div class="cus-card tags-card">
-        <h5 class="cus-card-header">Tags</h5>
+        <div class="cus-card-header">
+           <h5>Tags</h5> 
+           <a href="{% url 'content:tags-page' %}" class="btn btn-outline-info btn-tag edit-tags-link">
+            <i class="fas fa-pen"></i>
+            </a>
+        </div>
+      
         <div class="cus-card-body tags-div">
             {% for tag in request.user.profile.tags.all %}
             {% tagLink tag %}

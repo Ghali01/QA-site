@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import addAnswer, addCommentToPost, addQuestionPage, allPostComment, index, postVotes, questionPage, seeMoreQueIndex, similarQuestions, suggestPostEdit
+from .views import addAnswer, addCommentToPost, addQuestionPage, allPostComment, index, postVotes, questionPage, seeMoreQueIndex, similarQuestions, suggestPostEdit, tagsPage, toggleTagToFav
 app_name='content'
 urlpatterns=[
     path('',index,name='index'),
@@ -13,5 +13,7 @@ urlpatterns=[
     path('similar-questions/<int:page>',similarQuestions,name='similar-questions'),
     path('add-comment',addCommentToPost,name='add-comment'),
     path('all-comment',allPostComment,name='all-comment'),
-    path('suggets-edit/<int:postID>',suggestPostEdit,name='suggest-post-edit')
+    path('suggets-edit/<int:postID>',suggestPostEdit,name='suggest-post-edit'),
+    path('tags',tagsPage,name='tags-page'),
+    path('tog-tag',toggleTagToFav,name='toggle-tag')
 ]

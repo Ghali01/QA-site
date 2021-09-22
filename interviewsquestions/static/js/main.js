@@ -1,5 +1,6 @@
 var addedTags = [];
 var editor;
+var searchText='';
 $(document).ready(
     // animation for forms start
     function () {
@@ -448,18 +449,11 @@ $(document).ready(
         // side list end
 
         $(".remove-tag-btn").click(removeTagBtn);
-        $(".add-comment-span").click(function () {
-            if ($(this).nextAll(".add-comment-div").css("display") == "none")
-                $(this).nextAll(".add-comment-div").css("display", "block")
-            else
-                $(this).nextAll(".add-comment-div").css("display", "none")
-        });
+        $(".add-comment-span").click(showCommentDiv);
         $(" .category-select-toolbar .custom-select-item , .categoriis-lists .custom-select-item").click(onSelectCategory)
 
 
-        $(".btn.tag-star").click(function (e) {
-            $(this).toggleClass("favorited");
-        });
+        $(".btn.tag-star").click(togTagToFav);
 
 
         $('.nav-drop-down').hide();
@@ -533,6 +527,12 @@ $(document).ready(
             $('.chang-edit-st-m-btn').click(changeSugEditStatus);
             $('.see-more-btn-user-que').click(seeMoreUserQue);
             $('.search-usr-que').keyup(searchUsrQuestions);
+            $('.see-more-btn-user-ans').click(seeMoreUserAns);
+            $('.search-usr-ans').keyup(searchUsrAnswers);
+            $('.add-comm-inp').keydown(function(e){
+                if(e.which===13)
+                    $(this).next().trigger('click');
+            });
             let now= new Date(),
                 dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
 
@@ -806,7 +806,8 @@ function oneClickFilterChange(){
     [...$('.filter')].forEach(filter => 
         searchObject[$(filter).find('input').attr('name')]=$(filter).find('input').val()
     );
-    filterInSearch(searchObject)
+    // console.log(searchObject);
+    filterInSearch(searchObject);
 }
 
 
@@ -827,12 +828,16 @@ function voteBtnClick(){
 }
 
 function addAnswerBtn(){
-    $('.add-ans-continer').slideDown();
-    $(this).off('click');
-    $(this).click(()=>{
-        $('#answer-body').val(editor.getHTML());
-        $('#answer-form').submit();
-    });
+    let _this=this;
+    let f=function(){
+        $('.add-ans-continer').slideDown();
+        $(_this).off('click');
+        $(_this).click(()=>{
+            $('#answer-body').val(editor.getHTML());
+            $('#answer-form').submit();
+        });
+    }
+    checkAuth(f)
 }
 var pageIndc=1;
 function seeMoreIndex(){
@@ -883,6 +888,11 @@ function seeMoreAddQue(){
 }
 
 function queTitleChange(){
+    if (searchText==$(this).val())
+        return;
+    searchText=$(this).val();
+    
+    
     pageIndc=0;
     if($(this).val()) {
         $('#similar-ques').css('display','block');
@@ -1002,6 +1012,10 @@ function seeMoreUserQue(){
 
 }
 function searchUsrQuestions(){
+    if (searchText==$(this).val())
+        return;
+    searchText=$(this).val();
+    
     pageIndc=0;
     $('.loading-circle').show();
     $('.questions-list').html('');
@@ -1015,7 +1029,6 @@ function searchUsrQuestions(){
         function (data, textStatus, jqXHR) {
             $('.loading-circle').hide();
             data=JSON.parse(data);
-            console.log(data);
             if (parseInt(data.remPages)<=0){
                 $('.see-more-btn-user-que').hide()
             }
@@ -1024,3 +1037,100 @@ function searchUsrQuestions(){
     );
    
 }
+
+
+function seeMoreUserAns(){
+    $(this).next().show();
+    let clicked=this;
+    $.get(`/profile/see-more-your-answers/${$(this).data('user-id')}/${pageIndc++}`,
+     {
+        'views':$('#views-inp').val(),
+        'votes':$('#votes-inp').val(),
+        'answers':$('#answers-inp').val(),
+        'search':$('#search-inp').val()
+     },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data=JSON.parse(data);
+            if (parseInt(data.remPages)<=0){
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+    },
+    );
+
+
+}
+function searchUsrAnswers(){
+    if (searchText==$(this).val())
+        return;
+    searchText=$(this).val();
+    pageIndc=0;
+    $('.loading-circle').show();
+    $('.questions-list').html('');
+    $.get(`/profile/see-more-your-answers/${$(this).data('user-id')}/${pageIndc++}`,
+     {
+        'views':$('#views-inp').val(),
+        'votes':$('#votes-inp').val(),
+        'answers':$('#answers-inp').val(),
+        'search':$('#search-inp').val()
+     },
+        function (data, textStatus, jqXHR) {
+            $('.loading-circle').hide();
+            data=JSON.parse(data);
+            if (parseInt(data.remPages)<=0){
+                $('.see-more-btn-user-que').hide()
+            }
+            $('.questions-list').append(data.html);
+    },
+    );
+   
+}
+
+function togTagToFav(e) {
+    let tagId=$(this).data('tag-id');
+    let clicked=this;
+    function f(){
+        let csrf=getCookie('csrftoken');
+        $.post("/tog-tag", {
+            'csrfmiddlewaretoken':csrf,
+            'tag-id':tagId
+        },
+            function (data, textStatus, jqXHR) {
+                if (data=='added')
+                    $(clicked).addClass('favorited');
+                else if (data=='removed')
+                    $(clicked).removeClass('favorited');
+            },
+        );
+    }
+
+    checkAuth(f);
+
+
+}
+
+function  checkAuth(fun)  {
+    $.get({
+        url:"/check-auth",
+        data:{},
+        success(data, textStatus, jqXHR) {
+            if (data ==='1'){
+                fun();
+            }else{
+                let loginModal=new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.show();
+            }
+        },
+        // async:false
+    }
+    );
+
+}
+
+function showCommentDiv() {
+            if ($(this).nextAll(".add-comment-div").css("display") == "none")
+                checkAuth(_=>$(this).nextAll(".add-comment-div").css("display", "block"));
+            else
+                $(this).nextAll(".add-comment-div").css("display", "none")
+        }

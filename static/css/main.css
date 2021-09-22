@@ -321,7 +321,7 @@ body{
     animation-duration: .4s;
     animation-fill-mode: forwards;   
     display: block;
-    width: 25px;
+    width: 45px;
     height: 25px;
     padding-top: 5px;
     text-align: center;
@@ -3515,4 +3515,59 @@ p.info{
     .mb-to-sm {
         margin-top: 10px;
     }
+}
+.mob-nav-link{
+    padding: 0;
+    color: #FFF;
+}
+
+.mob-nav-link:active,
+.mob-nav-link:hover{
+    color: rgb(199,77,7) !important;
+    background-color: transparent;
+}
+
+.edit-tags-link{
+    float: right;   
+    margin: 0;
+    display: block;
+    position: relative;
+    bottom: 30px;
+    font-size: 12px;
+}
+
+.login-modal-btns button,
+.login-modal-btns a{
+    width: 250px;
+}
+
+.login-dialog{
+    width: 360px;
+}
+.log-w-email-btn{
+    
+    background: var(--primary-color);
+    color: #fff;
+    display: block;
+    margin: auto;
+    margin-bottom: 8px;
+    position: relative;
+}
+.log-w-email-btn:hover,
+.log-w-email-btn:focus{
+    color: #FFF;
+}
+.log-w-email-btn i{
+    position: absolute;
+    top: 8px;
+    left: 30px;
+    font-size: 23px;
+}
+
+.cate-tags-list .tag-list-item:nth-child(odd){
+    background-color: var(--black-050);
+}
+.cate-tags-list{
+    border-top: solid 1px var(--black-350);
+    overflow: hidden;
 }
