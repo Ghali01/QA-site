@@ -3,6 +3,7 @@
 {% load contentUtilities %}
 {% block content %}
 <div class="column-no-border">
+
     {% if category %}
 <h2 class="center-title" style="float:none;">{{category.name}}</h2>
 {% endif %}
@@ -158,11 +159,11 @@
                     <div class="custom-select filter one-click-filter">
                         <button class="btn btn-primary btn-select">
                             <span class="selected-span">
-                                  {% if queFilter == 'L' %}
-                                    Least Questions
-                                    {% else %}
-                                    Most Questions
-                                    {% endif %}
+                                {% if order == 'O' %}
+                                    Oldest
+                                {% else %}
+                                    Newest
+                                {% endif %}
 
                             </span>
                             
@@ -170,14 +171,14 @@
 
                         </button>
                         <ul class="custom-select-list custom-scrollbar">
-                            <li data-value="M" class="custom-select-item">
-                                    Most Questions
+                            <li data-value="N" class="custom-select-item">
+                                    Newest
                             </li>
-                            <li data-value="L" class="custom-select-item">
-                                    Least Questions
+                            <li data-value="O" class="custom-select-item">
+                                    Oldest
                             </li>
                         </ul>
-                        <input type="hidden" name="questions" value="{% if queFilter == 'L' %}L{% else %}M{% endif %}">
+                        <input type="hidden" name="order" value="{% if queFilter == 'O' %}O{% else %}N{% endif %}">
                     </div>
                 </div>
                 <div class="col-5 col-sm-4 col-md-3">
@@ -185,10 +186,10 @@
                     <div class="custom-select filter one-click-filter">
                         <button class="btn btn-primary btn-select">
                             <span class="selected-span">
-                                  {% if ansFilter == 'L' %}
-                                    Least Answers
+                                  {% if tagsFilter == 'L' %}
+                                    Least Tags
                                     {% else %}
-                                    Most Answers
+                                    Most Tags
                                     {% endif %}
 
                             </span>
@@ -197,40 +198,33 @@
                         </button>
                         <ul class="custom-select-list custom-scrollbar">
                             <li data-value="M" class="custom-select-item">
-                                    Most Answers
+                                    Most Tags
                             </li>
                             <li data-value="L" class="custom-select-item">
-                                    Least Answers
+                                    Least Tags
                             </li>
                         </ul>
-                        <input type="hidden" name="answers" value="{% if ansFilter == 'L' %}L{% else %}M{% endif %}">
+                        <input type="hidden" name="tags" value="{% if tagsFilter == 'L' %}L{% else %}M{% endif %}">
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="cate-tags-list">
-            {% with request.user.profile.tags.all as usersTags %}
-            {% for tag in tags %}
-            <div class="row tag-list-item">
-                <div class="col-3 tag-column">
-                    {% tagLink tag %}
-                    <button data-tag-id="{{tag.id}}" class="btn tag-star
-                    {% if tag in usersTags %}
-                    favorited
-                        {% endif %}
-                    ">
-                        <i class="fas fa-star"></i>
-                    </button>
+
+        <div class="cates-list">
+          {% for cate in catgoriesList %}
+            <div class="row cate-list-item">
+                <div class="col-3">
+                    <button  class="btn btn-outline-info btn-cate">{{cate.name}}</button>
+                     
                 </div>
                 <div class="col">
-                    <p class="tag-sumr  line-clamp-3">
-                        {{tag.description}}
+                    <p class="cate-sumr  line-clamp-3">
+                        {{cate.description}}
                     </p>
                 </div>
             </div>
             {% endfor %}
-            {% endwith %}
         </div>
         <!-- center column end  -->
 

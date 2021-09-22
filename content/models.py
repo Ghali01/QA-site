@@ -8,9 +8,10 @@ import json
 from django.utils import timezone
 class Category(models.Model):
     name =models.CharField(max_length=60)
-    parent=models.ForeignKey('self',on_delete=models.CASCADE,null=True)
+    parent=models.ForeignKey('self',on_delete=models.CASCADE,null=True,related_name='categories')
     language=languageField
-
+    description=models.TextField()
+    time=models.DateTimeField(auto_now_add=True)
     
     def toArray(self):
         subCategories=Category.objects.filter(parent=self)

@@ -1,6 +1,6 @@
+<a class="side-link" href="{% url 'content:categories-page' %}">categories</a>
 <ul class="categores-list">
     {% if categories %}
-    <h4 class="categores-title">categories</h4>
     {% endif %}
     {% for cate in categories %}
     <li class="category-li">

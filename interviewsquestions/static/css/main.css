@@ -275,8 +275,15 @@ body{
 /*  custom scroll end */
 /* content start */
 /* categories column start */
-.categores-title{
+.side-link{
+    text-decoration: none;
+    font-size: 24px;
     color: var(--titles-colors);
+    cursor: pointer;
+}
+.side-link:hover,
+.side-link:active{
+    color: var(--black-750);
 }
 .categores-list{
     list-style: none;
@@ -3551,6 +3558,7 @@ p.info{
     display: block;
     margin: auto;
     margin-bottom: 8px;
+    height: 40px;
     position: relative;
 }
 .log-w-email-btn:hover,

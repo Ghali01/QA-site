@@ -361,3 +361,36 @@ def toggleTagToFav(request):
         except(Tag.DoesNotExist,ValueError):
             pass
     return HttpResponse('error')
+
+
+def categoriesPage(request):
+    tagsFiltr=order=category=None
+    categories=Category.objects.filter(parent=None)
+    catgoriesList=Category.objects.all()
+    if 'category' in request.GET:
+        try:
+            category=Category.objects.get(pk=request.GET['category'])
+            catgoriesList=catgoriesList.filter(Q(parent=category)|Q(parent__parent=category)|Q(parent__parent__parent=category))
+        except (Category.DoesNotExist,ValueError):
+            pass
+    catgoriesList=catgoriesList.annotate(subCategoriesCount=Count(F('categories')))
+    orderFields=[
+
+        'subCategoriesCount' if 'tags' in request.GET and request.GET['tags']=='L' else '-subCategoriesCount',
+        'time' if 'order' in request.GET and request.GET['order']=='O' else '-time',
+
+    ]
+    catgoriesList=catgoriesList.order_by(*orderFields)
+    if 'order' in request.GET:
+        order=request.GET['order']
+    if 'tags' in request.GET:
+        tagsFiltr=request.GET['tags']
+
+    contxt={
+        'categories':categories,
+        'category':category,
+        'catgoriesList':catgoriesList,
+        'order':order,
+        'tagsFiltr':tagsFiltr
+    }
+    return render(request,'content/categories.html',contxt)

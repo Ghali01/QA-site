@@ -20,7 +20,7 @@
                 </div>
                 <ul class="list-group list-group-flush categories-list" id="categories-list-1">
                     {% for cate in categories %}
-                    <li class="list-group-item category-list-item  " data-cate-id="{{cate.id}}" data-sub='{{cate.subs}}'>
+                    <li class="list-group-item category-list-item  " data-cate-desc="{{cate.description}}" data-cate-id="{{cate.id}}" data-sub='{{cate.subs}}'>
                         <span class="category-name">{{cate.name}}</span>
 
                         <button class="btn btn-app  cus-btn-app btn-app-sm float-right cate-opt-btn del-cate-btn"
@@ -92,6 +92,7 @@
                     <input type="hidden" name="cate-id" id="add-cate-id">
                     <input type="hidden" name="language" value="{{lang}}">
                     <input type="text" class="form-control" name="cate-name" placeholder="Category Name">
+                    <textarea name="cate-desc" style="margin-top: 20px; min-height: 200px;" class="form-control"></textarea>
                 </form>
             </div>
             <div class="modal-footer">
@@ -119,6 +120,7 @@
                     <input type="hidden" name="cate-id" id="edit-cate-id">
                     <input type="hidden" name="language" value="{{lang}}">
                     <input type="text" class="form-control" name="cate-name" id="edit-cate-name" placeholder="Category Name">
+                    <textarea name="cate-desc" id="edit-cate-desc" style="margin-top: 20px; min-height: 200px;" class="form-control"></textarea>
                 </form>
             </div>
             <div class="modal-footer">

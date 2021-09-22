@@ -370,7 +370,9 @@ function deleteCateBtn() {
 }
 function editCateBtn(){
     $("#edit-cate-id").val($(this).parent().data("cate-id"));
+    $("#edit-cate-desc").val($(this).parent().data("cate-desc"));
     $('#edit-cate-name').val($(this).siblings('.category-name').text())
+    
 }
 
 function deleteTagBtn() {

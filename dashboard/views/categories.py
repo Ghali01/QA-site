@@ -14,11 +14,12 @@ def categoriesPage(request,language):
         return redirect(reverse('dashboard:login'))
 def addCategory(request):
     if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_superuser:
-        if 'cate-id' in request.POST  and 'cate-name' in request.POST  and 'language' in request.POST:
+        if 'cate-id' in request.POST  and 'cate-name' in request.POST and 'cate-desc' in request.POST  and 'language' in request.POST:
             try:
                 if request.POST['cate-name']:
                     category=Category()
                     category.name=request.POST['cate-name']
+                    category.description=request.POST['cate-desc']
                     category.language=request.POST['language']
                     parent=int(request.POST['cate-id'])
                     if not parent ==-1:
@@ -54,10 +55,11 @@ def deleteCategory(request):
 
 def editCategory(request):
     if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_superuser:
-        if 'cate-id' in request.POST and 'cate-name' in request.POST  and 'language' in request.POST:
+        if 'cate-id' in request.POST and 'cate-name' in request.POST and 'cate-desc' in request.POST  and 'language' in request.POST:
             try:
                 category=Category.objects.get(pk=int(request.POST['cate-id']))
                 category.name=request.POST['cate-name']
+                category.description=request.POST['cate-desc']
                 category.save()
             except (Category.DoesNotExist,ValueError):
                 messages.error(request,'invalid id')
