@@ -150,7 +150,7 @@
                     value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}">
 
             </div>
-            <a href="#" class="custom-link secondry-link">Suggest Cateogry</a>
+            <a href="{% url 'feedback:suggest-tag' %}" class="custom-link secondry-link">Suggest Tag</a>
             <div class="row">
 
                 <div class="col-5 col-sm-4 col-md-3">

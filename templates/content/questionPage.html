@@ -8,15 +8,15 @@
 <div class="column-no-border">
     {% question question request %}
     <!--  -->
-    <h3 class="title">{{question.getAcceptedAnswers.count}} Answers</h3>
+    <h3 class="title">{{question.getPubliedAnswer.count}} Answers</h3>
     <div style="clear: both;"></div>
     <div class="answers-list">
         {% if request.user.profile.isModerator %}
 
         {% for ans in question.answers.all %}
-        {% if ans.isAccepted %}
+        {% if ans.isAccepted and ans.post.isPublished %}
         {% answer ans request %}
-        {% else %}
+        {% elif ans.post.isPublished %}
         <div class="answer-await">
             <div class="answer-div">
                 <div class="row">
@@ -81,7 +81,7 @@
 
         {% endfor %}
         {% else %}
-        {% for ans in question.getAcceptedAnswers%}
+        {% for ans in question.getPubliedAnswer%}
         {% answer ans request %}
         
 

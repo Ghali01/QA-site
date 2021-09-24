@@ -1,4 +1,3 @@
-from base64 import decode
 from interviewsquestions.settings import MEDIA_ROOT
 from django.shortcuts import redirect, render
 from django.contrib import messages
@@ -30,7 +29,7 @@ def index(request):
         else:
             return redirect(reverse('authusers:select-tags'))
     else:
-        return redirect(reverse('authusers:register-page'))
+        return redirect(reverse('authusers:login-page'))
 
 
 def registerPage(request):
@@ -58,7 +57,7 @@ def registerPage(request):
                 return redirect(reverse('authusers:email-sent') )
             except IntegrityError:
                 messages.error(request,'User name is alredy exists',extra_tags='user-name')
-
+          
         elif not fullName:
             messages.error(request,'Full name is requrid',extra_tags='full-name')
         elif not userName:
@@ -112,10 +111,13 @@ def loginPage(request):
             if user:
                 if not user.is_active:
                     return redirect(reverse('authusers:email-sent'))
-                login(request,user)
-                if not 'remember' in request.POST:
-                    request.session.set_expiry(0)
-                return redirect(reverse('authusers:auth-index'))
+                if not user.profile.isBaned():
+                    login(request,user)
+                    if not 'remember' in request.POST:
+                        request.session.set_expiry(0)
+                    return redirect(reverse('authusers:auth-index'))
+                else:
+                    messages.error(request,'user baned')
             else:
                 messages.error(request,"email or passowrd in not valid")
     return render(request,'auth/login.html')
@@ -196,9 +198,12 @@ def addSocialUser(request,registerPage,imageUrl):
 
             profile.image.name=str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg'
             profile.save()
-            login(request,user)
+            if not profile.isBaned():
+
+                login(request,user)
+            else:
+                messages.error(request,'user baned')
             return redirect(reverse('authusers:auth-index'))
-            
         except IntegrityError:
             messages.error(request,'User name is alredy exists',extra_tags='user-name')
 
@@ -233,7 +238,10 @@ def facebookLogin(request):
             userID=request.POST["user-id"]
             try:
                 profile=UserProfile.objects.get(socialID=userID)
-                login(request,profile.user)
+                if not profile.isBaned():
+                    login(request,profile.user)
+                else:
+                    messages.error(request,'user baned')
                 return redirect(reverse('authusers:auth-index'))
                 
             except UserProfile.DoesNotExist:
@@ -271,7 +279,10 @@ def googelLogin(request):
             userID=data['sub']
             try:
                 profile=UserProfile.objects.get(socialID=userID)
-                login(request,profile.user)
+                if not profile.isBaned():
+                    login(request,profile.user)
+                else:
+                    messages.error(request,'user baned')
                 return redirect(reverse('authusers:auth-index'))
                 
             except UserProfile.DoesNotExist:
@@ -321,7 +332,11 @@ def githubLogin(request):
 
         try:
             profile=UserProfile.objects.get(socialID=userID)
-            login(request,profile.user)
+            if not profile.isBaned():
+
+                login(request,profile.user)
+            else:
+                messages.error(request,'user baned')
             return redirect(reverse('authusers:auth-index'))
             
         except UserProfile.DoesNotExist:
@@ -372,7 +387,11 @@ def regisetSocialUser(request):
                     profile.image.name=f'profile/{userName}.jpg'
                     profile.save()
                     socialUser.delete()
-                    login(request,user)
+                    if not profile.isBaned():
+
+                        login(request,user)
+                    else:
+                        messages.error(request,'user baned')
                     return redirect(reverse('authusers:auth-index'))
                     
                 except IntegrityError:

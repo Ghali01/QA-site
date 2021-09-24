@@ -12,12 +12,11 @@ from django.db.models.expressions import F,Q
 from django.db.models import Count
 from django.template.loader import render_to_string
 import json
-# @forActiveUser
-# @userHasTags
+from django.http import Http404 
 def index(request,categoryID=-1):
     tagsFilter=viewsFilter=votesFilter=answersFilter=timeFilter=None
     category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
-    questions=Question.objects.all()
+    questions=Question.objects.filter(post__isPublished=True)
     if category:
         questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
     if 'time' in request.GET:
@@ -69,7 +68,7 @@ def index(request,categoryID=-1):
 
 def seeMoreQueIndex(request,page,categoryID=-1):
     category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
-    questions=Question.objects.all()
+    questions=Question.objects.filter(post__isPublished=True)
     if category:
         questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
     if 'time' in request.GET:
@@ -176,6 +175,8 @@ def addQuestionPage(request):
 
 def questionPage(request,questionID):
     question=get_object_or_404(Question,id=questionID)
+    if  not question.post.isPublished and not ( request.user==question.post.author or request.user.profile.isModerator() or request.user.profile.isSuperAdmin() or request.user.profile.isAdmin() ):
+        raise Http404
     question.views=F('views')+1
     question.save()
     question.refresh_from_db()
@@ -242,8 +243,8 @@ def similarQuestions(request,page):
     if 'que-title' in request.GET and 'category-id' in request.GET and 'tags' in request.GET:
         try:
             category=int(request.GET['category-id'])
-
-            questions=Question.objects.filter(Q(category__id=category)|Q(category__parent__id=category)|Q(category__parent__parent__id=category)|Q(category__parent__parent__parent__id=category))
+            questions=Question.objects.filter(post__isPublished=True)
+            questions=questions.filter(Q(category__id=category)|Q(category__parent__id=category)|Q(category__parent__parent__id=category)|Q(category__parent__parent__parent__id=category))
             tagsIds=json.loads(request.GET['tags'])
             for tagId in tagsIds:
                 questions=questions.filter(tags__id=tagId)

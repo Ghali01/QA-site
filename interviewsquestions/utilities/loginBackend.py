@@ -1,6 +1,8 @@
 from django.contrib.auth.backends import BaseBackend
 from django.contrib.auth.models import User
 
+
+
 class LoginByEmail(BaseBackend):
 
     def authenticate(self, request,email,password):
@@ -15,3 +17,4 @@ class LoginByEmail(BaseBackend):
 
     def get_user(self, user_id):
         return User.objects.get(pk=user_id)
+

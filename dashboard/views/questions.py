@@ -1,5 +1,6 @@
 from json.decoder import JSONDecodeError
 from django.core.checks.messages import CRITICAL
+from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import reverse
 from dashboard.decorators import forSuperAdmin
@@ -236,3 +237,20 @@ def reviewLog(request,logID):
         'log':log
     }
     return render(request,'dashboard/reviewLog.html',contxt)
+
+
+
+@forSuperAdmin
+def toggelPostPublish(requset):
+    if 'post-id' in requset.POST:
+        try:
+            post=Post.objects.get(pk=int(requset.POST['post-id']))
+            post.isPublished= not post.isPublished
+            post.save()
+            if post.isPublished:
+                return HttpResponse('pub')
+            else:
+                return HttpResponse('unpub')
+        except (Post.DoesNotExist,ValueError):
+            pass
+    return HttpResponse('error')

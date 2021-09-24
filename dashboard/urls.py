@@ -1,5 +1,5 @@
 from django.urls import path
-from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews
+from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews, Suggestedfeedback as SuggestedfeedbackViews
 app_name='dashboard'
 urlpatterns=[
     path('',mainViews.index,name='index'),
@@ -29,5 +29,16 @@ urlpatterns=[
     path('del-comment',questionsViews.deleteComment,name='delete-comment'),
     path('edit-comment/<int:commentID>',questionsViews.editComment,name='edit-comment'),
     path('post-logs/<int:postID>',questionsViews.postLogs,name='post-logs'),
-    path('review-log/<int:logID>',questionsViews.reviewLog,name='review-log')
+    path('review-log/<int:logID>',questionsViews.reviewLog,name='review-log'),
+    path('togg-pub-post',questionsViews.toggelPostPublish,name='togg-pub-post'),
+    path('prune-user',usersViews.pruneUser,name='prune-user'),
+    path('togg-ban-user',usersViews.toggleBanUser,name='toggle-ban-user'),
+    path('suggested-categories/<str:language>/<int:page>',SuggestedfeedbackViews.suggestedCategories,name='suggested-categories'),
+    path('delete-sug-cate',SuggestedfeedbackViews.deleteSuggestedCategory,name='delete-suggested-category'),
+    path('acc-sug-cate/<int:itemID>/<int:page>',SuggestedfeedbackViews.acceptSuggestdCategory,name='accept-suggested-category'),
+    path('acc-sug-cate-app',SuggestedfeedbackViews.acceptCategoryAfterApproval,name='accept-suggested-category-approval'),
+    path('suggested-tags/<str:language>/<int:page>',SuggestedfeedbackViews.suggestedTags,name='suggested-tags'),
+    path('delete-sug-tag',SuggestedfeedbackViews.deleteSuggestedTag,name='delete-suggested-tag'),
+    path('acc-sug-tag/<int:itemID>/<int:page>',SuggestedfeedbackViews.acceptSuggestdTag,name='accept-suggested-tag'),
+    path('acc-sug-tag-app',SuggestedfeedbackViews.acceptTagAfterApproval,name='accept-suggested-tag-approval')
 ]

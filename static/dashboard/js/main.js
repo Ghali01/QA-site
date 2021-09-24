@@ -263,7 +263,13 @@ $(document).ready(function () {
     );
 
     $(".del-table-item").click(deleteTableItem);
-  
+    $('.toggle-post-pub-btn').click(togglePubPost);
+    $('.edit-sug-item-btn').click(editSuggestedItem);
+
+
+
+
+
     let now= new Date(),
     dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
 
@@ -667,25 +673,33 @@ function searchUsers(){
                   <td>${user.email}</td>
                   <td>${user.perm}</td>
                   <td>
-                    <div class="actions-btns" data-item-id="${user.id}">
+                    <div class="actions-btns" data-item-id="${user.id}" data-user-name="${user.userName}">
 
-                      <a class="btn btn-app cus-btn-app">
+                      <a class="btn btn-app cus-btn-app" href="/profile/${user.id}">
                         <i class="fas fa-user btn-app-icon"></i>Profile
                       </a>
-                      <a class="btn btn-app cus-btn-app app-btn-70">
+                      <a class="btn btn-app cus-btn-app app-btn-70" href="/profile/user-questions/${user.id}">
                         <i class="fas fa-external-link-alt btn-app-icon"></i>Questions
                       </a>
-                      <a class="btn btn-app cus-btn-app app-btn-70">
+                      <a class="btn btn-app cus-btn-app app-btn-70" href="/profile/user-answers/${user.id}">
                         <i class="fas fa-angle-right btn-app-icon"></i>Answers
                       </a>
-                      <button class="btn btn-app cus-btn-app ban-user-btn"
+                      ${user.isBaned!='True'?`<button class="btn btn-app cus-btn-app ban-user-btn"
                       data-toggle="modal" data-lvl="2" data-target="#ban-modal"
                       data-user-id="415251" data-user-name="User User">
                         <i class="fas fa-user-slash btn-app-icon"></i>Ban
-                      </button>
-                      <a class="btn btn-app cus-btn-app app-btn-70">
+                      </button>`:
+                      `
+                      <button class="btn btn-app cus-btn-app unban-user-btn"
+                      data-toggle="modal" data-lvl="2" data-target="#unban-modal"
+                      data-user-id="415251" data-user-name="User User">
+                        <i class="fas fa-user btn-app-icon"></i>unban
+                      </button>`}
+                      <button class="btn btn-app cus-btn-app app-btn-70 prune-btn"
+                      data-toggle="modal" data-lvl="2" data-target="#prune-modal"
+                      >
                         <i class="far fas fa-user-minus btn-app-icon"></i>Prune
-                      </a>
+                      </button>
                       <button class="btn btn-app cus-btn-app app-btn-80 permission-btn" data-lvl="2" data-toggle="modal" data-target="#permissions-modal">
                         <i class="fas fa-address-card btn-app-icon"></i>Permissions
                       </button>
@@ -694,6 +708,9 @@ function searchUsers(){
              
                     `);
                     $(tr).find('.permission-btn').click(premissionBtnClick);
+                    $(tr).find('.prune-btn').click(pruneBtnClick);
+                    $(tr).find('.ban-user-btn').click(banUserBtn);
+                    $(tr).find('.unban-user-btn').click(unbanUserBtn);
                     $('#users').append(tr);
                 }
             }
@@ -701,7 +718,65 @@ function searchUsers(){
     );
 }
 }
+function banUserBtn() {
+    $('#ban-user-name').text($(this).parent().data('user-name'));
+    $('#ban-user-id').val($(this).parent().data('item-id'));
+}
+function unbanUserBtn() {
+    $('#unban-user-name').text($(this).parent().data('user-name'));
+    $('#unban-user-id').val($(this).parent().data('item-id'));
+}
 
 function  premissionBtnClick(){
     $('#prem-user-id').val($(this).parent().data('item-id'));
+}
+
+function  pruneBtnClick(){
+    $('#prune-user-id').val($(this).parent().data('item-id'));
+}
+
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+
+
+function togglePubPost() {
+    let clicked=this;
+    $.post("/dashboard/togg-pub-post", 
+    {
+        csrfmiddlewaretoken:getCookie('csrftoken'),
+        'post-id':$(this).data('post-id')
+    }
+    ,
+        function (data, textStatus, jqXHR) {
+            if(data=='pub'){
+                $(clicked).html(`<i class="fas fa-eye-slash btn-app-icon"></i>Unpublish`);
+            }
+            else if (data=='unpub'){
+                $(clicked).html(`<i class="fas fa-eye btn-app-icon"></i>Publish`);
+
+            }
+        },
+    );
+}
+
+function editSuggestedItem() {
+    $('#cate-name').val($(this).parent().data('name'));
+    $('#cate-desc').val($(this).parent().data('desc'));
+    $('#item-id').val($(this).parent().data('item-id'));
 }

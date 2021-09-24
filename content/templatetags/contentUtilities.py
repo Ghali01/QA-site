@@ -22,5 +22,8 @@ def getVote(post,user):
     except Voter.DoesNotExist:
         return False
 @register.inclusion_tag('content/templatetags/commentItem.html')
-def commentItem(comment):
-    return{'comment':comment}
+def commentItem(comment,isSuperAdmin):
+    return{
+        'comment':comment,
+        'isSuperAdmin':isSuperAdmin
+        }

@@ -281,6 +281,9 @@
 .question-title-inp{
     margin-bottom: 16px;
 }
+.data-meta-que{
+    display: inline;
+}
 .data-meta-que .d-group{
     margin: 0 16px;
     display: inline-block;
@@ -458,4 +461,7 @@ textarea.polls-que{
 
 .page-options{
     margin: 13px 7px;
+}
+.right-btns-bar .cus-btn-app{
+    transform: scale(.88);
 }

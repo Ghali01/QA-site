@@ -46,6 +46,8 @@
       <!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
+
+  <!-- ban modal -->
   <div class="modal fade" id="ban-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -56,7 +58,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form method="POST" id="ban-form" action="{% url 'dashboard:toggle-ban-user' %}">
+            {% csrf_token %}
             <p>Do you want Ban <span class="f-bold" id="ban-user-name"></span>?
             </p>
             <input type="hidden" name="user-id" id="ban-user-id">
@@ -64,40 +67,94 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Ban</button>
+          <button type="submit" form="ban-form" class="btn btn-primary">Ban</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="permissions-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <!-- ban modal -->
+  <div class="modal fade" id="unban-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="permissions-modalLabel">User Premissions</h5>
+          <h5 class="modal-title" id="unban-modalLabel">UnBan User</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form method="POST" id="perm-form" action="{% url 'dashboard:set-user-perm' %}">
-              {% csrf_token %}
-            <input type="hidden" name="user-id" id="prem-user-id">
-            <input type="radio" name="perm" id="su-admin" value="SA"> <label for="su-admin">Super Admin</label>
-            <br>
-            <input type="radio" name="perm" id="admin" value="A"> <label for="admin">Admin</label>
-            <br>
-            <input type="radio" name="perm" id="moderator" value="M"> <label for="moderator">Moderator</label>
-            <br>
-            <input type="radio" name="perm" id="basic-user" value="U"> <label for="basic-user">User</label>
+          <form method="POST" id="unban-form" action="{% url 'dashboard:toggle-ban-user' %}">
+            {% csrf_token %}
+            <p>Do you want unban <span class="f-bold" id="unban-user-name"></span>?
+            </p>
+            <input type="hidden" name="user-id" id="unban-user-id">
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <input type="submit" class="btn btn-primary" form="perm-form"  value="Set">
+          <button type="submit" form="unban-form" class="btn btn-primary">unban</button>
         </div>
       </div>
     </div>
   </div>
+ <!-- permissions modal -->
+ <div class="modal fade" id="permissions-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="permissions-modalLabel">User Premissions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" id="perm-form" action="{% url 'dashboard:set-user-perm' %}">
+            {% csrf_token %}
+          <input type="hidden" name="user-id" id="prem-user-id">
+          <input type="radio" name="perm" id="su-admin" value="SA"> <label for="su-admin">Super Admin</label>
+          <br>
+          <input type="radio" name="perm" id="admin" value="A"> <label for="admin">Admin</label>
+          <br>
+          <input type="radio" name="perm" id="moderator" value="M"> <label for="moderator">Moderator</label>
+          <br>
+          <input type="radio" name="perm" id="basic-user" value="U"> <label for="basic-user">User</label>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" form="perm-form"  value="Set">
+      </div>
+    </div>
+  </div>
+</div>
+<!-- prune modal -->
+<div class="modal fade" id="prune-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="permissions-modalLabel">User Premissions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" id="prune-form" action="{% url 'dashboard:prune-user' %}">
+            {% csrf_token %}
+          <input type="hidden" name="user-id" id="prune-user-id">
+          <input type="checkbox" name="questions" id="qu-ch" > <label for="qu-ch">unpublish all user questions</label>
+          <br>
+          <input type="checkbox" name="answers" id="an-ch"> <label for="an-ch">unpublish all user answers</label>
+          <br>
+     
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" form="prune-form"  value="Prune">
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

@@ -101,6 +101,14 @@
                         <li class="nav-item dropdown d-sm-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'profiles:user-answers' userID=request.user.id %}">My Answers</a>
                         </li>
+                        
+                        <li class="nav-item dropdown d-sm-none   ">
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:categories-page' %}">All Categories</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown d-sm-none   ">
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:tags-page' %}">All Tags</a>
+                        </li>
                         {% categories_mob %}
                         <!-- cateagors on sm end -->
 

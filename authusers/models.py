@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import tree
 from interviewsquestions.settings import MEDIA_ROOT
 from content.models import Tag
 
@@ -34,8 +35,15 @@ class UserProfile(models.Model):
     socialID=models.CharField(max_length=150,unique=True,null=True)
     provider=models.CharField(max_length=20,choices=providerChoises,null=True)
 
+
+    def isBaned(self):
+        return BanedUser.objects.filter(user=self.user).exists()
     def isModerator(self):
         return self.permission=='M'
+    def isSuperAdmin(self):
+        return self.permission=='SA'
+    def isAdmin(self):
+        return self.permission=='A'
 
 class SocialUser(models.Model):
     fullName=models.CharField(max_length=100,null=True)
@@ -47,3 +55,7 @@ class SocialUser(models.Model):
     
     class Meta():
         unique_together=['provider','socialID']
+
+
+class BanedUser(models.Model):
+    user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)

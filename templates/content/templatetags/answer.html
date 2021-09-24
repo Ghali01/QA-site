@@ -34,8 +34,16 @@
                 col-12
                 {% endif %}
     ">
-            <div class="post-content">
-                {{ans.post.text|safe}}
+          <div class="post-content-container">
+          
+                <div class="post-content">
+                    {{ans.post.text|safe}}
+                </div>
+        
+                {% if request.user.profile.isSuperAdmin %}
+
+                <a target="_blank" href="{% url 'dashboard:edit-answer-page' answerID=ans.id %}" class="btn edit-post-btn"><i class="fas fa-pen"></i></a>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -106,7 +114,7 @@
                 <ul class="comments-list">
                    
                     {% for comment in ans.post.comments.all|slice:':3' %}
-                    {% commentItem comment %}
+                    {% commentItem comment request.user.profile.isSuperAdmin %}
                     {% endfor %}
                     {% if ans.post.comments.all.count > 3 %}
                     <li>

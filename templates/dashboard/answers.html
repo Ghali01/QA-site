@@ -69,6 +69,17 @@
                       data-toggle="modal" data-target="#del-modal" data-tid="{{ans.id}}">
                         <i class="far fa-trash-alt btn-app-icon"></i>Delete
                       </button>
+                      
+                      {% if ans.post.isPublished %}
+                      <button  data-post-id="{{ans.post.id}}" class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
+                        <i class="fas fa-eye-slash btn-app-icon"></i>Unpublish
+                      </button>
+                      {% else %}
+                      
+                      <button data-post-id="{{ans.post.id}}"  class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
+                        <i class="fas fa-eye btn-app-icon"></i>Publish 
+                      </button>
+                      {% endif %}
                       <a href="{% url 'dashboard:post-comments' postID=ans.post.id page=1 %}" class="btn btn-app cus-btn-app app-btn-70">
                         <i class="far fa-comment-alt"></i>Comments
                       </a>

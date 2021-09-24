@@ -1,6 +1,11 @@
 {% load contentUtilities %}
 {% load humanize %}
-<h1 class="que-title center-title">{{question.title}}</h1>
+<h1 class="que-title center-title">{{question.title}}
+
+    {% if not question.post.isPublished %}
+     (unPublished)
+    {% endif %}
+</h1>
 <div class="que-data-div">
     <span class="que-data-title">Asked:</span>
     <span class="que-data">{{question.getDuration}}</span>
@@ -42,8 +47,13 @@
         {% endif %}
         
         ">
-            <div class="post-content">
-                {{question.post.text|safe}}
+            <div class="post-content-container">
+                <div class="post-content">
+                    {{question.post.text|safe}}
+                </div>
+                {% if request.user.profile.isSuperAdmin %}
+                <a target="_blank" href="{% url 'dashboard:edit-question-page' questionID=question.id %}" class="btn edit-post-btn"><i class="fas fa-pen"></i></a>
+                {% endif %}
             </div>
         </div>
         <div class="row">
@@ -119,7 +129,7 @@
         <div class="comments-div">
             <ul class="comments-list">
                 {% for comment in question.post.comments.all|slice:':3' %}
-                {% commentItem comment %}
+                {% commentItem comment request.user.profile.isSuperAdmin %}
                 {% endfor %}
                 {% if question.post.comments.all.count > 3 %}
                 <li>

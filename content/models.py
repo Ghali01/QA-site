@@ -85,11 +85,12 @@ class Post(models.Model):
         ('Q','Question'),
         ('A','Answer'),
     ]
+    
     text=models.TextField()
     author=models.ForeignKey(User,on_delete=CASCADE,related_name='posts')
     votes=models.IntegerField(default=0)
     type=models.CharField(max_length=1,choices=typeChoices)
-    isPublished=models.BooleanField(default=False)
+    isPublished=models.BooleanField(default=True)
     ActiveDate=models.DateField(auto_now=True)
     voters=models.ManyToManyField(User,through='Voter',)
     class Meta:
@@ -258,6 +259,8 @@ class Question(models.Model):
         for ans in self.answers.all():
             allLogs+=list(ans.post.logs.all())
         return allLogs
+    def getPubliedAnswer(self):
+        return self.getAcceptedAnswers().filter(post__isPublished=True)
 class SuggestedQuestion(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE)
     title=models.CharField(max_length=200)

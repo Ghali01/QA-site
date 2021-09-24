@@ -72,7 +72,7 @@ def seeMoreQuestions(request,userID,page):
         
 def userAnswers(request,userID):
     votesFilter=viewsFilter=searchVal=None
-    answers=Answer.objects.filter(post__author__id=userID)
+    answers=Answer.objects.filter(post__author__id=userID,post__isPublished=True,question__post__isPublished=True)
     if 'search' in request.GET and request.GET['search']:
         searchVal=request.GET['search']
         answers=answers.filter(question__title__contains=request.GET['search'])
@@ -109,7 +109,7 @@ def userAnswers(request,userID):
 
 
 def seeMoreAnswers(request,userID,page):
-    answers=Answer.objects.filter(post__author__id=userID)
+    answers=Answer.objects.filter(post__author__id=userID,post__isPublished=True,question__post__isPublished=True)
     if 'search' in request.GET and request.GET['search']:
         answers=answers.filter(question__title__contains=request.GET['search'])
     

@@ -89,6 +89,16 @@
                       <a href="{% url 'dashboard:question-answers-page' questionID=que.id page=1 %}"  class="btn btn-app cus-btn-app app-btn-70">
                         <i class="fas fa-angle-right btn-app-icon"></i>Answers
                       </a>
+                      {% if que.post.isPublished %}
+                      <button  data-post-id="{{que.post.id}}" class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
+                        <i class="fas fa-eye-slash btn-app-icon"></i>Unpublish
+                      </button>
+                      {% else %}
+                      
+                      <button data-post-id="{{que.post.id}}"  class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
+                        <i class="fas fa-eye btn-app-icon"></i>Publish 
+                      </button>
+                      {% endif %}
                       <a href="{% url 'dashboard:post-comments' postID=que.post.id page=1 %}" class="btn btn-app cus-btn-app app-btn-70">
                         <i class="far fa-comment-alt"></i>Comments
                       </a>

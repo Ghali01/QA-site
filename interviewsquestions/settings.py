@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'content.apps.ContentConfig',
     'moderators.apps.ModeratorsConfig',
     'profiles.apps.ProfilesConfig',
+    'feedback.apps.FeedbackConfig',
     'django.contrib.admin',
     'django.contrib.humanize',
     'django.contrib.auth',

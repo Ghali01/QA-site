@@ -3579,3 +3579,29 @@ p.info{
     border-top: solid 1px var(--black-350);
     overflow: hidden;
 }
+
+.post-content-container{
+    position: relative;
+}
+.edit-post-btn,.edit-comm-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--blue-500);
+    color: var(--black-800);
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 0;
+    padding-top: 2px;
+
+}
+
+.edit-comm-btn{
+    top: 0;
+    transform: scale(.85);
+}
+
+.comment-item{
+    position: relative;
+}
