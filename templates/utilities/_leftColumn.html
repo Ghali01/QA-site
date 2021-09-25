@@ -5,14 +5,10 @@
     <a class="side-link" href="{% url 'content:tags-page' %}">Tags</a>
 
     <div class="left-bottom-column">
-        <div class="cus-card ">
-            <h5 class="cus-card-header">column title</h5>
-            <div class="cus-card-body ">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque maxime dolorum incidunt
-                    amet, repudiandae libero harum tempora nisi tempore in ipsam earum eos non sint,
-                    aspernatur dolore laudantium corporis provident?</p>
-            </div>
-        </div>
-
+       {% load i18n %}
+        {% get_current_language as LANGUAGE_CODE %}
+{% with lc=LANGUAGE_CODE|slice:':2'|upper %}
+{% include 'columnsCards/LF_'|add:lc|add:".html" %}
+{% endwith %}
     </div>
 </div>

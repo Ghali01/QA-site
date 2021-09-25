@@ -465,3 +465,48 @@ textarea.polls-que{
 .right-btns-bar .cus-btn-app{
     transform: scale(.88);
 }
+
+.lng-sel{
+    margin: 0 8px;
+    float: right;
+}
+.li-option {
+    width: 56px;
+    height: 58px;
+    font-size: 11px;
+    margin: 8px;
+    padding: 11px;
+}
+
+
+.thr-no{
+    text-align: center;
+    color: var(--black-075);
+}
+.thr-no-icon{
+    color: var(--black-300);
+    display: block;
+    margin: auto;
+    font-size: 50px;
+    text-align: center;
+}
+
+.thr-no-btn{
+    margin: 8px;
+}
+.thr-no-btns{
+    display: flex;
+    justify-content: center;
+}
+
+
+.service-inp{
+    margin-bottom: 16px;
+}
+textarea.service-inp{
+    min-height: 150px;
+}
+          
+.ads-demo-img{
+    width: 100%;   
+   }

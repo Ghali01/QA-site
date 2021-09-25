@@ -482,23 +482,31 @@ body{
     background-color: var(--bg-color);
     border-radius: 0 0 4px 4px;
 }
-.cus-card{
+.cus-card,.card{
     border-radius: 4px;
 
     border: 1px solid var(--black-100) ;
 }
-.cus-card-header{
-    background-color: var(--black-050);
-    color: var(--black-600);
-    font-size: 20px;
-    border-bottom: var(--black-100) solid 2px;
-    border-radius: 4px 4px 0 0;
-    padding: 12px 15px;
-    
+.card{
+        background-color: var(--black-050);
+    margin-bottom: 18px;
 }
 
-.cus-card-body{
+.cus-card-header,.card-title,.card-header{
+    background-color: var(--black-050);
+    color: var(--black-600);
+    font-size: 18px;
+    border-bottom: var(--black-100) solid 2px;
+    border-radius: 4px 4px 0 0;
+    padding: 4px 15px;
+    
+}
+.card-title{
+    border: none;
+}
+.cus-card-body,.card-body{
     padding: 8px;
+    color: var(--black-400)
 }
 
 .btn-tag{
@@ -3244,14 +3252,10 @@ p.info{
     width: 100%;
 }
 .service{
-    display: flex;
-    align-items: flex-start;
     margin: auto;
     width: 70%;
 }
 .service .dsec{
-    display: inline-block;
-    width: 70%;
     color: var(--titles-colors);
 }
 
@@ -3260,13 +3264,16 @@ p.info{
     height: 150px;
     margin: 16px;
 }
-@media (max-width:768px) {
+@media (max-width:576px) {
     .service,
     .service .dsec{
         width: 100%;
     }
     .service-img{
+        display: block;
         margin: auto;
+        width: 200px;
+        height: 200px;
     }
 }
 .form-btn{
@@ -3604,4 +3611,7 @@ p.info{
 
 .comment-item{
     position: relative;
+}
+.cus-footer{
+    color: var(--black-600);
 }

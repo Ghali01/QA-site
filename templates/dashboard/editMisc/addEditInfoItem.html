@@ -1,0 +1,48 @@
+{% extends 'utilities/dashboard/_base.html' %}
+
+{% load static %}
+{% load i18n %}
+{% block content %}
+
+      <!-- Main content -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">{% translate 'Edit Service' %}</h2>
+            </div>
+            <div class="card-body">
+              <form action="
+              {% if isNew %}
+              {% url 'dashboard:save-info-item' language=lang %}
+              {% else %}
+              {% url 'dashboard:update-info-item' %}
+              {% endif %}
+              
+              " method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                <div class="col-12">
+                  {% if not isNew %}
+                  <input type="hidden" name="item-id" value="{{item.id}}">
+                  {% endif %}
+                  <input type="text" class="form-control service-inp" name="title" value="{{item.title}}" placeholder="{% translate 'Title' %}">
+                  <textarea type="text" class="form-control service-inp" name="text" placeholder="{% translate 'Text' %}">{{item.text}}</textarea>
+                </div>
+                </div>
+              <div class="col-12">
+                <input type="submit" class="btn btn-primary  save-btn" value="{% translate 'Save' %}">
+              </div>
+            </form>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+  </div>
+{% endblock %}

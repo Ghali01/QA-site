@@ -1,0 +1,54 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+{% block title %} | 
+{% if isNew %}
+{% translate 'Add Card' %}
+{% else %}
+{{cardTitle}}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+     <!-- Main content -->
+     <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">
+                {% if isNew %}
+                {% translate 'Add Card' %}
+                {% else %}
+                {{cardTitle}}
+                {% endif %}
+              </h2>
+            </div>
+            <div class="card-body">
+                <form action="
+                {% if isNew %}
+                {% url 'dashboard:save-card' language=lang side=sid %}
+                {% else %}
+                {% url 'dashboard:update-card' language=lang side=sid cardID=cardId %}
+                {% endif %}
+                " method="post">
+                {% csrf_token %}
+                <input type="text" class="form-control" name="card-title" placeholder="Card Title" value="{{cardTitle}}">
+                    {% if not isNew %}
+                    <input type="hidden" name="card-id" value="{{cardId}}">
+                    {% endif %}
+                    <textarea id="summernote" name="card-body">{{cardBody}}</textarea>
+                
+                      <input type="submit" class="btn  btn-primary save-btn" value="Save">
+
+                </form>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+  </div>
+{% endblock %}

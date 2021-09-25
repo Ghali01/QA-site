@@ -1,0 +1,19 @@
+{% extends 'utilities/_base_no_column.html' %}
+
+{% block title %}About Us{% endblock %}
+{% block content %} 
+
+<div class="row">
+    <div class="col-12">
+    {% for item in items %}
+    <h1 class="title center-text">{{item.title}}</h1>
+     <p class="info ">
+        {{item.text}}
+    </p>
+        {% if not forloop.last %}
+        <hr class="info-break">
+        {% endif %}
+    {% endfor %}
+    </div>
+ </div>
+{% endblock %}

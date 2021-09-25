@@ -1,0 +1,36 @@
+{% extends 'utilities/_base_no_column.html' %}
+
+{% block title %}About Us{% endblock %}
+{% block content %} 
+
+<div class="row">
+    <div class="col-12">
+     <h1 class="title center-text">Our Services</h1>
+        {% for service in services %}
+     <div class="service">
+     
+     <div class="row">
+         
+         <div class="col-12 col-sm-3 order-sm-last">
+             <img src="{{service.image.url}}" alt="Service Image" class="service-img">
+
+         </div>
+         <div class="col-12 col-sm-9">
+             <div class="dsec">
+           
+                 <h2>{{service.title}}</h2>
+
+                 <p>
+                    {{service.text}}
+                 </p>
+             </div>
+            
+         </div>
+     </div>
+     </div>
+     {% endfor %}
+   
+    </div>
+ </div>
+
+{% endblock %}

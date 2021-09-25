@@ -266,6 +266,7 @@ $(document).ready(function () {
     $('.toggle-post-pub-btn').click(togglePubPost);
     $('.edit-sug-item-btn').click(editSuggestedItem);
 
+    $(".del-li-btn").click(deleteLiBtn);
 
 
 
@@ -780,3 +781,8 @@ function editSuggestedItem() {
     $('#cate-desc').val($(this).parent().data('desc'));
     $('#item-id').val($(this).parent().data('item-id'));
 }
+
+function deleteLiBtn() {
+    $("#del-id").val($(this).parent().data("item-id"));
+    $("#del-name").text($(this).prevAll(".li-name").text());
+  }

@@ -1,0 +1,52 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %} | {% translate 'Edit Header' %}{% endblock %}
+
+{% block content %}
+
+      <!-- Main content -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">{% translate 'Edit Header' %}</h2>
+              <div class="btn-group lng-sel">
+                <a href="{% url 'dashboard:edit-header-page' language='EN' %}" class="btn btn-default">English</a>
+                  <a href="{% url 'dashboard:edit-header-page' language='AR' %}" class="btn btn-default">عربي</a>
+              </div>
+            </div>
+            <div class="card-body">
+              <form action="{% url 'dashboard:save-header' language=lang %}" method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                <div class="col-9">
+                  <input type="text" class="form-control header-inp" name="title" value="{{title}}" placeholder="{% translate 'Site Title' %}">
+                </div>
+                <div class="col-3">
+                  
+                  <div class="">
+                     {% get_media_prefix as media %}
+  
+                  <label for="favicon" >favicon: <img src="{{media|add:'/favicon.ico'}}" width="16" alt=""></label>
+
+                  </div>
+                  <input type="file" id="favicon" name="favicon" class="form-control float-right" accept=".ico">
+                </div>
+              </div>
+              <div class="col-12">
+                <input type="submit" class="btn btn-primary  save-btn" value="{% translate 'Save' %}">
+              </div>
+            </form>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+  </div>
+{% endblock %}

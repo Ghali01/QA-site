@@ -1,0 +1,76 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+{% block title %} | {{theRequest.subject}}{% endblock %}
+{% block content %}
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">{{theRequest.subject}}</h2>
+          <div class="right-options" data-item-id="{{theRequest.id}}">
+            <button class="btn btn-app btn-app-sm del-li-btn" data-lvl="2"
+            data-toggle="modal" data-target="#del-modal">
+              <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
+            </button>
+            
+
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-6">
+              <p>{{theRequest.company}}</p>
+            </div>
+            <div class="col-6">
+              <a href="{% url 'dashboard:templates' language=theRequest.language %}?to={{theRequest.email}}">{{theRequest.email}}</a>
+              
+            </div>
+            <div class="col-12">
+              <p>
+                {{theRequest.subject}}
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                {{theRequest.text}}
+                  
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+<div class="modal fade" id="del-modal" tabindex="-1" role="dialog" aria-labelledby="del-modalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Request' %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'dashboard:delete-advertset-message' language=theRequest.language page='1' %}" method="POST" id="delete-form">
+       {% csrf_token %}
+            <p>{% translate 'delete ads request' context 'paragraph' %}
+        </p>
+          <input type="hidden" name="request-id" id="del-id">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+        <input type="submit" form="delete-form" class="btn btn-primary" value="{% translate 'Delete' %}">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -188,47 +188,89 @@
             
             </ul>
           </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link ">
-              <i class="fas fa-pen"></i>
-              <p>
-                Edit Site
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link ">
-                  <p>Contact Us</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>Info</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>footer</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>header</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>advertise with us</p>
-                </a>
-              </li>
-            </ul>
-          </li>
+          <li class="nav-item 
+              {% if 'edit-info' in request.path or 'edit-header' in request.path or 'edit-footer' in request.path or 'edit-advertise' in request.path or 'edit-services' in request.path or 'column' in request.path %}
+              menu-open
+
+              {% endif %}
+              
+              ">
+              <a href="#" class="nav-link">
+                <i class="fas fa-pen nav-icon"></i>
+                <p>
+                  {% translate 'Edit Site' %}
+                  <i class="right fas fa-angle-left"></i>
+
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{% url 'dashboard:edit-info-page' language='EN' %}" class="nav-link
+                    {% if 'edit-info' in request.path %}
+                    active
+                    {% endif %}
+                    
+                    
+                    ">
+                    <p>{% translate 'Info' %}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'dashboard:edit-header-page' language='EN' %}" class="nav-link
+                    {% if 'edit-header' in request.path %}
+                    active
+                    {% endif %}
+                    
+                    ">
+                    <p>{% translate 'Header' %}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'dashboard:edit-footer-page' language='EN' %}" class="nav-link
+                    {% if 'edit-footer' in request.path %}
+                    active
+                    {% endif %}
+                    
+     
+                    ">
+                    <p>{% translate 'Footer' %}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'dashboard:edit-column' language='EN' side='RT' %}" class="nav-link
+                    {% if 'column' in request.path %}
+                    active
+                    {% endif %}
+                    
+     
+                    
+                    ">
+                    <p>{% translate 'Columns' %}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'dashboard:edit-advertise-page' language='EN' %}" class="nav-link
+                    {% if 'edit-advertise' in request.path %}
+                    active
+                    {% endif %}
+                    
+                    ">
+                    <p>{% translate 'Advertise with us' %}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="{% url 'dashboard:edit-services-page' language='EN' %}" class="nav-link
+                    {% if 'edit-services' in request.path %}
+                    active
+                    {% endif %}
+                    
+                    ">
+                    <p>{% translate 'Services' %}</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fas fa-certificate "></i>
@@ -239,6 +281,49 @@
             <a href="#" class="nav-link">
               <i class="fas fa-poll"></i>
               <p>Polls</p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="{% url 'dashboard:contact-messages' language='EN' page='1' %}" class="nav-link
+
+              {% if 'contact-message' in request.path %}
+              active
+              {% endif %}
+              ">
+              <i class="nav-icon fas fa-inbox"></i>
+              <p>
+                {% translate 'Contact Us' %}
+              </p>
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="{% url 'dashboard:advertise-messages' language='EN' page='1' %}" class="nav-link
+
+              {% if 'advertise-message' in request.path %}
+              active
+              {% endif %}
+              ">
+              <i class="nav-icon fas fa-ad"></i>
+              <p>
+                {% translate 'Advertise Requests' %}
+              </p>
+            </a>
+          </li>
+
+          
+          <li class="nav-item">
+            <a href="{% url 'dashboard:templates' language='EN' %}" class="nav-link
+            {% if 'templates' in request.path %}
+            active
+            {% endif %}
+            
+            ">
+              <i class="nav-icon far fa-envelope"></i>
+              <p>
+                {% translate 'Email' %}
+              </p>
             </a>
           </li>
           

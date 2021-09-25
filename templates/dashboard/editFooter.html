@@ -1,0 +1,40 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+{% block title %} | {% translate 'Edit footer' %}{% endblock %}
+
+{% block content %}
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">{% translate 'Add HTML to footer' %}</h2>
+
+                <div class="btn-group lng-sel">
+                    <a href="{% url 'dashboard:edit-footer-page' language='EN' %}" class="btn btn-default">English</a>
+                    <a href="{% url 'dashboard:edit-footer-page' language='AR' %}" class="btn btn-default">عربي</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <form action="{% url 'dashboard:save-footer' language=lang %}" method="post">
+                            {% csrf_token %}
+                            <textarea id="summernote" name="custom-html">{{customHTML}}</textarea>
+                            <button class="btn btn-primary save-btn">{% translate 'Save' %}</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+</div>
+{% endblock %}

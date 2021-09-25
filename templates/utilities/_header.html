@@ -3,7 +3,13 @@
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-none d-sm-inline" href="{% url 'content:index' %}"> interviews questions</a>
+                <a class="navbar-brand d-none d-sm-inline" href="{% url 'content:index' %}">
+                        {% load i18n %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% with lc=LANGUAGE_CODE|slice:':2'|upper %}
+        
+                {% include 'utilities/_brand'|add:lc|add:'.html' %}
+                {% endwith %}</a>
                 <form class="d-flex search-nav-form">
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>

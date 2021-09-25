@@ -1,5 +1,5 @@
 from django.urls import path
-from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews, Suggestedfeedback as SuggestedfeedbackViews
+from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews, Suggestedfeedback as SuggestedfeedbackViews,editsite as editSiteViews,messages as messagesViews,Email as emailTemplateViews
 app_name='dashboard'
 urlpatterns=[
     path('',mainViews.index,name='index'),
@@ -40,5 +40,47 @@ urlpatterns=[
     path('suggested-tags/<str:language>/<int:page>',SuggestedfeedbackViews.suggestedTags,name='suggested-tags'),
     path('delete-sug-tag',SuggestedfeedbackViews.deleteSuggestedTag,name='delete-suggested-tag'),
     path('acc-sug-tag/<int:itemID>/<int:page>',SuggestedfeedbackViews.acceptSuggestdTag,name='accept-suggested-tag'),
-    path('acc-sug-tag-app',SuggestedfeedbackViews.acceptTagAfterApproval,name='accept-suggested-tag-approval')
-]
+    path('acc-sug-tag-app',SuggestedfeedbackViews.acceptTagAfterApproval,name='accept-suggested-tag-approval'),
+    path('edit-info/<str:language>',editSiteViews.editInfoPage,name='edit-info-page'),
+    # path('save-info/<str:language>',editSiteViews.saveInfo,name='save-info'),
+    path('column/<str:language>/<str:side>',editSiteViews.editColumnPage,name='edit-column'),
+    path('del-card/<str:language>/<str:side>',editSiteViews.deleteCard,name='delete-card'),
+    path('add-card/<str:language>/<str:side>',editSiteViews.addCardPage,name='add-card-page'),
+    path('save-card/<str:language>/<str:side>',editSiteViews.addCard,name='save-card'),
+    path('edit-card/<str:language>/<str:side>/<str:cardID>',editSiteViews.editCardPage,name='edit-card-page'),
+    path('update-card/<str:language>/<str:side>/<str:cardID>',editSiteViews.updateCard,name='update-card'),
+    path('edit-footer/<str:language>',editSiteViews.editFooterPage,name='edit-footer-page'),
+    path('save-footer/<str:language>',editSiteViews.saveFooter,name='save-footer'),
+    path('edit-header/<str:language>',editSiteViews.editHeaderPage,name='edit-header-page'),
+    path('save-header/<str:language>',editSiteViews.saveHeader,name='save-header'),
+    path('edit-advertise/<str:language>',editSiteViews.editAdvertisePage,name='edit-advertise-page'),
+    path('save-advertise/<str:language>',editSiteViews.saveAdvertise,name='save-advertise'),
+    path('delete-advertise-img/<str:language>/<int:imageID>',editSiteViews.deleteAdvertiseImg,name='delete-advertise-img'),
+    path('edit-services/<str:language>',editSiteViews.editServicesPage,name='edit-services-page'),
+    path('add-service/<str:language>',editSiteViews.addServicePage,name='add-service-page'),
+    path('save-service/<str:language>',editSiteViews.addService,name='save-service'),
+    path('edit-service/<int:serviceID>',editSiteViews.editServicePage,name='edit-service-page'),
+    path('update-service',editSiteViews.updateService,name='update-service'),
+    path('delete-service/<str:language>',editSiteViews.deleteService,name='delete-service'),
+    path('add-info-item/<str:language>',editSiteViews.addInfoItemPage,name='add-info-item-page'),
+    path('save-info-item/<str:language>',editSiteViews.addInfoItem,name='save-info-item'),
+    path('edit-info-item/<int:itemID>',editSiteViews.editInfoItemPage,name='edit-info-item-page'),    
+    path('update-info-item',editSiteViews.updateInfoItem,name='update-info-item'),
+    path('delete-info-item/<str:language>',editSiteViews.deleteInfoItem,name='delete-info-item'),
+    path('advertise-messages/<str:language>/<int:page>',messagesViews.advertiseMessage,name='advertise-messages'),
+    path('advertise-message/<int:messageID>',messagesViews.showAdverticeMessage,name='advertise-message'),
+    path('del-ads-msg/<str:language>/<int:page>',messagesViews.deleteAdverticeMessage,name='delete-advertset-message'),
+    path('contact-messages/<str:language>/<int:page>',messagesViews.contactMessage,name='contact-messages'),
+    path('contact-message/<int:messageID>',messagesViews.showContactMessage,name='contact-message'),
+    path('del-con-msg/<str:language>/<int:page>',messagesViews.deleteContactMessage,name='delete-contact-message'),
+    path('templates/<str:language>',emailTemplateViews.TenmplatesPage,name='templates'),
+    path('add-template/<str:language>',emailTemplateViews.addTemplatePage,name='add-template'),
+    path('save-template',emailTemplateViews.addTemplate,name='save-template'),
+    path('del-template',emailTemplateViews.deleteTemplate,name='del-template'),
+    path('edit-template/<int:templateID>',emailTemplateViews.editTemplatePage,name='edit-template'),
+    path('update-template',emailTemplateViews.updateTemplate,name='update-template'),
+    path('email/<str:language>',lambda r,language:emailTemplateViews.sendEmailPage(r,language,-1),name='email-non-temp'),
+    path('email/<str:language>/<int:templateID>',emailTemplateViews.sendEmailPage,name='email-page'),
+    path('send-email',emailTemplateViews.sendEmail,name='send-email'),
+  
+  ]

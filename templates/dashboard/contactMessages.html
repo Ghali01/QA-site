@@ -1,0 +1,129 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+{% block title %} | {% translate 'Contact Messages' %}{% endblock %}
+
+
+{% block content %}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">{% translate 'Contact Messages' %}</h2>
+                <div class="btn-group lng-sel">
+                    <a href="{% url 'dashboard:contact-messages' language='EN' page='1' %}"
+                        class="btn btn-default">English</a>
+                    <a href="{% url 'dashboard:contact-messages' language='AR' page='1' %}"
+                        class="btn btn-default">عربي</a>
+                </div>
+            </div>
+            <div class="card-body">
+                {% if msgs %}
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+
+                        <tr>
+                            <td style="width:20%;" >
+                                {% translate 'User Name' %}
+                            </td>
+                            <td style="width:40%;">
+                                {% translate 'Email' %}
+                            </td>
+                            <td style="width:20%;">
+                                {% translate 'Subject' %}
+                            </td>
+                            <td style="width:20%;">
+                                {% translate 'Action' %}
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for msg in msgs %}
+                        <tr>
+                            <td>
+                                {{msg.userName}}
+                            </td>
+                            <td>
+                                
+                                <a href="{% url 'dashboard:templates' language=msg.language %}?to={{msg.email}}">{{msg.email}}</a>
+                                
+                            </td>
+                            <td>
+                                {{msg.subject}}
+                            </td>
+                            <td data-item-id="{{msg.id}}">
+
+                                <a href="{% url 'dashboard:contact-message' messageID=msg.id %}"
+                                    class="btn btn-app btn-app-sm del-li-btn">
+                                    <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                                </a>
+                                <button class="btn btn-app btn-app-sm del-li-btn" data-lvl="2" data-toggle="modal"
+                                    data-target="#del-modal">
+                                    <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                                </button>
+
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                {% else %}
+                <span class="thr-no-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </span>
+                <h4 class="thr-no">
+                    {% translate 'There is no Messages' %}
+
+                </h4>
+
+                {% endif %}
+
+                <div class="dataTables_paginate paging_simple_numbers table-indctor" id="example2_paginate">
+                    <ul class="pagination">
+                        {% for page in pages %}
+                        <li class="paginate_button page-item active"><a href="
+                    {% url 'dashboard:contact-messages' language=lang page=page %}
+                    " aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">{{page}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+<!-- Modal -->
+<!-- delet category modal -->
+<div class="modal fade" id="del-modal" tabindex="-1" role="dialog" aria-labelledby="del-modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Message' %}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" id="delete-from"
+                    action="{% url 'dashboard:delete-contact-message' language=lang page=currentPage %}">
+                    {% csrf_token %}
+                    <p>{% translate 'delete contact message' context 'paragraph' %}
+                    </p>
+                    <input type="hidden" name="message-id" id="del-id">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+                <input type="submit" class="btn btn-primary" form="delete-from" value="{% translate 'Delete' %}">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

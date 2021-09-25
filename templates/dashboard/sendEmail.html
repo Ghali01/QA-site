@@ -1,0 +1,49 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+{% block title %} | {% translate 'Send Email' %}{% endblock %}
+{% block content %}
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        {% include 'utilities/_messages.html' %}
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    {% translate 'Send Email' %}{% if template %} | {% translate 'Template' %}: {{template.name}} {% endif %}
+                </h2>
+                <div  style="width: 230px; " class="float-right"> 
+                <input type="search" name="test-email" form="email-form" placeholder="Enter Test Email" class=" form-control" >
+
+                </div>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="email-form" action="{% url 'dashboard:send-email' %}" target="_blank">
+                    {% csrf_token %}
+                            
+                    <input type="text" class="form-control" name="msg-subject" placeholder="{% translate 'Subject' %}" >
+                    {% if select %}
+                    <input type="hidden" name="to-email" value="{{toEmail}}">
+                    {% else %}
+                    <input type="hidden" name="language" value="{{lang}}">
+
+                    {% endif %}
+                    <textarea name="msg-body" id="summernote">{{template.html}}</textarea>
+
+                    <input type="submit" class="btn btn-primary save-btn " value="{% translate 'Send' %}" >
+                </form>
+           
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+</div>
+<!-- ./wrapper -->
+{% endblock %}

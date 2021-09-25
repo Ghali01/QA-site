@@ -1,0 +1,65 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+{% block title %} | 
+{% if isNew %}
+{% translate 'Add Email Template' %}
+{% else %}
+{{template.name}}
+{% endif %}{% endblock %}
+{% block content %}
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        {% include 'utilities/_messages.html' %}
+
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    {% if isNew %}
+                    {% translate 'Add Email Template' %}
+                    {% else %}
+                    {{template.name}}
+                    {% endif %}
+                </h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="lesson-form" action="
+                {% if isNew %}
+                {% url 'dashboard:save-template' %}
+                {% else %}
+                {% url 'dashboard:update-template' %}
+                
+                {% endif %}
+                ">
+                    {% csrf_token %}
+                    <div class="row" style="margin-bottom: 8px;">
+                        <div class="col-12">
+                            
+                    <input type="text" class="form-control" name="temp-name" placeholder="{% translate 'Template Name' %}" {% if not isNew %}
+                    value="{{template.name}}" {% endif %}>
+                        </div>
+                        {% if isNew %}
+                        <input type="hidden" name="language" value="{{lang}}">
+                        {% elif not isNew %}
+                        <input type="hidden" name="temp-id" value="{{template.id}}">
+                        {% endif %}
+                    </div>
+                    <textarea name="temp-body" id="summernote">{% if not isNew %}{{template.html}}{% endif %}</textarea>
+
+                    <input type="submit" class="btn btn-primary save-btn " value="{% translate 'Save' %}" >
+                </form>
+           
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+
+
+</div>
+<!-- ./wrapper -->
+{% endblock %}
