@@ -1,0 +1,87 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{%  block title %}{% endblock %}
+
+{% block content %} 
+{% include 'utilities/_messages.html' %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Add Badge</h3>
+              
+            </div>
+            <div class="card-body">
+              <form method="POST">
+                  {% csrf_token %}
+                <div class="row">
+                  <div class="col-1">
+                    <label class="select-label">Level</label>
+                    <select name="lvl" id="" class="form-control">
+                      <option value="G"{% if badge.level == 'G'%} selected {% endif %} >Gold</option>
+                      <option value="S"{% if badge.level == 'S'%} selected {% endif %}>Silver</option>
+                      <option value="B"{% if badge.level == 'B'%} selected {% endif %}>Bronze</option>
+                    </select>
+                  </div>
+                  <div class="col-2" >
+                    <label class="select-label">Eran Reason</label>
+                    <select name="reason" id="" class="form-control">
+                      <option value="Q"{% if badge.reason == 'Q'%} selected {% endif %}>Quetions</option>
+                      <option value="A"{% if badge.reason == 'A'%} selected {% endif %}>Answers</option>
+                      <option value="C"{% if badge.reason == 'C'%} selected {% endif %}>Comments</option>
+                      <option value="SA" {% if badge.reason == 'SA'%} selected {% endif %}>Self Answer</option>
+                      <option value="SC"{% if badge.reason == 'SC'%} selected {% endif %}> Self Commnet</option>
+                      <option value="V" {% if badge.reason == 'V'%} selected {% endif %}>Views</option>
+                 
+                      <option value="PV"{% if badge.reason == 'PV' %} selected {% endif %}>Post Votes</option>
+                      <option value="QV"{% if badge.reason == 'QV' %} selected {% endif %}>Question Votes</option>
+                      <option value="AV"{% if badge.reason == 'AV' %} selected {% endif %}>Answer Votes</option>
+                      <option value="V"{% if badge.reason == 'E' %} selected {% endif %}>Edit</option>   </select>
+                  </div>
+                  
+                  <div class="col-2">
+                    <label class="select-label">Target Type</label>
+                    <select name="target-type" id="target-type" class="form-control"
+                    data-categories='{{categoriesJson}}' data-tags='{{tagsJson}}' >
+                      <option value="C"{% if badge.targetType == 'C'%} selected {% endif %}>Category</option>
+                      <option value="T"{% if badge.targetType == 'T'%} selected {% endif %}>Tag</option>
+                      <option value="G"{% if badge.targetType == 'G'%} selected {% endif %}>General</option>
+                    </select>
+                  </div>
+                  
+                  <div class="col-2" >
+                    <label class="select-label" >Target</label>
+                    <select name="target-id" class="form-control" id="targets" >
+                        {% if badge.targetType == 'C' or isNew%} 
+                        {% for cate in categories %}
+                            <option value="{{cate.id}}"
+                            {% if badge.targetType == 'C' and badge.category == cate %} selected {% endif %}
+                            >{{cate.name}}</option>
+                        {% endfor %}
+                        {% elif badge.targetType == 'T' %}
+                        {% for tag in tags %}
+                            <option value="{{tag.id}}"
+                            {% if badge.targetType == 'T' and badge.tag == tag %} selected {% endif %}
+                            >{{tag.name}}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                  </div>
+                  <div class="col-1">
+                    <label class="select-label" >Count</label>
+                    <input type="number" name="count" id="" value="{{badge.count|default:1}}" min="1" class="form-control">
+                  </div>
+
+                </div>
+                <input type="text" class="form-control badge-inp" name="name" value="{{badge.name}}" placeholder="Badge Name">
+                <textarea name="desc" placeholder="Description" class="form-control badge-inp" >{{badge.description}}</textarea>
+                <button type="submit" class="btn btn-primary save-btn">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+{% endblock %}

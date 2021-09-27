@@ -72,18 +72,26 @@
                             <img class="avatar-img" src="{{request.user.profile.image.url}}" alt="avatar">
                             <span class="points-sp">6,145</span>
                             <div class="badges">
+                                {% if request.user.profile.goldBadgesCount %}
+
                                 <div class="badge ">
                                     <div class=" circular-badge gold-badge"></div>
-                                    <span class="badge-num-span gold-badge-span">25</span>
+                                    <span class="badge-num-span gold-badge-span">{{request.user.profile.goldBadgesCount}}</span>
                                 </div>
+                                {% endif %}
+                                {% if request.user.profile.silverBadgesCount %}
                                 <div class="badge ">
                                     <div class=" circular-badge silver-badge"></div>
-                                    <span class=" badge-num-span silver-badge-span">210</span>
+                                    <span class=" badge-num-span silver-badge-span">{{request.user.profile.silverBadgesCount}}</span>
                                 </div>
+                                {% endif %}
+                                {% if request.user.profile.bronzeBadgesCount %}
                                 <div class="badge ">
                                     <div class=" circular-badge bronze-badge"></div>
-                                    <span class="badge-num-span bronze-badge-span">101</span>
+                                    <span class="badge-num-span bronze-badge-span">{{request.user.profile.bronzeBadgesCount}}</span>
                                 </div>
+                                {% endif %}
+
                             </div>
 
                         </li>

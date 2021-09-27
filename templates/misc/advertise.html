@@ -1,0 +1,43 @@
+{%  extends 'utilities/_base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+{% block content %} 
+<div class="column-no-border">
+    {% for msg in messages %}
+    <p class="success-p-s">
+        {{msg}}
+    </p>
+    {% endfor %}
+    <h2 class="center-title" style="float:none;">{{page.title}}</h2>
+    <div class="ads-txt">
+        {{page.text|safe}}
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row sender-data">
+            <div class="col-6">
+            <input type="text" name="companyName" class="form-control custom-input" placeholder="Company Name">
+
+            </div>
+            <div class="col-6">
+            <input type="text" name="email" class="form-control custom-input" placeholder="Email">
+            </div>
+        </div>
+        <input type="text" class="form-control custom-input" name="subject" placeholder="Subject">
+        <textarea type="text" class="form-control custom-input msg-inp custom-scrollbar"
+            placeholder="Write Something..." name="msg"></textarea>
+
+        <div class="row">
+            {% for img in page.images.all %}
+            <div class="col-6">
+                <img src="{{img.imageFile.url}}" class="ads-img" alt="">
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <input type="submit" class="btn btn-primary btn-sm primary-button add-que-button" value="Send">
+    </form>
+
+</div>
+{% endblock %}

@@ -76,8 +76,8 @@ def advertiseMessage(request,language,page):
         contxt={
             'lang':language,
             'requests':requests,
-            'pages':pages,
-            'currentPage':page
+            'pages':pages if len(pages)>0 else [],
+            'currentPage':page 
 
         }
         return render(request,'dashboard/advertiseMessages.html',contxt)

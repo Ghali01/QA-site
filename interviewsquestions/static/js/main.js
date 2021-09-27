@@ -1,10 +1,10 @@
 var addedTags = [];
 var editor;
-var searchText='';
+var searchText = '';
 $(document).ready(
     // animation for forms start
     function () {
-        $('.column-no-border').parent().css('border','none');
+        $('.column-no-border').parent().css('border', 'none');
         $(".vr-div").css({
             height: $("#reg-form").height()
         });
@@ -482,7 +482,7 @@ $(document).ready(
             }
         });
 
-        if (location.pathname == '/login'|| location.pathname == '/register') {
+        if (location.pathname == '/login' || location.pathname == '/register') {
             $.ajaxSetup({ cache: true });
             $.getScript('https://connect.facebook.net/en_US/sdk.js', function () {
                 FB.init({
@@ -493,51 +493,55 @@ $(document).ready(
 
             });
             $.getScript("https://accounts.google.com/gsi/client", function (script, textStatus, jqXHR) {
-            $('#go-login-btn').click(function(){
-                $('#go-login-btn-api').find('[role=button]').click();
-            });
+                $('#go-login-btn').click(function () {
+                    $('#go-login-btn-api').find('[role=button]').click();
+                });
 
+            });
+        }
+        $('#gi-login-btn').click(githubLoginClick);
+        $('.add-post-btn').click(postFormSubmit);
+        $('.n-sub-list').slideUp(0);
+        $('.n-sl-btn').click(function (e) {
+            $(this).next().slideDown()
         });
-        }
-            $('#gi-login-btn').click(githubLoginClick);
-            $('.add-post-btn').click(postFormSubmit);
-            $('.n-sub-list').slideUp(0);
-            $('.n-sl-btn').click(function (e) { 
-                $(this).next().slideDown()                
-            });
-            $('.filter li').click(filterChange);
-            $('#mode-fil-btn').click(moderatorFilter)
-            $('.filter-tags-div .btn-tag').click(removeSearchTag)
-            $('.page-btn').click(pgClick);
-            $('.chang-que-st-m-btn').click(changeQueStMod);
-            $('.chang-anss-st-m-btn').click(changeAnswersStMod);
-            $('.chang-ans-st-m-btn').click(changeAnswerStMod);
-            $('.one-click-filter li').click(oneClickFilterChange);
-            $('.sort-icon').click(voteBtnClick);
-            $('.add-ans-button').click(addAnswerBtn);
-            $('.add-ans-continer').slideUp(0);
-            $('.see-more-btn-index').click(seeMoreIndex);
-            $('.loading-circle').hide();
-            $('.button-filter button').click(btnFilterClick);
-            $('.see-more-btn-add-que').click(seeMoreAddQue)
-            $('#que-title').keyup(queTitleChange);
-            $('.add-que-h-inp').change(queTitleChange);
-            $('.add-comm-btn').click(addCommentBtn);
-            $('.all-comment-span').click(seeAllComments);
-            $('.chang-edit-st-m-btn').click(changeSugEditStatus);
-            $('.see-more-btn-user-que').click(seeMoreUserQue);
-            $('.search-usr-que').keyup(searchUsrQuestions);
-            $('.see-more-btn-user-ans').click(seeMoreUserAns);
-            $('.search-usr-ans').keyup(searchUsrAnswers);
-            $('.add-comm-inp').keydown(function(e){
-                if(e.which===13)
-                    $(this).next().trigger('click');
-            });
-            let now= new Date(),
-                dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
+        $('.filter li').click(filterChange);
+        $('#mode-fil-btn').click(moderatorFilter)
+        $('.filter-tags-div .btn-tag').click(removeSearchTag)
+        $('.page-btn').click(pgClick);
+        $('.chang-que-st-m-btn').click(changeQueStMod);
+        $('.chang-anss-st-m-btn').click(changeAnswersStMod);
+        $('.chang-ans-st-m-btn').click(changeAnswerStMod);
+        $('.one-click-filter li').click(oneClickFilterChange);
+        $('.sort-icon').click(voteBtnClick);
+        $('.add-ans-button').click(addAnswerBtn);
+        $('.add-ans-continer').slideUp(0);
+        $('.see-more-btn-index').click(seeMoreIndex);
+        $('.loading-circle').hide();
+        $('.button-filter button').click(btnFilterClick);
+        $('.see-more-btn-add-que').click(seeMoreAddQue)
+        $('#que-title').keyup(queTitleChange);
+        $('.add-que-h-inp').change(queTitleChange);
+        $('.add-comm-btn').click(addCommentBtn);
+        $('.all-comment-span').click(seeAllComments);
+        $('.chang-edit-st-m-btn').click(changeSugEditStatus);
+        $('.see-more-btn-user-que').click(seeMoreUserQue);
+        $('.search-usr-que').keyup(searchUsrQuestions);
+        $('.see-more-btn-user-ans').click(seeMoreUserAns);
+        $('.search-usr-ans').keyup(searchUsrAnswers);
+        $('.add-comm-inp').keydown(function (e) {
+            if (e.which === 13)
+                $(this).next().trigger('click');
+        });
 
-            document.cookie=`utcOffset=${ -1*(now.getTimezoneOffset()/60)}; expires=${dateNextWeek.toGMTString()}; path=/`;
-        }
+        $('.fav-que-btn').click(favQueBtn);
+        $('.flo-que-btn').click(folloUserQueBtn);
+
+        let now = new Date(),
+            dateNextWeek = new Date(now.getTime() + (1000 * 60 * 60 * 24 * 7));
+
+        document.cookie = `utcOffset=${-1 * (now.getTimezoneOffset() / 60)}; expires=${dateNextWeek.toGMTString()}; path=/`;
+    }
 );
 //gird question animetion funcrion
 function startGridQueAni(parentId, duriton = 100) {
@@ -608,7 +612,7 @@ function onSelectCategory() {
             $(nextList).append(cateLi);
         });
 
-    let par= $(this).parentsUntil('.categoriis-lists').last().parent();
+    let par = $(this).parentsUntil('.categoriis-lists').last().parent();
     $(par).find('#category-id').val($(this).data("cate-id")).trigger('change');
 }
 function customSelected() {
@@ -625,9 +629,9 @@ function customSelected() {
 function fbLoginBtn() {
     FB.login(function (response) {
         if (response.status == 'connected') {
-            let form =$('#social-form')
-            $(form).attr('method','POST');           
-            $(form).attr('action','/facebook-login');           
+            let form = $('#social-form')
+            $(form).attr('method', 'POST');
+            $(form).attr('action', '/facebook-login');
             $(form).append(`<input type="hidden" name="user-id" value="${response.authResponse.userID}">`);
             $(form).append(`<input type="hidden" name="token" value="${response.authResponse.accessToken}">`);
             $(form).submit();
@@ -639,59 +643,59 @@ function fbLoginBtn() {
 }
 
 function googleLoginCallback(response) {
-    let form =$('#social-form')
-    $(form).attr('method','POST');           
-    $(form).attr('action','/google-login');           
+    let form = $('#social-form')
+    $(form).attr('method', 'POST');
+    $(form).attr('action', '/google-login');
     $(form).append(`<input type="hidden" name="jwt" value="${response.credential}">`);
     $(form).submit();
 
- }
+}
 
- function githubLoginClick(){
-    location.href=`https://github.com/login/oauth/authorize?client_id=325f252be688f7172df1&scope=user&redirect_uri=${location.protocol}//${location.host}/github-login`;
-    
- }
+function githubLoginClick() {
+    location.href = `https://github.com/login/oauth/authorize?client_id=325f252be688f7172df1&scope=user&redirect_uri=${location.protocol}//${location.host}/github-login`;
 
- var perventPostForm=true;
- function postFormSubmit(e){
-    if (perventPostForm){
+}
+
+var perventPostForm = true;
+function postFormSubmit(e) {
+    if (perventPostForm) {
         e.preventDefault();
     }
     $('#post-body').val(editor.getHTML());
-    perventPostForm=false;
+    perventPostForm = false;
     $("#post-form").submit();
 }
 
-function filterChange(){
-        
-        $(this).parent().next('input').val($(this).data('value'));
-        $(this).parent().prev('button').find('.selected-span').text($(this).text());
+function filterChange() {
+
+    $(this).parent().next('input').val($(this).data('value'));
+    $(this).parent().prev('button').find('.selected-span').text($(this).text());
 }
 
 
-var filterInSearch=(filterObject)=>{
-    let searchText='';
-    for(let key in filterObject){
-        searchText+= `${key}=${filterObject[key]}&`;
+var filterInSearch = (filterObject) => {
+    let searchText = '';
+    for (let key in filterObject) {
+        searchText += `${key}=${filterObject[key]}&`;
     }
-    searchText=searchText.slice(0,-1);
-    location.search=searchText;
+    searchText = searchText.slice(0, -1);
+    location.search = searchText;
 }
 
-function moderatorFilter(){
-    let filterObject={
-        'category':$('#category-id').val().trim(),
-        'order':$('#order-input').val(),
-        'tags':$('#tags-input').val(),
-        
+function moderatorFilter() {
+    let filterObject = {
+        'category': $('#category-id').val().trim(),
+        'order': $('#order-input').val(),
+        'tags': $('#tags-input').val(),
+
 
     };
     if ($('#search-input').val())
-        filterObject['search']=$('#search-input').val();
+        filterObject['search'] = $('#search-input').val();
     filterInSearch(filterObject);
 }
 
-function removeSearchTag(){
+function removeSearchTag() {
     let tagId = $(this).parent().data('tag-id');
     let tagsId = JSON.parse($("#tags-input").val());
     tagsId.splice(tagsId.indexOf(tagId));
@@ -708,11 +712,11 @@ function removeSearchTag(){
 
 }
 
-function pgClick(){
-    path=location.pathname;
-    path=path.slice(0,path.lastIndexOf('/')+1)
-    path+=$(this).text();
-    location.pathname=path;
+function pgClick() {
+    path = location.pathname;
+    path = path.slice(0, path.lastIndexOf('/') + 1)
+    path += $(this).text();
+    location.pathname = path;
 }
 
 function getCookie(name) {
@@ -731,228 +735,228 @@ function getCookie(name) {
     return cookieValue;
 }
 
-function changeQueStMod(){
-    let clicked=this;
-    let item=$(this).parentsUntil('.await-item').parent();
+function changeQueStMod() {
+    let clicked = this;
+    let item = $(this).parentsUntil('.await-item').parent();
     $.post("/moderators/change-suggested-question", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
-        'que-id':$(this).data('que-id'),
-        'status':$(this).data('action'),
+        'que-id': $(this).data('que-id'),
+        'status': $(this).data('action'),
     },
         function (data, textStatus, jqXHR) {
-            if(data=='done'){
-                if (!$(clicked).hasClass('no-animate')){
-                
+            if (data == 'done') {
+                if (!$(clicked).hasClass('no-animate')) {
+
                     item.addClass('ani-await-item');
-                setTimeout(_=>$(item).remove(),500);
-            }
-            else{
-                location.reload();
-            }
+                    setTimeout(_ => $(item).remove(), 500);
+                }
+                else {
+                    location.reload();
+                }
             }
         },
     );
 }
-function changeAnswerStMod(){
-    let clicked=this;
-    let item=$(this).parentsUntil('.await-item').parent();
+function changeAnswerStMod() {
+    let clicked = this;
+    let item = $(this).parentsUntil('.await-item').parent();
     $.post("/moderators/change-suggested-answer", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
-        'ans-id':$(this).data('ans-id'),
-        'status':$(this).data('action'),
+        'ans-id': $(this).data('ans-id'),
+        'status': $(this).data('action'),
     },
         function (data, textStatus, jqXHR) {
-            if(data=='done'){
-                if (!$(clicked).hasClass('no-animate')){
-                
+            if (data == 'done') {
+                if (!$(clicked).hasClass('no-animate')) {
+
                     item.addClass('ani-await-item');
-                setTimeout(_=>$(item).remove(),500);
-            }
-            else{
-                location.reload();
-            }
+                    setTimeout(_ => $(item).remove(), 500);
+                }
+                else {
+                    location.reload();
+                }
             }
         },
     );
 }
 
-function changeAnswersStMod(){
-    let clicked=this;
-    let item=$(this).parentsUntil('.await-item').parent();
+function changeAnswersStMod() {
+    let clicked = this;
+    let item = $(this).parentsUntil('.await-item').parent();
     $.post("/moderators/change-suggested-answers", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
-        'que-id':$(this).data('que-id'),
-        'status':$(this).data('action'),
-        'mode':$(this).data('mode')
+        'que-id': $(this).data('que-id'),
+        'status': $(this).data('action'),
+        'mode': $(this).data('mode')
     },
         function (data, textStatus, jqXHR) {
-            if(data=='done'){
-                if (!$(clicked).hasClass('no-animate')){
-                
+            if (data == 'done') {
+                if (!$(clicked).hasClass('no-animate')) {
+
                     item.addClass('ani-await-item');
-                setTimeout(_=>$(item).remove(),500);
-            }
-            else{
-                location.reload();
-            }
+                    setTimeout(_ => $(item).remove(), 500);
+                }
+                else {
+                    location.reload();
+                }
             }
         },
     );
 }
 
 
-function oneClickFilterChange(){
-    let searchObject={};
-    [...$('.filter')].forEach(filter => 
-        searchObject[$(filter).find('input').attr('name')]=$(filter).find('input').val()
+function oneClickFilterChange() {
+    let searchObject = {};
+    [...$('.filter')].forEach(filter =>
+        searchObject[$(filter).find('input').attr('name')] = $(filter).find('input').val()
     );
     // console.log(searchObject);
     filterInSearch(searchObject);
 }
 
 
-function voteBtnClick(){
-    let type= $(this).hasClass('sort-icon-up')?'up':'down';
-    let clicked=this;
-    $.get("/post-vote", {'type':type, 'post-id':$(this).data('post-id')},
+function voteBtnClick() {
+    let type = $(this).hasClass('sort-icon-up') ? 'up' : 'down';
+    let clicked = this;
+    $.get("/post-vote", { 'type': type, 'post-id': $(this).data('post-id') },
         function (data, textStatus, jqXHR) {
-            data=JSON.parse(data);
-            if(data.resault=='done'){
+            data = JSON.parse(data);
+            if (data.resault == 'done') {
                 $(clicked).siblings('.sort-icon').removeClass('sort-icon-act')
                 $(clicked).addClass('sort-icon-act');
                 $(clicked).siblings('.votes-number-span').text(data.votes);
             }
         },
     );
-        
+
 }
 
-function addAnswerBtn(){
-    let _this=this;
-    let f=function(){
+function addAnswerBtn() {
+    let _this = this;
+    let f = function () {
         $('.add-ans-continer').slideDown();
         $(_this).off('click');
-        $(_this).click(()=>{
+        $(_this).click(() => {
             $('#answer-body').val(editor.getHTML());
             $('#answer-form').submit();
         });
     }
     checkAuth(f)
 }
-var pageIndc=1;
-function seeMoreIndex(){
+var pageIndc = 1;
+function seeMoreIndex() {
     $(this).next().show();
-    let clicked=this;
-    $.get(`/see-more/${pageIndc++}${$(this).data('category-id')?'/'+$(this).data('category-id'):''}`+location.search, {},
+    let clicked = this;
+    $.get(`/see-more/${pageIndc++}${$(this).data('category-id') ? '/' + $(this).data('category-id') : ''}` + location.search, {},
         function (data, textStatus, jqXHR) {
             $(clicked).next().hide();
-            data=JSON.parse(data);
+            data = JSON.parse(data);
             console.log(data.remPages);
-            if (parseInt(data.remPages)<=0){
+            if (parseInt(data.remPages) <= 0) {
                 $(clicked).hide()
             }
             $(clicked).prev().append(data.html);
-    },
-    );
-}
-
-function btnFilterClick(){
-    $(this).parent().find('input').val($(this).data('value'));
-    let searchObject={};
-    [...$('.filter')].forEach(filter => 
-        searchObject[$(filter).find('input').attr('name')]=$(filter).find('input').val()
-    );
-    filterInSearch(searchObject)
-   
-}
-function seeMoreAddQue(){
-    $(this).next().show();
-    let clicked=this;
-    $.get(`/similar-questions/${pageIndc++}`,
-     {
-         'que-title':$('#que-title').val(),
-         'category-id':$('#category-id').val(),
-         'tags':$('#tags-input').val(),
-
-     },
-        function (data, textStatus, jqXHR) {
-            $(clicked).next().hide();
-            data=JSON.parse(data);
-            if (parseInt(data.remPages)<=0){
-                $(clicked).hide()
-            }
-            $(clicked).prev().append(data.html);
-    },
-    );
-
-}
-
-function queTitleChange(){
-    if (searchText==$(this).val())
-        return;
-    searchText=$(this).val();
-    
-    
-    pageIndc=0;
-    if($(this).val()) {
-        $('#similar-ques').css('display','block');
-    $('.loading-circle').show();
-    $(this).next().show();
-    $('.questions-list').html('');
-    $.get(`/similar-questions/${pageIndc++}`,
-     {
-         'que-title':$('#que-title').val(),
-         'category-id':$('#category-id').val(),
-         'tags':$('#tags-input').val(),
-
-     },
-        function (data, textStatus, jqXHR) {
-            $('.loading-circle').hide();
-            data=JSON.parse(data);
-            if (parseInt(data.remPages)<=0){
-                $('.see-more-btn-add-que').hide()
-            }
-            $('.see-more-btn-add-que').prev().append(data.html);
-            if(!data.html){
-                        // $('#similar-ques').css('display','none');
-
-            }
         },
     );
-    }else{
+}
+
+function btnFilterClick() {
+    $(this).parent().find('input').val($(this).data('value'));
+    let searchObject = {};
+    [...$('.filter')].forEach(filter =>
+        searchObject[$(filter).find('input').attr('name')] = $(filter).find('input').val()
+    );
+    filterInSearch(searchObject)
+
+}
+function seeMoreAddQue() {
+    $(this).next().show();
+    let clicked = this;
+    $.get(`/similar-questions/${pageIndc++}`,
+        {
+            'que-title': $('#que-title').val(),
+            'category-id': $('#category-id').val(),
+            'tags': $('#tags-input').val(),
+
+        },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+        },
+    );
+
+}
+
+function queTitleChange() {
+    if (searchText == $(this).val())
+        return;
+    searchText = $(this).val();
+
+
+    pageIndc = 0;
+    if ($(this).val()) {
+        $('#similar-ques').css('display', 'block');
+        $('.loading-circle').show();
+        $(this).next().show();
+        $('.questions-list').html('');
+        $.get(`/similar-questions/${pageIndc++}`,
+            {
+                'que-title': $('#que-title').val(),
+                'category-id': $('#category-id').val(),
+                'tags': $('#tags-input').val(),
+
+            },
+            function (data, textStatus, jqXHR) {
+                $('.loading-circle').hide();
+                data = JSON.parse(data);
+                if (parseInt(data.remPages) <= 0) {
+                    $('.see-more-btn-add-que').hide()
+                }
+                $('.see-more-btn-add-que').prev().append(data.html);
+                if (!data.html) {
+                    // $('#similar-ques').css('display','none');
+
+                }
+            },
+        );
+    } else {
         // $('#similar-ques').css('display','none');
 
     }
 }
 
 
-function addCommentBtn(){
-    let csrf= getCookie('csrftoken');
-    let clicked=this;
+function addCommentBtn() {
+    let csrf = getCookie('csrftoken');
+    let clicked = this;
     if ($(this).prev('input').val())
-    $.post("/add-comment",{
-        'csrfmiddlewaretoken':csrf,
-        'post-id':$(this).data('post-id'),
-        'text':$(this).prev('input').val()
-    },
-        function (data, textStatus, jqXHR) {
-            $(clicked).prev('input').val('')
-            if($(clicked).parent().siblings('.comments-list').children().last().find('p').hasClass('all-comment-span'))
-                $(clicked).parent().siblings('.comments-list').children().last().before(data);
-            else
-                $(clicked).parent().siblings('.comments-list').append(data);
+        $.post("/add-comment", {
+            'csrfmiddlewaretoken': csrf,
+            'post-id': $(this).data('post-id'),
+            'text': $(this).prev('input').val()
+        },
+            function (data, textStatus, jqXHR) {
+                $(clicked).prev('input').val('')
+                if ($(clicked).parent().siblings('.comments-list').children().last().find('p').hasClass('all-comment-span'))
+                    $(clicked).parent().siblings('.comments-list').children().last().before(data);
+                else
+                    $(clicked).parent().siblings('.comments-list').append(data);
 
             },
-    );
+        );
 }
 
 
 // 
 
-function seeAllComments(){
-    let clicked=this;
-    let ul=$(clicked).parent().parent();
-    $.get("/all-comment",{'post-id':$(this).data('post-id')},
+function seeAllComments() {
+    let clicked = this;
+    let ul = $(clicked).parent().parent();
+    $.get("/all-comment", { 'post-id': $(this).data('post-id') },
         function (data, textStatus, jqXHR) {
             ul.html('');
             ul.append(data);
@@ -961,27 +965,27 @@ function seeAllComments(){
     );
 }
 
-function changeSugEditStatus(){
+function changeSugEditStatus() {
     console.log('t');
-    let clicked=this;
-    let item=$(this).parentsUntil('.await-item').parent();
+    let clicked = this;
+    let item = $(this).parentsUntil('.await-item').parent();
     $.post("/moderators/change-suggested-edit", {
         'csrfmiddlewaretoken': getCookie('csrftoken'),
-        'edit-id':$(this).data('edit-id'),
-        'status':$(this).data('action'),
+        'edit-id': $(this).data('edit-id'),
+        'status': $(this).data('action'),
     },
         function (data, textStatus, jqXHR) {
             console.log(data);
-            if(data=='done'){
-            
-                if (!$(clicked).hasClass('no-animate')){
-                
+            if (data == 'done') {
+
+                if (!$(clicked).hasClass('no-animate')) {
+
                     item.addClass('ani-await-item');
-                setTimeout(_=>$(item).remove(),500);
-            }
-            else{
-                location.reload();
-            }
+                    setTimeout(_ => $(item).remove(), 500);
+                }
+                else {
+                    location.reload();
+                }
             }
         },
     );
@@ -989,117 +993,117 @@ function changeSugEditStatus(){
 }
 
 
-function seeMoreUserQue(){
+function seeMoreUserQue() {
     $(this).next().show();
-    let clicked=this;
+    let clicked = this;
     $.get(`/profile/see-more-your-questions/${$(this).data('user-id')}/${pageIndc++}`,
-     {
-        'views':$('#views-inp').val(),
-        'votes':$('#votes-inp').val(),
-        'answers':$('#answers-inp').val(),
-        'search':$('#search-inp').val()
-     },
+        {
+            'views': $('#views-inp').val(),
+            'votes': $('#votes-inp').val(),
+            'answers': $('#answers-inp').val(),
+            'search': $('#search-inp').val()
+        },
         function (data, textStatus, jqXHR) {
             $(clicked).next().hide();
-            data=JSON.parse(data);
-            if (parseInt(data.remPages)<=0){
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
                 $(clicked).hide()
             }
             $(clicked).prev().append(data.html);
-    },
+        },
     );
 
 
 }
-function searchUsrQuestions(){
-    if (searchText==$(this).val())
+function searchUsrQuestions() {
+    if (searchText == $(this).val())
         return;
-    searchText=$(this).val();
-    
-    pageIndc=0;
+    searchText = $(this).val();
+
+    pageIndc = 0;
     $('.loading-circle').show();
     $('.questions-list').html('');
     $.get(`/profile/see-more-your-questions/${$(this).data('user-id')}/${pageIndc++}`,
-     {
-        'views':$('#views-inp').val(),
-        'votes':$('#votes-inp').val(),
-        'answers':$('#answers-inp').val(),
-        'search':$('#search-inp').val()
-     },
+        {
+            'views': $('#views-inp').val(),
+            'votes': $('#votes-inp').val(),
+            'answers': $('#answers-inp').val(),
+            'search': $('#search-inp').val()
+        },
         function (data, textStatus, jqXHR) {
             $('.loading-circle').hide();
-            data=JSON.parse(data);
-            if (parseInt(data.remPages)<=0){
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
                 $('.see-more-btn-user-que').hide()
             }
             $('.questions-list').append(data.html);
-    },
+        },
     );
-   
+
 }
 
 
-function seeMoreUserAns(){
+function seeMoreUserAns() {
     $(this).next().show();
-    let clicked=this;
+    let clicked = this;
     $.get(`/profile/see-more-your-answers/${$(this).data('user-id')}/${pageIndc++}`,
-     {
-        'views':$('#views-inp').val(),
-        'votes':$('#votes-inp').val(),
-        'answers':$('#answers-inp').val(),
-        'search':$('#search-inp').val()
-     },
+        {
+            'views': $('#views-inp').val(),
+            'votes': $('#votes-inp').val(),
+            'answers': $('#answers-inp').val(),
+            'search': $('#search-inp').val()
+        },
         function (data, textStatus, jqXHR) {
             $(clicked).next().hide();
-            data=JSON.parse(data);
-            if (parseInt(data.remPages)<=0){
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
                 $(clicked).hide()
             }
             $(clicked).prev().append(data.html);
-    },
+        },
     );
 
 
 }
-function searchUsrAnswers(){
-    if (searchText==$(this).val())
+function searchUsrAnswers() {
+    if (searchText == $(this).val())
         return;
-    searchText=$(this).val();
-    pageIndc=0;
+    searchText = $(this).val();
+    pageIndc = 0;
     $('.loading-circle').show();
     $('.questions-list').html('');
     $.get(`/profile/see-more-your-answers/${$(this).data('user-id')}/${pageIndc++}`,
-     {
-        'views':$('#views-inp').val(),
-        'votes':$('#votes-inp').val(),
-        'answers':$('#answers-inp').val(),
-        'search':$('#search-inp').val()
-     },
+        {
+            'views': $('#views-inp').val(),
+            'votes': $('#votes-inp').val(),
+            'answers': $('#answers-inp').val(),
+            'search': $('#search-inp').val()
+        },
         function (data, textStatus, jqXHR) {
             $('.loading-circle').hide();
-            data=JSON.parse(data);
-            if (parseInt(data.remPages)<=0){
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
                 $('.see-more-btn-user-que').hide()
             }
             $('.questions-list').append(data.html);
-    },
+        },
     );
-   
+
 }
 
 function togTagToFav(e) {
-    let tagId=$(this).data('tag-id');
-    let clicked=this;
-    function f(){
-        let csrf=getCookie('csrftoken');
+    let tagId = $(this).data('tag-id');
+    let clicked = this;
+    function f() {
+        let csrf = getCookie('csrftoken');
         $.post("/tog-tag", {
-            'csrfmiddlewaretoken':csrf,
-            'tag-id':tagId
+            'csrfmiddlewaretoken': csrf,
+            'tag-id': tagId
         },
             function (data, textStatus, jqXHR) {
-                if (data=='added')
+                if (data == 'added')
                     $(clicked).addClass('favorited');
-                else if (data=='removed')
+                else if (data == 'removed')
                     $(clicked).removeClass('favorited');
             },
         );
@@ -1110,15 +1114,15 @@ function togTagToFav(e) {
 
 }
 
-function  checkAuth(fun)  {
+function checkAuth(fun) {
     $.get({
-        url:"/check-auth",
-        data:{},
+        url: "/check-auth",
+        data: {},
         success(data, textStatus, jqXHR) {
-            if (data ==='1'){
+            if (data === '1') {
                 fun();
-            }else{
-                let loginModal=new bootstrap.Modal(document.getElementById('loginModal'));
+            } else {
+                let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
                 loginModal.show();
             }
         },
@@ -1126,11 +1130,44 @@ function  checkAuth(fun)  {
     }
     );
 
+
+}
+function showCommentDiv() {
+    if ($(this).nextAll(".add-comment-div").css("display") == "none")
+        checkAuth(_ => $(this).nextAll(".add-comment-div").css("display", "block"));
+    else
+        $(this).nextAll(".add-comment-div").css("display", "none")
 }
 
-function showCommentDiv() {
-            if ($(this).nextAll(".add-comment-div").css("display") == "none")
-                checkAuth(_=>$(this).nextAll(".add-comment-div").css("display", "block"));
-            else
-                $(this).nextAll(".add-comment-div").css("display", "none")
-        }
+function favQueBtn() {
+    let clicked = this;
+    let f = _ => $.post("/tog-fav-que",
+        {
+            'que-id': $(this).data('que-id'),
+            csrfmiddlewaretoken: getCookie('csrftoken')
+        },
+        function (data, textStatus, jqXHR) {
+            if (data == 'added')
+                $(clicked).addClass('faved-que');
+            else if (data == 'removed')
+                $(clicked).removeClass('faved-que');
+        },
+    );
+    checkAuth(f);
+}
+function folloUserQueBtn() {
+    let clicked = this;
+    let f = _ => $.post("/togg-user-flo",
+        {
+            'user-id': $(this).data('user-id'),
+            csrfmiddlewaretoken: getCookie('csrftoken')
+        },
+        function (data, textStatus, jqXHR) {
+            if (data == 'added')
+                $(clicked).text('Unfollow');
+            else if (data == 'removed')
+                $(clicked).text('Follow');
+        },
+    );
+    checkAuth(f);
+}

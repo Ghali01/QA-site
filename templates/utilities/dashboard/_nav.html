@@ -272,7 +272,11 @@
               </ul>
             </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{% url 'dashboard:badges-page' page=1 %}" class="nav-link
+            {% if 'badges' in request.path %}
+            active
+            {% endif %}
+            ">
               <i class="fas fa-certificate "></i>
               <p>Badges</p>
             </a>

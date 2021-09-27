@@ -510,3 +510,18 @@ textarea.service-inp{
 .ads-demo-img{
     width: 100%;   
    }
+
+
+.select-label{
+    display: block;
+}
+.badge-inp{
+    margin-top: 12px;
+}
+textarea.badge-inp{
+    min-height: 250px;
+}
+
+.badge-filter{
+    margin: 0 8px;
+}

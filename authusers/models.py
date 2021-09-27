@@ -1,8 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import tree
 from interviewsquestions.settings import MEDIA_ROOT
-from content.models import Tag
+from content.models import Badge, Tag,Question
 
 class TempUser(models.Model):
 
@@ -34,8 +33,10 @@ class UserProfile(models.Model):
     permission=models.CharField(max_length=3,choices=permissionsChoies,default='U')
     socialID=models.CharField(max_length=150,unique=True,null=True)
     provider=models.CharField(max_length=20,choices=providerChoises,null=True)
-
-
+    favQuestions=models.ManyToManyField(Question)
+    followers=models.ManyToManyField(User)
+    rep=models.IntegerField()
+    badges=models.ManyToManyField(Badge)
     def isBaned(self):
         return BanedUser.objects.filter(user=self.user).exists()
     def isModerator(self):
@@ -44,7 +45,12 @@ class UserProfile(models.Model):
         return self.permission=='SA'
     def isAdmin(self):
         return self.permission=='A'
-
+    def goldBadgesCount(self):
+        return self.badges.filter(level=Badge.levels.Gold).count()
+    def silverBadgesCount(self):
+        return self.badges.filter(level=Badge.levels.Silver).count()
+    def bronzeBadgesCount(self):
+        return self.badges.filter(level=Badge.levels.Bronze).count()
 class SocialUser(models.Model):
     fullName=models.CharField(max_length=100,null=True)
     email=models.EmailField()

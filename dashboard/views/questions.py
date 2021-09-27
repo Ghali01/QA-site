@@ -248,8 +248,21 @@ def toggelPostPublish(requset):
             post.isPublished= not post.isPublished
             post.save()
             if post.isPublished:
+                PostLog.objects.create(
+                    post=post,
+                    author=post.author,
+                    moderator=requset.user,
+                    type=PostLog.types.Publish
+                )
                 return HttpResponse('pub')
             else:
+                
+                PostLog.objects.create(
+                    post=post,
+                    author=post.author,
+                    moderator=requset.user,
+                    type=PostLog.types.Unpublish
+                )
                 return HttpResponse('unpub')
         except (Post.DoesNotExist,ValueError):
             pass

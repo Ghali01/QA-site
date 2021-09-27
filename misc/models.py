@@ -13,7 +13,7 @@ class AdvertisePage(models.Model):
     text=models.TextField(default='')
 
 class AdvertiseImage(models.Model):
-    page=models.ForeignKey(AdvertisePage,on_delete=models.CASCADE)
+    page=models.ForeignKey(AdvertisePage,on_delete=models.CASCADE,related_name='images')
     imageFile=models.ImageField(upload_to=MEDIA_ROOT.joinpath('advertise'))
 
 class Service(models.Model):

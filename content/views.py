@@ -1,11 +1,12 @@
 import datetime
 from json.decoder import JSONDecodeError
 from math import ceil
+from django.contrib.auth.models import PermissionsMixin, User
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from interviewsquestions.utilities.authDecoratros import forActiveUser, forModerator,userHasTags
-from content.models import Category, PostLog, SuggestedEdit,Tag,SuggestedQuestion,Post,Question, Voter,Answer,Comment
+from content.models import Badge, Category, PostLog, SuggestedEdit,Tag,SuggestedQuestion,Post,Question, Voter,Answer,Comment
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 from django.db.models.expressions import F,Q
@@ -180,6 +181,7 @@ def questionPage(request,questionID):
     question.views=F('views')+1
     question.save()
     question.refresh_from_db()
+    countViewBadge(question)
     contxt={
         'question':question
     }
@@ -203,7 +205,7 @@ def postVotes(request):
                     post.votes=F('votes')+1
                 post.save()
                 post.refresh_from_db()
-                
+                countVotesBadges(post)
                 return HttpResponse(json.dumps({'resault':'done','votes':post.getVotes()}))
             else:
                 return HttpResponse(json.dumps({'resault':'alradey Voted'}))
@@ -271,10 +273,13 @@ def addCommentToPost(requset):
     if 'post-id' in requset.POST and 'text' in requset.POST:
         if requset.POST['text']:
             try:
+                post=Post.objects.get(pk=int(requset.POST['post-id']))
                 comment=Comment.objects.create( text=requset.POST['text'],
-                                                post=Post.objects.get(pk=int(requset.POST['post-id'])),
+                                                post=post,
                                                 author=requset.user    
                                                 )
+                countCommentBadge(comment)
+                countSelfComments(post)
                 contxt={
                     'comment':comment
                 }
@@ -395,3 +400,108 @@ def categoriesPage(request):
         'tagsFiltr':tagsFiltr
     }
     return render(request,'content/categories.html',contxt)
+
+
+@forActiveUser
+@userHasTags
+def toggQuestionFav(request):
+    if 'que-id' in request.POST:
+        try:
+            question=Question.objects.get(pk=int(request.POST['que-id']))
+            favUserQuestions=request.user.profile.favQuestions
+            if not question in favUserQuestions.all():
+                favUserQuestions.add(question)
+                return HttpResponse('added')
+            else:
+                favUserQuestions.remove(question)
+                return HttpResponse('removed')
+        except (Question.DoesNotExist,ValueError):
+            pass
+
+    return HttpResponse('error')
+
+
+def toggUserFollow(request):
+    if 'user-id' in request.POST:
+        try:
+            user=User.objects.get(pk=int(request.POST['user-id']))
+            userFollowers=user.profile.followers
+            if not request.user in userFollowers.all():
+                userFollowers.add(request.user)
+                return HttpResponse('added')
+            else:
+                userFollowers.remove(request.user)
+                return HttpResponse('removed')
+        except (User.DoesNotExist,ValueError):
+            pass
+    return HttpResponse('error')
+
+def countCommentBadge(comment):
+    userBadges=comment.author.profile.badges.all()
+    badgesG=Badge.objects.filter(reason=Badge.reasons.Comments,targetType=Badge.targetTypes.General).difference(userBadges)
+    commentsCountG=Comment.objects.filter(author=comment.author).count()
+    for badge in badgesG:
+        if badge.count <= commentsCountG:
+            comment.author.profile.badges.add(badge)
+    question=comment.post.getQuestion()
+    badgesC=Badge.objects.filter(reason=Badge.reasons.Comments,category_id=question.category.id).difference(userBadges)
+    commentsCountC=Comment.objects.filter(Q(author=comment.author)&Q(Q(post__question__category=question.category)|Q(post__answer__question__category=question.category))).count()
+    for badge in badgesC:
+        if badge.count <= commentsCountC:
+            comment.author.profile.badges.add(badge)
+
+    for tag in question.tags.all():
+        badgesT= Badge.objects.filter(reason=Badge.reasons.Comments,tag=tag).difference(userBadges)
+        for badge in badgesT:
+            if badge.count <= Comment.objects.filter(Q(author=comment.author)&Q(Q(post__question__tags=tag)|Q(post__answer__question__tags=tag))).count():
+                comment.author.profile.badges.add(badge)
+
+
+def countSelfComments(post):
+    question=post.getQuestion()
+    badges=Badge.objects.filter(
+        Q(reason=Badge.reasons.SelfComments)&
+        Q(
+            Q(category_id=question.category.id)|
+            Q(targetType=Badge.targetTypes.General)
+        
+        ))
+    for tag in question.tags.all():
+        badges= badges.union(Badge.objects.filter(reason=Badge.reasons.SelfComments,tag=tag))
+    badges=badges.difference(post.author.profile.badges.all())
+    for badge in badges:
+        if badge.count <= post.comments.count():
+            post.author.profile.badges.add(badge)
+
+def countVotesBadges(post):
+    secondReason=Badge.reasons.QuestionVotes if post.type==Post.types.Question else Badge.reasons.AnswerVotes
+    question=post.getQuestion()
+    badges=Badge.objects.filter(
+        Q(Q(reason=Badge.reasons.PostVotes)|Q(reason=secondReason))&
+        Q(
+            Q(category_id=question.category.id)|
+            Q(targetType=Badge.targetTypes.General)
+        
+        ))
+    for tag in question.tags.all():
+        badges= badges.union(Badge.objects.filter(Q(Q(reason=Badge.reasons.PostVotes)|Q(reason=secondReason))& Q (tag=tag)))
+    badges=badges.difference(post.author.profile.badges.all())
+    for badge in badges:
+        if badge.count <= post.votes:
+            post.author.profile.badges.add(badge)
+
+
+def countViewBadge(question):
+    badges=Badge.objects.filter(
+        Q(reason=Badge.reasons.Views)&
+        Q(
+            Q(category_id=question.category.id)|
+            Q(targetType=Badge.targetTypes.General)
+        
+        ))
+    for tag in question.tags.all():
+        badges= badges.union(Badge.objects.filter(reason=Badge.reasons.Views,tag=tag))
+    badges=badges.difference(question.post.author.profile.badges.all())
+    for badge in badges:
+        if badge.count <= question.views:
+            question.post.author.profile.badges.add(badge)

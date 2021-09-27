@@ -494,3 +494,68 @@ class Comment(models.Model):
     def getFormatedDate(self):
         return self.date.strftime('%Y/%m/%d')
 
+
+
+class Badge(models.Model):
+    levelsChoices=[ 
+        ('G','Gold'),
+        ('S','Silver'),
+        ('B','Bronze'),
+    ]
+    reasonChoices=[ 
+        ('Q','Questions'),
+        ('A','Answers'),
+        ('SA','Self Answers'),
+        ('C','Comments'),
+        ('SC','Self Comments'),
+        ('V','Views'),
+        ('PV','Post Votes'),
+        ('QV','Question Votes'),
+        ('AV','Answer Votes'),
+        ('E','Edits'),
+    ]
+    targetTypesChoice=[ 
+        ('T','Tag'),
+        ('C','Category'),
+        ('G','General'),
+    ]
+    name=models.CharField(max_length=60)
+    description=models.TextField()
+    level=models.CharField(max_length=1,choices=levelsChoices)
+    reason=models.CharField(max_length=2,choices=reasonChoices)
+    targetType=models.CharField(max_length=1,choices=targetTypesChoice)
+    tag=models.ForeignKey(Tag,on_delete=models.CASCADE,null=True)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
+    count=models.IntegerField()
+    
+    class levels:
+        Gold='G'
+        Silver='S'
+        Bronze='B'
+    class targetTypes:
+        Tag='T'
+        Category='C'
+        General='G'
+    class reasons:
+        Questions='Q'
+        Answers='A'
+        SelfAnswers='SA'
+        Comments='C'
+        SelfComments='SC'
+        Views='V'
+        PostVotes='PV'
+        QuestionVotes='QV'
+        AnswerVotes='AV'
+        Edits='E'
+
+    def target(self):
+         if self.targetType==Badge.targetTypes.Category:
+            return self.category
+         elif self.targetType==Badge.targetTypes.Tag:
+            return self.tag
+
+    def __str__(self) -> str:
+        return self.name
+
+    def userEarned(self):
+        return User.objects.filter(profile__badges=self).count()

@@ -3615,3 +3615,19 @@ p.info{
 .cus-footer{
     color: var(--black-600);
 }
+.ads-img{
+    display: block;
+    margin: auto;
+}
+.ads-txt{
+    color: var(--black-350) !important;
+}
+.fav-que-btn{
+    cursor: pointer;
+}
+.faved-que{
+    color: var(--primary-color);
+}
+.flo-que-btn{
+    padding: 0;
+}

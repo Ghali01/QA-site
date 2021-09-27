@@ -1,0 +1,167 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% block title %}Badges Management{% endblock %}
+
+{% block content %}
+{% include 'utilities/_messages.html' %}
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Badges Management</h3>
+            <form id='serach-form'>
+              <div class="input-group float-right badge-filter" style="width: 750px;">
+                <input type="search" class="form-control form-control-md "
+                    id="search-badges" name="search" placeholder="search name" value="{{search}}">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-md btn-default">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <select class="form-control badge-filter" name="lvl" id="">
+                  <option value="0">Select Level</option>
+                  <option value="G" {% if lvl == 'G' %} selected {% endif %}>Gold</option>
+                  <option value="S"{% if lvl == 'S' %} selected {% endif %}>Silver</option>
+                  <option value="B"{% if lvl == 'B' %} selected {% endif %}>Bronze</option>
+                  </select>
+                <select class="form-control badge-filter" name="reason" id="">
+                  <option value="0">Select Reason</option>
+                  <option value="Q" {% if reason == 'Q' %} selected {% endif %}>Quetions</option>
+                  <option value="A"{% if reason == 'A' %} selected {% endif %}>Answers</option>
+                  <option value="C"{% if reason == 'C' %} selected {% endif %}>Comments</option>
+                  <option value="SA"{% if reason == 'SA' %} selected {% endif %}>Self Answer</option>
+                  <option value="SC"{% if reason == 'SC' %} selected {% endif %}>Self Commnet</option>
+                  <option value="PV"{% if reason == 'PV' %} selected {% endif %}>Post Votes</option>
+                  <option value="QV"{% if reason == 'QV' %} selected {% endif %}>Question Votes</option>
+                  <option value="AV"{% if reason == 'AV' %} selected {% endif %}>Answer Votes</option>
+                  <option value="V"{% if reason == 'E' %} selected {% endif %}>Edit</option>
+                 </select>
+                <select class="form-control badge-filter" name="target" id="">
+                  <option value="0">Select Target</option>
+                  <option value="G" {% if targetStr == 'G' %} selected {% endif %} >General</option>
+                  <optgroup label="Categories">
+                    {% for cate in categories %} 
+                    <option value="C{{cate.id}}"{% if targetStr|slice:':1' == 'C' and targetStr|slice:'1:' == cate.id|stringformat:'i' %} selected {% endif %}>{{cate.name}}</option>
+                    {% endfor %}
+
+                  </optgroup>
+                  <optgroup label="Tags">
+                    {% for tag in tags %}
+                    <option value="T{{tag.id}}"{% if targetStr|slice:':1' == 'T' and targetStr|slice:'1:' == tag.id|stringformat:'i'  %} selected {% endif %}>{{tag.name}}</option>
+                    {% endfor %}
+                  </optgroup>
+                </select>
+                <a class="btn btn-default float-right add-cate-m-btn" href="{% url 'dashboard:add-badge' %}"  >+</a>
+                
+            </div>
+           </form>
+           <script>
+             $('#serach-form select').change(_=>$('#serach-form').submit())
+           </script>
+            </div>
+            <div class="card-body">
+              <table class="table table-bordered table-striped">
+                <thead>
+                  <th style="width: 10%;">Name</th>
+                  <th style="width: 40%;">Description</th>
+                  <th style="width: 10%;">Level</th>
+                  <th style="width: 10%;">Reason</th>
+                  <th style="width: 10%;">target</th>
+                  <th style="width: 5%;">Users Earned</th>
+                  <th style="width: 15%;">Action</th>
+                </thead>
+                <tbody >
+                  {% for badge in badges %}
+                  <tr>
+                    <td>{{badge.name}}</td>
+                  <td>{{badge.description}}</td>
+                  <td>{{badge.get_level_display}}</td>
+                  <td>{{badge.get_reason_display}}</td>
+                  <td>
+                  {% if not badge.targetType == 'G' %}
+                    {{badge.target.name}}
+                  {% else %} 
+                  General
+                  {% endif %}
+                  </td>
+                  <td>
+
+                    {{badge.userEarned}}
+                  </td>
+                  <td>
+                    <a class="btn btn-app cus-btn-app" href="{% url 'dashboard:edit-badge' badgeID=badge.id %}">
+                      <i class="fas fa-edit btn-app-icon"></i>Edit
+                    </a>
+                    <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
+                    data-toggle="modal" data-target="#del-modal" data-tid="{{badge.id}}">
+                      <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                    </button>
+            
+                  </td>
+                  </tr>
+                  {% endfor %}
+               
+                </tbody>
+              </table>
+          
+          
+              <div class="dataTables_paginate paging_simple_numbers table-indcator" id="example2_paginate">
+                <ul class="pagination">
+                    {% for pg in pages %}
+                  <li class="paginate_button page-item 
+                  {% if pg == currentPage %}
+                  active
+                  {%  endif %}
+                  ">
+                    <a href="{% url 'dashboard:badges-page' page=pg %}" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                      {{pg}}
+                    </a>
+                  </li>
+                 {% endfor %}
+                </ul>
+              </div>
+              <script>
+                [...$('.page-link')].forEach(el=>$(el).attr('href',$(el).attr('href')+location.search));
+              </script>
+          
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+  
+  <div class="modal fade" id="del-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="del-modalLabel">Delete Badge</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="POST" id="delete-form" action="{% url 'dashboard:delete-badge' %}" >
+              {% csrf_token %}
+            <p>Do you want Delete the Badge with ID <span class="del-id-span" id="del-id-span"></span>
+            </p>
+
+            <input type="hidden" name="del-id" id="del-id-inp">
+            <input type="hidden" name="page" value="{{currentPage}}">
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}

@@ -34,7 +34,11 @@
             {% endif %}
           
             " data-post-id="{{question.post.id}}"></i>
-            <i class="far fa-bookmark bookmark-icon"></i>
+            <i class="far fa-bookmark bookmark-icon fav-que-btn
+            {% if question in request.user.profile.favQuestions.all %}
+            faved-que
+            {% endif %}
+            " data-que-id="{{question.id}}"></i>
             {% endwith %}
         </div>
         {% endif %}
@@ -68,7 +72,13 @@
                         <a href="{% url 'content:suggest-post-edit' postID=question.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">Suggest
                             Edit</a>
                         <div class="link-break">|</div>
-                        <a href="#" class="custom-link custom-link-sm primary-link que-opt">Follow</a>
+                        <button class="custom-link custom-link-sm primary-link btn que-opt  flo-que-btn" data-user-id="{{question.post.author.id}}">
+                            {% if request.user in question.post.author.profile.followers.all %}
+                            Unfollow
+                            {% else %}
+                            Follow
+                            {% endif %}                            
+                        </button>
                         <div class="link-break">|</div>
                         <!-- Button trigger modal -->
                         <button type="button" class="link-button" data-bs-toggle="modal"

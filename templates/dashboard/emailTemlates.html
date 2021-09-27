@@ -16,8 +16,8 @@
           {% endif %}
           <a class="btn btn-default without-temp-btn float-right" href="{% url 'dashboard:email-non-temp' language=lang %}{% if select %}?to={{toEmail}}{% endif %}"  >{% translate 'without template' %}</a>
           <div class="btn-group lng-sel">
-            <a href="{% url 'dashboard:templates' language='EN' %}" class="btn btn-default">English</a>
-            <a href="{% url 'dashboard:templates' language='AR' %}" class="btn btn-default">عربي</a>
+            <a href="{% url 'dashboard:templates' language='EN' %}{% if toEmail %}?to={{toEmail}}{% endif %}" class="btn btn-default">English</a>
+            <a href="{% url 'dashboard:templates' language='AR' %}{% if toEmail %}?to={{toEmail}}{% endif %}" class="btn btn-default">عربي</a>
         </div>
         </div>
         <ul class="list-group list-group-flush" >

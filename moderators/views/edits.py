@@ -6,7 +6,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
 from interviewsquestions.utilities.authDecoratros import forActiveUser,forModerator
-from content.models import  Category, Post, PostLog, Question, SuggestedEdit,Tag
+from content.models import  Category, Post, PostLog, Question, SuggestedEdit,Tag,Badge
 import json
 from math import ceil
 from django.shortcuts import get_object_or_404
@@ -198,6 +198,7 @@ def changeSuggestedEditStatus(request):
                     originLog=edit.logs.get(type=PostLog.types.SuggestEdit)
 
                 )
+                countEditsBadge(edit)
                 return HttpResponse('done')
             elif request.POST['status']==SuggestedEdit.staties.Reject and edit.status==SuggestedEdit.staties.Suggest:
                 edit.status=SuggestedEdit.staties.Reject
@@ -215,3 +216,28 @@ def changeSuggestedEditStatus(request):
         except ValueError:
             pass
     return HttpResponse('error')
+
+
+
+
+
+def countEditsBadge(edit):
+    user=edit.userWhoSugget()
+    userBadges=user.profile.badges.all()
+    badgesG=Badge.objects.filter(reason=Badge.reasons.Edits,targetType=Badge.targetTypes.General).difference(userBadges)
+    editsCountG=PostLog.objects.filter(author=user,type=PostLog.types.AcceptEdit).count()
+    for badge in badgesG:
+        if badge.count <= editsCountG:
+            user.profile.badges.add(badge)
+    question=edit.post.getQuestion()
+    badgesC=Badge.objects.filter(reason=Badge.reasons.Edits,category_id=question.category.id).difference(userBadges)
+    editsCountC=PostLog.objects.filter(Q(author=user)&Q(type=PostLog.types.AcceptEdit)&Q(Q(post__question__category=question.category)|Q(post__answer__question__category=question.category))).count()
+    for badge in badgesC:
+        if badge.count <= editsCountC:
+            user.profile.badges.add(badge)
+
+    for tag in question.tags.all():
+        badgesT= Badge.objects.filter(reason=Badge.reasons.Edits,tag=tag).difference(userBadges)
+        for badge in badgesT:
+            if badge.count <= PostLog.objects.filter(Q(author=user)&Q(type=PostLog.types.AcceptEdit)&Q(Q(post__question__tags=tag)|Q(post__answer__question__tags=tag))).count():
+                user.profile.badges.add(badge)

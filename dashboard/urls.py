@@ -1,5 +1,6 @@
+from os import name
 from django.urls import path
-from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews, Suggestedfeedback as SuggestedfeedbackViews,editsite as editSiteViews,messages as messagesViews,Email as emailTemplateViews
+from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews, Suggestedfeedback as SuggestedfeedbackViews,editsite as editSiteViews,messages as messagesViews,Email as emailTemplateViews,badges as badgesViews
 app_name='dashboard'
 urlpatterns=[
     path('',mainViews.index,name='index'),
@@ -82,5 +83,9 @@ urlpatterns=[
     path('email/<str:language>',lambda r,language:emailTemplateViews.sendEmailPage(r,language,-1),name='email-non-temp'),
     path('email/<str:language>/<int:templateID>',emailTemplateViews.sendEmailPage,name='email-page'),
     path('send-email',emailTemplateViews.sendEmail,name='send-email'),
+    path('badges/<int:page>',badgesViews.BadgesPage,name='badges-page'),
+    path('add-badge',badgesViews.addBadge,name='add-badge'),
+    path('del-badge',badgesViews.deleteBadge,name='delete-badge'),
+    path('edit-badge/<int:badgeID>',badgesViews.editBadge,name='edit-badge')
   
   ]

@@ -6,7 +6,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
 from interviewsquestions.utilities.authDecoratros import forActiveUser,forModerator
-from content.models import  Category,  PostLog, Question, Tag, SuggestedQuestion
+from content.models import  Category,  PostLog, Question, Tag, SuggestedQuestion,Badge
 import json
 from math import ceil
 from django.shortcuts import get_object_or_404
@@ -129,6 +129,7 @@ def changeSuggestQuestion(request):
                                             originLog=post.logs.get(type=PostLog.types.Suggest)
                                             )
                 
+                countQuestionBadge(question)
                 return HttpResponse('done')
             elif (lastLog.type== PostLog.types.Suggest) and request.POST['status']==PostLog.types.Reject:
                 post=suggestedQuestion.post
@@ -145,3 +146,25 @@ def changeSuggestQuestion(request):
             # return redirect(reverse('moderators:suggested-questions-await',kwargs={'page':1}))            
 
     return redirect(reverse('moderators:suggested-questions-await',kwargs={'page':1}))
+
+
+def countQuestionBadge(question):
+    userBadge=question.post.author.profile.badges.all()
+    badgesG=Badge.objects.filter(reason=Badge.reasons.Questions,targetType=Badge.targetTypes.General).difference(userBadge)
+    questionsCountG=Question.objects.filter(post__author=question.post.author).count()
+    for badge in badgesG:
+        if badge.count <= questionsCountG:
+            question.post.author.profile.badges.add(badge)
+    badgesC=Badge.objects.filter(reason=Badge.reasons.Questions,category_id=question.category.id).difference(userBadge)
+    questionsCountC=Question.objects.filter(post__author=question.post.author,category=question.category).count()
+    for badge in badgesC:
+        if badge.count <= questionsCountC:
+            question.post.author.profile.badges.add(badge)
+
+    for tag in question.tags.all():
+        badgesT= Badge.objects.filter(reason=Badge.reasons.Questions,tag=tag).difference(userBadge)
+        for badge in badgesT:
+            if badge.count <= Question.objects.filter(post__author=question.post.author,tags=tag).count():
+                question.post.author.profile.badges.add(badge)
+
+

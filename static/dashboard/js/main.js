@@ -267,6 +267,7 @@ $(document).ready(function () {
     $('.edit-sug-item-btn').click(editSuggestedItem);
 
     $(".del-li-btn").click(deleteLiBtn);
+    $('#target-type').change(targetTypeSelect);
 
 
 
@@ -653,7 +654,11 @@ function editTagBtn(){
     $('#edit-tag-desc').val($(this).parent().prev().text());
 }
 
+var searchVal='';
 function searchUsers(){
+    if ($(this).val()==searchVal)
+        return
+    searchVal=$(this).val();
     $('#users').html('');
     if($(this).val()){
         let searchText=$(this).val(),_this=this;
@@ -684,6 +689,9 @@ function searchUsers(){
                       </a>
                       <a class="btn btn-app cus-btn-app app-btn-70" href="/profile/user-answers/${user.id}">
                         <i class="fas fa-angle-right btn-app-icon"></i>Answers
+                      </a>
+                      <a class="btn btn-app cus-btn-app app-btn-70" href="/dashboard/templates/EN?to=${user.email}">
+                        <i class="far fa-envelope btn-app-icon"></i>Email
                       </a>
                       ${user.isBaned!='True'?`<button class="btn btn-app cus-btn-app ban-user-btn"
                       data-toggle="modal" data-lvl="2" data-target="#ban-modal"
@@ -786,3 +794,16 @@ function deleteLiBtn() {
     $("#del-id").val($(this).parent().data("item-id"));
     $("#del-name").text($(this).prevAll(".li-name").text());
   }
+
+
+
+function targetTypeSelect(){
+    let targets=undefined;
+    if($(this).val()=='C')
+        targets=$(this).data('categories');
+    else if ($(this).val()=='T')
+       targets=$(this).data('tags');
+    $('#targets').html('');
+    if(targets)
+        targets.forEach(el=>$('#targets').append(`<option value="${el.id}">${el.name}</option>`));
+}

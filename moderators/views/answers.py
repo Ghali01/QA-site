@@ -6,7 +6,7 @@ from django.http.response import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
 from interviewsquestions.utilities.authDecoratros import forActiveUser,forModerator
-from content.models import Answer, Category,  PostLog, Question,Tag
+from content.models import Answer, Category,  PostLog, Question,Tag,Badge
 import json
 from math import ceil
 from django.shortcuts import get_object_or_404
@@ -120,6 +120,9 @@ def changeSuggestAnswers(request):
                         originLog=ans.post.logs.get(type=PostLog.types.Suggest)
               
                     )
+                    countAnswersBadge(ans)
+                countSelfAnswersBadge(question)
+
                 return HttpResponse('done')
             elif mode=='R' and status==PostLog.types.Accept :
                 question.post.save()
@@ -158,6 +161,9 @@ def changeSuggestAnswer(request):
                     originLog=answer.post.logs.get(type=PostLog.types.Suggest)
 
                 )
+
+                countAnswersBadge(answer)
+                countSelfAnswersBadge(answer.question)
                 return HttpResponse('done')
 
             elif status== PostLog.types.Reject and lastLogType==PostLog.types.Suggest:
@@ -174,3 +180,36 @@ def changeSuggestAnswer(request):
             pass
     return redirect(reverse('moderators:suggested-answers-await',kwargs={'page':1}))
 
+def countAnswersBadge(answer):
+    userBadges=answer.post.author.profile.badges.all()
+    badgesG=Badge.objects.filter(reason=Badge.reasons.Answers,targetType=Badge.targetTypes.General).difference(userBadges)
+    answersCountG= Answer.objects.filter(post__author=answer.post.author,post__logs__type=PostLog.types.Accept).count()
+    for badge in badgesG:
+        if badge.count <=answersCountG:
+            answer.post.author.profile.badges.add(badge)
+    badgesC=Badge.objects.filter(reason=Badge.reasons.Answers,category_id=answer.question.category.id).difference(userBadges)
+    answersCountC=Answer.objects.filter(post__author=answer.post.author,post__logs__type=PostLog.types.Accept,question__category=answer.question.category).count()
+    for badge in badgesC:
+        if badge.count <= answersCountC:
+            answer.post.author.profile.badges.add(badge)
+
+    for tag in answer.question.tags.all():
+        badgesT= Badge.objects.filter(reason=Badge.reasons.Answers,tag=tag).difference(userBadges)
+        for badge in badgesT:
+            if badge.count <= Answer.objects.filter(post__author=answer.post.author,post__logs__type=PostLog.types.Accept,question__tags=tag).count():
+                answer.post.author.profile.badges.add(badge)
+
+def countSelfAnswersBadge(question):
+    badges=Badge.objects.filter(
+        Q(reason=Badge.reasons.SelfAnswers)&
+        Q(
+            Q(category_id=question.category.id)|
+            Q(targetType=Badge.targetTypes.General)
+        
+        ))
+    for tag in question.tags.all():
+        badges= badges.union(Badge.objects.filter(reason=Badge.reasons.SelfAnswers,tag=tag))
+    badges=badges.difference(question.post.author.profile.badges.all())
+    for badge in badges:
+        if badge.count <= question.answers.all().count():
+            question.post.author.profile.badges.add(badge)
