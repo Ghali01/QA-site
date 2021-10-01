@@ -11,11 +11,13 @@
                         <div class="pres-info">
                             <div class="avt-container">
                             <img class="avt-img" src="{{user.profile.image.url}}" alt="person name">
-                                <button type="button" class="btn btn-primary primary-button edit-avatar-btn"
+                                {% if user == request.user %}
+                            <button type="button" class="btn btn-primary primary-button edit-avatar-btn"
                                 >
                                 
                                     <i class="fas fa-pen"></i>
                                 </button>
+                                {% endif %}
                             </div>
                             <div class="pers-rep-div">
                                 <span class=" pers-rep">11452</span>
