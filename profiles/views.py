@@ -356,7 +356,7 @@ def changeAavatar(request):
         path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
         finalImg=finalImg.crop([x0,y0,x1,y1])
         finalImg.save(path)
-        request.user.profile.image.name=path 
+        request.user.profile.image.name='profile/'+request.user.username+'.png'
         request.user.profile.save()
     return redirect(reverse('profiles:profile-page',kwargs={'userID':request.user.id}))
     return HttpResponse('h')
