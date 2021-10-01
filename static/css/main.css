@@ -2043,7 +2043,6 @@ button.go{
 .pres-info .avt-img{
     display: block;
     width:100%;
-    border-radius: 3px;
 }
 .pers-rep-div{
     display: flex;
@@ -2450,9 +2449,9 @@ button.go{
     padding: 0 6px;
 }
 .badges-list-header{
-    margin-top: 20px;
     border-bottom: 2px solid white;
-    padding: 0 8px;
+    padding: 8px;
+    padding-top: 6px;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -2821,6 +2820,9 @@ button.go{
     .tops-list .question-title{
     width: 100%;
     }
+}
+.top-list-item{
+    margin-bottom: 8px;
 }
 .top-item-flex{
     display: flex;
@@ -3630,4 +3632,120 @@ p.info{
 }
 .flo-que-btn{
     padding: 0;
+}
+.follower-name{
+    width: 150px;
+}
+
+#avatarModal .modal-dialog{
+    width: 500px;
+    height: 500px;
+}
+#avatarModal .modal-body{
+    padding: 10px;
+}
+.avatar-container{
+    position: relative;
+}
+.e-avatar-img{
+    display: block;
+    width: 480px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+/* z-index: 0; */
+}
+.crop-img{
+    position: absolute;
+    background: transparent;
+    left: 60px;
+    top: 12px;
+    /* opacity: .4; */
+    width: 360px;
+    height: 360px;
+    /* border: 1px solid var(--primary-color); */
+    border-radius: 1px;
+    /* transform: translate(100px,100px); */
+    z-index: 3;
+    transform-origin: 50% 50%;
+    min-height: 150px;
+    min-width: 150px;
+    max-width: 360px;
+    max-height: 360px;
+    cursor: move;
+    /* transform: rotate(180deg); */
+}
+.black-efect-crp{
+    background-color: black;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+.resize-hands{
+    position: relative;
+    width: 100%;
+    top: 0;
+    display: inline-block;
+    height: 100%;
+}
+.resize-hands .hand{
+    width: 15px;
+    position: absolute;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--tSecodry-color);
+   }
+.resize-hands .l-hand{
+    top: 50%;
+    left: -8px;
+    cursor: ew-resize;
+
+   }
+   .resize-hands .r-hand{
+    top: 50%;
+    right: -8px;
+    cursor: ew-resize;
+}
+   .resize-hands .t-hand{
+    top: -8px;
+    left: 50%;
+    cursor: s-resize;
+
+   }
+   .resize-hands .b-hand{
+    bottom: -8px;
+    left: 50%;
+    cursor: s-resize;
+   }
+   
+   .circle-crop{
+       width: 100%;
+       height: 100%;
+       border-radius: 50%;
+       border: 1px solid var(--primary-color);
+        position: absolute;
+       /* z-index: -8; */
+   }
+.avt-container{
+    position: relative;
+}
+
+.edit-avatar-btn{
+    visibility: visible;
+    position: absolute;
+    top:6px;
+    right:9px;
+    padding: 4px 5px;
+    font-size: 13px;
+}
+.avt-file{
+    display: none;
+}
+.avatar-img,.avt-img{
+    border-radius: 50%;
 }

@@ -9,7 +9,14 @@
                 <div class="row">
                     <div class="col-12 col-sm-4  col-lg-3 pers-col ">
                         <div class="pres-info">
+                            <div class="avt-container">
                             <img class="avt-img" src="{{user.profile.image.url}}" alt="person name">
+                                <button type="button" class="btn btn-primary primary-button edit-avatar-btn"
+                                >
+                                
+                                    <i class="fas fa-pen"></i>
+                                </button>
+                            </div>
                             <div class="pers-rep-div">
                                 <span class=" pers-rep">11452</span>
                                 <span class=" pers-reputation-w">REPUTATION</span>
@@ -277,4 +284,42 @@
             </div>
         </div>
         
+
+
+
+
+
+        <script src="{% static 'js/crop.js' %}"></script>
+        <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog custom-dialog">
+                <div class="modal-content custom-dialog">
+                    <div class="modal-body">
+                        <form action="{% url 'profiles:chang-avatar' %}" method="post" id='change-avt-form' enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <input type="file" class="avt-file" name="img-file" id="avt-file">
+                            <input type="hidden" name="position" id="postion">
+                        </form>
+                        <div class="avatar-container">
+                            <div class="crop-img">
+                                <div class="circle-crop"></div>
+    
+                                <div class="resize-hands">
+                                    <div class="hand l-hand"></div>
+                                    <div class="hand r-hand"></div>
+                                    <div class="hand t-hand"></div>
+                                    <div class="hand b-hand"></div>
+                                </div>
+                            </div>
+                            <img src="{{user.profile.image.url}}" class="e-avatar-img" alt="">
+                            <div class="black-efect-crp"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary primary-button" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary primary-button save-avt-form">Save</button>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
 {% endblock %}

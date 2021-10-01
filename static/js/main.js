@@ -132,6 +132,7 @@ $(document).ready(
         if (document.getElementById("editor") != undefined) {
             // tinyMDE = new TinyMDE.Editor({ element: 'editor', content: "" });
             // var commandBar = new TinyMDE.CommandBar({ element: 'editor-toolbar', editor: tinyMDE });
+            try{
             const Editor = toastui.Editor;
             editor = new Editor({
                 el: document.querySelector('#editor'),
@@ -142,7 +143,10 @@ $(document).ready(
                 initialEditType:'wysiwyg'
               });
               $('.ProseMirror ').addClass('custom-scrollbar');
-        }
+            }catch(e){
+
+            }
+            }
 
         // tag list start
 
@@ -536,7 +540,10 @@ $(document).ready(
 
         $('.fav-que-btn').click(favQueBtn);
         $('.flo-que-btn').click(folloUserQueBtn);
-
+        $('.follow-btn').click(folloUserQueBtn);
+        $('.see-more-btn-badges').click(seeMoreUserBadges);
+        $('.see-more-btn-followers').click(seeMoreUserFollowers);
+        $('.see-more-btn-favq').click(seeMoreFavQuestions);
         let now = new Date(),
             dateNextWeek = new Date(now.getTime() + (1000 * 60 * 60 * 24 * 7));
 
@@ -1164,10 +1171,87 @@ function folloUserQueBtn() {
         },
         function (data, textStatus, jqXHR) {
             if (data == 'added')
-                $(clicked).text('Unfollow');
+                if ($(clicked).hasClass('follow-btn'))
+                  $(clicked).html('<i class="fas fa-user-minus"></i> Unfollow');
+                    
+                else
+
+                    $(clicked).text('Unfollow');
             else if (data == 'removed')
-                $(clicked).text('Follow');
+                if ($(clicked).hasClass('follow-btn'))
+                    $(clicked).html('<i class="fas fa-user-plus"></i> Follow');
+                else
+                    $(clicked).text('Follow');
         },
     );
     checkAuth(f);
+}
+
+
+function seeMoreUserBadges() {
+    $(this).next().show();
+    let page=parseInt($(this).data('page'));
+    $(this).data('page',(page+1).toString())
+    let clicked = this;
+    $.get(`/profile/see-more-badges/${page}`,
+        {
+            'user-id': $(this).data('user-id'),
+            'level': $(this).data('level'),
+        },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+        },
+    );
+
+
+}
+
+function seeMoreUserFollowers() {
+    $(this).next().show();
+    let clicked = this;
+    $.get(`/profile/see-more-followers/${pageIndc++}`,
+        {
+            'user-id': $(this).data('user-id'),
+        },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
+                $(clicked).hide()
+            }
+            
+            $(clicked).prev().append(data.html);
+            $(clicked).prev().find('.follow-btn').click(folloUserQueBtn);
+        
+        },
+    );
+
+
+}
+
+function seeMoreFavQuestions() {
+    $(this).next().show();
+    let clicked = this;
+    
+    $.get(`/profile/see-more-fav-que/${pageIndc++}` , {
+            'user-id': $(this).data('user-id'),
+            'category': $('#category-id').val(),
+            'views': $('#views-filter').val(),
+            'votes': $('#votes-filter').val(),
+            'answers': $('#answers-filter').val(),
+           },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+        },
+    );
 }

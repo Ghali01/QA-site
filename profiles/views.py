@@ -1,12 +1,15 @@
 from django.db.models.query_utils import Q
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.http import HttpResponse
+from django.urls.base import reverse
 from content.models import Answer, Badge, Post, PostLog, Question,Category
 from django.db.models import Count,F
 from math import ceil
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 import json
+from interviewsquestions.utilities.authDecoratros import forActiveUser
+from interviewsquestions.settings import MEDIA_ROOT
 def profilePage(request,userID):
     ptype=order=None
     user=get_object_or_404(User,id=userID)
@@ -328,3 +331,32 @@ def seeMoreFavQuestion(request,page):
         except (ValueError):
             pass
     return HttpResponse('error')
+
+from PIL import Image,ImageDraw
+import numpy
+@forActiveUser
+def changeAavatar(request):
+    if 'img-file' in request.FILES and 'position' in request.POST:
+        file=request.FILES['img-file']
+        position=json.loads(request.POST['position'])
+        img=Image.open(file)
+        img=img.resize([int(position['orginalW']),int(position['orginalH'])])
+        w,h=img.size
+        cropImg =Image.new('L',[w,h],0)
+        draw=ImageDraw.Draw(cropImg)
+        x0=int(position['x'])
+        x1=int(position['x'])+int(position['width'])
+        y0=int(position['y'])
+        y1=int(position['y'])+int(position['height'])
+        draw.pieslice([x0,y0,x1,y1],0,360,fill=250)
+        imgArr=numpy.array(img)
+        cropArr=numpy.array(cropImg)
+        fArr=numpy.dstack((imgArr,cropArr))
+        finalImg=Image.fromarray(fArr)
+        path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
+        finalImg=finalImg.crop([x0,y0,x1,y1])
+        finalImg.save(path)
+        request.user.profile.image.name=path 
+        request.user.profile.save()
+    return redirect(reverse('profiles:profile-page',kwargs={'userID':request.user.id}))
+    return HttpResponse('h')
