@@ -2450,9 +2450,9 @@ button.go{
     padding: 0 6px;
 }
 .badges-list-header{
-    margin-top: 20px;
     border-bottom: 2px solid white;
-    padding: 0 8px;
+    padding: 8px;
+    padding-top: 6px;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -2821,6 +2821,9 @@ button.go{
     .tops-list .question-title{
     width: 100%;
     }
+}
+.top-list-item{
+    margin-bottom: 8px;
 }
 .top-item-flex{
     display: flex;
@@ -3630,4 +3633,7 @@ p.info{
 }
 .flo-que-btn{
     padding: 0;
+}
+.follower-name{
+    width: 150px;
 }

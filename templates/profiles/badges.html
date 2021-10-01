@@ -1,0 +1,71 @@
+{% extends 'utilities/_base_no_right.html' %}
+{% load profileLib %}
+{% block  title %}{{user.username}} {% endblock %}
+
+{% block content %} 
+{% include 'profiles/_profileTabs.html' %}
+
+<div class="badget-content">
+        <div class="badges-list-header badges-list-header-gold">
+            <div class="badges-header-circural"></div>
+            <span class="badges-header-title"> Gold</span>
+        </div>
+        <div class="badges-list badges-list-gold">
+            {% for badge in goldBadges %}
+                {% badgeItem badge %}
+            {% endfor %}
+        </div>
+        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="G" data-page="1">See more</button>
+        <div class="loading-circle">
+            <div class="primary-circle">
+                <div class="secondary-circle"></div>
+                <div class="background-circle"></div>
+            </div>
+    
+        </div>
+        <div class="badges-list-header badges-list-header-silver">
+            <div class="badges-header-circural"></div>
+            <span class="badges-header-title"> Silver</span>
+        </div>
+
+       
+        <div class="badges-list badges-list-silver">
+
+            {% for badge in silverBadges %}
+                {% badgeItem badge %}
+            {% endfor %}
+        
+        </div> 
+
+        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="S" data-page="1">See more</button>
+        <div class="loading-circle">
+            <div class="primary-circle">
+                <div class="secondary-circle"></div>
+                <div class="background-circle"></div>
+            </div>
+    
+        </div>
+        <div class="badges-list-header badges-list-header-bronze">
+            <div class="badges-header-circural"></div>
+            <span class="badges-header-title"> Bronze</span>
+        </div>
+
+        <div class="badges-list badges-list-bronze">
+        {% for badge in bronzeBadges %}
+        {% badgeItem badge %}
+        {% endfor %}
+            
+
+        </div>
+
+        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="B" data-page="1">See more</button>
+        <div class="loading-circle">
+            <div class="primary-circle">
+                <div class="secondary-circle"></div>
+                <div class="background-circle"></div>
+            </div>
+    
+        </div>
+    </div>
+    
+{% endblock %}

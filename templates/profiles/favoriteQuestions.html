@@ -1,0 +1,260 @@
+{% extends 'utilities/_base_no_right.html' %}
+{% load questions %}
+{% block title %} {{user.username}} | Favorite Questions {% endblock %}
+{% block content %}
+{% include 'profiles/_profileTabs.html' %}
+<div class="favque-content " id="favque-content">
+    <div class="question-dev-parent">
+        <div class="questions-gird-toolbar">
+
+           
+            <div class="categoriis-lists filter one-click-filter">
+
+                <div class="custom-select category-select-toolbar" data-cur-val="1">
+                    <button class="btn btn-primary btn-select">
+                        <span class="selected-span">
+                            {% if category.getLvl == 1 %}
+                            {{category.name}}
+                            {% elif category.getLvl > 1 %}
+                            {{category.getFirstParent.name}}
+
+                            {% elif not category %}
+                            {{categories.first.name}}
+                            {% endif %}
+                        </span>
+                        <i class="fas fa-caret-down select-arrow"></i>
+
+                    </button>
+                    <ul class="custom-select-list custom-scrollbar">
+                        {% for cate in categories %}
+                        <li class="custom-select-item" data-cate-id="{{cate.id}}" data-sub='{{cate.subs}}'>
+                            {{cate.name}}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="custom-select category-select-toolbar" {% if category.getLvl >= 1 %}
+                    style='visibility: visible;'
+                    {% endif %}
+                    >
+                    <button class="btn btn-primary btn-select">
+                        <span class="selected-span">
+
+                            {% if category.getLvl == 2 %}
+                            {{category.name}}
+                            {% elif category.getLvl > 2 %}
+                            {{category.getSecondParent.name}}
+                            {% else %}
+                            Select Category
+                            {% endif %}
+
+                        </span>
+                        <i class="fas fa-caret-down select-arrow"></i>
+
+                    </button>
+                    <ul class="custom-select-list custom-scrollbar">
+                        {% if category %}
+                        {% for subCate in category.getFirstParent.subCategoies %}
+                        <li class="custom-select-item" data-cate-id="{{subCate.id}}" data-sub='{{subCate.subs}}'>
+                            {{subCate.name}}
+                        </li>
+                        {% empty %}
+                        {% if category.getLvl == 1 %}
+
+                        {% for subCate in category.subCategoies %}
+                        <li class="custom-select-item" data-cate-id="{{subCate.id}}" data-sub='{{subCate.subs}}'>
+                            {{subCate.name}}
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+
+                        {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 2 %}
+                    style='visibility: visible;'
+                    {% endif %}>
+                    <button class="btn btn-primary btn-select">
+                        <span class="selected-span">
+
+                            {% if category.getLvl == 3 %}
+                            {{category.name}}
+                            {% elif category.getLvl > 3 %}
+                            {{category.getThirdParent.name}}
+                            {% else %}
+                            Select Category
+                            {% endif %}
+
+                        </span>
+                        <i class="fas fa-caret-down select-arrow"></i>
+
+                    </button>
+                    <ul class="custom-select-list custom-scrollbar">
+                        {% if category %}
+                        {% for subCate in category.getSecondParent.subCategoies %}
+                        <li class="custom-select-item" data-cate-id="{{subCate.id}}" data-sub='{{subCate.subs}}'>
+                            {{subCate.name}}
+                        </li>
+                        {% empty %}
+                        {% if category.getLvl == 2 %}
+
+                        {% for subCate in category.subCategoies %}
+                        <li class="custom-select-item" data-cate-id="{{subCate.id}}" data-sub='{{subCate.subs}}'>
+                            {{subCate.name}}
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                    </ul>
+                </div>
+                <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 3 %}
+                    style='visibility: visible;'
+                    {% endif %}>
+                    <button class="btn btn-primary btn-select">
+                        <span class="selected-span">
+
+                            {% if category.getLvl == 4 %}
+                            {{category.name}}
+                            {% else %}
+                            Select Category
+                            {% endif %}
+
+                        </span>
+                        <i class="fas fa-caret-down select-arrow"></i>
+
+                    </button>
+                    <ul class="custom-select-list custom-scrollbar">
+                        {% if category %}
+                        {% for subCate in category.getThirdParent.subCategoies %}
+                        <li class="custom-select-item" data-cate-id="{{subCate.id}}" data-sub='{{subCate.sub}}'>
+                            {{subCate.name}}
+                        </li>
+                        {% empty %}
+                        {% if category.getLvl == 3 %}
+                        {% for subCate in category.subCategoies %}
+                        <li class="custom-select-item" data-cate-id="{{subCate.id}}" data-sub='{{subCate.subs}}'>
+                            {{subCate.name}}
+                        </li>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
+                    </ul>
+                </div>
+                <input type="hidden" class="add-que-h-inp" name="category" id="category-id"
+                    value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}">
+
+            </div>
+
+            <div class="row filters-row">
+
+
+                <div class="col-4 col-md-2    ">
+
+                    <div class="custom-select filter one-click-filter">
+                        <button class="btn btn-primary btn-select">
+                            <span class="selected-span">
+                                {% if votesFilter == 'L' %}
+                                Least Votes
+                                {% else %}
+                                Most Votes
+                                {% endif %}
+
+                            </span>
+                            <i class="fas fa-caret-down select-arrow"></i>
+
+                        </button>
+                        <ul class="custom-select-list custom-scrollbar">
+                            <li data-value="M" class="custom-select-item">
+                                Most Votes
+                            </li>
+                            <li data-value="L" class="custom-select-item">
+                                Least Votes
+                            </li>
+                        </ul>
+                        <input type="hidden" id="votes-filter" name="votes"
+                            value="{% if votesFilter == 'L' %}L{% else %}M{% endif %}">
+                    </div>
+                </div>
+                <div class="col-4 col-md-2">
+
+                    <div class="custom-select filter one-click-filter">
+                        <button class="btn btn-primary btn-select">
+                            <span class="selected-span">
+                                {% if viewsFilter == 'L' %}
+                                Least Views
+                                {% else %}
+                                Most Views
+                                {% endif %}
+
+                            </span>
+                            <i class="fas fa-caret-down select-arrow"></i>
+
+                        </button>
+                        <ul class="custom-select-list custom-scrollbar">
+                            <li data-value="M" class="custom-select-item">
+                                Most Views
+                            </li>
+                            <li data-value="L" class="custom-select-item">
+                                Least Viwes
+                            </li>
+                        </ul>
+                        <input type="hidden" id="views-filter" name="views"
+                            value="{% if viewsFilter == 'L' %}L{% else %}M{% endif %}">
+                    </div>
+                </div>
+                <div class="col-4 col-md-3    ">
+
+
+                    <div class="custom-select ans-fil filter one-click-filter">
+                        <button class="btn btn-primary btn-select">
+                            <span class="selected-span">
+                                {% if answersFilter == 'L' %}
+                                Least Answers
+                                {% else %}
+                                Most Answers
+                                {% endif %}
+
+                            </span>
+                            <i class="fas fa-caret-down select-arrow"></i>
+
+                        </button>
+                        <ul class="custom-select-list custom-scrollbar">
+                            <li data-value="M" class="custom-select-item">
+                                Most Answers
+                            </li>
+                            <li data-value="L" class="custom-select-item">
+                                Least Answers
+                            </li>
+                        </ul>
+                        <input type="hidden" id="answers-filter" name="answers"
+                            value="{% if answersFilter  == 'L' %}L{% else %}M{% endif %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="questions-list">
+        {% for que in questions %} 
+            {% questionItem que %}
+        {% endfor %}   
+        </div>
+          {% if pageCount > 1 %}
+    <button class="btn see-more-btn see-more-btn-favq" data-user-id="{{user.id}}">See more</button>
+    <div class="loading-circle">
+        <div class="primary-circle">
+            <div class="secondary-circle"></div>
+            <div class="background-circle"></div>
+        </div>
+
+    </div>
+    {% endif %}
+  
+    </div>
+
+</div>
+
+{% endblock %}

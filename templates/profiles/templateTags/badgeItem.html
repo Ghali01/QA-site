@@ -1,0 +1,18 @@
+<div class="row badge-list-item">
+    <div class="col-3 badge-col">
+        <div class="btn badge-item">
+            <div class="badge-item-circural"></div>
+            <span class="badge-item-name">{{badge.name}}</span>
+        </div>
+        {% if badge.isEraned %}
+        <span class="earned-mark">
+            <i class="fas fa-check"></i>
+        </span>
+        {% endif %}
+    </div>
+    <div class="col-9">
+        <p class="badge-summary">
+            {{badge.description}}
+        </p>
+    </div>
+</div>

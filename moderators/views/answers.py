@@ -211,5 +211,5 @@ def countSelfAnswersBadge(question):
         badges= badges.union(Badge.objects.filter(reason=Badge.reasons.SelfAnswers,tag=tag))
     badges=badges.difference(question.post.author.profile.badges.all())
     for badge in badges:
-        if badge.count <= question.answers.all().count():
+        if badge.count <= question.getAcceptedAnswers().count():
             question.post.author.profile.badges.add(badge)

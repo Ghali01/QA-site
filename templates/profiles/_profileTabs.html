@@ -1,0 +1,28 @@
+
+    <div class="tabs-btns">
+        <a class="btn tab-btn-a 
+        {% if tab == 'profile' %}
+        active
+        {% endif %}
+        " href="{% url 'profiles:profile-page' userID=user.id %}">Profile</a>
+        <a class="btn tab-btn-a
+        {% if tab == 'badges' %}
+        active
+        {% endif %}
+      
+        " href="{% url 'profiles:badges' userID=user.id %}">Badges</a>
+        <a class="btn tab-btn-a
+        {% if tab == 'followers' %}
+        active
+        {% endif %}
+      
+        " href="{% url 'profiles:user-followers' userID=user.id %}">Followres</a>
+        <a class="btn tab-btn-a
+        {% if tab == 'favorite' %}
+        active
+        {% endif %}
+      
+        " href="{% url 'profiles:favorite-questions' userID=user.id %}" >Favorite
+            Queestions</a>
+        <a class="btn tab-btn-a" >Settings</a>
+    </div>

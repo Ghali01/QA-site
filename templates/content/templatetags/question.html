@@ -72,6 +72,7 @@
                         <a href="{% url 'content:suggest-post-edit' postID=question.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">Suggest
                             Edit</a>
                         <div class="link-break">|</div>
+                        {% if not request.user == question.post.author %}
                         <button class="custom-link custom-link-sm primary-link btn que-opt  flo-que-btn" data-user-id="{{question.post.author.id}}">
                             {% if request.user in question.post.author.profile.followers.all %}
                             Unfollow
@@ -80,6 +81,7 @@
                             {% endif %}                            
                         </button>
                         <div class="link-break">|</div>
+                        {% endif %}                            
                         <!-- Button trigger modal -->
                         <button type="button" class="link-button" data-bs-toggle="modal"
                             data-bs-target="#reportModal">

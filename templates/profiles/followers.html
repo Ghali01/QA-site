@@ -1,0 +1,22 @@
+{% extends 'utilities/_base_no_right.html' %}
+{% load profileLib %}
+{% block title %}{{user.username}} | Followers{% endblock %}
+{% block content %}
+{% include 'profiles/_profileTabs.html' %}
+<div class="followers-list">
+    {% for person in followers %}
+            {% followerItem person request.user %}
+    {% endfor %}
+    </div>
+    {% if pageCount > 1 %}
+    <button class="btn see-more-btn see-more-btn-followers" data-user-id="{{user.id}}">See more</button>
+    <div class="loading-circle">
+        <div class="primary-circle">
+            <div class="secondary-circle"></div>
+            <div class="background-circle"></div>
+        </div>
+
+    </div>
+    {% endif %}
+  
+{% endblock %}

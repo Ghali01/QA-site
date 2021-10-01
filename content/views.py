@@ -39,10 +39,10 @@ def index(request,categoryID=-1):
 
     questions=questions.annotate(Count(F('answers')))
     orderFields=[
-        '-post__ActiveDate',
         'post__votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-post__votes',
         'views' if 'views' in request.GET and request.GET['views']=='L' else '-views',
         'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count' ,
+        '-post__ActiveDate',
 
     ]
     questions=questions.order_by(*orderFields)
@@ -91,11 +91,11 @@ def seeMoreQueIndex(request,page,categoryID=-1):
     
     orderFields=[
 
-        '-post__ActiveDate',
    
         'post__votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-post__votes',
         'views' if 'views' in request.GET and request.GET['views']=='L' else '-views',
         'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count',
+        '-post__ActiveDate',
 
     ]
     questions=questions.order_by(*orderFields)
@@ -470,7 +470,7 @@ def countSelfComments(post):
         badges= badges.union(Badge.objects.filter(reason=Badge.reasons.SelfComments,tag=tag))
     badges=badges.difference(post.author.profile.badges.all())
     for badge in badges:
-        if badge.count <= post.comments.count():
+        if badge.count <= post.comments.exclude(author=post.author).count():
             post.author.profile.badges.add(badge)
 
 def countVotesBadges(post):

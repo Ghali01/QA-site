@@ -559,3 +559,6 @@ class Badge(models.Model):
 
     def userEarned(self):
         return User.objects.filter(profile__badges=self).count()
+
+
+        

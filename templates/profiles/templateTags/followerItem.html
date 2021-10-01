@@ -1,0 +1,24 @@
+<div class="row follower-item">
+    <div class=" col-6 followr-date">
+        <div class="data">
+            <img class="follower-avt" src="{{person.profile.image.url}}" alt="Person">
+        </div>
+        <div class="data follower-name" >
+            <a href="#" class="custom-link secondry-link">{{person.username}}</a>
+        </div>
+        <div class="data">
+            <span class="follower-rep">{{person.profile.rep}}</span>
+        </div>
+    </div>
+    <div class="col-6">
+        <button
+            class="btn btn-primary primary-button primary-button-radius follow-btn"data-user-id="{{person.id}}">
+            {% if user in person.profile.followers.all %}
+            <i class="fas fa-user-minus"></i> Unfollow
+            {% else %}
+            <i class="fas fa-user-plus"></i> Follow
+            {% endif %}
+        </button>
+    </div>
+</div>
+

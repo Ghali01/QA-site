@@ -1,0 +1,280 @@
+{% extends 'utilities/_base_no_right.html' %}
+{% load static %}
+{% block  title %}{{user.username}} {% endblock %}
+
+{% block content %} 
+{% include 'profiles/_profileTabs.html' %}
+        <div class="profile-content" id="profile-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-sm-4  col-lg-3 pers-col ">
+                        <div class="pres-info">
+                            <img class="avt-img" src="{{user.profile.image.url}}" alt="person name">
+                            <div class="pers-rep-div">
+                                <span class=" pers-rep">11452</span>
+                                <span class=" pers-reputation-w">REPUTATION</span>
+                            </div>
+                            <div class="pers-badges-2">
+                                {% if user.profile.goldBadgesCount %}
+                                <div class="badge-div badge-div-gold">
+                                    <div class="circular-badge"></div>
+                                    <span class="badge-num-span">{{user.profile.goldBadgesCount}}</span>
+                                </div>
+                                {% endif %}
+                                {% if user.profile.silverBadgesCount %}
+                                <div class="badge-div badge-div-silver">
+                                    <div class="circular-badge"></div>
+                                    <span class="badge-num-span">{{user.profile.silverBadgesCount}}</span>
+                                </div>
+                                {% endif %}
+
+                                {% if user.profile.bronzeBadgesCount %}
+                                <div class="badge-div badge-div-bronze">
+                                    <div class="circular-badge"></div>
+                                    <span class="badge-num-span">{{user.profile.bronzeBadgesCount}}</span>
+                                </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-5 col-lg-6 prof-desc-col">
+                        <h3 class="pers-name" style="display: block;">{{user.username}}</h3>
+                        <p class="prof-about">
+                            {{user.profile.about}}
+                        </p>
+                    </div>
+                    <div class="col-6 col-sm-3 ">
+                        <div class="nums-profile">
+                            <div class="num-profile-div">
+                                <span class="num-profile">{{user.profile.answersCount}}</span>
+                                <span class="num-profile-word">Answers</span>
+                            </div>
+                            <div class="num-profile-div">
+                                <span class="num-profile">{{user.profile.questionsCount}}</span>
+                                <span class="num-profile-word">Questions</span>
+                            </div>
+                        </div>
+                        <div class="data-profile">
+                            <div class="data-profile-row">
+                                <i class="fas fa-history"></i>
+                                Member from {{user.profile.joinData}}
+                                <span class="data-profile-span"></span>
+                            </div>
+                            <div class="data-profile-row">
+                                <i class="far fa-eye"></i>
+                                {{user.profile.getViews}} profile views
+                                <span class="data-profile-span"></span>
+                            </div>
+                            <div class="data-profile-row">
+                                <i class="far fa-clock"></i> 
+                                {% if not user.profile.isOnline %}
+                                Last seen {{user.profile.lastSeen}} ago
+                                {% else %}
+                                online now
+                                {% endif %}
+                                <span class="data-profile-span"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="badges-list-p">
+                            <div class="badges-list-header">
+                                <img class="badge-icon" src="{% static 'img/icons/badge-gold.svg' %}" alt="gold badge">
+                                <div class="badges-list-spans">
+                                    <span class="badge-list-ns">{{user.profile.goldBadgesCount}}</span>
+                                    <span class="badge-list-ws">Gold Badges</span>
+                                </div>
+                            </div>
+                            <div class="badges-list badges-list-gold">
+                                {% for item in user.profile.lastTwoGold %}
+                                <div class="badge-row">
+                                    <div class="badge-grid-item">
+                                        <div class="badge-item-circural"></div>
+                                        <span class="badge-item-name">{{item.badge.name}}</span>
+                                    </div>
+                                    <time class="bagde-date">{{item.date}}</time>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="badges-list-p">
+                            <div class="badges-list-header">
+                                <img class="badge-icon" src="{% static 'img/icons/badge-silver.svg' %}" alt="gold badge">
+                                <div class="badges-list-spans">
+                                    <span class="badge-list-ns">{{user.profile.silverBadgesCount}}</span>
+                                    <span class="badge-list-ws">Silver Badges</span>
+                                </div>
+                            </div>
+                            <div class="badges-list badges-list-silver">
+                                {% for item in user.profile.lastTwoSilver %}
+                                <div class="badge-row">
+                                    <div class="badge-grid-item">
+                                        <div class="badge-item-circural"></div>
+                                        <span class="badge-item-name">{{item.badge.name}}</span>
+                                    </div>
+                                    <time class="bagde-date">{{item.date}}</time>
+                                </div>
+                                {% endfor %}
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="badges-list-p">
+                            <div class="badges-list-header">
+                                <img class="badge-icon" src="{% static 'img/icons/badge-bronze.svg' %}" alt="gold badge">
+                                <div class="badges-list-spans">
+                                    <span class="badge-list-ns">{{user.profile.bronzeBadgesCount}}</span>
+                                    <span class="badge-list-ws">Bronze Badges</span>
+                                </div>
+                            </div>
+                            <div class="badges-list badges-list-bronze">
+                                {% for item in user.profile.lastTwoBronze %}
+                                <div class="badge-row">
+                                    <div class="badge-grid-item">
+                                        <div class="badge-item-circural"></div>
+                                        <span class="badge-item-name">{{item.badge.name}}</span>
+                                    </div>
+                                    <time class="bagde-date">{{item.date}}</time>
+                                </div>
+                                {% endfor %}
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="title-prof">Top Tags</h4>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <button type="button" class="btn btn-outline-info btn-tag t-btn-tag">Tag</button>
+                        <div class="t-tag-data-div">
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">SCORE</span>
+                                <span class="t-tag-data">1252</span>
+                            </div>
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">POSTS</span>
+                                <span class="t-tag-data">2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <button type="button" class="btn btn-outline-info btn-tag t-btn-tag">Tag</button>
+                        <div class="t-tag-data-div">
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">SCORE</span>
+                                <span class="t-tag-data">1252</span>
+                            </div>
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">POSTS</span>
+                                <span class="t-tag-data">2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <button type="button" class="btn btn-outline-info btn-tag t-btn-tag">Tag</button>
+                        <div class="t-tag-data-div">
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">SCORE</span>
+                                <span class="t-tag-data">1252</span>
+                            </div>
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">POSTS</span>
+                                <span class="t-tag-data">2</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <button type="button" class="btn btn-outline-info btn-tag t-btn-tag">Tag</button>
+                        <div class="t-tag-data-div">
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">SCORE</span>
+                                <span class="t-tag-data">1252</span>
+                            </div>
+                            <div class="t-tag-data-row">
+                                <span class="t-tag-data-w">POSTS</span>
+                                <span class="t-tag-data">2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tops-toolbar">
+                    <h4 class="tops-toolbar-title" id="top-po">Top Posts</h4>
+                    <div class="toolbar-btn-groups ">
+
+                        <div class="btn-group my-btn-group filter button-filter " role="group"
+                            aria-label="Basic outlined example">
+                            <button type="button" data-value="N"
+                                class="btn btn-outline-primary btn-group-item
+                                {% if order == 'N' %} 
+                                active
+                                {% endif %}
+                                 ">Newest</button>
+                            <button type="button" data-value="V"
+                                class="btn btn-outline-primary btn-group-item
+                                {% if order == 'V' %} 
+                                active
+                                {% endif %}
+                                
+                                ">Votes</button>
+                            <input type="hidden" name="order" value="{{order|default:'N'}}">
+                            </div>
+                        <div class="btn-group my-btn-group filter button-filter" role="group"
+                            aria-label="Basic outlined example">
+                            <button type="button" data-value="Al"
+                                class="btn btn-outline-primary btn-group-item 
+                                {% if ptype == 'Al' %} 
+                                active
+                                {% endif %}
+                            
+                                ">All</button>
+                            <button type="button" data-value="Q"
+                                class="btn btn-outline-primary btn-group-item
+                                {% if ptype == 'Q' %} 
+                                active
+                                {% endif %}
+                            
+                                ">Questions</button>
+                            <button type="button"data-value="A"
+                                class="btn btn-outline-primary btn-group-item
+                                {% if ptype == 'A' %} 
+                                active
+                                {% endif %}
+                            
+                                ">Answers</button>
+                            <input type="hidden" name="ptype" value="{{ptype|default:'Al'}}">
+                            </div>
+
+                    </div>
+
+                </div>
+                <ul class="tops-list">
+                    {% for post in topPosts %}
+                    <li class=" row top-list-item">
+                        <div class="col-12 col-sm-10">
+                            <div class="top-item-flex">
+                            <div class="votes-div">{{post.getVotes}}</div>
+                            <a href="{% url 'content:question-page' questionID=post.getQuestion.id %}{% if post.isAnswer %}#answer-{{post.answer.id}}{% endif %}">
+                                <p class="question-title">
+                                    {{post.getQuestion.title}}
+    
+                                </p>
+                            </a>
+                        </div>
+                        </div>
+                        <div class="col-12 col-sm-2">
+                            <time class="question-date">{{post.suggestTime.date|date:'Y/j/n'}}</time>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+        
+{% endblock %}
