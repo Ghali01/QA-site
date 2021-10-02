@@ -14,6 +14,7 @@ urlpatterns=[
     path('see-more-followers/<int:page>',views.seeMoreFollowers,name='see-more-followers'),
     path('favorite-questions/<int:userID>',views.favQuestion,name='favorite-questions'),
     path('see-more-fav-que/<int:page>',views.seeMoreFavQuestion,name='see-more-favorite-questions'),
-    path('chang-avatar',views.changeAavatar,name='chang-avatar')
-
+    path('chang-avatar',views.changeAavatar,name='chang-avatar'),
+    path('settings',views.profileSettings,name='user-settings'),
+    path('my-tags',views.myTags,name='user-tags'),
 ]

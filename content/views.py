@@ -201,25 +201,30 @@ def postVotes(request):
                     v=Voter.objects.get(user=request.user,post=post,type=Voter.types.Down)
                     v.delete()
                     post.votes=F('votes')+2
+                    post.author.profile.rep =F('rep')+12
                 except  Voter.DoesNotExist:
+                    post.author.profile.rep =F('rep')+10
                     post.votes=F('votes')+1
                 post.save()
+                post.author.profile.save()
                 post.refresh_from_db()
                 countVotesBadges(post)
                 return HttpResponse(json.dumps({'resault':'done','votes':post.getVotes()}))
             else:
-                return HttpResponse(json.dumps({'resault':'alradey Voted'}))
-
+                return HttpResponse(json.dumps({'resault':'alradey Voted'})) 
         elif type=='down':
             if not Voter.objects.filter(user=request.user,post_id=request.GET['post-id'],type=Voter.types.Down).exists():
                 Voter.objects.create(user=request.user,post=post,type=Voter.types.Down)
                 try:
                     v=Voter.objects.get(user=request.user,post=post,type=Voter.types.Up)
                     v.delete()
+                    post.author.profile.rep =F('rep')-12
                     post.votes=F('votes')-2
                 except  Voter.DoesNotExist:
+                    post.author.profile.rep =F('rep')-2
                     post.votes=F('votes')-1
                 post.save()
+                post.author.profile.save()
                 post.refresh_from_db()
 
                 return HttpResponse(json.dumps({'resault':'done','votes':post.getVotes()}))

@@ -27,8 +27,11 @@
 </head>
 
 <body class="contact-page">
-
+    {% if request.user.is_authenticated and not request.user.is_anonymous  %}
     {% include 'utilities/_header.html' %}
+    {% else %}
+    {% include 'utilities/auth/_header.html' %}
+    {% endif %}
     
     
     <div class="container-fluid contnet-container" >

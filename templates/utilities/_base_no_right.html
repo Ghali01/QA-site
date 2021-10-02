@@ -27,16 +27,20 @@
 </head>
 
 <body>
-
+    {% if request.user.is_authenticated and not request.user.is_anonymous  %}
     {% include 'utilities/_header.html' %}
+    {% else %}
+    {% include 'utilities/auth/_header.html' %}
+    {% endif %}
+    
     
     
     <div class="container-fluid contnet-container" >
-        <div class="row">
+        <div class="custom-row">
     
             {% include 'utilities/_leftColumn.html' %}
 
-            <div class="col-12 col-md-10 center-column" style="border: none;">
+            <div class="center-column no-right" style="border: none;">
                 {% block content %}
                 {% endblock %}
             </div>

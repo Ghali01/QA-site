@@ -75,7 +75,7 @@
                         </li>
                         <li class="nav-item cus-nav-item">
                             <img class="avatar-img" src="{{request.user.profile.image.url}}" alt="avatar">
-                            <span class="points-sp">6,145</span>
+                            <span class="points-sp">{{request.user.profile.rep}}</span>
                             <div class="badges">
                                 {% if request.user.profile.goldBadgesCount %}
 

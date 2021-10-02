@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-9=lqwkpp6g!ae@)35f365ffs*v5b%kvno4xrzzof&y1%37=zgo
 DEBUG = True
 
 ALLOWED_HOSTS = [
-
+    '192.168.1.5',
+    'localhost',
+    '127.0.0.1',
+    'interviewsquestions.com',
+    'www.interviewsquestions.com',
 ]
 
 

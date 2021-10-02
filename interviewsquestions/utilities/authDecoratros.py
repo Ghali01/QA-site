@@ -27,3 +27,12 @@ def forModerator(view):
         else:
             return redirect(reverse('content:index'))
     return decorator
+
+def forProfileOwner(view):
+    def decorator(request,userID,*args,**kwarge):
+        if userID==request.user.id:
+            return view(request,userID,*args,**kwarge)
+        else:
+            return redirect(reverse('profiles:user-settings',kwargs={'userID':request.user.id}))
+
+    return decorator

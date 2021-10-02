@@ -385,23 +385,26 @@ body{
     width: 0;
     height: 0;
 }
+.custom-row{
+    display: flex;
+}
 .left-column, .right-column{
     /* padding-top: 30px; */
     position: sticky;
     top: 70px;
     height: 100%;
     /* margin-bottom: 145px; */
+    max-width: 400px;
 }
 .left-column{
+    width: 230px;
     left: 0;
 }
 .right-column{
     right: 0;
+    width: 300px;
 }
-.left-column-w-b{
-    border-right: 1.5px solid gray;
 
-}
 
 .center-column{
     padding: 30px 5px;
@@ -409,9 +412,16 @@ body{
     padding-bottom:0 ;
     border-left: 1.5px solid gray;
     /* border-right: 1.5px solid gray; */
-    overflow-x: hidden;
+    overflow: hidden;
     padding-right: 25px;
+    flex-grow: 2;
+    margin: 0 8px;
 }
+.left-column-w-b{
+    border-right: 1.5px solid gray;
+
+}
+
 
 .center-title ,.title{
     color: var(--titles-colors);
@@ -700,8 +710,7 @@ body{
 /* xl. */
 @media (max-width:1200px){
     .center-column{
-    padding: 30px 15px;
-    padding-bottom: 0%;
+        padding-top: 30px;
     }
 }
 /* md */
@@ -713,6 +722,20 @@ body{
     /* index */
     .question-tags{
         width: 100%;
+    }
+}
+@media (max-width:585px) {
+    .center-column{
+        padding: 0;
+        margin: 4px;
+    }
+}
+@media (max-width:621px) {
+   .question-item{
+        padding: 14px;
+    }
+    .question-tags{
+        padding: 0;
     }
 }
 @media (max-width:577px) {
@@ -2040,7 +2063,7 @@ button.go{
     border: 3px solid var(--titles-colors);
     border-radius: 5px;
 }
-.pres-info .avt-img{
+.avt-img{
     display: block;
     width:100%;
 }
@@ -3585,7 +3608,6 @@ p.info{
     background-color: var(--black-050);
 }
 .cate-tags-list{
-    border-top: solid 1px var(--black-350);
     overflow: hidden;
 }
 
@@ -3650,6 +3672,7 @@ p.info{
 .e-avatar-img{
     display: block;
     width: 480px;
+    min-height: 380px;
     -webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -3739,7 +3762,7 @@ p.info{
     visibility: visible;
     position: absolute;
     top:6px;
-    right:9px;
+    right:4px;
     padding: 4px 5px;
     font-size: 13px;
 }
@@ -3748,4 +3771,7 @@ p.info{
 }
 .avatar-img,.avt-img{
     border-radius: 50%;
+}
+.center-column.no-right{
+    padding: 14px 0;
 }

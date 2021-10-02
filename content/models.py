@@ -79,6 +79,17 @@ class Tag(models.Model):
     description=models.TextField()
 
 
+    def path(self):
+        category=self.category
+        lvl=category.getLvl()
+        if lvl==1:
+            return[category]
+        if lvl==2:
+            return[category.getFirstParent,category]
+        if lvl==3:
+            return[category.getFirstParent,category.getSecondParent,category]
+        if lvl==4:
+            return[category.getFirstParent,category.getSecondParent,category.getThirdParent,category]
 
 class Post(models.Model):
     typeChoices=[
@@ -120,6 +131,7 @@ class Post(models.Model):
         return self.logs.filter(type=PostLog.types.AcceptEdit).exists()
     def getLastEditAuthor(self):
         return self.logs.filter(type=PostLog.types.AcceptEdit).order_by('time').last().author
+
 class Question(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE,related_name='question')
     title=models.CharField(max_length=200)

@@ -8,7 +8,7 @@ from math import ceil
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 import json
-from interviewsquestions.utilities.authDecoratros import forActiveUser
+from interviewsquestions.utilities.authDecoratros import forActiveUser,forProfileOwner
 from interviewsquestions.settings import MEDIA_ROOT
 def profilePage(request,userID):
     ptype=order=None
@@ -339,24 +339,55 @@ def changeAavatar(request):
     if 'img-file' in request.FILES and 'position' in request.POST:
         file=request.FILES['img-file']
         position=json.loads(request.POST['position'])
-        img=Image.open(file)
-        img=img.resize([int(position['orginalW']),int(position['orginalH'])])
-        w,h=img.size
-        cropImg =Image.new('L',[w,h],0)
-        draw=ImageDraw.Draw(cropImg)
+        orginalW=int(position['orginalW'])
+        orginalH=int(position['orginalH'])
+        width=int(position['width'])
+        height=int(position['height'])
         x0=int(position['x'])
-        x1=int(position['x'])+int(position['width'])
+        x1=int(position['x'])+width
         y0=int(position['y'])
-        y1=int(position['y'])+int(position['height'])
-        draw.pieslice([x0,y0,x1,y1],0,360,fill=250)
-        imgArr=numpy.array(img)
-        cropArr=numpy.array(cropImg)
-        fArr=numpy.dstack((imgArr,cropArr))
-        finalImg=Image.fromarray(fArr)
-        path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
-        finalImg=finalImg.crop([x0,y0,x1,y1])
-        finalImg.save(path)
-        request.user.profile.image.name='profile/'+request.user.username+'.png'
-        request.user.profile.save()
+        y1=int(position['y'])+height
+        if x0>0 and x0<x1 and y0>0 and y0<y1 and x1<orginalW and y1<orginalH and width==height and width>=150 and height<=360:
+            img=Image.open(file)
+            img=img.resize([orginalW,orginalH])
+            w,h=img.size
+            cropImg =Image.new('L',[w,h],0)
+            draw=ImageDraw.Draw(cropImg)
+            draw.pieslice([x0,y0,x1,y1],0,360,fill=250)
+            imgArr=numpy.array(img)
+            cropArr=numpy.array(cropImg)
+            fArr=numpy.dstack((imgArr,cropArr))
+            finalImg=Image.fromarray(fArr)
+            path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
+            finalImg=finalImg.crop([x0,y0,x1,y1])
+            finalImg.save(path)
+            request.user.profile.image.name='profile/'+request.user.username+'.png'
+            request.user.profile.save()
     return redirect(reverse('profiles:profile-page',kwargs={'userID':request.user.id}))
-    return HttpResponse('h')
+    # return HttpResponse('h')
+
+
+@forActiveUser
+def profileSettings(request):
+    if request.method == 'POST':
+        if  'about' in request.POST and 'website'in request.POST:
+            profile=request.user.profile
+            profile.about=request.POST['about']
+            profile.website=request.POST['website']
+            profile.save()
+    contxt={
+        'user':request.user,
+        'tab':'settings'
+    }
+
+    return render(request,'profiles/editProfile.html',contxt)
+
+def myTags(request):
+    tags=request.user.profile.tags.all()
+    contxt={
+        'user':request.user,
+        'tags':tags,
+        'tab':'settings'
+    }
+
+    return render(request,'profiles/editTags.html',contxt)

@@ -24,5 +24,11 @@
       
         " href="{% url 'profiles:favorite-questions' userID=user.id %}" >Favorite
             Queestions</a>
-        <a class="btn tab-btn-a" >Settings</a>
+        {% if request.user == user %}
+        <a class="btn tab-btn-a
+        {% if tab == 'settings' %}
+        active
+        {% endif %}
+        " href="{% url 'profiles:user-settings' %}" >Settings</a>
+        {% endif %}
     </div>
