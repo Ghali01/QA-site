@@ -1,0 +1,42 @@
+{% load i18n %}
+    <div class="modal fade" id="{{type}}-reportModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-dialog">
+            <div class="modal-content custom-dialog">
+                <div class="modal-header custom-dialog-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Report</h5>
+                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                        <i class="fas fa-times close-dialog-ico"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="{% url 'feedback:report' %}" id="{{type}}-report-from" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="type" value="{{type}}">
+                        <input type="hidden" name="report-on" id="report-on">
+                        {% for reason in reasons %}
+                        <div class="form-check">
+                            <input class="form-check-input custom-radio primary-radio" value="{{reason.id}}" type="radio" name="reason"
+                                id="raeson-{{reason.id}}">
+                            <label class="form-check-label" for="raeson-{{reason.id}}">
+                                {% get_current_language as language %}
+                                {% if language|slice:':2' == 'en' %}
+                                {{reason.nameEN}}
+                                {% else %}
+                                {{reason.nameAR}}
+                                {% endif %}
+                            </label>
+                        </div>
+                        {% endfor %}
+                        
+                       
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary primary-button" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="{{type}}-report-from" class="btn btn-primary primary-button">Report</button>
+                </div>
+            </div>
+        </div>
+
+    </div>

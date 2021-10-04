@@ -1,0 +1,13 @@
+
+{% load contentUtilities %}
+<li>
+    <a href="{% url 'content:question-page' questionID=question.id %}" class="question-title line-clamp">
+        {{question.title}}
+    </a>
+
+    <div class="question-tags custom-scrollbar">
+        {% for tag in question.tags.all|slice:":5" %}
+            {% tagLink tag %}
+        {% endfor %}
+    </div>
+</li>

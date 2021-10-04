@@ -236,11 +236,14 @@ def postVotes(request):
 def addAnswer(request):
     if 'que-id' in request.POST and 'ans-text' in request.POST: 
         try:
-            question=get_object_or_404(Question,id=int(request.POST['que-id'])) 
-            post=Post.objects.create(text=request.POST['ans-text'],author=request.user,type=Post.types.Answer)
-            log=PostLog.objects.create(post=post,text=request.POST['ans-text'],author=request.user,type=PostLog.types.Suggest)
-            answer=Answer.objects.create(post=post,question=question)
-            messages.success(request,'The answer has been submitted, it will be reviewed soon.')
+            if request.POST['ans-text']:
+                question=get_object_or_404(Question,id=int(request.POST['que-id'])) 
+                post=Post.objects.create(text=request.POST['ans-text'],author=request.user,type=Post.types.Answer)
+                log=PostLog.objects.create(post=post,text=request.POST['ans-text'],author=request.user,type=PostLog.types.Suggest)
+                answer=Answer.objects.create(post=post,question=question)
+                messages.success(request,'The answer has been submitted, it will be reviewed soon.')
+            else:
+                messages.success(request,'Answer should not by empty')
             return redirect(reverse('content:question-page',kwargs={'questionID':request.POST['que-id']})+'#mgss')
         except ValueError:
             pass
@@ -510,3 +513,14 @@ def countViewBadge(question):
     for badge in badges:
         if badge.count <= question.views:
             question.post.author.profile.badges.add(badge)
+
+
+
+def searchQuestionsAjax(request):
+    if 'search' in request.GET:
+        questions=Question.objects.filter(title__icontains=request.GET['search'])[:5]
+        htmlStr=''
+        for que in questions:
+            htmlStr+=render_to_string('content/templatetags/searchItem.html',{'question':que})
+        return HttpResponse(htmlStr)
+    return HttpResponse('error')

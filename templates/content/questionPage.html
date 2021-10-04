@@ -2,6 +2,7 @@
 {% load contentUtilities %}
 {% load questions %}
 {% load humanize %}
+{% load reportModal %}
 {% block title %}{{question.title}}{% endblock %}
 
 {% block content %}
@@ -113,7 +114,7 @@
         Add Answer
     </button>
 </div>
-
-{% include 'utilities/_reportModal.html' %}
+{% reportModal 'Q' %}
+{% reportModal 'A' %}
 {% include 'utilities/_loginModal.html' %}
 {% endblock %}

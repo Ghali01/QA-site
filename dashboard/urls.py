@@ -1,6 +1,5 @@
-from os import name
 from django.urls import path
-from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews, Suggestedfeedback as SuggestedfeedbackViews,editsite as editSiteViews,messages as messagesViews,Email as emailTemplateViews,badges as badgesViews
+from dashboard.views import main as mainViews,categories as categoriesViews,tags as tagsViews,users as usersViews,questions as questionsViews, Suggestedfeedback as SuggestedfeedbackViews,editsite as editSiteViews,messages as messagesViews,Email as emailTemplateViews,badges as badgesViews,flag as flagViews,polls as pollsViews
 app_name='dashboard'
 urlpatterns=[
     path('',mainViews.index,name='index'),
@@ -86,6 +85,15 @@ urlpatterns=[
     path('badges/<int:page>',badgesViews.BadgesPage,name='badges-page'),
     path('add-badge',badgesViews.addBadge,name='add-badge'),
     path('del-badge',badgesViews.deleteBadge,name='delete-badge'),
-    path('edit-badge/<int:badgeID>',badgesViews.editBadge,name='edit-badge')
-  
+    path('edit-badge/<int:badgeID>',badgesViews.editBadge,name='edit-badge'),
+    path('flag-reasons/<str:type>',flagViews.flagReasons,name='flag-reasons'),
+    path('add-flag-reason/<str:type>',flagViews.addReason,name='add-flag-reason'),
+    path('delete-flag-reason',flagViews.deleteReason,name='delete-flag-reason'),
+    path('edit-reason/<int:reasonID>',flagViews.editReason,name='edit-reason'),
+    path('flaged-questions/<int:page>',flagViews.flagedQuestions,name='flaged-questions'),
+    path('flaged-answers/<int:page>',flagViews.flagedAnswers,name='flaged-answers'),
+    path('flaged-users/<int:page>',flagViews.flagedUsers,name='flaged-users'),
+    path('remove-reports',flagViews.removeReports,name='remove-reports'),
+    path('polls/<str:language>',pollsViews.polls,name='polls'),
+    path('add-poll/<str:language>',pollsViews.addPoll,name='add-poll')
   ]

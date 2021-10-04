@@ -1,0 +1,121 @@
+{% extends 'utilities/dashboard/_base.html' %} 
+{% block title %}Polls Management {% endblock %}
+{% block content %}  
+
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Polls</h3>
+              <a class="btn btn-default add-cate-m-btn" href="{% url 'dashboard:add-poll' language=lang %}"  >+</a>
+              <div class="btn-group lng-sel">
+                <a href="{% url 'dashboard:polls' language='en' %}" class="btn btn-default">English</a>
+                <a href="{% url 'dashboard:polls' language='ar' %}" class="btn btn-default">عربي</a>
+            </div>
+          
+            </div>
+            <div class="card-body">
+              <div>
+
+            </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th style="width:15%">Title</th>
+                    <th style="width:30%">description</th>
+                    <th style="width:5%;">Participants</th>
+                    <th style="width: 5%;">Participation rate</th>
+                    <th style="width: 25%;">Target(s)</th>
+                    <th style="width: 20%;">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Poll Title</td>
+                    <td>
+                      <p class="line-clamp-5">
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente consectetur, autem dolor necessitatibus nam inventore illum eum corrupti architecto, tempore, fugiat sed reiciendis earum atque explicabo id libero laboriosam soluta.
+                      </p>
+                    </td>
+                    <td>7200</td>
+                    <td>70%</td>
+                    <td>
+                        <h6 class="tiltle">Tags</h6>
+                      
+                        <div class="polls-targets">
+                    <button class="btn btn-outline-info btn-tag">Tag</button>
+                    <button class="btn btn-outline-info btn-tag">Tag</button>
+                    <button class="btn btn-outline-info btn-tag">Tag</button>
+                          
+                        </div>
+                        <h6 class="tiltle">Categories</h6>
+
+                        <div class="polls-targets">
+                          <a href="#" class="btn btn-light cate-grid-item"> Category</a>
+                          <a href="#" class="btn btn-light cate-grid-item"> Category</a>
+                          <a href="#" class="btn btn-light cate-grid-item"> Category</a>
+                        </div>
+                        <a href="#" class="float-right" style="font-size: 14px;"> See All</a>
+                        
+                    </td>
+                    <td>
+
+                      <a class="btn btn-app cus-btn-app">
+                        <i class="fas fa-edit btn-app-icon"></i>Edit
+                      </a>
+                      <a class="btn btn-app cus-btn-app">
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                      </a>
+                      <a class="btn btn-app cus-btn-app">
+                        <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                      </a>
+                      <a class="btn btn-app cus-btn-app">
+                        <i class="fas fa-lock btn-app-icon"></i>Lock
+                      </a>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+
+              </table>
+              <div class="dataTables_paginate paging_simple_numbers table-indcator" id="example2_paginate">
+                <ul class="pagination">
+                  <li class="paginate_button page-item previous disabled" id="example2_previous">
+                    <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
+                      Previous
+                    </a>
+                  </li>
+                  <li class="paginate_button page-item active">
+                    <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                      1
+                    </a>
+                  </li>
+                  <li class="paginate_button page-item ">
+                    <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                      2
+                    </a>
+                  </li>
+                  <li class="paginate_button page-item ">
+                    <a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                      3
+                    </a>
+                  </li>
+                  <li class="paginate_button page-item previous disabled" id="example2_next">
+                    <a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0" class="page-link">
+                      Next
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+{% endblock %}

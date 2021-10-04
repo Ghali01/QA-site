@@ -33,7 +33,8 @@ def searchUsers(request):
                     'id':user.id,
                     'email':user.email,
                     'perm':user.profile.get_permission_display(),
-                    'isBaned':str(user.profile.isBaned())
+                    'isBaned':str(user.profile.isBaned()),
+                    'language':user.profile.language
                 })
             except:
                 pass

@@ -544,8 +544,21 @@ $(document).ready(
         $('.see-more-btn-badges').click(seeMoreUserBadges);
         $('.see-more-btn-followers').click(seeMoreUserFollowers);
         $('.see-more-btn-favq').click(seeMoreFavQuestions);
-        let now = new Date(),
-            dateNextWeek = new Date(now.getTime() + (1000 * 60 * 60 * 24 * 7));
+        $('.report-btn').click(reportBtnClick);
+        $('.search-nav-form .search-input').keydown(searchNavDown);
+        $('.search-nav-form .search-input').keyup(searchNavUp);
+        $('.search-nav-form .search-input').focus(_=>$('.search-nav-form .search-resaults').show());
+        $('.search-nav-form .search-resaults').hide();
+     
+        
+        $(window).click(_=>{
+            if(!$('.search-nav-form .search-input').is(':focus'))
+                $('.search-nav-form .search-resaults').hide();
+            // $('.search-nav-form .search-resaults').html('');
+        
+        });
+                let now = new Date(),
+        dateNextWeek = new Date(now.getTime() + (1000 * 60 * 60 * 24 * 7));
 
         document.cookie = `utcOffset=${-1 * (now.getTimezoneOffset() / 60)}; expires=${dateNextWeek.toGMTString()}; path=/`;
     }
@@ -1254,4 +1267,72 @@ function seeMoreFavQuestions() {
             $(clicked).prev().append(data.html);
         },
     );
+}
+
+function  reportBtnClick(){
+    $(`#${$(this).data('type')}-reportModal #report-on`).val($(this).data('report-on'));
+}
+
+function searchNavDown(e) {
+    if(e.which==40){
+        if ($('.search-resaults .active').length==0)
+            $('.search-resaults ').children().first().addClass('active')
+        else{
+            $('.search-resaults .active').next().addClass('active');
+            $('.search-resaults .active').first().removeClass('active');
+        }
+    }
+    else if(e.which==38){
+        if ($('.search-resaults .active').length==0)
+            $('.search-resaults ').children().last().addClass('active')
+        else{
+            $('.search-resaults .active').prev().addClass('active');
+            $('.search-resaults .active').last().removeClass('active');
+        }
+    }
+    else if (e.which==13){
+        let href=$('.search-resaults .active a').attr('href');
+        location.href=href;
+        $('.search-nav-form .search-resaults').hide();
+
+    }
+ 
+}
+function searchNavUp(e) {
+    if(searchText==$(this).val()){
+        return;
+    }
+    searchText=$(this).val();
+    if(!$(this).val()){
+        $('.search-nav-form .search-resaults').hide();
+        $('.search-nav-form .search-resaults').html('');
+        
+    }
+    else{
+        $('.search-nav-form .search-resaults').hide();
+        $('.search-nav-form .search-resaults').html('');
+        $('.loading-circle.in-search').show();
+        $.get("/search-que-ajax", {search:searchText},
+            function (data, textStatus, jqXHR) {
+                $('.loading-circle.in-search').hide();
+                if(data){
+                    $('.search-nav-form .search-resaults').append(data);
+                    $('.search-nav-form .search-resaults li').click(navSearchLiClick);
+                    $('.search-nav-form .search-resaults').show();
+                    
+
+                    
+                }
+            },
+        );
+    }
+}
+
+
+
+function navSearchLiClick(){
+    let href=$(this).find('a').attr('href');
+    location.href=href;
+    $('.search-nav-form .search-resaults').hide();
+
 }

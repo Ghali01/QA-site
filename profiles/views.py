@@ -42,6 +42,7 @@ def profilePage(request,userID):
     return render(request,'profiles/profile.html',contxt)
 
 def userQuestions(request,userID):
+    user=get_object_or_404(User,id=userID)
     votesFilter=answersFilter=viewsFilter=searchVal=None
     questions=Question.objects.filter(post__author__id=userID)
     if 'search' in request.GET and request.GET['search']:
@@ -73,7 +74,9 @@ def userQuestions(request,userID):
         'viewsFilter':viewsFilter,
         'answersFilter':answersFilter,
         'searchVal':searchVal if searchVal else '',
-        'userID':userID
+        'userID':userID,
+        'username':user.username
+
     }
     return render(request,'profiles/userQuestions.html',contxt)
 
@@ -104,6 +107,7 @@ def seeMoreQuestions(request,userID,page):
     return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
         
 def userAnswers(request,userID):
+    user=get_object_or_404(User,id=userID)
     votesFilter=viewsFilter=searchVal=None
     answers=Answer.objects.filter(post__author__id=userID,post__isPublished=True,question__post__isPublished=True)
     if 'search' in request.GET and request.GET['search']:
@@ -136,7 +140,8 @@ def userAnswers(request,userID):
         'votesFilter':votesFilter,
         'viewsFilter':viewsFilter,
         'searchVal':searchVal if searchVal else '',
-        'userID':userID
+        'userID':userID,
+        'username':user.username
     }
     return render(request,'profiles/userAnswers.html',contxt)
 

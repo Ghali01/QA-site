@@ -132,11 +132,38 @@ body{
 .search-nav-form{
     margin: 0;
     width: 62%;
+    position: relative;
 }
 .search-nav-form .form-control{
     width: 100%;
 }
+.search-nav-form .search-resaults{
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    background-color: var(--bg-color);
+    list-style: none;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border: 1px solid var(--black-400);
+    border-top: none;
+    padding: 0;
+    cursor: pointer;
+}
+.search-nav-form .search-resaults li{
+    padding: 5px;
+}
+.search-nav-form .search-resaults li:hover{
+    background-color: var(--black-150);
 
+}
+.search-nav-form .search-resaults .active{
+    background-color: var(--black-150);
+}
+
+.search-nav-form .question-tags{
+    float: none;
+}
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -191,6 +218,7 @@ body{
     position: absolute;
     top: 22px;
     opacity: 0;
+    right: -40px;
 }
 
 .nav-drop-down .drop-link{
@@ -3774,4 +3802,28 @@ p.info{
 }
 .center-column.no-right{
     padding: 14px 0;
+}
+.profile-tabs{
+    position: relative;
+}
+.profile-tabs .right-opts{
+    position: absolute;
+    top: -3px;
+    margin: 0;
+    right: 8px;
+}
+.profile-tabs .follow-btn{
+    margin: 0;
+}
+.profile-tabs .txt-opt{
+    color: var(--titles-colors) !important;
+    padding: 8px 12px;
+}
+
+.loading-circle.in-search{
+    position: absolute;
+    transform: scale(0.67);
+    top: -4px;
+    right: 0px;
+
 }

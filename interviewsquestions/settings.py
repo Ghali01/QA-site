@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'moderators.apps.ModeratorsConfig',
     'profiles.apps.ProfilesConfig',
     'feedback.apps.FeedbackConfig',
+    'polls.apps.PollsConfig',
     'misc.apps.MiscConfig',
     'django.contrib.admin',
     'django.contrib.humanize',

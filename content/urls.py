@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import addAnswer, addCommentToPost, addQuestionPage, allPostComment, categoriesPage, index, postVotes, questionPage, seeMoreQueIndex, similarQuestions, suggestPostEdit, tagsPage, toggQuestionFav, toggUserFollow, toggleTagToFav
+from .views import addAnswer, addCommentToPost, addQuestionPage, allPostComment, categoriesPage, index, postVotes, questionPage, searchQuestionsAjax, seeMoreQueIndex, similarQuestions, suggestPostEdit, tagsPage, toggQuestionFav, toggUserFollow, toggleTagToFav
 app_name='content'
 urlpatterns=[
     path('',index,name='index'),
@@ -18,5 +18,6 @@ urlpatterns=[
     path('tog-tag',toggleTagToFav,name='toggle-tag'),
     path('categories',categoriesPage,name='categories-page'),
     path('tog-fav-que',toggQuestionFav,name='toggle-questin-to-fav'),
-    path('togg-user-flo',toggUserFollow,name='toggle-user-follow')
+    path('togg-user-flo',toggUserFollow,name='toggle-user-follow'),
+    path('search-que-ajax',searchQuestionsAjax,name='search-que-ajax')
 ]

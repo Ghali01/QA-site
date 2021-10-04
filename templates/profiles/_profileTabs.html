@@ -1,5 +1,5 @@
 
-    <div class="tabs-btns">
+    <div class="tabs-btns profile-tabs">
         <a class="btn tab-btn-a 
         {% if tab == 'profile' %}
         active
@@ -30,5 +30,22 @@
         active
         {% endif %}
         " href="{% url 'profiles:user-settings' %}" >Settings</a>
+        {% endif %}
+   
+        {% if not request.user == user %}
+       <div class="right-opts">
+        <button type="button" class="link-button report-btn primary-link txt-opt" data-report-on="{{user.id}}" data-type="U" data-bs-toggle="modal"
+        data-bs-target="#U-reportModal">
+        Report
+    </button>
+
+        <button class="btn btn-primary primary-button primary-button-radius follow-btn" data-user-id="{{user.id}}">
+            {% if request.user in user.profile.followers.all %}
+            <i class="fas fa-user-minus"></i> Unfollow
+            {% else %}
+            <i class="fas fa-user-plus"></i> Follow
+            {% endif %}
+        </button>
+       </div>
         {% endif %}
     </div>

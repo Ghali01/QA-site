@@ -148,20 +148,33 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
+                <a href="{% url 'dashboard:flaged-users' page=1 %}" class="nav-link
+                
+                {% if 'flaged-users' in request.path %}
+                active
+                {% endif %}
+             ">
                   <i class="fas fa-user"></i>
                   <p>Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{% url 'dashboard:flaged-questions' page=1 %}" class="nav-link
+                {% if 'flaged-questions' in request.path %}
+                active
+                {% endif %}
+                ">
                   <i class="far fa-question-circle"></i>
 
                   <p>Questions</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{% url 'dashboard:flaged-answers' page=1 %}" class="nav-link
+                {% if 'flaged-answers' in request.path %}
+                active
+                {% endif %}
+                ">
                   <i class="far fa-comment-alt"></i>
                   <p>Answers</p>
                 </a>
@@ -282,7 +295,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{% url 'dashboard:polls' language='en' %}" class="nav-link
+            {% if 'polls' in request.path %}
+            active
+            {% endif %}">
               <i class="fas fa-poll"></i>
               <p>Polls</p>
             </a>

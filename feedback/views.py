@@ -1,10 +1,12 @@
-from django.shortcuts import render,redirect
+from django.contrib.auth.models import User
+from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
 from interviewsquestions.utilities.authDecoratros import forActiveUser,userHasTags
-from content.models import Category
+from content.models import Category, Post
 from django.utils.translation import get_language
-from .models import SuggestedCategory,SuggestedTag
+from .models import FlagReason, SuggestedCategory,SuggestedTag,Reports
 from django.contrib import messages
+
 @forActiveUser
 @userHasTags
 def suggestCategory(request):
@@ -50,3 +52,26 @@ def suggestTag(request):
     }
     return render(request,'feedback/suggestTag.html',contxt)
 
+@forActiveUser
+def report(request):
+    if 'type' in request.POST and 'report-on' in request.POST and 'reason' in request.POST:
+        if request.POST['type']=='Q' or  request.POST['type']=='A':
+            post=get_object_or_404(Post,id=int(request.POST['report-on']))
+            Reports.objects.create(
+                post=post,
+                reason=get_object_or_404(FlagReason,id=int(request.POST['reason'])),
+                reporter=request.user,
+                
+            )
+            return redirect(reverse('content:question-page',kwargs={'questionID':post.getQuestion().id}))
+        elif request.POST['type']=='U':
+            user=get_object_or_404(User,id=int(request.POST['report-on']))
+            Reports.objects.create(
+                user=user,
+                reason=get_object_or_404(FlagReason,id=int(request.POST['reason'])),
+                reporter=request.user,
+                
+            )
+            return redirect(reverse('profiles:profile-page',kwargs={'userID':user.id}))
+
+    return redirect(reverse('content:index'))

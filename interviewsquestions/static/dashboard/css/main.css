@@ -525,3 +525,11 @@ textarea.badge-inp{
 .badge-filter{
     margin: 0 8px;
 }
+
+
+.fr-txt-a{
+    min-height: 200px;
+}
+.fr-row{
+    margin-top: 16px;
+}

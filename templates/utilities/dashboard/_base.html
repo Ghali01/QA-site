@@ -8,9 +8,9 @@
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
+    <!-- <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome Icons -->
+    Font Awesome Icons -->
     <link rel="stylesheet" href="{% static 'dashboard/plugins/fontawesome-free/css/all.min.css' %}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{% static 'dashboard/dist/css/adminlte.min.css' %}">
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}">
     <!-- jQuery -->
     <script src="{% static 'dashboard/plugins/jquery/jquery.min.js' %}"></script>
-    {% if 'question' in request.path or 'edit-answer' in request.path or 'edit-footer' in request.path  or 'edit-card' in request.path  or 'edit-advertise' in request.path or 'add-card' in request.path or 'email' in request.path or 'add-template' in request.path or 'edit-template' in request.path  %}
+    {% if 'question' in request.path or 'edit-answer' in request.path or 'edit-footer' in request.path  or 'edit-card' in request.path  or 'edit-advertise' in request.path or 'add-card' in request.path or 'email' in request.path or 'add-template' in request.path or 'edit-template' in request.path or 'add-poll' in request.path  %}
   <!-- Summernote -->
   <script src="{% static 'dashboard/plugins/summernote/summernote-bs4.min.js' %}"></script>
   <!-- summernote -->

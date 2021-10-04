@@ -5,6 +5,9 @@ from django.utils import timezone
 from interviewsquestions.settings import MEDIA_ROOT
 from content.models import Post, Badge, PostLog, Tag,Question
 import datetime
+from interviewsquestions.utilities.database import langChoices
+from feedback.models import FlagReason
+from django.utils.translation import get_language
 class TempUser(models.Model):
 
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='tmp')
@@ -42,6 +45,7 @@ class UserProfile(models.Model):
     badges=models.ManyToManyField(Badge,through='BadgesUser')
     views=models.PositiveBigIntegerField(default=0)
     lastActive=models.DateTimeField(auto_now_add=True)
+    language=models.CharField(max_length=2,choices=langChoices,default='en')
     def isBaned(self):
         return BanedUser.objects.filter(user=self.user).exists()
     def isModerator(self):
@@ -128,6 +132,21 @@ class UserProfile(models.Model):
             return True
         else:
             return False
+    def getReports(self):
+        lang=get_language()[:2]
+        reasons=FlagReason.objects.filter(type=FlagReason.types.Users)
+        data=[]
+        for reason in reasons:
+            count=self.user.reports.filter(reason=reason).count()
+            name=reason.nameEN if lang=='en' else reason.nameAR
+            if count>0:
+                data.append({
+                    'name':name,
+                    'count':count,
+                    'id':reason.id
+                })
+
+        return data
 class BadgesUser(models.Model):
     profile=models.ForeignKey(UserProfile,on_delete=models.CASCADE)
     badge=models.ForeignKey(Badge,on_delete=models.CASCADE) 

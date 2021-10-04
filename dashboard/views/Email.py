@@ -6,6 +6,7 @@ from django.core.mail import send_mail
 from django.utils.html import strip_tags
 from misc.models import NewsUser
 from django.utils.translation import gettext
+from django.contrib.auth.models import User
 def TenmplatesPage(request,language):
     if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_superuser:
         templates=EmailTemplate.objects.filter(language=language)
@@ -141,7 +142,7 @@ def sendEmail(request):
                 if request.POST['test-email']:
                     to=[request.POST['test-email'],]
                 elif 'language' in request.POST:
-                    users=NewsUser.objects.filter(language=request.POST['language'])
+                    users=User.objects.filter(profile__language=request.POST['language'].lower())
                     for user in users:
                         to.append(user.email)
                 else:

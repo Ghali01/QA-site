@@ -231,20 +231,17 @@ $(document).ready(function () {
     $(".add-cho-btn").click(addChoiceBtn);
     $("#add-RL-btn").click(function (e) {
         e.preventDefault();
-        addPollItem("RL");
+        addPollItem("R");
     });
     $("#add-CL-btn").click(function (e) {
         e.preventDefault();
-        addPollItem("CL");
+        addPollItem("C");
     });
     $(".del-poll-item").click(delPollItem)
     $(".mov-poll-item").hover(enablePollMove, disablePollMove);
     let currentPollItem;
     $(".polls-items").click(function (e) { 
         e.preventDefault();
-        console.log(e.pageX,e.pageY);
-        console.log($(this).children().first().offset().left);
-        console.log($(this).children().first().offset().top);
         // $(selector).();
     });
     $(".poll-item").on("dragstart", function () {
@@ -268,7 +265,7 @@ $(document).ready(function () {
 
     $(".del-li-btn").click(deleteLiBtn);
     $('#target-type').change(targetTypeSelect);
-
+    $('.remove-report-btn').click(removeReports);
 
 
 
@@ -497,17 +494,19 @@ function addPollItem(itemtype) {
     $(item).append(delBtn);
     let title = document.createElement("h6");
     $(title).addClass(["float-right", 'poll-item-title']);
+
     if (itemtype == "CL")
         $(title).text("CheckBox List");
     else
         $(title).text("Radio List");
 
     $(item).append(title);
-
     let typeInp = document.createElement("input");
     $(typeInp).attr("type", "hidden");
     $(typeInp).attr("name", "item-type");
+    $(typeInp).addClass('item-type');
     $(typeInp).val(itemtype);
+    $(item).append(typeInp);
     let textarea = document.createElement("textarea");
     $(textarea).addClass(["form-control", "polls-que"]);
     $(textarea).attr("placeholder", "question text...");
@@ -690,18 +689,18 @@ function searchUsers(){
                       <a class="btn btn-app cus-btn-app app-btn-70" href="/profile/user-answers/${user.id}">
                         <i class="fas fa-angle-right btn-app-icon"></i>Answers
                       </a>
-                      <a class="btn btn-app cus-btn-app app-btn-70" href="/dashboard/templates/EN?to=${user.email}">
+                      <a class="btn btn-app cus-btn-app app-btn-70" href="/dashboard/templates/${user.language.toUpperCase()}?to=${user.email}">
                         <i class="far fa-envelope btn-app-icon"></i>Email
                       </a>
                       ${user.isBaned!='True'?`<button class="btn btn-app cus-btn-app ban-user-btn"
                       data-toggle="modal" data-lvl="2" data-target="#ban-modal"
-                      data-user-id="415251" data-user-name="User User">
+                      >
                         <i class="fas fa-user-slash btn-app-icon"></i>Ban
                       </button>`:
                       `
                       <button class="btn btn-app cus-btn-app unban-user-btn"
                       data-toggle="modal" data-lvl="2" data-target="#unban-modal"
-                      data-user-id="415251" data-user-name="User User">
+                      >
                         <i class="fas fa-user btn-app-icon"></i>unban
                       </button>`}
                       <button class="btn btn-app cus-btn-app app-btn-70 prune-btn"
@@ -806,4 +805,41 @@ function targetTypeSelect(){
     $('#targets').html('');
     if(targets)
         targets.forEach(el=>$('#targets').append(`<option value="${el.id}">${el.name}</option>`));
+}
+
+function removeReports() { 
+    let clicked=this;
+    $.post("/dashboard/remove-reports", 
+    {
+        csrfmiddlewaretoken:getCookie('csrftoken'),
+        'type':$(this).data('type'),
+        'reason-id':$(this).data('reason-id'),
+        'report-on':$(this).data('report-on'),
+    }
+    ,
+        function (data, textStatus, jqXHR) {
+            if (data=='done')
+                $(clicked).parentsUntil('tbody').remove();
+        },
+    );
+ 
+}
+
+function collectPollItems(){
+    let data=[];
+
+    [...$('.poll-item')].forEach(function(el){
+        let item={
+            type:$(el).find('.item-type').val(),
+            text:$(el).find('.polls-que').val()
+        };
+        let options=[];
+        [...$(el).find('.poll-choies')].forEach(function(el){
+            if($(el).find('.choies-inp').val())
+              options.push(($(el).find('.choies-inp').val()));
+        });
+        item['options']=options;
+        data.push(item);
+    });  
+    $('#poll-items').val(JSON.stringify(data));
 }

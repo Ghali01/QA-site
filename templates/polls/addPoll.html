@@ -1,0 +1,256 @@
+{% extends 'utilities/dashboard/_base.html' %}
+
+{% block title %}Add Poll{% endblock %}
+{% block content %} 
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Poll</h3>
+            </div>
+            <div class="card-body">
+              <form>
+                <input type="text" class="form-control" placeholder="Titile...">
+              </form>
+              <div id="summernote"></div>
+              <div class="row targets-row">
+                <div class="col-6 targets-col">
+
+                  <div class="add-tag-to-que-div">
+                    <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
+                      class="form-control que-input que-tags-input" placeholder="Add Tags">
+                    <ul class="tags-list custom-scrollbar">
+                        {% for tag in tags %}
+                        <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}}</li>
+                        {% endfor %}
+                    </ul>
+
+
+                    <div class="card add-tags-q">
+                      <h5 class="card-header">Tags</h5>
+                      <div class="card-body tags-div" id="tags-div-ol">
+
+                        <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
+                          Tag
+                          <div class="btn remove-tag-btn">
+                            <i class="fas fa-times"></i>
+                          </div>
+                        </button>
+
+                      </div>
+                      <input type="hidden" name="tags" id="tags-input" value="[]">
+
+                    </div>
+
+
+
+                  </div>
+                </div>
+                <div class="col-6 targets-col">
+
+                  <div class="row cate-selectes">
+                    <div class="col-2 cate-sel-col">
+                      <div class="form-group">
+                        <label>Category lvl 1</label>
+                        <select class="form-control cate-select">
+                          <option value="0">All</option>
+                            {% for cate in categories%}
+                              <option value="{{cate.id}}" data-sub='{{cate.subs}}'>{{cate.name}}</option>
+                            {% endfor %}
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-2 cate-sel-col">
+                      <div class="form-group">
+                        <label>Category lvl 2</label>
+                        <select class="form-control cate-select">
+
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-2 cate-sel-col">
+                      <div class="form-group">
+                        <label>Category lvl 3</label>
+                        <select class="form-control cate-select" value="5">
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-2 cate-sel-col">
+                      <div class="form-group">
+                        <label>Category lvl 4</label>
+                        <select class="form-control cate-select">
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-app add-cate-btn ">
+                        <i class="fas fa-plus"></i>Add
+                      </button>
+                    </div>
+                  </div>
+                  <div class="card add-tags-q">
+                    <h5 class="card-header">Categiries</h5>
+                    <div class="card-body tags-div" id="cate-div-ol">
+
+                      <button type="button" class="btn btn-light cate-grid-item cate-item-removeable">
+                        Category
+                        <div class="btn remove-cate-btn">
+                          <i class="fas fa-times"></i>
+                        </div>
+                      </button>
+
+                    </div>
+                    <input type="hidden" name="categories" id="cates-input" value="[]">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title">Poll Items</h3>
+                    </div>
+                    <div class="card-body ">
+                      <div class="polls-items " id="polls-items">
+                        <div class="poll-item  " >
+                          <button class="btn mov-poll-item">
+                            <i class="fas fa-arrows-alt"></i>
+                            </button>
+                          <button class="btn del-poll-item">
+                            <i class="far fa-times-circle"></i>
+                          </button>
+                          <h6 class="float-right poll-item-title " >CheckBox List</h6>
+                    
+                          <input type="hidden" class="item-type" name="item-type" value="C">
+                          <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                          <ul class="poll-choesies">
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                          </ul>
+                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                        </div>
+                        <div class="poll-item ">
+                          <button class="btn mov-poll-item">
+                            <i class="fas fa-arrows-alt"></i>
+                            </button>
+                          <button class="btn del-poll-item">
+                            <i class="far fa-times-circle"></i>
+                          </button>
+                          <h6 class="float-right poll-item-title">Radio List</h6>
+                          <input type="hidden" class="item-type" name="item-type" value="R">
+                          <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                          <ul class="poll-choesies">
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                          </ul>
+                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                        </div>
+                        <div class="poll-item ">
+                          <button class="btn mov-poll-item">
+                            <i class="fas fa-arrows-alt"></i>
+                            </button>
+                          <button class="btn del-poll-item">
+                            <i class="far fa-times-circle"></i>
+                          </button>
+                          <h6 class="float-right poll-item-title">Radio List</h6>
+                          <input type="hidden" class="item-type" name="item-type" value="R">
+                          <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                          <ul class="poll-choesies">
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <button class="btn btn-app btn-app-xs del-cho-btn">
+                                <i class="far fa-trash-alt btn-app-icon"></i>
+                              </button>
+                            </li>
+                          </ul>
+                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                        </div>
+                        
+               
+                      </div>
+                      <button class="btn btn-outline-primary float-right " id="add-CL-btn">Add CheckBox List</button>
+                      <button class="btn btn-outline-primary float-right " id="add-RL-btn">Add Radio List</button>
+
+
+                    </div>
+                  </div>
+                  <input type="hidden" name="poll-items" id="poll-items">
+                  <input type="hidden" name="publish">
+                  <button class="btn btn-primary float-right" >Save</button>
+                  <button class="btn btn-primary float-right" style="margin: 0 10px;">Publish</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+{% endblock %}

@@ -1,10 +1,10 @@
 {% extends 'utilities/_base.html' %}
 {% load questions %}
-{% block title %}Your Answers{% endblock %}
+{% block title %}{{username}} Answers{% endblock %}
 
 {% block content %}
 <div class="column-no-border">
-<h2 class="center-title" style="float:none;">Your Answers</h2>
+<h2 class="center-title" style="float:none;">{{username}} Answers</h2>
 <div class="question-dev-parent">
     <div class="questions-gird-toolbar">
         <div class="row filters-row">

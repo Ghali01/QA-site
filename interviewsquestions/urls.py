@@ -11,6 +11,7 @@ urlpatterns = [
     path('moderators/',include('moderators.urls',namespace='moderators')),
     path('profile/',include('profiles.urls',namespace='profiles')),
     path('feedback/',include('feedback.urls',namespace='feedback')),
+    path('polls/',include('polls.urls',namespace='polls')),
     path('admin/', admin.site.urls),
 ]
 if settings.DEBUG:

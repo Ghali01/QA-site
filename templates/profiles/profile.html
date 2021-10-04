@@ -1,5 +1,6 @@
 {% extends 'utilities/_base_no_right.html' %}
 {% load static %}
+{% load reportModal %}
 {% block  title %}{{user.username}} {% endblock %}
 
 {% block content %} 
@@ -288,6 +289,7 @@
         
 
 
+{% reportModal 'U' %}
 
 {% include 'profiles/_editAvatarModal.html' %}
 {% endblock %}

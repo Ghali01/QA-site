@@ -10,12 +10,23 @@
         
                 {% include 'utilities/_brand'|add:lc|add:'.html' %}
                 {% endwith %}</a>
-                <form class="d-flex search-nav-form">
+                <div class="d-flex search-nav-form">
                     <div class="form-group has-search">
                         <span class="fa fa-search form-control-feedback"></span>
+                        <div class="loading-circle in-search">
+                            <div class="primary-circle">
+                                <div class="secondary-circle"></div>
+                                <div class="background-circle"></div>
+                            </div>
+                    
+                        </div>
                         <input type="text" class="form-control search-input" placeholder="Search">
                     </div>
-                </form>
+                    <ul class="search-resaults">
+                    
+
+                    </ul>
+                </div>
                 <button class="navbar-toggler  " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">

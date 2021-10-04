@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 import datetime
 import json
 from django.utils import timezone
+from django.utils.translation import get_language
 class Category(models.Model):
     name =models.CharField(max_length=60)
     parent=models.ForeignKey('self',on_delete=models.CASCADE,null=True,related_name='categories')
@@ -131,7 +132,25 @@ class Post(models.Model):
         return self.logs.filter(type=PostLog.types.AcceptEdit).exists()
     def getLastEditAuthor(self):
         return self.logs.filter(type=PostLog.types.AcceptEdit).order_by('time').last().author
+    def getReports(self):
+        lang=get_language()[:2]
+        reasons=None
+        if self.isQuestion():
+            reasons=FlagReason.objects.filter(type=FlagReason.types.Questions)
+        else:
+            reasons=FlagReason.objects.filter(type=FlagReason.types.Answers)
+        data=[]
+        for reason in reasons:
+            count=self.reports.filter(reason=reason).count()
+            name=reason.nameEN if lang=='en' else reason.nameAR
+            if count>0:
+                data.append({
+                    'name':name,
+                    'count':count,
+                    'id':reason.id
+                })
 
+        return data
 class Question(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE,related_name='question')
     title=models.CharField(max_length=200)
@@ -273,6 +292,10 @@ class Question(models.Model):
         return allLogs
     def getPubliedAnswer(self):
         return self.getAcceptedAnswers().filter(post__isPublished=True)
+    def getReports(self):
+        return self.post.getReports()
+
+     
 class SuggestedQuestion(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE)
     title=models.CharField(max_length=200)
@@ -496,6 +519,9 @@ class Answer(models.Model):
     def isJustSuggested(self):
         return self.post.logs.last().type==PostLog.types.Suggest
 
+    def getReports(self):
+    
+        return self.post.getReports()
 
 class Comment(models.Model):
     text= models.CharField(max_length=300)
@@ -573,4 +599,4 @@ class Badge(models.Model):
         return User.objects.filter(profile__badges=self).count()
 
 
-        
+from feedback.models import FlagReason
