@@ -1,9 +1,9 @@
-{% load categories %}
+{% load leftColumn %}
 <div class="d-none d-md-block left-column">
     
     {% categories %}
     <a class="side-link" href="{% url 'content:tags-page' %}">Tags</a>
-
+    {% polls request.user %}
     <div class="left-bottom-column">
        {% load i18n %}
         {% get_current_language as LANGUAGE_CODE %}

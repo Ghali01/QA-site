@@ -6,6 +6,156 @@
     <form id="reg-form" method="POST" autocomplete="on" class="animeted-form tags-form">
         {% csrf_token %}
         <h4 class="form-title">Complete You Register</h4>
+   
+        <p class="form-label form-msg">
+            Plese select your category
+        </p>
+             <div class="categoriis-lists">
+            
+            <div class="custom-select category-select-toolbar" data-cur-val="1">
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">
+                        {% if category.getLvl == 1 %}
+                        {{category.name}}
+                        {% elif category.getLvl > 1 %}
+                        {{category.getFirstParent.name}}
+
+                        {% elif not category %}
+                        {{categories.first.name}}
+                        {% endif %}
+                    </span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    {% for cate in categories %}
+                    <li class="custom-select-item" data-cate-id="{{cate.id}}" data-sub='{{cate.subs}}'>
+                        {{cate.name}}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="custom-select category-select-toolbar" {% if category.getLvl >= 1 %}
+                style='visibility: visible;'
+                {% endif %}
+                >
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">
+
+                        {% if category.getLvl == 2 %}
+                        {{category.name}}
+                        {% elif category.getLvl > 2 %}
+                        {{category.getSecondParent.name}}
+                        {% else %}
+                        Select Category
+                        {% endif %}
+
+                    </span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    {% if category %}
+                    {% for subCate in category.getFirstParent.subCategoies %}
+                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                        data-sub='{{subCate.subs}}'>
+                        {{subCate.name}}
+                    </li>
+                    {% empty %}
+                    {% if category.getLvl == 1 %}
+
+                    {% for subCate in category.subCategoies %}
+                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                        data-sub='{{subCate.subs}}'>
+                        {{subCate.name}}
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+
+                    {% endfor %}
+                    {% endif %}
+                </ul>
+            </div>
+            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 2 %}
+                style='visibility: visible;'
+                {% endif %}>
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">
+
+                        {% if category.getLvl == 3 %}
+                        {{category.name}}
+                        {% elif category.getLvl > 3 %}
+                        {{category.getThirdParent.name}}
+                        {% else %}
+                        Select Category
+                        {% endif %}
+
+                    </span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    {% if category %}
+                    {% for subCate in category.getSecondParent.subCategoies %}
+                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                        data-sub='{{subCate.subs}}'>
+                        {{subCate.name}}
+                    </li>
+                    {% empty %}
+                    {% if category.getLvl == 2 %}
+
+                    {% for subCate in category.subCategoies %}
+                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                        data-sub='{{subCate.subs}}'>
+                        {{subCate.name}}
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+                </ul>
+            </div>
+            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 3 %}
+                style='visibility: visible;'
+                {% endif %}>
+                <button class="btn btn-primary btn-select">
+                    <span class="selected-span">
+
+                        {% if category.getLvl == 4 %}
+                        {{category.name}}
+                        {% else %}
+                        Select Category
+                        {% endif %}
+
+                    </span>
+                    <i class="fas fa-caret-down select-arrow"></i>
+
+                </button>
+                <ul class="custom-select-list custom-scrollbar">
+                    {% if category %}
+                    {% for subCate in category.getThirdParent.subCategoies %}
+                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                        data-sub='{{subCate.sub}}'>
+                        {{subCate.name}}
+                    </li>
+                    {% empty %}
+                    {% if category.getLvl == 3 %}
+                    {% for subCate in category.subCategoies %}
+                    <li class="custom-select-item" data-cate-id="{{subCate.id}}"
+                        data-sub='{{subCate.subs}}'>
+                        {{subCate.name}}
+                    </li>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+                </ul>
+            </div>
+            <input type="hidden" class="add-que-h-inp" name="category-id" id="category-id" value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}">
+
+        </div>
         <p class="form-label form-msg">
             Plese select the things that interest you
         </p>

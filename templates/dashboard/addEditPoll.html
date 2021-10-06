@@ -11,11 +11,12 @@
               <h3 class="card-title">Poll</h3>
             </div>
             <div class="card-body">
-              <form>
-                <input type="text" class="form-control" placeholder="Titile...">
-              </form>
-              <div id="summernote"></div>
-              <div class="row targets-row">
+              <form id="poll-form" method="post">
+                  {% csrf_token %}
+                <input type="text" class="form-control" name="title" placeholder="Titile..." value="{{poll.title}}">
+              <textarea id="summernote" name="text">{{poll.text}}</textarea>
+            </form>
+            <div class="row targets-row" id="targets-row">
                 <div class="col-6 targets-col">
 
                   <div class="add-tag-to-que-div">
@@ -31,16 +32,16 @@
                     <div class="card add-tags-q">
                       <h5 class="card-header">Tags</h5>
                       <div class="card-body tags-div" id="tags-div-ol">
-
+                        {% for tag in poll.tags.all %}
                         <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
-                          Tag
+                          {{tag.name}}
                           <div class="btn remove-tag-btn">
                             <i class="fas fa-times"></i>
                           </div>
                         </button>
-
+                      {% endfor %}
                       </div>
-                      <input type="hidden" name="tags" id="tags-input" value="[]">
+                      <input type="hidden" name="tags" form="poll-form" id="tags-input" value="[{% for tag in poll.tags.all %}{{tag.id}}{% if not forloop.last %},{% endif %}{% endfor %}]">
 
                     </div>
 
@@ -93,16 +94,25 @@
                   <div class="card add-tags-q">
                     <h5 class="card-header">Categiries</h5>
                     <div class="card-body tags-div" id="cate-div-ol">
-
+                      {% if not isNew %}
+                      {% for cate in poll.categories.all %}
                       <button type="button" class="btn btn-light cate-grid-item cate-item-removeable">
-                        Category
+                        {{cate.name}}
                         <div class="btn remove-cate-btn">
                           <i class="fas fa-times"></i>
                         </div>
                       </button>
-
+                      {% empty %}
+                      <button type="button" class="btn btn-light cate-grid-item cate-item-removeable">
+                        All
+                        <div class="btn remove-cate-btn">
+                          <i class="fas fa-times"></i>
+                        </div>
+                      </button>
+                      {% endfor %}
+                      {% endif %}
                     </div>
-                    <input type="hidden" name="categories" id="cates-input" value="[]">
+                    <input type="hidden" name="categories" form="poll-form" id="cates-input" value="[{% for cate in poll.categories.all %}{{cate.id}}{% if not forloop.last %},{% endif %}{% endfor %}]">
                   </div>
                 </div>
               </div>
@@ -114,6 +124,7 @@
                     </div>
                     <div class="card-body ">
                       <div class="polls-items " id="polls-items">
+                       {% if isNew %}
                         <div class="poll-item  " >
                           <button class="btn mov-poll-item">
                             <i class="fas fa-arrows-alt"></i>
@@ -229,19 +240,62 @@
                           </ul>
                           <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
                         </div>
-                        
+                      {% else %}
+                        {% for item in poll.items.all %}
+                            <div class="poll-item ">
+                              {% if not poll.isPublished %}
+                             
+                          <button class="btn mov-poll-item">
+                            <i class="fas fa-arrows-alt"></i>
+                            </button>
+                          <button class="btn del-poll-item">
+                            <i class="far fa-times-circle"></i>
+                          </button>
+                              {% endif %}
+                          <h6 class="float-right poll-item-title">{{item.get_type_display}}</h6>
+                          <input  type="hidden" class="item-type" name="item-type" value="{{item.type}}">
+                          <textarea class="form-control polls-que" placeholder="question text..." {% if poll.isPublished %} readonly {% endif %}>{{item.text}}</textarea>
+                          <ul class="poll-choesies">
+                            {% for opt in item.getOptions %}
+                            <li class="poll-choies">
+                              <input type="text" class="form-control choies-inp" placeholder="Option..." value="{{opt}}"
+                               {% if poll.isPublished %} readonly {% endif %}>
+                            {% if not poll.isPublished %}
+                            <button class="btn btn-app btn-app-xs del-cho-btn">
+                              <i class="far fa-trash-alt btn-app-icon"></i>
+                            </button>
+                            {% endif %}
+                            </li>
+                          {% endfor %}
+                          </ul>
+
+                          {% if not poll.isPublished %}
+                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                          {% endif %}
+                        </div>
+                  
+                        {% endfor %}
+                      {% endif %}                      
                
                       </div>
+                      {% if isNew %}
                       <button class="btn btn-outline-primary float-right " id="add-CL-btn">Add CheckBox List</button>
                       <button class="btn btn-outline-primary float-right " id="add-RL-btn">Add Radio List</button>
-
+                      {% elif not isNew and not poll.isPublished %}
+                      <button class="btn btn-outline-primary float-right " id="add-CL-btn">Add CheckBox List</button>
+                      <button class="btn btn-outline-primary float-right " id="add-RL-btn">Add Radio List</button>
+                      {% endif %}
 
                     </div>
                   </div>
-                  <input type="hidden" name="poll-items" id="poll-items">
-                  <input type="hidden" name="publish">
-                  <button class="btn btn-primary float-right" >Save</button>
-                  <button class="btn btn-primary float-right" style="margin: 0 10px;">Publish</button>
+                  <input type="hidden" form="poll-form" name="poll-items" id="poll-items">
+                  {% if not poll.isPublished %}
+                   <input type="hidden" form="poll-form" id="pub-poll-inp" name="published">
+                  {% endif %}
+                  <button class="btn btn-primary float-right save-poll-btn" >Save</button>
+                  {% if not poll.isPublished %}
+                  <button class="btn btn-primary float-right pub-poll-btn" style="margin: 0 10px;">Publish</button>
+                  {% endif %}
                 </div>
               </div>
             </div>

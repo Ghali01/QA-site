@@ -94,6 +94,11 @@ urlpatterns=[
     path('flaged-answers/<int:page>',flagViews.flagedAnswers,name='flaged-answers'),
     path('flaged-users/<int:page>',flagViews.flagedUsers,name='flaged-users'),
     path('remove-reports',flagViews.removeReports,name='remove-reports'),
-    path('polls/<str:language>',pollsViews.polls,name='polls'),
-    path('add-poll/<str:language>',pollsViews.addPoll,name='add-poll')
+    path('polls/<int:page>/<str:language>',pollsViews.polls,name='polls'),
+    path('add-poll/<str:language>',pollsViews.addPoll,name='add-poll'),
+    path('delete-poll',pollsViews.deletePoll,name='delete-poll'),
+    path('edit-poll/<int:pollID>',pollsViews.editPoll,name='edit-poll'),
+    path('pub-poll',pollsViews.publishPoll,name='pub-poll'),
+    path('togg-poll-open',pollsViews.toggPollOpen,name='toggle-poll-open'),
+    path('poll-resaults/<int:pollID>',pollsViews.pollResault,name='poll-resaults'),
   ]

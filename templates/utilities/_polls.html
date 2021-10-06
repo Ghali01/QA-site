@@ -1,0 +1,10 @@
+{% if polls %}
+<span class="side-link" style="display: block;">Polls</span>
+<ul class="polls-lits">
+    {% for poll in polls %}
+    <li>
+        <a href="{% url 'polls:poll-page' pollID=poll.id %}" class="custom-link poll-link">{{poll.title}}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

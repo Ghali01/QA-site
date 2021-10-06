@@ -295,7 +295,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'dashboard:polls' language='en' %}" class="nav-link
+            <a href="{% url 'dashboard:polls' language='en' page=1 %}" class="nav-link
             {% if 'polls' in request.path %}
             active
             {% endif %}">

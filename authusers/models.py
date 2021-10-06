@@ -1,9 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.query_utils import Q
+
 from django.utils import timezone
-from interviewsquestions.settings import MEDIA_ROOT
-from content.models import Post, Badge, PostLog, Tag,Question
+
+from content.models import Post, Badge, PostLog, Tag,Question,Category
 import datetime
 from interviewsquestions.utilities.database import langChoices
 from feedback.models import FlagReason
@@ -35,7 +35,7 @@ class UserProfile(models.Model):
     website=models.CharField(max_length=70,null=True,default='')
     about=models.TextField(null=True,default='')
     image=models.ImageField(upload_to='profile/',default='profile/default.jpg')
-    tags=models.ManyToManyField(Tag)
+    tags=models.ManyToManyField(Tag,related_name='users')
     permission=models.CharField(max_length=3,choices=permissionsChoies,default='U')
     socialID=models.CharField(max_length=150,unique=True,null=True)
     provider=models.CharField(max_length=20,choices=providerChoises,null=True)
@@ -46,6 +46,13 @@ class UserProfile(models.Model):
     views=models.PositiveBigIntegerField(default=0)
     lastActive=models.DateTimeField(auto_now_add=True)
     language=models.CharField(max_length=2,choices=langChoices,default='en')
+    category=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,related_name='users')
+    def polls(self):
+        polls=[]
+        for res in self.user.userResaults.all():
+            polls.append(res.poll)
+
+        return polls
     def isBaned(self):
         return BanedUser.objects.filter(user=self.user).exists()
     def isModerator(self):

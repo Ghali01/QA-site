@@ -1,0 +1,56 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% block title %}{{poll.title}}{% endblock %}
+
+{% block content %} 
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">{{poll.title}}</h3>
+              
+            </div>
+            <div class="card-body">
+              <div class="polls-items " id="polls-items">
+                {% for item in poll.items.all %}
+                <div class="poll-item" >
+              
+                  <h6 class="float-right poll-item-title " >
+                    {% if item.type == 'C' %}      
+                    CheckBox List
+                    {% else %}
+                    Radio List
+                    {% endif %}
+                
+                </h6>
+                  <p class="poll-que">
+                    {{item.text}}
+                </p>
+                  <ul class="poll-choesies-r">
+                    {% for res in item.getResault %}
+                    <li class="poll-choies-r">
+                      <span class="choise-span">{{res.name}}</span>
+                      <div class="progress mb-3 choice-prog">
+                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="40" aria-valuemin="0"
+                             aria-valuemax="100" style="width: {{res.percent}}%">
+                        </div>
+                      </div>
+                      <span>{{res.percent}}%</span>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+   
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+
+{% endblock %}

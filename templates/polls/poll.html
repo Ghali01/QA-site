@@ -1,0 +1,53 @@
+{% extends 'utilities/_base.html' %}
+{% block title %}{{poll.title}}{% endblock %}
+
+{% block content %}
+    <h2 class="center-title">{{poll.title}}</h2>
+    <div style="clear: both;"></div>
+    <div class="poll-desc">
+        {{poll.text|safe}}
+    </div>
+    <form action="" method="post" id="poll-form">
+        {% csrf_token %}
+        <ul class="poll-items">
+        {% for item in poll.items.all %}
+        <li class="poll-item">
+            <p class="pool-que">
+                {{item.text}}
+            </p>
+            <ul class="poll-choieses">
+                {% for opt in item.getOptions %}
+                <li class="poll-choise">
+                    {% if item.type == 'C' %}
+                    
+                    <input type="checkbox" name="{{item.id}}-{{forloop.counter0}}" class="custom-checkbox-inp" id="ch-{{item.id}}-{{forloop.counter0}}">
+                    <div class="custom-checkbox">
+                        <span class="check-mark">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <label  for="ch-{{item.id}}-{{forloop.counter0}}">{{opt}}</label>
+                {% else %}
+                <input type="radio"  class="custom-radiobox-inp" name="item-{{item.id}}" value="{{forloop.counter0}}" id="ch-{{item.id}}-{{forloop.counter0}}">
+                <div class="custom-radiobox">
+                    <div class="radio-mark">
+                    </div>
+                </div>
+                <label  for="ch-{{item.id}}-{{forloop.counter0}}">{{opt}}</label>
+                {% endif %}
+                </li>
+
+                {% endfor %}
+                
+            </ul>
+        </li>
+        {% endfor %}
+      
+        
+    </ul>
+</form>
+{% if submitable %}
+    <p class="error-poll">Please Answer All Questions</p>
+    <button class="btn btn-primary primary-button submit-poll-btn "> Submit</button>
+    {% endif %}
+{% endblock %}

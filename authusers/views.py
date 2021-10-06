@@ -9,7 +9,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth import authenticate,login,logout as _logout
-from content.models import Tag
+from content.models import Category, Tag
 import json
 from interviewsquestions.utilities.authDecoratros import forActiveUser
 import requests
@@ -131,21 +131,25 @@ def selectTags(request):
             return redirect(reverse('authusers:auth-index'))
 
         if request.method=='POST':
-            if 'tags' in request.POST:
+            if 'tags' in request.POST and 'category-id' in request.POST:
                 userTags=json.loads(request.POST['tags'])
                 if userTags:
-                    userProfile=request.user.profile
                     try:
+                        category=Category.objects.get(pk=int(request.POST['category-id']))
+                        userProfile=request.user.profile
+                        userProfile.category=category
                         for tagId in userTags:
                             userProfile.tags.add(Tag.objects.get(pk=int(tagId)))
                         return redirect(reverse('authusers:auth-index'))
-                    except(Tag.DoesNotExist,ValueError):
+                    except(Tag.DoesNotExist,Category.DoesNotExist,ValueError):
                         pass
                 else:
                     messages.error(request,'you have to add 1 tag or more')
         tags=Tag.objects.all()
+        categories=Category.objects.filter(parent=None)
         contxt={
-            'tags':tags
+            'tags':tags,
+            'categories':categories
         }
         return render(request,'auth/selectTags.html',contxt)
     elif request.user.is_authenticated and not request.user.is_anonymous and not request.user.is_active:

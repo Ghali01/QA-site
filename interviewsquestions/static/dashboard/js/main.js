@@ -266,9 +266,10 @@ $(document).ready(function () {
     $(".del-li-btn").click(deleteLiBtn);
     $('#target-type').change(targetTypeSelect);
     $('.remove-report-btn').click(removeReports);
-
-
-
+    $('.save-poll-btn').click(savePollBtn);
+    $('.pub-poll-btn').click(pubPollBtn);
+    $('.tog-open-btn').click(toggOpenPollBtn);
+    $('.pub-poll-btn-t').click(pubPollBtnT);
     let now= new Date(),
     dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
 
@@ -495,7 +496,7 @@ function addPollItem(itemtype) {
     let title = document.createElement("h6");
     $(title).addClass(["float-right", 'poll-item-title']);
 
-    if (itemtype == "CL")
+    if (itemtype == "C")
         $(title).text("CheckBox List");
     else
         $(title).text("Radio List");
@@ -843,3 +844,42 @@ function collectPollItems(){
     });  
     $('#poll-items').val(JSON.stringify(data));
 }
+function savePollBtn(){
+    collectPollItems();
+    $('#pub-poll-inp').remove();
+    $('#poll-form').submit();
+}
+function pubPollBtn(){
+    collectPollItems();
+    $('#poll-form').submit();
+}
+
+function toggOpenPollBtn(){
+    let clicked=this;
+    $.post("/dashboard/togg-poll-open",{
+        csrfmiddlewaretoken:getCookie('csrftoken'),
+        'poll-id':$(this).data('poll-id')
+    },
+        function (data, textStatus, jqXHR) {
+            if(data=='opened')
+                $(clicked).html('<i class="fas fa-lock btn-app-icon"></i>Lock');
+            if(data=='closed')
+                $(clicked).html('<i class="fas fa-unlock btn-app-icon"></i>Unlock');
+            },
+    );
+}
+function pubPollBtnT() { 
+    let clicked=this;
+    $.post("/dashboard/pub-poll",{
+        csrfmiddlewaretoken:getCookie('csrftoken'),
+        'poll-id':$(this).data('poll-id')
+    },
+        function (data, textStatus, jqXHR) {
+            if(data=='done'){
+                $(clicked).siblings('.tog-open-btn').html('<i class="fas fa-lock btn-app-icon"></i>Lock');
+                $(clicked).remove();
+                }
+            },
+    );
+
+ }

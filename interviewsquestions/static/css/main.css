@@ -427,9 +427,11 @@ body{
 .left-column{
     width: 230px;
     left: 0;
+    min-width: 230px;
 }
 .right-column{
     right: 0;
+    min-width: 300px;
     width: 300px;
 }
 
@@ -3370,7 +3372,7 @@ p.info{
 .tags-form{
     margin: 7% auto !important;
     width: 800px !important;
-    height: 350px; 
+    height: 390px; 
 }
 
 .save-tags-btn{
@@ -3826,4 +3828,39 @@ p.info{
     top: -4px;
     right: 0px;
 
+}
+.polls-lits{
+    list-style: none;
+    padding: 4px 8px;
+}
+.poll-link{
+    font-size: 21px;
+    color: var(--secodry-color);
+}
+.poll-link:hover,
+.poll-link:active{
+    color: var(--tSecodry-color);
+}
+
+.error-poll{
+    font-size: 29px;
+    color: var(--error-color);
+    display: inline-block;
+    padding: 0 5px;
+}
+@media (min-width:410px) and (max-width:490px) {
+    .error-poll{
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width:410px) {
+    .error-poll{
+        font-size: 16px;
+    }
+}
+
+.custom-radiobox,.custom-checkbox{
+    cursor: pointer;
 }
