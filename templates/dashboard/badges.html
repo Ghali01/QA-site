@@ -11,7 +11,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Badges Management</h3>
-            <form id='serach-form'>
+            <form id='serach-form' action="{% url 'dashboard:badges-page' page=1 %}">
               <div class="input-group float-right badge-filter" style="width: 750px;">
                 <input type="search" class="form-control form-control-md "
                     id="search-badges" name="search" placeholder="search name" value="{{search}}">
@@ -37,7 +37,10 @@
                   <option value="QV"{% if reason == 'QV' %} selected {% endif %}>Question Votes</option>
                   <option value="AV"{% if reason == 'AV' %} selected {% endif %}>Answer Votes</option>
                   <option value="E"{% if reason == 'E' %} selected {% endif %}>Edit</option>
-                 </select>
+                  <option value="P"{% if reason == 'P' %} selected {% endif %}>Polls</option>   
+                  <option value="L"{% if reason == 'L' %} selected {% endif %}>Log in times</option>   
+            
+                </select>
                 <select class="form-control badge-filter" name="target" id="">
                   <option value="0">Select Target</option>
                   <option value="G" {% if targetStr == 'G' %} selected {% endif %} >General</option>
@@ -58,6 +61,7 @@
             </div>
            </form>
            <script>
+
              $('#serach-form select').change(_=>$('#serach-form').submit())
            </script>
             </div>

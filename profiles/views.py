@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 import json
 from interviewsquestions.utilities.authDecoratros import forActiveUser,forProfileOwner
 from interviewsquestions.settings import MEDIA_ROOT
+from authusers.models import UserProfile
+from mimetypes import guess_type
 def profilePage(request,userID):
     ptype=order=None
     user=get_object_or_404(User,id=userID)
@@ -365,7 +367,7 @@ def changeAavatar(request):
             finalImg=Image.fromarray(fArr)
             path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
             finalImg=finalImg.crop([x0,y0,x1,y1])
-            finalImg.save(path)
+            finalImg.save(path,)
             request.user.profile.image.name='profile/'+request.user.username+'.png'
             request.user.profile.save()
     return redirect(reverse('profiles:profile-page',kwargs={'userID':request.user.id}))
@@ -396,3 +398,10 @@ def myTags(request):
     }
 
     return render(request,'profiles/editTags.html',contxt)
+
+
+def downloadImagProfile(request,userID):
+    filename=get_object_or_404(UserProfile,id=userID).image.name
+    mimeType=guess_type(filename)[0]
+    with open(str(MEDIA_ROOT)+'/'+filename,'rb') as file:
+        return HttpResponse(file.read(),content_type=mimeType)

@@ -9,7 +9,7 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponse
 from django.urls import reverse
 from django.contrib.auth import authenticate,login,logout as _logout
-from content.models import Category, Tag
+from content.models import Badge, Category, Tag
 import json
 from interviewsquestions.utilities.authDecoratros import forActiveUser
 import requests
@@ -50,6 +50,7 @@ def registerPage(request):
             try:
                 user=User.objects.create_user(userName,email,password,first_name=fullName,is_active=False)
                 login(request,user)
+                countLoginBadges(user)
                 code=genRandomStr()
                 TempUser.objects.create(user=user,code=code,website=website)
                 msg= f"your confirm link: {request.build_absolute_uri(reverse('authusers:confirm-user',kwargs={'code':code}))}"
@@ -113,6 +114,8 @@ def loginPage(request):
                     return redirect(reverse('authusers:email-sent'))
                 if not user.profile.isBaned():
                     login(request,user)
+                    countLoginBadges(user)
+
                     if not 'remember' in request.POST:
                         request.session.set_expiry(0)
                     return redirect(reverse('authusers:auth-index'))
@@ -205,6 +208,8 @@ def addSocialUser(request,registerPage,imageUrl):
             if not profile.isBaned():
 
                 login(request,user)
+                countLoginBadges(user)
+
             else:
                 messages.error(request,'user baned')
             return redirect(reverse('authusers:auth-index'))
@@ -244,6 +249,8 @@ def facebookLogin(request):
                 profile=UserProfile.objects.get(socialID=userID)
                 if not profile.isBaned():
                     login(request,profile.user)
+                    countLoginBadges(profile.user)
+
                 else:
                     messages.error(request,'user baned')
                 return redirect(reverse('authusers:auth-index'))
@@ -285,6 +292,8 @@ def googelLogin(request):
                 profile=UserProfile.objects.get(socialID=userID)
                 if not profile.isBaned():
                     login(request,profile.user)
+                    countLoginBadges(profile.user)
+
                 else:
                     messages.error(request,'user baned')
                 return redirect(reverse('authusers:auth-index'))
@@ -339,6 +348,8 @@ def githubLogin(request):
             if not profile.isBaned():
 
                 login(request,profile.user)
+                countLoginBadges(profile.user)
+
             else:
                 messages.error(request,'user baned')
             return redirect(reverse('authusers:auth-index'))
@@ -394,6 +405,8 @@ def regisetSocialUser(request):
                     if not profile.isBaned():
 
                         login(request,user)
+                        countLoginBadges(profile.user)
+
                     else:
                         messages.error(request,'user baned')
                     return redirect(reverse('authusers:auth-index'))
@@ -436,3 +449,15 @@ def checkAuthentication(request):
         return HttpResponse('1')
     else:
         return HttpResponse('0')
+
+
+
+def countLoginBadges(user):
+    user.profile.loginTimes+=1
+    user.profile.save()
+
+    badges=Badge.objects.filter(reason=Badge.reasons.LoginTimes)
+    badges=badges.difference(user.profile.badges.all())
+    for badge in badges:
+        if user.profile.loginTimes>= badge.count:
+            user.profile.badges.add(badge)

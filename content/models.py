@@ -551,6 +551,8 @@ class Badge(models.Model):
         ('QV','Question Votes'),
         ('AV','Answer Votes'),
         ('E','Edits'),
+        ('P','Polls'),
+        ('L','Login times'),
     ]
     targetTypesChoice=[ 
         ('T','Tag'),
@@ -585,6 +587,8 @@ class Badge(models.Model):
         QuestionVotes='QV'
         AnswerVotes='AV'
         Edits='E'
+        Polls='P'
+        LoginTimes='L'
 
     def target(self):
          if self.targetType==Badge.targetTypes.Category:

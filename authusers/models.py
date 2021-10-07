@@ -47,6 +47,7 @@ class UserProfile(models.Model):
     lastActive=models.DateTimeField(auto_now_add=True)
     language=models.CharField(max_length=2,choices=langChoices,default='en')
     category=models.ForeignKey(Category,on_delete=models.SET_NULL,null=True,related_name='users')
+    loginTimes=models.PositiveIntegerField(default=0)
     def polls(self):
         polls=[]
         for res in self.user.userResaults.all():

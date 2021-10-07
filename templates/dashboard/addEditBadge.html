@@ -25,7 +25,7 @@
                   </div>
                   <div class="col-2" >
                     <label class="select-label">Eran Reason</label>
-                    <select name="reason" id="" class="form-control">
+                    <select name="reason" id="reasons-select" class="form-control " data-general='["L","P"]' >
                       <option value="Q"{% if badge.reason == 'Q'%} selected {% endif %}>Quetions</option>
                       <option value="A"{% if badge.reason == 'A'%} selected {% endif %}>Answers</option>
                       <option value="C"{% if badge.reason == 'C'%} selected {% endif %}>Comments</option>
@@ -36,7 +36,11 @@
                       <option value="PV"{% if badge.reason == 'PV' %} selected {% endif %}>Post Votes</option>
                       <option value="QV"{% if badge.reason == 'QV' %} selected {% endif %}>Question Votes</option>
                       <option value="AV"{% if badge.reason == 'AV' %} selected {% endif %}>Answer Votes</option>
-                      <option value="E"{% if badge.reason == 'E' %} selected {% endif %}>Edit</option>   </select>
+                      <option value="E"{% if badge.reason == 'E' %} selected {% endif %}>Edits</option>   
+                      
+                      <option value="P"{% if badge.reason == 'P' %} selected {% endif %}>Polls</option>   
+                      <option value="L"{% if badge.reason == 'L' %} selected {% endif %}>Log in times</option>   
+                    </select>
                   </div>
                   
                   <div class="col-2">

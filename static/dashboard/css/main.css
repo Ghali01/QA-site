@@ -533,3 +533,8 @@ textarea.badge-inp{
 .fr-row{
     margin-top: 16px;
 }
+select[readonly] {
+    /* background: #eee; Simular campo inativo - Sugestão @GabrielRodrigues */
+    pointer-events: none;
+    touch-action: none;
+  }

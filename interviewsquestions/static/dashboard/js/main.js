@@ -270,6 +270,7 @@ $(document).ready(function () {
     $('.pub-poll-btn').click(pubPollBtn);
     $('.tog-open-btn').click(toggOpenPollBtn);
     $('.pub-poll-btn-t').click(pubPollBtnT);
+    $('#reasons-select').change(selectReason);
     let now= new Date(),
     dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
 
@@ -883,3 +884,14 @@ function pubPollBtnT() {
     );
 
  }
+
+ function selectReason(){
+    if ($(this).data('general').includes($(this).val())){
+        $('#target-type').val('G');
+        $('#target-type').trigger('change');
+        $('#target-type').attr('readonly',true);
+    }
+    else
+        $('#target-type').attr('readonly',false);
+
+}

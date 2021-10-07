@@ -1,6 +1,7 @@
 {% extends 'utilities/_base_no_right.html' %}
 {% load static %}
 {% load reportModal %}
+{% load cache %}
 {% block  title %}{{user.username}} {% endblock %}
 
 {% block content %} 
@@ -11,7 +12,9 @@
                     <div class="col-12 col-sm-4  col-lg-3 pers-col ">
                         <div class="pres-info">
                             <div class="avt-container">
-                            <img class="avt-img" src="{{user.profile.image.url}}" alt="person name">
+                                {% cache -10 profileImg %}
+                                <img class="avt-img" src="{% url 'profiles:image-profile' userID=user.profile.id %}" alt="person name">
+                                {% endcache %}
                                 {% if user == request.user %}
                             <button type="button" class="btn btn-primary primary-button edit-avatar-btn"
                                 >

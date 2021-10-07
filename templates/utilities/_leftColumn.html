@@ -4,6 +4,7 @@
     {% categories %}
     <a class="side-link" href="{% url 'content:tags-page' %}">Tags</a>
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
+
     {% polls request.user %}
     {% endif %}
     <div class="left-bottom-column">

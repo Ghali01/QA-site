@@ -17,4 +17,5 @@ urlpatterns=[
     path('chang-avatar',views.changeAavatar,name='chang-avatar'),
     path('settings',views.profileSettings,name='user-settings'),
     path('my-tags',views.myTags,name='user-tags'),
+    path('image/<int:userID>',views.downloadImagProfile,name='image-profile')
 ]
