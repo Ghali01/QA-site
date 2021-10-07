@@ -547,7 +547,10 @@ $(document).ready(
         $('.report-btn').click(reportBtnClick);
         $('.search-nav-form .search-input').keydown(searchNavDown);
         $('.search-nav-form .search-input').keyup(searchNavUp);
-        $('.search-nav-form .search-input').focus(_=>$('.search-nav-form .search-resaults').show());
+        $('.search-nav-form .search-input').focus(_=>{
+            if ($('.search-nav-form .search-resaults').children().length)
+                $('.search-nav-form .search-resaults').show();
+        });
         $('.search-nav-form .search-resaults').hide();
         $('.error-poll').slideUp(0);
         $('.submit-poll-btn').click(submitPoll);

@@ -13,6 +13,7 @@ from interviewsquestions.settings import MEDIA_ROOT
 from authusers.models import UserProfile
 from mimetypes import guess_type
 from PIL import Image
+from django.core.files.storage import FileSystemStorage
 def profilePage(request,userID):
     ptype=order=None
     user=get_object_or_404(User,id=userID)
@@ -368,6 +369,9 @@ def changeAavatar(request):
             finalImg=Image.fromarray(fArr)
             path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
             finalImg=finalImg.crop([x0,y0,x1,y1])
+            fs=FileSystemStorage(MEDIA_ROOT.joinpath('profile'))
+            if fs.exists(f'{request.user.username}.jpg'):
+                fs.delete(f'{request.user.username}.jpg')
             finalImg.save(path,)
             finalImg=finalImg.resize((40,40))
             path=str(MEDIA_ROOT.joinpath('profile'))+f'/sm-{request.user.username}.png'

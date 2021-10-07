@@ -3864,3 +3864,8 @@ p.info{
 .custom-radiobox,.custom-checkbox{
     cursor: pointer;
 }
+
+.test-text{
+    color: red;
+    font-size: 15px;
+}

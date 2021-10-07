@@ -9,10 +9,16 @@ def questionItem(question):
     
 @register.inclusion_tag('content/templatetags/question.html')
 def question(question,request):
-    return {'question':question,'request':request}
+    return {'question':question,
+        'request':request,
+        'path':request.build_absolute_uri(request.path)
+    }
 
 @register.inclusion_tag('content/templatetags/answer.html')
 def answer(answer,request):
-    return {'ans':answer,'request':request}
+    return {'ans':answer,
+        'request':request,
+        'path':request.build_absolute_uri(request.path)
+    }
 
     

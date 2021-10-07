@@ -14,6 +14,7 @@ from django.db.models import Count
 from django.template.loader import render_to_string
 import json
 from django.http import Http404 
+from interviewsquestions.settings import STATIC_ROOT
 def index(request,categoryID=-1):
     tagsFilter=viewsFilter=votesFilter=answersFilter=timeFilter=None
     category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
@@ -183,7 +184,7 @@ def questionPage(request,questionID):
     question.refresh_from_db()
     countViewBadge(question)
     contxt={
-        'question':question
+        'question':question,
     }
     return render(request,'content/questionPage.html',contxt)
 
@@ -524,3 +525,25 @@ def searchQuestionsAjax(request):
             htmlStr+=render_to_string('content/templatetags/searchItem.html',{'question':que})
         return HttpResponse(htmlStr)
     return HttpResponse('error')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import pdfkit
+from django.template.loader import render_to_string
+def exams(request):
+    html=render_to_string('exams/question.html')
+    pdf=pdfkit.from_string(html,False ,css=str(STATIC_ROOT.joinpath('css'))+'/main.css')
+    return HttpResponse(pdf,content_type='application/pdf')
