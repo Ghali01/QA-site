@@ -4,6 +4,7 @@ from django.urls.base import reverse
 import base64
 from interviewsquestions.settings import MEDIA_ROOT
 from mimetypes import guess_type
+import os
 register=Library()
 
 @register.inclusion_tag('profiles/templatetags/badgeItem.html')
@@ -19,10 +20,12 @@ def followerItem(person,user):
 
 @register.simple_tag
 def smImgProfile(user):
-    fileName=user.profile.image.name 
-    arrN=fileName.split('/')
+    fileNameO=user.profile.image.name 
+    arrN=fileNameO.split('/')
     arrN[-1]='sm-'+arrN[-1]
     fileName='/'.join(arrN) 
+    if not os.path.exists(str(MEDIA_ROOT)+'/'+fileName):
+        fileName=fileNameO
     file =open(str(MEDIA_ROOT)+'/'+fileName,'rb')
     type=guess_type(fileName)[0]
     b64=base64.b64encode(file.read()).decode('utf-8')
