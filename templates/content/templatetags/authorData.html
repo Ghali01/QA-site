@@ -1,6 +1,9 @@
+{% load profileLib %}
+
 <div>
 
-<img class="avatar-img" src="{% url 'profiles:image-profile' userID=author.profile.id %}" alt="avatar">
+<!-- <img class="avatar-img" src="{% url 'profiles:image-profile' userID=author.profile.id %}" alt="avatar"> -->
+<img class="avatar-img" src="{% smImgProfile author %}" alt="avatar">
 <a class="by-user-name" href="{% url 'profiles:profile-page' userID=author.id %}">{{author.username}}</a>
 <span class="points-sp">{{author.profile.rep}}</span>
 </div>

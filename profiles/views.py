@@ -12,6 +12,7 @@ from interviewsquestions.utilities.authDecoratros import forActiveUser,forProfil
 from interviewsquestions.settings import MEDIA_ROOT
 from authusers.models import UserProfile
 from mimetypes import guess_type
+from PIL import Image
 def profilePage(request,userID):
     ptype=order=None
     user=get_object_or_404(User,id=userID)
@@ -368,6 +369,10 @@ def changeAavatar(request):
             path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
             finalImg=finalImg.crop([x0,y0,x1,y1])
             finalImg.save(path,)
+            finalImg=finalImg.resize((40,40))
+            path=str(MEDIA_ROOT.joinpath('profile'))+f'/sm-{request.user.username}.png'
+            finalImg.save(path,)
+
             request.user.profile.image.name='profile/'+request.user.username+'.png'
             request.user.profile.save()
     return redirect(reverse('profiles:profile-page',kwargs={'userID':request.user.id}))

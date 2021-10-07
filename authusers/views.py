@@ -1,3 +1,4 @@
+from PIL import Image
 from interviewsquestions.settings import MEDIA_ROOT
 from django.shortcuts import redirect, render
 from django.contrib import messages
@@ -398,8 +399,10 @@ def regisetSocialUser(request):
                         for chunk in imgResponse.iter_content(chunk_size=1024):
                             if chunk:
                                 imgF.write(chunk)
-
                     profile.image.name=f'profile/{userName}.jpg'
+                    resizedImag=Image.open(str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg')
+                    resizedImag=resizedImag.resize((35,35))
+                    resizedImag.save(str(MEDIA_ROOT.joinpath('profile'))+f'/sm-{userName}.jpg')
                     profile.save()
                     socialUser.delete()
                     if not profile.isBaned():

@@ -1,4 +1,6 @@
+
 {% load leftColumn %}
+{% load profileLib %}
     <header class="header-nav">
         <!-- navbar start -->
         <nav class="navbar navbar-expand-sm navbar-dark">
@@ -85,7 +87,7 @@
                             </ul>
                         </li>
                         <li class="nav-item cus-nav-item">
-                            <img class="avatar-img" src="{% url 'profiles:image-profile' userID=request.user.profile.id %}" alt="avatar">
+                            <img class="avatar-img" src="{% smImgProfile request.user %}" alt="avatar">
                             <span class="points-sp">{{request.user.profile.rep}}</span>
                             <div class="badges">
                                 {% if request.user.profile.goldBadgesCount %}
