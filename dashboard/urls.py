@@ -101,4 +101,6 @@ urlpatterns=[
     path('pub-poll',pollsViews.publishPoll,name='pub-poll'),
     path('togg-poll-open',pollsViews.toggPollOpen,name='toggle-poll-open'),
     path('poll-resaults/<int:pollID>',pollsViews.pollResault,name='poll-resaults'),
+    path('togg-exam-que',questionsViews.toggExamQuestion,name='toggle-exam-question'),
+    path('mark-correct-ans',questionsViews.markCorrectAnswer,name='mark-correct-ans')
   ]

@@ -105,6 +105,17 @@
                       <a href="{% url 'dashboard:post-logs' postID=que.post.id  %}" class="btn btn-app cus-btn-app app-btn-70">
                         <i class="fas fa-clipboard-list"></i>Logs
                       </a>
+                      {% if que.getAcceptedAnswers %}
+                        {% if que.forExams %}
+                        <button data-que-id="{{que.id}}" style="height: 100px;"  class="btn btn-app cus-btn-app app-btn-70 toggle-que-ex-btn">
+                          <i class="fas fa-eye btn-app-icon"></i>Remvoe from exams 
+                        </button>
+                        {% else %}
+                        <button data-que-id="{{que.id}}" style="height: 100px;"  class="btn btn-app cus-btn-app app-btn-70 toggle-que-ex-btn">
+                          <i class="fas fa-plus btn-app-icon"></i>Add to exams 
+                        </button>
+                        {% endif %}
+                      {% endif %}
                     </td>
                   </tr>
                   {% endfor %}

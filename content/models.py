@@ -1,3 +1,4 @@
+from django.db.models.fields import BooleanField
 from interviewsquestions.utilities.datetime import timeDaltaToInt
 from django.db import models
 from django.db.models.deletion import CASCADE
@@ -127,7 +128,7 @@ class Post(models.Model):
         if self.type==Post.types.Question:
             return self.question
         else:
-            return self.answer.question
+            return Answer.objects.get(post=self).question
     def isEdited(self):
         return self.logs.filter(type=PostLog.types.AcceptEdit).exists()
     def getLastEditAuthor(self):
@@ -151,12 +152,15 @@ class Post(models.Model):
                 })
 
         return data
+    def lastEditDate(self):
+        return timezone.localdate(self.logs.filter(type=PostLog.types.AcceptEdit).last().edit.logs.get(type=PostLog.types.SuggestEdit).time).strftime('%Y/%m/%d')
 class Question(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE,related_name='question')
     title=models.CharField(max_length=200)
     category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name='questions')
     tags=models.ManyToManyField(Tag,related_name='questions')
     views=models.PositiveBigIntegerField(default=0)
+    forExams=models.BooleanField(default=False)
     class Meta:
         indexes=[
             models.Index(fields=['category']),
@@ -294,7 +298,9 @@ class Question(models.Model):
         return self.getAcceptedAnswers().filter(post__isPublished=True)
     def getReports(self):
         return self.post.getReports()
-
+    def getCorrectAnswer(self):
+        print(type(self.answers.get(correctAnswer=True)))
+        return  self.answers.get(correctAnswer=True)
      
 class SuggestedQuestion(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE)
@@ -509,6 +515,9 @@ class Voter(models.Model):
 class Answer(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE ,related_name='answer')  
     question=models.ForeignKey(Question,on_delete=CASCADE,related_name='answers')
+    correctAnswer=models.BooleanField(null=True)
+    class Meta:
+        unique_together=[['question','correctAnswer']]
     def formatedDate(self):
         return timezone.localdate(self.post.logs.get(type=PostLog.types.Suggest).time).strftime('%Y/%m/%d')
 

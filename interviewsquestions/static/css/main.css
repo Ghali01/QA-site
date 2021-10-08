@@ -308,6 +308,7 @@ body{
     font-size: 24px;
     color: var(--titles-colors);
     cursor: pointer;
+    display: block;
 }
 .side-link:hover,
 .side-link:active{
@@ -3865,7 +3866,10 @@ p.info{
     cursor: pointer;
 }
 
-.test-text{
-    color: red;
-    font-size: 15px;
+.ques-exams-num{
+    margin: 8px;
+    border-radius: 3px;
+}
+.ques-exams-num:focus{
+    outline: none;
 }

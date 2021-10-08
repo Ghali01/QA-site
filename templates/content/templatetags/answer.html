@@ -110,7 +110,7 @@
                     {% if ans.post.isEdited %}
                     <div class="added-by-div-q que-added-by-div">
                         <div class="questtion-add-date">
-                            Edited in <time>{{ans.formatedDate}}</time>
+                            Edited in <time>{{ans.post.lastEditDate}}</time>
                         </div>
                         {% authodPostData ans.post.getLastEditAuthor %}
     

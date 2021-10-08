@@ -7,6 +7,8 @@
 
     {% polls request.user %}
     {% endif %}
+    <a class="side-link" href="{% url 'content:exam-page' %}">Exams</a>
+    
     <div class="left-bottom-column">
        {% load i18n %}
         {% get_current_language as LANGUAGE_CODE %}

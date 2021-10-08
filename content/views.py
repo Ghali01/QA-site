@@ -1,6 +1,8 @@
 import datetime
 from json.decoder import JSONDecodeError
 from math import ceil
+from os import path
+from random import randint
 from django.contrib.auth.models import PermissionsMixin, User
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
@@ -543,7 +545,62 @@ def searchQuestionsAjax(request):
 
 import pdfkit
 from django.template.loader import render_to_string
-def exams(request):
-    html=render_to_string('exams/question.html')
-    pdf=pdfkit.from_string(html,False ,css=str(STATIC_ROOT.joinpath('css'))+'/main.css')
-    return HttpResponse(pdf,content_type='application/pdf')
+@forActiveUser
+def examPage(request):
+    categories=Category.objects.filter(parent=None)
+    category=request.user.profile.category 
+    contxt={
+        'categories':categories,
+        'category':category
+    }
+    return render(request,'exams/examPage.html',contxt)
+@forActiveUser
+def generateExam(request):
+    if 'category-id' in request.POST and 'que-count' in request.POST:
+        options = {
+        'page-size': 'A4',
+        'margin-top': '0in',
+        'margin-right': '0in',
+        'margin-bottom': '0in',
+        'margin-left': '0in',
+        'encoding': "UTF-8",
+        'custom-header': [
+            ('Accept-Encoding', 'gzip')
+        ],
+        }
+
+        path='/'.join(request.build_absolute_uri('').split('/')[:-1])
+        questions=Question.objects.filter(category_id=int(request.POST['category-id']),forExams=True)
+        avlCount=questions.count()
+        if avlCount>0:
+            queCount=int(request.POST['que-count'])
+            queCount=avlCount if avlCount< queCount else queCount
+            i=1
+            quesList=[]
+            while i<=queCount:
+                randI=randint(0,questions.count()-1)
+                if not questions[randI] in quesList:
+                    quesList.append(questions[randI])
+                    i+=1
+            html=render_to_string('exams/question.html',context={'questions':quesList,'whitAnswer':False,'path':path})
+            pdf=pdfkit.from_string(html,False ,css=str(STATIC_ROOT.joinpath('css'))+'/main.css',options=options)
+            htmlA=render_to_string('exams/question.html',context={'questions':quesList,'whitAnswer':True,'path':path})
+            pdfA=pdfkit.from_string(htmlA,False ,css=str(STATIC_ROOT.joinpath('css'))+'/main.css',options=options)
+
+            zipped_file = zipFiles({'questions':pdf,'answers':pdfA})
+            response = HttpResponse(zipped_file, content_type='application/octet-stream')
+            response['Content-Disposition'] = 'attachment; filename=exam.zip'
+            return response
+            return HttpResponse(pdf,content_type='application/pdf')
+            return HttpResponse(html)
+        else:
+            messages.error(request,'no questions')
+            return redirect(reverse('content:exam-page'))
+from io import BytesIO
+import zipfile
+def zipFiles(files):
+    outfile = BytesIO()
+    with zipfile.ZipFile(outfile, 'w') as zf:
+        for n, f in files.items():
+            zf.writestr("{}.pdf".format(n), f)
+    return outfile.getvalue()

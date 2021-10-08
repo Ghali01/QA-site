@@ -58,7 +58,7 @@
                     </td>
                     <td>{{ans.formatedDate}}</td>
                     <td>{{ans.id}}</td>
-                    <td>
+                    <td {% if ans.correctAnswer %} class="correct-td" {% endif %}>
                       <a href="{% url 'dashboard:edit-answer-page' answerID=ans.id %}" class="btn btn-app cus-btn-app">
                         <i class="fas fa-edit btn-app-icon"></i>Edit
                       </a>
@@ -87,6 +87,11 @@
                       <a href="{% url 'dashboard:post-logs' postID=ans.post.id  %}" class="btn btn-app cus-btn-app app-btn-70">
                         <i class="fas fa-clipboard-list"></i>Logs
                       </a>
+                      {% if not ans.correctAnswer and not QID == -1 %}
+                      <button data-ans-id="{{ans.id}}" style="height: 70px;"  class="btn btn-app cus-btn-app app-btn-70 mark-ans-exam-btn">
+                        <i class="fas fa-check btn-app-icon"></i>Mark as correct
+                      </button>
+                      {% endif %}
                     </td>
                   </tr>
                   {% endfor %}

@@ -267,3 +267,49 @@ def toggelPostPublish(requset):
         except (Post.DoesNotExist,ValueError):
             pass
     return HttpResponse('error')
+
+
+@forSuperAdmin
+def toggExamQuestion(request):
+    if 'que-id' in request.POST:
+        try:
+            question=Question.objects.get(pk=int(request.POST['que-id']))
+            if not question.forExams:
+                question.forExams=True
+                question.save()
+                firstAns=question.answers.first()
+                firstAns.correctAnswer=True
+                firstAns.save()
+                print(firstAns)
+                return HttpResponse('added')
+            else:
+                question.forExams=False
+                question.save()
+                try:
+                    correctAns=question.answers.get(correctAnswer=True)
+                    correctAns.correctAnswer=None
+                    correctAns.save()
+                
+                except Answer.DoesNotExist:
+                    pass
+                return HttpResponse('removed')
+        except Question.DoesNotExist:
+            pass
+
+    return HttpResponse('error')
+
+
+@forSuperAdmin
+def markCorrectAnswer(request):
+    if 'ans-id' in request.POST:
+        try:
+            answer=Answer.objects.get(pk=int(request.POST['ans-id']))
+            cor=answer.question.answers.get(correctAnswer=True)
+            cor.correctAnswer=None
+            cor.save()
+            answer.correctAnswer=True
+            answer.save()
+            return HttpResponse(json.dumps({'id':cor.id}))
+        except Answer.DoesNotExist:
+            pass
+    return HttpResponse('error')

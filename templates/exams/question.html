@@ -1,1 +1,140 @@
-<div class="test-text" >sfewrd</div>
+{% load profileLib %}
+{% load contentUtilities %}
+{% load humanize %}
+{% load static %}
+<style>
+    body{
+        margin: 0;
+    }
+</style>
+<link rel="stylesheet" href="{#% static 'css/main.css' %#}">
+<div style="background:rgb(54, 54, 54); ">
+{% for question in questions %}
+
+<div style="page-break-before:always;" ></div>
+<div style="background:rgb(54, 54, 54); height:100%; margin:0;" >
+<h1 class="que-title center-title" style="    color: rgb(215,215,215);">{{question.title}}</h1>
+<div class="que-data-div">
+    <span class="que-data-title" style="color: rgb(179, 179, 179);">Asked:</span>
+    <span class="que-data" style="color: rgb(245, 245, 245);">{{question.getDuration}}</span>
+</div>
+<div style="border-bottom: 1px solid rgb(179, 179, 179); padding-bottom:80px;">
+<div class="question-div">
+    <div class="row">
+
+        <div class="col-12">
+            <div class="post-content-container">
+                <div class="post-content" style="color: rgb(179, 179, 179);">
+                    {{question.post.text|safe}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 post-l-col">
+                <div class="que-left-col">
+                    <div class="tags-div ">
+                        {% for tag in question.tags.all %}
+            <button class="btn btn-outline-info btn-tag" style="color: #9cc3db; background:#3e4a52;">{{tag.name}}</button>
+                        
+                        {% endfor %}
+                    </div>
+                  
+                </div>
+            </div>
+            <div class="col-4 post-r-col">
+                <div class="authors-dvs">
+                <div class="added-by-div-q que-added-by-div" 
+                style="background-color: rgb(73, 68, 64); margin: 14px;">
+                    <div class="questtion-add-date" style="color: #c4c8cc;">
+                        Added in <time>{{question.formatedDate}}</time>
+                    </div>
+                    
+
+                    <div>
+
+                        <img class="avatar-img" src="{% smImgProfile question.post.author %}" alt="avatar">
+                        <a class="by-user-name" href="{{path}}{% url 'profiles:profile-page' userID=question.post.author.id %}" style="  color:#3ca4ff;  position: relative; top: -13px; left: 12px;">{{question.post.author.username}}</a>
+                        </div>
+
+                </div>
+                {% if question.post.isEdited %}
+                <div class="added-by-div-q que-added-by-div" style="background-color: rgb(73, 68, 64); margin: 14px;">
+                    <div class="questtion-add-date" style="color: #c4c8cc;">
+                        Edited in <time>{{question.post.lastEditDate}}</time>
+                    </div>
+                    <div>
+
+                        <img class="avatar-img" src="{% smImgProfile question.post.getLastEditAuthor %}" alt="avatar">
+                        <a class="by-user-name" href="{{path}}{% url 'profiles:profile-page' userID=question.post.getLastEditAuthor.id %}" style="color:#3ca4ff;  position: relative; top: -13px; left: 12px;"">{{question.post.getLastEditAuthor.username}}</a>
+                        </div>
+
+                </div>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+   
+    </div>
+</div>
+</div>
+{% if whitAnswer %}
+{% with question.getCorrectAnswer as answer %}
+
+<div class="question-div">
+    <div class="row">
+
+        <div class="col-12">
+            <div class="post-content-container">
+                <div class="post-content" style="color: rgb(179, 179, 179);">
+                    {{answer.post.text|safe}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 post-l-col">
+                <div class="que-left-col">
+               
+                    
+                </div>
+            </div>
+            <div class="col-4 post-r-col">
+                <div class="authors-dvs">
+                <div class="added-by-div-q que-added-by-div" 
+                style="background-color: rgb(73, 68, 64); margin: 14px;">
+                    <div class="questtion-add-date" style="color: #c4c8cc;">
+                        Added in <time>{{answer.formatedDate}}</time>
+                    </div>
+                    
+
+                    <div>
+
+                        <img class="avatar-img" src="{% smImgProfile answer.post.author %}" alt="avatar">
+                        <a class="by-user-name" href="{{path}}{% url 'profiles:profile-page' userID=answer.post.author.id %}" style="  color:#3ca4ff;  position: relative; top: -13px; left: 12px;">{{answer.post.author.username}}</a>
+                        </div>
+
+                </div>
+                {% if answer.post.isEdited %}
+                <div class="added-by-div-q que-added-by-div"  style="background-color: rgb(73, 68, 64); margin: 14px;">
+                    <div class="questtion-add-date" style="color: #c4c8cc;">
+                        Edited in <time>{{answer.post.lastEditDate}}</time>
+                    </div>
+                    <div>
+
+                        <img class="avatar-img" src="{% smImgProfile answer.post.getLastEditAuthor %}" alt="avatar">
+                        <a class="by-user-name" href="{{path}}{% url 'profiles:profile-page' userID=answer.post.getLastEditAuthor.id %}" style="color:#3ca4ff;  position: relative; top: -13px; left: 12px;"">{{answer.post.getLastEditAuthor.username}}</a>
+                        </div>
+
+                </div>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+   
+    </div>
+</div>
+</div>
+
+{% endwith %}
+{% endif %}
+{% endfor %}
+</div>
