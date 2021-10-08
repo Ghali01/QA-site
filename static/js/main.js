@@ -562,8 +562,12 @@ $(document).ready(
         });
         $('.custom-checkbox').click(customCheckInput);
         $('.custom-radiobox').click(customCheckInput);
- 
-        let now = new Date(),
+        $('.custom-input-number').keydown(numInpDown);
+       
+        $("#myTextBox").inputFilter(function(value) {
+            return /^\d*$/.test(value);    // Allow digits only, using a RegExp
+          });        
+          let now = new Date(),
         dateNextWeek = new Date(now.getTime() + (1000 * 60 * 60 * 24 * 7));
 
         document.cookie = `utcOffset=${-1 * (now.getTimezoneOffset() / 60)}; expires=${dateNextWeek.toGMTString()}; path=/`;
@@ -1374,3 +1378,38 @@ function customCheckInput(){
         inp.attr('checked',true);
     }
 }
+var oldNumTxt=1;
+function numInpDown(e){
+    
+
+    if (e.which==38){
+        $(this).val(parseInt($(this).val())+1)
+        e.preventDefault();
+        this.setSelectionRange($(this).val().length,$(this).val().length);
+    }
+    if (e.which==40){
+        $(this).val($(this).val()>1?parseInt($(this).val())-1:1)
+        e.preventDefault();
+        this.setSelectionRange($(this).val().length,$(this).val().length);
+    }
+}
+
+
+
+
+(function($) {
+    $.fn.inputFilter = function(inputFilter) {
+      return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+        if (inputFilter(this.value)) {
+          this.oldValue = this.value;
+          this.oldSelectionStart = this.selectionStart;
+          this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+          this.value = this.oldValue;
+          this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+          this.value = "";
+        }
+      });
+    };
+  }(jQuery));

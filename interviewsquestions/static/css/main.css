@@ -3873,3 +3873,11 @@ p.info{
 .ques-exams-num:focus{
     outline: none;
 }
+.exam-error{
+    position: static;
+    margin: 8px;
+    font-size: 20px;
+}
+.categoriis-lists-ex{
+    margin: 8px;
+}

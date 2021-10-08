@@ -271,6 +271,8 @@ $(document).ready(function () {
     $('.tog-open-btn').click(toggOpenPollBtn);
     $('.pub-poll-btn-t').click(pubPollBtnT);
     $('#reasons-select').change(selectReason);
+    $('.toggle-que-ex-btn').click(toggExamQue);
+    $('.mark-ans-exam-btn').click(markCorrectAnswer);
     let now= new Date(),
     dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
 
@@ -894,4 +896,47 @@ function pubPollBtnT() {
     else
         $('#target-type').attr('readonly',false);
 
+}
+
+function toggExamQue() {
+    let clicked=this;
+    $.post("/dashboard/togg-exam-que",
+    {
+        csrfmiddlewaretoken:getCookie('csrftoken'),
+        'que-id':$(this).data('que-id')
+    },
+        function (data, textStatus, jqXHR) {
+            if(data=='added'){
+                $(clicked).html(' <i class="fas fa-eye btn-app-icon"></i>Remvoe from exams');
+                window.open(`/dashboard/answers/1/${$(clicked).data('que-id')}`,'_blank')
+            } else if (data=='removed')
+                $(clicked).html('<i class="fas fa-plus btn-app-icon"></i>Add to exams');
+        },
+    );
+  }
+
+
+function markCorrectAnswer() {
+    let clicked=this;
+    $.post("/dashboard/mark-correct-ans",
+    {
+        csrfmiddlewaretoken:getCookie('csrftoken'),
+        'ans-id':$(this).data('ans-id')
+    },
+        function (data, textStatus, jqXHR) {
+            if(data!='error'){
+                data=JSON.parse(data);
+                $('.correct-td').append(`
+                <button data-ans-id="${data.id}" style="height: 70px;"  class="btn btn-app cus-btn-app app-btn-70 mark-ans-exam-btn">
+                <i class="fas fa-check btn-app-icon"></i>Mark as correct
+              </button>
+              `);
+              $('.correct-td').parent().find('.mark-ans-exam-btn').click(markCorrectAnswer);
+              $('.correct-td').removeClass('correct-td');
+              $(clicked).parent().addClass('correct-td');
+              $(clicked).remove();
+        
+            }
+        },
+    );
 }
