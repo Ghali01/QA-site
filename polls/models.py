@@ -3,6 +3,7 @@ from django.db import models
 from content.models import Category,Tag
 from interviewsquestions.utilities.database import languageField
 from django.contrib.auth.models import User
+from django.utils.translation import gettext
 class Poll(models.Model):
     title=models.CharField(max_length=100)
     text=models.TextField()
@@ -28,8 +29,8 @@ class Poll(models.Model):
         return ('%.2f' % ((self.resaults.count()*100)/self.userTargeted()))+'%'
 class PollItem(models.Model):
     typeChoices=[ 
-        ('R','Radio List'),
-        ('C','Check List'),
+        ('R',gettext('Radio List')),
+        ('C',gettext('Check List')),
     ]
     poll=models.ForeignKey(Poll,on_delete=models.CASCADE,related_name='items')
     type=models.CharField(max_length=1,choices=typeChoices)

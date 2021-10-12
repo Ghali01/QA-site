@@ -14,6 +14,7 @@ from authusers.models import UserProfile
 from mimetypes import guess_type
 from PIL import Image
 from django.core.files.storage import FileSystemStorage
+from django.utils.translation import get_language
 def profilePage(request,userID):
     ptype=order=None
     user=get_object_or_404(User,id=userID)
@@ -269,7 +270,9 @@ def seeMoreFollowers(request,page):
 def favQuestion(request,userID):
     viewsFilter=votesFilter=answersFilter=category=categoryID=None
     user=get_object_or_404(User,id=userID)
-    categories=Category.objects.filter(parent=None)
+    language=get_language()[:2]
+    
+    categories=Category.objects.filter(language=language,parent=None)
     if 'category' in request.GET:
         try:
             category=get_object_or_404(Category,id=int(request.GET['category']))

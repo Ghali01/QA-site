@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load contentUtilities %}
 <div class="await-list">
     {% for que in questions %}
@@ -15,7 +16,7 @@
                         {% endfor %}
                     </div>
                     
-                    <div class="question-date"> Suggested By  <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a> in {{edit.getSuggestedDate}} </div>
+                    <div class="question-date">{% translate 'Suggested By' %}  <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a> {% translate 'in' %} {{edit.getSuggestedDate}} </div>
 
                 </div>
 
@@ -25,7 +26,7 @@
 
         <div class="question-options-bottom">
             <details class="changes">
-                <summary>Change Logs was accepted by you</summary>
+                <summary>{% translate 'Change Logs was accepted by you' %}</summary>
                 <ul class="changes-list">
                     {% for log in que.allLogs %}
                     {% if log.moderator == request.user %}

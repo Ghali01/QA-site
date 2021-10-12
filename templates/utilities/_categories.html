@@ -1,4 +1,5 @@
-<a class="side-link" href="{% url 'content:categories-page' %}">categories</a>
+{% load i18n %}
+<a class="side-link" href="{% url 'content:categories-page' %}">{% translate 'categories' %}</a>
 <ul class="categores-list">
     {% if categories %}
     {% endif %}

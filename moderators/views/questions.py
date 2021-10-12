@@ -10,11 +10,14 @@ from content.models import  Category,  PostLog, Question, Tag, SuggestedQuestion
 import json
 from math import ceil
 from django.shortcuts import get_object_or_404
+from django.utils.translation import get_language
 @forActiveUser
 @forModerator
 def suggestedQuestionsAwait(request,page,mode):
-    categoires=Category.objects.filter(parent=None)
-    tags=Tag.objects.all()
+    language=get_language()[:2]
+    categoires=Category.objects.filter(language=language,parent=None)
+    tags=Tag.objects.filter(category__language=language)
+    
     category=searchVal=order=None
     tagsF=[]
     questions=SuggestedQuestion.objects.all()
@@ -39,10 +42,12 @@ def suggestedQuestionsAwait(request,page,mode):
     if 'category' in request.GET and request.GET['category']:
         try:
             category=Category.objects.get(pk=request.GET['category'])
-            questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
 
         except Category.DoesNotExist:
-            pass
+            category=request.user.profile.category
+    else:
+        category=request.user.profile.category
+    questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
     if 'search' in request.GET and request.GET['search']:
         questions=questions.filter(Q(title__contains=request.GET['search'])  | Q(post__text__contains=request.GET['search']))
         searchVal=request.GET['search']

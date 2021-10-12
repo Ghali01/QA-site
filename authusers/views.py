@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from .models import TempUser,UserProfile,SocialUser
+from .models import TempUser,UserProfile,SocialUser,TmpLink
 from random import randint
 from django.db.utils import IntegrityError
 from django.http import HttpResponse
@@ -15,6 +15,7 @@ import json
 from interviewsquestions.utilities.authDecoratros import forActiveUser
 import requests
 from google.auth import jwt
+from django.utils.translation import get_language,gettext
 def genRandomStr():
     str=''
     for i in range(0,99):
@@ -51,29 +52,28 @@ def registerPage(request):
             try:
                 user=User.objects.create_user(userName,email,password,first_name=fullName,is_active=False)
                 login(request,user)
-                countLoginBadges(user)
                 code=genRandomStr()
                 TempUser.objects.create(user=user,code=code,website=website)
                 msg= f"your confirm link: {request.build_absolute_uri(reverse('authusers:confirm-user',kwargs={'code':code}))}"
                 send_mail("intervies questions",msg ,'interviewsquestions@gmail.com',[email])
                 return redirect(reverse('authusers:email-sent') )
             except IntegrityError:
-                messages.error(request,'User name is alredy exists',extra_tags='user-name')
+                messages.error(request,gettext('User name is alredy exists'),extra_tags='user-name')
           
         elif not fullName:
-            messages.error(request,'Full name is requrid',extra_tags='full-name')
+            messages.error(request,gettext('Full name is requrid'),extra_tags='full-name')
         elif not userName:
-            messages.error(request,'User name is requrid',extra_tags='user-name')
+            messages.error(request,gettext('User name is requrid'),extra_tags='user-name')
         elif not email:
-            messages.error(request,'Email is requrid',extra_tags='email')
+            messages.error(request,gettext('Email is requrid'),extra_tags='email')
         elif emailTaken:
-            messages.error(request,'Email is taken',extra_tags='email')
+            messages.error(request,gettext('Email is taken'),extra_tags='email')
         elif not password:
-            messages.error(request,'Password is requrid',extra_tags='password')
+            messages.error(request,gettext('Password is requrid'),extra_tags='password')
         elif not confirmPassword:
-            messages.error(request,'Confirm Password is requrid',extra_tags='conf-pass')
+            messages.error(request,gettext('Confirm Password is requrid'),extra_tags='conf-pass')
         elif not password== confirmPassword:
-            messages.error(request,'Password does not match',extra_tags='conf-pass')
+            messages.error(request,gettext('Password does not match'),extra_tags='conf-pass')
     return render(request,'auth/register.html')
 def emailSent(request):
     
@@ -115,15 +115,17 @@ def loginPage(request):
                     return redirect(reverse('authusers:email-sent'))
                 if not user.profile.isBaned():
                     login(request,user)
-                    countLoginBadges(user)
+                    if user.is_active:
+
+                        countLoginBadges(user)
 
                     if not 'remember' in request.POST:
                         request.session.set_expiry(0)
                     return redirect(reverse('authusers:auth-index'))
                 else:
-                    messages.error(request,'user baned')
+                    messages.error(request,gettext('user baned'))
             else:
-                messages.error(request,"email or passowrd in not valid")
+                messages.error(request,gettext("email or passowrd in not valid"))
     return render(request,'auth/login.html')
 def logout(request):
     if request.user.is_authenticated and not request.user.is_anonymous:
@@ -148,9 +150,10 @@ def selectTags(request):
                     except(Tag.DoesNotExist,Category.DoesNotExist,ValueError):
                         pass
                 else:
-                    messages.error(request,'you have to add 1 tag or more')
-        tags=Tag.objects.all()
-        categories=Category.objects.filter(parent=None)
+                    messages.error(request,gettext('you have to add 1 tag or more'))
+        language=get_language()[:2]
+        tags=Tag.objects.filter(category__language=language)
+        categories=Category.objects.filter(parent=None,language=language)
         contxt={
             'tags':tags,
             'categories':categories
@@ -175,9 +178,9 @@ def chnageEmail(request):
 
                         return redirect(reverse('authusers:email-sent'))
                     else:
-                        messages.error(request,'email is taken')
+                        messages.error(request,gettext('email is taken'))
                 else:
-                    messages.error(request,'Email ir requrid')
+                    messages.error(request,gettext('Email is requrid'))
         return render(request,'auth/changeEmail.html')
     else:
         return redirect(reverse('authusers:auth-index'))
@@ -212,25 +215,25 @@ def addSocialUser(request,registerPage,imageUrl):
                 countLoginBadges(user)
 
             else:
-                messages.error(request,'user baned')
+                messages.error(request,gettext('user baned'))
             return redirect(reverse('authusers:auth-index'))
         except IntegrityError:
-            messages.error(request,'User name is alredy exists',extra_tags='user-name')
+            messages.error(request,gettext('User name is alredy exists'),extra_tags='user-name')
 
     elif not fullName:
-        messages.error(request,'Full name is requrid',extra_tags='full-name')
+            messages.error(request,gettext('Full name is requrid'),extra_tags='full-name')
     elif not userName:
-        messages.error(request,'User name is requrid',extra_tags='user-name')
+        messages.error(request,gettext('User name is requrid'),extra_tags='user-name')
     elif not email:
-        messages.error(request,'Email is requrid',extra_tags='email')
+        messages.error(request,gettext('Email is requrid'),extra_tags='email')
     elif emailTaken:
-        messages.error(request,'Email is taken',extra_tags='email')
+        messages.error(request,gettext('Email is taken'),extra_tags='email')
     elif not password:
-        messages.error(request,'Password is requrid',extra_tags='password')
+        messages.error(request,gettext('Password is requrid'),extra_tags='password')
     elif not confirmPassword:
-        messages.error(request,'Confirm Password is requrid',extra_tags='conf-pass')
+        messages.error(request,gettext('Confirm Password is requrid'),extra_tags='conf-pass')
     elif not password== confirmPassword:
-        messages.error(request,'Password does not match',extra_tags='conf-pass')
+        messages.error(request,gettext('Password does not match'),extra_tags='conf-pass')
     return registerPage
 
 
@@ -253,7 +256,7 @@ def facebookLogin(request):
                     countLoginBadges(profile.user)
 
                 else:
-                    messages.error(request,'user baned')
+                    messages.error(request,gettext('user baned'))
                 return redirect(reverse('authusers:auth-index'))
                 
             except UserProfile.DoesNotExist:
@@ -296,7 +299,7 @@ def googelLogin(request):
                     countLoginBadges(profile.user)
 
                 else:
-                    messages.error(request,'user baned')
+                    messages.error(request,gettext('user baned'))
                 return redirect(reverse('authusers:auth-index'))
                 
             except UserProfile.DoesNotExist:
@@ -352,7 +355,7 @@ def githubLogin(request):
                 countLoginBadges(profile.user)
 
             else:
-                messages.error(request,'user baned')
+                messages.error(request,gettext('user baned'))
             return redirect(reverse('authusers:auth-index'))
             
         except UserProfile.DoesNotExist:
@@ -411,27 +414,26 @@ def regisetSocialUser(request):
                         countLoginBadges(profile.user)
 
                     else:
-                        messages.error(request,'user baned')
+                        messages.error(request,gettext('user baned'))
                     return redirect(reverse('authusers:auth-index'))
                     
                 except IntegrityError:
-                    messages.error(request,'User name is alredy exists',extra_tags='user-name')
+                    messages.error(request,gettext('User name is alredy exists'),extra_tags='user-name')
 
             elif not fullName:
-                messages.error(request,'Full name is requrid',extra_tags='full-name')
+                messages.error(request,gettext('Full name is requrid'),extra_tags='full-name')
             elif not userName:
-                messages.error(request,'User name is requrid',extra_tags='user-name')
+                messages.error(request,gettext('User name is requrid'),extra_tags='user-name')
             elif not email:
-                messages.error(request,'Email is requrid',extra_tags='email')
+                messages.error(request,gettext('Email is requrid'),extra_tags='email')
             elif emailTaken:
-                messages.error(request,'Email is taken',extra_tags='email')
+                messages.error(request,gettext('Email is taken'),extra_tags='email')
             elif not password:
-                messages.error(request,'Password is requrid',extra_tags='password')
+                messages.error(request,gettext('Password is requrid'),extra_tags='password')
             elif not confirmPassword:
-                messages.error(request,'Confirm Password is requrid',extra_tags='conf-pass')
+                messages.error(request,gettext('Confirm Password is requrid'),extra_tags='conf-pass')
             elif not password== confirmPassword:
-                messages.error(request,'Password does not match',extra_tags='conf-pass')
-
+                messages.error(request,gettext('Password does not match'),extra_tags='conf-pass')
             context={
                 'fullName':socialUser.fullName,
                 'email':socialUser.email,
@@ -464,3 +466,62 @@ def countLoginBadges(user):
     for badge in badges:
         if user.profile.loginTimes>= badge.count:
             user.profile.badges.add(badge)
+
+
+
+def resetPassword(request):
+        
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        return redirect(reverse('content:index'))
+    if 'email' in request.POST and 'g-recaptcha-response' in request.POST:
+        response=requests.post('https://www.google.com/recaptcha/api/siteverify',data={
+                'secret':'6LeJxbwcAAAAADv0EJ_w2cibGxhFlX-aFvdyysWz',
+                'response':request.POST['g-recaptcha-response']
+            })
+        if response.json()['success']:
+            try:
+                user =User.objects.get(email=request.POST['email'])
+                link=TmpLink.objects.create(user=user,key=genRandomStr())
+                send_mail('Reset Your Password',f'{request.build_absolute_uri("/set-password")}?key={link.key}',None,[user.email])
+                return redirect(reverse('authusers:email-sent'))
+            except User.DoesNotExist:
+                messages.error(request,gettext('No account with this email'))
+        else:
+            messages.error(request,gettext('invalid captcha'))
+    return render(request,'auth/resetPassword.html')
+
+def setPassword(request):
+
+    if request.method == 'POST':
+        if 'key' in request.POST and 'password' in request.POST and 'conf-password' in request.POST:
+            if request.POST['password'] and request.POST['conf-password'] and request.POST['password'] == request.POST['conf-password']:
+                
+
+                try:
+                    link=TmpLink.objects.get(key=request.POST['key'])
+                    user=link.user 
+                    user.set_password(request.POST['password'])
+                    user.save()
+                    link.delete()
+                    return redirect('authusers:login-page')
+                except TmpLink.DoesNotExist:
+                    pass   
+
+            elif  not request.POST['password']:
+                messages.error(request,gettext('Password is requrid'),extra_tags='password')
+
+            elif not request.POST['conf-password']:
+                messages.error(request,gettext('Confirm Password is requrid'),extra_tags='conf-pass')
+            elif not request.request.POST['password'] == request.request.POST['conf-password']:
+                messages.error(request,gettext('Password does not match'),extra_tags='conf-pass')
+    if request.method == 'GET':    
+        if 'key' in request.GET:
+            try:
+                link=TmpLink.objects.get(key=request.GET['key'])
+                contxt={
+                    'key':link.key
+                }
+                return render(request,'auth/changePassword.html',contxt)
+            except TmpLink.DoesNotExist:
+                pass
+    return HttpResponse('invaild key')

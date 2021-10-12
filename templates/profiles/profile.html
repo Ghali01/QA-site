@@ -1,7 +1,8 @@
 {% extends 'utilities/_base_no_right.html' %}
+{% load i18n %}
 {% load static %}
 {% load reportModal %}
-{% load cache %}
+{% load profileLib %}
 {% block  title %}{{user.username}} {% endblock %}
 
 {% block content %} 
@@ -12,9 +13,7 @@
                     <div class="col-12 col-sm-4  col-lg-3 pers-col ">
                         <div class="pres-info">
                             <div class="avt-container">
-                                {% cache -10 profileImg %}
                                 <img class="avt-img" src="{% url 'profiles:image-profile' userID=user.profile.id %}" alt="person name">
-                                {% endcache %}
                                 {% if user == request.user %}
                             <button type="button" class="btn btn-primary primary-button edit-avatar-btn"
                                 >
@@ -25,7 +24,7 @@
                             </div>
                             <div class="pers-rep-div">
                                 <span class=" pers-rep">{{user.profile.rep}}</span>
-                                <span class=" pers-reputation-w">REPUTATION</span>
+                                <span class=" pers-reputation-w">{% translate 'REPUTATION' %}</span>
                             </div>
                             <div class="pers-badges-2">
                                 {% if user.profile.goldBadgesCount %}
@@ -61,30 +60,30 @@
                         <div class="nums-profile">
                             <div class="num-profile-div">
                                 <span class="num-profile">{{user.profile.answersCount}}</span>
-                                <span class="num-profile-word">Answers</span>
+                                <span class="num-profile-word">{% translate 'Answers' %}</span>
                             </div>
                             <div class="num-profile-div">
                                 <span class="num-profile">{{user.profile.questionsCount}}</span>
-                                <span class="num-profile-word">Questions</span>
+                                <span class="num-profile-word">{% translate 'Questions' %}</span>
                             </div>
                         </div>
                         <div class="data-profile">
                             <div class="data-profile-row">
                                 <i class="fas fa-history"></i>
-                                Member from {{user.profile.joinData}}
+                                {% translate 'Member from' %} {{user.profile.joinData}}
                                 <span class="data-profile-span"></span>
                             </div>
                             <div class="data-profile-row">
                                 <i class="far fa-eye"></i>
-                                {{user.profile.getViews}} profile views
+                                {{user.profile.getViews}} {% translate 'profile views' %}
                                 <span class="data-profile-span"></span>
                             </div>
                             <div class="data-profile-row">
                                 <i class="far fa-clock"></i> 
                                 {% if not user.profile.isOnline %}
-                                Last seen {{user.profile.lastSeen}} ago
+                                {% translate 'Last seen' %} {{user.profile.lastSeen}} {% translate 'ago' %}
                                 {% else %}
-                                online now
+                                {% translate 'online now' %}
                                 {% endif %}
                                 <span class="data-profile-span"></span>
                             </div>
@@ -98,7 +97,7 @@
                                 <img class="badge-icon" src="{% static 'img/icons/badge-gold.svg' %}" alt="gold badge">
                                 <div class="badges-list-spans">
                                     <span class="badge-list-ns">{{user.profile.goldBadgesCount}}</span>
-                                    <span class="badge-list-ws">Gold Badges</span>
+                                    <span class="badge-list-ws">{% translate 'Gold Badges' %}</span>
                                 </div>
                             </div>
                             <div class="badges-list badges-list-gold">
@@ -108,7 +107,7 @@
                                         <div class="badge-item-circural"></div>
                                         <span class="badge-item-name">{{item.badge.name}}</span>
                                     </div>
-                                    <time class="bagde-date">{{item.date}}</time>
+                                    <time class="bagde-date">{{item.date|formatDate}}</time>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -120,7 +119,7 @@
                                 <img class="badge-icon" src="{% static 'img/icons/badge-silver.svg' %}" alt="gold badge">
                                 <div class="badges-list-spans">
                                     <span class="badge-list-ns">{{user.profile.silverBadgesCount}}</span>
-                                    <span class="badge-list-ws">Silver Badges</span>
+                                    <span class="badge-list-ws">{% translate 'Silver Badges' %}</span>
                                 </div>
                             </div>
                             <div class="badges-list badges-list-silver">
@@ -130,7 +129,7 @@
                                         <div class="badge-item-circural"></div>
                                         <span class="badge-item-name">{{item.badge.name}}</span>
                                     </div>
-                                    <time class="bagde-date">{{item.date}}</time>
+                                    <time class="bagde-date">{{item.date|formatDate}}</time>
                                 </div>
                                 {% endfor %}
                             
@@ -143,7 +142,7 @@
                                 <img class="badge-icon" src="{% static 'img/icons/badge-bronze.svg' %}" alt="gold badge">
                                 <div class="badges-list-spans">
                                     <span class="badge-list-ns">{{user.profile.bronzeBadgesCount}}</span>
-                                    <span class="badge-list-ws">Bronze Badges</span>
+                                    <span class="badge-list-ws">{% translate 'Bronze Badges' %}</span>
                                 </div>
                             </div>
                             <div class="badges-list badges-list-bronze">
@@ -153,7 +152,7 @@
                                         <div class="badge-item-circural"></div>
                                         <span class="badge-item-name">{{item.badge.name}}</span>
                                     </div>
-                                    <time class="bagde-date">{{item.date}}</time>
+                                    <time class="bagde-date">{{item.date|formatDate}}</time>
                                 </div>
                                 {% endfor %}
                             
@@ -217,7 +216,7 @@
                     </div>
                 </div>
                 <div class="tops-toolbar">
-                    <h4 class="tops-toolbar-title" id="top-po">Top Posts</h4>
+                    <h4 class="tops-toolbar-title" id="top-po">{% translate 'Top Posts' %}</h4>
                     <div class="toolbar-btn-groups ">
 
                         <div class="btn-group my-btn-group filter button-filter " role="group"
@@ -227,14 +226,14 @@
                                 {% if order == 'N' %} 
                                 active
                                 {% endif %}
-                                 ">Newest</button>
+                                 ">{% translate 'Newest' %}</button>
                             <button type="button" data-value="V"
                                 class="btn btn-outline-primary btn-group-item
                                 {% if order == 'V' %} 
                                 active
                                 {% endif %}
                                 
-                                ">Votes</button>
+                                ">{% translate 'Votes' context 'filter' %}</button>
                             <input type="hidden" name="order" value="{{order|default:'N'}}">
                             </div>
                         <div class="btn-group my-btn-group filter button-filter" role="group"
@@ -245,21 +244,21 @@
                                 active
                                 {% endif %}
                             
-                                ">All</button>
+                                ">{% translate 'All' %}</button>
                             <button type="button" data-value="Q"
                                 class="btn btn-outline-primary btn-group-item
                                 {% if ptype == 'Q' %} 
                                 active
                                 {% endif %}
                             
-                                ">Questions</button>
+                                ">{% translate 'Questions' %}</button>
                             <button type="button"data-value="A"
                                 class="btn btn-outline-primary btn-group-item
                                 {% if ptype == 'A' %} 
                                 active
                                 {% endif %}
                             
-                                ">Answers</button>
+                                ">{% translate 'Answers' %}</button>
                             <input type="hidden" name="ptype" value="{{ptype|default:'Al'}}">
                             </div>
 

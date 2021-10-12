@@ -1,11 +1,12 @@
 {% extends 'utilities/_base.html' %}
-{% block title %}Add Question{% endblock %}
+{% load i18n %}
+{% block title %}{% translate 'Add Question' %}{% endblock %}
 
 {% block content %}
 <div class="pd-container" >
 
 
-    <h2 class="center-title" style="float:none;">Add Quetion</h2>
+    <h2 class="center-title" style="float:none;">{% translate 'Add Quetion' %}</h2>
 
     <form id="post-form" method="POST" >
         {% csrf_token %}
@@ -48,7 +49,7 @@
                         {% elif category.getLvl > 2 %}
                         {{category.getSecondParent.name}}
                         {% else %}
-                        Select Category
+                        {% translate 'Select Category' %}
                         {% endif %}
 
                     </span>
@@ -88,7 +89,7 @@
                         {% elif category.getLvl > 3 %}
                         {{category.getThirdParent.name}}
                         {% else %}
-                        Select Category
+                        {% translate 'Select Category' %}
                         {% endif %}
 
                     </span>
@@ -126,7 +127,7 @@
                         {% if category.getLvl == 4 %}
                         {{category.name}}
                         {% else %}
-                        Select Category
+                        {% translate 'Select Category' %}
                         {% endif %}
 
                     </span>
@@ -157,7 +158,7 @@
             <input type="hidden" class="add-que-h-inp" name="category-id" id="category-id" value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}">
 
         </div>
-    <input type="text" class="form-control que-input que-title-input" placeholder="Question Title..." name="post-title"  id="que-title" value="{{questionTitle}}">
+    <input type="text" class="form-control que-input que-title-input" placeholder="{% translate 'Question Title...' %}" name="post-title"  id="que-title" value="{{questionTitle}}">
     <p class="error-p-s" style="position: static;">
         {% for msg in messages %}
             {% if 'title' in msg.extra_tags %}
@@ -179,7 +180,7 @@
     <input type="hidden" name="post-body" id="post-body">
     <div class="add-tag-to-que-div">
         <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
-            class="form-control que-input que-tags-input" placeholder="Add Tags" autocomplete="off">
+            class="form-control que-input que-tags-input" placeholder="{% translate 'Add Tags' %}" autocomplete="off">
         <ul class="tags-list custom-scrollbar" data-tags-div="#tags-div-ol">
             {% for tag in tags %}
             <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}} </li>
@@ -189,7 +190,7 @@
 
 
         <div class="cus-card tags-card add-tags-q">
-            <h5 class="cus-card-header">Tags</h5>
+            <h5 class="cus-card-header">{% translate 'Tags' %}</h5>
             <div class="cus-card-body tags-div" id="tags-div-ol">
                 {% for tag in selectedTags %}
                 
@@ -220,7 +221,7 @@
 
     </div>
     <button class="btn btn-primary btn-sm primary-button add-que-button add-post-btn">
-        Add Question
+        {% translate 'Add Question' %}
     </button>
     </form>
     <div class="question-dev-parent" style="margin-top: 75px;" id="similar-ques">
@@ -228,7 +229,7 @@
         <div class="questions-gird-toolbar">
             <div class="row">
                 <div class="col-4">
-                    <span class="sort-by-word" style="font-size: 25px;">Similar Questions</span>
+                    <span class="sort-by-word" style="font-size: 25px;">{% translate 'Similar Questions' %}</span>
 
                 </div>
                 
@@ -240,7 +241,7 @@
             
 
         </div>
-        <button class="btn see-more-btn see-more-btn-add-que" data-category-id="{% if categoryID %}{{categoryID}}{% endif %}">See more</button>
+        <button class="btn see-more-btn see-more-btn-add-que" data-category-id="{% if categoryID %}{{categoryID}}{% endif %}">{% translate 'See more' %}</button>
             <div class="loading-circle">
                 <div class="primary-circle">
                     <div class="secondary-circle"></div>

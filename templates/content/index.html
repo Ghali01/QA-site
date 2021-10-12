@@ -1,17 +1,18 @@
 {% extends 'utilities/_base.html' %}
+{% load i18n %}
 {% load questions %}
-{% block titile %}Index{% endblock %}
+{% block titile %}{% translate 'Home' %}{% endblock %}
 
 {% block content %} 
-    <h2 class="center-title">Lastst Questions</h2>
+    <h2 class="center-title">{% translate 'Lastst Questions' %}</h2>
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
     
     <a href="{% url 'content:add-question' %}" class="btn btn-primary btn-sm primary-button suggest-btn">
-        Suggest Question
+        {% translate 'Suggest Question' %}
     </a>
     {% else %}
     <a href="{% url 'authusers:login-page' %}" class="btn btn-primary btn-sm primary-button suggest-btn">
-        Login
+        {% translate 'Login' %}
     </a>
     {% endif %}
     <div style="clear:both"></div>
@@ -27,9 +28,9 @@
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if tagsFilter == 'M' %}
-                        My Tags
+                        {% translate 'My Tags' %}
                         {% else %}
-                        All
+                        {% translate 'All' %}
                         {% endif %}
                     </span>
                     <i class="fas fa-caret-down select-arrow"></i>
@@ -37,10 +38,10 @@
                 </button>
                 <ul class="custom-select-list custom-scrollbar">
                     <li data-value="M" class="custom-select-item">
-                            My Tags
+                        {% translate 'My Tags' %}
                     </li>
                     <li data-value="A" class="custom-select-item">
-                            All
+                        {% translate 'All' %}
                     </li>
                 </ul>
                 <input type="hidden" id="tag-filter" name="tags" value="{% if tagsFilter == 'M' %}M{% else %}A{% endif %}">
@@ -52,9 +53,9 @@
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if votesFilter == 'L' %}
-                        Least Votes
+                        {% translate 'Least Votes' %}
                         {% else %}
-                        Most Votes
+                        {% translate 'Most Votes' %}
                         {% endif %}
                     
                     </span>
@@ -63,10 +64,10 @@
                 </button>
                 <ul class="custom-select-list custom-scrollbar">
                     <li data-value="M" class="custom-select-item">
-                            Most Votes
+                        {% translate 'Most Votes' %}
                     </li>
                     <li data-value="L" class="custom-select-item">
-                            Least Votes
+                        {% translate 'Least Votes' %}
                     </li>
                 </ul>
                 <input type="hidden" id="votes-filter" name="votes" value="{% if votesFilter == 'L' %}L{% else %}M{% endif %}">
@@ -78,9 +79,9 @@
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if viewsFilter == 'L' %}
-                        Least Views
+                        {% translate 'Least Views' %}
                         {% else %}
-                        Most Views
+                        {% translate 'Most Views' %}
                         {% endif %}
 
                     </span>
@@ -89,10 +90,10 @@
                 </button>
                 <ul class="custom-select-list custom-scrollbar">
                     <li data-value="M" class="custom-select-item">
-                            Most Views
+                        {% translate 'Most Views' %}
                     </li>
                     <li data-value="L" class="custom-select-item">
-                            Least Viwes
+                        {% translate 'Least Views' %}
                     </li>
                 </ul>
                 <input type="hidden" id="views-filter" name="views" value="{% if viewsFilter == 'L' %}L{% else %}M{% endif %}">
@@ -104,9 +105,9 @@
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if answersFilter == 'L' %}
-                        Least Answers
+                        {% translate 'Least Answers' %}
                         {% else %}
-                        Most Answers
+                        {% translate 'Most Answers' %}
                         {% endif %}
 
                     </span>
@@ -115,10 +116,10 @@
                 </button>
                 <ul class="custom-select-list custom-scrollbar">
                     <li data-value="M" class="custom-select-item">
-                            Most Answers
+                        {% translate 'Most Answers' %}
                     </li>
                     <li data-value="L" class="custom-select-item">
-                            Least Answers
+                        {% translate 'Least Answers' %}
                     </li>
                 </ul>
                 <input type="hidden" id="answers-filter" name="answers" value="{% if answersFilter  == 'L' %}L{% else %}M{% endif %}">
@@ -135,25 +136,25 @@
             {% endif %}
             " 
             
-            data-value="A">All time</button>
+            data-value="A">{% translate 'All time' %}</button>
             <button  class="btn btn-outline-primary btn-group-item btn-option-item
             {% if timeFilter == 'T' %}
             active
             {% endif %}
         
-            " data-value="T">Today</button>
+            " data-value="T">{% translate 'Today' %}</button>
             <button  class="btn btn-outline-primary btn-group-item btn-option-item
             {% if timeFilter == 'W' %}
             active
             {% endif %}
         
-            " data-value="W">This week</button>
+            " data-value="W">{% translate 'This week' %}</button>
             <button  class="btn btn-outline-primary btn-group-item btn-option-item
             {% if timeFilter == 'M' %}
             active
             {% endif %}
         
-            " data-value="M">This month</button>
+            " data-value="M">{% translate 'This month' %}</button>
         <input type="hidden" name="time">
         </div>
     <div style="clear:both"></div>
@@ -166,7 +167,7 @@
         
     </div>
     {% if pageCount > 1 %}
-    <button class="btn see-more-btn see-more-btn-index" data-category-id="{% if categoryID %}{{categoryID}}{% endif %}">See more</button>
+    <button class="btn see-more-btn see-more-btn-index" data-category-id="{% if categoryID %}{{categoryID}}{% endif %}">{% translate 'See more' %}</button>
     <div class="loading-circle">
         <div class="primary-circle">
             <div class="secondary-circle"></div>

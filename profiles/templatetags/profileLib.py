@@ -1,10 +1,10 @@
-import mimetypes
+import datetime
 from django.template import Library
-from django.urls.base import reverse
 import base64
 from interviewsquestions.settings import MEDIA_ROOT
 from mimetypes import guess_type
 import os
+from django.utils.translation import get_language
 register=Library()
 
 @register.inclusion_tag('profiles/templatetags/badgeItem.html')
@@ -31,3 +31,25 @@ def smImgProfile(user):
     b64=base64.b64encode(file.read()).decode('utf-8')
     date=f'data:{type};base64, {b64}'
     return date
+
+@register.filter
+def formatDate(date:datetime.datetime):
+    language=get_language()[:2]
+    if language=='en':
+        return date.strftime("%b, %Y %d").replace(' 0',' ')
+    else:
+        months=['يناير '
+                ,'فبراير'
+                ,'مارس'
+                ,'ابريل'
+                ,'مايو'
+                ,'يونيو'
+                ,'يوليو'
+                ,'اغسطس'
+                ,'سبتمبر'
+                ,'اكتوبر'
+                ,'نوفمبر'
+                ,'ديسمبر'
+        ]
+
+        return f'''{months[date.month-1]}, {date.strftime("%Y %d").replace(' 0',' ')}'''

@@ -83,7 +83,7 @@ def editTemplatePage(request,templateID):
             }
             return render(request,'dashboard/addEditEmailTemplate.html',contxt)
         except EmailTemplate.DoesNotExist:
-            messages.error(request,gettext("Reference does not exists"))
+            messages.error(request,gettext("template does not exists"))
             return redirect('/dashboard/templates/EN')
     else:
         return redirect("/dashboard/login")

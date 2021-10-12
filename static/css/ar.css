@@ -1,0 +1,99 @@
+
+.l-btn img {
+    left: unset;
+    right: 18px;
+}
+button.l-btn{
+    text-indent: 30px;
+}
+
+.select-arrow{
+    right: unset;
+    left: 5px;
+}
+.category-li .down-icon{
+    right: unset;
+    left: 10px;
+}
+.edit-tags-link{
+    float: left;
+}
+.n-sl-btn{
+    padding-right: 15px;
+}
+.center-title, .title{
+    float: right;
+}
+.suggest-btn{
+    float: left;
+    margin-left: 8px;
+}
+.add-post-btn{
+    float: left;
+}
+.btn.tag-star{
+    right: unset;
+    left: 5px;
+}
+
+.question-tags{
+    float: right;
+}
+
+.points-sp{
+    margin-right: 7px;
+    margin-top: 6px;
+    margin-left: 0;
+    float: left;
+
+}
+.log-w-email-btn{
+    font-size: 11px;
+    padding-top: 8px;
+}
+.log-w-email-btn i{
+    left: unset;
+    right: 18px;
+}
+.mod-title,.mod-btns{
+    float: right;
+}
+/* .await-item .question-date{
+    right: unset;
+    left: 8px;
+}
+
+.await-item .added-by-div-2{
+    left: -8px;
+} */
+
+.added-by-div-2{
+    width: auto;
+}
+.ans-added-by-div{
+    float: left;
+}
+
+.question-date{
+    right: unset;
+    left: 15px;
+}
+
+.earned-mark{
+    right: unset;
+    left: 4px;
+}
+
+.follower-item .follow-btn{
+    float: left;
+}
+.pers-badges-2 .circular-badge{
+    margin-right: 5px;
+}
+.pers-rep{
+    margin: 16px 0px 16px 10px;
+}
+.que-data{
+    padding-right: 0; 
+    padding-left: 10px;
+}

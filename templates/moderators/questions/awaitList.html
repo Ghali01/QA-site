@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load contentUtilities %}
 
         <div class="await-list">
@@ -21,16 +22,16 @@
                         </div>
 
                     </div>
-                    <div class="added-by-div added-by-div-2 ">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
+                    <div class="added-by-div added-by-div-2 ">{% translate 'add by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
                     </div>
                 </div>
                 <div class="question-options-bottom">
                     <button
                         class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-que-st-m-btn" data-action="A" data-que-id="{{que.id}}" >
-                        <i class="fas fa-check"></i> Accept</button>
+                        <i class="fas fa-check"></i> {% translate 'Accept' %}</button>
                     <button
                         class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn chang-que-st-m-btn" data-action="R" data-que-id="{{que.id}}" ><i
-                            class="fas fa-times"></i> Reject</button>
+                            class="fas fa-times"></i> {% translate 'Reject' %}</button>
 
                 </div>
             </div>

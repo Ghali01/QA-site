@@ -7,7 +7,7 @@ from content.models import Post, Badge, PostLog, Tag,Question,Category
 import datetime
 from interviewsquestions.utilities.database import langChoices
 from feedback.models import FlagReason
-from django.utils.translation import get_language
+from django.utils.translation import get_language,gettext,pgettext
 class TempUser(models.Model):
 
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='tmp')
@@ -16,19 +16,19 @@ class TempUser(models.Model):
 
 
 providerChoises=[
-    ('fa','Facebook'),
-    ('tw','Twitter'),
-    ('go','Google'),
-    ('gi','Github'),
+    ('fa',gettext('Facebook')),
+    ('tw',gettext('Twitter')),
+    ('go',gettext('Google')),
+    ('gi',gettext('Github')),
 ]
 
 
 class UserProfile(models.Model):
     permissionsChoies=[
-        ('SA','Super Admin'),
-        ('A','Admin'),
-        ('M','Moderator'),
-        ('U','User')
+        ('SA',gettext('Super Admin')),
+        ('A',gettext('Admin')),
+        ('M',gettext('Moderator')),
+        ('U',gettext('User'))
         ]
     
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='profile')
@@ -82,48 +82,48 @@ class UserProfile(models.Model):
         now=datetime.datetime.now().date()
         days =(now - self.user.date_joined.date()).days
         if days ==0:
-            return 'today'
+            return gettext('today')
         elif days == 1:
-            return 'yesterday'
+            return gettext('yesterday')
         elif days<30:
-            return str(days) +' days'
+            return str(days) +' '+gettext('days')
         elif days >= 30 and days<356:
-            return str(int(days/30))+' months'
+            return str(int(days/30))+' '+gettext('months')
         elif days >= 365:
             if days % 365 < 30:
-                return str(int(days/365))+' years'
+                return str(int(days/365))+' '+gettext('years')
             elif days % 365 >=30 :
-                return str(int(days/365))+' years '+ str(int(days%365/30)) + ' months'
+                return str(int(days/365))+' '+gettext('years')+' '+ str(int(days%365/30)) + ' '+gettext('months')
     def lastSeen(self):
         now=timezone.now()
         seconds=(now - self.lastActive).seconds
         if seconds<60:
-            return str(seconds)+' secs'
+            return str(seconds)+' '+gettext('secs')
         elif seconds <3600:
-            return str(int(seconds/60)) + ' min'
+            return str(int(seconds/60)) + ' '+gettext('min')
         elif seconds <86400:
-            return str(int(seconds/3600)) + ' hour'
+            return str(int(seconds/3600)) + ' '+gettext('hour')
         days =(now - self.user.date_joined.date()).days
         if days ==0:
-            return 'today'
+            return gettext('today')
         elif days == 1:
-            return 'yesterday'
+            return gettext('yesterday')
         elif days<30:
-            return str(days) +' days'
+            return str(days) +' '+gettext('days')
         elif days >= 30 and days<356:
-            return str(int(days/30))+' months'
+            return str(int(days/30))+' '+gettext('months')
         elif days >= 365:
             if days % 365 < 30:
-                return str(int(days/365))+' years'
+                return str(int(days/365))+' '+gettext('years')
             elif days % 365 >=30 :
-                return str(int(days/365))+' years '+ str(int(days%365/30)) + ' months'
+                return str(int(days/365))+' '+gettext('years')+' '+ str(int(days%365/30)) + ' '+gettext('months')
     def getViews(self):
         if self.views < 1000:
             return self.views
         elif self.views < 1000000:
-            return int(self.views/1000)+'K'
+            return int(self.views/1000)+pgettext('count','K')
         else:
-            return int(self.views/1000000)+'M'
+            return int(self.views/1000000)+pgettext('count','M')
     def lastTwoGold(self):
         return BadgesUser.objects.filter(badge__level=Badge.levels.Gold,profile=self)[:2]
     def lastTwoSilver(self):
@@ -175,3 +175,16 @@ class SocialUser(models.Model):
 
 class BanedUser(models.Model):
     user=models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
+
+
+class TmpLink(models.Model):
+    # actionChoices=[ 
+    #     ('P','Reset Password'),
+    #     ('E','Reset Email'),
+    # ]
+    # action=models.CharField(max_length=1,choices=actionChoices)
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    key=models.CharField(max_length=100)
+    # class actions:
+    #     ResetPassword="P"
+    #     ResetEmail="E"

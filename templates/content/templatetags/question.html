@@ -1,5 +1,7 @@
 {% load contentUtilities %}
-{% load humanize %}
+
+{% load i18n %}
+
 <h1 class="que-title center-title">{{question.title}}
 
     {% if not question.post.isPublished %}
@@ -7,12 +9,12 @@
     {% endif %}
 </h1>
 <div class="que-data-div">
-    <span class="que-data-title">Asked:</span>
+    <span class="que-data-title">{% translate 'Asked:' %} </span>
     <span class="que-data">{{question.getDuration}}</span>
-    <span class="que-data-title">Active: </span>
+    <span class="que-data-title">{% translate 'Active:' %} </span>
     <span class="que-data">{{question.getLastActDuration}}</span>
-    <span class="que-data-title">Viwes: </span>
-    <span class="que-data">{{question.views|intcomma}}</span>
+    <span class="que-data-title">{% translate 'Viwes:' %} </span>
+    <span class="que-data">{{question.getViews}}</span>
 </div>
 <div class="question-div">
     <div class="row">
@@ -69,15 +71,15 @@
                         {% endfor %}
                     </div>
                     <div class="que-opts-spans">
-                        <a href="{% url 'content:suggest-post-edit' postID=question.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">Suggest
-                            Edit</a>
+                        <a href="{% url 'content:suggest-post-edit' postID=question.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">
+                            {% translate 'Suggest Edit' %}</a>
                         <div class="link-break">|</div>
                         {% if not request.user == question.post.author %}
                         <button class="custom-link custom-link-sm primary-link btn que-opt  flo-que-btn" data-user-id="{{question.post.author.id}}">
                             {% if request.user in question.post.author.profile.followers.all %}
-                            Unfollow
+                            {% translate 'Unfollow' %}
                             {% else %}
-                            Follow
+                            {% translate 'Follow' %}
                             {% endif %}                            
                         </button>
                         <div class="link-break">|</div>
@@ -85,7 +87,7 @@
                         <!-- Button trigger modal -->
                         <button type="button" class="link-button report-btn primary-link que-opt" data-report-on="{{question.post.id}}" data-type="Q" data-bs-toggle="modal"
                             data-bs-target="#Q-reportModal">
-                            Report
+                            {% translate 'Report' %}
                         </button>
 
 
@@ -121,7 +123,7 @@
                 <div class="authors-dvs">
                 <div class="added-by-div-q que-added-by-div">
                     <div class="questtion-add-date">
-                        Added in <time>{{question.formatedDate}}</time>
+                        {% translate 'Added in' %} <time>{{question.formatedDate}}</time>
                     </div>
                     {% authodPostData question.post.author %}
 
@@ -129,7 +131,7 @@
                 {% if question.post.isEdited %}
                 <div class="added-by-div-q que-added-by-div">
                     <div class="questtion-add-date">
-                        Edited in <time>{{question.post.lastEditDate}}</time>
+                        {% translate 'Edited in' %} <time>{{question.post.lastEditDate}}</time>
                     </div>
                     {% authodPostData question.post.getLastEditAuthor %}
 
@@ -145,17 +147,17 @@
                 {% endfor %}
                 {% if question.post.comments.all.count > 3 %}
                 <li>
-                    <p class="all-comment-span" data-post-id="{{question.post.id}}">All comment</p>
+                    <p class="all-comment-span" data-post-id="{{question.post.id}}">{% translate 'All comment' %}</p>
                 </li>
                 {% endif %}
             </ul>
             {#% if request.user.is_authenticated and not request.user.is_anonymous %#}
 
-            <p class="add-comment-span">Add comment</p>
+            <p class="add-comment-span">{% translate 'Add comment' %}</p>
             <div class="add-comment-div">
-                <input type="text" class="form-control que-input add-comm-inp" placeholder="Add Comment..." maxlength="300">
-                <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{question.post.id}}">Add
-                    comment</button>
+                <input type="text" class="form-control que-input add-comm-inp" placeholder="{% translate 'Add Comment...' %}" maxlength="300">
+                <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{question.post.id}}">
+                    {% translate 'Add comment' %}</button>
             </div>
             {#% endif %#}
 

@@ -1,13 +1,12 @@
 import datetime
 from json.decoder import JSONDecodeError
 from math import ceil
-from os import path
 from random import randint
-from django.contrib.auth.models import PermissionsMixin, User
+from django.contrib.auth.models import  User
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse
-from interviewsquestions.utilities.authDecoratros import forActiveUser, forModerator,userHasTags
+from interviewsquestions.utilities.authDecoratros import forActiveUser,userHasTags
 from content.models import Badge, Category, PostLog, SuggestedEdit,Tag,SuggestedQuestion,Post,Question, Voter,Answer,Comment
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
@@ -17,11 +16,20 @@ from django.template.loader import render_to_string
 import json
 from django.http import Http404 
 from interviewsquestions.settings import STATIC_ROOT
+from django.utils.translation import LANGUAGE_SESSION_KEY, get_language,activate, gettext 
+from django.conf import settings
+import pdfkit
+from django.template.loader import render_to_string
+from io import BytesIO
+import zipfile
+
 def index(request,categoryID=-1):
+    language=get_language()[:2]
     tagsFilter=viewsFilter=votesFilter=answersFilter=timeFilter=None
     category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
-    questions=Question.objects.filter(post__isPublished=True)
+    questions=Question.objects.filter(category__language=language,post__isPublished=True)
     if category:
+        activate(category.language)
         questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
     if 'time' in request.GET:
         timeFilter=request.GET['time']
@@ -71,10 +79,13 @@ def index(request,categoryID=-1):
     return render(request,'content/index.html',contxt)
 
 def seeMoreQueIndex(request,page,categoryID=-1):
+    language=get_language()[:2]
+
     category=get_object_or_404(Category,id=categoryID) if not categoryID == -1 else None
-    questions=Question.objects.filter(post__isPublished=True)
+    questions=Question.objects.filter(category__language=language,post__isPublished=True)
     if category:
         questions=questions.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
+        activate(category.language)
     if 'time' in request.GET:
         if request.GET['time']=='T':
             logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date=datetime.datetime.now().date())
@@ -135,18 +146,18 @@ def addQuestionPage(request):
                     question.tags.add(*tags)
                     question.save()
                     PostLog.objects.create(post=post,text=post.text,author=request.user,type=PostLog.types.Suggest)
-                    messages.success(request,'The question has been submitted, it will be reviewed soon.')
+                    messages.success(request,gettext('The question has been submitted, it will be reviewed soon.'))
                     return redirect(reverse('content:index'))
 
                 except Category.DoesNotExist:
-                    messages.error(request,'Category Not found')
+                    messages.error(request,gettext('Category Not found'))
             else:
                 if not request.POST['post-title']:
-                    messages.error(request,'Title should not be empty' ,extra_tags='title')
+                    messages.error(request,gettext('Title should not be empty') ,extra_tags='title')
                 if not request.POST['post-body']:
-                    messages.error(request,'Question Text should not be empty',extra_tags='body')
+                    messages.error(request,gettext('Question Text should not be empty'),extra_tags='body')
                 if not tagsIds:
-                    messages.error(request,'You most add 1 tag or more',extra_tags='tags')
+                    messages.error(request,gettext('You most add 1 tag or more'),extra_tags='tags')
                 selectedTags=[]
                 if tagsIds:
                     for tagID in tagsIds:
@@ -168,10 +179,15 @@ def addQuestionPage(request):
         return redirect(reverse('content:add-question'))
 
     else:
-        categories=Category.objects.filter(parent=None)
-        tags=Tag.objects.all()
+        language=get_language()[:2]
+
+        categories=Category.objects.filter(language=language,parent=None)
+        category=request.user.profile.category
+        tags=Tag.objects.filter(category__language=language)
+
         contxt={
             'categories':categories,
+            'category':category,
             'tags':tags
         }
         return render(request,'content/addQuestion.html',context=contxt)
@@ -179,6 +195,7 @@ def addQuestionPage(request):
 
 def questionPage(request,questionID):
     question=get_object_or_404(Question,id=questionID)
+    activate(question.category.language)
     if  not question.post.isPublished and not ( request.user==question.post.author or request.user.profile.isModerator() or request.user.profile.isSuperAdmin() or request.user.profile.isAdmin() ):
         raise Http404
     question.views=F('views')+1
@@ -204,9 +221,11 @@ def postVotes(request):
                     v=Voter.objects.get(user=request.user,post=post,type=Voter.types.Down)
                     v.delete()
                     post.votes=F('votes')+2
-                    post.author.profile.rep =F('rep')+12
+                    if not request.user== post.author:
+                        post.author.profile.rep =F('rep')+12
                 except  Voter.DoesNotExist:
-                    post.author.profile.rep =F('rep')+10
+                    if not request.user== post.author:
+                        post.author.profile.rep =F('rep')+10
                     post.votes=F('votes')+1
                 post.save()
                 post.author.profile.save()
@@ -221,10 +240,12 @@ def postVotes(request):
                 try:
                     v=Voter.objects.get(user=request.user,post=post,type=Voter.types.Up)
                     v.delete()
-                    post.author.profile.rep =F('rep')-12
                     post.votes=F('votes')-2
+                    if not request.user== post.author:
+                        post.author.profile.rep =F('rep')-12
                 except  Voter.DoesNotExist:
-                    post.author.profile.rep =F('rep')-2
+                    if not request.user== post.author:
+                        post.author.profile.rep =F('rep')-2
                     post.votes=F('votes')-1
                 post.save()
                 post.author.profile.save()
@@ -244,9 +265,9 @@ def addAnswer(request):
                 post=Post.objects.create(text=request.POST['ans-text'],author=request.user,type=Post.types.Answer)
                 log=PostLog.objects.create(post=post,text=request.POST['ans-text'],author=request.user,type=PostLog.types.Suggest)
                 answer=Answer.objects.create(post=post,question=question)
-                messages.success(request,'The answer has been submitted, it will be reviewed soon.')
+                messages.success(request,gettext('The answer has been submitted, it will be reviewed soon.'))
             else:
-                messages.success(request,'Answer should not by empty')
+                messages.success(request,gettext('Answer should not by empty'))
             return redirect(reverse('content:question-page',kwargs={'questionID':request.POST['que-id']})+'#mgss')
         except ValueError:
             pass
@@ -255,6 +276,7 @@ def addAnswer(request):
 def similarQuestions(request,page):
     if 'que-title' in request.GET and 'category-id' in request.GET and 'tags' in request.GET:
         try:
+       
             category=int(request.GET['category-id'])
             questions=Question.objects.filter(post__isPublished=True)
             questions=questions.filter(Q(category__id=category)|Q(category__parent__id=category)|Q(category__parent__parent__id=category)|Q(category__parent__parent__parent__id=category))
@@ -328,7 +350,7 @@ def suggestPostEdit(request,postID):
             author=request.user,
             type=PostLog.types.SuggestEdit,
             edit=edit)
-            messages.success(request,'The edit has been submitted, it will be reviewed soon.')
+            messages.success(request,gettext('The edit has been submitted, it will be reviewed soon.'))
             return redirect(reverse('content:question-page',kwargs={'questionID':post.getQuestion().id})+'#mgss')
 
     post=get_object_or_404(Post,id=postID)
@@ -337,15 +359,23 @@ def suggestPostEdit(request,postID):
     }
     return render(request,'content/suggestEdit.html',contxt)
 def tagsPage(request):
-    categories=Category.objects.filter(parent=None)
-    tags=Tag.objects.all()
+    language=get_language()[:2]
+
+    categories=Category.objects.filter(language=language,parent=None)
+    tags=Tag.objects.filter(category__language=language)
     category=ansFilter=queFilter=None
     if 'category' in request.GET:
         try:
             category=Category.objects.get(pk=int(request.GET['category']))
-            tags=tags.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
+            activate(category.language)
         except(Category.DoesNotExist,ValueError):
-            pass
+            if request.user.is_authenticated and not request.user.is_anonymous:
+                category=request.user.profile.category
+    else:
+        if request.user.is_authenticated and not request.user.is_anonymous:
+            category=request.user.profile.category
+
+    tags=tags.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
     
     tags=tags.annotate(answersCount=Count(F('questions__answers')),questionsCount=Count(F('questions')))
     orderFields=[
@@ -382,11 +412,14 @@ def toggleTagToFav(request):
 
 def categoriesPage(request):
     tagsFiltr=order=category=None
-    categories=Category.objects.filter(parent=None)
-    catgoriesList=Category.objects.all()
+    language=get_language()[:2]
+
+    categories=Category.objects.filter(language=language,parent=None)
+    catgoriesList=Category.objects.filter(language=language)
     if 'category' in request.GET:
         try:
             category=Category.objects.get(pk=request.GET['category'])
+            activate(category.language)
             catgoriesList=catgoriesList.filter(Q(parent=category)|Q(parent__parent=category)|Q(parent__parent__parent=category))
         except (Category.DoesNotExist,ValueError):
             pass
@@ -541,13 +574,11 @@ def searchQuestionsAjax(request):
 
 
 
-
-
-import pdfkit
-from django.template.loader import render_to_string
 @forActiveUser
 def examPage(request):
-    categories=Category.objects.filter(parent=None)
+    language=get_language()[:2]
+
+    categories=Category.objects.filter(language=language,parent=None)
     category=request.user.profile.category 
     contxt={
         'categories':categories,
@@ -594,13 +625,30 @@ def generateExam(request):
             return HttpResponse(pdf,content_type='application/pdf')
             return HttpResponse(html)
         else:
-            messages.error(request,'no questions')
+            messages.error(request,gettext('no questions'))
             return redirect(reverse('content:exam-page'))
-from io import BytesIO
-import zipfile
 def zipFiles(files):
     outfile = BytesIO()
     with zipfile.ZipFile(outfile, 'w') as zf:
         for n, f in files.items():
             zf.writestr("{}.pdf".format(n), f)
     return outfile.getvalue()
+
+
+
+
+
+
+
+def setLangage(request,language):
+    activate(language)
+    response= redirect(reverse('content:index'))
+    if 'url' in request.GET:
+        response= redirect(request.GET['url'])
+    response.set_cookie(settings.LANGUAGE_COOKIE_NAME,language)
+    request.session[LANGUAGE_SESSION_KEY] = language
+    return response
+
+
+
+

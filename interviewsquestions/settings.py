@@ -164,3 +164,6 @@ import django.contrib.messages.constants as messages
 MESSAGE_TAGS={
     messages.ERROR:'danger'
 }
+LOCALE_PATHS=[
+    BASE_DIR.joinpath('locale'),
+    ]

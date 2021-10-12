@@ -3,6 +3,7 @@ from django.core.checks.messages import CRITICAL
 from django.http.response import HttpResponse
 from django.shortcuts import get_object_or_404, render,redirect
 from django.urls import reverse
+from django.utils.translation import gettext
 from dashboard.decorators import forSuperAdmin
 from content.models import Comment, PostLog, Question,Post,Category,Tag,Answer
 from math import ceil
@@ -55,9 +56,9 @@ def deleteQuestion(request):
             try:
                 post=Post.objects.get(question__id=int(request.POST['del-id']))
                 post.delete()
-                messages.success(request,'question was delete')
+                messages.success(request,gettext('question was delete'))
             except Post.DoesNotExist:
-                messages.error(request,'question does not exists')
+                messages.error(request,gettext('question does not exists'))
             
             
             return redirect(reverse('dashboard:questions',kwargs={'page':int(request.POST['page'])}))
@@ -85,11 +86,11 @@ def editQuestion(request,questionID):
                     question.post.save()
                     question.save()
                 elif not request.POST['que-title']:
-                    messages.error(request,'title is empty')
+                    messages.error(request,gettext('title is empty'))
                 elif not request.POST['que-body']:
-                    messages.error(request,'text is empty')
+                    messages.error(request,gettext('text is empty'))
                 elif not tagsIds:
-                    messages.error(request,'You should add 1 tag or more')
+                    messages.error(request,gettext('You should add 1 tag or more'))
             except (Category.DoesNotExist,Tag.DoesNotExist,JSONDecodeError):
                 pass
 
@@ -141,9 +142,9 @@ def deleteAnswer(request):
             try:
                 post=Post.objects.get(answer__id=int(request.POST['del-id']))
                 post.delete()
-                messages.success(request,'answer was delete')
+                messages.success(request,gettext('answer was delete'))
             except Post.DoesNotExist:
-                messages.error(request,'answer does not exists')
+                messages.error(request,gettext('answer does not exists'))
             
             
             return redirect(reverse('dashboard:all-answers-page',kwargs={'page':int(request.POST['page'])}))
@@ -199,10 +200,10 @@ def deleteComment(request):
                 comment=Comment.objects.get(pk=int(request.POST['del-id']))
                 postID=comment.post.id
                 comment.delete()
-                messages.success(request,'comment was delete')
+                messages.success(request,gettext('comment was delete'))
                 return redirect(reverse('dashboard:post-comments',kwargs={'postID':postID,'page':int(request.POST['page'])}))
             except Comment.DoesNotExist:
-                messages.error(request,'comment does not exists')
+                messages.error(request,gettext('comment does not exists'))
                 return redirect(reverse('dashboard:questions',kwargs={'page':1}))
             
         except ValueError:

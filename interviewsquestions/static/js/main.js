@@ -332,7 +332,7 @@ $(document).ready(
             const emailPatt = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gm;
             $("#reg-form .form-input:not(.no-req)").map(function () {
                 if (!$(this).val() && !$(this).next().hasClass("r-error-span")) {
-                    $(this).next().find(".error-val").text("This Field is required");
+                    $(this).next().find(".error-val").text(gettext("This Field is required"));
                     $(this).next().slideDown();
                     isEmpyty = true;
                     $(this).focus(function () {
@@ -344,20 +344,20 @@ $(document).ready(
             });
             if (isEmpyty) {
                 e.preventDefault();
-            } else if (!emailPatt.test($("#email-input").val())) {
-                $("#email-input").next().find(".error-val").text("Email not valid");
+            } else if ($("#email-input").length>0&&!emailPatt.test($("#email-input").val())) {
+                $("#email-input").next().find(".error-val").text(gettext("Email not valid"));
                 $("#email-input").next().slideDown();
                 e.preventDefault();
 
             }
             else if ($("#password-input").val().length < 8) {
-                $("#password-input").next().find(".error-val").text("Password should be 8 charters or more");
+                $("#password-input").next().find(".error-val").text(gettext("Password should be 8 charters or more"));
                 $("#password-input").next().slideDown();
                 e.preventDefault();
 
             }
             else if ($("#password-input").val() != $("#confirmPassword-input").val()) {
-                $("#confirmPassword-input").next().find(".error-val").text("Password does not match");
+                $("#confirmPassword-input").next().find(".error-val").text(gettext("Password does not match"));
                 $("#confirmPassword-input").next().slideDown();
                 e.preventDefault();
 
@@ -930,7 +930,7 @@ function queTitleChange() {
     pageIndc = 0;
     if ($(this).val()) {
         $('#similar-ques').css('display', 'block');
-        $('.loading-circle').show();
+        $('.loading-circle:not(.in-search)').show();
         $(this).next().show();
         $('.questions-list').html('');
         $.get(`/similar-questions/${pageIndc++}`,
@@ -941,7 +941,7 @@ function queTitleChange() {
 
             },
             function (data, textStatus, jqXHR) {
-                $('.loading-circle').hide();
+                $('.loading-circle:not(.in-search)').hide();
                 data = JSON.parse(data);
                 if (parseInt(data.remPages) <= 0) {
                     $('.see-more-btn-add-que').hide()
@@ -1051,7 +1051,7 @@ function searchUsrQuestions() {
     searchText = $(this).val();
 
     pageIndc = 0;
-    $('.loading-circle').show();
+    $('.loading-circle:not(.in-search)').show();
     $('.questions-list').html('');
     $.get(`/profile/see-more-your-questions/${$(this).data('user-id')}/${pageIndc++}`,
         {
@@ -1061,7 +1061,7 @@ function searchUsrQuestions() {
             'search': $('#search-inp').val()
         },
         function (data, textStatus, jqXHR) {
-            $('.loading-circle').hide();
+            $('.loading-circle:not(.in-search)').hide();
             data = JSON.parse(data);
             if (parseInt(data.remPages) <= 0) {
                 $('.see-more-btn-user-que').hide()
@@ -1100,7 +1100,7 @@ function searchUsrAnswers() {
         return;
     searchText = $(this).val();
     pageIndc = 0;
-    $('.loading-circle').show();
+    $('.loading-circle:not(.in-search)').show();
     $('.questions-list').html('');
     $.get(`/profile/see-more-your-answers/${$(this).data('user-id')}/${pageIndc++}`,
         {
@@ -1110,7 +1110,7 @@ function searchUsrAnswers() {
             'search': $('#search-inp').val()
         },
         function (data, textStatus, jqXHR) {
-            $('.loading-circle').hide();
+            $('.loading-circle:not(.in-search)').hide();
             data = JSON.parse(data);
             if (parseInt(data.remPages) <= 0) {
                 $('.see-more-btn-user-que').hide()
@@ -1195,16 +1195,16 @@ function folloUserQueBtn() {
         function (data, textStatus, jqXHR) {
             if (data == 'added')
                 if ($(clicked).hasClass('follow-btn'))
-                  $(clicked).html('<i class="fas fa-user-minus"></i> Unfollow');
+                  $(clicked).html(`<i class="fas fa-user-minus"></i> ${gettext('Unfollow')}`);
                     
                 else
 
-                    $(clicked).text('Unfollow');
+                    $(clicked).text(gettext('Unfollow'));
             else if (data == 'removed')
                 if ($(clicked).hasClass('follow-btn'))
-                    $(clicked).html('<i class="fas fa-user-plus"></i> Follow');
+                    $(clicked).html(`<i class="fas fa-user-plus"></i> ${gettext('Follow')}`);
                 else
-                    $(clicked).text('Follow');
+                    $(clicked).text(gettext('Follow'));
         },
     );
     checkAuth(f);
@@ -1292,6 +1292,8 @@ function searchNavDown(e) {
             $('.search-resaults .active').first().removeClass('active');
         }
     }
+
+    
     else if(e.which==38){
         if ($('.search-resaults .active').length==0)
             $('.search-resaults ').children().last().addClass('active')
@@ -1302,6 +1304,7 @@ function searchNavDown(e) {
     }
     else if (e.which==13){
         let href=$('.search-resaults .active a').attr('href');
+        if(href)
         location.href=href;
         $('.search-nav-form .search-resaults').hide();
 

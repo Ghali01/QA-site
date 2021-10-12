@@ -67,14 +67,6 @@ class InfoItem(models.Model):
     language = models.CharField(max_length = 2,choices = langChoices)
 
 
-# class SocialMedia(models.Model):
-#     nameEN =models.CharField(max_length=40)
-#     nameAR =models.CharField(max_length=40)
-#     url =models.URLField()
-#     icon=models.ImageField(upload_to= MEDIA_ROOT.joinpath('social'))
-
-#     def __str__(self) -> str:
-#         return self.name
 
 
 class ContactMessage(models.Model):

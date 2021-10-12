@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load contentUtilities %}
 <div class="await-list">
     {% for que in questions %}
@@ -7,15 +8,15 @@
                 <div class="row">
                     <div class="col-5 votes-num-div nums-que">
                         <span class="votes-num-span">{{que.post.getVotes}}</span>
-                        <span class="votes-word">votes</span>
+                        <span class="votes-word">{% translate 'votes' %}</span>
 
                     </div>
                     <div class="col-5 answers-num-div nums-que">
-                        <span class="answers-num-span">5</span>
-                        <span class="answers-word">answers</span>
+                        <span class="answers-num-span">{{que.getPubliedAnswer.count}}</span>
+                        <span class="answers-word">{% translate 'answers' %}</span>
                     </div>
                 </div>
-                <div class="added-by-div">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
+                <div class="added-by-div">{% translate 'add by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
                 </div>
                 <!-- <span class="answers-num-span-grid">00 Answers</span> -->
 
@@ -30,9 +31,10 @@
                         {% tagLink tag %}
                         {% endfor %}
                     </div>
-             
-                    <div class="question-date">last answer added in 0000/00/00 </div>
-
+                    {% if question.getLastAnswerDate  %}
+                    <div class="question-date">{% translate 'last answer added in' %} {{question.getLastAnswerDate}} </div>
+                    {% endif %}
+         
                 </div>
 
             </div>

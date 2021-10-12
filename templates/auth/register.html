@@ -1,5 +1,6 @@
 {% extends 'utilities/auth/_base.html' %}
 {% load static %}
+{% load i18n %}
 {% block title %}Register{% endblock %}
 
 {% block content %}
@@ -27,7 +28,7 @@
                     <!-- register by email section start -->
                     <div class="">
                         <div class="inp-div">
-                            <label class="lbl form-lable" id="lbl1">Full Name</label>
+                            <label class="lbl form-lable" id="lbl1">{% translate 'Full Name' %}</label>
                             <input type="text" class="form-control form-input" id="fullName-input" name="fullName"
                                 maxlength="40">
 
@@ -44,7 +45,7 @@
                             </p>
                         </div>
                         <div class="inp-div">
-                            <label class="lbl form-lable" id="lbl1">User Name</label>
+                            <label class="lbl form-lable" id="lbl1">{% translate 'User Name' %}</label>
                             <input type="text" class="form-control form-input" id="userName-input" name="userName"
                                 maxlength="20">
 
@@ -61,7 +62,7 @@
                                 </p>
                         </div>
                         <div class="inp-div">
-                            <label class="lbl form-lable" id="lbl1">Email</label>
+                            <label class="lbl form-lable" id="lbl1">{% translate 'Email' %}</label>
                             <input type="email" class="form-control form-input" id="email-input" name="email">
                             
                             <p class="error-p" ><i class="fas fa-exclamation"></i>
@@ -77,7 +78,7 @@
                             </p>
                         </div>
                         <div class="inp-div">
-                            <label class="lbl form-lable" id="lbl1">Password</label>
+                            <label class="lbl form-lable" id="lbl1">{% translate 'Password' %}</label>
                             <input type="password" class="form-control form-input" id="password-input" name="password"
                                 maxlength="50">
                                 <p class="error-p"  ><i class="fas fa-exclamation"></i>
@@ -96,7 +97,7 @@
                         </div>
 
                         <div class="inp-div">
-                            <label class="lbl form-lable" id="lbl1">Confirm Password</label>
+                            <label class="lbl form-lable" id="lbl1">{% translate 'Confirm Password' %}</label>
                             <input type="password" class="form-control form-input" id="confirmPassword-input"
                                 name="confirmPassword" maxlength="50">
                                 <p class="error-p"  ><i class="fas fa-exclamation"></i>
@@ -113,15 +114,15 @@
                        
                         </div>
                         <div class="inp-div">
-                            <label class="lbl form-lable" id="lbl1">Website (Optional)</label>
+                            <label class="lbl form-lable" id="lbl1">{% translate 'Website (Optional)' %}</label>
                             <input type="url" class="form-control form-input no-req" id="website-input" name="website"
                                 maxlength="50">
                         </div>
 
-                        <p class="form-lable acc">By clicking Register, I agree that I have read and accepted our <a
-                                href="#" class="acc-link">Terms of Use and Privacy Policy</a></p>
+                        <p class="form-lable acc">{% translate 'By clicking Register, I agree that I have read and accepted our' %} <a
+                                href="#" class="acc-link">{% translate 'Terms of Use and Privacy Policy' %}</a></p>
                         <input type="submit" class="btn btn-primary primary-button form-btn" id="reg-btn"
-                            value="Sign Up">
+                            value="{% translate 'Sign Up' %}">
                     </div>
                     <!-- register by email section end -->
 
@@ -129,27 +130,38 @@
                 </div>
                 <div class="d-block or-div">
                     <hr id="sp-hr">
-                    <span class="form-lable" id="or-span-sm">or</span>
+                    <span class="form-lable" id="or-span-sm">{% translate 'or' %}</span>
                 </div>
                 <!-- break (or) section end -->
 
                 <!-- media sign up section start -->
                 <div class="">
 
-              
-            <button type="button" class="fb l-btn connect" id="fb-login-btn">Log In with Facebook</button>
-            <button type="button" class="tw l-btn connect">Log In with Twitter</button>
-            <button type="button" class="gi l-btn connect" id="gi-login-btn">Log In with GitHub</button>
-            <button type="button" class="go l-btn connect" id="go-login-btn">Log In with Google</button>
-            <div id="g_id_onload"
-              data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
-              data-callback="googleLoginCallback" data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard" data-size="large"
-              data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
-            </div>
-
-                </div>
+                    <button type="button" class="fb l-btn connect" id="fb-login-btn">
+                      
+                      <img src="{% static 'img/icons/facebook.svg' %}" alt="">
+                      {% translate 'Log In with Facebook' %}</button>
+                    <button type="button" class="tw l-btn connect">
+                      <img src="{% static 'img/icons/twitter.svg' %}" alt="">
+                      
+                      {% translate 'Log In with Twitter' %}</button>
+                    <button type="button" class="gi l-btn connect" id="gi-login-btn">
+                      <img src="{% static 'img/icons/github.svg' %}" alt="">
+                      {% translate 'Log In with GitHub' %}</button>
+                    <button type="button" class="go l-btn connect" id="go-login-btn">
+                      <img src="{% static 'img/icons/google.svg' %}" alt="">
+                      {% translate 'Log In with Google' %}</button>
+                    <div id="g_id_onload"
+                      data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
+                      data-callback="googleLoginCallback" data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard" data-size="large"
+                      data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+                    </div>
+        
+        
+                  </div>
+        
                 </form>
                 
       <form method="POST" id="social-form">

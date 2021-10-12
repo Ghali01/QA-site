@@ -1,4 +1,3 @@
-from django.db.models.fields import BooleanField
 from interviewsquestions.utilities.datetime import timeDaltaToInt
 from django.db import models
 from django.db.models.deletion import CASCADE
@@ -7,7 +6,7 @@ from django.contrib.auth.models import User
 import datetime
 import json
 from django.utils import timezone
-from django.utils.translation import get_language
+from django.utils.translation import get_language,gettext,pgettext
 class Category(models.Model):
     name =models.CharField(max_length=60)
     parent=models.ForeignKey('self',on_delete=models.CASCADE,null=True,related_name='categories')
@@ -95,8 +94,8 @@ class Tag(models.Model):
 
 class Post(models.Model):
     typeChoices=[
-        ('Q','Question'),
-        ('A','Answer'),
+        ('Q',gettext('Question')),
+        ('A',gettext('Answer')),
     ]
     
     text=models.TextField()
@@ -121,9 +120,9 @@ class Post(models.Model):
         if self.votes < 1000:
             return self.votes
         elif self.votes < 1000000:
-            return int(self.votes/1000)+'K'
+            return int(self.votes/1000)+pgettext('count','K')
         else:
-            return int(self.votes/1000000)+'M'
+            return int(self.votes/1000000)+pgettext('count','M')
     def getQuestion(self):
         if self.type==Post.types.Question:
             return self.question
@@ -169,34 +168,34 @@ class Question(models.Model):
         now=datetime.datetime.now().date()
         days =(now - self.post.logs.get(type=PostLog.types.Suggest).time.date()).days
         if days ==0:
-            return 'today'
+            return gettext('today')
         elif days == 1:
-            return 'yesterday'
+            return gettext('yesterday')
         elif days<30:
-            return str(days) +' days'
+            return str(days) +' '+gettext('days')
         elif days >= 30 and days<356:
-            return str(int(days/30))+' months'
+            return str(int(days/30))+' '+gettext('months')
         elif days >= 365:
             if days % 365 < 30:
-                return str(int(days/365))+' years'
+                return str(int(days/365))+' '+gettext('years')
             elif days % 365 >=30 :
-                return str(int(days/365))+' years '+ str(int(days%365/30)) + ' months'
+                return str(int(days/365))+' '+gettext('years')+' '+ str(int(days%365/30)) + ' '+gettext('months')
     def getLastActDuration(self):
         now=datetime.datetime.now().date()
         days =(now - self.post.ActiveDate).days
         if days ==0:
-            return 'today'
+            return gettext('today')
         elif days == 1:
-            return 'yesterday'
+            return gettext('yesterday')
         elif days<30:
-            return str(days) +' days'
+            return str(days) +' '+gettext('days')
         elif days >= 30 and days<356:
-            return str(int(days/30))+' months'
+            return str(int(days/30))+' '+gettext('months')
         elif days >= 365:
             if days % 365 < 30:
-                return str(int(days/365))+' years'
+                return str(int(days/365))+' '+gettext('years')
             elif days % 365 >=30 :
-                return str(int(days/365))+' years '+ str(int(days%365/30)) + ' months'
+                return str(int(days/365))+' '+gettext('years')+' '+ str(int(days%365/30)) + ' '+gettext('months')
     def formatedDate(self):
         return timezone.localdate(self.post.logs.get(type=PostLog.types.Suggest).time).strftime('%Y/%m/%d')
 
@@ -299,9 +298,15 @@ class Question(models.Model):
     def getReports(self):
         return self.post.getReports()
     def getCorrectAnswer(self):
-        print(type(self.answers.get(correctAnswer=True)))
         return  self.answers.get(correctAnswer=True)
-     
+    def getViews(self):
+        if self.views < 1000:
+            return self.views
+        elif self.views < 1000000:
+            return int(self.views/1000)+pgettext('count','K')
+        else:
+            return int(self.views/1000000)+pgettext('count','M')
+   
 class SuggestedQuestion(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE)
     title=models.CharField(max_length=200)
@@ -319,18 +324,18 @@ class SuggestedQuestion(models.Model):
         now=datetime.datetime.now().date()
         days =(now - self.post.logs.get(type=PostLog.types.Suggest).time.date()).days
         if days ==0:
-            return 'today'
+            return gettext('today')
         elif days == 1:
-            return 'yesterday'
+            return gettext('yesterday')
         elif days<30:
-            return str(days) +' days'
+            return str(days) +' '+gettext('days')
         elif days >= 30 and days<356:
-            return str(int(days/30))+' months'
+            return str(int(days/30))+' '+gettext('months')
         elif days >= 365:
             if days % 365 < 30:
-                return str(int(days/365))+' years'
+                return str(int(days/365))+' '+gettext('years')
             elif days % 365 >=30 :
-                return str(int(days/365))+' years '+ str(int(days%365/30)) + ' months'
+                return str(int(days/365))+' '+gettext('years')+' '+ str(int(days%365/30)) + ' '+gettext('months')
     def formatedDate(self):
         return timezone.localdate(self.post.logs.get(type=PostLog.types.Suggest).time).strftime('%Y/%m/%d')
 
@@ -464,14 +469,14 @@ class SuggestedEdit(models.Model):
 
 class PostLog(models.Model):
     typeChoices=[
-        ('S','Suggest'),
-        ('A','Accept'),
-        ('R','Reject'),
-        ('SE','Suggest Edit'),
-        ('AE','Accept Edit'),
-        ('RE','Reject Edit'),
-        ('P','Publish'),
-        ('UP','Unpublish'),
+        ('S',pgettext('choicse','Suggest')),
+        ('A',pgettext('choicse','Accept')),
+        ('R',pgettext('choicse','Reject')),
+        ('SE',pgettext('choicse','Suggest Edit')),
+        ('AE',pgettext('choicse','Accept Edit')),
+        ('RE',pgettext('choicse','Reject Edit')),
+        ('P',pgettext('choicse','Publish')),
+        ('UP',pgettext('choicse','Ubpunlish')),
     ]
     post=models.ForeignKey(Post,on_delete=models.CASCADE,related_name='logs')
     text=models.TextField(null=True)
@@ -545,28 +550,28 @@ class Comment(models.Model):
 
 class Badge(models.Model):
     levelsChoices=[ 
-        ('G','Gold'),
-        ('S','Silver'),
-        ('B','Bronze'),
+        ('G',gettext('Gold')),
+        ('S',gettext('Silver')),
+        ('B',gettext('Bronze')),
     ]
     reasonChoices=[ 
-        ('Q','Questions'),
-        ('A','Answers'),
-        ('SA','Self Answers'),
-        ('C','Comments'),
-        ('SC','Self Comments'),
-        ('V','Views'),
-        ('PV','Post Votes'),
-        ('QV','Question Votes'),
-        ('AV','Answer Votes'),
-        ('E','Edits'),
-        ('P','Polls'),
-        ('L','Login times'),
+        ('Q',gettext('Questions')),
+        ('A',gettext('Answers')),
+        ('SA',gettext('Self Answers')),
+        ('C',gettext('Comments')),
+        ('SC',gettext('Self Comments')),
+        ('V',gettext('Views')),
+        ('PV',gettext('Post Votes')),
+        ('QV',gettext('Question Votes')),
+        ('AV',gettext('Answer Votes')),
+        ('E',gettext('Edits')),
+        ('P',gettext('Polls')),
+        ('L',gettext('Login times')),
     ]
     targetTypesChoice=[ 
-        ('T','Tag'),
-        ('C','Category'),
-        ('G','General'),
+        ('T',gettext('Tag')),
+        ('C',gettext('Category')),
+        ('G',gettext('General')),
     ]
     name=models.CharField(max_length=60)
     description=models.TextField()

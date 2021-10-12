@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import gettext
 from interviewsquestions.utilities.database import languageField
 from content.models import Category, Post
 from django.utils import timezone
@@ -22,9 +23,9 @@ class SuggestedTag(models.Model):
 
 class FlagReason(models.Model):
     typeChoices=[ 
-        ('Q','Questions'),
-        ('A','Answers'),
-        ('U','Users'),
+        ('Q',gettext('Questions')),
+        ('A',gettext('Answers')),
+        ('U',gettext('Users')),
     ]
     type=models.CharField(max_length=1,choices=typeChoices)
     nameEN=models.CharField(max_length=50)

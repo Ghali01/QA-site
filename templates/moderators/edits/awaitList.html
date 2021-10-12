@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load contentUtilities %}
 <div class="await-list">
     {% for edit in edits %}
@@ -15,7 +16,7 @@
                         {% endfor %}
                     </div>
                     
-                    <div class="question-date"> Suggested By  <a class="by-user-name" href="{% url 'profiles:profile-page' userID=edit.userWhoSugget.id %}">{{edit.userWhoSugget.username}}</a> in {{edit.getSuggestedDate}} </div>
+                    <div class="question-date"> {% translate 'Suggested By' %}  <a class="by-user-name" href="{% url 'profiles:profile-page' userID=edit.userWhoSugget.id %}">{{edit.userWhoSugget.username}}</a> {% translate 'in' %} {{edit.getSuggestedDate}} </div>
 
                 </div>
 
@@ -24,12 +25,12 @@
         </div>
         <div class="question-options-bottom">
             <a href="{% url 'moderators:review-edit' editID=edit.id %}" class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn">
-                <i class="fas fa-external-link-alt"></i> Show The Edit</a>
+                <i class="fas fa-external-link-alt"></i> {% translate 'Show The Edit' %}</a>
 
             <button class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-edit-st-m-btn" data-action="A" data-edit-id="{{edit.id}}"><i
-                    class="fas fa-check"></i> Accept</button>
+                    class="fas fa-check"></i> {% translate 'Accept' %}</button>
             <button class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn chang-edit-st-m-btn"data-action="R" data-edit-id="{{edit.id}}"><i
-                    class="fas fa-times"></i> Reject</button>
+                    class="fas fa-times"></i> {% translate 'Reject' %}</button>
 
         </div>
     </div>

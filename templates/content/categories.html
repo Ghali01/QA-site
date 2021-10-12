@@ -1,5 +1,7 @@
 {% extends 'utilities/_base.html' %}
-{% block title %}Tags{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate 'Tags' %}{% endblock %}
 {% load contentUtilities %}
 {% block content %}
 <div class="column-no-border">
@@ -47,7 +49,7 @@
                             {% elif category.getLvl > 2 %}
                             {{category.getSecondParent.name}}
                             {% else %}
-                            Select Category
+                            {% translate 'Select Category' %}
                             {% endif %}
 
                         </span>
@@ -85,7 +87,7 @@
                             {% elif category.getLvl > 3 %}
                             {{category.getThirdParent.name}}
                             {% else %}
-                            Select Category
+                            {% translate 'Select Category' %}
                             {% endif %}
 
                         </span>
@@ -121,7 +123,7 @@
                             {% if category.getLvl == 4 %}
                             {{category.name}}
                             {% else %}
-                            Select Category
+                            {% translate 'Select Category' %}
                             {% endif %}
 
                         </span>
@@ -151,7 +153,7 @@
                     value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}">
 
             </div>
-            <a href="{% url 'feedback:suggest-category' %}" class="custom-link secondry-link">Suggest Cateogry</a>
+            <a href="{% url 'feedback:suggest-category' %}" class="custom-link secondry-link">{% translate 'Suggest Cateogry' %}</a>
             <div class="row">
 
                 <div class="col-5 col-sm-4 col-md-3">
@@ -160,9 +162,9 @@
                         <button class="btn btn-primary btn-select">
                             <span class="selected-span">
                                 {% if order == 'O' %}
-                                    Oldest
+                                    {% translate 'Oldest' %}
                                 {% else %}
-                                    Newest
+                                    {% translate 'Newest' %}
                                 {% endif %}
 
                             </span>
@@ -172,10 +174,10 @@
                         </button>
                         <ul class="custom-select-list custom-scrollbar">
                             <li data-value="N" class="custom-select-item">
-                                    Newest
+                                    {% translate 'Newest' %}
                             </li>
                             <li data-value="O" class="custom-select-item">
-                                    Oldest
+                                {% translate 'Oldest' %}
                             </li>
                         </ul>
                         <input type="hidden" name="order" value="{% if queFilter == 'O' %}O{% else %}N{% endif %}">
@@ -187,9 +189,9 @@
                         <button class="btn btn-primary btn-select">
                             <span class="selected-span">
                                   {% if tagsFilter == 'L' %}
-                                    Least Tags
+                                        {% translate 'Least Tags' %}
                                     {% else %}
-                                    Most Tags
+                                          {% translate 'Most Tags' %}
                                     {% endif %}
 
                             </span>
@@ -198,10 +200,10 @@
                         </button>
                         <ul class="custom-select-list custom-scrollbar">
                             <li data-value="M" class="custom-select-item">
-                                    Most Tags
+                                {% translate 'Most Tags' %}
                             </li>
                             <li data-value="L" class="custom-select-item">
-                                    Least Tags
+                                {% translate 'Least Tags' %}
                             </li>
                         </ul>
                         <input type="hidden" name="tags" value="{% if tagsFilter == 'L' %}L{% else %}M{% endif %}">
@@ -214,8 +216,8 @@
         <div class="cates-list">
           {% for cate in catgoriesList %}
             <div class="row cate-list-item">
-                <div class="col-3">
-                    <button  class="btn btn-outline-info btn-cate">{{cate.name}}</button>
+                <div class="col-3 cate-col">
+                    <a href="{% url 'content:index-with-cate' categoryID=cate.id %}" class="btn btn-outline-info btn-cate">{{cate.name}}</a>
                      
                 </div>
                 <div class="col">

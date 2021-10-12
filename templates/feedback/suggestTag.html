@@ -1,5 +1,6 @@
 {% extends 'utilities/_base.html' %}
-{% block title %}Suggest Tag {% endblock %}
+{% load i18n %}
+{% block title %}{% translate 'Suggest Tag' %} {% endblock %}
 {% block content %}
 <div class="column-no-border">
     {% for msg in messages %}
@@ -7,7 +8,7 @@
         {{msg}}
     </p>
     {% endfor %}
-    <h2 class="center-title" style="float:none;">Suggest Tag</h2>
+    <h2 class="center-title" style="float:none;">{% translate 'Suggest Tag' %}</h2>
     <div class="categoriis-lists" style="margin-bottom: 10px;">
 
         <div class="custom-select category-select-toolbar" data-cur-val="1">
@@ -27,8 +28,9 @@
         </div>
         <div class="custom-select category-select-toolbar">
             <button class="btn btn-primary btn-select">
-                <span class="selected-span">Select Category</span>
+                <span class="selected-span">{% translate 'Select Category' %}</span>
                 <i class="fas fa-caret-down select-arrow"></i>
+                                
 
             </button>
             <ul class="custom-select-list custom-scrollbar">
@@ -36,7 +38,7 @@
         </div>
         <div class="custom-select category-select-toolbar" data-cur-val="1">
             <button class="btn btn-primary btn-select">
-                <span class="selected-span">Select Category</span>
+                <span class="selected-span">{% translate 'Select Category' %}</span>
                 <i class="fas fa-caret-down select-arrow"></i>
 
             </button>
@@ -46,7 +48,7 @@
         </div>
         <div class="custom-select category-select-toolbar" data-cur-val="1">
             <button class="btn btn-primary btn-select">
-                <span class="selected-span">Select Category</span>
+                <span class="selected-span">{% translate 'Select Category' %}</span>
                 <i class="fas fa-caret-down select-arrow"></i>
 
             </button>
@@ -59,12 +61,12 @@
 
     <form method="POST" id="sug-form">
     {% csrf_token %}
-    <input type="text" class="form-control custom-input" placeholder="Tag name..." name="tag-name">
+    <input type="text" class="form-control custom-input" placeholder="{% translate 'Tag name...' %}" name="tag-name">
     <textarea type="text" name="tag-desc" class="form-control custom-input suggest-msg-inp custom-scrollbar"
-        placeholder="Tag Description"></textarea>
+        placeholder="{% translate 'Tag Description' %}"></textarea>
 
     <button type="submit" class="btn btn-primary btn-sm primary-button add-que-button">
-        Suggest
+        {% translate 'Suggest' %}
     </button>
 </form>
 

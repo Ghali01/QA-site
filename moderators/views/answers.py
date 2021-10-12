@@ -1,6 +1,5 @@
 
 from json.decoder import JSONDecodeError
-
 from django.db.models.query_utils import Q
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404
@@ -10,11 +9,13 @@ from content.models import Answer, Category,  PostLog, Question,Tag,Badge
 import json
 from math import ceil
 from django.shortcuts import get_object_or_404
+from django.utils.translation import get_language
 @forActiveUser
 @forModerator
 def suggestedAnswersAwait(request,page,mode):
-    categoires=Category.objects.filter(parent=None)
-    tags=Tag.objects.all()
+    language=get_language()[:2]
+    categoires=Category.objects.filter(language=language,parent=None)
+    tags=Tag.objects.filter(category__language=language)
     category=searchVal=order=None
     tagsF=[]
     answers=Answer.objects.all()
@@ -37,12 +38,18 @@ def suggestedAnswersAwait(request,page,mode):
             post__logs__type=PostLog.types.Accept
 
         )
+    category=request.user.profile.category
+    
     if 'category' in request.GET and request.GET['category']:
         try:
             category=Category.objects.get(pk=request.GET['category'])
-            answers=answers.filter(Q(question__category=category)|Q(question__category__parent=category)|Q(question__category__parent__parent=category)|Q(question__category__parent__parent__parent=category))
         except Category.DoesNotExist:
-            pass
+            category=request.user.profile.category
+    else:
+        category=request.user.profile.category
+
+    
+    answers=answers.filter(Q(question__category=category)|Q(question__category__parent=category)|Q(question__category__parent__parent=category)|Q(question__category__parent__parent__parent=category))
     if 'search' in request.GET and request.GET['search']:
         answers=answers.filter(Q(question__title__contains=request.GET['search'])  | Q(question__post__text__contains=request.GET['search']))
         searchVal=request.GET['search']

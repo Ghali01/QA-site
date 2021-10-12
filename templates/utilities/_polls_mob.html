@@ -1,0 +1,14 @@
+{% load i18n %}
+
+<li class="nav-item dropdown d-sm-none  ">
+    <span  class="nav-link dropdown-toggle cateogry-in-nav active" 
+    role="button" data-bs-toggle="dropdown"
+    aria-expanded="false">{% translate 'Polls' %}</span>
+        <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
+            {% for poll in polls %}
+            <li><a class="dropdown-item" href="{% url 'polls:poll-page' pollID=poll.id %}">{{poll.title}}</a></li>
+            {% endfor %}
+        </ul>
+    
+        
+</li>

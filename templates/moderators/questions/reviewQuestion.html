@@ -1,4 +1,5 @@
 {% extends 'utilities/_base.html' %}
+{% load i18n %}
 {% load contentUtilities %}
 {% block title %}{{question.title}}{% endblock %}
 
@@ -6,7 +7,7 @@
 <div class="column-no-border">
 <h1 class="que-title center-title">{{question.title}}</h1>
     <div class="que-data-div">
-        <span class="que-data-title">Asked:</span>
+        <span class="que-data-title">{% translate 'Asked:' %} </span>
         <span class="que-data">{{question.getDuration}}</span>
         
     </div>
@@ -28,11 +29,7 @@
                                 {% endfor %}
                             </div>
                             <div class="que-opts-spans">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="link-button" data-bs-toggle="modal"
-                                    data-bs-target="#reportModal">
-                                    <a href="#" class="custom-link custom-link-sm primary-link que-opt">Report</a>
-                                </button>
+                                
 
 
 
@@ -44,7 +41,7 @@
                         <div class="added-by-div-q que-added-by-div">
 
                                 <div class="questtion-add-date">
-                                    Added in <time>{{question.formatedDate}}</time>
+                                    {% translate 'Added in' %} <time>{{question.formatedDate}}</time>
                                 </div>
                                 {% authodPostData question.post.author %}
                         </div>
@@ -59,12 +56,12 @@
             {% if not question.isAccepted %}
             <button
             class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-que-st-m-btn no-animate" data-action="A" data-que-id="{{question.id}}" >
-            <i class="fas fa-check"></i> Accept</button>
+            <i class="fas fa-check"></i> {% translate 'Accept' %}</button>
             {% endif %}
             {% if not question.isAccepted and not question.isRejected %}
             <button
                 class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn chang-que-st-m-btn no-animate" data-action="R" data-que-id="{{question.id}}" ><i
-                    class="fas fa-times"></i> Reject</button>
+                    class="fas fa-times"></i> {% translate 'Reject' %}</button>
                 {% endif %}
 
         </div>

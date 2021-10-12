@@ -1,5 +1,7 @@
 {% extends 'utilities/auth/_base.html' %}
+{% load i18n %}
 {% block title %}{% endblock %}
+
 
 {% block content %} 
 <div class="form-parent">
@@ -25,7 +27,7 @@
             {% if fullName %}
             lbl-foucsed
             {% endif %} 
-             " id="lbl1">Full Name</label>
+             " id="lbl1">{% translate 'Full Name' %}</label>
             <input type="text" class="form-control form-input" id="fullName-input" name="fullName" maxlength="40" 
             {% if fullName %}
             readonly value="{{fullName}}"
@@ -45,7 +47,7 @@
 
           </div>
           <div class="inp-div">
-            <label class="lbl form-lable" id="lbl1">User Name</label>
+            <label class="lbl form-lable" id="lbl1">{% translate 'User Name' %}</label>
             <input type="text" class="form-control form-input" id="userName-input" name=userName  maxlength="20">
             <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
                 <span class="error-val"></span>
@@ -62,7 +64,7 @@
 =
           </div>
           <div class="inp-div">
-            <label class="lbl form-lable lbl-foucsed" id="lbl1">Email</label>
+            <label class="lbl form-lable lbl-foucsed" id="lbl1">{% translate 'Email' %}</label>
             <input type="email" class="form-control form-input" id="email-input" name="email" readonly value="{{email}}">
             <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
                 <span class="error-val"></span>
@@ -78,7 +80,7 @@
 
           </div>
           <div class="inp-div">
-            <label class="lbl form-lable" id="lbl1">Password</label>
+            <label class="lbl form-lable" id="lbl1">{% translate 'Password' %}</label>
             <input type="password" class="form-control form-input" id="password-input" name="password"
               maxlength="50" >
               <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
@@ -97,7 +99,7 @@
           </div>
 
           <div class="inp-div">
-            <label class="lbl form-lable" id="lbl1">Confirm Password</label>
+            <label class="lbl form-lable" id="lbl1">{% translate 'Confirm Password' %}</label>
             <input type="password" class="form-control form-input" id="confirmPassword-input"
               name="confirmPassword" maxlength="50" >
               <p class="error-p" id="pass-dm-error"><i class="fas fa-exclamation"></i>
@@ -114,14 +116,14 @@
   
           </div>
           <div class="inp-div">
-            <label class="lbl form-lable" id="lbl1">Website (Optional)</label>
+            <label class="lbl form-lable" id="lbl1">{% translate 'Website (Optional)' %}</label>
             <input type="url" class="form-control form-input no-req" id="website-input"
               name="website" maxlength="50">
           </div>
 
-          <p class="form-lable acc">By clicking Register, I agree that I have read and accepted our <a href="#"
-              class="acc-link">Terms of Use and Privacy Policy</a></p>
-          <input type="submit" class="btn btn-primary primary-button form-btn" id="reg-btn" value="Sign Up">
+          <p class="form-lable acc">{% translate 'By clicking Register, I agree that I have read and accepted our' %} <a href="#"
+              class="acc-link">{% translate 'Terms of Use and Privacy Policy' %}</a></p>
+          <input type="submit" class="btn btn-primary primary-button form-btn" id="reg-btn" value="{% translate 'Sign Up' %}">
         </div>
         <!-- register by email section end -->
 

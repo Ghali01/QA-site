@@ -1,5 +1,6 @@
 from django.db.models.expressions import F
 from django.shortcuts import redirect, render,get_object_or_404
+from django.utils.translation import gettext
 
 from content.models import Badge
 from .models import Poll,PollItem, PollResault
@@ -14,7 +15,7 @@ def poll(request,pollID):
     if submitable or request.user.profile.isSuperAdmin():
         if request.method=='POST':
             if not submitable:
-                messages.success(request,'Thank You')
+                messages.success(request,gettext('Thank You'))
                 return redirect('content:index')
   
             resault={}
@@ -36,7 +37,7 @@ def poll(request,pollID):
             request.user.profile.rep+=30
             request.user.profile.save()
             countPollBadge(request.user)
-            messages.success(request,'Thank You')
+            messages.success(request,gettext('Thank You'))
             return redirect('content:index')
         contxt={
             'poll':poll,
@@ -45,7 +46,7 @@ def poll(request,pollID):
         return render(request,'polls/poll.html',contxt)
 
     else:
-        messages.success(request,'Thank You')
+        messages.success(request,gettext('Thank You'))
         return redirect('content:index')
 
 def countPollBadge(user):

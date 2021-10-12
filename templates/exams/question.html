@@ -1,6 +1,8 @@
 {% load profileLib %}
 {% load contentUtilities %}
 {% load humanize %}
+{% load i18n %}
+
 {% load static %}
 <style>
     body{
@@ -15,7 +17,7 @@
 <div style="background:rgb(54, 54, 54); height:100%; margin:0;" >
 <h1 class="que-title center-title" style="    color: rgb(215,215,215);">{{question.title}}</h1>
 <div class="que-data-div">
-    <span class="que-data-title" style="color: rgb(179, 179, 179);">Asked:</span>
+    <span class="que-data-title" style="color: rgb(179, 179, 179);">{% translate 'Asked:' %} </span>
     <span class="que-data" style="color: rgb(245, 245, 245);">{{question.getDuration}}</span>
 </div>
 <div style="border-bottom: 1px solid rgb(179, 179, 179); padding-bottom:80px;">
@@ -46,7 +48,7 @@
                 <div class="added-by-div-q que-added-by-div" 
                 style="background-color: rgb(73, 68, 64); margin: 14px;">
                     <div class="questtion-add-date" style="color: #c4c8cc;">
-                        Added in <time>{{question.formatedDate}}</time>
+                        {% translate 'Added in' %} <time>{{question.formatedDate}}</time>
                     </div>
                     
 
@@ -60,7 +62,7 @@
                 {% if question.post.isEdited %}
                 <div class="added-by-div-q que-added-by-div" style="background-color: rgb(73, 68, 64); margin: 14px;">
                     <div class="questtion-add-date" style="color: #c4c8cc;">
-                        Edited in <time>{{question.post.lastEditDate}}</time>
+                        {% translate 'Edited in' %} <time>{{question.post.lastEditDate}}</time>
                     </div>
                     <div>
 
@@ -102,7 +104,7 @@
                 <div class="added-by-div-q que-added-by-div" 
                 style="background-color: rgb(73, 68, 64); margin: 14px;">
                     <div class="questtion-add-date" style="color: #c4c8cc;">
-                        Added in <time>{{answer.formatedDate}}</time>
+                        {% translate 'Added in' %} <time>{{answer.formatedDate}}</time>
                     </div>
                     
 
@@ -116,7 +118,7 @@
                 {% if answer.post.isEdited %}
                 <div class="added-by-div-q que-added-by-div"  style="background-color: rgb(73, 68, 64); margin: 14px;">
                     <div class="questtion-add-date" style="color: #c4c8cc;">
-                        Edited in <time>{{answer.post.lastEditDate}}</time>
+                        {% translate 'Edited in' %} <time>{{answer.post.lastEditDate}}</time>
                     </div>
                     <div>
 

@@ -1,5 +1,7 @@
 {% load contentUtilities %}
 {% load questions %}
+{% load i18n %}
+
 <div class="question-div" id="answer-{{ans.id}}">
     <div class="row">
 
@@ -51,15 +53,15 @@
 
                 <div class="ans-opts-spans">
 
-                    <a href="{% url 'content:suggest-post-edit' postID=ans.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">Suggest
-                        Edit</a>
+                    <a href="{% url 'content:suggest-post-edit' postID=ans.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">
+                        {% translate 'Suggest Edit' %}</a>
                     <div class="link-break">|</div>
                     {% if not request.user == ans.post.author %}
                     <button class="custom-link custom-link-sm primary-link btn que-opt  flo-que-btn" data-user-id="{{ans.post.author.id}}">
                         {% if request.user in ans.post.author.profile.followers.all %}
-                        Unfollow
+                        {% translate 'Unfollow' %}
                         {% else %}
-                        Follow
+                        {% translate 'Follow' %}
                         {% endif %}                            
                     </button>
                     <div class="link-break">|</div>
@@ -68,7 +70,7 @@
                     <!-- Button trigger modal -->
                     <button type="button" class="link-button report-btn primary-link que-opt" data-report-on="{{ans.post.id}}" data-type="A" data-bs-toggle="modal"
                         data-bs-target="#A-reportModal">
-                        Report
+                        {% translate 'Report' %}
                     </button>
                     <div class="share-btns" id="share-btns">
                         <!-- Twitter -->
@@ -102,7 +104,7 @@
                 <div class="authors-dvs">
                     <div class="added-by-div-q que-added-by-div">
                         <div class="questtion-add-date">
-                            Added in <time>{{ans.formatedDate}}</time>
+                            {% translate 'Added in' %} <time>{{ans.formatedDate}}</time>
                         </div>
                         {% authodPostData ans.post.author %}
     
@@ -110,7 +112,7 @@
                     {% if ans.post.isEdited %}
                     <div class="added-by-div-q que-added-by-div">
                         <div class="questtion-add-date">
-                            Edited in <time>{{ans.post.lastEditDate}}</time>
+                            {% translate 'Edited in' %} <time>{{ans.post.lastEditDate}}</time>
                         </div>
                         {% authodPostData ans.post.getLastEditAuthor %}
     
@@ -126,21 +128,21 @@
                     {% endfor %}
                     {% if ans.post.comments.all.count > 3 %}
                     <li>
-                        <p class="all-comment-span" data-post-id="{{ans.post.id}}">All comment</p>
+                        <p class="all-comment-span" data-post-id="{{ans.post.id}}">{% translate 'All comment' %}</p>
                     </li>
                     {% endif %}
 
                     
                 </ul>
-                {#% if request.user.is_authenticated and not request.user.is_anonymous %#}
-
-                <p class="add-comment-span">Add comment</p>
+                
+                
+                <p class="add-comment-span">{% translate 'Add comment' %}</p>
                 <div class="add-comment-div">
-                    <input type="text" class="form-control que-input add-comm-inp" placeholder="Add Comment...">
-                    <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{ans.post.id}}">Add
-                        comment</button>
+                    <input type="text" class="form-control que-input add-comm-inp" placeholder="{% translate 'Add Comment...' %}">
+                    <button class="btn btn-secondary btn-sm secondry-button add-comm-btn" data-post-id="{{ans.post.id}}">
+                        {% translate 'Add comment' %}</button>
                 </div>
-                {#% endif %#}
+                
             </div>
         </div>
     </div>

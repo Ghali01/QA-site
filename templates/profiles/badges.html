@@ -1,5 +1,7 @@
 {% extends 'utilities/_base_no_right.html' %}
 {% load profileLib %}
+{% load i18n %}
+
 {% block  title %}{{user.username}} {% endblock %}
 
 {% block content %} 
@@ -8,14 +10,14 @@
 <div class="badget-content">
         <div class="badges-list-header badges-list-header-gold">
             <div class="badges-header-circural"></div>
-            <span class="badges-header-title"> Gold</span>
+            <span class="badges-header-title"> {% translate 'Gold' %}</span>
         </div>
         <div class="badges-list badges-list-gold">
             {% for badge in goldBadges %}
                 {% badgeItem badge %}
             {% endfor %}
         </div>
-        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="G" data-page="1">See more</button>
+        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="G" data-page="1">{% translate 'See more' %}</button>
         <div class="loading-circle">
             <div class="primary-circle">
                 <div class="secondary-circle"></div>
@@ -25,7 +27,7 @@
         </div>
         <div class="badges-list-header badges-list-header-silver">
             <div class="badges-header-circural"></div>
-            <span class="badges-header-title"> Silver</span>
+            <span class="badges-header-title"> {% translate 'Silver' %}</span>
         </div>
 
        
@@ -37,7 +39,7 @@
         
         </div> 
 
-        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="S" data-page="1">See more</button>
+        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="S" data-page="1">{% translate 'See more' %}</button>
         <div class="loading-circle">
             <div class="primary-circle">
                 <div class="secondary-circle"></div>
@@ -47,7 +49,7 @@
         </div>
         <div class="badges-list-header badges-list-header-bronze">
             <div class="badges-header-circural"></div>
-            <span class="badges-header-title"> Bronze</span>
+            <span class="badges-header-title"> {% translate 'Bronze' %}</span>
         </div>
 
         <div class="badges-list badges-list-bronze">
@@ -58,7 +60,7 @@
 
         </div>
 
-        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="B" data-page="1">See more</button>
+        <button class="btn see-more-btn see-more-btn-badges" data-user-id='{{user.id}}' data-level="B" data-page="1">{% translate 'See more' %}</button>
         <div class="loading-circle">
             <div class="primary-circle">
                 <div class="secondary-circle"></div>

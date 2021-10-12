@@ -566,7 +566,9 @@ body{
     color: var(--powder-800);
 
 }
-
+.cate-col{
+    display: flex;
+}
 .btn-cate{
     padding: 3px 6px;
     margin: 0 8px 8px 0;
@@ -576,6 +578,7 @@ body{
     border: none;
     border-radius: 3px;
     font-size: 12px;
+    display: inline !important;
 
 }
 .btn-cate:active,.btn-cate:hover{
@@ -1192,56 +1195,31 @@ body{
     margin: auto;
     margin-bottom: 8px;
     border: none;
-}
-.connect:before {
-    display: inline-block;
-    position: relative;
-    height: 23px;
-    background-repeat: no-repeat;
-    background-position: 0px 3px;
-    text-indent: -9999px;
-    text-align: center;
-    width: 29px;
-    line-height: 23px;
-    margin: -8px 7px -7px -30px;
-    padding: 2 25px 0 0;
-}
-/* customize icon and colo for every media btn start */
-.fb:before{
-    background-image: url("../img/icons/facebook.svg");
-    content: "f";
-    background-size: 20px;
+    direction: inherit;    
 }
 
+/* customize icon and colo for every media btn start */
+.l-btn img {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 18px;
+    top: 9px;
+}
 button.fb{
     background: #3A5A97;
 }
-.tw:before{
-    background-image: url("../img/icons/twitter.svg");
-    content: "t";
-    background-size: 20px;
 
-}
 button.tw{
     background-color: #00acee;
 }
-.gi:before{
-    background-image: url("../img/icons/github-dark.svg");
-    content: "gi";
-    background-size: 20px;
 
-}
 button.gi{
     background-color: var(--bg-color);
     color: var(--titles-colors);
     border: 1.5px solid var(--titles-colors);
 }
-.go:before{
-    background-image: url("../img/icons/google.svg");
-    content: "go";
-    background-size: 20px;
 
-}
 button.go{
     background-color: var(--bg-color);
     color: var(--titles-colors);
@@ -2404,6 +2382,9 @@ button.go{
     
     .toolbar-btn-groups .my-btn-group:nth-child(2){
         margin: 0px 0px;
+    }
+    .toolbar-btn-groups .my-btn-group:nth-child(1){
+        margin-top: 0;
     }
 }
 .tops-list{
@@ -3631,7 +3612,7 @@ p.info{
 .log-w-email-btn i{
     position: absolute;
     top: 8px;
-    left: 30px;
+    left: 18px;
     font-size: 23px;
 }
 
@@ -3803,6 +3784,25 @@ p.info{
 .avatar-img,.avt-img{
     border-radius: 50%;
 }
+@media (max-width:500px) {
+    #avatarModal .modal-dialog ,.e-avatar-img{
+        width: 100%;
+    }
+    #avatarModal .modal-body{
+        padding: 0;
+    }
+    .crop-img{
+        width: 200px;
+        height: 200px;
+        left: 16%;
+        max-width: 100vw;
+        max-height: 100vw;
+    }
+
+
+}
+
+
 .center-column.no-right{
     padding: 14px 0;
 }
@@ -3828,6 +3828,7 @@ p.info{
     transform: scale(0.67);
     top: -4px;
     right: 0px;
+    display: none;
 
 }
 .polls-lits{
@@ -3880,4 +3881,17 @@ p.info{
 }
 .categoriis-lists-ex{
     margin: 8px;
+}
+
+.question-div > .row,.answer-div > .row {
+    margin: 0;
+}
+.que-data-div{
+    clear: both;
+}
+.nav-item .points-sp{
+    margin-top: 0;
+}
+.mod-title,.mod-btns{
+    float: left;
 }

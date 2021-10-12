@@ -1,5 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse
+
 from .models import InfoItem,Service,ContactMessage,AdvertisePage,AdvertistRequest
 from django.contrib import messages
 from django.utils.translation import get_language,gettext
@@ -62,8 +64,10 @@ def advertiseWithUs(request):
                 messages.success(request,gettext('message sent'))
             else:
                 messages.error(request,gettext("check empty fields"))
- 
-    page=AdvertisePage.objects.get(language=language)
+    try:
+        page=AdvertisePage.objects.get(language=language)
+    except AdvertisePage.DoesNotExist:
+        return HttpResponse('this page not created yet')
     contxt={
         'page':page
     }

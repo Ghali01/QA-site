@@ -1,35 +1,35 @@
+{% load i18n %}
 
     <div class="tabs-btns profile-tabs">
         <a class="btn tab-btn-a 
         {% if tab == 'profile' %}
         active
         {% endif %}
-        " href="{% url 'profiles:profile-page' userID=user.id %}">Profile</a>
+        " href="{% url 'profiles:profile-page' userID=user.id %}">{% translate 'Profile' %}</a>
         <a class="btn tab-btn-a
         {% if tab == 'badges' %}
         active
         {% endif %}
       
-        " href="{% url 'profiles:badges' userID=user.id %}">Badges</a>
+        " href="{% url 'profiles:badges' userID=user.id %}">{% translate 'Badges' %}</a>
         <a class="btn tab-btn-a
         {% if tab == 'followers' %}
         active
         {% endif %}
       
-        " href="{% url 'profiles:user-followers' userID=user.id %}">Followres</a>
+        " href="{% url 'profiles:user-followers' userID=user.id %}">{% translate 'Followres' %}</a>
         <a class="btn tab-btn-a
         {% if tab == 'favorite' %}
         active
         {% endif %}
       
-        " href="{% url 'profiles:favorite-questions' userID=user.id %}" >Favorite
-            Queestions</a>
+        " href="{% url 'profiles:favorite-questions' userID=user.id %}" >{% translate 'Favorite Queestions' %}</a>
         {% if request.user == user %}
         <a class="btn tab-btn-a
         {% if tab == 'settings' %}
         active
         {% endif %}
-        " href="{% url 'profiles:user-settings' %}" >Settings</a>
+        " href="{% url 'profiles:user-settings' %}" >{% translate 'Settings' %}</a>
         {% endif %}
    
         {% if not request.user == user %}
@@ -41,9 +41,9 @@
 
         <button class="btn btn-primary primary-button primary-button-radius follow-btn" data-user-id="{{user.id}}">
             {% if request.user in user.profile.followers.all %}
-            <i class="fas fa-user-minus"></i> Unfollow
+            <i class="fas fa-user-minus"></i> {% translate 'Unfollow' %}
             {% else %}
-            <i class="fas fa-user-plus"></i> Follow
+            <i class="fas fa-user-plus"></i> {% translate 'Follow' %}
             {% endif %}
         </button>
        </div>

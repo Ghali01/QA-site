@@ -1,6 +1,8 @@
 {% extends 'utilities/_base_no_right.html' %}
 {% load profileLib %}
-{% block title %}{{user.username}} | Followers{% endblock %}
+{% load i18n %}
+
+{% block title %}{{user.username}} | {% translate 'Followers' %}{% endblock %}
 {% block content %}
 {% include 'profiles/_profileTabs.html' %}
 <div class="followers-list">
@@ -9,7 +11,7 @@
     {% endfor %}
     </div>
     {% if pageCount > 1 %}
-    <button class="btn see-more-btn see-more-btn-followers" data-user-id="{{user.id}}">See more</button>
+    <button class="btn see-more-btn see-more-btn-followers" data-user-id="{{user.id}}">{% translate 'See more' %}</button>
     <div class="loading-circle">
         <div class="primary-circle">
             <div class="secondary-circle"></div>

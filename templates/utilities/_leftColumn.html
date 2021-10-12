@@ -1,13 +1,14 @@
+{% load i18n %}
 {% load leftColumn %}
 <div class="d-none d-md-block left-column">
     
     {% categories %}
-    <a class="side-link" href="{% url 'content:tags-page' %}">Tags</a>
+    <a class="side-link" href="{% url 'content:tags-page' %}">{% translate 'Tags' %}</a>
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
 
     {% polls request.user %}
     {% endif %}
-    <a class="side-link" href="{% url 'content:exam-page' %}">Exams</a>
+    <a class="side-link" href="{% url 'content:exam-page' %}">{% translate 'Exams' %}</a>
     
     <div class="left-bottom-column">
        {% load i18n %}

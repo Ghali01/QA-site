@@ -1,6 +1,12 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as LC %}
 <!DOCTYPE html>
-<html>
+<html
+{% if LC == 'ar' %}
+dir="rtl"
+{% endif %}               
+>
 
 <head>
     <meta charset="UTF-8">
@@ -21,6 +27,7 @@
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/font-all.min.css' %}">
+    <script src="{% url 'i18njs' %}" ></script>
  
     <script src="{% static 'js/main.js' %}"></script>
 

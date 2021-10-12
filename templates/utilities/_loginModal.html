@@ -1,4 +1,5 @@
-
+{% load i18n %}
+{% load static %}
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog login-dialog  modal-dialog-centered ">
             <div class="modal-content custom-dialog">
@@ -9,23 +10,33 @@
 
 
                     <div class="login-modal-btns">
-                        <a href="{% url 'authusers:login-page' %}" class="btn log-w-email-btn">
-                            <i class="far fa-envelope"></i>
-                            Login with email </a>
-                        <button type="button" class="fb l-btn connect" id="fb-login-btn">Log In with Facebook</button>
-                        <button type="button" class="tw l-btn connect">Log In with Twitter</button>
-                        <button type="button" class="gi l-btn connect" id="gi-login-btn">Log In with GitHub</button>
-                        <button type="button" class="go l-btn connect" id="go-login-btn">Log In with Google</button>
-                        <div id="g_id_onload"
-                          data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
-                          data-callback="googleLoginCallback" data-auto_prompt="false">
-                        </div>
-                        <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard" data-size="large"
-                          data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
-                        </div>
-            
-            
-                      </div>
+                      <a href="{% url 'authusers:login-page' %}" class="btn log-w-email-btn">
+                        <i class="far fa-envelope"></i>
+                        {% translate 'Login with email' %} </a>
+
+                      <button type="button" class="fb l-btn connect" id="fb-login-btn">
+                      
+                            <img src="{% static 'img/icons/facebook.svg' %}" alt="">
+                            {% translate 'Log In with Facebook' %}</button>
+                          <button type="button" class="tw l-btn connect">
+                            <img src="{% static 'img/icons/twitter.svg' %}" alt="">
+                            
+                            {% translate 'Log In with Twitter' %}</button>
+                          <button type="button" class="gi l-btn connect" id="gi-login-btn">
+                            <img src="{% static 'img/icons/github.svg' %}" alt="">
+                            {% translate 'Log In with GitHub' %}</button>
+                          <button type="button" class="go l-btn connect" id="go-login-btn">
+                            <img src="{% static 'img/icons/google.svg' %}" alt="">
+                            {% translate 'Log In with Google' %}</button>
+                          <div id="g_id_onload"
+                            data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
+                            data-callback="googleLoginCallback" data-auto_prompt="false">
+                          </div>
+                          <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard" data-size="large"
+                            data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+                          </div>
+      
+                    </div>
                             </div>
    
             </div>

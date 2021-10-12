@@ -1,6 +1,7 @@
 {%  extends 'utilities/_base.html' %}
+{% load i18n %}
 
-{% block title %}Contact Us{% endblock %}
+{% block title %}{% translate 'Contact Us' %}{% endblock %}
 {% block content %} 
 <div class="column-no-border">
     {% for msg in messages %}
@@ -8,23 +9,23 @@
         {{msg}}
     </p>
     {% endfor %}
-    <h2 class="center-title" style="float:none;">Contact Us</h2>
+    <h2 class="center-title" style="float:none;">{% translate 'Contact Us' %}</h2>
     <form method="POST">
         {% csrf_token %}
         <div class="row sender-data">
             <div class="col-6">
-            <input type="text" name="fullName" class="form-control custom-input" placeholder="Full Name">
+            <input type="text" name="fullName" class="form-control custom-input" placeholder="{% translate 'Full Name' %}">
 
             </div>
             <div class="col-6">
-            <input type="text" name="email" class="form-control custom-input" placeholder="Email">
+            <input type="text" name="email" class="form-control custom-input" placeholder="{% translate 'Email' %}">
             </div>
         </div>
-        <input type="text" class="form-control custom-input" name="subject" placeholder="Subject">
+        <input type="text" class="form-control custom-input" name="subject" placeholder="{% translate 'Subject' %}">
         <textarea type="text" class="form-control custom-input msg-inp custom-scrollbar"
-            placeholder="Write Something..." name="msg"></textarea>
+            placeholder="{% translate 'Write Something...' %}" name="msg"></textarea>
 
-        <input type="submit" class="btn btn-primary btn-sm primary-button add-que-button" value="Send">
+        <input type="submit" class="btn btn-primary btn-sm primary-button add-que-button" value="{% translate 'Send' %}">
     </form>
 
 </div>

@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
-from django.utils.translation import get_language
+from django.utils.translation import get_language, gettext
 from content.models import Category,Tag
 from dashboard.decorators import forSuperAdmin
 from polls.models import Poll,PollItem,PollResault
@@ -67,7 +67,7 @@ def addPoll(request,language):
                         options=json.dumps(opts),
                         poll=poll
                     )
-                messages.success(request,'poll Added')
+                messages.success(request,gettext('poll Added'))
                 return redirect(reverse('dashboard:polls',kwargs={'language':language,'page':1}))
             except (JSONDecodeError,ValueError,Tag.DoesNotExist,Category.DoesNotExist):
                 pass
@@ -84,7 +84,7 @@ def deletePoll(request):
     if 'del-id' in request.POST and 'page' in request.POST  and request.POST['del-id'].isnumeric():
         poll= get_object_or_404(Poll,id=int(request.POST['del-id']))
         poll.delete()
-        messages.success(request,'poll removed')
+        messages.success(request,gettext('poll removed'))
         return redirect(reverse('dashboard:polls',kwargs={'language':poll.language,'page':request.POST['page']}))
 
     return redirect(reverse('dashboard:polls',kwargs={'language':'en','page':1}))

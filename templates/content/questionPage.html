@@ -3,13 +3,15 @@
 {% load questions %}
 {% load humanize %}
 {% load reportModal %}
+{% load i18n %}
+
 {% block title %}{{question.title}}{% endblock %}
 
 {% block content %}
 <div class="column-no-border">
     {% question question request %}
     <!--  -->
-    <h3 class="title">{{question.getPubliedAnswer.count}} Answers</h3>
+    <h3 class="title">{{question.getPubliedAnswer.count}} {% translate 'Answers' %}</h3>
     <div style="clear: both;"></div>
     <div class="answers-list">
         {% if request.user.profile.isModerator %}
@@ -37,7 +39,7 @@
                                     <!-- Button trigger modal -->
                                     <button type="button" class="link-button" data-bs-toggle="modal"
                                         data-bs-target="#reportModal">
-                                        <a href="#" class="custom-link custom-link-sm primary-link que-opt">Report</a>
+                                        <a href="#" class="custom-link custom-link-sm primary-link que-opt">{% translate 'Report' %}</a>
                                     </button>
 
 
@@ -50,7 +52,7 @@
                             <div class="added-by-div-q ans-added-by-div">
                                 <div>
                                     <div class="questtion-add-date">
-                                        Added in <time>{{ans.formatedDate}}</time>
+                                        {% translate 'Added in' %} <time>{{ans.formatedDate}}</time>
                                     </div>
                                     {% authodPostData ans.post.author %}
 
@@ -66,13 +68,13 @@
                     {% if ans.isJustSuggested or ans.isRejected %}
                     <button class="btn btn-primary primary-button primary-button-sm primary-button-radius await-btn chang-ans-st-m-btn no-animate"
                     data-action="A" data-ans-id="{{ans.id}}"><i
-                            class="fas fa-check"></i> Accept</button>
+                            class="fas fa-check"></i> {% translate 'Accept' %}</button>
                     {% endif %}
                     {% if ans.isJustSuggested %}
 
                             <button
                         class="btn btn-primary primary-button primary-button-sm primary-button-radius  await-btn ignore-btn chang-ans-st-m-btn no-animate" data-action="R" data-ans-id="{{ans.id}}"><i
-                            class="fas fa-times"></i> Ignore</button>
+                            class="fas fa-times"></i> {% translate 'Ignore' %}</button>
                         {% endif %}
               
                         </div>
@@ -98,7 +100,7 @@
     {% endfor %}
 
     <div class="add-ans-continer">
-        <h3 class="title"> Add Answer</h3>
+        <h3 class="title"> {% translate 'Add Answer' %}</h3>
         <div style="clear: both;"></div>
         <div class="editor-partnt ans-editor-partnt custom-scrollbar">
             <div id="editor"></div>
@@ -111,7 +113,7 @@
         </form>
     </div>
     <button type="button" class="btn btn-primary btn-sm primary-button add-ans-button">
-        Add Answer
+        {% translate 'Add Answer' %}
     </button>
 </div>
 {% reportModal 'Q' %}

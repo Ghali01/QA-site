@@ -1,36 +1,36 @@
 
 {% extends 'utilities/_base_no_right.html' %}
-{% block title %}Answers 
+{% load i18n %}
+{% block title %}{% translate 'Answers' %} 
 {% if mode == 'S' %}
-in wait
+{% translate 'in wait' %}
 {% elif mode == 'A' %}
-accepted
+{% translate 'accepted' %}
 {% elif mode == 'R' %}
-rejected
+{% translate 'rejected' %}
 {% endif %}
 {% endblock %}
 
 {% block content %} 
-    <h2 class="center-title" style="float:left;">Answers 
-        
+    <h2 class="center-title mod-title" >{% translate 'Answers' %} 
         {% if mode == 'S' %}
-        in wait
+        {% translate 'in wait' %}
         {% elif mode == 'A' %}
-        accepted
+        {% translate 'accepted' %}
         {% elif mode == 'R' %}
-        rejected
+        {% translate 'rejected' %}
         {% endif %}
-       
+               
     </h2>
     
-    <div class="btn-group my-btn-group" style="margin: 8px 10px; float:left;" role="group"
+    <div class="btn-group my-btn-group mod-btns" style="margin: 8px 10px; " role="group"
     aria-label="Basic outlined example">
     <a href="{% url 'moderators:suggested-answers-await' page=1 %}"
         class="btn btn-outline-primary btn-group-item btn-option-item 
         {% if mode == 'S' %}
         active
         {% endif %}
-        ">Await</a>
+        ">{% translate 'Await' %}</a>
 
     <a href="{% url 'moderators:suggested-answers-accepted' page=1 %}"
         class="btn btn-outline-primary btn-group-item btn-option-item 
@@ -38,14 +38,14 @@ rejected
         active
         {% endif %}
        
-        ">Accepted</a>
+        ">{% translate 'Accepted' %}</a>
     <a href="{% url 'moderators:suggested-answers-rejected' page=1 %}"
         class="btn btn-outline-primary btn-group-item btn-option-item
         {% if mode == 'R' %}
         active
         {% endif %}
        
-        ">Rejected</a>
+        ">{% translate 'Rejected' %}</a>
 
 </div>
 <div style='clear:both;'></div>
@@ -93,7 +93,7 @@ rejected
                                         {% elif category.getLvl > 2 %}
                                         {{category.getSecondParent.name}}
                                         {% else %}
-                                        Select Category
+                                        {% translate 'Select Category' %}
                                         {% endif %}
 
                                     </span>
@@ -133,7 +133,8 @@ rejected
                                         {% elif category.getLvl > 3 %}
                                         {{category.getThirdParent.name}}
                                         {% else %}
-                                        Select Category
+                                        {% translate 'Select Category' %}
+
                                         {% endif %}
 
                                     </span>
@@ -171,7 +172,7 @@ rejected
                                         {% if category.getLvl == 4 %}
                                         {{category.name}}
                                         {% else %}
-                                        Select Category
+                                        {% translate 'Select Category' %}
                                         {% endif %}
 
                                     </span>
@@ -209,9 +210,9 @@ rejected
                                     <button class="btn btn-primary btn-select">
                                         <span class="selected-span">
                                             {% if order == 'O' %}
-                                            Oldest
+                                            {% translate 'Oldest' %}
                                             {% else %}
-                                            Newest
+                                            {% translate 'Newest' %}
                                             {% endif %}
                                         </span>
                                         <i class="fas fa-caret-down select-arrow"></i>
@@ -219,10 +220,10 @@ rejected
                                     </button>
                                     <ul class="custom-select-list custom-scrollbar ">
                                         <li class="custom-select-item" data-value="N">
-                                                Newest
+                                            {% translate 'Newest' %}
                                         </li>
                                         <li class="custom-select-item" data-value="O">
-                                                Oldest
+                                            {% translate 'Oldest' %}
                                         </li>
                                     </ul>
                                     <input type="hidden" name="order" id="order-input" value="{% if order == 'O' %}O{% else %}N{% endif %}">
@@ -239,7 +240,7 @@ rejected
                     <div class="form-group has-search search-div-toolbar">
                         <span class="fa fa-search form-control-feedback"></span>
                         <input type="text" class="form-control custom-input search-input-toolbar"
-                            placeholder="Search" id="search-input" value="{{searchVal|default:''}}">
+                            placeholder="{% translate 'Search' %}" id="search-input" value="{{searchVal|default:''}}">
                     </div>
                 </div>
                 <div class="col-6 col-lg-4">
@@ -268,13 +269,13 @@ rejected
                     </div>
                 </div>
                 <div class="col-12 col-lg-4" >
-                    <button class="btn btn-primary primary-button  mode-fil-btn" id="mode-fil-btn">Filter</button>
+                    <button class="btn btn-primary primary-button  mode-fil-btn" id="mode-fil-btn">{% translate 'Filter' %}</button>
                     <div class="btn-group my-btn-group" style="margin-bottom: 12px;" role="group"
                         aria-label="Basic outlined example">
 
                         {% for pg in pages %}
                         
-                        <button href="#" class="btn btn-outline-primary btn-group-item btn-option-item  page-btn
+                        <button href="/moderators/answers/{{mode}}/{{pg}}" class="btn btn-outline-primary btn-group-item btn-option-item  page-btn
                         {% if pg == currentPage %}
                         active
                         {% endif %}

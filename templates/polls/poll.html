@@ -1,4 +1,6 @@
 {% extends 'utilities/_base.html' %}
+{% load i18n %}
+
 {% block title %}{{poll.title}}{% endblock %}
 
 {% block content %}
@@ -47,7 +49,7 @@
     </ul>
 </form>
 {% if submitable %}
-    <p class="error-poll">Please Answer All Questions</p>
-    <button class="btn btn-primary primary-button submit-poll-btn "> Submit</button>
+    <p class="error-poll">{% translate 'Please Answer All Questions' %}</p>
+    <button class="btn btn-primary primary-button submit-poll-btn ">{% translate 'Submit' %}<button>
     {% endif %}
-{% endblock %}
+{% endblock 

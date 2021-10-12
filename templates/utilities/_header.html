@@ -22,7 +22,7 @@
                             </div>
                     
                         </div>
-                        <input type="text" class="form-control search-input" placeholder="Search">
+                        <input type="text" class="form-control search-input" placeholder="{% translate 'Search' %}">
                     </div>
                     <ul class="search-resaults">
                     
@@ -80,6 +80,17 @@
                                 </li>
                                 {% endif %}
                                 <li>
+                                    <a href="{% if LC == 'en' %}{% url 'content:set-language' language='ar' %}{% else %}{% url 'content:set-language' language='en' %}{% endif %}?url={{request.build_absolute_uri}}" class="drop-link">
+                                        <i class="fas fa-globe"></i> <p>
+                                            {% if LC == 'en' %}
+                                            عربي
+                                            {% else %} 
+                                            English
+                                            {% endif %}               
+                            
+                            </p></a>
+                                </li>
+                                        <li>
                                     <a href="{% url 'authusers:logout' %}" class="drop-link">
                                         <i class="fas fa-sign-out-alt"></i> <p>logout</p></a>
                                 </li>
@@ -117,14 +128,8 @@
                         <!-- cateagors on sm start -->
 
 
-                        <li class="nav-item dropdown d-sm-none  ">
-                            <span class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Moderator</span>
-                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-questions-await' page=1 %}">Questions</a></li>
-                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-answers-await' page=1 %}">Answers</a></li>
-                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-edits-await' page=1 %}">Edits</a></li>
-                            </ul>
+                        <li class="nav-item dropdown d-sm-none   ">
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:index' %}">Home</a>
                         </li>
 
                         <li class="nav-item dropdown d-sm-none   ">
@@ -144,7 +149,21 @@
                         <li class="nav-item dropdown d-sm-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'content:tags-page' %}">All Tags</a>
                         </li>
+                        <li class="nav-item dropdown d-sm-none   ">
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:exam-page' %}">Exams</a>
+                        </li>
+
+                        <li class="nav-item dropdown d-sm-none  ">
+                            <span class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Moderator</span>
+                            <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-questions-await' page=1 %}">Questions</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-answers-await' page=1 %}">Answers</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-edits-await' page=1 %}">Edits</a></li>
+                            </ul>
+                        </li>
                         {% categories_mob %}
+                        {% pollsMob request.user %}
                         <!-- cateagors on sm end -->
 
                     </ul>

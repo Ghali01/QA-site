@@ -1,0 +1,2800 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-12 13:17+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\authusers\models.py:19
+msgid "Facebook"
+msgstr "فيسبوك"
+
+#: .\authusers\models.py:20
+msgid "Twitter"
+msgstr "توتير"
+
+#: .\authusers\models.py:21
+msgid "Google"
+msgstr "جوجل"
+
+#: .\authusers\models.py:22
+msgid "Github"
+msgstr "جيتهاب"
+
+#: .\authusers\models.py:28
+msgid "Super Admin"
+msgstr "مشرف اول"
+
+#: .\authusers\models.py:29
+msgid "Admin"
+msgstr "مشرف"
+
+#: .\authusers\models.py:30
+msgid "Moderator"
+msgstr "محرر"
+
+#: .\authusers\models.py:31
+msgid "User"
+msgstr "مستخدم"
+
+#: .\authusers\models.py:85 .\authusers\models.py:108 .\content\models.py:171
+#: .\content\models.py:187 .\content\models.py:321
+msgid "today"
+msgstr "اليوم"
+
+#: .\authusers\models.py:87 .\authusers\models.py:110 .\content\models.py:173
+#: .\content\models.py:189 .\content\models.py:323
+msgid "yesterday"
+msgstr "البارحة"
+
+#: .\authusers\models.py:89 .\authusers\models.py:112 .\content\models.py:175
+#: .\content\models.py:191 .\content\models.py:325
+msgid "days"
+msgstr "ايام"
+
+#: .\authusers\models.py:91 .\authusers\models.py:96 .\authusers\models.py:114
+#: .\authusers\models.py:119 .\content\models.py:177 .\content\models.py:182
+#: .\content\models.py:193 .\content\models.py:198 .\content\models.py:327
+#: .\content\models.py:332
+msgid "months"
+msgstr "شهور"
+
+#: .\authusers\models.py:94 .\authusers\models.py:96 .\authusers\models.py:117
+#: .\authusers\models.py:119 .\content\models.py:180 .\content\models.py:182
+#: .\content\models.py:196 .\content\models.py:198 .\content\models.py:330
+#: .\content\models.py:332
+msgid "years"
+msgstr "سنين"
+
+#: .\authusers\models.py:101
+msgid "secs"
+msgstr "ثواني"
+
+#: .\authusers\models.py:103
+msgid "min"
+msgstr "دقائق"
+
+#: .\authusers\models.py:105
+msgid "hour"
+msgstr "ساعات"
+
+#: .\authusers\models.py:124 .\content\models.py:123
+msgctxt "count"
+msgid "K"
+msgstr "الف"
+
+#: .\authusers\models.py:126 .\content\models.py:125
+msgctxt "count"
+msgid "M"
+msgstr "مليون"
+
+#: .\authusers\views.py:61 .\authusers\views.py:221 .\authusers\views.py:421
+msgid "User name is alredy exists"
+msgstr "اسم المستخدم موجود مسبقا"
+
+#: .\authusers\views.py:64 .\authusers\views.py:224 .\authusers\views.py:424
+msgid "Full name is requrid"
+msgstr "الاسم الكامل مطلوب"
+
+#: .\authusers\views.py:66 .\authusers\views.py:226 .\authusers\views.py:426
+msgid "User name is requrid"
+msgstr "اسم المستخدم مطلوب"
+
+#: .\authusers\views.py:68 .\authusers\views.py:183 .\authusers\views.py:228
+#: .\authusers\views.py:428
+msgid "Email is requrid"
+msgstr "البريد الالكتروني مطلوب"
+
+#: .\authusers\views.py:70 .\authusers\views.py:230 .\authusers\views.py:430
+msgid "Email is taken"
+msgstr "البريد الالكتروني محجوز"
+
+#: .\authusers\views.py:72 .\authusers\views.py:232 .\authusers\views.py:432
+#: .\authusers\views.py:511
+msgid "Password is requrid"
+msgstr "كلمة السر مطلوبة"
+
+#: .\authusers\views.py:74 .\authusers\views.py:234 .\authusers\views.py:434
+#: .\authusers\views.py:514
+msgid "Confirm Password is requrid"
+msgstr "تأكيد كلمة المرور مطلوب"
+
+#: .\authusers\views.py:76 .\authusers\views.py:236 .\authusers\views.py:436
+#: .\authusers\views.py:516
+msgid "Password does not match"
+msgstr "كلمة السر غير متوافقة"
+
+#: .\authusers\views.py:126 .\authusers\views.py:218 .\authusers\views.py:259
+#: .\authusers\views.py:302 .\authusers\views.py:358 .\authusers\views.py:417
+msgid "user baned"
+msgstr "المستخدم محظور"
+
+#: .\authusers\views.py:128
+msgid "email or passowrd in not valid"
+msgstr "البريد الالكتروني او كلمة السر خطأ"
+
+#: .\authusers\views.py:153
+msgid "you have to add 1 tag or more"
+msgstr "يجب عليك اختيار وسم واحد على الاقل"
+
+#: .\authusers\views.py:181
+msgid "email is taken"
+msgstr "البريد الالكتروني محجوز"
+
+#: .\authusers\views.py:488
+msgid "No account with this email"
+msgstr "لا يوجد حساب بهذا البريد الالكتروني"
+
+#: .\authusers\views.py:490
+msgid "invalid captcha"
+msgstr "تعذر النحقق من الهوية"
+
+#: .\content\models.py:97
+msgid "Question"
+msgstr "سؤال"
+
+#: .\content\models.py:98
+msgid "Answer"
+msgstr "جواب"
+
+#: .\content\models.py:466
+msgctxt "choicse"
+msgid "Suggest"
+msgstr "اقتراح"
+
+#: .\content\models.py:467
+msgctxt "choicse"
+msgid "Accept"
+msgstr "قبول"
+
+#: .\content\models.py:468
+msgctxt "choicse"
+msgid "Reject"
+msgstr "رفض"
+
+#: .\content\models.py:469
+msgctxt "choicse"
+msgid "Suggest Edit"
+msgstr "اقتراح تعديل"
+
+#: .\content\models.py:470
+msgctxt "choicse"
+msgid "Accept Edit"
+msgstr "قبول تعديل"
+
+#: .\content\models.py:471
+msgctxt "choicse"
+msgid "Reject Edit"
+msgstr "رفض تعديل"
+
+#: .\content\models.py:472
+msgctxt "choicse"
+msgid "Publish"
+msgstr "نشر"
+
+#: .\content\models.py:473
+msgctxt "choicse"
+msgid "Ubpunlish"
+msgstr "الغاء نشر"
+
+#: .\content\models.py:547 .\templates\profiles\badges.html:13
+msgid "Gold"
+msgstr "ذهبية"
+
+#: .\content\models.py:548 .\templates\profiles\badges.html:30
+msgid "Silver"
+msgstr "فضية"
+
+#: .\content\models.py:549 .\templates\profiles\badges.html:52
+msgid "Bronze"
+msgstr "برونزية"
+
+#: .\content\models.py:552 .\feedback\models.py:26
+#: .\templates\moderators\questions\questions.html:3
+#: .\templates\moderators\questions\questions.html:14
+#: .\templates\profiles\profile.html:67 .\templates\profiles\profile.html:254
+#: .\templates\profiles\userQuestions.html:5
+#: .\templates\profiles\userQuestions.html:9
+msgid "Questions"
+msgstr "الاسئلة"
+
+#: .\content\models.py:553 .\feedback\models.py:27
+#: .\templates\content\questionPage.html:14
+#: .\templates\moderators\answers\answers.html:4
+#: .\templates\moderators\answers\answers.html:15
+#: .\templates\moderators\answers\awaitList.html:21
+#: .\templates\moderators\answers\rejectedList.html:21
+#: .\templates\profiles\profile.html:63 .\templates\profiles\profile.html:261
+#: .\templates\profiles\userAnswers.html:5
+#: .\templates\profiles\userAnswers.html:9
+msgid "Answers"
+msgstr "الاجوبة"
+
+#: .\content\models.py:554
+msgid "Self Answers"
+msgstr "الاجوبة على سؤال"
+
+#: .\content\models.py:555
+msgid "Comments"
+msgstr "التعليقات"
+
+#: .\content\models.py:556
+msgid "Self Comments"
+msgstr "التعليقات على منشور"
+
+#: .\content\models.py:557
+msgid "Views"
+msgstr "مشاهدة"
+
+#: .\content\models.py:558
+msgid "Post Votes"
+msgstr "التصويت على منشور"
+
+#: .\content\models.py:559
+msgid "Question Votes"
+msgstr "التصويت على الاسئلة"
+
+#: .\content\models.py:560
+msgid "Answer Votes"
+msgstr "التصويت على اجوبة"
+
+#: .\content\models.py:561 .\templates\moderators\edits\edits.html:5
+#: .\templates\moderators\edits\edits.html:16
+msgid "Edits"
+msgstr "تعديلات"
+
+#: .\content\models.py:562 .\templates\utilities\_polls.html:3
+#: .\templates\utilities\_polls_mob.html:6
+msgid "Polls"
+msgstr "استبيانات"
+
+#: .\content\models.py:563
+msgid "Login times"
+msgstr "عدد مرات تسجيل الدخول"
+
+#: .\content\models.py:566
+msgid "Tag"
+msgstr "وسم"
+
+#: .\content\models.py:567
+msgid "Category"
+msgstr "تصنيف"
+
+#: .\content\models.py:568
+msgid "General"
+msgstr "عام"
+
+#: .\content\views.py:149
+msgid "The question has been submitted, it will be reviewed soon."
+msgstr "تم ارسال السؤال سيتم مراجعته قربياً"
+
+#: .\content\views.py:153
+msgid "Category Not found"
+msgstr "التصنيف غير موجود"
+
+#: .\content\views.py:156
+msgid "Title should not be empty"
+msgstr "لا يمكن ان يكون العنوان فارغ"
+
+#: .\content\views.py:158
+msgid "Question Text should not be empty"
+msgstr "نص السؤال يجب ان لا يكون فارغ"
+
+#: .\content\views.py:160
+msgid "You most add 1 tag or more"
+msgstr "يجب عليك اضافة وسم واحد على الاقل"
+
+#: .\content\views.py:268
+msgid "The answer has been submitted, it will be reviewed soon."
+msgstr "تم ارسال الاجابة سيتم مراجعتها قريباً"
+
+#: .\content\views.py:270
+msgid "Answer should not by empty"
+msgstr "الجواب يجب ان لا يكون فارغ"
+
+#: .\content\views.py:353
+msgid "The edit has been submitted, it will be reviewed soon."
+msgstr "تم ارسال التعديل سيتم مراجعتها قربياً"
+
+#: .\content\views.py:628
+msgid "no questions"
+msgstr "لا يوجد اسئلة"
+
+#: .\dashboard\views\Email.py:43
+msgid "Template Created"
+msgstr "تم انشاء القالب"
+
+#: .\dashboard\views\Email.py:45 .\dashboard\views\categories.py:30
+msgid "Name can not be empty"
+msgstr "لا يمكن ان يكون الاسم فارغ"
+
+#: .\dashboard\views\Email.py:50 .\dashboard\views\Email.py:70
+#: .\dashboard\views\Email.py:112 .\dashboard\views\Email.py:161
+msgid "Value Error"
+msgstr "خطأ قيمة"
+
+#: .\dashboard\views\Email.py:63
+msgid "Template does not exists"
+msgstr "القالب غير موجود"
+
+#: .\dashboard\views\Email.py:67 .\dashboard\views\Email.py:109
+msgid "Invaild ID"
+msgstr "معرف مجهول"
+
+#: .\dashboard\views\Email.py:86
+msgid "template does not exists"
+msgstr "القالب غير موجود"
+
+#: .\dashboard\views\Email.py:105
+msgid "Reference does not exists"
+msgstr ""
+
+#: .\dashboard\views\Email.py:156
+msgid "Email was sent"
+msgstr "تم ارسال الرسال"
+
+#: .\dashboard\views\Email.py:158
+msgid "Subject Can not be empty"
+msgstr "لا يمكن ان يكون الموضوع فارغ"
+
+#: .\dashboard\views\badges.py:83
+msgid "badge created"
+msgstr "تم انشاء الشارة"
+
+#: .\dashboard\views\badges.py:86 .\dashboard\views\badges.py:146
+#: .\misc\views.py:41 .\misc\views.py:44 .\misc\views.py:66
+msgid "check empty fields"
+msgstr "تحقق من الحقول الفارغة"
+
+#: .\dashboard\views\badges.py:117
+msgid "Badge Removed"
+msgstr "تم ازالة الشارة"
+
+#: .\dashboard\views\categories.py:32 .\dashboard\views\categories.py:44
+#: .\dashboard\views\categories.py:66
+msgid "invalid id"
+msgstr "المعرف غير موجود"
+
+#: .\dashboard\views\categories.py:48 .\dashboard\views\categories.py:70
+msgid "Values Error"
+msgstr "خطأ قيمة"
+
+#: .\dashboard\views\flag.py:33
+msgid "reason added"
+msgstr "تمت اضافة السبب"
+
+#: .\dashboard\views\flag.py:44
+msgid "reason removed"
+msgstr "تمت ازالة السبب"
+
+#: .\dashboard\views\main.py:27
+msgid "invalid email or password"
+msgstr "البريد الالكتروني او كلمة السر خطأ"
+
+#: .\dashboard\views\main.py:29
+msgid "This page for only admin "
+msgstr "هذه الصفحة فقط للمشرفين"
+
+#: .\dashboard\views\main.py:31
+msgid "Email is requreid"
+msgstr "البريد الالكتروني مطلوب"
+
+#: .\dashboard\views\main.py:33
+msgid "Password is requreid"
+msgstr "كبمة السر مطلوبة"
+
+#: .\dashboard\views\polls.py:70
+msgid "poll Added"
+msgstr "تمت اضافة الاستبيان"
+
+#: .\dashboard\views\polls.py:87
+msgid "poll removed"
+msgstr "تم حذف الاستبيان"
+
+#: .\dashboard\views\questions.py:59
+msgid "question was delete"
+msgstr "تم حذف السؤال"
+
+#: .\dashboard\views\questions.py:61
+msgid "question does not exists"
+msgstr "السؤال غير موجود"
+
+#: .\dashboard\views\questions.py:89
+msgid "title is empty"
+msgstr "العنوان فارغ"
+
+#: .\dashboard\views\questions.py:91
+msgid "text is empty"
+msgstr "النص فارغ"
+
+#: .\dashboard\views\questions.py:93
+msgid "You should add 1 tag or more"
+msgstr "يجب عليك اضافة وسم واحد على القال"
+
+#: .\dashboard\views\questions.py:145
+msgid "answer was delete"
+msgstr "تم حذف الجواب"
+
+#: .\dashboard\views\questions.py:147
+msgid "answer does not exists"
+msgstr "الجواب غير موجود"
+
+#: .\dashboard\views\questions.py:203
+msgid "comment was delete"
+msgstr "تم حذف التعليق"
+
+#: .\dashboard\views\questions.py:206
+msgid "comment does not exists"
+msgstr "التعليق غير موجود"
+
+#: .\feedback\models.py:28
+msgid "Users"
+msgstr "مستخدمين"
+
+#: .\misc\views.py:39 .\misc\views.py:64
+msgid "message sent"
+msgstr "تم ارسال الرسالة"
+
+#: .\polls\models.py:32
+msgid "Radio List"
+msgstr "اختيار احادي"
+
+#: .\polls\models.py:33
+msgid "Check List"
+msgstr "اختيار متعدد"
+
+#: .\polls\views.py:18 .\polls\views.py:40 .\polls\views.py:49
+msgid "Thank You"
+msgstr "شكرا لك"
+
+#: .\templates\auth\changeEmail.html:3 .\templates\auth\emailSent.html:3
+msgid "Email Sent"
+msgstr "تم ارسال الرسالة"
+
+#: .\templates\auth\changeEmail.html:9
+msgid "Change Your Email"
+msgstr "تغيير بريدك الالكتروني"
+
+#: .\templates\auth\changeEmail.html:12 .\templates\auth\login.html:33
+#: .\templates\auth\register.html:65 .\templates\auth\resetPassword.html:20
+#: .\templates\auth\socialRegister.html:67
+#: .\templates\dashboard\advertiseMessages.html:28
+#: .\templates\dashboard\contactMessages.html:30
+#: .\templates\dashboard\login.html:21 .\templates\misc\advertise.html:24
+#: .\templates\misc\contactUs.html:21
+#: .\templates\utilities\dashboard\_nav.html:345
+msgid "Email"
+msgstr "البريد الالتكروني"
+
+#: .\templates\auth\changeEmail.html:20
+msgid "Resend Email"
+msgstr "اعادة ارسال بريد الكتروني"
+
+#: .\templates\auth\changePassword.html:3
+msgid "Change Password"
+msgstr "تغيير كلمة السر"
+
+#: .\templates\auth\changePassword.html:9
+msgid "Change Your Password"
+msgstr "تغيير كلمة السر"
+
+#: .\templates\auth\changePassword.html:12 .\templates\auth\login.html:38
+#: .\templates\auth\register.html:81 .\templates\auth\socialRegister.html:83
+#: .\templates\dashboard\login.html:29
+msgid "Password"
+msgstr "كلمة السر"
+
+#: .\templates\auth\changePassword.html:30 .\templates\auth\register.html:100
+#: .\templates\auth\socialRegister.html:102
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+#: .\templates\auth\changePassword.html:49
+msgid "Set Password"
+msgstr "تعيين كلمة السر"
+
+#: .\templates\auth\emailSent.html:8
+msgid "Confirm Your Email"
+msgstr "تأكيد بريدك الألكتروني"
+
+#: .\templates\auth\emailSent.html:9
+msgid "We Send confirm message to"
+msgstr "لقد ارسلنا رسالة التأكيد"
+
+#: .\templates\auth\emailSent.html:11
+msgid "Change Email"
+msgstr "تغيير البريد الكتروني"
+
+#: .\templates\auth\emailSent.html:17
+msgid "Return to sign up"
+msgstr "عودة الى التسجيل"
+
+#: .\templates\auth\login.html:30
+msgid "can not login"
+msgstr "فشل تسجيل الدخول"
+
+#: .\templates\auth\login.html:48
+msgid "Forget Password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: .\templates\auth\login.html:50 .\templates\dashboard\login.html:41
+msgid "Remember Me"
+msgstr "تذكرني"
+
+#: .\templates\auth\login.html:52 .\templates\dashboard\login.html:47
+#: .\templates\utilities\auth\_header.html:44
+msgid "Sign In"
+msgstr "دخول"
+
+#: .\templates\auth\login.html:59 .\templates\auth\register.html:133
+#: .\venv\Lib\site-packages\django\utils\text.py:240
+msgid "or"
+msgstr "او"
+
+#: .\templates\auth\login.html:68 .\templates\auth\register.html:143
+#: .\templates\utilities\_loginModal.html:20
+msgid "Log In with Facebook"
+msgstr "تسجيل دخول عبر فيسبوك"
+
+#: .\templates\auth\login.html:71 .\templates\auth\register.html:147
+#: .\templates\utilities\_loginModal.html:24
+msgid "Log In with Twitter"
+msgstr "تسجيل دخول عبر تويتر"
+
+#: .\templates\auth\login.html:75 .\templates\auth\register.html:150
+#: .\templates\utilities\_loginModal.html:27
+msgid "Log In with GitHub"
+msgstr "تسجيل دخول عبر جيتهاب"
+
+#: .\templates\auth\login.html:78 .\templates\auth\register.html:153
+#: .\templates\utilities\_loginModal.html:30
+msgid "Log In with Google"
+msgstr "تسجيل دخول عبر جوجل"
+
+#: .\templates\auth\register.html:31 .\templates\auth\socialRegister.html:30
+#: .\templates\misc\contactUs.html:17
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+#: .\templates\auth\register.html:48 .\templates\auth\socialRegister.html:50
+#: .\templates\dashboard\contactMessages.html:27
+msgid "User Name"
+msgstr "اسم المستخدم"
+
+#: .\templates\auth\register.html:117 .\templates\auth\socialRegister.html:119
+msgid "Website (Optional)"
+msgstr "موقع الويب (اختياري)"
+
+#: .\templates\auth\register.html:122 .\templates\auth\socialRegister.html:124
+msgid "By clicking Register, I agree that I have read and accepted our"
+msgstr "بضغطك على تسجيل انت قرائت و توافق على"
+
+#: .\templates\auth\register.html:123 .\templates\auth\socialRegister.html:125
+msgid "Terms of Use and Privacy Policy"
+msgstr "شروط الاستخدام و سياسة الخصوصية"
+
+#: .\templates\auth\register.html:125 .\templates\auth\socialRegister.html:126
+#: .\templates\utilities\auth\_header.html:34
+msgid "Sign Up"
+msgstr "تسجيل"
+
+#: .\templates\auth\resetPassword.html:3 .\templates\auth\resetPassword.html:11
+msgid "Reset Your Password"
+msgstr "اعادة تعيين كلمة السر"
+
+#: .\templates\auth\resetPassword.html:12
+msgid ""
+"Enter your user account's verified email address and we will send you a "
+"password reset link."
+msgstr "ادخل بريدك الالكتروني ونحن سوف نرسل رابط اعادة تعيين كلمة السر"
+
+#: .\templates\auth\resetPassword.html:27
+msgid "Reset Password"
+msgstr "اعادة تعيين كلمة السر"
+
+#: .\templates\auth\selectTags.html:3 .\templates\auth\selectTags.html:9
+msgid "Complete You Register"
+msgstr "اكمل التسجيل"
+
+#: .\templates\auth\selectTags.html:12
+msgid "Plese select your category"
+msgstr "يرجى اختيار تصنيف"
+
+#: .\templates\auth\selectTags.html:51 .\templates\auth\selectTags.html:91
+#: .\templates\auth\selectTags.html:129 .\templates\content\addQuestion.html:52
+#: .\templates\content\addQuestion.html:92
+#: .\templates\content\addQuestion.html:130
+#: .\templates\content\categories.html:52
+#: .\templates\content\categories.html:90
+#: .\templates\content\categories.html:126
+#: .\templates\content\categoryTags.html:51
+#: .\templates\content\categoryTags.html:90
+#: .\templates\content\categoryTags.html:126 .\templates\exams\examPage.html:50
+#: .\templates\exams\examPage.html:90 .\templates\exams\examPage.html:128
+#: .\templates\feedback\suggestCategory.html:32
+#: .\templates\feedback\suggestCategory.html:41
+#: .\templates\feedback\suggestCategory.html:51
+#: .\templates\feedback\suggestTag.html:31
+#: .\templates\feedback\suggestTag.html:41
+#: .\templates\feedback\suggestTag.html:51
+#: .\templates\moderators\answers\answers.html:96
+#: .\templates\moderators\answers\answers.html:136
+#: .\templates\moderators\answers\answers.html:175
+#: .\templates\moderators\edits\edits.html:96
+#: .\templates\moderators\edits\edits.html:136
+#: .\templates\moderators\edits\edits.html:174
+#: .\templates\moderators\questions\questions.html:90
+#: .\templates\moderators\questions\questions.html:130
+#: .\templates\moderators\questions\questions.html:168
+#: .\templates\profiles\favoriteQuestions.html:50
+#: .\templates\profiles\favoriteQuestions.html:88
+#: .\templates\profiles\favoriteQuestions.html:124
+msgid "Select Category"
+msgstr "اختر تصنيف"
+
+#: .\templates\auth\selectTags.html:161
+msgid "Plese select the things that interest you"
+msgstr "يرجى اختيار الاشياء التي تهتم بها"
+
+#: .\templates\auth\selectTags.html:182
+#: .\templates\content\addQuestion.html:193
+#: .\templates\content\categories.html:4
+#: .\templates\content\categoryTags.html:4
+#: .\templates\utilities\_leftColumn.html:6
+msgid "Tags"
+msgstr "الوسوم"
+
+#: .\templates\auth\selectTags.html:190
+#: .\templates\dashboard\addEditEmailTemplate.html:50
+#: .\templates\dashboard\editAdvertise.html:35
+#: .\templates\dashboard\editFooter.html:25
+#: .\templates\dashboard\editHeader.html:38
+#: .\templates\dashboard\editMisc\addEditInfoItem.html:34
+#: .\templates\dashboard\editMisc\addEditService.html:44
+#: .\templates\profiles\_editAvatarModal.html:32
+msgid "Save"
+msgstr "حفظ"
+
+#: .\templates\content\addQuestion.html:3
+#: .\templates\content\addQuestion.html:224
+msgid "Add Question"
+msgstr "اضافة سؤال"
+
+#: .\templates\content\addQuestion.html:9
+msgid "Add Quetion"
+msgstr "اضافة سؤال"
+
+#: .\templates\content\addQuestion.html:161
+msgid "Question Title..."
+msgstr "عنوان السؤال..."
+
+#: .\templates\content\addQuestion.html:183
+msgid "Add Tags"
+msgstr "اضافة وسوم"
+
+#: .\templates\content\addQuestion.html:232
+msgid "Similar Questions"
+msgstr "اسئلة مشابهة"
+
+#: .\templates\content\addQuestion.html:244 .\templates\content\index.html:170
+#: .\templates\profiles\badges.html:20 .\templates\profiles\badges.html:42
+#: .\templates\profiles\badges.html:63
+#: .\templates\profiles\favoriteQuestions.html:248
+#: .\templates\profiles\followers.html:14
+#: .\templates\profiles\userAnswers.html:89
+#: .\templates\profiles\userQuestions.html:117
+msgid "See more"
+msgstr "رؤية المزيد"
+
+#: .\templates\content\categories.html:156
+msgid "Suggest Cateogry"
+msgstr "اقترح تصنيف"
+
+#: .\templates\content\categories.html:165
+#: .\templates\content\categories.html:180
+#: .\templates\moderators\answers\answers.html:213
+#: .\templates\moderators\answers\answers.html:226
+#: .\templates\moderators\edits\edits.html:212
+#: .\templates\moderators\edits\edits.html:227
+#: .\templates\moderators\questions\questions.html:207
+#: .\templates\moderators\questions\questions.html:220
+msgid "Oldest"
+msgstr "الاقدم"
+
+#: .\templates\content\categories.html:167
+#: .\templates\content\categories.html:177
+#: .\templates\moderators\answers\answers.html:215
+#: .\templates\moderators\answers\answers.html:223
+#: .\templates\moderators\edits\edits.html:215
+#: .\templates\moderators\edits\edits.html:224
+#: .\templates\moderators\questions\questions.html:209
+#: .\templates\moderators\questions\questions.html:217
+#: .\templates\profiles\profile.html:229
+msgid "Newest"
+msgstr "الاجدد"
+
+#: .\templates\content\categories.html:192
+#: .\templates\content\categories.html:206
+msgid "Least Tags"
+msgstr "الاقل وسوم"
+
+#: .\templates\content\categories.html:194
+#: .\templates\content\categories.html:203
+msgid "Most Tags"
+msgstr "الاكثر وسوم"
+
+#: .\templates\content\categoryTags.html:156
+#: .\templates\feedback\suggestTag.html:3
+#: .\templates\feedback\suggestTag.html:11
+msgid "Suggest Tag"
+msgstr "اقترح وسم"
+
+#: .\templates\content\categoryTags.html:165
+#: .\templates\content\categoryTags.html:180
+msgid "Least Questions"
+msgstr "اخر الاسئلة"
+
+#: .\templates\content\categoryTags.html:167
+#: .\templates\content\categoryTags.html:177
+msgid "Most Questions"
+msgstr "الاكثر اسئلة"
+
+#: .\templates\content\categoryTags.html:192
+#: .\templates\content\categoryTags.html:206 .\templates\content\index.html:108
+#: .\templates\content\index.html:122
+#: .\templates\profiles\favoriteQuestions.html:219
+#: .\templates\profiles\favoriteQuestions.html:233
+#: .\templates\profiles\userQuestions.html:84
+#: .\templates\profiles\userQuestions.html:99
+msgid "Least Answers"
+msgstr "الاقل اجوبة"
+
+#: .\templates\content\categoryTags.html:194
+#: .\templates\content\categoryTags.html:203 .\templates\content\index.html:110
+#: .\templates\content\index.html:119
+#: .\templates\profiles\favoriteQuestions.html:221
+#: .\templates\profiles\favoriteQuestions.html:230
+#: .\templates\profiles\userQuestions.html:86
+#: .\templates\profiles\userQuestions.html:96
+msgid "Most Answers"
+msgstr "الاكثر اجوبة"
+
+#: .\templates\content\index.html:4
+msgid "Home"
+msgstr "الرئيسية"
+
+#: .\templates\content\index.html:7
+msgid "Lastst Questions"
+msgstr "اخر الاسئلة"
+
+#: .\templates\content\index.html:11
+msgid "Suggest Question"
+msgstr "اقترح سؤال"
+
+#: .\templates\content\index.html:15 .\templates\dashboard\login.html:4
+msgid "Login"
+msgstr "دخول"
+
+#: .\templates\content\index.html:31 .\templates\content\index.html:41
+#: .\templates\profiles\editTags.html:4
+msgid "My Tags"
+msgstr "وسومي"
+
+#: .\templates\content\index.html:33 .\templates\content\index.html:44
+#: .\templates\profiles\profile.html:247
+msgid "All"
+msgstr "الكل"
+
+#: .\templates\content\index.html:56 .\templates\content\index.html:70
+#: .\templates\profiles\favoriteQuestions.html:164
+#: .\templates\profiles\favoriteQuestions.html:178
+#: .\templates\profiles\userAnswers.html:31
+#: .\templates\profiles\userAnswers.html:44
+#: .\templates\profiles\userQuestions.html:31
+#: .\templates\profiles\userQuestions.html:46
+msgid "Least Votes"
+msgstr "الاقل تصويت"
+
+#: .\templates\content\index.html:58 .\templates\content\index.html:67
+#: .\templates\profiles\favoriteQuestions.html:166
+#: .\templates\profiles\favoriteQuestions.html:175
+#: .\templates\profiles\userAnswers.html:33
+#: .\templates\profiles\userAnswers.html:41
+#: .\templates\profiles\userQuestions.html:34
+#: .\templates\profiles\userQuestions.html:43
+msgid "Most Votes"
+msgstr "الاكثر تصويت"
+
+#: .\templates\content\index.html:82 .\templates\content\index.html:96
+#: .\templates\profiles\favoriteQuestions.html:191
+#: .\templates\profiles\favoriteQuestions.html:205
+#: .\templates\profiles\userAnswers.html:56
+#: .\templates\profiles\userAnswers.html:70
+#: .\templates\profiles\userQuestions.html:58
+#: .\templates\profiles\userQuestions.html:72
+msgid "Least Views"
+msgstr "الاقل مشاهدة"
+
+#: .\templates\content\index.html:84 .\templates\content\index.html:93
+#: .\templates\profiles\favoriteQuestions.html:193
+#: .\templates\profiles\favoriteQuestions.html:202
+#: .\templates\profiles\userAnswers.html:58
+#: .\templates\profiles\userAnswers.html:67
+#: .\templates\profiles\userQuestions.html:60
+#: .\templates\profiles\userQuestions.html:69
+msgid "Most Views"
+msgstr "الاكثر مشاهدة"
+
+#: .\templates\content\index.html:139
+msgid "All time"
+msgstr "كل الاوقات"
+
+#: .\templates\content\index.html:145
+msgid "Today"
+msgstr "اليوم"
+
+#: .\templates\content\index.html:151
+msgid "This week"
+msgstr "هذا الاسبوع"
+
+#: .\templates\content\index.html:157
+msgid "This month"
+msgstr "هذا الشهر"
+
+#: .\templates\content\questionPage.html:42
+#: .\templates\content\templatetags\answer.html:73
+#: .\templates\content\templatetags\question.html:90
+#: .\templates\feedback\templatetags\reportModal.html:6
+#: .\templates\feedback\templatetags\reportModal.html:37
+msgid "Report"
+msgstr "ابلاغ"
+
+#: .\templates\content\questionPage.html:55
+#: .\templates\content\templatetags\answer.html:107
+#: .\templates\content\templatetags\question.html:126
+#: .\templates\exams\question.html:51 .\templates\exams\question.html:107
+#: .\templates\moderators\questions\reviewQuestion.html:44
+msgid "Added in"
+msgstr "اضيف في"
+
+#: .\templates\content\questionPage.html:71
+#: .\templates\moderators\edits\awaitList.html:31
+#: .\templates\moderators\edits\rejectedList.html:31
+#: .\templates\moderators\edits\reviewEdit.html:67
+#: .\templates\moderators\questions\awaitList.html:31
+#: .\templates\moderators\questions\rejectedList.html:33
+#: .\templates\moderators\questions\reviewQuestion.html:59
+msgid "Accept"
+msgstr "قبول"
+
+#: .\templates\content\questionPage.html:77
+msgid "Ignore"
+msgstr "رفض"
+
+#: .\templates\content\questionPage.html:103
+#: .\templates\content\questionPage.html:116
+msgid "Add Answer"
+msgstr "اضف اجابة"
+
+#: .\templates\content\suggestEdit.html:4
+#: .\templates\content\suggestEdit.html:10
+#: .\templates\content\suggestEdit.html:27
+#: .\templates\content\templatetags\answer.html:57
+#: .\templates\content\templatetags\question.html:75
+msgid "Suggest Edit"
+msgstr "اقترح تعديل"
+
+#: .\templates\content\templatetags\answer.html:62
+#: .\templates\content\templatetags\question.html:80
+#: .\templates\profiles\_profileTabs.html:44
+#: .\templates\profiles\templateTags\followerItem.html:18
+msgid "Unfollow"
+msgstr "الغاء متابعة"
+
+#: .\templates\content\templatetags\answer.html:64
+#: .\templates\content\templatetags\question.html:82
+#: .\templates\profiles\_profileTabs.html:46
+#: .\templates\profiles\templateTags\followerItem.html:20
+msgid "Follow"
+msgstr "متابعة"
+
+#: .\templates\content\templatetags\answer.html:115
+#: .\templates\content\templatetags\question.html:134
+#: .\templates\exams\question.html:65 .\templates\exams\question.html:121
+msgid "Edited in"
+msgstr "عدل في"
+
+#: .\templates\content\templatetags\answer.html:131
+#: .\templates\content\templatetags\question.html:150
+msgid "All comment"
+msgstr "كل التعليقات"
+
+#: .\templates\content\templatetags\answer.html:139
+#: .\templates\content\templatetags\answer.html:143
+#: .\templates\content\templatetags\question.html:156
+#: .\templates\content\templatetags\question.html:160
+msgid "Add comment"
+msgstr "اضافة تعليق"
+
+#: .\templates\content\templatetags\answer.html:141
+#: .\templates\content\templatetags\question.html:158
+msgid "Add Comment..."
+msgstr "اضافة تعليق..."
+
+#: .\templates\content\templatetags\question.html:12
+#: .\templates\exams\question.html:20
+#: .\templates\moderators\questions\reviewQuestion.html:10
+msgid "Asked:"
+msgstr "سئل مند:"
+
+#: .\templates\content\templatetags\question.html:14
+msgid "Active:"
+msgstr "نشط منذ:"
+
+#: .\templates\content\templatetags\question.html:16
+msgid "Viwes:"
+msgstr "المشاهدات:"
+
+#: .\templates\content\templatetags\questionItem.html:8
+#: .\templates\content\templatetags\questionItem.html:26
+#: .\templates\moderators\answers\acceptedList.html:11
+#: .\templates\moderators\answers\awaitList.html:11
+#: .\templates\moderators\answers\rejectedList.html:11
+msgid "votes"
+msgstr "صوت"
+
+#: .\templates\content\templatetags\questionItem.html:13
+#: .\templates\content\templatetags\questionItem.html:31
+msgid "views"
+msgstr "مشاهدة"
+
+#: .\templates\content\templatetags\questionItem.html:17
+#: .\templates\content\templatetags\questionItem.html:35
+#: .\templates\moderators\answers\acceptedList.html:16
+#: .\templates\moderators\answers\awaitList.html:16
+#: .\templates\moderators\answers\rejectedList.html:16
+msgid "answers"
+msgstr "اجابة"
+
+#: .\templates\content\templatetags\questionItem.html:20
+#: .\templates\content\templatetags\questionItem.html:47
+msgid "added by"
+msgstr "اضيف بواسطة"
+
+#: .\templates\content\templatetags\questionItem.html:49
+#: .\templates\moderators\answers\acceptedList.html:35
+#: .\templates\moderators\answers\awaitList.html:37
+#: .\templates\moderators\answers\rejectedList.html:35
+msgid "last answer added in"
+msgstr "اخر جواب اضيف في"
+
+#: .\templates\dashboard\addEditCard.html:5
+#: .\templates\dashboard\addEditCard.html:19
+msgid "Add Card"
+msgstr "اضافة بطاقة"
+
+#: .\templates\dashboard\addEditEmailTemplate.html:5
+#: .\templates\dashboard\addEditEmailTemplate.html:20
+msgid "Add Email Template"
+msgstr "اضافة قالب"
+
+#: .\templates\dashboard\addEditEmailTemplate.html:39
+msgid "Template Name"
+msgstr "اسم القالب"
+
+#: .\templates\dashboard\advertiseMessages.html:3
+#: .\templates\dashboard\advertiseMessages.html:10
+msgid "Advertise Messages"
+msgstr "رسائل الاعلان"
+
+#: .\templates\dashboard\advertiseMessages.html:25
+#: .\templates\misc\advertise.html:20
+msgid "Company Name"
+msgstr "اسم الشركة"
+
+#: .\templates\dashboard\advertiseMessages.html:31
+#: .\templates\dashboard\contactMessages.html:33
+#: .\templates\dashboard\sendEmail.html:25 .\templates\misc\advertise.html:27
+#: .\templates\misc\contactUs.html:24
+msgid "Subject"
+msgstr "الموضوع"
+
+#: .\templates\dashboard\advertiseMessages.html:34
+#: .\templates\dashboard\contactMessages.html:36
+msgid "Action"
+msgstr "اجراء"
+
+#: .\templates\dashboard\advertiseMessages.html:54
+msgid "Show"
+msgstr "عرض"
+
+#: .\templates\dashboard\advertiseMessages.html:58
+#: .\templates\dashboard\advertiseMessages.html:118
+#: .\templates\dashboard\advertiseRequest.html:14
+#: .\templates\dashboard\advertiseRequest.html:70
+#: .\templates\dashboard\contactMessage.html:14
+#: .\templates\dashboard\contactMessage.html:71
+#: .\templates\dashboard\contactMessages.html:123
+#: .\templates\dashboard\editColumn.html:79
+#: .\templates\dashboard\editMisc\editInfo.html:28
+#: .\templates\dashboard\editMisc\editInfo.html:62
+#: .\templates\dashboard\editMisc\services.html:28
+#: .\templates\dashboard\editMisc\services.html:62
+#: .\templates\dashboard\emailTemlates.html:42
+#: .\templates\dashboard\emailTemlates.html:92
+#: .\templates\dashboard\flagReasons.html:38
+#: .\venv\Lib\site-packages\django\forms\formsets.py:417
+msgid "Delete"
+msgstr "حذف"
+
+#: .\templates\dashboard\advertiseMessages.html:72
+msgid "There is no Requests"
+msgstr "لا يوجد طلبات"
+
+#: .\templates\dashboard\advertiseMessages.html:102
+#: .\templates\dashboard\advertiseRequest.html:55
+msgid "Delete Request"
+msgstr "حذف طلب"
+
+#: .\templates\dashboard\advertiseMessages.html:111
+#: .\templates\dashboard\advertiseRequest.html:63
+msgctxt "paragraph"
+msgid "delete ads request"
+msgstr "هل تريد حذف الطلب؟"
+
+#: .\templates\dashboard\advertiseMessages.html:117
+#: .\templates\dashboard\advertiseRequest.html:69
+#: .\templates\dashboard\contactMessage.html:70
+#: .\templates\dashboard\contactMessages.html:122
+#: .\templates\dashboard\editColumn.html:78
+#: .\templates\dashboard\editMisc\editInfo.html:61
+#: .\templates\dashboard\editMisc\services.html:61
+#: .\templates\dashboard\emailTemlates.html:91
+#: .\templates\dashboard\flagReasons.html:87
+#: .\templates\feedback\templatetags\reportModal.html:36
+#: .\templates\profiles\_editAvatarModal.html:31
+msgid "Close"
+msgstr "اغلاق"
+
+#: .\templates\dashboard\contactMessage.html:56
+#: .\templates\dashboard\contactMessages.html:107
+msgid "Delete Message"
+msgstr "حذف الرسالة"
+
+#: .\templates\dashboard\contactMessage.html:64
+#: .\templates\dashboard\contactMessages.html:116
+msgctxt "paragraph"
+msgid "delete contact message"
+msgstr "هل تريد حذف الرسائل"
+
+#: .\templates\dashboard\contactMessages.html:3
+#: .\templates\dashboard\contactMessages.html:12
+msgid "Contact Messages"
+msgstr "رسائل التواصل"
+
+#: .\templates\dashboard\contactMessages.html:76
+msgid "There is no Messages"
+msgstr "لا يوجد رسائل"
+
+#: .\templates\dashboard\editAdvertise.html:4
+#: .\templates\dashboard\editAdvertise.html:12
+msgid "Add HTML to Advertise Page"
+msgstr "اضافة HTML لصفحة الاعلان"
+
+#: .\templates\dashboard\editAdvertise.html:33
+msgid "Demo Images:"
+msgstr "صور للمعاينة"
+
+#: .\templates\dashboard\editColumn.html:3
+#: .\templates\dashboard\editColumn.html:9
+msgid "Cards"
+msgstr "البطاقات"
+
+#: .\templates\dashboard\editColumn.html:43
+msgid "There is no Cards"
+msgstr "لا يوجد بطاقات"
+
+#: .\templates\dashboard\editColumn.html:64
+msgid "Delete Card"
+msgstr "حذف بطاقة"
+
+#: .\templates\dashboard\editColumn.html:72
+#: .\templates\dashboard\editMisc\editInfo.html:55
+#: .\templates\dashboard\editMisc\services.html:55
+#: .\templates\dashboard\emailTemlates.html:85
+#: .\templates\dashboard\flagReasons.html:81
+msgid "Do you want delete"
+msgstr "هل تريد حذف"
+
+#: .\templates\dashboard\editColumn.html:72
+#: .\templates\dashboard\editMisc\editInfo.html:55
+#: .\templates\dashboard\editMisc\services.html:55
+#: .\templates\dashboard\emailTemlates.html:85
+#: .\templates\dashboard\flagReasons.html:81
+msgid "and everything related to it?"
+msgstr "وكل شيء يتعلق به؟"
+
+#: .\templates\dashboard\editFooter.html:3
+msgid "Edit footer"
+msgstr "تعديل اسفل الموقع"
+
+#: .\templates\dashboard\editFooter.html:12
+msgid "Add HTML to footer"
+msgstr "اضافة HTML لأسفل الموقع"
+
+#: .\templates\dashboard\editHeader.html:4
+#: .\templates\dashboard\editHeader.html:13
+msgid "Edit Header"
+msgstr "تعديل رأس الموقع"
+
+#: .\templates\dashboard\editHeader.html:24
+msgid "Site Title"
+msgstr "عنوان الموقع"
+
+#: .\templates\dashboard\editMisc\addEditInfoItem.html:12
+#: .\templates\dashboard\editMisc\addEditService.html:12
+msgid "Edit Service"
+msgstr "تعديل الخدمات"
+
+#: .\templates\dashboard\editMisc\addEditInfoItem.html:29
+#: .\templates\dashboard\editMisc\addEditService.html:29
+msgid "Title"
+msgstr "العنوان"
+
+#: .\templates\dashboard\editMisc\addEditInfoItem.html:30
+#: .\templates\dashboard\editMisc\addEditService.html:30
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2115
+msgid "Text"
+msgstr "النص"
+
+#: .\templates\dashboard\editMisc\editInfo.html:10
+msgid "Edit Info"
+msgstr "تعديل صفحة المعلومات"
+
+#: .\templates\dashboard\editMisc\editInfo.html:23
+#: .\templates\dashboard\editMisc\services.html:23
+#: .\templates\dashboard\emailTemlates.html:31
+#: .\templates\dashboard\flagReasons.html:32
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\templates\dashboard\editMisc\editInfo.html:47
+msgid "Delete Item"
+msgstr "حذف عنصر"
+
+#: .\templates\dashboard\editMisc\services.html:10
+#: .\templates\utilities\_footer.html:25
+#: .\templates\utilities\dashboard\_nav.html:281
+msgid "Services"
+msgstr "الخدمات"
+
+#: .\templates\dashboard\editMisc\services.html:47
+msgid "Delete Service"
+msgstr "حذف خدمة"
+
+#: .\templates\dashboard\emailTemlates.html:3
+#: .\templates\dashboard\emailTemlates.html:13
+msgid "Email Templates"
+msgstr "قوالب البريد الالكتروني"
+
+#: .\templates\dashboard\emailTemlates.html:17
+msgid "without template"
+msgstr "بدون قالب"
+
+#: .\templates\dashboard\emailTemlates.html:36
+msgid "Use"
+msgstr "استخدم"
+
+#: .\templates\dashboard\emailTemlates.html:52
+msgctxt "paragraph"
+msgid "There is no Templates"
+msgstr "لا يوجد قوالب"
+
+#: .\templates\dashboard\emailTemlates.html:77
+msgid "Delete Template"
+msgstr "حذف قالب"
+
+#: .\templates\dashboard\flagReasons.html:3
+#: .\templates\dashboard\flagReasons.html:13
+msgid "Flag Reasons"
+msgstr "اسباب التبليغ"
+
+#: .\templates\dashboard\flagReasons.html:48
+msgctxt "paragraph"
+msgid "There is no Reasons"
+msgstr "لا يوجد اسباب"
+
+#: .\templates\dashboard\flagReasons.html:73
+msgid "Remove Reason"
+msgstr "حذف السبب"
+
+#: .\templates\dashboard\flagReasons.html:88
+msgid "Remove"
+msgstr "ازالة"
+
+#: .\templates\dashboard\login.html:16
+msgid "Sign in to start your session"
+msgstr "سجل الدخول بدء جلستك"
+
+#: .\templates\dashboard\sendEmail.html:3
+#: .\templates\dashboard\sendEmail.html:14
+msgid "Send Email"
+msgstr "ارسال بريد الكتروني"
+
+#: .\templates\dashboard\sendEmail.html:14
+msgid "Template"
+msgstr "قالب"
+
+#: .\templates\dashboard\sendEmail.html:34 .\templates\misc\advertise.html:40
+#: .\templates\misc\contactUs.html:28
+msgid "Send"
+msgstr "ارسل"
+
+#: .\templates\exams\examPage.html:4 .\templates\exams\examPage.html:161
+msgid "Generate Exam"
+msgstr "توليد امتحان"
+
+#: .\templates\feedback\suggestCategory.html:4
+#: .\templates\feedback\suggestCategory.html:12
+msgid "Suggest Category"
+msgstr "اقترح تصنيف"
+
+#: .\templates\feedback\suggestCategory.html:64
+msgid "Category name..."
+msgstr "اسم التصنيف..."
+
+#: .\templates\feedback\suggestCategory.html:66
+msgid "Category Description"
+msgstr "وصف التصنيف"
+
+#: .\templates\feedback\suggestCategory.html:69
+#: .\templates\feedback\suggestTag.html:69
+msgid "Suggest"
+msgstr "اقترح"
+
+#: .\templates\feedback\suggestTag.html:64
+msgid "Tag name..."
+msgstr "اسم الوسم..."
+
+#: .\templates\feedback\suggestTag.html:66
+msgid "Tag Description"
+msgstr "وصف الوسم"
+
+#: .\templates\misc\advertise.html:4
+msgid "Advertise With Us"
+msgstr "اعلن معنا"
+
+#: .\templates\misc\advertise.html:29 .\templates\misc\contactUs.html:26
+msgid "Write Something..."
+msgstr "اكتب شيئاً..."
+
+#: .\templates\misc\contactUs.html:4 .\templates\misc\contactUs.html:12
+#: .\templates\utilities\dashboard\_nav.html:316
+msgid "Contact Us"
+msgstr "تواصل معنا"
+
+#: .\templates\moderators\answers\acceptedList.html:19
+#: .\templates\moderators\answers\awaitList.html:19
+#: .\templates\moderators\answers\rejectedList.html:19
+#: .\templates\moderators\questions\acceptedList.html:22
+#: .\templates\moderators\questions\awaitList.html:25
+#: .\templates\moderators\questions\rejectedList.html:20
+msgid "add by"
+msgstr "اضيف بواسطة"
+
+#: .\templates\moderators\answers\answers.html:6
+#: .\templates\moderators\answers\answers.html:17
+#: .\templates\moderators\edits\edits.html:7
+#: .\templates\moderators\edits\edits.html:18
+#: .\templates\moderators\questions\questions.html:5
+#: .\templates\moderators\questions\questions.html:16
+msgid "in wait"
+msgstr "بالانتظار"
+
+#: .\templates\moderators\answers\answers.html:8
+#: .\templates\moderators\answers\answers.html:19
+#: .\templates\moderators\edits\edits.html:9
+#: .\templates\moderators\edits\edits.html:20
+#: .\templates\moderators\questions\questions.html:7
+#: .\templates\moderators\questions\questions.html:18
+msgid "accepted"
+msgstr "تم القبول"
+
+#: .\templates\moderators\answers\answers.html:10
+#: .\templates\moderators\answers\answers.html:21
+#: .\templates\moderators\edits\edits.html:11
+#: .\templates\moderators\edits\edits.html:22
+#: .\templates\moderators\questions\questions.html:9
+#: .\templates\moderators\questions\questions.html:20
+msgid "rejected"
+msgstr "تم الرفض"
+
+#: .\templates\moderators\answers\answers.html:33
+#: .\templates\moderators\edits\edits.html:33
+#: .\templates\moderators\questions\questions.html:30
+msgid "Await"
+msgstr "بالانتظار"
+
+#: .\templates\moderators\answers\answers.html:41
+#: .\templates\moderators\edits\edits.html:41
+#: .\templates\moderators\questions\questions.html:37
+msgid "Accepted"
+msgstr "تم القبول"
+
+#: .\templates\moderators\answers\answers.html:48
+#: .\templates\moderators\edits\edits.html:48
+#: .\templates\moderators\questions\questions.html:43
+msgid "Rejected"
+msgstr "تم الرفض"
+
+#: .\templates\moderators\answers\answers.html:243
+#: .\templates\moderators\edits\edits.html:244
+#: .\templates\moderators\questions\questions.html:236
+#: .\templates\profiles\userAnswers.html:16
+#: .\templates\profiles\userQuestions.html:16
+#: .\templates\utilities\_header.html:25
+msgid "Search"
+msgstr "بحث"
+
+#: .\templates\moderators\answers\answers.html:272
+#: .\templates\moderators\edits\edits.html:273
+#: .\templates\moderators\questions\questions.html:267
+msgid "Filter"
+msgstr "بحث"
+
+#: .\templates\moderators\answers\awaitList.html:47
+#: .\templates\moderators\answers\rejectedList.html:48
+msgid "Accept All"
+msgstr "قبول الكل"
+
+#: .\templates\moderators\answers\awaitList.html:50
+msgid "Reject All"
+msgstr "رفض الكل"
+
+#: .\templates\moderators\edits\acceptedList.html:19
+#: .\templates\moderators\edits\awaitList.html:19
+#: .\templates\moderators\edits\rejectedList.html:19
+msgid "Suggested By"
+msgstr "اقترح بواسطة"
+
+#: .\templates\moderators\edits\acceptedList.html:19
+#: .\templates\moderators\edits\awaitList.html:19
+#: .\templates\moderators\edits\rejectedList.html:19
+msgid "in"
+msgstr "في"
+
+#: .\templates\moderators\edits\acceptedList.html:29
+msgid "Change Logs was accepted by you"
+msgstr "تغيرات انت وافقت عليها"
+
+#: .\templates\moderators\edits\awaitList.html:28
+#: .\templates\moderators\edits\rejectedList.html:28
+msgid "Show The Edit"
+msgstr "عرض التعديل"
+
+#: .\templates\moderators\edits\awaitList.html:33
+#: .\templates\moderators\edits\reviewEdit.html:71
+#: .\templates\moderators\questions\awaitList.html:34
+#: .\templates\moderators\questions\reviewQuestion.html:64
+msgid "Reject"
+msgstr "رفض"
+
+#: .\templates\moderators\edits\reviewEdit.html:14
+msgid "Suggested Edit"
+msgstr "تعديل مقترح"
+
+#: .\templates\moderators\questions\acceptedList.html:19
+msgid "Acceptd by"
+msgstr "تم القبول بواسطة"
+
+#: .\templates\moderators\questions\acceptedList.html:19
+msgid "suggested in"
+msgstr "اقترح في"
+
+#: .\templates\moderators\questions\rejectedList.html:22
+msgid "Rejected by"
+msgstr "رفض بواسطة"
+
+#: .\templates\moderators\questions\rejectedList.html:22
+msgid "suggested  in"
+msgstr "اقترح في"
+
+#: .\templates\polls\poll.html:52
+msgid "Please Answer All Questions"
+msgstr "يرجى الاجابة على كل الاسئلة"
+
+#: .\templates\polls\poll.html:53
+msgid "Submit"
+msgstr "ارسال"
+
+#: .\templates\profiles\_profileTabs.html:8
+#: .\templates\profiles\editProfile.html:17
+#: .\templates\profiles\editTags.html:17
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\templates\profiles\_profileTabs.html:14
+msgid "Badges"
+msgstr "الشارات"
+
+#: .\templates\profiles\_profileTabs.html:20
+msgid "Followres"
+msgstr "المتابعين"
+
+#: .\templates\profiles\_profileTabs.html:26
+msgid "Favorite Queestions"
+msgstr "الاسئلة المفضلة"
+
+#: .\templates\profiles\_profileTabs.html:32
+msgid "Settings"
+msgstr "الاعدادات"
+
+#: .\templates\profiles\editProfile.html:4
+msgid "Profile Settings"
+msgstr "اعدادات الملف الشحصي"
+
+#: .\templates\profiles\editProfile.html:23
+#: .\templates\profiles\editTags.html:23
+msgid "Your Tags"
+msgstr "وسومك"
+
+#: .\templates\profiles\editProfile.html:34
+msgid "About You..."
+msgstr "عنك..."
+
+#: .\templates\profiles\editProfile.html:35
+msgid "Website"
+msgstr "الموقع الالكتروني"
+
+#: .\templates\profiles\editProfile.html:36
+msgid "Save Changes"
+msgstr "حفظ التغيرات"
+
+#: .\templates\profiles\favoriteQuestions.html:5
+msgid "Favorite Questions"
+msgstr "الاسئلة المفضلة"
+
+#: .\templates\profiles\followers.html:5
+msgid "Followers"
+msgstr "المتابعين"
+
+#: .\templates\profiles\profile.html:27
+msgid "REPUTATION"
+msgstr "الشعبية"
+
+#: .\templates\profiles\profile.html:73
+msgid "Member from"
+msgstr "عضو منذ"
+
+#: .\templates\profiles\profile.html:78
+msgid "profile views"
+msgstr "مشاهدات الملف الشخصي"
+
+#: .\templates\profiles\profile.html:84
+msgid "Last seen"
+msgstr "اخر ظهور"
+
+#: .\templates\profiles\profile.html:84
+msgid "ago"
+msgstr " "
+
+#: .\templates\profiles\profile.html:86
+msgid "online now"
+msgstr "متصل الان"
+
+#: .\templates\profiles\profile.html:100
+msgid "Gold Badges"
+msgstr "شارات ذهبية"
+
+#: .\templates\profiles\profile.html:122
+msgid "Silver Badges"
+msgstr "شارات فضية"
+
+#: .\templates\profiles\profile.html:145
+msgid "Bronze Badges"
+msgstr "شارات برونزية"
+
+#: .\templates\profiles\profile.html:219
+msgid "Top Posts"
+msgstr "افضل المنشورات"
+
+#: .\templates\profiles\profile.html:236
+msgctxt "filter"
+msgid "Votes"
+msgstr "الاكثر اصوات"
+
+#: .\templates\utilities\_categories.html:2
+msgid "categories"
+msgstr "التصنيفات"
+
+#: .\templates\utilities\_footer.html:10
+msgid "About us"
+msgstr "عنا"
+
+#: .\templates\utilities\_footer.html:15
+msgid "Contact us"
+msgstr "تواصل معنا"
+
+#: .\templates\utilities\_footer.html:20
+#: .\templates\utilities\dashboard\_nav.html:271
+msgid "Advertise with us"
+msgstr "اعلن معنا"
+
+#: .\templates\utilities\_leftColumn.html:11
+msgid "Exams"
+msgstr "اختبارات"
+
+#: .\templates\utilities\_loginModal.html:15
+msgid "Login with email"
+msgstr "تسجيل دخول عبر البريد الالكتروني"
+
+#: .\templates\utilities\dashboard\_nav.html:214
+msgid "Edit Site"
+msgstr "تعديل الموقع"
+
+#: .\templates\utilities\dashboard\_nav.html:228
+msgid "Info"
+msgstr "حول"
+
+#: .\templates\utilities\dashboard\_nav.html:238
+msgid "Header"
+msgstr "رأس الموقع"
+
+#: .\templates\utilities\dashboard\_nav.html:249
+msgid "Footer"
+msgstr "اسفل الموقع"
+
+#: .\templates\utilities\dashboard\_nav.html:261
+msgid "Columns"
+msgstr "الاعمدة"
+
+#: .\templates\utilities\dashboard\_nav.html:330
+msgid "Advertise Requests"
+msgstr "طلبات الاعلان"
+
+#: .\templates\utilities\dashboard\_nav.html:355
+msgid "Log out"
+msgstr "تسجيل خروج"
+
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
+msgid "Messages"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:51
+msgid "That page number is not an integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:53
+msgid "That page number is less than 1"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:58
+msgid "That page contains no results"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:93
+#: .\venv\Lib\site-packages\django\forms\fields.py:675
+msgid "Enter a valid URL."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:150
+msgid "Enter a valid integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:161
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\venv\Lib\site-packages\django\core\validators.py:262
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:269
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:278
+#: .\venv\Lib\site-packages\django\core\validators.py:288
+#: .\venv\Lib\site-packages\django\core\validators.py:311
+msgid "Enter a valid IPv4 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:296
+#: .\venv\Lib\site-packages\django\core\validators.py:312
+msgid "Enter a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:306
+#: .\venv\Lib\site-packages\django\core\validators.py:310
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:340
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:346
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:379
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:388
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:398
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:413
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:432
+#: .\venv\Lib\site-packages\django\forms\fields.py:292
+#: .\venv\Lib\site-packages\django\forms\fields.py:327
+msgid "Enter a number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:434
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:439
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:444
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:506
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\core\validators.py:559
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1197
+#: .\venv\Lib\site-packages\django\forms\models.py:768
+msgid "and"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\base.py:1199
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:100
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:101
+msgid "This field cannot be null."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:102
+msgid "This field cannot be blank."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:103
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
+#. Eg: "Title must be unique for pub_date year"
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:107
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:126
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:958
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:959
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:961
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1002
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1096
+msgid "Comma-separated integers"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1145
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1147
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1290
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1150
+msgid "Date (without time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1288
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1292
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1296
+msgid "Date (with time)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1444
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1446
+msgid "Decimal number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1585
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1588
+msgid "Duration"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1638
+msgid "Email address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1661
+msgid "File path"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1727
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1729
+msgid "Floating point number"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1767
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1769
+msgid "Integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1852
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1867
+msgid "Small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1875
+msgid "IPv4 address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1906
+msgid "IP address"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1986
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1987
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1989
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2043
+msgid "Positive big integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2056
+msgid "Positive integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2069
+msgid "Positive small integer"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2083
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2181
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2183
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2186
+msgid "Time"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2312
+msgid "URL"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2334
+msgid "Raw binary data"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2399
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2401
+msgid "Universally unique identifier"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:226
+msgid "File"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\files.py:375
+msgid "Image"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:18
+msgid "A JSON object"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\json.py:20
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:790
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:792
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1045
+msgid "One-to-one relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1099
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1100
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1142
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: .\venv\Lib\site-packages\django\forms\boundfield.py:150
+msgid ":?.!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:54
+msgid "This field is required."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:247
+msgid "Enter a whole number."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:402
+#: .\venv\Lib\site-packages\django\forms\fields.py:1143
+msgid "Enter a valid date."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:426
+#: .\venv\Lib\site-packages\django\forms\fields.py:1144
+msgid "Enter a valid time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:454
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:488
+msgid "Enter a valid duration."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:489
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:549
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:550
+msgid "No file was submitted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:551
+msgid "The submitted file is empty."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:553
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:556
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:617
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:779
+#: .\venv\Lib\site-packages\django\forms\fields.py:869
+#: .\venv\Lib\site-packages\django\forms\models.py:1309
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:870
+#: .\venv\Lib\site-packages\django\forms\fields.py:985
+#: .\venv\Lib\site-packages\django\forms\models.py:1308
+msgid "Enter a list of values."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:986
+msgid "Enter a complete value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1202
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\fields.py:1232
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: .\venv\Lib\site-packages\django\forms\forms.py:76
+msgid ":"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\forms.py:203
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:370
+#, python-format
+msgid "Please submit at most %d form."
+msgid_plural "Please submit at most %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:377
+#, python-format
+msgid "Please submit at least %d form."
+msgid_plural "Please submit at least %d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\forms\formsets.py:405
+#: .\venv\Lib\site-packages\django\forms\formsets.py:412
+msgid "Order"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:763
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:767
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:773
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:782
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1109
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1193
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\models.py:1311
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\utils.py:172
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:403
+msgid "Clear"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:404
+msgid "Currently"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:405
+msgid "Change"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:714
+msgid "Unknown"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:715
+msgid "Yes"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\forms\widgets.py:716
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:805
+msgid "yes,no,maybe"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:834
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:851
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:853
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:855
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:857
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:859
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\template\defaultfilters.py:861
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:66
+msgid "p.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:67
+msgid "a.m."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:72
+msgid "PM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:73
+msgid "AM"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:146
+msgid "midnight"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dateformat.py:148
+msgid "noon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Monday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Tuesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Wednesday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Thursday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:6
+msgid "Friday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Saturday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:7
+msgid "Sunday"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Mon"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Tue"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Wed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Thu"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:10
+msgid "Fri"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Sat"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:11
+msgid "Sun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:14
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:15
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:16
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "jan"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "feb"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "mar"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "apr"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "may"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:19
+msgid "jun"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "jul"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "aug"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "sep"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "oct"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "nov"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:20
+msgid "dec"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:23
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:24
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:25
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:26
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:27
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:28
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:29
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:30
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:31
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:32
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:33
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:34
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:37
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:38
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:39
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:40
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:41
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:42
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:43
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:44
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:45
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:46
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:47
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\dates.py:48
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\ipv6.py:8
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\text.py:71
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: .\venv\Lib\site-packages\django\utils\text.py:259
+#: .\venv\Lib\site-packages\django\utils\timesince.py:94
+msgid ", "
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:9
+#, python-format
+msgid "%d year"
+msgid_plural "%d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:10
+#, python-format
+msgid "%d month"
+msgid_plural "%d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:11
+#, python-format
+msgid "%d week"
+msgid_plural "%d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:12
+#, python-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:13
+#, python-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\utils\timesince.py:14
+#, python-format
+msgid "%d minute"
+msgid_plural "%d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:110
+msgid "Forbidden"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:111
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:115
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:120
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:124
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" …> for links to third-party sites."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:132
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:137
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\csrf.py:142
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:41
+msgid "No year specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:61
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:111
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:208
+msgid "Date out of range"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:90
+msgid "No month specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:142
+msgid "No day specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:188
+msgid "No week specified"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:338
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:367
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:594
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\dates.py:628
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\detail.py:54
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:67
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:72
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\generic\list.py:154
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:40
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:42
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\static.py:80
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:207
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:222
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
+msgid "Django Documentation"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:231
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:240
+msgid "Get started with Django"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
+msgid "Django Community"
+msgstr ""
+
+#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: .\venv\Lib\site-packages\httplib2\__init__.py:368
+#, python-format
+msgid "Content purported to be compressed with %s but failed to decompress."
+msgstr ""
+
+#: .\venv\Lib\site-packages\httplib2\__init__.py:532
+#, python-format
+msgid "Unsupported value for qop: %s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\httplib2\__init__.py:536
+#: .\venv\Lib\site-packages\httplib2\__init__.py:614
+#, python-format
+msgid "Unsupported value for algorithm: %s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\httplib2\__init__.py:609
+msgid "The challenge doesn't contain a server nonce, or this one is empty."
+msgstr ""
+
+#: .\venv\Lib\site-packages\httplib2\__init__.py:619
+#, python-format
+msgid "Unsupported value for pw-algorithm: %s."
+msgstr ""
+
+#: .\venv\Lib\site-packages\httplib2\__init__.py:1448
+msgid "Redirected but the response is missing a Location: header."
+msgstr ""

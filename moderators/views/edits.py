@@ -10,12 +10,14 @@ from content.models import  Category, Post, PostLog, Question, SuggestedEdit,Tag
 import json
 from math import ceil
 from django.shortcuts import get_object_or_404
-
+from django.utils.translation import get_language
 @forActiveUser
 @forModerator
 def suggestedEditsAwait(request,page,mode):
-    categoires=Category.objects.filter(parent=None)
-    tags=Tag.objects.all()
+    language=get_language()[:2]
+    categoires=Category.objects.filter(language=language,parent=None)
+    tags=Tag.objects.filter(category__language=language)
+    
     category=searchVal=order=None
     tagsF=[]
     edits=SuggestedEdit.objects.all()
@@ -27,31 +29,36 @@ def suggestedEditsAwait(request,page,mode):
         edits=edits.filter(status=SuggestedEdit.staties.Accept).distinct('post__question','post__answer__question')
     elif mode==PostLog.types.Reject:
         edits=edits.filter(status=SuggestedEdit.staties.Reject)
-     
+    category=request.user.profile.category
+    
     if 'category' in request.GET and request.GET['category']:
         try:
             category=Category.objects.get(pk=request.GET['category'])
-            edits=edits.filter(
+        
+        except Category.DoesNotExist:
+            category=request.user.profile.category
+
+    else:
+        category=request.user.profile.category
+    edits=edits.filter(
+        Q(
+            Q(post__type=Post.types.Question)&
             Q(
-                Q(post__type=Post.types.Question)&
-                Q(
-                    Q(post__question__category=category)|
-                    Q(post__question__category__parent=category)|
-                    Q(post__question__category__parent__parent=category)|
-                    Q(post__question__category__parent__parent__parent=category)
-                )
-            )|Q(
-                Q(post__type=Post.types.Answer)&
-                Q(
-                    Q(post__answer__question__category=category)|
-                    Q(post__answer__question__category__parent=category)|
-                    Q(post__answer__question__category__parent__parent=category)|
-                    Q(post__answer__question__category__parent__parent__parent=category)
-                )
+                Q(post__question__category=category)|
+                Q(post__question__category__parent=category)|
+                Q(post__question__category__parent__parent=category)|
+                Q(post__question__category__parent__parent__parent=category)
+            )
+        )|Q(
+            Q(post__type=Post.types.Answer)&
+            Q(
+                Q(post__answer__question__category=category)|
+                Q(post__answer__question__category__parent=category)|
+                Q(post__answer__question__category__parent__parent=category)|
+                Q(post__answer__question__category__parent__parent__parent=category)
             )
         )
-        except Category.DoesNotExist:
-            pass
+    )
     if 'search' in request.GET and request.GET['search']:
         edits=edits.filter(Q(Q(post__type=Post.types.Question)&Q(post__question__title__contains=request.GET['search'])  |
          Q(post__question__post__text__contains=request.GET['search']))|
@@ -113,8 +120,9 @@ def suggestedEditsAwait(request,page,mode):
 @forActiveUser
 @forModerator
 def suggestedEditsAccepted(request,page,mode):
-    categoires=Category.objects.filter(parent=None)
-    tags=Tag.objects.all()
+    language=get_language()[:2]
+    categoires=Category.objects.filter(language=language,parent=None)
+    tags=Tag.objects.filter(category__language=language)
     category=searchVal=order=None
     tagsF=[]
     questions=Question.objects.filter(post__logs__type=PostLog.types.AcceptEdit)

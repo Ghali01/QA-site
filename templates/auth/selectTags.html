@@ -1,14 +1,15 @@
 {% extends 'utilities/auth/_base.html' %}
-{% block title %}Select Your Tags{% endblock %}
+{% load i18n %}
+{% block title %}{% translate 'Complete You Register' %}{% endblock %}
 {% block content %}
 <div class="form-parent">
 
     <form id="reg-form" method="POST" autocomplete="on" class="animeted-form tags-form">
         {% csrf_token %}
-        <h4 class="form-title">Complete You Register</h4>
+        <h4 class="form-title">{% translate 'Complete You Register' %}</h4>
    
         <p class="form-label form-msg">
-            Plese select your category
+            {% translate 'Plese select your category' %}
         </p>
              <div class="categoriis-lists">
             
@@ -47,7 +48,7 @@
                         {% elif category.getLvl > 2 %}
                         {{category.getSecondParent.name}}
                         {% else %}
-                        Select Category
+                        {% translate 'Select Category' %}
                         {% endif %}
 
                     </span>
@@ -87,7 +88,7 @@
                         {% elif category.getLvl > 3 %}
                         {{category.getThirdParent.name}}
                         {% else %}
-                        Select Category
+                        {% translate 'Select Category' %}
                         {% endif %}
 
                     </span>
@@ -125,7 +126,7 @@
                         {% if category.getLvl == 4 %}
                         {{category.name}}
                         {% else %}
-                        Select Category
+                        {% translate 'Select Category' %}
                         {% endif %}
 
                     </span>
@@ -157,7 +158,7 @@
 
         </div>
         <p class="form-label form-msg">
-            Plese select the things that interest you
+            {% translate 'Plese select the things that interest you' %}
         </p>
         <p class="error-p-s" style="position: static;">
             {% for msg in messages %}
@@ -178,7 +179,7 @@
 
 
                 <div class="cus-card tags-card add-tags-q">
-                    <h5 class="cus-card-header">Tags</h5>
+                    <h5 class="cus-card-header">{% translate 'Tags' %}</h5>
                     <div class="cus-card-body tags-div " id="tags-div-ol">
 
 
@@ -186,7 +187,7 @@
                     <input type="hidden" name="tags" id="tags-input" value="[]">
 
                 </div>
-                <input type="submit" value="Save" class="btn btn-primary primary-button save-tags-btn">
+                <input type="submit" value="{% translate 'Save' %}" class="btn btn-primary primary-button save-tags-btn">
             </div>
 
 

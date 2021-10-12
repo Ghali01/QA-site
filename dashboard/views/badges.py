@@ -1,6 +1,7 @@
 
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
+from django.utils.translation import gettext
 from dashboard.decorators import forSuperAdmin
 from content.models import Badge,Category,Tag
 from django.contrib import messages
@@ -79,10 +80,10 @@ def addBadge(request):
                 elif badge.targetType==Badge.targetTypes.Tag:
                     badge.tag=Tag.objects.get(pk=int(request.POST['target-id']))
                 badge.save()
-                messages.success(request,'badge created')
+                messages.success(request,gettext('badge created'))
                 return redirect(reverse('dashboard:badges-page',kwargs={'page':1}))
             else:
-                messages.error(request,'check empty fields')
+                messages.error(request,gettext('check empty fields'))
     categories=Category.objects.all()
     tags=Tag.objects.all()
     categoriesJson=[]
@@ -113,7 +114,7 @@ def deleteBadge(request):
     if 'del-id' in request.POST and 'page' in request.POST:
         try:
             Badge.objects.get(pk=request.POST['del-id']).delete()
-            messages.success(request,'Badge Removed')
+            messages.success(request,gettext('Badge Removed'))
             return redirect(reverse('dashboard:badges-page',kwargs={'page':request.POST['page']}))
 
         except(Badge.DoesNotExist,ValueError):
@@ -142,7 +143,7 @@ def editBadge(request,badgeID):
                     badge.category=None
                 badge.save()
             else:
-                messages.error(request,'check empty fields')
+                messages.error(request,gettext('check empty fields'))
 
     categories=Category.objects.all()
     tags=Tag.objects.all()

@@ -1,37 +1,38 @@
+{% load i18n %}
 {% load contentUtilities %}
 <div class="row  question-item ">
     <div class="col-3 que-nums-col">
         <div class="row">
             <div class="col-4  nums-que">
                 <span class="que-num-span">{{question.post.votes}}</span>
-                <span class="que-word">votes</span>
+                <span class="que-word">{% translate 'votes' %}</span>
 
             </div>
             <div class="col-4  nums-que">
                 <span class="que-num-span">{{question.views}}</span>
-                <span class="que-word">views</span>
+                <span class="que-word">{% translate 'views' %}</span>
             </div>
             <div class="col-4 answered-num-div nums-que">
                 <span class="answered-num-span">{{question.getPubliedAnswer.count}}</span>
-                <span class="answered-word">answers</span>
+                <span class="answered-word">{% translate 'answers' %}</span>
             </div>
         </div>
-        <div class="added-by-div">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
+        <div class="added-by-div">{% translate 'added by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
     </div>
     <div class="col-9 que-col">
         <div class="vp-num-ques">
             <div class="nums-que">
                 <span class="que-num-span">{{question.post.votes}}</span>
-                <span class="que-word">votes</span>
+                <span class="que-word">{% translate 'votes' %}</span>
 
             </div>
             <div class="nums-que">
                 <span class="que-num-span">{{question.views}}</span>
-                <span class="que-word">views</span>
+                <span class="que-word">{% translate 'views' %}</span>
             </div>
             <div class="answered-num-div nums-que">
-                <span class="answered-num-span">5</span>
-                <span class="answered-word">answers</span>
+                <span class="answered-num-span">{{question.getPubliedAnswer.count}}</span>
+                <span class="answered-word">{% translate 'answers' %}</span>
             </div>
         </div>
         <a href="{% url 'content:question-page' questionID=question.id %}" class="question-title line-clamp">
@@ -43,9 +44,9 @@
                 {% tagLink tag %}
                 {% endfor %}
             </div>
-            <div class="added-by-div added-by-div-sm">add by <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
+            <div class="added-by-div added-by-div-sm">{% translate 'added by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
             {% if question.getLastAnswerDate  %}
-            <div class="question-date">last answer added in {{question.getLastAnswerDate}} </div>
+            <div class="question-date">{% translate 'last answer added in' %} {{question.getLastAnswerDate}} </div>
             {% endif %}
         </div>
     </div>

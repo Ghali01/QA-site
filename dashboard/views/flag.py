@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls  import reverse
+from django.utils.translation import gettext
 from dashboard.decorators import forSuperAdmin
 from feedback.models import FlagReason, Reports
 from django.contrib import messages
@@ -29,7 +30,7 @@ def addReason(request,type):
                 descAR=request.POST['desc-ar'],
                 type=type
                )
-            messages.success(request,'reason added')
+            messages.success(request,gettext('reason added'))
             return redirect(reverse('dashboard:flag-reasons' ,kwargs={'type':type}))
                
     return render(request,'dashboard/addEditFlagReason.html')
@@ -40,7 +41,7 @@ def deleteReason(request):
         try:
             r=FlagReason.objects.get(pk=int(request.POST['del-id']))
             r.delete()
-            messages.success(request,'reason removed')
+            messages.success(request,gettext('reason removed'))
             return redirect(reverse('dashboard:flag-reasons' ,kwargs={'type':r.type}))
         except (FlagReason.DoesNotExist,ValueError):
             pass

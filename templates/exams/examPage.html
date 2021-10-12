@@ -1,6 +1,7 @@
 {% extends 'utilities/_base.html' %}
+{% load i18n %}
 
-{% block title %}Generate Exam{% endblock %}
+{% block title %}{% translate 'Generate Exam' %}{% endblock %}
 {% block content %} 
 {% for msg in messages %}
 <p class="error-p-s exam-error">
@@ -46,7 +47,7 @@
                 {% elif category.getLvl > 2 %}
                 {{category.getSecondParent.name}}
                 {% else %}
-                Select Category
+                {% translate 'Select Category' %}
                 {% endif %}
 
             </span>
@@ -86,7 +87,7 @@
                 {% elif category.getLvl > 3 %}
                 {{category.getThirdParent.name}}
                 {% else %}
-                Select Category
+                {% translate 'Select Category' %}
                 {% endif %}
 
             </span>
@@ -124,7 +125,7 @@
                 {% if category.getLvl == 4 %}
                 {{category.name}}
                 {% else %}
-                Select Category
+                {% translate 'Select Category' %}
                 {% endif %}
 
             </span>
@@ -157,7 +158,7 @@
 </div>
 <input type="txet" name="que-count" class="custom-input ques-exams-num custom-input-number" id='myTextBox' value="1" id="">
 <button type="submit" class="btn btn-primary btn-sm primary-button ">
-    Generate Exam
+    {% translate 'Generate Exam' %}
 </button>
 </form>
 {% endblock %}

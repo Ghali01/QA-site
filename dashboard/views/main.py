@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout as  logoutAuth
 from django.urls import reverse
+from django.utils.translation import gettext
 
 def index(request):
     if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_superuser:
@@ -23,13 +24,13 @@ def loginPage(request):
                     return redirect(reverse('dashboard:index'))
 
                 elif not user:
-                    messages.error(request,'invalid email or password')
+                    messages.error(request,gettext('invalid email or password'))
                 elif not user.is_superuser:
-                    messages.error(request,'This page for only admin ')
+                    messages.error(request,gettext('This page for only admin '))
             elif not 'email' in request.POST:
-                messages.error(request,'Email is requreid')
+                messages.error(request,gettext('Email is requreid'))
             elif not 'password' in request.POST:
-                messages.error(request,'Password is requreid')
+                messages.error(request,gettext('Password is requreid'))
         return render(request,'dashboard/login.html')
 
 def logout(request):

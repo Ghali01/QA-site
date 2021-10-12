@@ -1,17 +1,19 @@
 {% extends 'utilities/_base.html' %}
 {% load questions %}
-{% block title %}{{username}} Questions{% endblock %}
+{% load i18n %}
+
+{% block title %}{{username}} {% translate 'Questions' %}{% endblock %}
 
 {% block content %}
 <div class="column-no-border">
-<h2 class="center-title" style="float:none;">{{username}} Questions</h2>
+<h2 class="center-title" style="float:none;">{{username}} {% translate 'Questions' %}</h2>
 <div class="question-dev-parent">
     <div class="questions-gird-toolbar">
         <div class="row filters-row">
             <div class="col-12 col-sm-4">
                 <div class="form-group has-search search-div-toolbar filter">
                     <span class="fa fa-search form-control-feedback"></span>
-                    <input type="text" name="search" id="search-inp" class="form-control custom-input search-input-toolbar search-usr-que" placeholder="Search" value="{{searchVal}}"
+                    <input type="text" name="search" id="search-inp" class="form-control custom-input search-input-toolbar search-usr-que" placeholder="{% translate 'Search' %}" value="{{searchVal}}"
                     data-user-id="{{userID}}">
                 </div>
             </div>
@@ -26,9 +28,11 @@
                                 <span class="selected-span">
                                     
                                     {% if votesFilter == 'L' %}
-                                    Least Votes
+                                    {% translate 'Least Votes' %}
+
                                     {% else %}
-                                    Most Votes
+                                    {% translate 'Most Votes' %}
+
                                     {% endif %}
                                 </span>
                                 <i class="fas fa-caret-down select-arrow"></i>
@@ -36,10 +40,10 @@
                             </button>
                             <ul class="custom-select-list custom-scrollbar">
                                 <li data-value="M" class="custom-select-item">
-                                        Most Votes
+                                    {% translate 'Most Votes' %}
                                 </li>
                                 <li data-value="L" class="custom-select-item">
-                                        Least Votes
+                                    {% translate 'Least Votes' %}
                                 </li>
                             </ul>
                             <input type="hidden" id="votes-inp" name="votes" value="{% if votesFilter == 'L' %}L{% else %}M{% endif %}">
@@ -51,9 +55,9 @@
                             <button class="btn btn-primary btn-select">
                                 <span class="selected-span">
                                     {% if viewsFilter == 'L' %}
-                                    Least Views
+                                    {% translate 'Least Views' %}
                                     {% else %}
-                                    Most Views
+                                    {% translate 'Most Views' %}
                                     {% endif %}
             
                                 </span>
@@ -62,10 +66,10 @@
                             </button>
                             <ul class="custom-select-list custom-scrollbar">
                                 <li data-value="M" class="custom-select-item">
-                                        Most Views
+                                    {% translate 'Most Views' %}
                                 </li>
                                 <li data-value="L" class="custom-select-item">
-                                        Least Viwes
+                                    {% translate 'Least Views' %}
                                 </li>
                             </ul>
                             <input type="hidden" name="views" id="views-inp" value="{% if viewsFilter == 'L' %}L{% else %}M{% endif %}">
@@ -77,9 +81,9 @@
                             <button class="btn btn-primary btn-select">
                                 <span class="selected-span">
                                     {% if answersFilter == 'L' %}
-                                    Least Answers
+                                    {% translate 'Least Answers' %}
                                     {% else %}
-                                    Most Answers
+                                    {% translate 'Most Answers' %}
                                     {% endif %}
             
 
@@ -89,10 +93,10 @@
                             </button>
                             <ul class="custom-select-list custom-scrollbar">
                                 <li data-value="M" class="custom-select-item">
-                                        Most Answers
+                                    {% translate 'Most Answers' %}
                                 </li>
                                 <li data-value="L" class="custom-select-item">
-                                        Least Answers
+                                    {% translate 'Least Answers' %}
                                 </li>
                             </ul>
                             <input type="hidden" name="answers" id="answers-inp" value="{% if viewsFilter == 'L' %}L{% else %}M{% endif %}">
@@ -110,7 +114,7 @@
         {% endfor %}
     </div>
     {% if pageCount > 1 %}
-    <button class="btn see-more-btn see-more-btn-user-que" data-user-id="{{userID}}">See more</button>
+    <button class="btn see-more-btn see-more-btn-user-que" data-user-id="{{userID}}">{% translate 'See more' %}</button>
     {% endif %}
     <div class="loading-circle">
         <div class="primary-circle">

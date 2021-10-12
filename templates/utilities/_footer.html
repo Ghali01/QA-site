@@ -1,3 +1,4 @@
+{% load i18n %}
 
 <footer class="main-foot">
     <div class="continer">
@@ -6,22 +7,22 @@
                 <ul class="footer-links">
                     <li class="footer link-item">
                         <a  href="{% url 'misc:info-page' %}" class="custom-link footer-link">
-                            About us
+                            {% translate 'About us' %}
                         </a>
                     </li>
                     <li class="footer link-item">
                         <a href="{% url 'misc:contact-us' %}" class="custom-link footer-link">
-                            Contact us
+                            {% translate 'Contact us' %}
                         </a>
                     </li>
                     <li class="footer link-item" >
                         <a class="custom-link footer-link" href="{% url 'misc:advertise-with-us' %}">
-                            Advertise with us
+                            {% translate 'Advertise with us' %}
                         </a>
                     </li>
                     <li class="footer link-item">
                         <a class="custom-link footer-link" href="{% url 'misc:services-page' %}">
-                            Services
+                            {% translate 'Services' %}
                         </a>
                     </li>
                 </ul>

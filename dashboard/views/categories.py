@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse
+from django.utils.translation import gettext
 from content.models import Category
 from django.contrib import messages
 def categoriesPage(request,language):
@@ -26,9 +27,9 @@ def addCategory(request):
                         category.parent=Category.objects.get(pk=parent)
                     category.save()
                 else:
-                    messages.error(request,'Name can not be empty')
+                    messages.error(request,gettext('Name can not be empty'))
             except (Category.DoesNotExist,ValueError):
-                messages.error(request,'invalid id')
+                messages.error(request,gettext('invalid id'))
         return redirect(reverse('dashboard:categories',kwargs={'language':request.POST['language']}))
     else:
         return redirect(reverse('dashboard:login'))
@@ -40,11 +41,11 @@ def deleteCategory(request):
             try:
                 Category.objects.get(pk=int(request.POST['cate-id'])).delete()
             except (Category.DoesNotExist,ValueError):
-                messages.error(request,'invalid id')
+                messages.error(request,gettext('invalid id'))
             return redirect(reverse('dashboard:categories',kwargs={'language':request.POST['language']}))
 
         else:
-            messages.error(request,'Values Error')
+            messages.error(request,gettext('Values Error'))
 
             return redirect(reverse('dashboard:categories',kwargs={'language':'en'}))
 
@@ -62,11 +63,11 @@ def editCategory(request):
                 category.description=request.POST['cate-desc']
                 category.save()
             except (Category.DoesNotExist,ValueError):
-                messages.error(request,'invalid id')
+                messages.error(request,gettext('invalid id'))
             return redirect(reverse('dashboard:categories',kwargs={'language':request.POST['language']}))
 
         else:
-            messages.error(request,'Values Error')
+            messages.error(request,gettext('Values Error'))
 
             return redirect(reverse('dashboard:categories',kwargs={'language':'en'}))
 

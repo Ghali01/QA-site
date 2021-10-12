@@ -35,7 +35,6 @@ def suggestCategory(request):
 def suggestTag(request):
     if request.method=='POST':
         if 'tag-name' in request.POST and 'tag-desc' in request.POST and 'category-id' in request.POST:
-            currentLanguage =get_language()[:2]
             try:
                 SuggestedTag.objects.create(
                     suggester=request.user,
