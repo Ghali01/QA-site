@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-12 13:17+0300\n"
+"POT-Creation-Date: 2021-10-13 15:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,48 +35,51 @@ msgstr "جوجل"
 msgid "Github"
 msgstr "جيتهاب"
 
-#: .\authusers\models.py:28
+#: .\authusers\models.py:28 .\templates\dashboard\users.html:115
 msgid "Super Admin"
 msgstr "مشرف اول"
 
-#: .\authusers\models.py:29
+#: .\authusers\models.py:29 .\templates\dashboard\users.html:117
 msgid "Admin"
 msgstr "مشرف"
 
-#: .\authusers\models.py:30
+#: .\authusers\models.py:30 .\templates\dashboard\postLogs.html:25
+#: .\templates\dashboard\users.html:119 .\templates\utilities\_header.html:67
+#: .\templates\utilities\_header.html:159
 msgid "Moderator"
 msgstr "محرر"
 
-#: .\authusers\models.py:31
+#: .\authusers\models.py:31 .\templates\dashboard\flagReasons.html:16
+#: .\templates\dashboard\users.html:121
 msgid "User"
 msgstr "مستخدم"
 
 #: .\authusers\models.py:85 .\authusers\models.py:108 .\content\models.py:171
-#: .\content\models.py:187 .\content\models.py:321
+#: .\content\models.py:187 .\content\models.py:327
 msgid "today"
 msgstr "اليوم"
 
 #: .\authusers\models.py:87 .\authusers\models.py:110 .\content\models.py:173
-#: .\content\models.py:189 .\content\models.py:323
+#: .\content\models.py:189 .\content\models.py:329
 msgid "yesterday"
 msgstr "البارحة"
 
 #: .\authusers\models.py:89 .\authusers\models.py:112 .\content\models.py:175
-#: .\content\models.py:191 .\content\models.py:325
+#: .\content\models.py:191 .\content\models.py:331
 msgid "days"
 msgstr "ايام"
 
 #: .\authusers\models.py:91 .\authusers\models.py:96 .\authusers\models.py:114
 #: .\authusers\models.py:119 .\content\models.py:177 .\content\models.py:182
-#: .\content\models.py:193 .\content\models.py:198 .\content\models.py:327
-#: .\content\models.py:332
+#: .\content\models.py:193 .\content\models.py:198 .\content\models.py:333
+#: .\content\models.py:338
 msgid "months"
 msgstr "شهور"
 
 #: .\authusers\models.py:94 .\authusers\models.py:96 .\authusers\models.py:117
 #: .\authusers\models.py:119 .\content\models.py:180 .\content\models.py:182
-#: .\content\models.py:196 .\content\models.py:198 .\content\models.py:330
-#: .\content\models.py:332
+#: .\content\models.py:196 .\content\models.py:198 .\content\models.py:336
+#: .\content\models.py:338
 msgid "years"
 msgstr "سنين"
 
@@ -92,12 +95,12 @@ msgstr "دقائق"
 msgid "hour"
 msgstr "ساعات"
 
-#: .\authusers\models.py:124 .\content\models.py:123
+#: .\authusers\models.py:124 .\content\models.py:123 .\content\models.py:306
 msgctxt "count"
 msgid "K"
 msgstr "الف"
 
-#: .\authusers\models.py:126 .\content\models.py:125
+#: .\authusers\models.py:126 .\content\models.py:125 .\content\models.py:308
 msgctxt "count"
 msgid "M"
 msgstr "مليون"
@@ -171,69 +174,92 @@ msgstr "سؤال"
 msgid "Answer"
 msgstr "جواب"
 
-#: .\content\models.py:466
+#: .\content\models.py:472
 msgctxt "choicse"
 msgid "Suggest"
 msgstr "اقتراح"
 
-#: .\content\models.py:467
+#: .\content\models.py:473
 msgctxt "choicse"
 msgid "Accept"
 msgstr "قبول"
 
-#: .\content\models.py:468
+#: .\content\models.py:474
 msgctxt "choicse"
 msgid "Reject"
 msgstr "رفض"
 
-#: .\content\models.py:469
+#: .\content\models.py:475
 msgctxt "choicse"
 msgid "Suggest Edit"
 msgstr "اقتراح تعديل"
 
-#: .\content\models.py:470
+#: .\content\models.py:476
 msgctxt "choicse"
 msgid "Accept Edit"
 msgstr "قبول تعديل"
 
-#: .\content\models.py:471
+#: .\content\models.py:477
 msgctxt "choicse"
 msgid "Reject Edit"
 msgstr "رفض تعديل"
 
-#: .\content\models.py:472
+#: .\content\models.py:478
 msgctxt "choicse"
 msgid "Publish"
 msgstr "نشر"
 
-#: .\content\models.py:473
+#: .\content\models.py:479
 msgctxt "choicse"
 msgid "Ubpunlish"
 msgstr "الغاء نشر"
 
-#: .\content\models.py:547 .\templates\profiles\badges.html:13
+#: .\content\models.py:553 .\templates\dashboard\addEditBadge.html:23
+#: .\templates\dashboard\badges.html:26 .\templates\profiles\badges.html:13
 msgid "Gold"
 msgstr "ذهبية"
 
-#: .\content\models.py:548 .\templates\profiles\badges.html:30
+#: .\content\models.py:554 .\templates\dashboard\addEditBadge.html:24
+#: .\templates\dashboard\badges.html:27 .\templates\profiles\badges.html:30
 msgid "Silver"
 msgstr "فضية"
 
-#: .\content\models.py:549 .\templates\profiles\badges.html:52
+#: .\content\models.py:555 .\templates\dashboard\addEditBadge.html:25
+#: .\templates\dashboard\badges.html:28 .\templates\profiles\badges.html:52
 msgid "Bronze"
 msgstr "برونزية"
 
-#: .\content\models.py:552 .\feedback\models.py:26
+#: .\content\models.py:558 .\feedback\models.py:26
+#: .\templates\dashboard\flagReasons.html:17
+#: .\templates\dashboard\flagedQuestions.html:14
+#: .\templates\dashboard\flagedUsers.html:51
+#: .\templates\dashboard\questions.html:5
+#: .\templates\dashboard\questions.html:15
 #: .\templates\moderators\questions\questions.html:3
 #: .\templates\moderators\questions\questions.html:14
 #: .\templates\profiles\profile.html:67 .\templates\profiles\profile.html:254
 #: .\templates\profiles\userQuestions.html:5
 #: .\templates\profiles\userQuestions.html:9
+#: .\templates\utilities\_header.html:71 .\templates\utilities\_header.html:161
+#: .\templates\utilities\dashboard\_nav.html:111
+#: .\templates\utilities\dashboard\_nav.html:169
 msgid "Questions"
 msgstr "الاسئلة"
 
-#: .\content\models.py:553 .\feedback\models.py:27
+#: .\content\models.py:559 .\feedback\models.py:27
 #: .\templates\content\questionPage.html:14
+#: .\templates\dashboard\addEditBadge.html:32
+#: .\templates\dashboard\answers.html:5 .\templates\dashboard\answers.html:15
+#: .\templates\dashboard\badges.html:33
+#: .\templates\dashboard\editQuestion.html:49
+#: .\templates\dashboard\flagReasons.html:18
+#: .\templates\dashboard\flagedAnswers.html:13
+#: .\templates\dashboard\flagedQuestions.html:29
+#: .\templates\dashboard\flagedQuestions.html:72
+#: .\templates\dashboard\flagedUsers.html:54
+#: .\templates\dashboard\questions.html:44
+#: .\templates\dashboard\questions.html:56
+#: .\templates\dashboard\questions.html:92
 #: .\templates\moderators\answers\answers.html:4
 #: .\templates\moderators\answers\answers.html:15
 #: .\templates\moderators\answers\awaitList.html:21
@@ -241,60 +267,83 @@ msgstr "الاسئلة"
 #: .\templates\profiles\profile.html:63 .\templates\profiles\profile.html:261
 #: .\templates\profiles\userAnswers.html:5
 #: .\templates\profiles\userAnswers.html:9
+#: .\templates\utilities\_header.html:74 .\templates\utilities\_header.html:162
+#: .\templates\utilities\dashboard\_nav.html:122
+#: .\templates\utilities\dashboard\_nav.html:179
 msgid "Answers"
 msgstr "الاجوبة"
 
-#: .\content\models.py:554
+#: .\content\models.py:560
 msgid "Self Answers"
 msgstr "الاجوبة على سؤال"
 
-#: .\content\models.py:555
+#: .\content\models.py:561 .\templates\dashboard\addEditBadge.html:33
+#: .\templates\dashboard\answers.html:86 .\templates\dashboard\badges.html:34
+#: .\templates\dashboard\editAnswer.html:45
+#: .\templates\dashboard\editQuestion.html:52
+#: .\templates\dashboard\flagedAnswers.html:82
+#: .\templates\dashboard\flagedQuestions.html:91
+#: .\templates\dashboard\postComment.html:15
+#: .\templates\dashboard\questions.html:105
 msgid "Comments"
 msgstr "التعليقات"
 
-#: .\content\models.py:556
+#: .\content\models.py:562
 msgid "Self Comments"
 msgstr "التعليقات على منشور"
 
-#: .\content\models.py:557
+#: .\content\models.py:563 .\templates\dashboard\addEditBadge.html:36
+#: .\templates\dashboard\badges.html:37
 msgid "Views"
 msgstr "مشاهدة"
 
-#: .\content\models.py:558
+#: .\content\models.py:564 .\templates\dashboard\addEditBadge.html:38
+#: .\templates\dashboard\badges.html:39
 msgid "Post Votes"
 msgstr "التصويت على منشور"
 
-#: .\content\models.py:559
+#: .\content\models.py:565 .\templates\dashboard\addEditBadge.html:39
+#: .\templates\dashboard\badges.html:40
 msgid "Question Votes"
 msgstr "التصويت على الاسئلة"
 
-#: .\content\models.py:560
+#: .\content\models.py:566 .\templates\dashboard\addEditBadge.html:40
+#: .\templates\dashboard\badges.html:41
 msgid "Answer Votes"
 msgstr "التصويت على اجوبة"
 
-#: .\content\models.py:561 .\templates\moderators\edits\edits.html:5
+#: .\content\models.py:567 .\templates\dashboard\addEditBadge.html:41
+#: .\templates\dashboard\badges.html:42
+#: .\templates\moderators\edits\edits.html:5
 #: .\templates\moderators\edits\edits.html:16
+#: .\templates\utilities\_header.html:77 .\templates\utilities\_header.html:163
 msgid "Edits"
 msgstr "تعديلات"
 
-#: .\content\models.py:562 .\templates\utilities\_polls.html:3
-#: .\templates\utilities\_polls_mob.html:6
+#: .\content\models.py:568 .\templates\dashboard\addEditBadge.html:43
+#: .\templates\dashboard\badges.html:44
+#: .\templates\dashboard\pollsManagement.html:14
+#: .\templates\utilities\_polls.html:3 .\templates\utilities\_polls_mob.html:6
+#: .\templates\utilities\dashboard\_nav.html:303
 msgid "Polls"
 msgstr "استبيانات"
 
-#: .\content\models.py:563
+#: .\content\models.py:569
 msgid "Login times"
 msgstr "عدد مرات تسجيل الدخول"
 
-#: .\content\models.py:566
+#: .\content\models.py:572 .\templates\dashboard\addEditBadge.html:53
 msgid "Tag"
 msgstr "وسم"
 
-#: .\content\models.py:567
+#: .\content\models.py:573 .\templates\dashboard\addEditBadge.html:52
+#: .\templates\dashboard\suggestedCategories.html:30
+#: .\templates\dashboard\suggestedTags.html:30
 msgid "Category"
 msgstr "تصنيف"
 
-#: .\content\models.py:568
+#: .\content\models.py:574 .\templates\dashboard\addEditBadge.html:54
+#: .\templates\dashboard\badges.html:50 .\templates\dashboard\badges.html:94
 msgid "General"
 msgstr "عام"
 
@@ -461,7 +510,8 @@ msgstr "تم حذف التعليق"
 msgid "comment does not exists"
 msgstr "التعليق غير موجود"
 
-#: .\feedback\models.py:28
+#: .\feedback\models.py:28 .\templates\utilities\dashboard\_nav.html:136
+#: .\templates\utilities\dashboard\_nav.html:158
 msgid "Users"
 msgstr "مستخدمين"
 
@@ -469,7 +519,9 @@ msgstr "مستخدمين"
 msgid "message sent"
 msgstr "تم ارسال الرسالة"
 
-#: .\polls\models.py:32
+#: .\polls\models.py:32 .\templates\dashboard\addEditPoll.html:175
+#: .\templates\dashboard\addEditPoll.html:213
+#: .\templates\dashboard\pollResaults.html:25
 msgid "Radio List"
 msgstr "اختيار احادي"
 
@@ -494,8 +546,9 @@ msgstr "تغيير بريدك الالكتروني"
 #: .\templates\auth\socialRegister.html:67
 #: .\templates\dashboard\advertiseMessages.html:28
 #: .\templates\dashboard\contactMessages.html:30
-#: .\templates\dashboard\login.html:21 .\templates\misc\advertise.html:24
-#: .\templates\misc\contactUs.html:21
+#: .\templates\dashboard\flagedUsers.html:24
+#: .\templates\dashboard\login.html:21 .\templates\dashboard\users.html:33
+#: .\templates\misc\advertise.html:24 .\templates\misc\contactUs.html:21
 #: .\templates\utilities\dashboard\_nav.html:345
 msgid "Email"
 msgstr "البريد الالتكروني"
@@ -674,17 +727,31 @@ msgstr "يرجى اختيار الاشياء التي تهتم بها"
 #: .\templates\content\addQuestion.html:193
 #: .\templates\content\categories.html:4
 #: .\templates\content\categoryTags.html:4
+#: .\templates\dashboard\addEditPoll.html:34
+#: .\templates\dashboard\editQuestion.html:154
+#: .\templates\dashboard\pollsManagement.html:51
+#: .\templates\dashboard\tags.html:4 .\templates\dashboard\tags.html:19
 #: .\templates\utilities\_leftColumn.html:6
+#: .\templates\utilities\_rightColumn.html:8
+#: .\templates\utilities\dashboard\_nav.html:91
+#: .\templates\utilities\dashboard\_nav.html:198
 msgid "Tags"
 msgstr "الوسوم"
 
 #: .\templates\auth\selectTags.html:190
+#: .\templates\dashboard\addEditBadge.html:84
 #: .\templates\dashboard\addEditEmailTemplate.html:50
+#: .\templates\dashboard\addEditPoll.html:296
+#: .\templates\dashboard\categories.html:129
 #: .\templates\dashboard\editAdvertise.html:35
+#: .\templates\dashboard\editAnswer.html:62
+#: .\templates\dashboard\editComment.html:44
 #: .\templates\dashboard\editFooter.html:25
 #: .\templates\dashboard\editHeader.html:38
 #: .\templates\dashboard\editMisc\addEditInfoItem.html:34
 #: .\templates\dashboard\editMisc\addEditService.html:44
+#: .\templates\dashboard\editQuestion.html:173
+#: .\templates\dashboard\tags.html:168
 #: .\templates\profiles\_editAvatarModal.html:32
 msgid "Save"
 msgstr "حفظ"
@@ -703,6 +770,8 @@ msgid "Question Title..."
 msgstr "عنوان السؤال..."
 
 #: .\templates\content\addQuestion.html:183
+#: .\templates\dashboard\addEditPoll.html:25
+#: .\templates\dashboard\editQuestion.html:145
 msgid "Add Tags"
 msgstr "اضافة وسوم"
 
@@ -793,7 +862,8 @@ msgstr "الاقل اجوبة"
 msgid "Most Answers"
 msgstr "الاكثر اجوبة"
 
-#: .\templates\content\index.html:4
+#: .\templates\content\index.html:4 .\templates\utilities\_header.html:133
+#: .\templates\utilities\dashboard\_nav.html:58
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -886,12 +956,17 @@ msgstr "ابلاغ"
 #: .\templates\content\questionPage.html:55
 #: .\templates\content\templatetags\answer.html:107
 #: .\templates\content\templatetags\question.html:126
-#: .\templates\exams\question.html:51 .\templates\exams\question.html:107
+#: .\templates\dashboard\reviewLog.html:43 .\templates\exams\question.html:51
+#: .\templates\exams\question.html:107
 #: .\templates\moderators\questions\reviewQuestion.html:44
 msgid "Added in"
 msgstr "اضيف في"
 
 #: .\templates\content\questionPage.html:71
+#: .\templates\dashboard\suggestedCategories.html:63
+#: .\templates\dashboard\suggestedCategories.html:151
+#: .\templates\dashboard\suggestedTags.html:63
+#: .\templates\dashboard\suggestedTags.html:151
 #: .\templates\moderators\edits\awaitList.html:31
 #: .\templates\moderators\edits\rejectedList.html:31
 #: .\templates\moderators\edits\reviewEdit.html:67
@@ -1002,6 +1077,52 @@ msgstr "اضيف بواسطة"
 msgid "last answer added in"
 msgstr "اخر جواب اضيف في"
 
+#: .\templates\dashboard\addEditBadge.html:4
+#: .\templates\dashboard\addEditBadge.html:13
+msgid "Add Badge"
+msgstr "اضافة شارة"
+
+#: .\templates\dashboard\addEditBadge.html:21
+#: .\templates\dashboard\badges.html:77
+msgid "Level"
+msgstr "المستوى"
+
+#: .\templates\dashboard\addEditBadge.html:29
+msgid "Eran Reason"
+msgstr "سبب الحصول على الشارة"
+
+#: .\templates\dashboard\addEditBadge.html:31
+#: .\templates\dashboard\badges.html:32
+msgid "Quetions"
+msgstr "الاسئلة"
+
+#: .\templates\dashboard\addEditBadge.html:34
+#: .\templates\dashboard\badges.html:35
+msgid "Self Answer"
+msgstr "الاجوبة على سؤال"
+
+#: .\templates\dashboard\addEditBadge.html:35
+#: .\templates\dashboard\badges.html:36
+msgid "Self Commnet"
+msgstr "التعليقات على منشور"
+
+#: .\templates\dashboard\addEditBadge.html:44
+#: .\templates\dashboard\badges.html:45
+msgid "Log in times"
+msgstr "عدد مرات تسجيل الدخول"
+
+#: .\templates\dashboard\addEditBadge.html:49
+msgid "Target Type"
+msgstr "نوع الهدف"
+
+#: .\templates\dashboard\addEditBadge.html:59
+msgid "Target"
+msgstr "الهدف"
+
+#: .\templates\dashboard\addEditBadge.html:77
+msgid "Count"
+msgstr "العدد"
+
 #: .\templates\dashboard\addEditCard.html:5
 #: .\templates\dashboard\addEditCard.html:19
 msgid "Add Card"
@@ -1015,6 +1136,122 @@ msgstr "اضافة قالب"
 #: .\templates\dashboard\addEditEmailTemplate.html:39
 msgid "Template Name"
 msgstr "اسم القالب"
+
+#: .\templates\dashboard\addEditFlagReason.html:4
+#: .\templates\dashboard\addEditFlagReason.html:12
+msgid "Flag Reason"
+msgstr "اسباب التبليغ"
+
+#: .\templates\dashboard\addEditFlagReason.html:20
+msgid "name in english"
+msgstr "الاسم بالانجليزية"
+
+#: .\templates\dashboard\addEditFlagReason.html:23
+msgid "name in arabic"
+msgstr "الاسم بالعربية"
+
+#: .\templates\dashboard\addEditFlagReason.html:29
+msgid "description in english"
+msgstr "الوصف بالانجليزية"
+
+#: .\templates\dashboard\addEditFlagReason.html:33
+msgid "description in arabic"
+msgstr "الوصف بالعربية"
+
+#: .\templates\dashboard\addEditPoll.html:17
+msgid "Titile..."
+msgstr "عنوان..."
+
+#: .\templates\dashboard\addEditPoll.html:58
+#: .\templates\dashboard\editQuestion.html:65
+#: .\templates\dashboard\tags.html:42
+msgid "Category lvl 1"
+msgstr "1 تصنيف مستوى "
+
+#: .\templates\dashboard\addEditPoll.html:69
+#: .\templates\dashboard\editQuestion.html:84
+#: .\templates\dashboard\tags.html:50
+msgid "Category lvl 2"
+msgstr "تصنيف مستوى 2"
+
+#: .\templates\dashboard\addEditPoll.html:77
+#: .\templates\dashboard\editQuestion.html:103
+#: .\templates\dashboard\tags.html:55
+msgid "Category lvl 3"
+msgstr "تصنيف مستوى 3"
+
+#: .\templates\dashboard\addEditPoll.html:84
+#: .\templates\dashboard\editQuestion.html:121
+#: .\templates\dashboard\tags.html:60
+msgid "Category lvl 4"
+msgstr "تصنيف مستوى 4"
+
+#: .\templates\dashboard\addEditPoll.html:91
+#: .\templates\dashboard\categories.html:101
+#: .\templates\dashboard\tags.html:113
+msgid "Add"
+msgstr "اضافة"
+
+#: .\templates\dashboard\addEditPoll.html:96
+msgid "Categiries"
+msgstr "التصنيفات"
+
+#: .\templates\dashboard\addEditPoll.html:124
+msgid "Poll Items"
+msgstr "عناصر الاستبيان"
+
+#: .\templates\dashboard\addEditPoll.html:136
+#: .\templates\dashboard\pollResaults.html:23
+msgid "CheckBox List"
+msgstr "اختيار متعدد"
+
+#: .\templates\dashboard\addEditPoll.html:139
+#: .\templates\dashboard\addEditPoll.html:177
+msgid "question text..."
+msgstr "نص السؤال..."
+
+#: .\templates\dashboard\addEditPoll.html:142
+#: .\templates\dashboard\addEditPoll.html:148
+#: .\templates\dashboard\addEditPoll.html:154
+#: .\templates\dashboard\addEditPoll.html:160
+#: .\templates\dashboard\addEditPoll.html:180
+#: .\templates\dashboard\addEditPoll.html:186
+#: .\templates\dashboard\addEditPoll.html:192
+#: .\templates\dashboard\addEditPoll.html:198
+#: .\templates\dashboard\addEditPoll.html:218
+#: .\templates\dashboard\addEditPoll.html:224
+#: .\templates\dashboard\addEditPoll.html:230
+#: .\templates\dashboard\addEditPoll.html:236
+msgid "Option..."
+msgstr "خيار"
+
+#: .\templates\dashboard\addEditPoll.html:166
+#: .\templates\dashboard\addEditPoll.html:204
+#: .\templates\dashboard\addEditPoll.html:242
+#: .\templates\dashboard\addEditPoll.html:274
+msgid "Add Choice"
+msgstr "اضافة خيار"
+
+#: .\templates\dashboard\addEditPoll.html:283
+#: .\templates\dashboard\addEditPoll.html:286
+msgid "Add CheckBox List"
+msgstr " اضافة اختيار متعدد"
+
+#: .\templates\dashboard\addEditPoll.html:284
+#: .\templates\dashboard\addEditPoll.html:287
+msgid "Add Radio List"
+msgstr "اضافة اختيار احادي"
+
+#: .\templates\dashboard\addEditPoll.html:298
+#: .\templates\dashboard\answers.html:82
+#: .\templates\dashboard\editAnswer.html:41
+#: .\templates\dashboard\editQuestion.html:45
+#: .\templates\dashboard\flagedAnswers.html:74
+#: .\templates\dashboard\flagedQuestions.html:81
+#: .\templates\dashboard\pollsManagement.html:96
+#: .\templates\dashboard\questions.html:101
+msgid "Publish"
+msgstr "نشر"
 
 #: .\templates\dashboard\advertiseMessages.html:3
 #: .\templates\dashboard\advertiseMessages.html:10
@@ -1034,11 +1271,29 @@ msgid "Subject"
 msgstr "الموضوع"
 
 #: .\templates\dashboard\advertiseMessages.html:34
+#: .\templates\dashboard\answers.html:44 .\templates\dashboard\badges.html:81
 #: .\templates\dashboard\contactMessages.html:36
+#: .\templates\dashboard\flagedAnswers.html:29
+#: .\templates\dashboard\flagedQuestions.html:33
+#: .\templates\dashboard\flagedUsers.html:27
+#: .\templates\dashboard\pollsManagement.html:35
+#: .\templates\dashboard\postComment.html:27
+#: .\templates\dashboard\postLogs.html:27
+#: .\templates\dashboard\questions.html:58
+#: .\templates\dashboard\suggestedCategories.html:33
+#: .\templates\dashboard\suggestedTags.html:33
+#: .\templates\dashboard\tags.html:75 .\templates\dashboard\users.html:35
 msgid "Action"
 msgstr "اجراء"
 
 #: .\templates\dashboard\advertiseMessages.html:54
+#: .\templates\dashboard\answers.html:68
+#: .\templates\dashboard\flagedAnswers.html:60
+#: .\templates\dashboard\flagedQuestions.html:65
+#: .\templates\dashboard\pollsManagement.html:75
+#: .\templates\dashboard\postComment.html:51
+#: .\templates\dashboard\postLogs.html:60
+#: .\templates\dashboard\questions.html:85
 msgid "Show"
 msgstr "عرض"
 
@@ -1046,17 +1301,42 @@ msgstr "عرض"
 #: .\templates\dashboard\advertiseMessages.html:118
 #: .\templates\dashboard\advertiseRequest.html:14
 #: .\templates\dashboard\advertiseRequest.html:70
+#: .\templates\dashboard\answers.html:72 .\templates\dashboard\answers.html:155
+#: .\templates\dashboard\badges.html:107 .\templates\dashboard\badges.html:167
+#: .\templates\dashboard\categories.html:29
+#: .\templates\dashboard\categories.html:157
 #: .\templates\dashboard\contactMessage.html:14
 #: .\templates\dashboard\contactMessage.html:71
 #: .\templates\dashboard\contactMessages.html:123
+#: .\templates\dashboard\editAnswer.html:31
+#: .\templates\dashboard\editAnswer.html:93
 #: .\templates\dashboard\editColumn.html:79
+#: .\templates\dashboard\editComment.html:33
+#: .\templates\dashboard\editComment.html:77
 #: .\templates\dashboard\editMisc\editInfo.html:28
 #: .\templates\dashboard\editMisc\editInfo.html:62
 #: .\templates\dashboard\editMisc\services.html:28
 #: .\templates\dashboard\editMisc\services.html:62
+#: .\templates\dashboard\editQuestion.html:35
+#: .\templates\dashboard\editQuestion.html:204
 #: .\templates\dashboard\emailTemlates.html:42
 #: .\templates\dashboard\emailTemlates.html:92
 #: .\templates\dashboard\flagReasons.html:38
+#: .\templates\dashboard\flagedAnswers.html:64
+#: .\templates\dashboard\flagedAnswers.html:149
+#: .\templates\dashboard\flagedQuestions.html:69
+#: .\templates\dashboard\flagedQuestions.html:153
+#: .\templates\dashboard\pollsManagement.html:82
+#: .\templates\dashboard\pollsManagement.html:154
+#: .\templates\dashboard\postComment.html:55
+#: .\templates\dashboard\postComment.html:112
+#: .\templates\dashboard\questions.html:89
+#: .\templates\dashboard\questions.html:173
+#: .\templates\dashboard\suggestedCategories.html:67
+#: .\templates\dashboard\suggestedCategories.html:123
+#: .\templates\dashboard\suggestedTags.html:67
+#: .\templates\dashboard\suggestedTags.html:123
+#: .\templates\dashboard\tags.html:141
 #: .\venv\Lib\site-packages\django\forms\formsets.py:417
 msgid "Delete"
 msgstr "حذف"
@@ -1078,17 +1358,241 @@ msgstr "هل تريد حذف الطلب؟"
 
 #: .\templates\dashboard\advertiseMessages.html:117
 #: .\templates\dashboard\advertiseRequest.html:69
+#: .\templates\dashboard\answers.html:154 .\templates\dashboard\badges.html:166
+#: .\templates\dashboard\categories.html:100
+#: .\templates\dashboard\categories.html:128
+#: .\templates\dashboard\categories.html:156
 #: .\templates\dashboard\contactMessage.html:70
 #: .\templates\dashboard\contactMessages.html:122
+#: .\templates\dashboard\editAnswer.html:92
 #: .\templates\dashboard\editColumn.html:78
+#: .\templates\dashboard\editComment.html:76
 #: .\templates\dashboard\editMisc\editInfo.html:61
 #: .\templates\dashboard\editMisc\services.html:61
+#: .\templates\dashboard\editQuestion.html:203
 #: .\templates\dashboard\emailTemlates.html:91
 #: .\templates\dashboard\flagReasons.html:87
+#: .\templates\dashboard\flagedAnswers.html:148
+#: .\templates\dashboard\flagedQuestions.html:152
+#: .\templates\dashboard\flagedUsers.html:136
+#: .\templates\dashboard\flagedUsers.html:166
+#: .\templates\dashboard\flagedUsers.html:193
+#: .\templates\dashboard\pollsManagement.html:153
+#: .\templates\dashboard\postComment.html:111
+#: .\templates\dashboard\questions.html:172
+#: .\templates\dashboard\suggestedCategories.html:122
+#: .\templates\dashboard\suggestedCategories.html:150
+#: .\templates\dashboard\suggestedTags.html:122
+#: .\templates\dashboard\suggestedTags.html:150
+#: .\templates\dashboard\tags.html:112 .\templates\dashboard\tags.html:140
+#: .\templates\dashboard\tags.html:167 .\templates\dashboard\users.html:70
+#: .\templates\dashboard\users.html:95 .\templates\dashboard\users.html:125
+#: .\templates\dashboard\users.html:153
 #: .\templates\feedback\templatetags\reportModal.html:36
 #: .\templates\profiles\_editAvatarModal.html:31
 msgid "Close"
 msgstr "اغلاق"
+
+#: .\templates\dashboard\answers.html:25
+msgid "Search by id"
+msgstr "بحث بواسطة المعرف"
+
+#: .\templates\dashboard\answers.html:40
+#: .\templates\dashboard\editMisc\addEditInfoItem.html:30
+#: .\templates\dashboard\editMisc\addEditService.html:30
+#: .\templates\dashboard\flagedAnswers.html:24
+#: .\templates\dashboard\flagedQuestions.html:27
+#: .\templates\dashboard\postComment.html:23
+#: .\templates\dashboard\postLogs.html:23
+#: .\templates\dashboard\questions.html:53
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2115
+msgid "Text"
+msgstr "النص"
+
+#: .\templates\dashboard\answers.html:41
+#: .\templates\dashboard\flagedAnswers.html:25
+#: .\templates\dashboard\flagedQuestions.html:28
+#: .\templates\dashboard\postComment.html:24
+#: .\templates\dashboard\postLogs.html:24
+#: .\templates\dashboard\questions.html:54
+#: .\templates\dashboard\suggestedCategories.html:31
+#: .\templates\dashboard\suggestedTags.html:31
+msgid "Aouthr"
+msgstr "الكاتب"
+
+#: .\templates\dashboard\answers.html:42
+#: .\templates\dashboard\postComment.html:25
+#: .\templates\dashboard\questions.html:42
+#: .\templates\dashboard\questions.html:55
+#: .\templates\dashboard\suggestedCategories.html:32
+#: .\templates\dashboard\suggestedTags.html:32
+msgid "Date"
+msgstr "التاريخ"
+
+#: .\templates\dashboard\answers.html:43
+#: .\templates\dashboard\flagedAnswers.html:26
+#: .\templates\dashboard\flagedQuestions.html:30
+#: .\templates\dashboard\postComment.html:26
+#: .\templates\dashboard\questions.html:57
+msgid "Id"
+msgstr "المعرف"
+
+#: .\templates\dashboard\answers.html:65 .\templates\dashboard\badges.html:103
+#: .\templates\dashboard\categories.html:34
+#: .\templates\dashboard\editMisc\editInfo.html:23
+#: .\templates\dashboard\editMisc\services.html:23
+#: .\templates\dashboard\emailTemlates.html:31
+#: .\templates\dashboard\flagReasons.html:32
+#: .\templates\dashboard\flagedAnswers.html:57
+#: .\templates\dashboard\flagedQuestions.html:62
+#: .\templates\dashboard\pollsManagement.html:72
+#: .\templates\dashboard\postComment.html:48
+#: .\templates\dashboard\questions.html:82
+#: .\templates\dashboard\suggestedCategories.html:60
+#: .\templates\dashboard\suggestedTags.html:60
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\templates\dashboard\answers.html:77
+#: .\templates\dashboard\editAnswer.html:36
+#: .\templates\dashboard\editQuestion.html:40
+#: .\templates\dashboard\flagedAnswers.html:69
+#: .\templates\dashboard\flagedQuestions.html:76
+#: .\templates\dashboard\questions.html:96
+msgid "Unpublish"
+msgstr "الغاء نشر"
+
+#: .\templates\dashboard\answers.html:90
+#: .\templates\dashboard\editAnswer.html:49
+#: .\templates\dashboard\editQuestion.html:55
+#: .\templates\dashboard\flagedAnswers.html:86
+#: .\templates\dashboard\flagedQuestions.html:94
+#: .\templates\dashboard\questions.html:108
+msgid "Logs"
+msgstr "تغييرات"
+
+#: .\templates\dashboard\answers.html:94
+msgid "Mark as correct"
+msgstr "تعليم كصحيح"
+
+#: .\templates\dashboard\answers.html:138
+#: .\templates\dashboard\editAnswer.html:76
+#: .\templates\dashboard\flagedAnswers.html:132
+msgid "Delete Answer"
+msgstr "الاجوبة على سؤال"
+
+#: .\templates\dashboard\answers.html:146
+#: .\templates\dashboard\editAnswer.html:84
+#: .\templates\dashboard\flagedAnswers.html:140
+msgid "Do you want Delete the Answer with ID"
+msgstr "هل تريد حذف السؤال ذو المعرف"
+
+#: .\templates\dashboard\badges.html:3 .\templates\dashboard\badges.html:14
+msgid "Badges Management"
+msgstr "ازالة الشارات"
+
+#: .\templates\dashboard\badges.html:18
+msgid "search name"
+msgstr "بحث بالاسم"
+
+#: .\templates\dashboard\badges.html:25
+msgid "Select Level"
+msgstr "اختر مستوى"
+
+#: .\templates\dashboard\badges.html:31
+msgid "Select Reason"
+msgstr "اختر السبب"
+
+#: .\templates\dashboard\badges.html:49
+msgid "Select Target"
+msgstr "اختر الهدف"
+
+#: .\templates\dashboard\badges.html:75
+#: .\templates\dashboard\suggestedCategories.html:28
+#: .\templates\dashboard\suggestedCategories.html:141
+#: .\templates\dashboard\suggestedTags.html:28
+#: .\templates\dashboard\suggestedTags.html:141
+msgid "Name"
+msgstr "الاسم"
+
+#: .\templates\dashboard\badges.html:76
+#: .\templates\dashboard\suggestedCategories.html:29
+#: .\templates\dashboard\suggestedCategories.html:142
+#: .\templates\dashboard\suggestedTags.html:29
+#: .\templates\dashboard\suggestedTags.html:142
+#: .\templates\dashboard\tags.html:108 .\templates\dashboard\tags.html:162
+msgid "Description"
+msgstr "الوصف"
+
+#: .\templates\dashboard\badges.html:78
+#: .\templates\dashboard\flagedAnswers.html:28
+#: .\templates\dashboard\flagedQuestions.html:32
+#: .\templates\dashboard\flagedUsers.html:26
+msgid "Reason"
+msgstr "السبب"
+
+#: .\templates\dashboard\badges.html:79
+msgid "target"
+msgstr "الهدف"
+
+#: .\templates\dashboard\badges.html:80
+msgid "Users Earned"
+msgstr "المستخدمين الذين حصلو عليها"
+
+#: .\templates\dashboard\badges.html:150
+msgid "Delete Badge"
+msgstr "حذف الشارة"
+
+#: .\templates\dashboard\badges.html:158
+msgid "Do you want Delete the Badge with ID"
+msgstr "هل تريد حذف الشارة ذات المعرف"
+
+#: .\templates\dashboard\categories.html:19
+msgid "Categories lvl 1"
+msgstr "التصنيف مستوى 1"
+
+#: .\templates\dashboard\categories.html:44
+msgid "Categories lvl 2"
+msgstr "التصنيف مستوى 2"
+
+#: .\templates\dashboard\categories.html:55
+msgid "Categories lvl 3"
+msgstr "التصنيف مستوى 3"
+
+#: .\templates\dashboard\categories.html:66
+msgid "Categories lvl 4"
+msgstr "التصنيف مستوى 4"
+
+#: .\templates\dashboard\categories.html:84
+msgid "Add Category"
+msgstr "اضافة تصنيف"
+
+#: .\templates\dashboard\categories.html:113
+msgid "Edit Category"
+msgstr "تعديل التصنيف"
+
+#: .\templates\dashboard\categories.html:141
+msgid "Delete Category"
+msgstr "حذف التصميف"
+
+#: .\templates\dashboard\categories.html:149
+#: .\templates\dashboard\editColumn.html:72
+#: .\templates\dashboard\editMisc\editInfo.html:55
+#: .\templates\dashboard\editMisc\services.html:55
+#: .\templates\dashboard\emailTemlates.html:85
+#: .\templates\dashboard\flagReasons.html:81
+#: .\templates\dashboard\tags.html:134
+msgid "Do you want delete"
+msgstr "هل تريد حذف"
+
+#: .\templates\dashboard\categories.html:149
+#: .\templates\dashboard\editColumn.html:72
+#: .\templates\dashboard\editMisc\editInfo.html:55
+#: .\templates\dashboard\editMisc\services.html:55
+#: .\templates\dashboard\emailTemlates.html:85
+#: .\templates\dashboard\flagReasons.html:81
+msgid "and everything related to it?"
+msgstr "وكل شيء يتعلق به؟"
 
 #: .\templates\dashboard\contactMessage.html:56
 #: .\templates\dashboard\contactMessages.html:107
@@ -1119,6 +1623,23 @@ msgstr "اضافة HTML لصفحة الاعلان"
 msgid "Demo Images:"
 msgstr "صور للمعاينة"
 
+#: .\templates\dashboard\editAnswer.html:3
+#: .\templates\dashboard\editAnswer.html:10
+msgid "Edit Answer"
+msgstr "تعديل اجابة"
+
+#: .\templates\dashboard\editAnswer.html:13
+#: .\templates\dashboard\editComment.html:15
+#: .\templates\dashboard\editQuestion.html:17
+msgid "ID:"
+msgstr "المعرف:"
+
+#: .\templates\dashboard\editAnswer.html:21
+#: .\templates\dashboard\editComment.html:23
+#: .\templates\dashboard\editQuestion.html:25
+msgid "Added By:"
+msgstr "اضيف بواسطة:"
+
 #: .\templates\dashboard\editColumn.html:3
 #: .\templates\dashboard\editColumn.html:9
 msgid "Cards"
@@ -1132,21 +1653,20 @@ msgstr "لا يوجد بطاقات"
 msgid "Delete Card"
 msgstr "حذف بطاقة"
 
-#: .\templates\dashboard\editColumn.html:72
-#: .\templates\dashboard\editMisc\editInfo.html:55
-#: .\templates\dashboard\editMisc\services.html:55
-#: .\templates\dashboard\emailTemlates.html:85
-#: .\templates\dashboard\flagReasons.html:81
-msgid "Do you want delete"
-msgstr "هل تريد حذف"
+#: .\templates\dashboard\editComment.html:4
+#: .\templates\dashboard\editComment.html:12
+msgid "Edit Comment"
+msgstr "تعديل تعليق"
 
-#: .\templates\dashboard\editColumn.html:72
-#: .\templates\dashboard\editMisc\editInfo.html:55
-#: .\templates\dashboard\editMisc\services.html:55
-#: .\templates\dashboard\emailTemlates.html:85
-#: .\templates\dashboard\flagReasons.html:81
-msgid "and everything related to it?"
-msgstr "وكل شيء يتعلق به؟"
+#: .\templates\dashboard\editComment.html:60
+#: .\templates\dashboard\postComment.html:95
+msgid "Delete Comment"
+msgstr "حذف تعليق"
+
+#: .\templates\dashboard\editComment.html:68
+#: .\templates\dashboard\postComment.html:103
+msgid "Do you want Delete the Comment with ID"
+msgstr "هل تريد حذف التعليق ذو المعرف"
 
 #: .\templates\dashboard\editFooter.html:3
 msgid "Edit footer"
@@ -1172,27 +1692,19 @@ msgstr "تعديل الخدمات"
 
 #: .\templates\dashboard\editMisc\addEditInfoItem.html:29
 #: .\templates\dashboard\editMisc\addEditService.html:29
+#: .\templates\dashboard\flagedQuestions.html:26
+#: .\templates\dashboard\pollsManagement.html:29
+#: .\templates\dashboard\questions.html:52
 msgid "Title"
 msgstr "العنوان"
-
-#: .\templates\dashboard\editMisc\addEditInfoItem.html:30
-#: .\templates\dashboard\editMisc\addEditService.html:30
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2115
-msgid "Text"
-msgstr "النص"
 
 #: .\templates\dashboard\editMisc\editInfo.html:10
 msgid "Edit Info"
 msgstr "تعديل صفحة المعلومات"
 
-#: .\templates\dashboard\editMisc\editInfo.html:23
-#: .\templates\dashboard\editMisc\services.html:23
-#: .\templates\dashboard\emailTemlates.html:31
-#: .\templates\dashboard\flagReasons.html:32
-msgid "Edit"
-msgstr "تعديل"
-
 #: .\templates\dashboard\editMisc\editInfo.html:47
+#: .\templates\dashboard\suggestedCategories.html:106
+#: .\templates\dashboard\suggestedTags.html:106
 msgid "Delete Item"
 msgstr "حذف عنصر"
 
@@ -1205,6 +1717,18 @@ msgstr "الخدمات"
 #: .\templates\dashboard\editMisc\services.html:47
 msgid "Delete Service"
 msgstr "حذف خدمة"
+
+#: .\templates\dashboard\editQuestion.html:187
+#: .\templates\dashboard\flagedQuestions.html:136
+#: .\templates\dashboard\questions.html:156
+msgid "Delete Question"
+msgstr "حذف السؤال"
+
+#: .\templates\dashboard\editQuestion.html:195
+#: .\templates\dashboard\flagedQuestions.html:144
+#: .\templates\dashboard\questions.html:164
+msgid "Do you want Delete the Question with ID"
+msgstr "هل تريد حذف السؤال ذو المعرف"
 
 #: .\templates\dashboard\emailTemlates.html:3
 #: .\templates\dashboard\emailTemlates.html:13
@@ -1243,12 +1767,206 @@ msgid "Remove Reason"
 msgstr "حذف السبب"
 
 #: .\templates\dashboard\flagReasons.html:88
+#: .\templates\dashboard\flagedAnswers.html:79
+#: .\templates\dashboard\flagedQuestions.html:87
+#: .\templates\dashboard\flagedUsers.html:82
 msgid "Remove"
 msgstr "ازالة"
+
+#: .\templates\dashboard\flagedAnswers.html:4
+msgid "Flaged Answers"
+msgstr "الاجوبة المبلغ عليها"
+
+#: .\templates\dashboard\flagedAnswers.html:15
+#: .\templates\dashboard\flagedQuestions.html:16
+#: .\templates\dashboard\flagedUsers.html:15
+msgid "Report Reasons"
+msgstr "اسباب الابلاغ"
+
+#: .\templates\dashboard\flagedAnswers.html:27
+#: .\templates\dashboard\flagedQuestions.html:31
+#: .\templates\dashboard\flagedUsers.html:25
+msgid "Report Count"
+msgstr "عدد البلاغات"
+
+#: .\templates\dashboard\flagedQuestions.html:5
+msgid "Flaged Questions"
+msgstr "الاسئلة المبلغ عليها"
+
+#: .\templates\dashboard\flagedUsers.html:4
+#: .\templates\dashboard\flagedUsers.html:13
+msgid "Flaged Users"
+msgstr "المستخدمين المبلغ عليهم"
+
+#: .\templates\dashboard\flagedUsers.html:21
+#: .\templates\dashboard\users.html:30
+msgid "User name"
+msgstr "اسم المستخدم"
+
+#: .\templates\dashboard\flagedUsers.html:22
+#: .\templates\dashboard\users.html:31
+msgid "Full name"
+msgstr "الاسم الكامل"
+
+#: .\templates\dashboard\flagedUsers.html:23
+#: .\templates\dashboard\users.html:32
+msgid "ID"
+msgstr "المعرف"
+
+#: .\templates\dashboard\flagedUsers.html:48
+#: .\templates\profiles\_profileTabs.html:8
+#: .\templates\profiles\editProfile.html:17
+#: .\templates\profiles\editTags.html:17
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+#: .\templates\dashboard\flagedUsers.html:57
+msgctxt "send email"
+msgid "Email"
+msgstr "ارسال بريد التكروني"
+
+#: .\templates\dashboard\flagedUsers.html:63
+#: .\templates\dashboard\flagedUsers.html:137
+#: .\templates\dashboard\users.html:71
+msgid "Ban"
+msgstr "حظر"
+
+#: .\templates\dashboard\flagedUsers.html:70
+#: .\templates\dashboard\flagedUsers.html:194
+msgid "Unban"
+msgstr "الغاء الحظر"
+
+#: .\templates\dashboard\flagedUsers.html:76
+#: .\templates\dashboard\flagedUsers.html:167
+#: .\templates\dashboard\users.html:154
+msgid "Prune"
+msgstr "تأديب"
+
+#: .\templates\dashboard\flagedUsers.html:122
+#: .\templates\dashboard\users.html:56
+msgid "Ban User"
+msgstr "حظر المستخدم"
+
+#: .\templates\dashboard\flagedUsers.html:130
+#: .\templates\dashboard\users.html:64
+msgid "Do you want Ban"
+msgstr "هل تريد حظر"
+
+#: .\templates\dashboard\flagedUsers.html:149
+#: .\templates\dashboard\users.html:106 .\templates\dashboard\users.html:136
+msgid "User Premissions"
+msgstr "صلاحيات المستخدم"
+
+#: .\templates\dashboard\flagedUsers.html:158
+#: .\templates\dashboard\users.html:145
+msgid "unpublish all user questions"
+msgstr "الغاء نشر كل اسئلة المستخدم"
+
+#: .\templates\dashboard\flagedUsers.html:160
+#: .\templates\dashboard\users.html:147
+msgid "unpublish all user answers"
+msgstr "الغاء نشر كل اجوبة المستخدم"
+
+#: .\templates\dashboard\flagedUsers.html:179
+#: .\templates\dashboard\users.html:81
+msgid "Unban User"
+msgstr "الغاء حظر المستخدم"
+
+#: .\templates\dashboard\flagedUsers.html:187
+#: .\templates\dashboard\users.html:89
+msgid "Do you want unban"
+msgstr "هل تريد الغاء حظر"
 
 #: .\templates\dashboard\login.html:16
 msgid "Sign in to start your session"
 msgstr "سجل الدخول بدء جلستك"
+
+#: .\templates\dashboard\pollsManagement.html:5
+msgid "Polls Management"
+msgstr "ادارة الاستبيانات"
+
+#: .\templates\dashboard\pollsManagement.html:30
+msgid "description"
+msgstr "وصف"
+
+#: .\templates\dashboard\pollsManagement.html:31
+msgid "Users Target"
+msgstr "المستخدمين المستهدفين"
+
+#: .\templates\dashboard\pollsManagement.html:32
+msgid "Participants"
+msgstr "المشاركين"
+
+#: .\templates\dashboard\pollsManagement.html:33
+msgid "Participation rate"
+msgstr "معدل المشاركة"
+
+#: .\templates\dashboard\pollsManagement.html:34
+msgid "Target(s)"
+msgstr "الاهداف"
+
+#: .\templates\dashboard\pollsManagement.html:59
+#: .\templates\utilities\dashboard\_nav.html:81
+#: .\templates\utilities\dashboard\_nav.html:188
+msgid "Categories"
+msgstr "التصنيفات"
+
+#: .\templates\dashboard\pollsManagement.html:78
+msgid "Resaults"
+msgstr "النتائج"
+
+#: .\templates\dashboard\pollsManagement.html:86
+msgid "Lock"
+msgstr "حذف"
+
+#: .\templates\dashboard\pollsManagement.html:91
+msgid "Unlock"
+msgstr "فتح"
+
+#: .\templates\dashboard\pollsManagement.html:137
+msgid "Delete Poll"
+msgstr " حذف الاستبيان"
+
+#: .\templates\dashboard\pollsManagement.html:145
+msgid "Do you want Delete the Poll with ID"
+msgstr "هل تريد حذف الاستبيان ذو المعرف"
+
+#: .\templates\dashboard\postComment.html:4
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+#: .\templates\dashboard\postLogs.html:6 .\templates\dashboard\postLogs.html:14
+msgid "Post Logs"
+msgstr "التغيرات على منشور"
+
+#: .\templates\dashboard\postLogs.html:22
+msgid "Type"
+msgstr "النوع"
+
+#: .\templates\dashboard\postLogs.html:26
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2186
+msgid "Time"
+msgstr "الوقت"
+
+#: .\templates\dashboard\questions.html:25
+msgid "Search by title or id"
+msgstr "بحث بواسطة العنوان او المعرف"
+
+#: .\templates\dashboard\questions.html:38
+msgid "Sort By:"
+msgstr "ترتيب بواسطة"
+
+#: .\templates\dashboard\questions.html:113
+msgid "Remvoe from exams"
+msgstr "حذف من الامتحانات"
+
+#: .\templates\dashboard\questions.html:117
+msgid "Add to exams"
+msgstr "اضافة الى الاختبارات"
+
+#: .\templates\dashboard\reviewLog.html:10
+msgid "Time:"
+msgstr "الوقت:"
 
 #: .\templates\dashboard\sendEmail.html:3
 #: .\templates\dashboard\sendEmail.html:14
@@ -1263,6 +1981,71 @@ msgstr "قالب"
 #: .\templates\misc\contactUs.html:28
 msgid "Send"
 msgstr "ارسل"
+
+#: .\templates\dashboard\suggestedCategories.html:4
+#: .\templates\dashboard\suggestedCategories.html:15
+msgid "Suggested Categories"
+msgstr "التصنيفات المقترحة"
+
+#: .\templates\dashboard\suggestedCategories.html:114
+#: .\templates\dashboard\suggestedTags.html:114
+msgid "Do you want Delete the Item with ID"
+msgstr "هل تريد حذف العنصر ذو المعرف"
+
+#: .\templates\dashboard\suggestedCategories.html:132
+#: .\templates\dashboard\suggestedTags.html:132
+msgid "Approval"
+msgstr "تعديل"
+
+#: .\templates\dashboard\suggestedTags.html:4
+#: .\templates\dashboard\suggestedTags.html:15
+msgid "Suggested Tags"
+msgstr "الوسوم المقترحة"
+
+#: .\templates\dashboard\tags.html:73 .\templates\dashboard\tags.html:107
+#: .\templates\dashboard\tags.html:161
+msgid "Tag Name"
+msgstr "اسم الوسم"
+
+#: .\templates\dashboard\tags.html:74
+msgid "Summary"
+msgstr "وصف"
+
+#: .\templates\dashboard\tags.html:98
+msgid "Add Tag"
+msgstr "اضافة وسم"
+
+#: .\templates\dashboard\tags.html:126
+msgid "Delete Tag"
+msgstr "حذف وسم"
+
+#: .\templates\dashboard\tags.html:134
+msgid "Tag?"
+msgstr " "
+
+#: .\templates\dashboard\tags.html:152
+msgid "Edit Tag"
+msgstr "تعديل وسم"
+
+#: .\templates\dashboard\users.html:4
+msgid "Users Management"
+msgstr "ادارة المستخدمين"
+
+#: .\templates\dashboard\users.html:16
+msgid "search by usernam or id..."
+msgstr "بحث بواسطة اسم المستخدم او المعرف"
+
+#: .\templates\dashboard\users.html:34
+msgid "Permissions"
+msgstr "الصلاحيات"
+
+#: .\templates\dashboard\users.html:96
+msgid "unban"
+msgstr "الغاء حظر"
+
+#: .\templates\dashboard\users.html:126
+msgid "Set"
+msgstr "حفظ"
 
 #: .\templates\exams\examPage.html:4 .\templates\exams\examPage.html:161
 msgid "Generate Exam"
@@ -1366,7 +2149,7 @@ msgstr "تم الرفض"
 #: .\templates\moderators\questions\questions.html:236
 #: .\templates\profiles\userAnswers.html:16
 #: .\templates\profiles\userQuestions.html:16
-#: .\templates\utilities\_header.html:25
+#: .\templates\utilities\_header.html:26
 msgid "Search"
 msgstr "بحث"
 
@@ -1441,13 +2224,8 @@ msgstr "يرجى الاجابة على كل الاسئلة"
 msgid "Submit"
 msgstr "ارسال"
 
-#: .\templates\profiles\_profileTabs.html:8
-#: .\templates\profiles\editProfile.html:17
-#: .\templates\profiles\editTags.html:17
-msgid "Profile"
-msgstr "الملف الشخصي"
-
 #: .\templates\profiles\_profileTabs.html:14
+#: .\templates\utilities\dashboard\_nav.html:294
 msgid "Badges"
 msgstr "الشارات"
 
@@ -1554,6 +2332,35 @@ msgstr "تواصل معنا"
 msgid "Advertise with us"
 msgstr "اعلن معنا"
 
+#: .\templates\utilities\_header.html:52 .\templates\utilities\_header.html:137
+msgid "My Profile"
+msgstr "ملفي الشخصي"
+
+#: .\templates\utilities\_header.html:57 .\templates\utilities\_header.html:140
+msgid "My Questions"
+msgstr "اسئلتي"
+
+#: .\templates\utilities\_header.html:62
+msgid "My Answes"
+msgstr "اجاباتي"
+
+#: .\templates\utilities\_header.html:96
+msgid "Logout"
+msgstr "تسجيل خروج"
+
+#: .\templates\utilities\_header.html:143
+msgid "My Answers"
+msgstr "اجاباتي"
+
+#: .\templates\utilities\_header.html:147
+msgid "All Categories"
+msgstr "كل التصنيفات"
+
+#: .\templates\utilities\_header.html:151
+msgid "All Tags"
+msgstr "كل الوسوم"
+
+#: .\templates\utilities\_header.html:154
 #: .\templates\utilities\_leftColumn.html:11
 msgid "Exams"
 msgstr "اختبارات"
@@ -1561,6 +2368,14 @@ msgstr "اختبارات"
 #: .\templates\utilities\_loginModal.html:15
 msgid "Login with email"
 msgstr "تسجيل دخول عبر البريد الالكتروني"
+
+#: .\templates\utilities\dashboard\_nav.html:70
+msgid "Content"
+msgstr "المحتوى"
+
+#: .\templates\utilities\dashboard\_nav.html:145
+msgid "Feedback"
+msgstr "التلقيم الراجع"
 
 #: .\templates\utilities\dashboard\_nav.html:214
 msgid "Edit Site"
@@ -1586,7 +2401,7 @@ msgstr "الاعمدة"
 msgid "Advertise Requests"
 msgstr "طلبات الاعلان"
 
-#: .\templates\utilities\dashboard\_nav.html:355
+#: .\templates\utilities\dashboard\_nav.html:370
 msgid "Log out"
 msgstr "تسجيل خروج"
 
@@ -1952,10 +2767,6 @@ msgstr ""
 msgid ""
 "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
 "invalid time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2186
-msgid "Time"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2312

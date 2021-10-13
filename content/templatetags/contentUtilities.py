@@ -1,7 +1,9 @@
 from typing_extensions import ParamSpec
 from django.db.models.expressions import F
+from django.shortcuts import redirect
 from django.template import Library
 from content.models import Voter
+from dashboard.models import BoolOption
 register=Library()
 
 @register.inclusion_tag('content/templatetags/tag.html',name='tagLink')
@@ -27,3 +29,9 @@ def commentItem(comment,isSuperAdmin):
         'comment':comment,
         'isSuperAdmin':isSuperAdmin
         }
+
+@register.inclusion_tag('utilities/_chLang.html' ,name='chLangAuthen')
+@register.inclusion_tag('utilities/auth/_chLang.html' ,name='chLangNoAuthen')
+def chLang(url):
+    print(url)
+    return{'arabicOn':BoolOption.arabicOn(),'url':url}

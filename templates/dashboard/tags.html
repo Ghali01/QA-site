@@ -1,6 +1,7 @@
 {% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
 
-{% block title %}Tags{% endblock %}
+{% block title %}{% translate 'Tags' %}{% endblock %}
 
 {% block content %} 
 {% include 'utilities/_messages.html' %}
@@ -15,7 +16,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Tags</h3>
+                        <h3 class="card-title">{% translate 'Tags' %}</h3>
                         <div class="btn-group float-right page-options">
                             <a href="{% url 'dashboard:tags' language='en' %}" class="btn btn-default">English</a>
                             <a href="{% url 'dashboard:tags' language='ar' %}" class="btn btn-default">عربي</a>
@@ -38,7 +39,7 @@
                             <div class="col-9">
                                 <div class="row">
                                     <div class="col-2">
-                                        <label>Category lvl 1</label>
+                                        <label>{% translate 'Category lvl 1' %}</label>
                                         <select class="form-control category-select">
                                             {% for cate in categories %}
                                             <option data-sub='{{cate.subs}}' value="{{cate.id}}">{{cate.name}}</option>
@@ -46,17 +47,17 @@
                                         </select>
                                     </div>
                                     <div class="col-2" style="visibility: hidden;">
-                                        <label>Category lvl 2</label>
+                                        <label>{% translate 'Category lvl 2' %}</label>
                                         <select class="form-control category-select">
                                         </select>
                                     </div>
                                     <div class="col-2" style="visibility: hidden;">
-                                        <label>Category lvl 3</label>
+                                        <label>{% translate 'Category lvl 3' %}</label>
                                         <select class="form-control category-select">
                                         </select>
                                     </div>
                                     <div class="col-2" style="visibility: hidden;">
-                                        <label>Category lvl 4</label>
+                                        <label>{% translate 'Category lvl 4' %}</label>
                                         <select class="form-control category-select">
                                         </select>
                                       </div>
@@ -69,9 +70,9 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th style="width:10%">Tag Name</th>
-                                    <th>Summary</th>
-                                    <th style="width: 6%;">Action</th>
+                                    <th style="width:10%">{% translate 'Tag Name' %}</th>
+                                    <th>{% translate 'Summary' %}</th>
+                                    <th style="width: 6%;">{% translate 'Action' %}</th>
                                 </tr>
                             </thead>
                             <tbody id="tags-table">
@@ -94,7 +95,7 @@
        <div class="modal-dialog" role="document">
            <div class="modal-content">
                <div class="modal-header">
-                   <h5 class="modal-title" id="add-tag-modalLabel">Add Tag</h5>
+                   <h5 class="modal-title" id="add-tag-modalLabel">{% translate 'Add Tag' %}</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                    </button>
@@ -103,13 +104,13 @@
                    <form method="POST" action="{% url 'dashboard:add-tag' %}" id="add-form">
                     {% csrf_token %}
                     <input type="hidden" name="cate-id"  id="add-cate-id">
-                       <input type="text" class="form-control" name="tag-name"  placeholder="Tag Name">
-                       <textarea  class="form-control" placeholder="Description" name="tag-desc" style="margin-top: 20px; height:150px;"></textarea>
+                       <input type="text" class="form-control" name="tag-name"  placeholder="{% translate 'Tag Name' %}">
+                       <textarea  class="form-control" placeholder="{% translate 'Description' %}" name="tag-desc" style="margin-top: 20px; height:150px;"></textarea>
                    </form>
                </div>
                <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                   <input type="submit" class="btn btn-primary" form="add-form" value="Add" />
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+                   <input type="submit" class="btn btn-primary" form="add-form" value="{% translate 'Add' %}" />
                </div>
            </div>
        </div>
@@ -122,7 +123,7 @@
        <div class="modal-dialog" role="document">
            <div class="modal-content">
                <div class="modal-header">
-                   <h5 class="modal-title" id="del-tag-modalLabel">Delete Tag</h5>
+                   <h5 class="modal-title" id="del-tag-modalLabel">{% translate 'Delete Tag' %}</h5>
                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                        <span aria-hidden="true">&times;</span>
                    </button>
@@ -130,14 +131,14 @@
                <div class="modal-body">
                    <form method="POST"  action="{% url 'dashboard:delete-tag' %}" id="delete-form">
                     {% csrf_token %}
-                    <p>Do you want delete <span class="f-bold" id="del-tag-name"></span> Tag?
+                    <p>{% translate 'Do you want delete' %} <span class="f-bold" id="del-tag-name"></span> {% translate 'Tag?' %}
                        </p>
                        <input type="hidden" name="tag-id" id="del-tag-id">
                    </form>
                </div>
                <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                   <input type="submit" class="btn btn-primary" form="delete-form" value="Delete"/>
+                   <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+                   <input type="submit" class="btn btn-primary" form="delete-form" value="{% translate 'Delete' %}"/>
                </div>
            </div>
        </div>
@@ -148,7 +149,7 @@
    <div class="modal-dialog" role="document">
        <div class="modal-content">
            <div class="modal-header">
-               <h5 class="modal-title" id="edit-tag-modalLabel">Edit Tag</h5>
+               <h5 class="modal-title" id="edit-tag-modalLabel">{% translate 'Edit Tag' %}</h5>
                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                    <span aria-hidden="true">&times;</span>
                </button>
@@ -157,14 +158,14 @@
                <form method="POST" action="{% url 'dashboard:edit-tag' %}" id="edit-form">
                     {% csrf_token %}
                     <input type="hidden" name="tag-id" id="edit-tag-id">
-                   <input type="text" class="form-control" name="tag-name" id="edit-tag-name" placeholder="Tag Name">
-                   <textarea  class="form-control" placeholder="Description" name="tag-desc" id="edit-tag-desc" style="margin-top: 20px; height:150px;"></textarea>
+                   <input type="text" class="form-control" name="tag-name" id="edit-tag-name" placeholder="{% translate 'Tag Name' %}">
+                   <textarea  class="form-control" placeholder="{% translate 'Description' %}" name="tag-desc" id="edit-tag-desc" style="margin-top: 20px; height:150px;"></textarea>
                              
                </form>
            </div>
            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <input type="submit" class="btn btn-primary" form="edit-form" value="Save"/>
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+               <input type="submit" class="btn btn-primary" form="edit-form" value="{% translate 'Save' %}"/>
            </div>
        </div>
    </div>

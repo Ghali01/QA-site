@@ -53,7 +53,7 @@ def BadgesPage(request,page):
         'categories':categories,
         'tags':tags,
         'currentPage':page,
-        'pages':pages if len(pages)>1 else [],
+        'pages':pages ,#if len(pages)>1 else [],
         'search':search,
         'reason':reason,
         'lvl':lvl,

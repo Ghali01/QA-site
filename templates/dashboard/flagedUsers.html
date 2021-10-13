@@ -1,5 +1,7 @@
 {% extends 'utilities/dashboard/_base.html' %}
-{% block  title %}Flaged Users{% endblock %}
+{% load i18n %}
+
+{% block  title %}{% translate 'Flaged Users' %}{% endblock %}
 {% block content %} 
 <div class="content">
     <div class="container-fluid">
@@ -8,21 +10,21 @@
           
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Flaged Users</h3>
+            <h3 class="card-title">{% translate 'Flaged Users' %}</h3>
             <div class="btn-group lng-sel">
-              <a href="{% url 'dashboard:flag-reasons' type='U' %}" class="btn btn-default">Report Reasons</a>
+              <a href="{% url 'dashboard:flag-reasons' type='U' %}" class="btn btn-default">{% translate 'Report Reasons' %}</a>
           </div>      
                   </div>
           <div class="card-body">
             <table class="table table-bordered table-striped">
               <thead>
-                <th style="width: 10%;">User name</th>
-                <th style="width: 10%;">Full name</th>
-                <th style="width: 8%;">ID</th>
-                <th style="width: 20%;">Email</th>
-                <th style="width: 10%;">Report Count</th>
-                <th style="width: 10%;">Reason</th>
-                <th style="width: 32%;">Action</th>
+                <th style="width: 10%;">{% translate 'User name' %}</th>
+                <th style="width: 10%;">{% translate 'Full name' %}</th>
+                <th style="width: 8%;">{% translate 'ID' %}</th>
+                <th style="width: 20%;">{% translate 'Email' %}</th>
+                <th style="width: 10%;">{% translate 'Report Count' %}</th>
+                <th style="width: 10%;">{% translate 'Reason' %}</th>
+                <th style="width: 32%;">{% translate 'Action' %}</th>
               </thead>
               <tbody>
               {% for user in users %}
@@ -43,41 +45,41 @@
                     <div class="actions-btns" data-item-id="{{user.id}}" data-user-name="{{user.userName}}">
 
                         <a class="btn btn-app cus-btn-app" href="{% url 'profiles:profile-page' userID=user.id %}">
-                          <i class="fas fa-user btn-app-icon"></i>Profile
+                          <i class="fas fa-user btn-app-icon"></i>{% translate 'Profile' %}
                         </a>
                         <a class="btn btn-app cus-btn-app app-btn-70" href="{% url 'profiles:user-questions' userID=user.id %}">
-                          <i class="fas fa-external-link-alt btn-app-icon"></i>Questions
+                          <i class="fas fa-external-link-alt btn-app-icon"></i>{% translate 'Questions' %}
                         </a>
                         <a class="btn btn-app cus-btn-app app-btn-70" href="{% url 'profiles:user-answers' userID=user.id %}">
-                          <i class="fas fa-angle-right btn-app-icon"></i>Answers
+                          <i class="fas fa-angle-right btn-app-icon"></i>{% translate 'Answers' %}
                         </a>
                         <a class="btn btn-app cus-btn-app app-btn-70" href="{% url 'dashboard:templates' language=user.profile.language %}?to={{user.email}}">
-                          <i class="far fa-envelope btn-app-icon"></i>Email
+                          <i class="far fa-envelope btn-app-icon"></i>{% translate 'Email' context 'send email' %}
                         </a>
                         {% if not user.profile.isBaned %}
                         <button class="btn btn-app cus-btn-app ban-user-btn"
                         data-toggle="modal" data-lvl="2" data-target="#ban-modal"
                        >
-                          <i class="fas fa-user-slash btn-app-icon"></i>Ban
+                          <i class="fas fa-user-slash btn-app-icon"></i>{% translate 'Ban' %}
                         </button>
                         {% else %}
                         
                         <button class="btn btn-app cus-btn-app unban-user-btn"
                         data-toggle="modal" data-lvl="2" data-target="#unban-modal"
                        >
-                          <i class="fas fa-user btn-app-icon"></i>unban
+                          <i class="fas fa-user btn-app-icon"></i>{% translate 'Unban' %}
                         </button>
                         {% endif %}
                         <button class="btn btn-app cus-btn-app app-btn-70 prune-btn"
                         data-toggle="modal" data-lvl="2" data-target="#prune-modal"
                         >   
-                        <i class="far fas fa-user-minus btn-app-icon"></i>Prune
+                        <i class="far fas fa-user-minus btn-app-icon"></i>{% translate 'Prune' %}
                         
                       </button>
 
 
                       <button data-report-on="{{user.id}}" data-reason-id="{{report.id}}" data-type="U"  class="btn btn-app cus-btn-app app-btn-70 remove-report-btn">
-                        <i class="fas fa-times btn-app-icon"></i>Remove 
+                        <i class="fas fa-times btn-app-icon"></i>{% translate 'Remove' %} 
                       </button>
                     </div>
                   </td>
@@ -117,7 +119,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ban-modalLabel">Ban User</h5>
+          <h5 class="modal-title" id="ban-modalLabel">{% translate 'Ban User' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -125,14 +127,14 @@
         <div class="modal-body">
           <form method="POST" id="ban-form" action="{% url 'dashboard:toggle-ban-user' %}">
             {% csrf_token %}
-            <p>Do you want Ban <span class="f-bold" id="ban-user-name"></span>?
+            <p>{% translate 'Do you want Ban' %} <span class="f-bold" id="ban-user-name"></span>?
             </p>
             <input type="hidden" name="user-id" id="ban-user-id">
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="ban-form" class="btn btn-primary">Ban</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="ban-form" class="btn btn-primary">{% translate 'Ban' %}</button>
         </div>
       </div>
     </div>
@@ -144,7 +146,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="permissions-modalLabel">User Premissions</h5>
+        <h5 class="modal-title" id="permissions-modalLabel">{% translate 'User Premissions' %}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -153,16 +155,16 @@
         <form method="POST" id="prune-form" action="{% url 'dashboard:prune-user' %}">
             {% csrf_token %}
           <input type="hidden" name="user-id" id="prune-user-id">
-          <input type="checkbox" name="questions" id="qu-ch" > <label for="qu-ch">unpublish all user questions</label>
+          <input type="checkbox" name="questions" id="qu-ch" > <label for="qu-ch">{% translate 'unpublish all user questions' %}</label>
           <br>
-          <input type="checkbox" name="answers" id="an-ch"> <label for="an-ch">unpublish all user answers</label>
+          <input type="checkbox" name="answers" id="an-ch"> <label for="an-ch">{% translate 'unpublish all user answers' %}</label>
           <br>
      
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" form="prune-form"  value="Prune">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+        <input type="submit" class="btn btn-primary" form="prune-form"  value="{% translate 'Prune' %}">
       </div>
     </div>
   </div>
@@ -174,7 +176,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="unban-modalLabel">UnBan User</h5>
+          <h5 class="modal-title" id="unban-modalLabel">{% translate 'Unban User' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -182,14 +184,14 @@
         <div class="modal-body">
           <form method="POST" id="unban-form" action="{% url 'dashboard:toggle-ban-user' %}">
             {% csrf_token %}
-            <p>Do you want unban <span class="f-bold" id="unban-user-name"></span>?
+            <p>{% translate 'Do you want unban' %} <span class="f-bold" id="unban-user-name"></span>?
             </p>
             <input type="hidden" name="user-id" id="unban-user-id">
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="unban-form" class="btn btn-primary">unban</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="unban-form" class="btn btn-primary">{% translate 'Unban' %}</button>
         </div>
       </div>
     </div>

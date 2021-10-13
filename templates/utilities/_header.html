@@ -1,4 +1,5 @@
-
+{% load i18n %}
+{% load contentUtilities %}
 {% load leftColumn %}
 {% load profileLib %}
     <header class="header-nav">
@@ -48,51 +49,42 @@
                             <ul class="nav-drop-down">
                                 <li>
                                     <a href="{% url 'profiles:profile-page' userID=request.user.id %}" class="drop-link">
-                                     <p>My Profile</p>
+                                     <p>{% translate 'My Profile' %}</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'profiles:user-questions' userID=request.user.id %}" class="drop-link">
-                                     <p>My Questions</p>
+                                     <p>{% translate 'My Questions' %}</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{% url 'profiles:user-answers' userID=request.user.id %}" class="drop-link">
-                                     <p>My Answes</p>
+                                     <p>{% translate 'My Answers' %}</p>
                                     </a>
                                 </li>
                                 {% if request.user.profile.isModerator %}
                                 <li >
-                                    <span class="drop-link n-sl-btn">Moderator <i class="fas fa-caret-down"></i></span>      
+                                    <span class="drop-link n-sl-btn">{% translate 'Moderator' %} <i class="fas fa-caret-down"></i></span>      
                                     <ul class="n-sub-list">
                                         <li>
                                             <a href="{% url 'moderators:suggested-questions-await' page=1 %}" class="drop-link">
-                                                 <p>Questions</p></a>
+                                                 <p>{% translate 'Questions' %}</p></a>
                                         </li> <li>
                                             <a href="{% url 'moderators:suggested-answers-await' page=1 %}" class="drop-link">
-                                                 <p>Answers</p></a>
+                                                 <p>{% translate 'Answers' %}</p></a>
                                         </li> <li>
                                             <a href="{% url 'moderators:suggested-edits-await' page=1 %}" class="drop-link">
-                                                 <p>Edits</p></a>
+                                                 <p>{% translate 'Edits' %}</p></a>
                                         </li>
                                     </ul>
     
                                 </li>
                                 {% endif %}
+                               
+                                {% chLangAuthen request.build_absolute_uri %}
                                 <li>
-                                    <a href="{% if LC == 'en' %}{% url 'content:set-language' language='ar' %}{% else %}{% url 'content:set-language' language='en' %}{% endif %}?url={{request.build_absolute_uri}}" class="drop-link">
-                                        <i class="fas fa-globe"></i> <p>
-                                            {% if LC == 'en' %}
-                                            عربي
-                                            {% else %} 
-                                            English
-                                            {% endif %}               
-                            
-                            </p></a>
-                                </li>
-                                        <li>
                                     <a href="{% url 'authusers:logout' %}" class="drop-link">
-                                        <i class="fas fa-sign-out-alt"></i> <p>logout</p></a>
+                                        <i class="fas fa-sign-out-alt"></i> <p>{% translate 'Logout' %}</p></a>
                                 </li>
                             
                             </ul>
@@ -129,37 +121,37 @@
 
 
                         <li class="nav-item dropdown d-sm-none   ">
-                            <a class="dropdown-item mob-nav-link" href="{% url 'content:index' %}">Home</a>
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:index' %}">{% translate 'Home' %}</a>
                         </li>
 
                         <li class="nav-item dropdown d-sm-none   ">
-                            <a class="dropdown-item mob-nav-link" href="{% url 'profiles:profile-page' userID=request.user.id %}">My Profile</a>
+                            <a class="dropdown-item mob-nav-link" href="{% url 'profiles:profile-page' userID=request.user.id %}">{% translate 'My Profile' %}</a>
                         </li>
                         <li class="nav-item dropdown d-sm-none   ">
-                            <a class="dropdown-item mob-nav-link" href="{% url 'profiles:user-questions' userID=request.user.id %}">My Questions</a>
+                            <a class="dropdown-item mob-nav-link" href="{% url 'profiles:user-questions' userID=request.user.id %}">{% translate 'My Questions' %}</a>
                         </li>
                         <li class="nav-item dropdown d-sm-none   ">
-                            <a class="dropdown-item mob-nav-link" href="{% url 'profiles:user-answers' userID=request.user.id %}">My Answers</a>
-                        </li>
-                        
-                        <li class="nav-item dropdown d-sm-none   ">
-                            <a class="dropdown-item mob-nav-link" href="{% url 'content:categories-page' %}">All Categories</a>
+                            <a class="dropdown-item mob-nav-link" href="{% url 'profiles:user-answers' userID=request.user.id %}">{% translate 'My Answers' %}</a>
                         </li>
                         
                         <li class="nav-item dropdown d-sm-none   ">
-                            <a class="dropdown-item mob-nav-link" href="{% url 'content:tags-page' %}">All Tags</a>
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:categories-page' %}">{% translate 'All Categories' %}</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown d-sm-none   ">
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:tags-page' %}">{% translate 'All Tags' %}</a>
                         </li>
                         <li class="nav-item dropdown d-sm-none   ">
-                            <a class="dropdown-item mob-nav-link" href="{% url 'content:exam-page' %}">Exams</a>
+                            <a class="dropdown-item mob-nav-link" href="{% url 'content:exam-page' %}">{% translate 'Exams' %}</a>
                         </li>
 
                         <li class="nav-item dropdown d-sm-none  ">
                             <span class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">Moderator</span>
+                                aria-expanded="false">{% translate 'Moderator' %}</span>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-questions-await' page=1 %}">Questions</a></li>
-                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-answers-await' page=1 %}">Answers</a></li>
-                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-edits-await' page=1 %}">Edits</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-questions-await' page=1 %}">{% translate 'Questions' %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-answers-await' page=1 %}">{% translate 'Answers' %}</a></li>
+                                <li><a class="dropdown-item" href="{% url 'moderators:suggested-edits-await' page=1 %}">{% translate 'Edits' %}</a></li>
                             </ul>
                         </li>
                         {% categories_mob %}

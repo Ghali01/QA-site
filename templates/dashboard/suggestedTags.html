@@ -1,5 +1,7 @@
 {% extends 'utilities/dashboard/_base.html' %}
-{% block title %}{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate 'Suggested Tags' %}{% endblock %}
 
 {% block content %}
 {% include 'utilities/_messages.html' %}
@@ -10,7 +12,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Suggested Tags</h3>
+                        <h3 class="card-title">{% translate 'Suggested Tags' %}</h3>
                  
                 <div class="btn-group float-right ">
                     <a href="{% url 'dashboard:suggested-tags' page=1 language='en' %}" class="btn btn-default">English</a>
@@ -23,12 +25,12 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th style="width: 11%;">Name</th>
-                                    <th style="width: 42%;">Description</th>
-                                    <th style="width: 10%;">Category</th>
-                                    <th style="width: 11%;">Aouthr</th>
-                                    <th style="width: 11%;">Date</th>
-                                    <th style="width: 15%;">Action</th>
+                                    <th style="width: 11%;">{% translate 'Name' %}</th>
+                                    <th style="width: 42%;">{% translate 'Description' %}</th>
+                                    <th style="width: 10%;">{% translate 'Category' %}</th>
+                                    <th style="width: 11%;">{% translate 'Aouthr' %}</th>
+                                    <th style="width: 11%;">{% translate 'Date' %}</th>
+                                    <th style="width: 15%;">{% translate 'Action' %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,14 +57,14 @@
                                     <td data-item-id="{{tag.id}}" data-desc="{{tag.description}}" data-name="{{tag.name}}">
                                         <button href="" class="btn btn-app cus-btn-app edit-sug-item-btn"
                                         data-toggle="modal" data-target="#approval-modal" >
-                                            <i class="fas fa-edit btn-app-icon"></i>Edit
+                                            <i class="fas fa-edit btn-app-icon"></i>{% translate 'Edit' %}
                                         </button>
                                         <a href="{% url 'dashboard:accept-suggested-tag' page=currentPage itemID=tag.id %}" class="btn btn-app cus-btn-app">
-                                            <i class="fas fa-check btn-app-icon"></i>Accept
+                                            <i class="fas fa-check btn-app-icon"></i>{% translate 'Accept' %}
                                         </a>
                                         <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
                                             data-toggle="modal" data-target="#del-modal" data-tid="{{tag.id}}">
-                                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                                            <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                                         </button>
                                     </td>
                                 </tr>
@@ -79,8 +81,7 @@
                                     active
                                     {%  endif %}
                                     ">
-                                    <a href="{% url 'dashboard:post-comments' postID=PID page=pg %}{% if search and order == 'date' %}?search={{search}}&order={{order}}{% elif search and order == 'answers' %}?search={{search}}&order={{order}}{% elif search %}?search={{search}}{% elif order == 'answers' or order == 'date' %}?order={{order}}{% endif %}
-                    " aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                                    <a href="{% url 'dashboard:suggested-categories' language=lang page=pg %}" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
                                         {{pg}}
                                     </a>
                                 </li>
@@ -102,7 +103,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="del-modalLabel">Delete Item</h5>
+          <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Item' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -110,7 +111,7 @@
         <div class="modal-body">
           <form method="POST" id="delete-form" action="{% url 'dashboard:delete-suggested-tag' %}" >
               {% csrf_token %}
-            <p>Do you want Delete the Item with ID <span class="del-id-span" id="del-id-span"></span>
+            <p>{% translate 'Do you want Delete the Item with ID' %} <span class="del-id-span" id="del-id-span"></span>
             </p>
 
             <input type="hidden" name="del-id" id="del-id-inp">
@@ -118,8 +119,8 @@
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="delete-form" class="btn btn-primary" >{% translate 'Delete' %}</button>
         </div>
       </div>
     </div>
@@ -128,7 +129,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="del-modalLabel">Approval</h5>
+            <h5 class="modal-title" id="del-modalLabel">{% translate 'Approval' %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -137,8 +138,8 @@
             <form method="POST" id="approval-form" action="{% url 'dashboard:accept-suggested-tag-approval' %}" >
                 {% csrf_token %}
           
-                <input type="text" class="form-control" name="item-name" placeholder="Name" id="cate-name">
-                <textarea name="item-desc" class="form-control" placeholder="Description" id="cate-desc"
+                <input type="text" class="form-control" name="item-name" placeholder="{% translate 'Name' %}" id="cate-name">
+                <textarea name="item-desc" class="form-control" placeholder="{% translate 'Description' %}" id="cate-desc"
                 style="margin-top: 10px; min-height:250px;"
                 ></textarea>
                 <input type="hidden" name="item-id" id="item-id">
@@ -146,8 +147,8 @@
           </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" form="approval-form" class="btn btn-primary" >Accept</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+            <button type="submit" form="approval-form" class="btn btn-primary" >{% translate 'Accept' %}</button>
           </div>
         </div>
       </div>

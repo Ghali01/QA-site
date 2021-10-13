@@ -273,6 +273,8 @@ $(document).ready(function () {
     $('#reasons-select').change(selectReason);
     $('.toggle-que-ex-btn').click(toggExamQue);
     $('.mark-ans-exam-btn').click(markCorrectAnswer);
+    $('#restart-input').keyup(restartInputWrite);
+    $('#restart-btn').click(restratBtn);
     let now= new Date(),
     dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
 
@@ -402,7 +404,7 @@ function onCateSelectChange() {
     $(nextSelect).html("");
 
     let allOpt = document.createElement("option");
-    $(allOpt).text("Select Category");
+    $(allOpt).text(gettext("Select Category"));
     $(allOpt).val("0");
     $(nextSelect).append(allOpt);
     try {
@@ -500,9 +502,9 @@ function addPollItem(itemtype) {
     $(title).addClass(["float-right", 'poll-item-title']);
 
     if (itemtype == "C")
-        $(title).text("CheckBox List");
+        $(title).text(gettext("CheckBox List"));
     else
-        $(title).text("Radio List");
+        $(title).text(gettext("Radio List"));
 
     $(item).append(title);
     let typeInp = document.createElement("input");
@@ -513,7 +515,7 @@ function addPollItem(itemtype) {
     $(item).append(typeInp);
     let textarea = document.createElement("textarea");
     $(textarea).addClass(["form-control", "polls-que"]);
-    $(textarea).attr("placeholder", "question text...");
+    $(textarea).attr("placeholder", gettext("question text..."));
     $(item).append(textarea);
     let ul = document.createElement("ul");
     $(ul).addClass("poll-choesies");
@@ -534,7 +536,7 @@ function addPollItem(itemtype) {
     $(item).append(ul);
     let addChoBtn = document.createElement("button");
     $(addChoBtn).addClass(['btn', 'btn-outline-primary', "float-right", "add-cho-btn"]);
-    $(addChoBtn).text("Add Choice");
+    $(addChoBtn).text(gettext("Add Choice"));
     $(addChoBtn).click(addChoiceBtn);
     $(item).append(addChoBtn);
     $(item).on("dragstart", function () {
@@ -591,7 +593,7 @@ function onCategorySelectChange(){
     nextSelect=$(this).parent().next(".col-2").find(".category-select");
     nextSelect.parent().css("visibility", "visible")
     $(nextSelect).html(`
-    <option data-sub="[]" value="0">All</option>
+    <option data-sub="[]" value="0">${gettext('All')}</option>
     
     `);
     if(subs){
@@ -638,10 +640,11 @@ function despalyTags(tags){
             <button class="btn btn-app cus-btn-app d-block del-tag-btn" data-lvl="2" data-toggle="modal" data-target="#del-tag-modal"
             data-tag-id="${item.id}" data-tag-name="${item.name}">
                 <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                <i class="far fa-trash-alt btn-app-icon"></i>${gettext('Delete')}
             </button>
             <button class="btn btn-app cus-btn-app d-block edit-tag-btn" data-lvl="2" data-toggle="modal" data-target="#edit-tag-modal"
             data-tag-id="${item.id}">
-                <i class="fas fa-pen btn-app-icon"></i>Edit
+                <i class="fas fa-pen btn-app-icon"></i>${gettext('Edit')}
             </button>
         </td>
    
@@ -688,32 +691,32 @@ function searchUsers(){
                         <i class="fas fa-user btn-app-icon"></i>Profile
                       </a>
                       <a class="btn btn-app cus-btn-app app-btn-70" href="/profile/user-questions/${user.id}">
-                        <i class="fas fa-external-link-alt btn-app-icon"></i>Questions
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>${gettext('Questions')}
                       </a>
                       <a class="btn btn-app cus-btn-app app-btn-70" href="/profile/user-answers/${user.id}">
-                        <i class="fas fa-angle-right btn-app-icon"></i>Answers
+                        <i class="fas fa-angle-right btn-app-icon"></i>${gettext('Answers')}
                       </a>
                       <a class="btn btn-app cus-btn-app app-btn-70" href="/dashboard/templates/${user.language.toUpperCase()}?to=${user.email}">
-                        <i class="far fa-envelope btn-app-icon"></i>Email
+                        <i class="far fa-envelope btn-app-icon"></i>${gettext('Email')}
                       </a>
                       ${user.isBaned!='True'?`<button class="btn btn-app cus-btn-app ban-user-btn"
                       data-toggle="modal" data-lvl="2" data-target="#ban-modal"
                       >
-                        <i class="fas fa-user-slash btn-app-icon"></i>Ban
+                        <i class="fas fa-user-slash btn-app-icon"></i>${gettext('Ban')}
                       </button>`:
                       `
                       <button class="btn btn-app cus-btn-app unban-user-btn"
                       data-toggle="modal" data-lvl="2" data-target="#unban-modal"
                       >
-                        <i class="fas fa-user btn-app-icon"></i>unban
+                        <i class="fas fa-user btn-app-icon"></i>${gettext('unban')}
                       </button>`}
                       <button class="btn btn-app cus-btn-app app-btn-70 prune-btn"
                       data-toggle="modal" data-lvl="2" data-target="#prune-modal"
                       >
-                        <i class="far fas fa-user-minus btn-app-icon"></i>Prune
+                        <i class="far fas fa-user-minus btn-app-icon"></i>${gettext('Prune')}
                       </button>
                       <button class="btn btn-app cus-btn-app app-btn-80 permission-btn" data-lvl="2" data-toggle="modal" data-target="#permissions-modal">
-                        <i class="fas fa-address-card btn-app-icon"></i>Permissions
+                        <i class="fas fa-address-card btn-app-icon"></i>${gettext('Permissions')}
                       </button>
                     </div>
                   </td>
@@ -777,10 +780,10 @@ function togglePubPost() {
     ,
         function (data, textStatus, jqXHR) {
             if(data=='pub'){
-                $(clicked).html(`<i class="fas fa-eye-slash btn-app-icon"></i>Unpublish`);
+                $(clicked).html(`<i class="fas fa-eye-slash btn-app-icon"></i>${gettext('Unpublish')}`);
             }
             else if (data=='unpub'){
-                $(clicked).html(`<i class="fas fa-eye btn-app-icon"></i>Publish`);
+                $(clicked).html(`<i class="fas fa-eye btn-app-icon"></i>${gettext('Publish')}`);
 
             }
         },
@@ -865,9 +868,9 @@ function toggOpenPollBtn(){
     },
         function (data, textStatus, jqXHR) {
             if(data=='opened')
-                $(clicked).html('<i class="fas fa-lock btn-app-icon"></i>Lock');
+                $(clicked).html(`<i class="fas fa-lock btn-app-icon"></i>${gettext('Lock')}`);
             if(data=='closed')
-                $(clicked).html('<i class="fas fa-unlock btn-app-icon"></i>Unlock');
+                $(clicked).html(`<i class="fas fa-unlock btn-app-icon"></i>${gettext('Unlock')}`);
             },
     );
 }
@@ -907,10 +910,10 @@ function toggExamQue() {
     },
         function (data, textStatus, jqXHR) {
             if(data=='added'){
-                $(clicked).html(' <i class="fas fa-eye btn-app-icon"></i>Remvoe from exams');
+                $(clicked).html(` <i class="fas fa-eye btn-app-icon"></i>${gettext('Remvoe from exams')}`);
                 window.open(`/dashboard/answers/1/${$(clicked).data('que-id')}`,'_blank')
             } else if (data=='removed')
-                $(clicked).html('<i class="fas fa-plus btn-app-icon"></i>Add to exams');
+                $(clicked).html(`<i class="fas fa-plus btn-app-icon"></i>${gettext('Add to exams')}`);
         },
     );
   }
@@ -940,3 +943,19 @@ function markCorrectAnswer() {
         },
     );
 }
+
+
+function restartInputWrite(){
+    if($(this).val()=='yes'){
+      $('#restart-btn').removeClass('btn-secondary');
+      $('#restart-btn').addClass('btn-danger')
+    } else{
+      
+      $('#restart-btn').addClass('btn-secondary');
+      $('#restart-btn').removeClass('btn-danger')
+    }
+  }
+  function restratBtn(e){
+    if ($('#restart-input').val()!='yes')
+      e.preventDefault()
+  }

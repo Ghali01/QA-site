@@ -22,6 +22,7 @@ def suggestedCategories(request,page,language):
         'categories':categories,
         'currentPage':page,
         'pages': pages if len(pages)>1 else [],
+        'lang':language
 
     }
     return render(request,'dashboard/suggestedCategories.html',contxt)
@@ -96,6 +97,7 @@ def suggestedTags(request,page,language):
         'tags':tags,
         'currentPage':page,
         'pages': pages if len(pages)>1 else [],
+        'lang':language
 
     }
     return render(request,'dashboard/suggestedTags.html',contxt)

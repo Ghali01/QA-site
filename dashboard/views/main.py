@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout as  logoutAuth
 from django.urls import reverse
 from django.utils.translation import gettext
-
+from dashboard.decorators import forSuperAdmin
+from dashboard.models import BoolOption
 def index(request):
     if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_superuser:
         return render(request,'utilities/dashboard/_base.html')
@@ -38,4 +39,21 @@ def logout(request):
         logoutAuth(request)
     return redirect("/dashboard/login") # TODO redirect to site 
 
+
+
+@forSuperAdmin
+def options(request):
+    if request.method=='POST':
+        BoolOption.setArabic('arabic-pub' in request.POST)
+    return render(request,'dashboard/options.html',{'araOpt':BoolOption.arabicOn()})
+
+
+
+
+from threading import Timer
+import os
+def restaratServer(request):
+
+    Timer(5,lambda:os.system("systemctl restart  emperor.usgi.service")).start()
+    return render(request,'dashboard/restartServer.html')
 

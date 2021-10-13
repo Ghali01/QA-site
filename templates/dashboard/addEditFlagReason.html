@@ -1,5 +1,7 @@
 {% extends 'utilities/dashboard/_base.html' %} 
-{% block title %} Flag Reason{% endblock %}
+{% load i18n %}
+
+{% block title %} {% translate 'Flag Reason' %}{% endblock %}
 {% block content %} 
 <div class="content">
     <div class="container-fluid">
@@ -7,7 +9,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Flag Reason</h3>
+              <h3 class="card-title">{% translate 'Flag Reason' %}</h3>
               
             </div>
             <div class="card-body">
@@ -15,20 +17,20 @@
                 {% csrf_token %}
               <div class="row fr-row">
                 <div class="col-6">
-                  <input type="text" class="form-control" name="name-en" required value="{{reason.nameEN}}" placeholder="name in english">
+                  <input type="text" class="form-control" name="name-en" required value="{{reason.nameEN}}" placeholder="{% translate 'name in english' %}">
                 </div>
                 <div class="col-6">
-                  <input type="text" class="form-control" name="name-ar" required value="{{reason.nameAR}}" placeholder="name in arabic">
+                  <input type="text" class="form-control" name="name-ar" required value="{{reason.nameAR}}" placeholder="{% translate 'name in arabic' %}">
                 </div>
 
               </div>
               <div class="row fr-row">
                 <div class="col-6">
-                  <textarea class="form-control fr-txt-a" name="desc-en" required placeholder="description in english">{{reason.descEN}}</textarea>
+                  <textarea class="form-control fr-txt-a" name="desc-en" required placeholder="{% translate 'description in english' %}">{{reason.descEN}}</textarea>
 
                   </div>
                   <div class="col-6">
-                    <textarea class="form-control fr-txt-a" name="desc-ar"  required  placeholder="description in arabic" >{{reason.descAR}}</textarea>
+                    <textarea class="form-control fr-txt-a" name="desc-ar"  required  placeholder="{% translate 'description in arabic' %}" >{{reason.descAR}}</textarea>
 
                     </div>
                   </div>

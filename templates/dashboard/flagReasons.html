@@ -13,9 +13,9 @@
           {% translate 'Flag Reasons' %} 
           <a class="btn btn-default add-cate-m-btn" href="{% url 'dashboard:add-flag-reason' type=tp %}"  >+</a>
           <div class="btn-group lng-sel">
-            <a href="{% url 'dashboard:flag-reasons' type='U' %}" class="btn btn-default">User</a>
-            <a href="{% url 'dashboard:flag-reasons' type='Q' %}" class="btn btn-default">Questions</a>
-            <a href="{% url 'dashboard:flag-reasons' type='A' %}" class="btn btn-default">Answers</a>
+            <a href="{% url 'dashboard:flag-reasons' type='U' %}" class="btn btn-default">{% translate 'User' %}</a>
+            <a href="{% url 'dashboard:flag-reasons' type='Q' %}" class="btn btn-default">{% translate 'Questions' %}</a>
+            <a href="{% url 'dashboard:flag-reasons' type='A' %}" class="btn btn-default">{% translate 'Answers' %}</a>
         </div>
         </div>
         <ul class="list-group list-group-flush" >

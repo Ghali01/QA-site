@@ -1,6 +1,8 @@
 {% extends 'utilities/dashboard/_base.html' %}
 {% load dashboardLib %}
-{% block title %}Flaged Questions{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate 'Flaged Questions' %}{% endblock %}
 {% block content %} 
 <div class="content">
     <div class="container-fluid">
@@ -9,9 +11,9 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Questions</h3>
+              <h3 class="card-title">{% translate 'Questions' %}</h3>
               <div class="btn-group lng-sel">
-                <a href="{% url 'dashboard:flag-reasons' type='Q' %}" class="btn btn-default">Report Reasons</a>
+                <a href="{% url 'dashboard:flag-reasons' type='Q' %}" class="btn btn-default">{% translate 'Report Reasons' %}</a>
             </div>      
           
             </div>
@@ -21,14 +23,14 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th style="width:13%">Title</th>
-                    <th style="width: 24%;">Text</th>
-                    <th style="width: 11%;">Aouthr</th>
-                    <th style="width: 7%;">Answers</th>
-                    <th style="width: 7%;">Id</th>
-                    <th style="width: 7%;">Report Count</th>
-                    <th style="width: 9%;">Reason</th>
-                    <th style="width: 22%;">Action</th>
+                    <th style="width:13%">{% translate 'Title' %}</th>
+                    <th style="width: 24%;">{% translate 'Text' %}</th>
+                    <th style="width: 11%;">{% translate 'Aouthr' %}</th>
+                    <th style="width: 7%;">{% translate 'Answers' %}</th>
+                    <th style="width: 7%;">{% translate 'Id' %}</th>
+                    <th style="width: 7%;">{% translate 'Report Count' %}</th>
+                    <th style="width: 9%;">{% translate 'Reason' %}</th>
+                    <th style="width: 22%;">{% translate 'Action' %}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -57,39 +59,39 @@
                     </td>
                     <td>
                         <a class="btn btn-app cus-btn-app" href="{% url 'dashboard:edit-question-page' questionID=que.id %}">
-                          <i class="fas fa-edit btn-app-icon"></i>Edit
+                          <i class="fas fa-edit btn-app-icon"></i>{% translate 'Edit' %}
                         </a>
                         <a href="{% url 'content:question-page' questionID=que.id %}" target="_blank" class="btn btn-app cus-btn-app">
-                          <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                          <i class="fas fa-external-link-alt btn-app-icon"></i>{% translate 'Show' %}
                         </a>
                         <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
                         data-toggle="modal" data-target="#del-modal" data-tid="{{que.id}}">
-                          <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                          <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                         </button>
                         <a href="{% url 'dashboard:question-answers-page' questionID=que.id page=1 %}"  class="btn btn-app cus-btn-app app-btn-70">
-                          <i class="fas fa-angle-right btn-app-icon"></i>Answers
+                          <i class="fas fa-angle-right btn-app-icon"></i>{% translate 'Answers' %}
                         </a>
                         {% if que.post.isPublished %}
                         <button  data-post-id="{{que.post.id}}" class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
-                          <i class="fas fa-eye-slash btn-app-icon"></i>Unpublish
+                          <i class="fas fa-eye-slash btn-app-icon"></i>{% translate 'Unpublish' %}
                         </button>
                         {% else %}
                         
                         <button data-post-id="{{que.post.id}}"  class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
-                          <i class="fas fa-eye btn-app-icon"></i>Publish 
+                          <i class="fas fa-eye btn-app-icon"></i>{% translate 'Publish' %} 
                         </button>
                         {% endif %}
 
                         
                       <button data-report-on="{{que.post.id}}" data-reason-id="{{report.id}}" data-type="Q"  class="btn btn-app cus-btn-app app-btn-70 remove-report-btn">
-                        <i class="fas fa-times btn-app-icon"></i>Remove 
+                        <i class="fas fa-times btn-app-icon"></i>{% translate 'Remove' %} 
                       </button>
 
                         <a href="{% url 'dashboard:post-comments' postID=que.post.id page=1 %}" class="btn btn-app cus-btn-app app-btn-70">
-                          <i class="far fa-comment-alt"></i>Comments
+                          <i class="far fa-comment-alt"></i>{% translate 'Comments' %}
                         </a>
                         <a href="{% url 'dashboard:post-logs' postID=que.post.id  %}" class="btn btn-app cus-btn-app app-btn-70">
-                          <i class="fas fa-clipboard-list"></i>Logs
+                          <i class="fas fa-clipboard-list"></i>{% translate 'Logs' %}
                         </a>
                       </td>
                 </tr>
@@ -131,7 +133,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="del-modalLabel">Delete Question</h5>
+          <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Question' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -139,7 +141,7 @@
         <div class="modal-body">
           <form method="POST" id="delete-form" action="{% url 'dashboard:delete-questison' %}" >
               {% csrf_token %}
-            <p>Do you want Delete the Question with ID <span class="del-id-span" id="del-id-span"></span>
+            <p>{% translate 'Do you want Delete the Question with ID' %} <span class="del-id-span" id="del-id-span"></span>
             </p>
 
             <input type="hidden" name="del-id" id="del-id-inp">
@@ -147,8 +149,8 @@
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="delete-form" class="btn btn-primary" >{% translate 'Delete' %}</button>
         </div>
       </div>
     </div>

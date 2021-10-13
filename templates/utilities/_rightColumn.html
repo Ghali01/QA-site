@@ -1,10 +1,11 @@
+{% load i18n %}
 {% load contentUtilities %}
 
 <div class="d-none d-xl-block  right-column">
     {% if request.user.is_authenticated and not request.uesr.is_anonymous %}
     <div class="cus-card tags-card">
         <div class="cus-card-header">
-           <h5>Tags</h5> 
+           <h5>{% translate 'Tags' %}</h5> 
            <a href="{% url 'content:tags-page' %}" class="btn btn-outline-info btn-tag edit-tags-link">
             <i class="fas fa-pen"></i>
             </a>

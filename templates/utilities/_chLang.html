@@ -1,0 +1,16 @@
+{% load i18n %}
+{% if arabicOn %}
+{% get_current_language as LC %}
+<li>
+    <a href="{% if LC == 'en' %}{% url 'content:set-language' language='ar' %}{% else %}{% url 'content:set-language' language='en' %}{% endif %}?url={{url}}" class="drop-link">
+        <i class="fas fa-globe"></i> <p>
+            {% if LC == 'en' %}
+            عربي
+            {% else %} 
+            English
+            {% endif %}               
+
+</p>
+</a>
+</li>
+{% endif %}

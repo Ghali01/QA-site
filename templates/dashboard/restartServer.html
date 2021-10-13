@@ -1,0 +1,33 @@
+
+<script>
+    var url=location.origin;
+    document.write('restart in 5 seconds');
+    let i =5;
+    function timer(){
+        i--;
+        document.body.innerHTML = '';
+        document.write(`restart in ${i} seconds`);
+        if (i==0){
+            clearInterval(iv);
+            document.body.innerHTML = '';
+            document.write("restarting...");
+            checkServer();
+        }
+    }
+
+    function checkServer(){
+        let request= new XMLHttpRequest();
+        request.onreadystatechange=function(){
+            if (this.readyState==4 && this.status==200 )
+                window.open(url,'_self','','true');
+            else if (this.readyState==4 && this.status!=200 )
+                checkServer();
+        }
+        
+        request.open('GET',url,true);
+        request.send();
+    }
+
+    var iv =setInterval(timer,1000);
+
+</script>

@@ -1,7 +1,9 @@
 {% extends 'utilities/dashboard/_base.html' %}
 {% load dashboardLib %}
 {% load tz %}
-{% block title %}Post Logs{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate 'Post Logs' %}{% endblock %}
 {% block content %} 
     <div class="container-fluid">
       <div class="row">
@@ -9,7 +11,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Post Logs</h3>
+              <h3 class="card-title">{% translate 'Post Logs' %}</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -17,12 +19,12 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th style="width:13%">Type</th>
-                    <th style="width: 48%;">Text</th>
-                    <th style="width: 11%;">Aouthr</th>
-                    <th style="width: 11%;">Moderator</th>
-                    <th style="width: 10%;">Time</th>
-                    <th style="width: 6%;">Action</th>
+                    <th style="width:13%">{% translate 'Type' %}</th>
+                    <th style="width: 48%;">{% translate 'Text' %}</th>
+                    <th style="width: 11%;">{% translate 'Aouthr' %}</th>
+                    <th style="width: 11%;">{% translate 'Moderator' %}</th>
+                    <th style="width: 10%;">{% translate 'Time' %}</th>
+                    <th style="width: 6%;">{% translate 'Action' %}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -55,7 +57,7 @@
                     <td>{{log.formatedTime}}</td>
                     <td>
                       <a href="{% url 'dashboard:review-log' logID=log.id %}" class="btn btn-app cus-btn-app">
-                        <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>{% translate 'Show' %}
                       </a>
 
                     </td>

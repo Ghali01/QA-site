@@ -1,6 +1,8 @@
 {% extends 'utilities/dashboard/_base.html' %} 
 {% load dashboardLib %}
-{% block title %}Polls Management {% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate 'Polls Management' %} {% endblock %}
 {% block content %}  
 {% include 'utilities/_messages.html' %}
 <div class="content">
@@ -9,7 +11,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Polls</h3>
+              <h3 class="card-title">{% translate 'Polls' %}</h3>
               <a class="btn btn-default add-cate-m-btn" href="{% url 'dashboard:add-poll' language=lang %}"  >+</a>
               <div class="btn-group lng-sel">
                 <a href="{% url 'dashboard:polls' language='en' page=1 %}" class="btn btn-default">English</a>
@@ -24,13 +26,13 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th style="width:15%">Title</th>
-                    <th style="width:30%">description</th>
-                    <th style="width:4%;">Users Target</th>
-                    <th style="width:5%;">Participants</th>
-                    <th style="width: 1%;">Participation rate</th>
-                    <th style="width: 25%;">Target(s)</th>
-                    <th style="width: 20%;">Action</th>
+                    <th style="width:15%">{% translate 'Title' %}</th>
+                    <th style="width:30%">{% translate 'description' %}</th>
+                    <th style="width:4%;">{% translate 'Users Target' %}</th>
+                    <th style="width:5%;">{% translate 'Participants' %}</th>
+                    <th style="width: 1%;">{% translate 'Participation rate' %}</th>
+                    <th style="width: 25%;">{% translate 'Target(s)' %}</th>
+                    <th style="width: 20%;">{% translate 'Action' %}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -46,7 +48,7 @@
                     <td>{{poll.resaults.count}}</td>
                     <td>{{poll.rate}}</td>
                     <td>
-                        <h6 class="tiltle">Tags</h6>
+                        <h6 class="tiltle">{% translate 'Tags' %}</h6>
                       
                         <div class="polls-targets">
 
@@ -54,7 +56,7 @@
                               <button class="btn btn-outline-info btn-tag">{{tag.name}}</button>
                             {% endfor %}
                         </div>
-                        <h6 class="tiltle">Categories</h6>
+                        <h6 class="tiltle">{% translate 'Categories' %}</h6>
 
                         <div class="polls-targets">
                             {% for cate in poll.categories.all|slice:':3' %}
@@ -67,31 +69,31 @@
                     <td>
 
                       <a class="btn btn-app cus-btn-app" href="{% url 'dashboard:edit-poll' pollID=poll.id %}">
-                        <i class="fas fa-edit btn-app-icon"></i>Edit
+                        <i class="fas fa-edit btn-app-icon"></i>{% translate 'Edit' %}
                       </a>
                       <a href="{% url 'polls:poll-page' pollID=poll.id %}" class="btn btn-app cus-btn-app">
-                        <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>{% translate 'Show' %}
                       </a>
                       <a href="{% url 'dashboard:poll-resaults' pollID=poll.id %}" style="width: 60px;" class="btn btn-app cus-btn-app">
-                        <i class="fas fa-external-link-alt btn-app-icon"></i>Resaults
+                        <i class="fas fa-external-link-alt btn-app-icon"></i>{% translate 'Resaults' %}
                       </a>
                       <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
                       data-toggle="modal" data-target="#del-modal" data-tid="{{poll.id}}">
-                        <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                        <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                       </button>
                       {% if poll.isOpened %}
                       <button class="btn btn-app cus-btn-app tog-open-btn" data-poll-id="{{poll.id}}">
-                        <i class="fas fa-lock btn-app-icon"></i>Lock
+                        <i class="fas fa-lock btn-app-icon"></i>{% translate 'Lock' %}
                       </button>
                       {% else %}
                       <button class="btn btn-app cus-btn-app tog-open-btn" data-poll-id="{{poll.id}}">
                         
-                        <i class="fas fa-unlock btn-app-icon"></i>Unlock
+                        <i class="fas fa-unlock btn-app-icon"></i>{% translate 'Unlock' %}
                       </button>
                       {% endif %}
                       {% if not poll.isPublished %}
                       <button class="btn btn-app cus-btn-app pub-poll-btn-t" style="width: 60px;" data-poll-id="{{poll.id}}">
-                        <i class="fas fa-eye btn-app-icon"></i>Publish
+                        <i class="fas fa-eye btn-app-icon"></i>{% translate 'Publish' %}
                       </button>
                       
                       {% endif %}
@@ -112,13 +114,7 @@
                   active
                   {%  endif %}
                   ">
-                    <a href="
-                    {% if isAnswerQuestions %}
-                    {% url 'dashboard:question-answers-page' questionID=QID page=pg %}
-                    {% else %}
-                    {% url 'dashboard:all-answers-page' page=pg %}
-                    {% endif %}
-                    " aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
+                    <a href="{% url 'dashboard:polls page=pg language=lang %}" aria-controls="example2" data-dt-idx="1" tabindex="0" class="page-link">
                       {{pg}}
                     </a>
                   </li>
@@ -138,7 +134,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="del-modalLabel">Delete Poll</h5>
+          <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Poll' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -146,7 +142,7 @@
         <div class="modal-body">
           <form method="POST" id="delete-form" action="{% url 'dashboard:delete-poll' %}" >
               {% csrf_token %}
-            <p>Do you want Delete the Poll with ID <span class="del-id-span" id="del-id-span"></span>
+            <p>{% translate 'Do you want Delete the Poll with ID' %} <span class="del-id-span" id="del-id-span"></span>
             </p>
 
             <input type="hidden" name="del-id" id="del-id-inp">
@@ -154,8 +150,8 @@
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="delete-form" class="btn btn-primary" >{% translate 'Delete' %}</button>
         </div>
       </div>
     </div>

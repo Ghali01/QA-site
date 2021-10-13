@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-12 14:11+0300\n"
+"POT-Creation-Date: 2021-10-13 21:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,111 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:407
+#: .\static\dashboard\js\main.js:407
+msgid "Select Category"
+msgstr "اختر التصنيف"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:505
+#: .\static\dashboard\js\main.js:505
+msgid "CheckBox List"
+msgstr "اختيار متعدد"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:507
+#: .\static\dashboard\js\main.js:507
+msgid "Radio List"
+msgstr "اختيار احادي"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:518
+#: .\static\dashboard\js\main.js:518
+msgid "question text..."
+msgstr "نص السؤال..."
+
+#: .\interviewsquestions\static\dashboard\js\main.js:539
+#: .\static\dashboard\js\main.js:539
+msgid "Add Choice"
+msgstr "اضافة خيار"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:596
+#: .\static\dashboard\js\main.js:596
+msgid "All"
+msgstr "الكل"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:643
+#: .\static\dashboard\js\main.js:643
+msgid "Delete"
+msgstr "حذف"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:647
+#: .\static\dashboard\js\main.js:647
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:694
+#: .\static\dashboard\js\main.js:694
+msgid "Questions"
+msgstr "الاسئلة"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:697
+#: .\static\dashboard\js\main.js:697
+msgid "Answers"
+msgstr "الاجوبة"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:700
+#: .\static\dashboard\js\main.js:700
+msgid "Email"
+msgstr "ارسال بريد الكتروني"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:705
+#: .\static\dashboard\js\main.js:705
+msgid "Ban"
+msgstr "حظر"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:711
+#: .\static\dashboard\js\main.js:711
+msgid "unban"
+msgstr "الغاء الحظر"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:716
+#: .\static\dashboard\js\main.js:716
+msgid "Prune"
+msgstr "تأديب"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:719
+#: .\static\dashboard\js\main.js:719
+msgid "Permissions"
+msgstr "الصلاحيات"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:783
+#: .\static\dashboard\js\main.js:783
+msgid "Unpublish"
+msgstr "الغاء نشر"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:786
+#: .\static\dashboard\js\main.js:786
+msgid "Publish"
+msgstr "نشر"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:871
+#: .\static\dashboard\js\main.js:871
+msgid "Lock"
+msgstr "قفل"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:873
+#: .\static\dashboard\js\main.js:873
+msgid "Unlock"
+msgstr "فتح"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:913
+#: .\static\dashboard\js\main.js:913
+msgid "Remvoe from exams"
+msgstr "ازالة من الامتحانات"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:916
+#: .\static\dashboard\js\main.js:916
+msgid "Add to exams"
+msgstr "اضافة الى الامتحانات"
 
 #: .\interviewsquestions\static\dashboard\plugins\pdfmake\pdfmake.min.js:2
 #: .\static\dashboard\plugins\pdfmake\pdfmake.min.js:2

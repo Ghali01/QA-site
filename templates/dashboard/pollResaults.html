@@ -1,4 +1,6 @@
 {% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+
 {% block title %}{{poll.title}}{% endblock %}
 
 {% block content %} 
@@ -18,9 +20,9 @@
               
                   <h6 class="float-right poll-item-title " >
                     {% if item.type == 'C' %}      
-                    CheckBox List
+                    {% translate 'CheckBox List' %}
                     {% else %}
-                    Radio List
+                    {% translate 'Radio List' %}
                     {% endif %}
                 
                 </h6>

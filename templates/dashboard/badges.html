@@ -1,5 +1,6 @@
 {% extends 'utilities/dashboard/_base.html' %}
-{% block title %}Badges Management{% endblock %}
+{% load i18n %}
+{% block title %}{% translate 'Badges Management' %}{% endblock %}
 
 {% block content %}
 {% include 'utilities/_messages.html' %}
@@ -10,40 +11,43 @@
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Badges Management</h3>
+              <h3 class="card-title">{% translate 'Badges Management' %}</h3>
             <form id='serach-form' action="{% url 'dashboard:badges-page' page=1 %}">
               <div class="input-group float-right badge-filter" style="width: 750px;">
                 <input type="search" class="form-control form-control-md "
-                    id="search-badges" name="search" placeholder="search name" value="{{search}}">
+                    id="search-badges" name="search" placeholder="{% translate 'search name' %}" value="{{search}}">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-md btn-default">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
                 <select class="form-control badge-filter" name="lvl" id="">
-                  <option value="0">Select Level</option>
-                  <option value="G" {% if lvl == 'G' %} selected {% endif %}>Gold</option>
-                  <option value="S"{% if lvl == 'S' %} selected {% endif %}>Silver</option>
-                  <option value="B"{% if lvl == 'B' %} selected {% endif %}>Bronze</option>
+                  <option value="0">{% translate 'Select Level' %}</option>
+                  <option value="G"{% if badge.level == 'G'%} selected {% endif %} >{% translate 'Gold' %}</option>
+                  <option value="S"{% if badge.level == 'S'%} selected {% endif %}>{% translate 'Silver' %}</option>
+                  <option value="B"{% if badge.level == 'B'%} selected {% endif %}>{% translate 'Bronze' %}</option>
                   </select>
                 <select class="form-control badge-filter" name="reason" id="">
-                  <option value="0">Select Reason</option>
-                  <option value="Q" {% if reason == 'Q' %} selected {% endif %}>Quetions</option>
-                  <option value="A"{% if reason == 'A' %} selected {% endif %}>Answers</option>
-                  <option value="C"{% if reason == 'C' %} selected {% endif %}>Comments</option>
-                  <option value="SA"{% if reason == 'SA' %} selected {% endif %}>Self Answer</option>
-                  <option value="SC"{% if reason == 'SC' %} selected {% endif %}>Self Commnet</option>
-                  <option value="PV"{% if reason == 'PV' %} selected {% endif %}>Post Votes</option>
-                  <option value="QV"{% if reason == 'QV' %} selected {% endif %}>Question Votes</option>
-                  <option value="AV"{% if reason == 'AV' %} selected {% endif %}>Answer Votes</option>
-                  <option value="E"{% if reason == 'E' %} selected {% endif %}>Edit</option>
-                  <option value="P"{% if reason == 'P' %} selected {% endif %}>Polls</option>   
-                  <option value="L"{% if reason == 'L' %} selected {% endif %}>Log in times</option>   
-            
+                  <option value="0">{% translate 'Select Reason' %}</option>
+                  <option value="Q"{% if badge.reason == 'Q'%} selected {% endif %}>{% translate 'Quetions' %}</option>
+                  <option value="A"{% if badge.reason == 'A'%} selected {% endif %}>{% translate 'Answers' %}</option>
+                  <option value="C"{% if badge.reason == 'C'%} selected {% endif %}>{% translate 'Comments' %}</option>
+                  <option value="SA" {% if badge.reason == 'SA'%} selected {% endif %}>{% translate 'Self Answer' %}</option>
+                  <option value="SC"{% if badge.reason == 'SC'%} selected {% endif %}> {% translate 'Self Commnet' %}</option>
+                  <option value="V" {% if badge.reason == 'V'%} selected {% endif %}>{% translate 'Views' %}</option>
+             
+                  <option value="PV"{% if badge.reason == 'PV' %} selected {% endif %}>{% translate 'Post Votes' %}</option>
+                  <option value="QV"{% if badge.reason == 'QV' %} selected {% endif %}>{% translate 'Question Votes' %}</option>
+                  <option value="AV"{% if badge.reason == 'AV' %} selected {% endif %}>{% translate 'Answer Votes' %}</option>
+                  <option value="E"{% if badge.reason == 'E' %} selected {% endif %}>{% translate 'Edits' %}</option>   
+                  
+                  <option value="P"{% if badge.reason == 'P' %} selected {% endif %}>{% translate 'Polls' %}</option>   
+                  <option value="L"{% if badge.reason == 'L' %} selected {% endif %}>{% translate 'Log in times' %}</option>   
+
                 </select>
                 <select class="form-control badge-filter" name="target" id="">
-                  <option value="0">Select Target</option>
-                  <option value="G" {% if targetStr == 'G' %} selected {% endif %} >General</option>
+                  <option value="0">{% translate 'Select Target' %}</option>
+                  <option value="G" {% if targetStr == 'G' %} selected {% endif %} >{% translate 'General' %}</option>
                   <optgroup label="Categories">
                     {% for cate in categories %} 
                     <option value="C{{cate.id}}"{% if targetStr|slice:':1' == 'C' and targetStr|slice:'1:' == cate.id|stringformat:'i' %} selected {% endif %}>{{cate.name}}</option>
@@ -68,13 +72,13 @@
             <div class="card-body">
               <table class="table table-bordered table-striped">
                 <thead>
-                  <th style="width: 10%;">Name</th>
-                  <th style="width: 40%;">Description</th>
-                  <th style="width: 10%;">Level</th>
-                  <th style="width: 10%;">Reason</th>
-                  <th style="width: 10%;">target</th>
-                  <th style="width: 5%;">Users Earned</th>
-                  <th style="width: 15%;">Action</th>
+                  <th style="width: 10%;">{% translate 'Name' %}</th>
+                  <th style="width: 40%;">{% translate 'Description' %}</th>
+                  <th style="width: 10%;">{% translate 'Level' %}</th>
+                  <th style="width: 10%;">{% translate 'Reason' %}</th>
+                  <th style="width: 10%;">{% translate 'target' %}</th>
+                  <th style="width: 5%;">{% translate 'Users Earned' %}</th>
+                  <th style="width: 15%;">{% translate 'Action' %}</th>
                 </thead>
                 <tbody >
                   {% for badge in badges %}
@@ -87,7 +91,7 @@
                   {% if not badge.targetType == 'G' %}
                     {{badge.target.name}}
                   {% else %} 
-                  General
+                  {% translate 'General' %}
                   {% endif %}
                   </td>
                   <td>
@@ -96,11 +100,11 @@
                   </td>
                   <td>
                     <a class="btn btn-app cus-btn-app" href="{% url 'dashboard:edit-badge' badgeID=badge.id %}">
-                      <i class="fas fa-edit btn-app-icon"></i>Edit
+                      <i class="fas fa-edit btn-app-icon"></i>{% translate 'Edit' %}
                     </a>
                     <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
                     data-toggle="modal" data-target="#del-modal" data-tid="{{badge.id}}">
-                      <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                      <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                     </button>
             
                   </td>
@@ -143,7 +147,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="del-modalLabel">Delete Badge</h5>
+          <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Badge' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -151,7 +155,7 @@
         <div class="modal-body">
           <form method="POST" id="delete-form" action="{% url 'dashboard:delete-badge' %}" >
               {% csrf_token %}
-            <p>Do you want Delete the Badge with ID <span class="del-id-span" id="del-id-span"></span>
+            <p>{% translate 'Do you want Delete the Badge with ID' %} <span class="del-id-span" id="del-id-span"></span>
             </p>
 
             <input type="hidden" name="del-id" id="del-id-inp">
@@ -159,8 +163,8 @@
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="delete-form" class="btn btn-primary" >{% translate 'Delete' %}</button>
         </div>
       </div>
     </div>

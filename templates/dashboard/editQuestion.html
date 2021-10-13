@@ -1,7 +1,10 @@
 {% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+
 {% block title %}{{question.title}}{% endblock %}
 
 {% block content %} 
+
 {% include 'utilities/_messages.html' %}
 <div class="container-fluid">
       <div class="row">
@@ -11,7 +14,7 @@
               <h3 class="card-title">{{question.title}}</h3>
               <div class="data-meta-que">
                 <div class="d-group">
-                  <span class="title">ID: </span>
+                  <span class="title">{% translate 'ID:' %} </span>
                   <span class="data">
                     <a target="_blank" href="{% url 'content:question-page' questionID=question.id %}">
                     {{question.id}}
@@ -19,7 +22,7 @@
                   </span>
                 </div>
                 <div class="d-group">
-                  <span class="title">Added By: </span>
+                  <span class="title">{% translate 'Added By:' %} </span>
                   <span class="data">
                     <a target="_blank" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a>
                   </span>
@@ -29,27 +32,27 @@
                 
                 <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
                 data-toggle="modal" data-target="#del-modal" data-tid="{{question.id}}">
-                  <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                  <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                 </button>
                 
                       {% if question.post.isPublished %}
                       <button  data-post-id="{{question.post.id}}" class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
-                        <i class="fas fa-eye-slash btn-app-icon"></i>Unpublish
+                        <i class="fas fa-eye-slash btn-app-icon"></i>{% translate 'Unpublish' %}
                       </button>
                       {% else %}
                       
                       <button data-post-id="{{question.post.id}}"  class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
-                        <i class="fas fa-eye btn-app-icon"></i>Publish 
+                        <i class="fas fa-eye btn-app-icon"></i>{% translate 'Publish' %} 
                       </button>
                       {% endif %}
                 <a href="{% url 'dashboard:question-answers-page' questionID=question.id page=1 %}"  class="btn btn-app cus-btn-app app-btn-70">
-                  <i class="fas fa-angle-right btn-app-icon"></i>Answers
+                  <i class="fas fa-angle-right btn-app-icon"></i>{% translate 'Answers' %}
                 </a>
                 <a href="{% url 'dashboard:post-comments' postID=question.post.id page=1 %}" class="btn btn-app cus-btn-app app-btn-70">
-                  <i class="far fa-comment-alt"></i>Comments
+                  <i class="far fa-comment-alt"></i>{% translate 'Comments' %}
                 </a>
                 <a href="{% url 'dashboard:post-logs' postID=question.post.id  %}" class="btn btn-app cus-btn-app app-btn-70">
-                  <i class="fas fa-clipboard-list"></i>Logs
+                  <i class="fas fa-clipboard-list"></i>{% translate 'Logs' %}
                 </a>
               </div>
             </div>
@@ -59,7 +62,7 @@
               <div class="row">
                 <div class="col-2 cate-sel-col">
                   <div class="form-group">
-                    <label>Category lvl 1</label>
+                    <label>{% translate 'Category lvl 1' %}</label>
                     <select class="form-control cate-select" >
                         {% for cate in categories %}
                         <option value="{{cate.id}}" data-sub="{{cate.subs}}"
@@ -78,7 +81,7 @@
                 {% endif %}
                 >
                   <div class="form-group">
-                    <label>Category lvl 2</label>
+                    <label>{% translate 'Category lvl 2' %}</label>
                     <select class="form-control cate-select"
                     >
                         {% for cate in question.category.getFirstParent.subCategoies %}
@@ -97,7 +100,7 @@
                 {% endif %}
 >
                   <div class="form-group">
-                    <label>Category lvl 3</label>
+                    <label>{% translate 'Category lvl 3' %}</label>
                     <select class="form-control cate-select">                    
                     {% for cate in question.category.getSecondParent.subCategoies %}
                     <option value="{{cate.id}}" data-sub="{{cate.subs}}"                     
@@ -115,7 +118,7 @@
                 {% endif %}
  >
                   <div class="form-group">
-                    <label>Category lvl 4</label>
+                    <label>{% translate 'Category lvl 4' %}</label>
                     <select class="form-control cate-select"
                     >
                         
@@ -139,7 +142,7 @@
             </form>
               <div class="add-tag-to-que-div">
                 <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
-                  class="form-control que-input que-tags-input" placeholder="Add Tags" autocomplete="off">
+                  class="form-control que-input que-tags-input" placeholder="{% translate 'Add Tags' %}" autocomplete="off">
                 <ul class="tags-list custom-scrollbar">
                     {% for tag in tags %}
                   <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}}</li>
@@ -148,7 +151,7 @@
 
 
                 <div class="card add-tags-q">
-                  <h5 class="card-header">Tags</h5>
+                  <h5 class="card-header">{% translate 'Tags' %}</h5>
                   <div class="card-body tags-div" id="tags-div-ol">
                     {% for tag in question.tags.all %}
                     <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable" data-tag-id="{{tag.id}}">
@@ -167,7 +170,7 @@
 
 
               </div>
-              <button type="submit" form="que-frm" class="btn btn-primary float-right">Save</button>
+              <button type="submit" form="que-frm" class="btn btn-primary float-right">{% translate 'Save' %}</button>
             </div>
           </div>
         </div>
@@ -181,7 +184,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="del-modalLabel">Ban User</h5>
+            <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Question' %}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -189,7 +192,7 @@
           <div class="modal-body">
             <form method="POST" id="delete-form" action="{% url 'dashboard:delete-questison' %}" >
                 {% csrf_token %}
-              <p>Do you want Delete the Question with ID <span class="del-id-span" id="del-id-span"></span>
+              <p>{% translate 'Do you want Delete the Question with ID' %} <span class="del-id-span" id="del-id-span"></span>
               </p>
 
               <input type="hidden" name="del-id" id="del-id-inp">
@@ -197,8 +200,8 @@
           </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+            <button type="submit" form="delete-form" class="btn btn-primary" >{% translate 'Delete' %}</button>
           </div>
         </div>
       </div>

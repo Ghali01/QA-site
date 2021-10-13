@@ -102,5 +102,8 @@ urlpatterns=[
     path('togg-poll-open',pollsViews.toggPollOpen,name='toggle-poll-open'),
     path('poll-resaults/<int:pollID>',pollsViews.pollResault,name='poll-resaults'),
     path('togg-exam-que',questionsViews.toggExamQuestion,name='toggle-exam-question'),
-    path('mark-correct-ans',questionsViews.markCorrectAnswer,name='mark-correct-ans')
+    path('mark-correct-ans',questionsViews.markCorrectAnswer,name='mark-correct-ans'),
+    path('options',mainViews.options,name='options-page'),
+    path('restart-server',mainViews.restaratServer,name='restart-server')
+
   ]

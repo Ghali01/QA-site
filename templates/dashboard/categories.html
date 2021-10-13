@@ -2,6 +2,7 @@
 
 {% block title %}Categories{% endblock %}
 {% block content %}
+{% load i18n %}
 {% include 'utilities/_messages.html' %}
 <div class="container-fluid">
     <div class="row">
@@ -15,7 +16,7 @@
         <div class="col-6 col-md-3   list-col">
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                    Categories lvl 1 <button class="btn btn-default add-cate-m-btn" data-lvl="1" data-toggle="modal"
+                    {% translate 'Categories lvl 1' %} <button class="btn btn-default add-cate-m-btn" data-lvl="1" data-toggle="modal"
                         data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list" id="categories-list-1">
@@ -25,12 +26,12 @@
 
                         <button class="btn btn-app  cus-btn-app btn-app-sm float-right cate-opt-btn del-cate-btn"
                             data-lvl="2" data-toggle="modal" data-target="#del-cate-modal">
-                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                            <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                         </button>
 
                         <button class="btn btn-app  cus-btn-app btn-app-sm float-right cate-opt-btn edit-cate-btn"
                             data-lvl="2" data-toggle="modal" data-target="#edit-cate-modal">
-                            <i class="fas fa-pen btn-app-icon"></i>Edit
+                            <i class="fas fa-pen btn-app-icon"></i>{% translate 'Edit' %}
                         </button>
                     </li>
                     {% endfor %}
@@ -40,7 +41,7 @@
         <div class="col-6 col-md-3 list-col">
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                    Categories lvl 2 <button class="btn btn-default add-cate-m-btn" data-lvl="2" data-toggle="modal"
+                    {% translate 'Categories lvl 2' %} <button class="btn btn-default add-cate-m-btn" data-lvl="2" data-toggle="modal"
                         data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list " id="categories-list-2">
@@ -51,7 +52,7 @@
         <div class="col-6 col-md-3 list-col">
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                    Categories lvl 3 <button class="btn btn-default add-cate-m-btn" data-lvl="3" data-toggle="modal"
+                    {% translate 'Categories lvl 3' %} <button class="btn btn-default add-cate-m-btn" data-lvl="3" data-toggle="modal"
                         data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list" id="categories-list-3">
@@ -62,7 +63,7 @@
         <div class="col-6 col-md-3 list-col">
             <div class="card" style="width: 100%;">
                 <div class="card-header">
-                    Categories lvl 4 <button class="btn btn-default add-cate-m-btn" data-lvl="4" data-toggle="modal"
+                    {% translate 'Categories lvl 4' %} <button class="btn btn-default add-cate-m-btn" data-lvl="4" data-toggle="modal"
                         data-target="#add-cate-modal">+</button>
                 </div>
                 <ul class="list-group list-group-flush categories-list" id="categories-list-4">
@@ -80,7 +81,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="add-cate-modalLabel">Add Category</h5>
+                <h5 class="modal-title" id="add-cate-modalLabel">{% translate 'Add Category' %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -96,8 +97,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-primary" form="add-form" value="Add"/>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+                <input type="submit" class="btn btn-primary" form="add-form" value="{% translate 'Add' %}"/>
             </div>
         </div>
     </div>
@@ -109,7 +110,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="add-edit-modalLabel">Edit Category</h5>
+                <h5 class="modal-title" id="add-edit-modalLabel">{% translate 'Edit Category' %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -124,8 +125,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-primary" form="edit-form" value="Save" />
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+                <input type="submit" class="btn btn-primary" form="edit-form" value="{% translate 'Save' %}" />
             </div>
         </div>
     </div>
@@ -137,7 +138,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="del-cate-modalLabel">Delete Category</h5>
+                <h5 class="modal-title" id="del-cate-modalLabel">{% translate 'Delete Category' %}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -145,17 +146,15 @@
             <div class="modal-body">
                 <form method="POST" id="delete-form" action="{% url 'dashboard:delete-category' %}">
                     {% csrf_token %}
-                    <p>Do you want delete <span class="del-cate-name" id="del-cate-name"></span> and everything related
-                        to
-                        it?
+                    <p>{% translate 'Do you want delete' %} <span class="del-cate-name" id="del-cate-name"></span> {% translate 'and everything related to it?' %}
                     </p>
                     <input type="hidden" name="language" value="{{lang}}">
                     <input type="hidden" name="cate-id" id="del-cate-id">
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-primary" form="delete-form" value="Delete"/>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+                <input type="submit" class="btn btn-primary" form="delete-form" value="{% translate 'Delete' %}"/>
             </div>
         </div>
     </div>

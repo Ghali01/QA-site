@@ -97,3 +97,14 @@ button.l-btn{
     padding-right: 0; 
     padding-left: 10px;
 }
+.has-search .form-control{
+    text-indent: 19px;
+}
+.loading-circle .secondary-circle{
+    left: 0;
+}
+
+.loading-circle.in-search{
+    right: unset;
+    left: 0;
+}

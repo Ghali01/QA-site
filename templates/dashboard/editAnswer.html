@@ -1,15 +1,16 @@
 {% extends 'utilities/dashboard/_base.html' %}
-{% block title %}Edit Answer{% endblock %}
+{% load i18n %}
+{% block title %}{% translate 'Edit Answer' %}{% endblock %}
 {% block content %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Edit Answer</h3>
+                    <h3 class="card-title">{% translate 'Edit Answer' %}</h3>
                     <div class="data-meta-que">
                         <div class="d-group">
-                            <span class="title">ID: </span>
+                            <span class="title">{% translate 'ID:' %} </span>
                             <span class="data">
                                 <a target="_blank" href="{% url 'content:question-page' questionID=answer.question.id %}#answer-{{answer.id}}">
                                     {{answer.id}}
@@ -17,7 +18,7 @@
                             </span>
                         </div>
                         <div class="d-group">
-                            <span class="title">Added By: </span>
+                            <span class="title">{% translate 'Added By:' %} </span>
                             <span class="data">
                                 <a target="_blank" href="{% url 'profiles:profile-page' userID=answer.post.author.id %}">{{answer.post.author.username}}</a>
                             </span>
@@ -27,25 +28,25 @@
 
                 <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
                       data-toggle="modal" data-target="#del-modal" data-tid="{{answer.id}}">
-                        <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                        <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                       </button>
                       
                       {% if answer.post.isPublished %}
                       <button  data-post-id="{{answer.post.id}}" class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
-                        <i class="fas fa-eye-slash btn-app-icon"></i>Unpublish
+                        <i class="fas fa-eye-slash btn-app-icon"></i>{% translate 'Unpublish' %}
                       </button>
                       {% else %}
                       
                       <button data-post-id="{{answer.post.id}}"  class="btn btn-app cus-btn-app app-btn-70 toggle-post-pub-btn">
-                        <i class="fas fa-eye btn-app-icon"></i>Publish 
+                        <i class="fas fa-eye btn-app-icon"></i>{% translate 'Publish' %} 
                       </button>
                       {% endif %}
                       <a href="{% url 'dashboard:post-comments' postID=answer.post.id page=1 %}" class="btn btn-app cus-btn-app app-btn-70">
-                        <i class="far fa-comment-alt"></i>Comments
+                        <i class="far fa-comment-alt"></i>{% translate 'Comments' %}
                       </a>
                       
                       <a href="{% url 'dashboard:post-logs' postID=answer.post.id  %}" class="btn btn-app cus-btn-app app-btn-70">
-                        <i class="fas fa-clipboard-list"></i>Logs
+                        <i class="fas fa-clipboard-list"></i>{% translate 'Logs' %}
                       </a>
                     
               </div>
@@ -58,7 +59,7 @@
 
 
 
-                    <button type="submit" class="btn btn-primary float-right">Save</button>
+                    <button type="submit" class="btn btn-primary float-right">{% translate 'Save' %}</button>
                 </form>
                 </div>
             </div>
@@ -72,7 +73,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="del-modalLabel">Ban User</h5>
+          <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Answer' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -80,7 +81,7 @@
         <div class="modal-body">
           <form method="POST" id="delete-form" action="{% url 'dashboard:delete-answer' %}" >
               {% csrf_token %}
-            <p>Do you want Delete the Answer with ID <span class="del-id-span" id="del-id-span"></span>
+            <p>{% translate 'Do you want Delete the Answer with ID' %} <span class="del-id-span" id="del-id-span"></span>
             </p>
 
             <input type="hidden" name="del-id" id="del-id-inp">
@@ -88,8 +89,8 @@
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="delete-form" class="btn btn-primary" >{% translate 'Delete' %}</button>
         </div>
       </div>
     </div>

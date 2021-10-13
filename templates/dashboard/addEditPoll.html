@@ -1,4 +1,5 @@
 {% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
 
 {% block title %}Add Poll{% endblock %}
 {% block content %} 
@@ -13,7 +14,7 @@
             <div class="card-body">
               <form id="poll-form" method="post">
                   {% csrf_token %}
-                <input type="text" class="form-control" name="title" placeholder="Titile..." value="{{poll.title}}">
+                <input type="text" class="form-control" name="title" placeholder="{% translate 'Titile...' %}" value="{{poll.title}}">
               <textarea id="summernote" name="text">{{poll.text}}</textarea>
             </form>
             <div class="row targets-row" id="targets-row">
@@ -21,7 +22,7 @@
 
                   <div class="add-tag-to-que-div">
                     <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
-                      class="form-control que-input que-tags-input" placeholder="Add Tags">
+                      class="form-control que-input que-tags-input" placeholder="{% translate 'Add Tags' %}">
                     <ul class="tags-list custom-scrollbar">
                         {% for tag in tags %}
                         <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}}</li>
@@ -30,7 +31,7 @@
 
 
                     <div class="card add-tags-q">
-                      <h5 class="card-header">Tags</h5>
+                      <h5 class="card-header">{% translate 'Tags' %}</h5>
                       <div class="card-body tags-div" id="tags-div-ol">
                         {% for tag in poll.tags.all %}
                         <button type="button" class="btn btn-outline-info btn-tag btn-tag-removeable">
@@ -54,7 +55,7 @@
                   <div class="row cate-selectes">
                     <div class="col-2 cate-sel-col">
                       <div class="form-group">
-                        <label>Category lvl 1</label>
+                        <label>{% translate 'Category lvl 1' %}</label>
                         <select class="form-control cate-select">
                           <option value="0">All</option>
                             {% for cate in categories%}
@@ -65,7 +66,7 @@
                     </div>
                     <div class="col-2 cate-sel-col">
                       <div class="form-group">
-                        <label>Category lvl 2</label>
+                        <label>{% translate 'Category lvl 2' %}</label>
                         <select class="form-control cate-select">
 
                         </select>
@@ -73,26 +74,26 @@
                     </div>
                     <div class="col-2 cate-sel-col">
                       <div class="form-group">
-                        <label>Category lvl 3</label>
+                        <label>{% translate 'Category lvl 3' %}</label>
                         <select class="form-control cate-select" value="5">
                         </select>
                       </div>
                     </div>
                     <div class="col-2 cate-sel-col">
                       <div class="form-group">
-                        <label>Category lvl 4</label>
+                        <label>{% translate 'Category lvl 4' %}</label>
                         <select class="form-control cate-select">
                         </select>
                       </div>
                     </div>
                     <div class="col-2">
                       <button class="btn btn-app add-cate-btn ">
-                        <i class="fas fa-plus"></i>Add
+                        <i class="fas fa-plus"></i>{% translate 'Add' %}
                       </button>
                     </div>
                   </div>
                   <div class="card add-tags-q">
-                    <h5 class="card-header">Categiries</h5>
+                    <h5 class="card-header">{% translate 'Categiries' %}</h5>
                     <div class="card-body tags-div" id="cate-div-ol">
                       {% if not isNew %}
                       {% for cate in poll.categories.all %}
@@ -120,7 +121,7 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-header">
-                      <h3 class="card-title">Poll Items</h3>
+                      <h3 class="card-title">{% translate 'Poll Items' %}</h3>
                     </div>
                     <div class="card-body ">
                       <div class="polls-items " id="polls-items">
@@ -132,37 +133,37 @@
                           <button class="btn del-poll-item">
                             <i class="far fa-times-circle"></i>
                           </button>
-                          <h6 class="float-right poll-item-title " >CheckBox List</h6>
+                          <h6 class="float-right poll-item-title " >{% translate 'CheckBox List' %}</h6>
                     
                           <input type="hidden" class="item-type" name="item-type" value="C">
-                          <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                          <textarea class="form-control polls-que" placeholder="{% translate 'question text...' %}"></textarea>
                           <ul class="poll-choesies">
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                           </ul>
-                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                          <button class="btn btn-outline-primary float-right add-cho-btn">{% translate 'Add Choice' %}</button>
                         </div>
                         <div class="poll-item ">
                           <button class="btn mov-poll-item">
@@ -171,36 +172,36 @@
                           <button class="btn del-poll-item">
                             <i class="far fa-times-circle"></i>
                           </button>
-                          <h6 class="float-right poll-item-title">Radio List</h6>
+                          <h6 class="float-right poll-item-title">{% translate 'Radio List' %}</h6>
                           <input type="hidden" class="item-type" name="item-type" value="R">
-                          <textarea class="form-control polls-que" placeholder="question text..."></textarea>
+                          <textarea class="form-control polls-que" placeholder="{% translate 'question text...' %}"></textarea>
                           <ul class="poll-choesies">
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                           </ul>
-                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                          <button class="btn btn-outline-primary float-right add-cho-btn">{% translate 'Add Choice' %}</button>
                         </div>
                         <div class="poll-item ">
                           <button class="btn mov-poll-item">
@@ -209,36 +210,36 @@
                           <button class="btn del-poll-item">
                             <i class="far fa-times-circle"></i>
                           </button>
-                          <h6 class="float-right poll-item-title">Radio List</h6>
+                          <h6 class="float-right poll-item-title">{% translate 'Radio List' %}</h6>
                           <input type="hidden" class="item-type" name="item-type" value="R">
                           <textarea class="form-control polls-que" placeholder="question text..."></textarea>
                           <ul class="poll-choesies">
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon del-cho-btn"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                             <li class="poll-choies">
-                              <input type="text" class="form-control choies-inp" placeholder="Option...">
+                              <input type="text" class="form-control choies-inp" placeholder="{% translate 'Option...' %}">
                               <button class="btn btn-app btn-app-xs del-cho-btn">
                                 <i class="far fa-trash-alt btn-app-icon"></i>
                               </button>
                             </li>
                           </ul>
-                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                          <button class="btn btn-outline-primary float-right add-cho-btn">{% translate 'Add Choice' %}</button>
                         </div>
                       {% else %}
                         {% for item in poll.items.all %}
@@ -270,7 +271,7 @@
                           </ul>
 
                           {% if not poll.isPublished %}
-                          <button class="btn btn-outline-primary float-right add-cho-btn">Add Choice</button>
+                          <button class="btn btn-outline-primary float-right add-cho-btn">{% translate 'Add Choice' %}</button>
                           {% endif %}
                         </div>
                   
@@ -279,11 +280,11 @@
                
                       </div>
                       {% if isNew %}
-                      <button class="btn btn-outline-primary float-right " id="add-CL-btn">Add CheckBox List</button>
-                      <button class="btn btn-outline-primary float-right " id="add-RL-btn">Add Radio List</button>
+                      <button class="btn btn-outline-primary float-right " id="add-CL-btn">{% translate 'Add CheckBox List' %}</button>
+                      <button class="btn btn-outline-primary float-right " id="add-RL-btn">{% translate 'Add Radio List' %}</button>
                       {% elif not isNew and not poll.isPublished %}
-                      <button class="btn btn-outline-primary float-right " id="add-CL-btn">Add CheckBox List</button>
-                      <button class="btn btn-outline-primary float-right " id="add-RL-btn">Add Radio List</button>
+                      <button class="btn btn-outline-primary float-right " id="add-CL-btn">{% translate 'Add CheckBox List' %}</button>
+                      <button class="btn btn-outline-primary float-right " id="add-RL-btn">{% translate 'Add Radio List' %}</button>
                       {% endif %}
 
                     </div>
@@ -292,9 +293,9 @@
                   {% if not poll.isPublished %}
                    <input type="hidden" form="poll-form" id="pub-poll-inp" name="published">
                   {% endif %}
-                  <button class="btn btn-primary float-right save-poll-btn" >Save</button>
+                  <button class="btn btn-primary float-right save-poll-btn" >{% translate 'Save' %}</button>
                   {% if not poll.isPublished %}
-                  <button class="btn btn-primary float-right pub-poll-btn" style="margin: 0 10px;">Publish</button>
+                  <button class="btn btn-primary float-right pub-poll-btn" style="margin: 0 10px;">{% translate 'Publish' %}</button>
                   {% endif %}
                 </div>
               </div>

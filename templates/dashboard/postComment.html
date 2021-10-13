@@ -1,5 +1,7 @@
 {% extends 'utilities/dashboard/_base.html' %}
-{% block title %}{% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate 'Dashboard' %}{% endblock %}
 
 {% block content %}
 {% include 'utilities/_messages.html' %}
@@ -10,7 +12,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Comments</h3>
+                        <h3 class="card-title">{% translate 'Comments' %}</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -18,11 +20,11 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th style="width: 52%;">Text</th>
-                                    <th style="width: 11%;">Aouthr</th>
-                                    <th style="width: 11%;">Date</th>
-                                    <th style="width: 10%;">Id</th>
-                                    <th style="width: 15%;">Action</th>
+                                    <th style="width: 52%;">{% translate 'Text' %}</th>
+                                    <th style="width: 11%;">{% translate 'Aouthr' %}</th>
+                                    <th style="width: 11%;">{% translate 'Date' %}</th>
+                                    <th style="width: 10%;">{% translate 'Id' %}</th>
+                                    <th style="width: 15%;">{% translate 'Action' %}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,14 +45,14 @@
                                     <td>{{comment.id}}</td>
                                     <td>
                                         <a href="{% url 'dashboard:edit-comment' commentID=comment.id %}" class="btn btn-app cus-btn-app">
-                                            <i class="fas fa-edit btn-app-icon"></i>Edit
+                                            <i class="fas fa-edit btn-app-icon"></i>{% translate 'Edit' %}
                                         </a>
                                         <a href="{% url 'content:question-page' questionID=comment.post.getQuestion.id %}{% if comment.post.isAnswer %}#answer-{{comment.post.answer.id}}{% endif %}" class="btn btn-app cus-btn-app">
-                                            <i class="fas fa-external-link-alt btn-app-icon"></i>Show
+                                            <i class="fas fa-external-link-alt btn-app-icon"></i>{% translate 'Show' %}
                                         </a>
                                         <button class="btn btn-app cus-btn-app del-table-item" data-lvl="2"
                                             data-toggle="modal" data-target="#del-modal" data-tid="{{comment.id}}">
-                                            <i class="far fa-trash-alt btn-app-icon"></i>Delete
+                                            <i class="far fa-trash-alt btn-app-icon"></i>{% translate 'Delete' %}
                                         </button>
                                     </td>
                                 </tr>
@@ -90,7 +92,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="del-modalLabel">Ban User</h5>
+          <h5 class="modal-title" id="del-modalLabel">{% translate 'Delete Comment' %}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -98,7 +100,7 @@
         <div class="modal-body">
           <form method="POST" id="delete-form" action="{% url 'dashboard:delete-comment' %}" >
               {% csrf_token %}
-            <p>Do you want Delete the Comment with ID <span class="del-id-span" id="del-id-span"></span>
+            <p>{% translate 'Do you want Delete the Comment with ID' %} <span class="del-id-span" id="del-id-span"></span>
             </p>
 
             <input type="hidden" name="del-id" id="del-id-inp">
@@ -106,8 +108,8 @@
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" form="delete-form" class="btn btn-primary" >Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+          <button type="submit" form="delete-form" class="btn btn-primary" >{% translate 'Delete' %}</button>
         </div>
       </div>
     </div>
