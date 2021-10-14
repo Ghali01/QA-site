@@ -186,63 +186,6 @@ def chnageEmail(request):
         return redirect(reverse('authusers:auth-index'))
 
 
-def addSocialUser(request,registerPage,imageUrl):
-    fullName=request.POST['fullName'] if 'fullName' in request.POST else None
-    userName=request.POST['userName'] if 'userName' in request.POST else None
-    email=request.POST['email'] if 'email' in request.POST else None
-    password=request.POST['password'] if 'password' in request.POST else None
-    confirmPassword=request.POST['confirmPassword'] if 'confirmPassword' in request.POST else None
-    emailTaken= User.objects.filter(email=email).exists()
-    if fullName and userName and email and password and confirmPassword and password==confirmPassword and 'website' in request.POST and not emailTaken:
-        website=request.POST['website']
-        try:
-            user=User.objects.create_user(userName,email,password,first_name=fullName,is_active=True)
-            profile=UserProfile()
-            profile.user=user
-            profile.website=website
-            profile.socialID= request.POST["user-id"]
-            imgResponse=requests.get(imageUrl)
-            with open(str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg','wb') as imgF:
-                for chunk in imgResponse.iter_content(chunk_size=1024):
-                    if chunk:
-                        imgF.write(chunk)
-
-            profile.image.name=str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg'
-            profile.save()
-            if not profile.isBaned():
-
-                login(request,user)
-                countLoginBadges(user)
-
-            else:
-                messages.error(request,gettext('user baned'))
-            return redirect(reverse('authusers:auth-index'))
-        except IntegrityError:
-            messages.error(request,gettext('User name is alredy exists'),extra_tags='user-name')
-
-    elif not fullName:
-            messages.error(request,gettext('Full name is requrid'),extra_tags='full-name')
-    elif not userName:
-        messages.error(request,gettext('User name is requrid'),extra_tags='user-name')
-    elif not email:
-        messages.error(request,gettext('Email is requrid'),extra_tags='email')
-    elif emailTaken:
-        messages.error(request,gettext('Email is taken'),extra_tags='email')
-    elif not password:
-        messages.error(request,gettext('Password is requrid'),extra_tags='password')
-    elif not confirmPassword:
-        messages.error(request,gettext('Confirm Password is requrid'),extra_tags='conf-pass')
-    elif not password== confirmPassword:
-        messages.error(request,gettext('Password does not match'),extra_tags='conf-pass')
-    return registerPage
-
-
-def addFacebookUser(request):
-    if request.method=='POST':
-        return addSocialUser(request,redirect(reverse('authusers:facebok-login'))
-        ,f'https://graph.facebook.com/{request.POST["user-id"]}/picture?width=150&height=150')
-    else:
-        return redirect(reverse('authusers:auth-index'))
 
 def facebookLogin(request):
     if not request.user.is_authenticated:
@@ -397,6 +340,7 @@ def regisetSocialUser(request):
                     profile.user=user
                     profile.website=website
                     profile.socialID= request.POST["user-id"]
+                    profile.provider=request.POST['provider']
                     imgResponse=requests.get(socialUser.image)
                     with open(str(MEDIA_ROOT.joinpath('profile'))+f'/{userName}.jpg','wb') as imgF:
                         for chunk in imgResponse.iter_content(chunk_size=1024):
@@ -408,14 +352,10 @@ def regisetSocialUser(request):
                     resizedImag.save(str(MEDIA_ROOT.joinpath('profile'))+f'/sm-{userName}.jpg')
                     profile.save()
                     socialUser.delete()
-                    if not profile.isBaned():
 
-                        login(request,user)
-                        countLoginBadges(profile.user)
+                    login(request,user)
 
-                    else:
-                        messages.error(request,gettext('user baned'))
-                    return redirect(reverse('authusers:auth-index'))
+
                     
                 except IntegrityError:
                     messages.error(request,gettext('User name is alredy exists'),extra_tags='user-name')

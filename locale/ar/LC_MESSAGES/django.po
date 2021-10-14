@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-13 15:35+0300\n"
+"POT-Creation-Date: 2021-10-14 09:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr "مشرف"
 
 #: .\authusers\models.py:30 .\templates\dashboard\postLogs.html:25
 #: .\templates\dashboard\users.html:119 .\templates\utilities\_header.html:67
-#: .\templates\utilities\_header.html:159
+#: .\templates\utilities\_header.html:150
 msgid "Moderator"
 msgstr "محرر"
 
@@ -240,7 +240,7 @@ msgstr "برونزية"
 #: .\templates\profiles\profile.html:67 .\templates\profiles\profile.html:254
 #: .\templates\profiles\userQuestions.html:5
 #: .\templates\profiles\userQuestions.html:9
-#: .\templates\utilities\_header.html:71 .\templates\utilities\_header.html:161
+#: .\templates\utilities\_header.html:71 .\templates\utilities\_header.html:152
 #: .\templates\utilities\dashboard\_nav.html:111
 #: .\templates\utilities\dashboard\_nav.html:169
 msgid "Questions"
@@ -267,7 +267,7 @@ msgstr "الاسئلة"
 #: .\templates\profiles\profile.html:63 .\templates\profiles\profile.html:261
 #: .\templates\profiles\userAnswers.html:5
 #: .\templates\profiles\userAnswers.html:9
-#: .\templates\utilities\_header.html:74 .\templates\utilities\_header.html:162
+#: .\templates\utilities\_header.html:74 .\templates\utilities\_header.html:153
 #: .\templates\utilities\dashboard\_nav.html:122
 #: .\templates\utilities\dashboard\_nav.html:179
 msgid "Answers"
@@ -316,7 +316,7 @@ msgstr "التصويت على اجوبة"
 #: .\templates\dashboard\badges.html:42
 #: .\templates\moderators\edits\edits.html:5
 #: .\templates\moderators\edits\edits.html:16
-#: .\templates\utilities\_header.html:77 .\templates\utilities\_header.html:163
+#: .\templates\utilities\_header.html:77 .\templates\utilities\_header.html:154
 msgid "Edits"
 msgstr "تعديلات"
 
@@ -450,19 +450,19 @@ msgstr "تمت اضافة السبب"
 msgid "reason removed"
 msgstr "تمت ازالة السبب"
 
-#: .\dashboard\views\main.py:27
+#: .\dashboard\views\main.py:28
 msgid "invalid email or password"
 msgstr "البريد الالكتروني او كلمة السر خطأ"
 
-#: .\dashboard\views\main.py:29
+#: .\dashboard\views\main.py:30
 msgid "This page for only admin "
 msgstr "هذه الصفحة فقط للمشرفين"
 
-#: .\dashboard\views\main.py:31
+#: .\dashboard\views\main.py:32
 msgid "Email is requreid"
 msgstr "البريد الالكتروني مطلوب"
 
-#: .\dashboard\views\main.py:33
+#: .\dashboard\views\main.py:34
 msgid "Password is requreid"
 msgstr "كبمة السر مطلوبة"
 
@@ -609,7 +609,7 @@ msgid "Remember Me"
 msgstr "تذكرني"
 
 #: .\templates\auth\login.html:52 .\templates\dashboard\login.html:47
-#: .\templates\utilities\auth\_header.html:44
+#: .\templates\utilities\auth\_header.html:45
 msgid "Sign In"
 msgstr "دخول"
 
@@ -661,7 +661,7 @@ msgid "Terms of Use and Privacy Policy"
 msgstr "شروط الاستخدام و سياسة الخصوصية"
 
 #: .\templates\auth\register.html:125 .\templates\auth\socialRegister.html:126
-#: .\templates\utilities\auth\_header.html:34
+#: .\templates\utilities\auth\_header.html:35
 msgid "Sign Up"
 msgstr "تسجيل"
 
@@ -751,7 +751,7 @@ msgstr "الوسوم"
 #: .\templates\dashboard\editMisc\addEditInfoItem.html:34
 #: .\templates\dashboard\editMisc\addEditService.html:44
 #: .\templates\dashboard\editQuestion.html:173
-#: .\templates\dashboard\tags.html:168
+#: .\templates\dashboard\options.html:34 .\templates\dashboard\tags.html:168
 #: .\templates\profiles\_editAvatarModal.html:32
 msgid "Save"
 msgstr "حفظ"
@@ -862,7 +862,7 @@ msgstr "الاقل اجوبة"
 msgid "Most Answers"
 msgstr "الاكثر اجوبة"
 
-#: .\templates\content\index.html:4 .\templates\utilities\_header.html:133
+#: .\templates\content\index.html:4 .\templates\utilities\_header.html:124
 #: .\templates\utilities\dashboard\_nav.html:58
 msgid "Home"
 msgstr "الرئيسية"
@@ -1377,6 +1377,7 @@ msgstr "هل تريد حذف الطلب؟"
 #: .\templates\dashboard\flagedUsers.html:136
 #: .\templates\dashboard\flagedUsers.html:166
 #: .\templates\dashboard\flagedUsers.html:193
+#: .\templates\dashboard\options.html:63
 #: .\templates\dashboard\pollsManagement.html:153
 #: .\templates\dashboard\postComment.html:111
 #: .\templates\dashboard\questions.html:172
@@ -1881,6 +1882,22 @@ msgstr "هل تريد الغاء حظر"
 msgid "Sign in to start your session"
 msgstr "سجل الدخول بدء جلستك"
 
+#: .\templates\dashboard\options.html:3 .\templates\dashboard\options.html:17
+msgid "Options"
+msgstr "خيارات"
+
+#: .\templates\dashboard\options.html:11 .\templates\dashboard\options.html:53
+msgid "Restart Server"
+msgstr "اعادة تشغيل الخادم"
+
+#: .\templates\dashboard\options.html:22
+msgid "Arabic"
+msgstr "لغة عربية"
+
+#: .\templates\dashboard\options.html:64
+msgid "Restart"
+msgstr "اعادة تشغيل"
+
 #: .\templates\dashboard\pollsManagement.html:5
 msgid "Polls Management"
 msgstr "ادارة الاستبيانات"
@@ -2238,6 +2255,7 @@ msgid "Favorite Queestions"
 msgstr "الاسئلة المفضلة"
 
 #: .\templates\profiles\_profileTabs.html:32
+#: .\templates\utilities\dashboard\_nav.html:356
 msgid "Settings"
 msgstr "الاعدادات"
 
@@ -2332,35 +2350,31 @@ msgstr "تواصل معنا"
 msgid "Advertise with us"
 msgstr "اعلن معنا"
 
-#: .\templates\utilities\_header.html:52 .\templates\utilities\_header.html:137
+#: .\templates\utilities\_header.html:52 .\templates\utilities\_header.html:128
 msgid "My Profile"
 msgstr "ملفي الشخصي"
 
-#: .\templates\utilities\_header.html:57 .\templates\utilities\_header.html:140
+#: .\templates\utilities\_header.html:57 .\templates\utilities\_header.html:131
 msgid "My Questions"
 msgstr "اسئلتي"
 
-#: .\templates\utilities\_header.html:62
-msgid "My Answes"
-msgstr "اجاباتي"
-
-#: .\templates\utilities\_header.html:96
-msgid "Logout"
-msgstr "تسجيل خروج"
-
-#: .\templates\utilities\_header.html:143
+#: .\templates\utilities\_header.html:62 .\templates\utilities\_header.html:134
 msgid "My Answers"
 msgstr "اجاباتي"
 
-#: .\templates\utilities\_header.html:147
+#: .\templates\utilities\_header.html:87
+msgid "Logout"
+msgstr "تسجيل خروج"
+
+#: .\templates\utilities\_header.html:138
 msgid "All Categories"
 msgstr "كل التصنيفات"
 
-#: .\templates\utilities\_header.html:151
+#: .\templates\utilities\_header.html:142
 msgid "All Tags"
 msgstr "كل الوسوم"
 
-#: .\templates\utilities\_header.html:154
+#: .\templates\utilities\_header.html:145
 #: .\templates\utilities\_leftColumn.html:11
 msgid "Exams"
 msgstr "اختبارات"
@@ -2401,7 +2415,7 @@ msgstr "الاعمدة"
 msgid "Advertise Requests"
 msgstr "طلبات الاعلان"
 
-#: .\templates\utilities\dashboard\_nav.html:370
+#: .\templates\utilities\dashboard\_nav.html:381
 msgid "Log out"
 msgstr "تسجيل خروج"
 
@@ -3609,3 +3623,6 @@ msgstr ""
 #: .\venv\Lib\site-packages\httplib2\__init__.py:1448
 msgid "Redirected but the response is missing a Location: header."
 msgstr ""
+
+#~ msgid "My Answes"
+#~ msgstr "اجاباتي"

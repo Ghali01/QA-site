@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-13 21:50+0300\n"
+"POT-Creation-Date: 2021-10-14 09:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:311
+#: .\interviewsquestions\static\dashboard\js\main.js:643
+#: .\static\dashboard\js\main.js:643
+msgid "Delete"
+msgstr "حذف"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:319
+#: .\interviewsquestions\static\dashboard\js\main.js:647
+#: .\static\dashboard\js\main.js:647
+msgid "Edit"
+msgstr "تعديل"
 
 #: .\interviewsquestions\static\dashboard\js\main.js:407
 #: .\static\dashboard\js\main.js:407
@@ -50,16 +62,6 @@ msgstr "اضافة خيار"
 #: .\static\dashboard\js\main.js:596
 msgid "All"
 msgstr "الكل"
-
-#: .\interviewsquestions\static\dashboard\js\main.js:643
-#: .\static\dashboard\js\main.js:643
-msgid "Delete"
-msgstr "حذف"
-
-#: .\interviewsquestions\static\dashboard\js\main.js:647
-#: .\static\dashboard\js\main.js:647
-msgid "Edit"
-msgstr "تعديل"
 
 #: .\interviewsquestions\static\dashboard\js\main.js:694
 #: .\static\dashboard\js\main.js:694
@@ -125,6 +127,10 @@ msgstr "ازالة من الامتحانات"
 #: .\static\dashboard\js\main.js:916
 msgid "Add to exams"
 msgstr "اضافة الى الامتحانات"
+
+#: .\interviewsquestions\static\dashboard\js\main.js:934
+msgid "Mark as correct"
+msgstr "تعليم كصحيح"
 
 #: .\interviewsquestions\static\dashboard\plugins\pdfmake\pdfmake.min.js:2
 #: .\static\dashboard\plugins\pdfmake\pdfmake.min.js:2

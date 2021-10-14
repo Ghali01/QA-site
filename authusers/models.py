@@ -22,6 +22,11 @@ providerChoises=[
     ('gi',gettext('Github')),
 ]
 
+class SocialProviders:
+    Facebook='fa'
+    Twitter='tw'
+    Google='go'
+    Github='gi'
 
 class UserProfile(models.Model):
     permissionsChoies=[

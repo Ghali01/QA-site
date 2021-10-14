@@ -1,0 +1,119 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate 'Statistics' %} {% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Statistics</h3>
+              <div class="btn-group lng-sel">
+                <a href="{% url 'dashboard:statistics' language='en' %}" class="btn btn-default">English</a>
+                <a href="{% url 'dashboard:statistics' language='ar' %}" class="btn btn-default">عربي</a>
+            </div>
+           
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                      <p class="stat-title">
+                     
+                         {% translate 'Content' %} 
+                      </p>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <span class="stat-lab">{% translate 'Questions' %}</span> 
+                      <span class="stat-cont">{{questions}}</span>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <span class="stat-lab">{% translate 'Categories' %}</span> 
+                      <span class="stat-cont">{{categories}}</span>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <span class="stat-lab">{% translate 'Tags' %}</span> 
+                      <span class="stat-cont">{{tags}}</span>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <span class="stat-lab" style="font-size: 32px;">{% translate 'Questions For Exams' %}</span> 
+                      <span class="stat-cont">{{questionsFE}}</span>
+                    </div>
+             
+                     
+                   </div>
+                   <div class="row">
+                       <div class="col-12">
+                         <p class="stat-title">
+                        
+                            {% translate 'Users' %} 
+                         </p>
+                       </div>
+                       <div class="col-6 col-md-4 col-lg-3">
+                         <span class="stat-lab">{% translate 'All Users' %}</span> 
+                         <span class="stat-cont">{{allUsers}}</span>
+                       </div>
+                       <div class="col-6 col-md-4 col-lg-3">
+                         <span class="stat-lab">{% translate 'Email Users' %}</span> 
+                         <span class="stat-cont">{{EMUsers}}</span>
+                       </div>
+                       <div class="col-6 col-md-4 col-lg-3">
+                         <span class="stat-lab">{% translate 'Facebook Users' %}</span> 
+                         <span class="stat-cont">{{FAUsers}}</span>
+                       </div>
+                       <div class="col-6 col-md-4 col-lg-3">
+                         <span class="stat-lab">{% translate 'Google Users' %}</span> 
+                         <span class="stat-cont">{{GOUsers}}</span>
+                       </div>
+                       <div class="col-6 col-md-4 col-lg-3">
+                         <span class="stat-lab">{% translate 'Github Users' %}</span> 
+                         <span class="stat-cont">{{GIUsers}}</span>
+                       </div>
+                
+                        
+                      </div>
+
+                      
+                   <div class="row">
+                    <div class="col-12">
+                      <p class="stat-title">
+                     
+                         {% translate 'Feedback' %} 
+                      </p>
+                    </div>
+                    <div class="col-6 col-md-4 col-lg-3">
+                      <span class="stat-lab" style="font-size: 30px;">{% translate 'Suggested Categories' %}</span> 
+                      <span class="stat-cont">{{suggestedCategories}}</span>
+                    </div>
+            
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <span class="stat-lab">{% translate 'Suggested Tags' %}</span> 
+                        <span class="stat-cont">{{suggestedTags}}</span>
+                      </div>
+                   </div>
+<!--                       
+                   <div class="row">
+                    <div class="col-12">
+                      <p class="stat-title">
+                     
+                         {#% translate '' %#} 
+                      </p>
+                    </div>
+                     <div class="col-6 col-md-4 col-lg-3">
+                       <span class="stat-lab">{#% translate '' %#}</span> 
+                       <span class="stat-cont">55412</span>
+                     </div>
+             
+                     
+                   </div> -->
+                 </div>
+          </div>
+        </div>
+        
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+{% endblock %}

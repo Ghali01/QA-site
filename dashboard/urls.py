@@ -104,6 +104,7 @@ urlpatterns=[
     path('togg-exam-que',questionsViews.toggExamQuestion,name='toggle-exam-question'),
     path('mark-correct-ans',questionsViews.markCorrectAnswer,name='mark-correct-ans'),
     path('options',mainViews.options,name='options-page'),
-    path('restart-server',mainViews.restaratServer,name='restart-server')
+    path('restart-server',mainViews.restaratServer,name='restart-server'),
+    path('statistics/<str:language>',mainViews.statistics,name='statistics')
 
   ]

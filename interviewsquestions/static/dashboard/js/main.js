@@ -308,7 +308,7 @@ function CategoryListClick(e) {
                 $(deleteBtn).attr("data-lvl", "2");
                 $(deleteBtn).attr("data-toggle", "modal");
                 $(deleteBtn).attr("data-target", "#del-cate-modal");
-                $(deleteBtn).append('<i class="far fa-trash-alt btn-app-icon"></i>Delete');
+                $(deleteBtn).append(`<i class="far fa-trash-alt btn-app-icon"></i>${gettext('Delete')}`);
                 $(deleteBtn).click(deleteCateBtn);
                 $(cateLi).append(deleteBtn);
                 let editBtn=document.createElement('button');
@@ -316,7 +316,7 @@ function CategoryListClick(e) {
                 $(editBtn).attr("data-lvl", "2");
                 $(editBtn).attr("data-toggle", "modal");
                 $(editBtn).attr("data-target", "#edit-cate-modal");
-                $(editBtn).append('<i class="fas fa-pen btn-app-icon"></i>Edit');
+                $(editBtn).append(`<i class="fas fa-pen btn-app-icon"></i>${gettext("Edit")}`);
                 $(editBtn).click(editCateBtn)
                 $(cateLi).append(editBtn);
                 $(cateLi).click(CategoryListClick);
@@ -639,7 +639,6 @@ function despalyTags(tags){
         <td>${item.description}<td>
             <button class="btn btn-app cus-btn-app d-block del-tag-btn" data-lvl="2" data-toggle="modal" data-target="#del-tag-modal"
             data-tag-id="${item.id}" data-tag-name="${item.name}">
-                <i class="far fa-trash-alt btn-app-icon"></i>Delete
                 <i class="far fa-trash-alt btn-app-icon"></i>${gettext('Delete')}
             </button>
             <button class="btn btn-app cus-btn-app d-block edit-tag-btn" data-lvl="2" data-toggle="modal" data-target="#edit-tag-modal"
@@ -931,7 +930,7 @@ function markCorrectAnswer() {
                 data=JSON.parse(data);
                 $('.correct-td').append(`
                 <button data-ans-id="${data.id}" style="height: 70px;"  class="btn btn-app cus-btn-app app-btn-70 mark-ans-exam-btn">
-                <i class="fas fa-check btn-app-icon"></i>Mark as correct
+                <i class="fas fa-check btn-app-icon"></i>${gettext('Mark as correct')}
               </button>
               `);
               $('.correct-td').parent().find('.mark-ans-exam-btn').click(markCorrectAnswer);

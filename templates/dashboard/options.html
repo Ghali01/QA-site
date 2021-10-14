@@ -8,7 +8,7 @@
     <div class="card">
       <div class="card-header">
         <h2 class="card-title"></h2>
-        <button class="btn btn-danger float-right" data-toggle="modal" data-lvl="2" data-target="#restart-modal">Restart Server</button>
+        <button class="btn btn-danger float-right" data-toggle="modal" data-lvl="2" data-target="#restart-modal">{% translate 'Restart Server' %}</button>
       </div>
       <div class="card-body options-card">
         <form action="" method="POST">
@@ -50,7 +50,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Restart Server</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{% translate 'Restart Server' %}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -60,8 +60,8 @@
         <input type="text" class="form-control" id="restart-input" placeholder="write yes to restart...">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a href="{% url 'dashboard:restart-server' %}" class="btn btn-secondary"  id="restart-btn">Restart</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% translate 'Close' %}</button>
+        <a href="{% url 'dashboard:restart-server' %}" class="btn btn-secondary"  id="restart-btn">{% translate 'Restart' %}</a>
       </div>
     </div>
   </div>

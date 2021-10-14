@@ -93,7 +93,12 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item
+          {% if 'questions' in request.path and not 'flaged' in request.path or 'answers' in request.path and not 'flaged' in request.path %}
+          menu-open
+          {% endif %}">
+    
+          ">
             <a href="#" class="nav-link ">
               <i class="fas fa-align-justify"></i>
               <p>
@@ -104,7 +109,7 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{% url 'dashboard:questions' page=1 %}" class="nav-link
-                {% if 'questions' in request.path %}
+                {% if 'questions' in request.path and not 'flaged' in request.path %}
                 active
                 {% endif %} ">
                   <i class="far fa-question-circle"></i>
@@ -113,7 +118,7 @@
               </li>
               <li class="nav-item">
                 <a href="{% url 'dashboard:all-answers-page' page=1 %}" class="nav-link
-                {% if 'answers' in request.path %}
+                {% if 'answers' in request.path and not 'flaged' in request.path %}
                 active
                 {% endif %} 
                 ">
@@ -138,7 +143,12 @@
             </a>
 
           </li>
-          <li class="nav-item ">
+          <li class="nav-item
+          {% if 'flaged-questions' in request.path or 'flaged-answers' in request.path or 'flaged-users' in request.path or 'suggested-categories' in request.path or 'suggested-tags' in request.path %}
+          menu-open
+          {% endif %}">
+    
+          ">
             <a href="#" class="nav-link ">
               <i class="far fa-comment-dots"></i>
               <p>
@@ -347,6 +357,20 @@
             </a>
           </li>
           
+          <li class="nav-item">
+            <a href="{% url 'dashboard:statistics' language='en' %}" class="nav-link
+            {% if 'statistics' in request.path %}
+            active
+            {% endif %}
+            
+            ">
+              <i class="nav-icon far  fa-chart-bar"></i>
+              <p>
+                {% translate 'Statistics' %}
+              </p>
+            </a>
+          </li>
+          
 
           <li class="nav-item">
             <a href="{% url 'dashboard:options-page' %}" class="nav-link
@@ -361,7 +385,7 @@
           <li class="nav-item">
           {% get_current_language as lc %}
             <a href="{% if lc == 'en' %}{% url 'content:set-language' language='ar' %}{% else %}{% url 'content:set-language' language='en' %}{% endif %}?url={{request.build_absolute_uri}}" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
+              <i class="nav-icon fas fa-globe"></i>
               <p>
                 {% if lc == 'en' %}
                 عربي
