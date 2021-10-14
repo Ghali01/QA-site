@@ -228,16 +228,39 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="{% url 'dashboard:edit-info-page' language='EN' %}" class="nav-link
-                    {% if 'edit-info' in request.path %}
+                  <a href="{% url 'dashboard:edit-auth-page' page='R' language='en' %}" class="nav-link
+                    {% if 'edit-page/R' in request.path %}
                     active
                     {% endif %}
                     
                     
                     ">
-                    <p>{% translate 'Info' %}</p>
+                    <p>{% translate 'Register' %}</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                <a href="{% url 'dashboard:edit-auth-page' page='L' language='en' %}" class="nav-link
+                  {% if 'edit-info/L' in request.path %}
+                  active
+                  {% endif %}
+                  
+                  
+                  ">
+                  <p>{% translate 'Login' %}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+
+              <a href="{% url 'dashboard:edit-info-page' language='EN' %}" class="nav-link
+                {% if 'edit-info' in request.path %}
+                active
+                {% endif %}
+                
+                
+                ">
+                <p>{% translate 'Info' %}</p>
+              </a>
+            </li>
                 <li class="nav-item">
                   <a href="{% url 'dashboard:edit-header-page' language='EN' %}" class="nav-link
                     {% if 'edit-header' in request.path %}

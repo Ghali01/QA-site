@@ -33,5 +33,4 @@ def commentItem(comment,isSuperAdmin):
 @register.inclusion_tag('utilities/_chLang.html' ,name='chLangAuthen')
 @register.inclusion_tag('utilities/auth/_chLang.html' ,name='chLangNoAuthen')
 def chLang(url):
-    print(url)
     return{'arabicOn':BoolOption.arabicOn(),'url':url}

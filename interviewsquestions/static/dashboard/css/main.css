@@ -656,3 +656,20 @@ input:checked + .slider:after{
     text-align: center;
     font-size: 40px;
 }
+
+
+
+.auth-list{
+    margin-top: 16px;
+}
+.auth-list li{
+    margin-top: 4px;
+}
+.auth-list input{
+    width: 95%;
+    display: inline;
+}
+.auth-list button{
+ 
+    display: inline;
+}

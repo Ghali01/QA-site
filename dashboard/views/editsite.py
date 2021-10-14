@@ -1,5 +1,6 @@
-from django.shortcuts import redirect, render as _render
+from django.shortcuts import get_object_or_404, redirect, render as _render
 from django.urls.base import reverse
+from authusers.models import AuthList
 from interviewsquestions.settings import BASE_DIR, MEDIA_ROOT
 from django.http import HttpResponse
 from domonic.html import *
@@ -7,7 +8,7 @@ from bs4 import BeautifulSoup
 from random import randrange
 from django.core.files.storage import FileSystemStorage
 from misc.models import AdvertiseImage, AdvertisePage, Service,InfoItem
-
+from dashboard.decorators import forSuperAdmin
 
 def genRandomStr():
     '''
@@ -518,3 +519,18 @@ def deleteInfoItem(request, language):
 
     else:
         return redirect("/dashboard/login")
+
+
+@forSuperAdmin
+def editAuthPage(request,page,language):
+    List=get_object_or_404(AuthList,page=page,language=language)
+    if request.method=='POST':
+        if 'title' in request.POST and 'items' in request.POST:
+            List.title=request.POST['title']
+            List.list=request.POST['items']
+            List.save()
+            return redirect(reverse('dashboard:edit-auth-page',kwargs={'page':page,'language':language}))
+    contxt={
+        'list':List
+    }
+    return _render(request,'dashboard/editAuthPage.html',contxt)

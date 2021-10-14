@@ -1,0 +1,47 @@
+{% extends 'utilities/dashboard/_base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate 'Edit' %} {{list.get_page_display}}{% endblock %}
+{% block content %} 
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">{% translate 'Edit' %} {{list.get_page_display}}</h3>
+              
+            <div class="btn-group lng-sel">
+                <a href="{% url 'dashboard:edit-auth-page' page=list.page language='en' %}" class="btn btn-default">English</a>
+                <a href="{% url 'dashboard:edit-auth-page' page=list.page language='ar' %}" class="btn btn-default">عربي</a>
+            </div>
+        
+            </div>
+            <div class="card-body">
+                <form  method="POST">
+                    <input type="text" name="title" value="{{list.title}}" class="form-control" placeholder="{% translate 'List Title' %}">
+              <ul class="auth-list" id="auth-list" >
+                {% for item in list.items %}
+                <li>
+                  <input type="text" class="form-control" value="{{item}}">
+                  <button class="btn btn-default del-auth-item">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </li>
+                {% endfor %}
+              </ul>
+                  {% csrf_token %}
+              <input type="hidden" name="items" value="{{list.list}}" id="auth-list-inp">
+              <button type="submit" class="btn btn-primary float-right" id="sav-l-auth" >{% translate 'Save' %}</button>
+            </form>
+              <button class="btn btn-outline-primary float-right " style="margin: 0 10px;" id="add-a-i-btn">{% translate 'Add item' %}</button>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+{% endblock %}

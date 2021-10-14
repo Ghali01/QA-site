@@ -156,8 +156,8 @@
     <input type="hidden" class="add-que-h-inp" name="category-id" id="category-id" value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}">
 
 </div>
-<input type="txet" name="que-count" class="custom-input ques-exams-num custom-input-number" id='myTextBox' value="1" id="">
-<button type="submit" class="btn btn-primary btn-sm primary-button ">
+<input type="txet" name="que-count" autocomplete="off" class="custom-input ques-exams-num custom-input-number" id='myTextBox' value="1" id="">
+<button type="submit" class="btn btn-primary btn-sm primary-button exam-btn">
     {% translate 'Generate Exam' %}
 </button>
 </form>

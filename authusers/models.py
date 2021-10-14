@@ -1,13 +1,15 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.base import Model
 
 from django.utils import timezone
 
 from content.models import Post, Badge, PostLog, Tag,Question,Category
 import datetime
-from interviewsquestions.utilities.database import langChoices
+from interviewsquestions.utilities.database import langChoices,languageField
 from feedback.models import FlagReason
 from django.utils.translation import get_language,gettext,pgettext
+import json
 class TempUser(models.Model):
 
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='tmp')
@@ -193,3 +195,16 @@ class TmpLink(models.Model):
     # class actions:
     #     ResetPassword="P"
     #     ResetEmail="E"
+
+class AuthList(models.Model):
+    titleChoices=[ 
+        ('R',gettext('Register')),
+        ('L',gettext('Login')),
+        ]
+    page=models.CharField(max_length=1,choices=titleChoices)
+    language=languageField
+    title=models.TextField(default='')
+    list=models.JSONField()
+
+    def items(self):
+        return json.loads(self.list)

@@ -105,6 +105,7 @@ urlpatterns=[
     path('mark-correct-ans',questionsViews.markCorrectAnswer,name='mark-correct-ans'),
     path('options',mainViews.options,name='options-page'),
     path('restart-server',mainViews.restaratServer,name='restart-server'),
-    path('statistics/<str:language>',mainViews.statistics,name='statistics')
+    path('statistics/<str:language>',mainViews.statistics,name='statistics'),
+    path('edit-page/<str:page>/<str:language>',editSiteViews.editAuthPage,name='edit-auth-page')
 
   ]

@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
-from .models import TempUser,UserProfile,SocialUser,TmpLink
+from .models import AuthList, TempUser,UserProfile,SocialUser,TmpLink
 from random import randint
 from django.db.utils import IntegrityError
 from django.http import HttpResponse
@@ -74,7 +74,11 @@ def registerPage(request):
             messages.error(request,gettext('Confirm Password is requrid'),extra_tags='conf-pass')
         elif not password== confirmPassword:
             messages.error(request,gettext('Password does not match'),extra_tags='conf-pass')
-    return render(request,'auth/register.html')
+    contxt={
+        'list':AuthList.objects.get(page='R',language=get_language()[:2])
+    }
+ 
+    return render(request,'auth/register.html',contxt)
 def emailSent(request):
     
     if request.user.is_authenticated and not request.user.is_anonymous:
@@ -126,7 +130,11 @@ def loginPage(request):
                     messages.error(request,gettext('user baned'))
             else:
                 messages.error(request,gettext("email or passowrd in not valid"))
-    return render(request,'auth/login.html')
+    contxt={
+        'list':AuthList.objects.get(page='L',language=get_language()[:2])
+    }
+ 
+    return render(request,'auth/login.html',contxt)
 def logout(request):
     if request.user.is_authenticated and not request.user.is_anonymous:
         _logout(request)

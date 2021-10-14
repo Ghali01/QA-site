@@ -3,7 +3,7 @@
 <footer class="main-foot">
     <div class="continer">
         <div class="row">
-            <div class="col-3">
+            <div class="col-6 col-sm-3">
                 <ul class="footer-links">
                     <li class="footer link-item">
                         <a  href="{% url 'misc:info-page' %}" class="custom-link footer-link">
@@ -29,7 +29,7 @@
                 <div class="footer-break"></div>
            
             </div>
-            <div class="col-9 cus-footer">
+            <div class="col-6 col-sm-9 cus-footer">
                 {% load i18n %}
                 {% get_current_language as LANGUAGE_CODE %}
                 {% with lc=LANGUAGE_CODE|slice:':2'|upper %}

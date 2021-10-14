@@ -7,14 +7,11 @@
 <div class="row">
   <div class="order-2 order-md-1 col-12 col-md-8">
     <div class="side-content-p">
-      <h2 class="side-conten-title">Welcome to Interviews Questions....</h2>
+      <h2 class="side-conten-title">{{list.title}}</h2>
       <ul class="side-content-list">
-
-        <li class="side-content-item">Lorem ipsum dolor sit amet consectetur </li>
-        <li class="side-content-item">adipisicing elit. Dolorem minima, facere numquam nulla quas asperiores </li>
-        <li class="side-content-item">doloribus quod molestias aspernatur eligendi tempore. </li>
-        <li class="side-content-item">Nulla sed atque recusandae porro veniam expedita esse enim. </li>
-
+        {% for item in list.items %}
+        <li class="side-content-item">{{item}} </li>
+        {% endfor %}
       </ul>
     </div>
   </div>
