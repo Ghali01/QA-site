@@ -106,6 +106,7 @@ urlpatterns=[
     path('options',mainViews.options,name='options-page'),
     path('restart-server',mainViews.restaratServer,name='restart-server'),
     path('statistics/<str:language>',mainViews.statistics,name='statistics'),
-    path('edit-page/<str:page>/<str:language>',editSiteViews.editAuthPage,name='edit-auth-page')
+    path('edit-page/<str:page>/<str:language>',editSiteViews.editAuthPage,name='edit-auth-page'),
+    path('edit-terms/<str:language>',editSiteViews.editTermsAndPolicy,name='edit-terms')
 
   ]

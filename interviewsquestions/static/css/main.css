@@ -3911,3 +3911,8 @@ p.info{
 .post-content pre{ 
     overflow: hidden;
 }
+
+.terms{
+    padding: 16px;
+    color: var(--titles-colors);
+}

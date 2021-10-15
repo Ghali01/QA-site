@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.fields import CharField, TextField
 from interviewsquestions.settings import MEDIA_ROOT
-
+from interviewsquestions.utilities.database import languageField
 
 class AdvertisePage(models.Model):
     langChoices = [
@@ -79,3 +79,7 @@ class ContactMessage(models.Model):
     subject=models.CharField(max_length=130)
     text=models.TextField()
     language = models.CharField(max_length = 2,choices = langChoices,default='EN')
+
+class TermsPage(models.Model):
+    language=languageField
+    html=models.TextField(default='')

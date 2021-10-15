@@ -283,6 +283,17 @@
                   </a>
                 </li>
                 <li class="nav-item">
+                  <a href="{% url 'dashboard:edit-terms' language='en' %}" class="nav-link
+                    {% if 'edit-terms' in request.path %}
+                    active
+                    {% endif %}
+                    
+     
+                    ">
+                    <p>{% translate 'Edit Terms & Policy' %}</p>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a href="{% url 'dashboard:edit-column' language='EN' side='RT' %}" class="nav-link
                     {% if 'column' in request.path %}
                     active

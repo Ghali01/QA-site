@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.cache import cache
 
 
 class EmailTemplate(models.Model):
@@ -23,16 +23,23 @@ class BoolOption(models.Model):
     @staticmethod
     def arabicOn():
         try:
-            return BoolOption.objects.get(key=BoolOption.ARABIC_KEY).value
+            if not cache.get('arabic-on') is None:
+                return cache.get('arabic-on')
+            else:
+                value=BoolOption.objects.get(key=BoolOption.ARABIC_KEY).value
+                cache.set('arabic-on',value,timeout=None)
+                return value 
         except BoolOption.DoesNotExist:
             BoolOption.objects.create(key=BoolOption.ARABIC_KEY)
+            cache.set('arabic-on',False)
             return False
 
     @staticmethod
     def setArabic(value:bool):
         obj = BoolOption.objects.get(key=BoolOption.ARABIC_KEY)
-        obj.value=value
+        obj.value=value            
         obj.save()
+        cache.set('arabic-on',value,timeout=None)
         return value 
     @staticmethod
     def setValue(key:str,value:bool):

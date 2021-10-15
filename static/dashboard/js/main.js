@@ -275,6 +275,9 @@ $(document).ready(function () {
     $('.mark-ans-exam-btn').click(markCorrectAnswer);
     $('#restart-input').keyup(restartInputWrite);
     $('#restart-btn').click(restratBtn);
+    $('#add-a-i-btn').click(addAuthItem);
+    $('#sav-l-auth').click(saveListAuth);
+    $('.del-auth-item').click(deleteAuthItem);
     let now= new Date(),
     dateNextWeek=new Date(now.getTime()+(1000*60*60*24*7));
 
@@ -958,3 +961,28 @@ function restartInputWrite(){
     if ($('#restart-input').val()!='yes')
       e.preventDefault()
   }
+
+  
+function addAuthItem(){
+    let li =document.createElement('li');
+    $(li).html(`
+    <input type="text" class="form-control" >
+    <button class="btn btn-default del-auth-item">
+      <i class="fas fa-trash"></i>
+    </button>
+`);
+    $(li).find('.del-auth-item').click(deleteAuthItem);
+    $('#auth-list').append(li);
+}
+
+function saveListAuth(e){
+    data=[];
+    [...$('#auth-list').children()].forEach(e=>{
+        if($(e).find('input').val())
+            data.push($(e).find('input').val());
+    });
+    $('#auth-list-inp').val(JSON.stringify(data));
+}
+function deleteAuthItem(){
+    $(this).parent().remove();
+}

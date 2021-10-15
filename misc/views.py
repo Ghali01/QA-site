@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 from django.urls import reverse
 
-from .models import InfoItem,Service,ContactMessage,AdvertisePage,AdvertistRequest
+from .models import InfoItem,Service,ContactMessage,AdvertisePage,AdvertistRequest, TermsPage
 from django.contrib import messages
 from django.utils.translation import get_language,gettext
 def InfoPage(request):
@@ -73,3 +73,12 @@ def advertiseWithUs(request):
     }
 
     return render(request,'misc/advertise.html',contxt)
+
+
+def terms(request):
+    language=get_language()[:2]
+    page=TermsPage.objects.get(language=language)
+    contxt={
+        'terms':page.html
+    }
+    return render(request,'misc/terms.html',contxt)

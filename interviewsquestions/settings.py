@@ -66,7 +66,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'interviewsquestions.utilities.datetime.TimezoneMiddleware',
-    'interviewsquestions.utilities.lastSeenMiddleware.lastSeenMiddleware'
+    'interviewsquestions.utilities.lastSeenMiddleware.lastSeenMiddleware',
+    'interviewsquestions.utilities.langMiddleware.langMiddleware'
 ]
 
 ROOT_URLCONF = 'interviewsquestions.urls'

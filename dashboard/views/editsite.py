@@ -7,7 +7,7 @@ from domonic.html import *
 from bs4 import BeautifulSoup
 from random import randrange
 from django.core.files.storage import FileSystemStorage
-from misc.models import AdvertiseImage, AdvertisePage, Service,InfoItem
+from misc.models import AdvertiseImage, AdvertisePage, Service,InfoItem, TermsPage
 from dashboard.decorators import forSuperAdmin
 
 def genRandomStr():
@@ -534,3 +534,15 @@ def editAuthPage(request,page,language):
         'list':List
     }
     return _render(request,'dashboard/editAuthPage.html',contxt)
+
+@forSuperAdmin
+def editTermsAndPolicy(request,language):
+    page=TermsPage.objects.get(language=language)
+    if request.method=='POST' and 'custom-html' in request.POST:
+        page.html=request.POST['custom-html']
+        page.save()
+        return redirect(reverse('dashboard:edit-terms',kwargs={'language':language}))
+    contxt={
+        'customHTML':page.html,
+    }
+    return _render(request,'dashboard/editTerms.html',contxt)

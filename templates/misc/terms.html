@@ -1,0 +1,9 @@
+{% extends 'utilities/_base_no_column.html' %}
+{% load i18n %}
+{% block title %}{% translate 'Terms of Use and Privacy Policy' %} {% endblock %}
+
+{% block content %} 
+<div class="terms">
+    {{terms|safe}}
+</div>
+{% endblock %}
