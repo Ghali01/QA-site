@@ -3916,3 +3916,29 @@ p.info{
     padding: 16px;
     color: var(--titles-colors);
 }
+
+.par-404{
+    margin: auto;
+    margin-top: 10%;
+}
+.row-404{
+    display: flex;
+    justify-content: center;
+}
+.nt-404,.e-404{
+    font-size: 40px;
+    margin: 0 14px;
+}
+.e-404{
+    color: var(--error-color);
+}
+.nt-404{
+    color: var(--titles-colors);
+}
+
+@media (max-width:380px) {
+    .nt-404,.e-404{
+        font-size: 30px;
+    }
+    
+}

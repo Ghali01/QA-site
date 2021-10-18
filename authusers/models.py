@@ -64,11 +64,11 @@ class UserProfile(models.Model):
     def isBaned(self):
         return BanedUser.objects.filter(user=self.user).exists()
     def isModerator(self):
-        return self.permission=='M'
+        return self.permission=='M' or self.permission=='A' or self.permission=='SA'
+    def isAdmin(self):
+        return self.permission=='A' or self.permission=='SA'
     def isSuperAdmin(self):
         return self.permission=='SA'
-    def isAdmin(self):
-        return self.permission=='A'
     def goldBadgesCount(self):
         return self.badges.filter(level=Badge.levels.Gold).count()
     def silverBadgesCount(self):

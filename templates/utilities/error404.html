@@ -1,0 +1,13 @@
+{% extends 'utilities/_base.html' %}
+{% load i18n %}
+{% block title %}{% translate '404 Not Found' %}{% endblock %}
+
+{% block content %} 
+
+<div class="par-404">
+    <div class="row-404">
+        <span class="e-404">404</span>
+        <span class="nt-404">{% translate 'Not Found' %}</span>
+   </div>
+</div>
+{% endblock %}

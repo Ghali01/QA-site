@@ -652,3 +652,7 @@ def setLangage(request,language):
 
 
 
+
+def error404(request,exception):
+    print(exception)
+    return  render(request,'utilities/error404.html')
