@@ -1,3 +1,6 @@
+// import { StacksEditor } from "/static/node_modules/@stackoverflow/stacks-editor";
+// // don't forget to include the styles as well
+// import "@stackoverflow/stacks-editor/dist/styles.css";
 var addedTags = [];
 var editor;
 var searchText = '';

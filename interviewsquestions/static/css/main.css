@@ -625,7 +625,7 @@ body{
 
 .nums-que{
     text-align: center;
-    height: 60px;
+    height: 54px;
     border-radius: 8px;
     margin: 0 auto;
     padding: 0;
@@ -649,7 +649,7 @@ body{
 .votes-num-span,.answered-num-span,.que-num-span{
     display: block;
     width: 100%;
-    font-size: 19px;
+    font-size: 17px;
     text-align: center;
 }
 .vp-num-ques .que-num-span ,.vp-num-ques .answered-num-span{
@@ -1430,7 +1430,7 @@ button.go{
 }
 .add-ans-button{
     float: right;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 .que-title,
 .pos-title{
@@ -1453,14 +1453,14 @@ button.go{
 }
 .sort-icon{
     display: block !important;
-    color: var(--primary-color);
-    font-size: 70px;
+    color: #696f75;
+    font-size: 50px;
     margin: auto;
     text-align: center;
     cursor: pointer;
 }
 .sort-icon-act{
-    color: var(--secodry-color);
+    color: #7b8d9e;
 }
 @media (max-width:450px) {
     .sort-icon{
@@ -1476,7 +1476,7 @@ button.go{
 }
 .votes-number-span{
     font-size: 1.5vw;
-    color: var(--secodry-color);
+    color: var(--black-500);
     margin: auto;
     text-align: center;
     display: block;
@@ -1484,7 +1484,7 @@ button.go{
 
 .bookmark-icon{
     font-size: 30px;
-    color: var(--secodry-color);
+    color: #696f75;
     padding: 13px 0;
     display: block !important;
     text-align: center;
@@ -2805,7 +2805,7 @@ button.go{
     }
 }
 
-@media (max-width:340px) {
+@media (max-width:348px) {
     .btn-option-item{
         font-size: 11px;
         padding-top: 10px;
@@ -2867,6 +2867,7 @@ button.go{
 
 .que-opt{
     color: var(--titles-colors) !important;
+    font-size: 13px;
 }
 .que-opt:hover{
     color: var(--white-90)  !important;
@@ -3024,7 +3025,7 @@ button.go{
     margin: 0 4px;
 }
 .que-opt-sug{
-    font-size: 16px;
+    font-size: 13px !important;
 }
 
 .share-btn {
@@ -3663,7 +3664,7 @@ p.info{
     cursor: pointer;
 }
 .faved-que{
-    color: var(--primary-color);
+    color: #7b8d9e;
 }
 .flo-que-btn{
     padding: 0;
@@ -3944,4 +3945,26 @@ p.info{
         font-size: 30px;
     }
     
+}
+
+.que-nums-col{
+    width: 20%;
+}
+
+@media (max-width:1020px) {
+    
+    .que-nums-col{
+        width: 25%;
+    }
+
+}
+
+pre code{
+    display: block;
+    border-radius: 4px;
+}
+
+.que-data-div{
+    margin-bottom: 8px;
+    border-bottom: 0.5px solid var(--black-150);
 }
