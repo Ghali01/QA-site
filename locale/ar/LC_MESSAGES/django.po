@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 09:31+0300\n"
+"POT-Creation-Date: 2021-10-18 14:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,150 +19,156 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: .\authusers\models.py:19
+#: .\authusers\models.py:21
 msgid "Facebook"
 msgstr "فيسبوك"
 
-#: .\authusers\models.py:20
+#: .\authusers\models.py:22
 msgid "Twitter"
 msgstr "توتير"
 
-#: .\authusers\models.py:21
+#: .\authusers\models.py:23
 msgid "Google"
 msgstr "جوجل"
 
-#: .\authusers\models.py:22
+#: .\authusers\models.py:24
 msgid "Github"
 msgstr "جيتهاب"
 
-#: .\authusers\models.py:28 .\templates\dashboard\users.html:115
+#: .\authusers\models.py:35 .\templates\dashboard\users.html:115
 msgid "Super Admin"
 msgstr "مشرف اول"
 
-#: .\authusers\models.py:29 .\templates\dashboard\users.html:117
+#: .\authusers\models.py:36 .\templates\dashboard\users.html:117
 msgid "Admin"
 msgstr "مشرف"
 
-#: .\authusers\models.py:30 .\templates\dashboard\postLogs.html:25
+#: .\authusers\models.py:37 .\templates\dashboard\postLogs.html:25
 #: .\templates\dashboard\users.html:119 .\templates\utilities\_header.html:67
 #: .\templates\utilities\_header.html:150
 msgid "Moderator"
 msgstr "محرر"
 
-#: .\authusers\models.py:31 .\templates\dashboard\flagReasons.html:16
+#: .\authusers\models.py:38 .\templates\dashboard\flagReasons.html:16
 #: .\templates\dashboard\users.html:121
 msgid "User"
 msgstr "مستخدم"
 
-#: .\authusers\models.py:85 .\authusers\models.py:108 .\content\models.py:171
+#: .\authusers\models.py:92 .\authusers\models.py:115 .\content\models.py:171
 #: .\content\models.py:187 .\content\models.py:327
 msgid "today"
 msgstr "اليوم"
 
-#: .\authusers\models.py:87 .\authusers\models.py:110 .\content\models.py:173
+#: .\authusers\models.py:94 .\authusers\models.py:117 .\content\models.py:173
 #: .\content\models.py:189 .\content\models.py:329
 msgid "yesterday"
 msgstr "البارحة"
 
-#: .\authusers\models.py:89 .\authusers\models.py:112 .\content\models.py:175
+#: .\authusers\models.py:96 .\authusers\models.py:119 .\content\models.py:175
 #: .\content\models.py:191 .\content\models.py:331
 msgid "days"
 msgstr "ايام"
 
-#: .\authusers\models.py:91 .\authusers\models.py:96 .\authusers\models.py:114
-#: .\authusers\models.py:119 .\content\models.py:177 .\content\models.py:182
+#: .\authusers\models.py:98 .\authusers\models.py:103 .\authusers\models.py:121
+#: .\authusers\models.py:126 .\content\models.py:177 .\content\models.py:182
 #: .\content\models.py:193 .\content\models.py:198 .\content\models.py:333
 #: .\content\models.py:338
 msgid "months"
 msgstr "شهور"
 
-#: .\authusers\models.py:94 .\authusers\models.py:96 .\authusers\models.py:117
-#: .\authusers\models.py:119 .\content\models.py:180 .\content\models.py:182
-#: .\content\models.py:196 .\content\models.py:198 .\content\models.py:336
-#: .\content\models.py:338
+#: .\authusers\models.py:101 .\authusers\models.py:103
+#: .\authusers\models.py:124 .\authusers\models.py:126 .\content\models.py:180
+#: .\content\models.py:182 .\content\models.py:196 .\content\models.py:198
+#: .\content\models.py:336 .\content\models.py:338
 msgid "years"
 msgstr "سنين"
 
-#: .\authusers\models.py:101
+#: .\authusers\models.py:108
 msgid "secs"
 msgstr "ثواني"
 
-#: .\authusers\models.py:103
+#: .\authusers\models.py:110
 msgid "min"
 msgstr "دقائق"
 
-#: .\authusers\models.py:105
+#: .\authusers\models.py:112
 msgid "hour"
 msgstr "ساعات"
 
-#: .\authusers\models.py:124 .\content\models.py:123 .\content\models.py:306
+#: .\authusers\models.py:131 .\content\models.py:123 .\content\models.py:306
 msgctxt "count"
 msgid "K"
 msgstr "الف"
 
-#: .\authusers\models.py:126 .\content\models.py:125 .\content\models.py:308
+#: .\authusers\models.py:133 .\content\models.py:125 .\content\models.py:308
 msgctxt "count"
 msgid "M"
 msgstr "مليون"
 
-#: .\authusers\views.py:61 .\authusers\views.py:221 .\authusers\views.py:421
+#: .\authusers\models.py:201 .\templates\utilities\dashboard\_nav.html:239
+msgid "Register"
+msgstr ""
+
+#: .\authusers\models.py:202 .\templates\content\index.html:15
+#: .\templates\dashboard\login.html:4
+#: .\templates\utilities\dashboard\_nav.html:250
+msgid "Login"
+msgstr "دخول"
+
+#: .\authusers\views.py:61 .\authusers\views.py:369
 msgid "User name is alredy exists"
 msgstr "اسم المستخدم موجود مسبقا"
 
-#: .\authusers\views.py:64 .\authusers\views.py:224 .\authusers\views.py:424
+#: .\authusers\views.py:64 .\authusers\views.py:372
 msgid "Full name is requrid"
 msgstr "الاسم الكامل مطلوب"
 
-#: .\authusers\views.py:66 .\authusers\views.py:226 .\authusers\views.py:426
+#: .\authusers\views.py:66 .\authusers\views.py:374
 msgid "User name is requrid"
 msgstr "اسم المستخدم مطلوب"
 
-#: .\authusers\views.py:68 .\authusers\views.py:183 .\authusers\views.py:228
-#: .\authusers\views.py:428
+#: .\authusers\views.py:68 .\authusers\views.py:191 .\authusers\views.py:376
 msgid "Email is requrid"
 msgstr "البريد الالكتروني مطلوب"
 
-#: .\authusers\views.py:70 .\authusers\views.py:230 .\authusers\views.py:430
+#: .\authusers\views.py:70 .\authusers\views.py:378
 msgid "Email is taken"
 msgstr "البريد الالكتروني محجوز"
 
-#: .\authusers\views.py:72 .\authusers\views.py:232 .\authusers\views.py:432
-#: .\authusers\views.py:511
+#: .\authusers\views.py:72 .\authusers\views.py:380 .\authusers\views.py:459
 msgid "Password is requrid"
 msgstr "كلمة السر مطلوبة"
 
-#: .\authusers\views.py:74 .\authusers\views.py:234 .\authusers\views.py:434
-#: .\authusers\views.py:514
+#: .\authusers\views.py:74 .\authusers\views.py:382 .\authusers\views.py:462
 msgid "Confirm Password is requrid"
 msgstr "تأكيد كلمة المرور مطلوب"
 
-#: .\authusers\views.py:76 .\authusers\views.py:236 .\authusers\views.py:436
-#: .\authusers\views.py:516
+#: .\authusers\views.py:76 .\authusers\views.py:384 .\authusers\views.py:464
 msgid "Password does not match"
 msgstr "كلمة السر غير متوافقة"
 
-#: .\authusers\views.py:126 .\authusers\views.py:218 .\authusers\views.py:259
-#: .\authusers\views.py:302 .\authusers\views.py:358 .\authusers\views.py:417
+#: .\authusers\views.py:130 .\authusers\views.py:210 .\authusers\views.py:253
+#: .\authusers\views.py:309
 msgid "user baned"
 msgstr "المستخدم محظور"
 
-#: .\authusers\views.py:128
+#: .\authusers\views.py:132
 msgid "email or passowrd in not valid"
 msgstr "البريد الالكتروني او كلمة السر خطأ"
 
-#: .\authusers\views.py:153
+#: .\authusers\views.py:161
 msgid "you have to add 1 tag or more"
 msgstr "يجب عليك اختيار وسم واحد على الاقل"
 
-#: .\authusers\views.py:181
+#: .\authusers\views.py:189
 msgid "email is taken"
 msgstr "البريد الالكتروني محجوز"
 
-#: .\authusers\views.py:488
+#: .\authusers\views.py:436
 msgid "No account with this email"
 msgstr "لا يوجد حساب بهذا البريد الالكتروني"
 
-#: .\authusers\views.py:490
+#: .\authusers\views.py:438
 msgid "invalid captcha"
 msgstr "تعذر النحقق من الهوية"
 
@@ -235,14 +241,15 @@ msgstr "برونزية"
 #: .\templates\dashboard\flagedUsers.html:51
 #: .\templates\dashboard\questions.html:5
 #: .\templates\dashboard\questions.html:15
+#: .\templates\dashboard\statistics.html:29
 #: .\templates\moderators\questions\questions.html:3
 #: .\templates\moderators\questions\questions.html:14
 #: .\templates\profiles\profile.html:67 .\templates\profiles\profile.html:254
 #: .\templates\profiles\userQuestions.html:5
 #: .\templates\profiles\userQuestions.html:9
 #: .\templates\utilities\_header.html:71 .\templates\utilities\_header.html:152
-#: .\templates\utilities\dashboard\_nav.html:111
-#: .\templates\utilities\dashboard\_nav.html:169
+#: .\templates\utilities\dashboard\_nav.html:117
+#: .\templates\utilities\dashboard\_nav.html:180
 msgid "Questions"
 msgstr "الاسئلة"
 
@@ -268,8 +275,8 @@ msgstr "الاسئلة"
 #: .\templates\profiles\userAnswers.html:5
 #: .\templates\profiles\userAnswers.html:9
 #: .\templates\utilities\_header.html:74 .\templates\utilities\_header.html:153
-#: .\templates\utilities\dashboard\_nav.html:122
-#: .\templates\utilities\dashboard\_nav.html:179
+#: .\templates\utilities\dashboard\_nav.html:128
+#: .\templates\utilities\dashboard\_nav.html:190
 msgid "Answers"
 msgstr "الاجوبة"
 
@@ -324,7 +331,7 @@ msgstr "تعديلات"
 #: .\templates\dashboard\badges.html:44
 #: .\templates\dashboard\pollsManagement.html:14
 #: .\templates\utilities\_polls.html:3 .\templates\utilities\_polls_mob.html:6
-#: .\templates\utilities\dashboard\_nav.html:303
+#: .\templates\utilities\dashboard\_nav.html:348
 msgid "Polls"
 msgstr "استبيانات"
 
@@ -450,19 +457,19 @@ msgstr "تمت اضافة السبب"
 msgid "reason removed"
 msgstr "تمت ازالة السبب"
 
-#: .\dashboard\views\main.py:28
+#: .\dashboard\views\main.py:32
 msgid "invalid email or password"
 msgstr "البريد الالكتروني او كلمة السر خطأ"
 
-#: .\dashboard\views\main.py:30
+#: .\dashboard\views\main.py:34
 msgid "This page for only admin "
 msgstr "هذه الصفحة فقط للمشرفين"
 
-#: .\dashboard\views\main.py:32
+#: .\dashboard\views\main.py:36
 msgid "Email is requreid"
 msgstr "البريد الالكتروني مطلوب"
 
-#: .\dashboard\views\main.py:34
+#: .\dashboard\views\main.py:38
 msgid "Password is requreid"
 msgstr "كبمة السر مطلوبة"
 
@@ -510,8 +517,9 @@ msgstr "تم حذف التعليق"
 msgid "comment does not exists"
 msgstr "التعليق غير موجود"
 
-#: .\feedback\models.py:28 .\templates\utilities\dashboard\_nav.html:136
-#: .\templates\utilities\dashboard\_nav.html:158
+#: .\feedback\models.py:28 .\templates\dashboard\statistics.html:51
+#: .\templates\utilities\dashboard\_nav.html:142
+#: .\templates\utilities\dashboard\_nav.html:169
 msgid "Users"
 msgstr "مستخدمين"
 
@@ -541,15 +549,15 @@ msgstr "تم ارسال الرسالة"
 msgid "Change Your Email"
 msgstr "تغيير بريدك الالكتروني"
 
-#: .\templates\auth\changeEmail.html:12 .\templates\auth\login.html:33
-#: .\templates\auth\register.html:65 .\templates\auth\resetPassword.html:20
+#: .\templates\auth\changeEmail.html:12 .\templates\auth\login.html:30
+#: .\templates\auth\register.html:61 .\templates\auth\resetPassword.html:20
 #: .\templates\auth\socialRegister.html:67
 #: .\templates\dashboard\advertiseMessages.html:28
 #: .\templates\dashboard\contactMessages.html:30
 #: .\templates\dashboard\flagedUsers.html:24
 #: .\templates\dashboard\login.html:21 .\templates\dashboard\users.html:33
 #: .\templates\misc\advertise.html:24 .\templates\misc\contactUs.html:21
-#: .\templates\utilities\dashboard\_nav.html:345
+#: .\templates\utilities\dashboard\_nav.html:390
 msgid "Email"
 msgstr "البريد الالتكروني"
 
@@ -565,13 +573,13 @@ msgstr "تغيير كلمة السر"
 msgid "Change Your Password"
 msgstr "تغيير كلمة السر"
 
-#: .\templates\auth\changePassword.html:12 .\templates\auth\login.html:38
-#: .\templates\auth\register.html:81 .\templates\auth\socialRegister.html:83
+#: .\templates\auth\changePassword.html:12 .\templates\auth\login.html:35
+#: .\templates\auth\register.html:77 .\templates\auth\socialRegister.html:83
 #: .\templates\dashboard\login.html:29
 msgid "Password"
 msgstr "كلمة السر"
 
-#: .\templates\auth\changePassword.html:30 .\templates\auth\register.html:100
+#: .\templates\auth\changePassword.html:30 .\templates\auth\register.html:96
 #: .\templates\auth\socialRegister.html:102
 msgid "Confirm Password"
 msgstr "تأكيد كلمة المرور"
@@ -596,71 +604,72 @@ msgstr "تغيير البريد الكتروني"
 msgid "Return to sign up"
 msgstr "عودة الى التسجيل"
 
-#: .\templates\auth\login.html:30
+#: .\templates\auth\login.html:27
 msgid "can not login"
 msgstr "فشل تسجيل الدخول"
 
-#: .\templates\auth\login.html:48
+#: .\templates\auth\login.html:45
 msgid "Forget Password?"
 msgstr "نسيت كلمة المرور؟"
 
-#: .\templates\auth\login.html:50 .\templates\dashboard\login.html:41
+#: .\templates\auth\login.html:47 .\templates\dashboard\login.html:41
 msgid "Remember Me"
 msgstr "تذكرني"
 
-#: .\templates\auth\login.html:52 .\templates\dashboard\login.html:47
+#: .\templates\auth\login.html:49 .\templates\dashboard\login.html:47
 #: .\templates\utilities\auth\_header.html:45
 msgid "Sign In"
 msgstr "دخول"
 
-#: .\templates\auth\login.html:59 .\templates\auth\register.html:133
+#: .\templates\auth\login.html:56 .\templates\auth\register.html:129
 #: .\venv\Lib\site-packages\django\utils\text.py:240
 msgid "or"
 msgstr "او"
 
-#: .\templates\auth\login.html:68 .\templates\auth\register.html:143
+#: .\templates\auth\login.html:65 .\templates\auth\register.html:139
 #: .\templates\utilities\_loginModal.html:20
 msgid "Log In with Facebook"
 msgstr "تسجيل دخول عبر فيسبوك"
 
-#: .\templates\auth\login.html:71 .\templates\auth\register.html:147
+#: .\templates\auth\login.html:68 .\templates\auth\register.html:143
 #: .\templates\utilities\_loginModal.html:24
 msgid "Log In with Twitter"
 msgstr "تسجيل دخول عبر تويتر"
 
-#: .\templates\auth\login.html:75 .\templates\auth\register.html:150
+#: .\templates\auth\login.html:72 .\templates\auth\register.html:146
 #: .\templates\utilities\_loginModal.html:27
 msgid "Log In with GitHub"
 msgstr "تسجيل دخول عبر جيتهاب"
 
-#: .\templates\auth\login.html:78 .\templates\auth\register.html:153
+#: .\templates\auth\login.html:75 .\templates\auth\register.html:149
 #: .\templates\utilities\_loginModal.html:30
 msgid "Log In with Google"
 msgstr "تسجيل دخول عبر جوجل"
 
-#: .\templates\auth\register.html:31 .\templates\auth\socialRegister.html:30
+#: .\templates\auth\register.html:27 .\templates\auth\socialRegister.html:30
 #: .\templates\misc\contactUs.html:17
 msgid "Full Name"
 msgstr "الاسم الكامل"
 
-#: .\templates\auth\register.html:48 .\templates\auth\socialRegister.html:50
+#: .\templates\auth\register.html:44 .\templates\auth\socialRegister.html:50
 #: .\templates\dashboard\contactMessages.html:27
 msgid "User Name"
 msgstr "اسم المستخدم"
 
-#: .\templates\auth\register.html:117 .\templates\auth\socialRegister.html:119
+#: .\templates\auth\register.html:113 .\templates\auth\socialRegister.html:119
 msgid "Website (Optional)"
 msgstr "موقع الويب (اختياري)"
 
-#: .\templates\auth\register.html:122 .\templates\auth\socialRegister.html:124
+#: .\templates\auth\register.html:118 .\templates\auth\socialRegister.html:124
 msgid "By clicking Register, I agree that I have read and accepted our"
 msgstr "بضغطك على تسجيل انت قرائت و توافق على"
 
-#: .\templates\auth\register.html:123 .\templates\auth\socialRegister.html:125
+#: .\templates\auth\register.html:119 .\templates\auth\socialRegister.html:125
+#: .\templates\misc\terms.html:3
 msgid "Terms of Use and Privacy Policy"
 msgstr "شروط الاستخدام و سياسة الخصوصية"
 
-#: .\templates\auth\register.html:125 .\templates\auth\socialRegister.html:126
+#: .\templates\auth\register.html:121 .\templates\auth\socialRegister.html:126
 #: .\templates\utilities\auth\_header.html:35
 msgid "Sign Up"
 msgstr "تسجيل"
@@ -730,11 +739,11 @@ msgstr "يرجى اختيار الاشياء التي تهتم بها"
 #: .\templates\dashboard\addEditPoll.html:34
 #: .\templates\dashboard\editQuestion.html:154
 #: .\templates\dashboard\pollsManagement.html:51
-#: .\templates\dashboard\tags.html:4 .\templates\dashboard\tags.html:19
-#: .\templates\utilities\_leftColumn.html:6
+#: .\templates\dashboard\statistics.html:37 .\templates\dashboard\tags.html:4
+#: .\templates\dashboard\tags.html:19 .\templates\utilities\_leftColumn.html:6
 #: .\templates\utilities\_rightColumn.html:8
-#: .\templates\utilities\dashboard\_nav.html:91
-#: .\templates\utilities\dashboard\_nav.html:198
+#: .\templates\utilities\dashboard\_nav.html:92
+#: .\templates\utilities\dashboard\_nav.html:209
 msgid "Tags"
 msgstr "الوسوم"
 
@@ -745,12 +754,14 @@ msgstr "الوسوم"
 #: .\templates\dashboard\categories.html:129
 #: .\templates\dashboard\editAdvertise.html:35
 #: .\templates\dashboard\editAnswer.html:62
+#: .\templates\dashboard\editAuthPage.html:35
 #: .\templates\dashboard\editComment.html:44
 #: .\templates\dashboard\editFooter.html:25
 #: .\templates\dashboard\editHeader.html:38
 #: .\templates\dashboard\editMisc\addEditInfoItem.html:34
 #: .\templates\dashboard\editMisc\addEditService.html:44
 #: .\templates\dashboard\editQuestion.html:173
+#: .\templates\dashboard\editTerms.html:25
 #: .\templates\dashboard\options.html:34 .\templates\dashboard\tags.html:168
 #: .\templates\profiles\_editAvatarModal.html:32
 msgid "Save"
@@ -863,7 +874,7 @@ msgid "Most Answers"
 msgstr "الاكثر اجوبة"
 
 #: .\templates\content\index.html:4 .\templates\utilities\_header.html:124
-#: .\templates\utilities\dashboard\_nav.html:58
+#: .\templates\utilities\dashboard\_nav.html:59
 msgid "Home"
 msgstr "الرئيسية"
 
@@ -874,10 +885,6 @@ msgstr "اخر الاسئلة"
 #: .\templates\content\index.html:11
 msgid "Suggest Question"
 msgstr "اقترح سؤال"
-
-#: .\templates\content\index.html:15 .\templates\dashboard\login.html:4
-msgid "Login"
-msgstr "دخول"
 
 #: .\templates\content\index.html:31 .\templates\content\index.html:41
 #: .\templates\profiles\editTags.html:4
@@ -1440,6 +1447,8 @@ msgstr "المعرف"
 
 #: .\templates\dashboard\answers.html:65 .\templates\dashboard\badges.html:103
 #: .\templates\dashboard\categories.html:34
+#: .\templates\dashboard\editAuthPage.html:4
+#: .\templates\dashboard\editAuthPage.html:12
 #: .\templates\dashboard\editMisc\editInfo.html:23
 #: .\templates\dashboard\editMisc\services.html:23
 #: .\templates\dashboard\emailTemlates.html:31
@@ -1641,6 +1650,14 @@ msgstr "المعرف:"
 msgid "Added By:"
 msgstr "اضيف بواسطة:"
 
+#: .\templates\dashboard\editAuthPage.html:22
+msgid "List Title"
+msgstr "عنوان القائمة"
+
+#: .\templates\dashboard\editAuthPage.html:37
+msgid "Add item"
+msgstr "اضافة عنصر"
+
 #: .\templates\dashboard\editColumn.html:3
 #: .\templates\dashboard\editColumn.html:9
 msgid "Cards"
@@ -1711,7 +1728,7 @@ msgstr "حذف عنصر"
 
 #: .\templates\dashboard\editMisc\services.html:10
 #: .\templates\utilities\_footer.html:25
-#: .\templates\utilities\dashboard\_nav.html:281
+#: .\templates\utilities\dashboard\_nav.html:326
 msgid "Services"
 msgstr "الخدمات"
 
@@ -1730,6 +1747,12 @@ msgstr "حذف السؤال"
 #: .\templates\dashboard\questions.html:164
 msgid "Do you want Delete the Question with ID"
 msgstr "هل تريد حذف السؤال ذو المعرف"
+
+#: .\templates\dashboard\editTerms.html:3
+#: .\templates\dashboard\editTerms.html:12
+#: .\templates\utilities\dashboard\_nav.html:294
+msgid "Edit Terms & Policy"
+msgstr "تعديل الاحكام وسياسية الخصوصية"
 
 #: .\templates\dashboard\emailTemlates.html:3
 #: .\templates\dashboard\emailTemlates.html:13
@@ -1923,8 +1946,9 @@ msgid "Target(s)"
 msgstr "الاهداف"
 
 #: .\templates\dashboard\pollsManagement.html:59
-#: .\templates\utilities\dashboard\_nav.html:81
-#: .\templates\utilities\dashboard\_nav.html:188
+#: .\templates\dashboard\statistics.html:33
+#: .\templates\utilities\dashboard\_nav.html:82
+#: .\templates\utilities\dashboard\_nav.html:199
 msgid "Categories"
 msgstr "التصنيفات"
 
@@ -1999,10 +2023,57 @@ msgstr "قالب"
 msgid "Send"
 msgstr "ارسل"
 
+#: .\templates\dashboard\statistics.html:4
+#: .\templates\utilities\dashboard\_nav.html:404
+msgid "Statistics"
+msgstr "تحليل"
+
+#: .\templates\dashboard\statistics.html:25
+#: .\templates\utilities\dashboard\_nav.html:71
+msgid "Content"
+msgstr "المحتوى"
+
+#: .\templates\dashboard\statistics.html:41
+msgid "Questions For Exams"
+msgstr "اسئلة للامتحانات"
+
+#: .\templates\dashboard\statistics.html:55
+msgid "All Users"
+msgstr "كل المستخدمين"
+
+#: .\templates\dashboard\statistics.html:59
+msgid "Email Users"
+msgstr "مستخدمي البريد الالكتروني"
+
+#: .\templates\dashboard\statistics.html:63
+msgid "Facebook Users"
+msgstr " مستخدمي فيسبوك"
+
+#: .\templates\dashboard\statistics.html:67
+msgid "Google Users"
+msgstr "مستخدمي جوجل"
+
+#: .\templates\dashboard\statistics.html:71
+
+msgid "Github Users"
+msgstr "مستخدمي جيتهاب"
+
+#: .\templates\dashboard\statistics.html:83
+#: .\templates\utilities\dashboard\_nav.html:156
+msgid "Feedback"
+msgstr "التلقيم الراجع"
+
+#: .\templates\dashboard\statistics.html:87
 #: .\templates\dashboard\suggestedCategories.html:4
 #: .\templates\dashboard\suggestedCategories.html:15
 msgid "Suggested Categories"
 msgstr "التصنيفات المقترحة"
+
+#: .\templates\dashboard\statistics.html:92
+#: .\templates\dashboard\suggestedTags.html:4
+#: .\templates\dashboard\suggestedTags.html:15
+msgid "Suggested Tags"
+msgstr "الوسوم المقترحة"
 
 #: .\templates\dashboard\suggestedCategories.html:114
 #: .\templates\dashboard\suggestedTags.html:114
@@ -2013,11 +2084,6 @@ msgstr "هل تريد حذف العنصر ذو المعرف"
 #: .\templates\dashboard\suggestedTags.html:132
 msgid "Approval"
 msgstr "تعديل"
-
-#: .\templates\dashboard\suggestedTags.html:4
-#: .\templates\dashboard\suggestedTags.html:15
-msgid "Suggested Tags"
-msgstr "الوسوم المقترحة"
 
 #: .\templates\dashboard\tags.html:73 .\templates\dashboard\tags.html:107
 #: .\templates\dashboard\tags.html:161
@@ -2103,7 +2169,7 @@ msgid "Write Something..."
 msgstr "اكتب شيئاً..."
 
 #: .\templates\misc\contactUs.html:4 .\templates\misc\contactUs.html:12
-#: .\templates\utilities\dashboard\_nav.html:316
+#: .\templates\utilities\dashboard\_nav.html:361
 msgid "Contact Us"
 msgstr "تواصل معنا"
 
@@ -2242,7 +2308,7 @@ msgid "Submit"
 msgstr "ارسال"
 
 #: .\templates\profiles\_profileTabs.html:14
-#: .\templates\utilities\dashboard\_nav.html:294
+#: .\templates\utilities\dashboard\_nav.html:339
 msgid "Badges"
 msgstr "الشارات"
 
@@ -2255,7 +2321,7 @@ msgid "Favorite Queestions"
 msgstr "الاسئلة المفضلة"
 
 #: .\templates\profiles\_profileTabs.html:32
-#: .\templates\utilities\dashboard\_nav.html:356
+#: .\templates\utilities\dashboard\_nav.html:415
 msgid "Settings"
 msgstr "الاعدادات"
 
@@ -2346,7 +2412,7 @@ msgid "Contact us"
 msgstr "تواصل معنا"
 
 #: .\templates\utilities\_footer.html:20
-#: .\templates\utilities\dashboard\_nav.html:271
+#: .\templates\utilities\dashboard\_nav.html:316
 msgid "Advertise with us"
 msgstr "اعلن معنا"
 
@@ -2383,41 +2449,41 @@ msgstr "اختبارات"
 msgid "Login with email"
 msgstr "تسجيل دخول عبر البريد الالكتروني"
 
-#: .\templates\utilities\dashboard\_nav.html:70
-msgid "Content"
-msgstr "المحتوى"
-
-#: .\templates\utilities\dashboard\_nav.html:145
-msgid "Feedback"
-msgstr "التلقيم الراجع"
-
-#: .\templates\utilities\dashboard\_nav.html:214
+#: .\templates\utilities\dashboard\_nav.html:225
 msgid "Edit Site"
 msgstr "تعديل الموقع"
 
-#: .\templates\utilities\dashboard\_nav.html:228
+#: .\templates\utilities\dashboard\_nav.html:262
 msgid "Info"
 msgstr "حول"
 
-#: .\templates\utilities\dashboard\_nav.html:238
+#: .\templates\utilities\dashboard\_nav.html:272
 msgid "Header"
 msgstr "رأس الموقع"
 
-#: .\templates\utilities\dashboard\_nav.html:249
+#: .\templates\utilities\dashboard\_nav.html:283
 msgid "Footer"
 msgstr "اسفل الموقع"
 
-#: .\templates\utilities\dashboard\_nav.html:261
+#: .\templates\utilities\dashboard\_nav.html:306
 msgid "Columns"
 msgstr "الاعمدة"
 
-#: .\templates\utilities\dashboard\_nav.html:330
+#: .\templates\utilities\dashboard\_nav.html:375
 msgid "Advertise Requests"
 msgstr "طلبات الاعلان"
 
-#: .\templates\utilities\dashboard\_nav.html:381
+#: .\templates\utilities\dashboard\_nav.html:440
 msgid "Log out"
 msgstr "تسجيل خروج"
+
+#: .\templates\utilities\error404.html:3
+msgid "404 Not Found"
+msgstr "404 غير موجود"
+
+#: .\templates\utilities\error404.html:10
+msgid "Not Found"
+msgstr "غير موجود"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
 msgid "Messages"
