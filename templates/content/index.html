@@ -22,9 +22,9 @@
     </p>
     {% endfor %}
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
-        <div class="row filters-row">
-        <div class="col-4 col-sm-3 col-lg-2">
-            <div class="custom-select filter one-click-filter">
+        <div class="row filters-row index ">
+        <div class="col-4 col-sm-3 col-lg-2 c-f-index">
+            <div class="custom-select filter one-click-filter index-filter">
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if tagsFilter == 'M' %}
@@ -47,9 +47,9 @@
                 <input type="hidden" id="tag-filter" name="tags" value="{% if tagsFilter == 'M' %}M{% else %}A{% endif %}">
             </div>
         </div>
-        <div class="col-4 col-sm-3 col-lg-2">
+        <div class="col-4 col-sm-3 col-lg-2 c-f-index">
             
-            <div class="custom-select filter one-click-filter">
+            <div class="custom-select filter one-click-filter index-filter">
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if votesFilter == 'L' %}
@@ -73,9 +73,9 @@
                 <input type="hidden" id="votes-filter" name="votes" value="{% if votesFilter == 'L' %}L{% else %}M{% endif %}">
             </div>
         </div>
-        <div class="col-4 col-sm-3 col-lg-2 ">
+        <div class="col-4 col-sm-3 col-lg-2 c-f-index">
             
-            <div class="custom-select filter one-click-filter">
+            <div class="custom-select filter one-click-filter index-filter">
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if viewsFilter == 'L' %}
@@ -99,9 +99,9 @@
                 <input type="hidden" id="views-filter" name="views" value="{% if viewsFilter == 'L' %}L{% else %}M{% endif %}">
             </div>
         </div>
-        <div class="col-4 col-sm-3 col-lg-2">
+        <div class="col-4 col-sm-3 col-lg-2 c-f-index">
             
-            <div class="custom-select ans-fil filter one-click-filter">
+            <div class="custom-select ans-fil filter one-click-filter index-filter ans">
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
                         {% if answersFilter == 'L' %}

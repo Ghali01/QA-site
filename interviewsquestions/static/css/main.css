@@ -3985,3 +3985,28 @@ pre code{
 .que-nums-s{ 
     display: flex;
 }
+.error-p:not(.error-p-s){
+    display: none;
+}
+
+
+@media (min-width:1200px ) and (max-width:1377px) {
+    /* .index-filter .selected-span{ 
+        font-size: 12px ;
+    } */
+    .filters-row.index .c-f-index{
+        width: 23%;
+    }
+}
+@media (min-width:992px ) and (max-width:1090px) {
+    
+    .filters-row.index .c-f-index{
+        width: 20%;
+    }
+}
+
+@media (min-width:767px ) and (max-width:835px) {
+    .index-filter.ans .selected-span{
+        font-size: 12px !important;
+    }
+}
