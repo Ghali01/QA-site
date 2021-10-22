@@ -1,8 +1,8 @@
 {% load i18n %}
 {% load contentUtilities %}
-<div class="row  question-item ">
-    <div class="col-3 que-nums-col">
-        <div class="row">
+<div class="  question-item ">
+    <div class=" que-nums-col">
+        <div class="que-nums-s">
             <div class="col-4  nums-que">
                 <span class="que-num-span">{{question.post.votes}}</span>
                 <span class="que-word">{% translate 'votes' %}</span>
@@ -19,7 +19,7 @@
         </div>
         <div class="added-by-div">{% translate 'added by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
     </div>
-    <div class="col-9 que-col">
+    <div class=" que-col">
         <div class="vp-num-ques">
             <div class="nums-que">
                 <span class="que-num-span">{{question.post.votes}}</span>

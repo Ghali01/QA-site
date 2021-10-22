@@ -3946,7 +3946,7 @@ p.info{
     }
     
 }
-
+/* 
 .que-nums-col{
     width: 20%;
 }
@@ -3957,7 +3957,7 @@ p.info{
         width: 25%;
     }
 
-}
+} */
 
 pre code{
     display: block;
@@ -3967,4 +3967,21 @@ pre code{
 .que-data-div{
     margin-bottom: 8px;
     border-bottom: 0.5px solid var(--black-150);
+}
+.right-column{
+    padding-top: 16px;
+}
+.question-item{
+    display: flex;
+}
+.que-nums-col{
+    width: 170px;
+}
+.que-col{
+    flex-grow: 2;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+.que-nums-s{ 
+    display: flex;
 }

@@ -41,7 +41,7 @@ def loginPage(request):
 def logout(request):
     if request.user.is_authenticated:
         logoutAuth(request)
-    return redirect("/dashboard/login") # TODO redirect to site 
+    return redirect("/dashboard/login") 
 
 
 
@@ -49,6 +49,7 @@ def logout(request):
 def options(request):
     if request.method=='POST':
         BoolOption.setArabic('arabic-pub' in request.POST)
+        return redirect(reverse('dashboard:restart-server'))
     return render(request,'dashboard/options.html',{'araOpt':BoolOption.arabicOn()})
 
 

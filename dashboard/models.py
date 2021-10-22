@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.cache import cache
 
+from interviewsquestions.settings import BASE_DIR
+
 
 class EmailTemplate(models.Model):
     langChoices = [
@@ -36,10 +38,18 @@ class BoolOption(models.Model):
 
     @staticmethod
     def setArabic(value:bool):
+        import json
         obj = BoolOption.objects.get(key=BoolOption.ARABIC_KEY)
         obj.value=value            
         obj.save()
         cache.set('arabic-on',value,timeout=None)
+        settingsFile=open(str(BASE_DIR/'settings.json'),'r+')
+        settingsJSON=json.loads(settingsFile.read())
+        settingsJSON[BoolOption.ARABIC_KEY]=value
+        settingsFile.seek(0)
+        settingsFile.truncate(0)
+        settingsFile.write(json.dumps(settingsJSON))
+        settingsFile.close()
         return value 
     @staticmethod
     def setValue(key:str,value:bool):

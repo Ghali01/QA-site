@@ -11,13 +11,16 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import json
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+
+
+settings=k=json.loads(open(str(BASE_DIR/'settings.json')).read())
+
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-9=lqwkpp6g!ae@)35f365ffs*v5b%kvno4xrzzof&y1%37=zgo'
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-9=lqwkpp6g!ae@)35f365ffs*v5b%kvno4xrzzof&y1%37=zgo
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.1.5',
+    '192.168.1.6',
     'localhost',
     '127.0.0.1',
     'interviewsquestions.com',
@@ -57,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # 'interviewsquestions.utilities.langMiddleware.langMiddleware',
     'django.middleware.locale.LocaleMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -67,7 +71,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'interviewsquestions.utilities.datetime.TimezoneMiddleware',
     'interviewsquestions.utilities.lastSeenMiddleware.lastSeenMiddleware',
-    'interviewsquestions.utilities.langMiddleware.langMiddleware'
 ]
 
 ROOT_URLCONF = 'interviewsquestions.urls'
@@ -134,7 +137,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = settings['Arabic']
 
 USE_L10N = True
 
