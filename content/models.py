@@ -155,7 +155,7 @@ class Post(models.Model):
         return timezone.localdate(self.logs.filter(type=PostLog.types.AcceptEdit).last().edit.logs.get(type=PostLog.types.SuggestEdit).time).strftime('%Y/%m/%d')
 class Question(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE,related_name='question')
-    title=models.CharField(max_length=200)
+    title=models.CharField(max_length=100)
     category=models.ForeignKey(Category,on_delete=models.CASCADE,related_name='questions')
     tags=models.ManyToManyField(Tag,related_name='questions')
     views=models.PositiveBigIntegerField(default=0)

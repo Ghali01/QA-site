@@ -55,7 +55,6 @@
 
                     <a href="{% url 'content:suggest-post-edit' postID=ans.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">
                         {% translate 'Suggest Edit' %}</a>
-                    <div class="link-break">|</div>
                     {% if not request.user == ans.post.author %}
                     <button class="custom-link custom-link-sm primary-link btn que-opt  flo-que-btn" data-user-id="{{ans.post.author.id}}">
                         {% if request.user in ans.post.author.profile.followers.all %}
@@ -64,7 +63,6 @@
                         {% translate 'Follow' %}
                         {% endif %}                            
                     </button>
-                    <div class="link-break">|</div>
                     {% endif %}
 
                     <!-- Button trigger modal -->

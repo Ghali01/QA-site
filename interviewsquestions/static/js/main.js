@@ -7,7 +7,7 @@ var searchText = '';
 $(document).ready(
     // animation for forms start
     function () {
-        $('.column-no-border').parent().css('border', 'none');
+        // $('.column-no-border').parent().css('border', 'none');
         $(".vr-div").css({
             height: $("#reg-form").height()
         });
@@ -146,6 +146,10 @@ $(document).ready(
                 initialEditType:'wysiwyg'
               });
               $('.ProseMirror ').addClass('custom-scrollbar');
+              document.querySelectorAll('.post-content pre code').forEach((el) => {
+                $(el).html($(el).html().trim());
+                hljs.highlightElement(el);
+              });
             }catch(e){
 
             }

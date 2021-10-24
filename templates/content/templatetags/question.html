@@ -2,20 +2,6 @@
 
 {% load i18n %}
 
-<h1 class="que-title center-title">{{question.title}}
-
-    {% if not question.post.isPublished %}
-     (unPublished)
-    {% endif %}
-</h1>
-<div class="que-data-div">
-    <span class="que-data-title">{% translate 'Asked:' %} </span>
-    <span class="que-data">{{question.getDuration}}</span>
-    <span class="que-data-title">{% translate 'Active:' %} </span>
-    <span class="que-data">{{question.getLastActDuration}}</span>
-    <span class="que-data-title">{% translate 'Viwes:' %} </span>
-    <span class="que-data">{{question.getViews}}</span>
-</div>
 <div class="question-div">
     <div class="row">
 
@@ -73,7 +59,6 @@
                     <div class="que-opts-spans">
                         <a href="{% url 'content:suggest-post-edit' postID=question.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">
                             {% translate 'Suggest Edit' %}</a>
-                        <div class="link-break">|</div>
                         {% if not request.user == question.post.author %}
                         <button class="custom-link custom-link-sm primary-link btn que-opt  flo-que-btn" data-user-id="{{question.post.author.id}}">
                             {% if request.user in question.post.author.profile.followers.all %}
@@ -82,7 +67,6 @@
                             {% translate 'Follow' %}
                             {% endif %}                            
                         </button>
-                        <div class="link-break">|</div>
                         {% endif %}                            
                         <!-- Button trigger modal -->
                         <button type="button" class="link-button report-btn primary-link que-opt" data-report-on="{{question.post.id}}" data-type="Q" data-bs-toggle="modal"

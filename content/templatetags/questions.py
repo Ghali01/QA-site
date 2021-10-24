@@ -21,4 +21,6 @@ def answer(answer,request):
         'path':request.build_absolute_uri(request.path)
     }
 
-    
+@register.inclusion_tag('content/templatetags/questionTop.html')
+def questionTop(question):
+    return {'question':question}

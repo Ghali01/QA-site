@@ -22,5 +22,5 @@ urlpatterns=[
     path('search-que-ajax',searchQuestionsAjax,name='search-que-ajax'),
     path('generate-exam',generateExam,name='generate-exam'),
     path('exam',examPage,name='exam-page'),
-    path('set-language/<str:language>',setLangage,name='set-language')
+    path('set-language/<str:language>',setLangage,name='set-language'),
 ]

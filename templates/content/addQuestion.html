@@ -158,7 +158,7 @@
             <input type="hidden" class="add-que-h-inp" name="category-id" id="category-id" value="{% if not category %}{{categories.first.id}}{% else %}{{category.id}}{% endif %}">
 
         </div>
-    <input type="text" class="form-control que-input que-title-input" placeholder="{% translate 'Question Title...' %}" name="post-title"  id="que-title" value="{{questionTitle}}">
+    <input type="text" class="form-control que-input que-title-input" placeholder="{% translate 'Question Title...' %}" name="post-title"  id="que-title" value="{{questionTitle}}" maxlength="99">
     <p class="error-p-s" style="position: static;">
         {% for msg in messages %}
             {% if 'title' in msg.extra_tags %}

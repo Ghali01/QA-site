@@ -47,9 +47,15 @@ dir="rtl"
         {% endblock %}
         
                 
-        {% include 'utilities/_footer.html' %}
-
+        
     </div>
+    {% include 'utilities/_footer.html' %}
+    
+        <script>
+
+        document.querySelector('.column-no-border').parentElement.style.border='none';
+    </script>
+
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 </body>

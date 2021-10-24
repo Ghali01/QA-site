@@ -4,9 +4,9 @@
 {% load profileLib %}
     <header class="header-nav">
         <!-- navbar start -->
-        <nav class="navbar navbar-expand-sm navbar-dark">
+        <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand d-none d-sm-inline" href="{% url 'content:index' %}">
+                <a class="navbar-brand d-none d-md-inline" href="{% url 'content:index' %}">
                         {% load i18n %}
                 {% get_current_language as LANGUAGE_CODE %}
                 {% with lc=LANGUAGE_CODE|slice:':2'|upper %}
@@ -41,7 +41,7 @@
                     <!-- search bar end -->
                     <ul class="navbar-nav ms-auto">
                         <!-- itemes on the right start -->
-                        <li class="nav-item drop-down-nl d-none d-sm-block" >
+                        <li class="nav-item drop-down-nl d-none d-md-block" >
                             <button class="btn drop-down-icon" id="drop-d-btn-nav">
                             <i class="far fa-caret-square-down "></i>
 
@@ -120,32 +120,32 @@
                         <!-- cateagors on sm start -->
 
 
-                        <li class="nav-item dropdown d-sm-none   ">
+                        <li class="nav-item dropdown d-md-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'content:index' %}">{% translate 'Home' %}</a>
                         </li>
 
-                        <li class="nav-item dropdown d-sm-none   ">
+                        <li class="nav-item dropdown d-md-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'profiles:profile-page' userID=request.user.id %}">{% translate 'My Profile' %}</a>
                         </li>
-                        <li class="nav-item dropdown d-sm-none   ">
+                        <li class="nav-item dropdown d-md-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'profiles:user-questions' userID=request.user.id %}">{% translate 'My Questions' %}</a>
                         </li>
-                        <li class="nav-item dropdown d-sm-none   ">
+                        <li class="nav-item dropdown d-md-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'profiles:user-answers' userID=request.user.id %}">{% translate 'My Answers' %}</a>
                         </li>
                         
-                        <li class="nav-item dropdown d-sm-none   ">
+                        <li class="nav-item dropdown d-md-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'content:categories-page' %}">{% translate 'All Categories' %}</a>
                         </li>
                         
-                        <li class="nav-item dropdown d-sm-none   ">
+                        <li class="nav-item dropdown d-md-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'content:tags-page' %}">{% translate 'All Tags' %}</a>
                         </li>
-                        <li class="nav-item dropdown d-sm-none   ">
+                        <li class="nav-item dropdown d-md-none   ">
                             <a class="dropdown-item mob-nav-link" href="{% url 'content:exam-page' %}">{% translate 'Exams' %}</a>
                         </li>
 
-                        <li class="nav-item dropdown d-sm-none  ">
+                        <li class="nav-item dropdown d-md-none  ">
                             <span class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">{% translate 'Moderator' %}</span>
                             <ul class="dropdown-menu dropdown-subs" aria-labelledby="navbarDropdown">

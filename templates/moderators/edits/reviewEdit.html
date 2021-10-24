@@ -1,10 +1,34 @@
-{% extends 'utilities/_base.html' %}
+{% extends 'utilities/_question_base.html' %}
 {% load questions %}
 {% load contentUtilities %}
 {% load i18n %}
 
-{% block title %}{% endblock %}
+{% block title %}{{edit.post.question.title}}{% endblock %}
+
+
+{% block queTop %}
+{% if edit.post.isQuestion %}
+    
+<h1 class="que-title center-title">{{edit.post.question.title}}
+
+    {% if not edit.post.isPublished %}
+     (unPublished)
+    {% endif %}
+</h1>
+<div class="que-data-div">
+    <span class="que-data-title">{% translate 'Asked:' %} </span>
+    <span class="que-data">{{edit.post.question.getDuration}}</span>
+    <span class="que-data-title">{% translate 'Active:' %} </span>
+    <span class="que-data">{{edit.post.question.getLastActDuration}}</span>
+    <span class="que-data-title">{% translate 'Viwes:' %} </span>
+    <span class="que-data">{{edit.post.question.getViews}}</span>
+</div>
+{% endif %}
+{% endblock %}
+
 {% block content %}
+
+
 {% if edit.post.isQuestion %}
     {% question edit.post.question request %}
 {% else %}   

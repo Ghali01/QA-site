@@ -242,10 +242,18 @@ def postVotes(request):
                     v.delete()
                     post.votes=F('votes')-2
                     if not request.user== post.author:
-                        post.author.profile.rep =F('rep')-12
+                        if post.author.profile.rep>=12:
+                            post.author.profile.rep =F('rep')-12
+                        else:
+                           post.author.profile.rep =0
+
                 except  Voter.DoesNotExist:
                     if not request.user== post.author:
-                        post.author.profile.rep =F('rep')-2
+                        if post.author.profile.rep>=2:
+                           post.author.profile.rep =F('rep')-2
+                        else:
+                           post.author.profile.rep =0
+
                     post.votes=F('votes')-1
                 post.save()
                 post.author.profile.save()
@@ -648,7 +656,6 @@ def setLangage(request,language):
     response.set_cookie(settings.LANGUAGE_COOKIE_NAME,language)
     request.session[LANGUAGE_SESSION_KEY] = language
     return response
-
 
 
 

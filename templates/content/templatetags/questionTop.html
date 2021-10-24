@@ -1,0 +1,15 @@
+
+<h1 class="que-title center-title">{{question.title}}
+
+    {% if not question.post.isPublished %}
+     (unPublished)
+    {% endif %}
+</h1>
+<div class="que-data-div">
+    <span class="que-data-title">{% translate 'Asked:' %} </span>
+    <span class="que-data">{{question.getDuration}}</span>
+    <span class="que-data-title">{% translate 'Active:' %} </span>
+    <span class="que-data">{{question.getLastActDuration}}</span>
+    <span class="que-data-title">{% translate 'Viwes:' %} </span>
+    <span class="que-data">{{question.getViews}}</span>
+</div>

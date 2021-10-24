@@ -1,4 +1,4 @@
-{% extends 'utilities/_base.html' %}
+{% extends 'utilities/_question_base.html' %}
 {% load contentUtilities %}
 {% load questions %}
 {% load humanize %}
@@ -6,9 +6,32 @@
 {% load i18n %}
 
 {% block title %}{{question.title}}{% endblock %}
+{% block queTop %}
 
+<a href="{% url 'content:add-question' %}" class="btn btn-primary btn-sm primary-button suggest-btn qp-mt">
+    {% translate 'Suggest Question' %}
+</a>
+    
+<h1 class="que-title center-title">{{question.title}}
+
+    {% if not question.post.isPublished %}
+     (unPublished)
+    {% endif %}
+</h1>
+<div class="que-data-div">
+    <span class="que-data-title">{% translate 'Asked:' %} </span>
+    <span class="que-data">{{question.getDuration}}</span>
+    <span class="que-data-title">{% translate 'Active:' %} </span>
+    <span class="que-data">{{question.getLastActDuration}}</span>
+    <span class="que-data-title">{% translate 'Viwes:' %} </span>
+    <span class="que-data">{{question.getViews}}</span>
+</div>
+
+
+{% endblock %}
 {% block content %}
 <div class="column-no-border">
+
     {% question question request %}
     <!--  -->
     <h3 class="title">{{question.getPubliedAnswer.count}} {% translate 'Answers' %}</h3>
@@ -105,7 +128,6 @@
         <div class="editor-partnt ans-editor-partnt custom-scrollbar">
             <div id="editor"></div>
         </div>
-
         <form id="answer-form" action="{% url 'content:add-answer' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="que-id" value="{{question.id}}">
