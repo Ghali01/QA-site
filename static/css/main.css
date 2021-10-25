@@ -87,7 +87,7 @@
     --bronze-lighter: #4d433b;
     --unchecked-color:transparent;
     --checked-color:var(--powder-400);
-
+    --post-color:#dcdcdc;
     /* light */
     /* --bg-color:#fff;
     --primary-color:rgb(255,93,0);
@@ -307,7 +307,7 @@ body{
 /* categories column start */
 .side-link{
     text-decoration: none;
-    font-size: 17px;
+    font-size: 15px;
     color: var(--titles-colors);
     cursor: pointer;
     display: block;
@@ -1483,7 +1483,7 @@ button.go{
 .answer-div,
 .post-div{
     margin-bottom: 10px;
-    border-bottom: 2px solid var(--titles-colors);
+    /* border-bottom: 2px solid var(--titles-colors); */
     padding-bottom: 10px;
 }
 .votes-number-span{
@@ -1495,7 +1495,7 @@ button.go{
 }
 
 .bookmark-icon{
-    font-size: 30px;
+    font-size: 17px;
     color: #696f75;
     padding: 13px 0;
     display: block !important;
@@ -1542,7 +1542,7 @@ button.go{
 }
 
 .post-content{
-    color: var(--titles-colors);
+    color: var(--post-color);
 }
 .post-content{
     margin-bottom: 10px;
@@ -3671,7 +3671,7 @@ p.info{
     cursor: pointer;
 }
 .faved-que{
-    color: #7b8d9e;
+    color: #dab941;
 }
 .flo-que-btn{
     padding: 0;
@@ -4176,4 +4176,80 @@ pre code{
     .u-q-r-f .selected-span{
         font-size: 14px;
     }
+}
+
+.share-btns{
+    display: none;
+    background-color: var(--black-100);
+    /* border: 1px solid var(--powder-800); */
+    border-radius: 4px;   
+    padding: 8px;
+    min-width: 290px;
+}
+.share-btns.ans{
+    min-width: 400px;
+
+}
+.share-btn{
+    background: none;
+    box-shadow: none;
+}
+.share-lnk{
+    display: block;
+    background-color: var(--black-150);
+    border: 1px solid var(--black-075);
+    color: var(--black-800);
+    margin: 4px 0;
+    padding: 4px;
+    width: 100%;
+    min-width: 290px;
+    padding-right: 32px;
+    text-overflow: ellipsis;
+}
+
+.share-lnk:focus,
+.share-lnk:active{
+    border: 1px solid var(--black-075);
+    box-shadow: none;
+    outline: none;
+}
+.copy-lnk{
+    font-size: 22px;
+    color: var(--black-600);
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+.lnk-p{
+    position: relative;
+}
+.copy-lnk.animeted{
+    animation-name: copied;
+    animation-duration: .3s;
+}
+@keyframes copied {
+    0%{
+        transform: scale(.9);
+
+    }
+    20%{
+        transform: scale(.8);
+
+    }
+    
+    25%{
+        transform: scale(.7);
+    }
+    75%{
+        transform: scale(.8);
+
+    }
+    100%{
+        transform: scale(.9);
+
+    }
+}
+.side-link i{
+    color: var(--orange-300);
 }

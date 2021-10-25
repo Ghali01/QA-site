@@ -1,6 +1,4 @@
-// import { StacksEditor } from "/static/node_modules/@stackoverflow/stacks-editor";
-// // don't forget to include the styles as well
-// import "@stackoverflow/stacks-editor/dist/styles.css";
+
 var addedTags = [];
 var editor;
 var searchText = '';
@@ -96,6 +94,10 @@ $(document).ready(
                 $(this).toggleClass("btn-select-act");
         }
         );
+        $('.share-btns').click(function (e) {
+            e.stopPropagation();
+            
+        });
         $(window).click(function () {
             const lists = document.querySelectorAll(".custom-select-list");
             for (var i = 0; i < lists.length; i++) {
@@ -109,6 +111,8 @@ $(document).ready(
                 }
             }
             $(".tags-list").css({ display: "none" });
+            $('.share-btns.showed').css({ display: "none" });
+            $('.share-btns.showed').removeClass('showed');
 
             $('.nav-drop-down.opend').animate({
                 top: '22px',
@@ -570,7 +574,8 @@ $(document).ready(
         $('.custom-checkbox').click(customCheckInput);
         $('.custom-radiobox').click(customCheckInput);
         $('.custom-input-number').keydown(numInpDown);
-       
+        $('.share-btn').click(sharePop);
+        $('.copy-lnk').click(copyLink);
         $("#myTextBox").inputFilter(function(value) {
             return /^\d*$/.test(value);    // Allow digits only, using a RegExp
           });        
@@ -1423,3 +1428,24 @@ function numInpDown(e){
       });
     };
   }(jQuery));
+
+function sharePop(){
+    let target=$(this).data('target');
+    $(target).css('display','block');
+    console.log('t');
+    if(!$(target).hasClass('showed'))
+    setTimeout(()=>$(target).addClass('showed'),100);
+    const tooltip = $(target)[0];
+
+    Popper.createPopper(this, tooltip, {
+    placement: 'bottom',
+    });
+}
+
+function copyLink(){ 
+    var text = $(this).prev().val();
+    navigator.clipboard.writeText(text);
+    $(this).addClass('animeted');
+    let clicked=this;
+    setTimeout(()=>$(clicked).removeClass('animeted'),365);
+}

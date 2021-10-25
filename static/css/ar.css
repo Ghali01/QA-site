@@ -116,3 +116,7 @@ button.l-btn{
     padding-right: 0;
     padding-left: 4px;
 }
+.copy-lnk{
+    right: unset;
+    left: 7px;
+}
