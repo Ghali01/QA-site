@@ -52,8 +52,8 @@ dir="rtl"
     {% include 'utilities/_footer.html' %}
     
         <script>
-
-        document.querySelector('.column-no-border').parentElement.style.border='none';
+        if(document.querySelector('.column-no-border'))
+            document.querySelector('.column-no-border').parentElement.style.border='none';
     </script>
 
     <script src="{% static 'js/bootstrap.min.js' %}"></script>

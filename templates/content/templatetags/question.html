@@ -74,32 +74,10 @@
                             {% translate 'Report' %}
                         </button>
 
-
-
-                    </div>
-                    <div class="share-btns" id="share-btns">
-                        <!-- Twitter -->
-                        <a href="https://twitter.com/share?url={{path}}" target="_blank" class="share-btn twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-
-                        <!-- Facebook -->
-                        <a href="https://www.facebook.com/sharer/sharer.php?u={{path}}" target="_blank"
-                            class="share-btn facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-
-                        <!-- LinkedIn -->
-                        <a href="https://www.linkedin.com/shareArticle?url={{path}}" target="_blank"
-                            class="share-btn linkedin">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-
-                        <!-- Email -->
-                        <a href="mailto:?subject=HMTL%20Share%20Buttons&body={{path}}" target="_blank"
-                            class="share-btn email">
-                            <i class="fa fa-envelope"></i>
-                        </a>
+                        <button type="button" data-target=".q-sh-{{question.id}}" class="link-button share-btn primary-link que-opt">
+                        {% translate 'Share' %}
+                    </button>
+                        
                     </div>
                 </div>
             </div>
@@ -147,4 +125,34 @@
 
         </div>
     </div>
+</div>
+
+
+<div class="share-btns q-sh-{{question.id}}" id="share-btns">
+    <div class="lnk-p">
+        <input type="text" readonly class="share-lnk" value="{{path}}">
+        <i class="far fa-copy copy-lnk"></i>
+    </div>
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url={{path}}" target="_blank" class="share-btn twitter">
+        <i class="fab fa-twitter"></i>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{path}}" target="_blank"
+        class="share-btn facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?url={{path}}" target="_blank"
+        class="share-btn linkedin">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    <!-- Email -->
+    <a href="mailto:?subject=HMTL%20Share%20Buttons&body={{path}}" target="_blank"
+        class="share-btn email">
+        <i class="fa fa-envelope"></i>
+    </a>
 </div>

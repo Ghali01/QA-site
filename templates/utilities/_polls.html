@@ -1,6 +1,6 @@
 {% load i18n %}
 {% if polls %}
-<span class="side-link" style="display: block;">{% translate 'Polls' %}</span>
+<span class="side-link" style="display: block;"><i class="fas fa-poll"></i> {% translate 'Polls' %}</span>
 <ul class="polls-lits">
     {% for poll in polls %}
     <li>
