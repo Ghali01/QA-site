@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-18 14:22+0300\n"
+"POT-Creation-Date: 2021-10-27 09:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,12 +105,13 @@ msgctxt "count"
 msgid "M"
 msgstr "مليون"
 
-#: .\authusers\models.py:201 .\templates\utilities\dashboard\_nav.html:239
+#: .\authusers\models.py:201 .\templates\auth\register.html:4
+#: .\templates\utilities\dashboard\_nav.html:239
 msgid "Register"
-msgstr ""
+msgstr "تسجيل"
 
-#: .\authusers\models.py:202 .\templates\content\index.html:15
-#: .\templates\dashboard\login.html:4
+#: .\authusers\models.py:202 .\templates\auth\login.html:4
+#: .\templates\content\index.html:15 .\templates\dashboard\login.html:4
 #: .\templates\utilities\dashboard\_nav.html:250
 msgid "Login"
 msgstr "دخول"
@@ -254,7 +255,7 @@ msgid "Questions"
 msgstr "الاسئلة"
 
 #: .\content\models.py:559 .\feedback\models.py:27
-#: .\templates\content\questionPage.html:14
+#: .\templates\content\questionPage.html:37
 #: .\templates\dashboard\addEditBadge.html:32
 #: .\templates\dashboard\answers.html:5 .\templates\dashboard\answers.html:15
 #: .\templates\dashboard\badges.html:33
@@ -374,19 +375,19 @@ msgstr "نص السؤال يجب ان لا يكون فارغ"
 msgid "You most add 1 tag or more"
 msgstr "يجب عليك اضافة وسم واحد على الاقل"
 
-#: .\content\views.py:268
+#: .\content\views.py:276
 msgid "The answer has been submitted, it will be reviewed soon."
 msgstr "تم ارسال الاجابة سيتم مراجعتها قريباً"
 
-#: .\content\views.py:270
+#: .\content\views.py:278
 msgid "Answer should not by empty"
 msgstr "الجواب يجب ان لا يكون فارغ"
 
-#: .\content\views.py:353
+#: .\content\views.py:361
 msgid "The edit has been submitted, it will be reviewed soon."
 msgstr "تم ارسال التعديل سيتم مراجعتها قربياً"
 
-#: .\content\views.py:628
+#: .\content\views.py:636
 msgid "no questions"
 msgstr "لا يوجد اسئلة"
 
@@ -734,7 +735,6 @@ msgstr "يرجى اختيار الاشياء التي تهتم بها"
 
 #: .\templates\auth\selectTags.html:182
 #: .\templates\content\addQuestion.html:193
-#: .\templates\content\categories.html:4
 #: .\templates\content\categoryTags.html:4
 #: .\templates\dashboard\addEditPoll.html:34
 #: .\templates\dashboard\editQuestion.html:154
@@ -799,6 +799,14 @@ msgstr "اسئلة مشابهة"
 #: .\templates\profiles\userQuestions.html:117
 msgid "See more"
 msgstr "رؤية المزيد"
+
+#: .\templates\content\categories.html:4
+#: .\templates\dashboard\pollsManagement.html:59
+#: .\templates\dashboard\statistics.html:33
+#: .\templates\utilities\dashboard\_nav.html:82
+#: .\templates\utilities\dashboard\_nav.html:199
+msgid "Categories"
+msgstr "التصنيفات"
 
 #: .\templates\content\categories.html:156
 msgid "Suggest Cateogry"
@@ -882,7 +890,7 @@ msgstr "الرئيسية"
 msgid "Lastst Questions"
 msgstr "اخر الاسئلة"
 
-#: .\templates\content\index.html:11
+#: .\templates\content\index.html:11 .\templates\content\questionPage.html:12
 msgid "Suggest Question"
 msgstr "اقترح سؤال"
 
@@ -952,43 +960,67 @@ msgstr "هذا الاسبوع"
 msgid "This month"
 msgstr "هذا الشهر"
 
-#: .\templates\content\questionPage.html:42
-#: .\templates\content\templatetags\answer.html:73
-#: .\templates\content\templatetags\question.html:90
+#: .\templates\content\questionPage.html:18
+msgid "(unPublished)"
+msgstr "(غير منشور)"
+
+#: .\templates\content\questionPage.html:22
+#: .\templates\content\templatetags\questionTop.html:9
+#: .\templates\exams\question.html:20
+#: .\templates\moderators\edits\reviewEdit.html:19
+#: .\templates\moderators\questions\reviewQuestion.html:14
+msgid "Asked:"
+msgstr "سئل مند:"
+
+#: .\templates\content\questionPage.html:24
+#: .\templates\content\templatetags\questionTop.html:11
+#: .\templates\moderators\edits\reviewEdit.html:21
+msgid "Active:"
+msgstr "نشط منذ:"
+
+#: .\templates\content\questionPage.html:26
+#: .\templates\content\templatetags\questionTop.html:13
+#: .\templates\moderators\edits\reviewEdit.html:23
+msgid "Viwes:"
+msgstr "المشاهدات:"
+
+#: .\templates\content\questionPage.html:65
+#: .\templates\content\templatetags\answer.html:71
+#: .\templates\content\templatetags\question.html:74
 #: .\templates\feedback\templatetags\reportModal.html:6
 #: .\templates\feedback\templatetags\reportModal.html:37
 msgid "Report"
 msgstr "ابلاغ"
 
-#: .\templates\content\questionPage.html:55
-#: .\templates\content\templatetags\answer.html:107
-#: .\templates\content\templatetags\question.html:126
+#: .\templates\content\questionPage.html:78
+#: .\templates\content\templatetags\answer.html:85
+#: .\templates\content\templatetags\question.html:88
 #: .\templates\dashboard\reviewLog.html:43 .\templates\exams\question.html:51
 #: .\templates\exams\question.html:107
-#: .\templates\moderators\questions\reviewQuestion.html:44
+#: .\templates\moderators\questions\reviewQuestion.html:48
 msgid "Added in"
 msgstr "اضيف في"
 
-#: .\templates\content\questionPage.html:71
+#: .\templates\content\questionPage.html:94
 #: .\templates\dashboard\suggestedCategories.html:63
 #: .\templates\dashboard\suggestedCategories.html:151
 #: .\templates\dashboard\suggestedTags.html:63
 #: .\templates\dashboard\suggestedTags.html:151
 #: .\templates\moderators\edits\awaitList.html:31
 #: .\templates\moderators\edits\rejectedList.html:31
-#: .\templates\moderators\edits\reviewEdit.html:67
+#: .\templates\moderators\edits\reviewEdit.html:91
 #: .\templates\moderators\questions\awaitList.html:31
 #: .\templates\moderators\questions\rejectedList.html:33
-#: .\templates\moderators\questions\reviewQuestion.html:59
+#: .\templates\moderators\questions\reviewQuestion.html:63
 msgid "Accept"
 msgstr "قبول"
 
-#: .\templates\content\questionPage.html:77
+#: .\templates\content\questionPage.html:100
 msgid "Ignore"
 msgstr "رفض"
 
-#: .\templates\content\questionPage.html:103
-#: .\templates\content\questionPage.html:116
+#: .\templates\content\questionPage.html:126
+#: .\templates\content\questionPage.html:138
 msgid "Add Answer"
 msgstr "اضف اجابة"
 
@@ -996,60 +1028,51 @@ msgstr "اضف اجابة"
 #: .\templates\content\suggestEdit.html:10
 #: .\templates\content\suggestEdit.html:27
 #: .\templates\content\templatetags\answer.html:57
-#: .\templates\content\templatetags\question.html:75
+#: .\templates\content\templatetags\question.html:61
 msgid "Suggest Edit"
 msgstr "اقترح تعديل"
 
-#: .\templates\content\templatetags\answer.html:62
-#: .\templates\content\templatetags\question.html:80
+#: .\templates\content\templatetags\answer.html:61
+#: .\templates\content\templatetags\question.html:65
 #: .\templates\profiles\_profileTabs.html:44
 #: .\templates\profiles\templateTags\followerItem.html:18
 msgid "Unfollow"
 msgstr "الغاء متابعة"
 
-#: .\templates\content\templatetags\answer.html:64
-#: .\templates\content\templatetags\question.html:82
+#: .\templates\content\templatetags\answer.html:63
+#: .\templates\content\templatetags\question.html:67
 #: .\templates\profiles\_profileTabs.html:46
 #: .\templates\profiles\templateTags\followerItem.html:20
 msgid "Follow"
 msgstr "متابعة"
 
-#: .\templates\content\templatetags\answer.html:115
-#: .\templates\content\templatetags\question.html:134
+#: .\templates\content\templatetags\answer.html:75
+#: .\templates\content\templatetags\question.html:78
+msgid "Share"
+msgstr "مشاركة"
+
+#: .\templates\content\templatetags\answer.html:93
+#: .\templates\content\templatetags\question.html:96
 #: .\templates\exams\question.html:65 .\templates\exams\question.html:121
 msgid "Edited in"
 msgstr "عدل في"
 
-#: .\templates\content\templatetags\answer.html:131
-#: .\templates\content\templatetags\question.html:150
+#: .\templates\content\templatetags\answer.html:109
+#: .\templates\content\templatetags\question.html:112
 msgid "All comment"
 msgstr "كل التعليقات"
 
-#: .\templates\content\templatetags\answer.html:139
-#: .\templates\content\templatetags\answer.html:143
-#: .\templates\content\templatetags\question.html:156
-#: .\templates\content\templatetags\question.html:160
+#: .\templates\content\templatetags\answer.html:117
+#: .\templates\content\templatetags\answer.html:121
+#: .\templates\content\templatetags\question.html:118
+#: .\templates\content\templatetags\question.html:122
 msgid "Add comment"
 msgstr "اضافة تعليق"
 
-#: .\templates\content\templatetags\answer.html:141
-#: .\templates\content\templatetags\question.html:158
+#: .\templates\content\templatetags\answer.html:119
+#: .\templates\content\templatetags\question.html:120
 msgid "Add Comment..."
 msgstr "اضافة تعليق..."
-
-#: .\templates\content\templatetags\question.html:12
-#: .\templates\exams\question.html:20
-#: .\templates\moderators\questions\reviewQuestion.html:10
-msgid "Asked:"
-msgstr "سئل مند:"
-
-#: .\templates\content\templatetags\question.html:14
-msgid "Active:"
-msgstr "نشط منذ:"
-
-#: .\templates\content\templatetags\question.html:16
-msgid "Viwes:"
-msgstr "المشاهدات:"
 
 #: .\templates\content\templatetags\questionItem.html:8
 #: .\templates\content\templatetags\questionItem.html:26
@@ -1945,13 +1968,6 @@ msgstr "معدل المشاركة"
 msgid "Target(s)"
 msgstr "الاهداف"
 
-#: .\templates\dashboard\pollsManagement.html:59
-#: .\templates\dashboard\statistics.html:33
-#: .\templates\utilities\dashboard\_nav.html:82
-#: .\templates\utilities\dashboard\_nav.html:199
-msgid "Categories"
-msgstr "التصنيفات"
-
 #: .\templates\dashboard\pollsManagement.html:78
 msgid "Resaults"
 msgstr "النتائج"
@@ -2054,7 +2070,6 @@ msgid "Google Users"
 msgstr "مستخدمي جوجل"
 
 #: .\templates\dashboard\statistics.html:71
-
 msgid "Github Users"
 msgstr "مستخدمي جيتهاب"
 
@@ -2273,13 +2288,13 @@ msgid "Show The Edit"
 msgstr "عرض التعديل"
 
 #: .\templates\moderators\edits\awaitList.html:33
-#: .\templates\moderators\edits\reviewEdit.html:71
+#: .\templates\moderators\edits\reviewEdit.html:95
 #: .\templates\moderators\questions\awaitList.html:34
-#: .\templates\moderators\questions\reviewQuestion.html:64
+#: .\templates\moderators\questions\reviewQuestion.html:68
 msgid "Reject"
 msgstr "رفض"
 
-#: .\templates\moderators\edits\reviewEdit.html:14
+#: .\templates\moderators\edits\reviewEdit.html:38
 msgid "Suggested Edit"
 msgstr "تعديل مقترح"
 

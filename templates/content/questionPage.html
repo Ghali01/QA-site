@@ -15,7 +15,7 @@
 <h1 class="que-title center-title">{{question.title}}
 
     {% if not question.post.isPublished %}
-     (unPublished)
+     {% translate '(unPublished)' %}
     {% endif %}
 </h1>
 <div class="que-data-div">
