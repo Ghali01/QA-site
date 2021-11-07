@@ -4314,3 +4314,15 @@ pre code{
         flex-wrap: nowrap;
     }
 }
+
+body{
+    min-height: 100vh;
+    position: relative;
+}
+.main-foot{
+    position: absolute;
+    bottom: 0;
+}
+.contnet-container{
+    padding-bottom: 130px;
+}
