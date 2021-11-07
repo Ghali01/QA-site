@@ -4326,3 +4326,6 @@ body{
 .contnet-container{
     padding-bottom: 130px;
 }
+.nav-link{
+    white-space: nowrap;
+}
