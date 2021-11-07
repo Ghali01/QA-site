@@ -12,12 +12,15 @@
     {% translate 'Suggest Question' %}
 </a>
     
-<h1 class="que-title center-title">{{question.title}}
+<div class="qt-p">
+    <h1 class="que-title center-title">{{question.title}}
 
-    {% if not question.post.isPublished %}
-     {% translate '(unPublished)' %}
-    {% endif %}
-</h1>
+        {% if not question.post.isPublished %}
+         {% translate '(unPublished)' %}
+        {% endif %}
+    </h1>
+    <div class="q-t-s"></div>
+</div>
 <div class="que-data-div">
     <span class="que-data-title">{% translate 'Asked:' %} </span>
     <span class="que-data">{{question.getDuration}}</span>

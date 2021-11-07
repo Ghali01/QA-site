@@ -1,8 +1,13 @@
 {% load i18n %}
-<a class="side-link" href="{% url 'content:categories-page' %}"><i class="fas fa-align-justify"></i> {% translate 'categories' %}</a>
+<a class="side-link
+{% if active  %}
+active
+{% endif %}
+{{request.path}}
+" href="{% url 'content:categories-page' %}"><i class="fas fa-align-justify"></i> 
+    
+{% if categoryName and active %}{{categoryName}}{% else %}{% translate 'categories' %}{% endif %}</a>
 <ul class="categores-list">
-    {% if categories %}
-    {% endif %}
     {% for cate in categories %}
     <li class="category-li">
         <a href="{% url 'content:index-with-cate' categoryID=cate.id %}" class="cateogry-item">

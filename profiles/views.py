@@ -362,16 +362,15 @@ def changeAavatar(request):
         if x0>0 and x0<x1 and y0>0 and y0<y1 and x1<orginalW and y1<orginalH and width==height and width>=150 and height<=360:
             img=Image.open(file)
             img=img.resize([orginalW,orginalH])
-            w,h=img.size
-            cropImg =Image.new('L',[w,h],0)
-            draw=ImageDraw.Draw(cropImg)
-            draw.pieslice([x0,y0,x1,y1],0,360,fill=250)
-            imgArr=numpy.array(img)
-            cropArr=numpy.array(cropImg)
-            fArr=numpy.dstack((imgArr,cropArr))
-            finalImg=Image.fromarray(fArr)
+            # w,h=img.size
+            # cropImg =Image.new('L',[w,h],0)
+            # draw=ImageDraw.Draw(cropImg)
+            # draw.pieslice([x0,y0,x1,y1],0,360,fill=250)
+            # imgArr=numpy.array(img)
+            # cropArr=numpy.array(cropImg)
+            # fArr=numpy.dstack((imgArr,cropArr))
             path=str(MEDIA_ROOT.joinpath('profile'))+f'/{request.user.username}.png'
-            finalImg=finalImg.crop([x0,y0,x1,y1])
+            finalImg=img.crop([x0,y0,x1,y1])
             fs=FileSystemStorage(MEDIA_ROOT.joinpath('profile'))
             if fs.exists(f'{request.user.username}.jpg'):
                 fs.delete(f'{request.user.username}.jpg')

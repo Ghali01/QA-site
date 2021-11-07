@@ -19,19 +19,25 @@
             <div class="card-body">
               <form action="{% url 'dashboard:save-header' language=lang %}" method="POST"  enctype="multipart/form-data">
                 {% csrf_token %}
+                {% get_media_prefix as media %}
                 <div class="row">
-                <div class="col-9">
-                  <input type="text" class="form-control header-inp" name="title" value="{{title}}" placeholder="{% translate 'Site Title' %}">
-                </div>
+                  
+                  <div class="col-3">
+                  
+                    <div class="">
+    
+                    <label for="favicon" >favicon: <img src="{{media|add:'/favicon.ico'}}" width="16" alt=""></label>
+  
+                    </div>
+                    <input type="file" id="favicon" name="favicon" class="form-control float-right" accept=".ico">
+                  </div>
+                    
                 <div class="col-3">
                   
                   <div class="">
-                     {% get_media_prefix as media %}
-  
-                  <label for="favicon" >favicon: <img src="{{media|add:'/favicon.ico'}}" width="16" alt=""></label>
-
+                    <img src="{{media|add:'logo.png'}}" alt="logo">
                   </div>
-                  <input type="file" id="favicon" name="favicon" class="form-control float-right" accept=".ico">
+                  <input type="file" id="favicon"  name="logo" class="form-control float-right" accept=".png">
                 </div>
               </div>
               <div class="col-12">

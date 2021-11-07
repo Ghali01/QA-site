@@ -903,7 +903,7 @@ function seeMoreIndex() {
 }
 
 function btnFilterClick() {
-    $(this).parent().find('input').val($(this).data('value'));
+    $(this).parent().next('input').val($(this).data('value'));
     let searchObject = {};
     [...$('.filter')].forEach(filter =>
         searchObject[$(filter).find('input').attr('name')] = $(filter).find('input').val()

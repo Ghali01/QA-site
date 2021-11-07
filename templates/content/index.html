@@ -128,7 +128,8 @@
 
     </div>
     {% endif %}
-    <div class="btn-group my-btn-group filter button-filter " style="margin-bottom: 12px;" role="group"
+    <div class="filter my-btn-group ">
+    <div class="btn-group  button-filter " style="margin-bottom: 12px;" role="group"
             aria-label="Basic outlined example">
             <button class="btn btn-outline-primary btn-group-item btn-option-item 
             {% if not  timeFilter == 'T' and not timeFilter == 'W' and not timeFilter == 'M'  %}
@@ -155,9 +156,10 @@
             {% endif %}
         
             " data-value="M">{% translate 'This month' %}</button>
-        <input type="hidden" name="time">
         </div>
-    <div style="clear:both"></div>
+        <input type="hidden" name="time">
+    </div>
+        <div style="clear:both"></div>
     <!-- queststion start -->
     <div class="questions-list">
         {% for question in questions %} 

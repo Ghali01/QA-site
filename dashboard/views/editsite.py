@@ -242,8 +242,8 @@ def saveHeader(request, language):
             
             # upload the logo
             logoFile = request.FILES['logo']
-            fs = FileSystemStorage(location=MEDIA_ROOT.joinpath('brand'))
-            fileName = f'logo{language}.png'
+            fs = FileSystemStorage(location=MEDIA_ROOT)
+            fileName = f'logo.png'
             if fs.exists(fileName):
                 fs.delete(fileName)
             fs.save(fileName, logoFile)
@@ -258,16 +258,7 @@ def saveHeader(request, language):
                 fs.delete('favicon.ico')
             fs.save('favicon.ico', request.FILES['favicon'])
         
-        # save the title and text
-        if 'title' in request.POST:
-            path = BASE_DIR.joinpath(
-                f'templates/utilities/_brand{language}.html')
-            
-            file=open(path,'w',encoding='utf-8')
-            file.seek(0)
-            file.write(request.POST['title'])
-            file.close()
-            return redirect('/dashboard/edit-header/'+language)
+        return redirect('/dashboard/edit-header/'+language)
     else:
         return redirect("/dashboard/login")
 
@@ -505,7 +496,6 @@ def updateInfoItem(request):
         return redirect(reverse('dashboard:edit-info-item-page',kwargs={'itemID':request.POST['item-id']}))
     else:
         return redirect("/dashboard/login")
-
 
 def deleteInfoItem(request, language):
     if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_superuser:

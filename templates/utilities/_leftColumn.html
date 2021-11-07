@@ -3,12 +3,22 @@
 <div class="d-none d-md-block left-column">
     
     {% categories %}
-    <a class="side-link" href="{% url 'content:tags-page' %}"><i class="fas fa-tags"></i> {% translate 'Tags' %}</a>
+    <a class="side-link
+    {% if 'tags' in request.path  %}
+        active
+    {% endif %}
+    
+    " href="{% url 'content:tags-page' %}"><i class="fas fa-tags"></i> {% translate 'Tags' %}</a>
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
 
-    {% polls request.user %}
+    {% polls request %}
     {% endif %}
-    <a class="side-link" href="{% url 'content:exam-page' %}"><i class="fas fa-graduation-cap"></i> {% translate 'Exams' %}</a>
+    <a class="side-link
+    {% if 'exam' in request.path  %}
+        active
+    {% endif %}
+    
+    " href="{% url 'content:exam-page' %}"><i class="fas fa-graduation-cap"></i> {% translate 'Exams' %}</a>
     
     <div class="left-bottom-column">
        {% load i18n %}

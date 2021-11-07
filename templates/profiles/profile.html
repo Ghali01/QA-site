@@ -218,8 +218,8 @@
                 <div class="tops-toolbar">
                     <h4 class="tops-toolbar-title" id="top-po">{% translate 'Top Posts' %}</h4>
                     <div class="toolbar-btn-groups ">
-
-                        <div class="btn-group my-btn-group filter button-filter " role="group"
+                        <div class="my-btn-group filter">
+                        <div class="btn-group  button-filter " role="group"
                             aria-label="Basic outlined example">
                             <button type="button" data-value="N"
                                 class="btn btn-outline-primary btn-group-item
@@ -234,9 +234,12 @@
                                 {% endif %}
                                 
                                 ">{% translate 'Votes' context 'filter' %}</button>
-                            <input type="hidden" name="order" value="{{order|default:'N'}}">
                             </div>
-                        <div class="btn-group my-btn-group filter button-filter" role="group"
+                            <input type="hidden" name="order" value="{{order|default:'N'}}">
+
+                        </div>
+                        <div class="my-btn-group filter">
+                        <div class="btn-group  button-filter" role="group"
                             aria-label="Basic outlined example">
                             <button type="button" data-value="Al"
                                 class="btn btn-outline-primary btn-group-item 
@@ -259,29 +262,30 @@
                                 {% endif %}
                             
                                 ">{% translate 'Answers' %}</button>
-                            <input type="hidden" name="ptype" value="{{ptype|default:'Al'}}">
                             </div>
-
+                            <input type="hidden" name="ptype" value="{{ptype|default:'Al'}}">
+                        </div>
                     </div>
+
 
                 </div>
                 <ul class="tops-list">
                     {% for post in topPosts %}
-                    <li class=" row top-list-item">
-                        <div class="col-12 col-sm-10">
+                    <li class=" top-item-flex-p top-list-item">
+                        <!-- <div class="col-12 col-sm-10"> -->
                             <div class="top-item-flex">
                             <div class="votes-div">{{post.getVotes}}</div>
-                            <a href="{% url 'content:question-page' questionID=post.getQuestion.id %}{% if post.isAnswer %}#answer-{{post.answer.id}}{% endif %}">
-                                <p class="question-title">
+                            <a class="question-title" href="{% url 'content:question-page' questionID=post.getQuestion.id %}{% if post.isAnswer %}#answer-{{post.answer.id}}{% endif %}">
+                                <!-- <p class="question-title"> -->
                                     {{post.getQuestion.title}}
     
-                                </p>
+                                <!-- </p> -->
                             </a>
                         </div>
-                        </div>
-                        <div class="col-12 col-sm-2">
+                        <!-- </div> -->
+                        <!-- <div class="col-12 col-sm-2"> -->
                             <time class="question-date">{{post.suggestTime.date|date:'Y/j/n'}}</time>
-                        </div>
+                        <!-- </div> -->
                     </li>
                     {% endfor %}
                 </ul>
