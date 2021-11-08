@@ -51,12 +51,13 @@ def registerPage(request):
             website=request.POST['website']
             try:
                 user=User.objects.create_user(userName,email,password,first_name=fullName,is_active=False)
-                login(request,user)
+                respone= redirect(reverse('authusers:email-sent') )
                 code=genRandomStr()
-                TempUser.objects.create(user=user,code=code,website=website)
+                tmp=TempUser.objects.create(user=user,code=code,website=website)
+                respone.set_cookie('tmp-id',user.id)
                 msg= f"your confirm link: {request.build_absolute_uri(reverse('authusers:confirm-user',kwargs={'code':code}))}"
                 send_mail("intervies questions",msg ,'interviewsquestions@gmail.com',[email])
-                return redirect(reverse('authusers:email-sent') )
+                return respone
             except IntegrityError:
                 messages.error(request,gettext('User name is alredy exists'),extra_tags='user-name')
           
@@ -81,10 +82,10 @@ def registerPage(request):
     return render(request,'auth/register.html',contxt)
 def emailSent(request):
     
-    if request.user.is_authenticated and not request.user.is_anonymous:
+    if request.COOKIES.get('tmp-id',None):
         if not request.user.is_active:
             contxt={
-                'email':request.user.email
+                'email':User.objects.get(pk=request.COOKIES.get('tmp-id')).email
             }
             return render(request,'auth/emailSent.html',contxt)
     return redirect(reverse('authusers:auth-index'))
@@ -99,7 +100,7 @@ def confirmUser(request,code):
         profile.website=tmpUser.website
         profile.save()
         tmpUser.delete()
-    
+        login(request,user)
         return redirect(reverse('authusers:auth-index'))
     except TempUser.DoesNotExist:
         return HttpResponse('invaid code')
@@ -172,24 +173,26 @@ def selectTags(request):
     else:
         return redirect(reverse('authusers:login-page'))
 def chnageEmail(request):
-    if request.user.is_authenticated and not request.user.is_anonymous and not request.user.is_active:
-        if request.method=='POST':
-            if 'email' in request.POST:
-                if request.POST['email']:
-                    if not User.objects.filter(email=request.POST['email']).exists() or request.user.email==request.POST['email']:
-                        request.user.email=request.POST['email']
-                        request.user.save()
-                        
-                        code=request.user.tmp.code
-                        msg= f"your confirm link: {request.build_absolute_uri(reverse('authusers:confirm-user',kwargs={'code':code}))}"
-                        send_mail("intervies questions",msg ,'interviewsquestions@gmail.com',[request.POST['email']])
+    if request.COOKIES.get('tmp-id',None):
+        user=User.objects.get(pk=request.COOKIES.get('tmp-id',None))
+        if  not user.is_active:
+            if request.method=='POST':
+                if 'email' in request.POST:
+                    if request.POST['email']:
+                        if not User.objects.filter(email=request.POST['email']).exists() or user.email==request.POST['email']:
+                            user.email=request.POST['email']
+                            user.save()
+                            
+                            code=user.tmp.code
+                            msg= f"your confirm link: {request.build_absolute_uri(reverse('authusers:confirm-user',kwargs={'code':code}))}"
+                            send_mail("intervies questions",msg ,'interviewsquestions@gmail.com',[request.POST['email']])
 
-                        return redirect(reverse('authusers:email-sent'))
+                            return redirect(reverse('authusers:email-sent'))
+                        else:
+                            messages.error(request,gettext('email is taken'))
                     else:
-                        messages.error(request,gettext('email is taken'))
-                else:
-                    messages.error(request,gettext('Email is requrid'))
-        return render(request,'auth/changeEmail.html')
+                        messages.error(request,gettext('Email is requrid'))
+            return render(request,'auth/changeEmail.html')
     else:
         return redirect(reverse('authusers:auth-index'))
 
