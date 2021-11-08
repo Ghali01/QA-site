@@ -157,6 +157,9 @@
                         {% pollsMob request.user %}
                         <!-- cateagors on sm end -->
 
+                        <li class="nav-item dropdown d-md-none   ">
+                            <a class="dropdown-item mob-nav-link" href="{% url 'authusers:logout' %}">{% translate 'Logout' %}</a>
+                        </li>
                     </ul>
                 </div>
 
