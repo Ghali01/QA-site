@@ -532,6 +532,8 @@ $(document).ready(
         $('.add-ans-button').click(addAnswerBtn);
         $('.add-ans-continer').slideUp(0);
         $('.see-more-btn-index').click(seeMoreIndex);
+        $('.see-more-btn-tag-questions').click(seeMoreTagQuestions);
+        $('.see-more-btn-tags').click(seeMoreTags);
         $('.loading-circle').hide();
         $('.button-filter button').click(btnFilterClick);
         $('.see-more-btn-add-que').click(seeMoreAddQue)
@@ -636,8 +638,8 @@ function removeTagBtn(e) {
 function onSelectCategory() {
     let parentC = $(this).parentsUntil(".category-select-toolbar").last().parent();
     parentC.data("cur-val", $(this).data("cate-id"));
-    parentC.nextAll(".category-select-toolbar").css('visibility', "hidden");
-    parentC.next(".category-select-toolbar").css('visibility', "visible");
+    parentC.nextAll(".category-select-toolbar").css('display', "none");
+    parentC.next(".category-select-toolbar").css('display', "block");
     let subs = $(this).data("sub");
     let nextList = parentC.next(".category-select-toolbar").find(".custom-select-list");
     $(nextList).html('');
@@ -868,6 +870,10 @@ function voteBtnClick() {
                 $(clicked).addClass('sort-icon-act');
                 $(clicked).siblings('.votes-number-span').text(data.votes);
             }
+            else if (data.resault == 'undo') {
+                $(clicked).removeClass('sort-icon-act');
+                $(clicked).siblings('.votes-number-span').text(data.votes);
+            }
         },
     );
 
@@ -893,7 +899,22 @@ function seeMoreIndex() {
         function (data, textStatus, jqXHR) {
             $(clicked).next().hide();
             data = JSON.parse(data);
-            console.log(data.remPages);
+            if (parseInt(data.remPages) <= 0) {
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+        },
+    );
+}
+
+function seeMoreTagQuestions() {
+    $(this).next().show();
+    
+    let clicked = this;
+    $.get(`/see-more-tag-questions/${$(this).data('tag-id')}/${pageIndc++}` + location.search, {},
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data = JSON.parse(data);
             if (parseInt(data.remPages) <= 0) {
                 $(clicked).hide()
             }
@@ -919,6 +940,27 @@ function seeMoreAddQue() {
             'que-title': $('#que-title').val(),
             'category-id': $('#category-id').val(),
             'tags': $('#tags-input').val(),
+
+        },
+        function (data, textStatus, jqXHR) {
+            $(clicked).next().hide();
+            data = JSON.parse(data);
+            if (parseInt(data.remPages) <= 0) {
+                $(clicked).hide()
+            }
+            $(clicked).prev().append(data.html);
+        },
+    );
+
+}
+function seeMoreTags() {
+    $(this).next().show();
+    let clicked = this;
+    $.get(`/see-more-tags/${pageIndc++}`,
+        {
+            'questions': $('#que-filter').val(),
+            'answers': $('#ans-filter').val(),
+            'category': $('#category-id').val(),
 
         },
         function (data, textStatus, jqXHR) {
@@ -1189,11 +1231,19 @@ function favQueBtn() {
             csrfmiddlewaretoken: getCookie('csrftoken')
         },
         function (data, textStatus, jqXHR) {
-            if (data == 'added')
+            if (data == 'added'){
                 $(clicked).addClass('faved-que');
-            else if (data == 'removed')
+                $(clicked).next('.bookmark-span').addClass('faved-que');
+                const v = parseInt($(clicked).next('.bookmark-span').text())+1;
+                $(clicked).next('.bookmark-span').text(v);
+            }
+            else if (data == 'removed'){
                 $(clicked).removeClass('faved-que');
-        },
+                $(clicked).next('.bookmark-span').removeClass('faved-que');
+                const v = parseInt($(clicked).next('.bookmark-span').text())-1;
+                $(clicked).next('.bookmark-span').text(v);
+               }
+    },
     );
     checkAuth(f);
 }

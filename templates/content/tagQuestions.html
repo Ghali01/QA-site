@@ -1,10 +1,10 @@
 {% extends 'utilities/_base.html' %}
 {% load i18n %}
 {% load questions %}
-{% block title %}{% translate 'Home' %}{% endblock %}
+{% block title %}{{tag.name}}{% endblock %}
 
 {% block content %} 
-    <h2 class="center-title ml-12">{% translate 'Lastst Questions' %}</h2>
+    <h2 class="center-title ml-12">{{tag.name}}</h2>
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
     
     <a href="{% url 'content:add-question' %}" class="btn btn-primary btn-sm primary-button suggest-btn">
@@ -23,30 +23,6 @@
     {% endfor %}
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
         <div class="row filters-row index ml-12">
-        <div class="col-4 col-sm-3 col-lg-2 c-f-index">
-            <div class="custom-select filter one-click-filter index-filter">
-                <button class="btn btn-primary btn-select">
-                    <span class="selected-span">
-                        {% if tagsFilter == 'M' %}
-                        {% translate 'My Tags' %}
-                        {% else %}
-                        {% translate 'All' %}
-                        {% endif %}
-                    </span>
-                    <i class="fas fa-caret-down select-arrow"></i>
-
-                </button>
-                <ul class="custom-select-list custom-scrollbar">
-                    <li data-value="M" class="custom-select-item">
-                        {% translate 'My Tags' %}
-                    </li>
-                    <li data-value="A" class="custom-select-item">
-                        {% translate 'All' %}
-                    </li>
-                </ul>
-                <input type="hidden" id="tag-filter" name="tags" value="{% if tagsFilter == 'M' %}M{% else %}A{% endif %}">
-            </div>
-        </div>
         <div class="col-4 col-sm-3 col-lg-2 c-f-index">
             
             <div class="custom-select filter one-click-filter index-filter">
@@ -169,7 +145,7 @@
         
     </div>
     {% if pageCount > 1 %}
-    <button class="btn see-more-btn see-more-btn-index" data-category-id="{% if categoryID %}{{categoryID}}{% endif %}">{% translate 'See more' %}</button>
+    <button class="btn see-more-btn see-more-btn-tag-questions" data-tag-id='{{tag.id}}'>{% translate 'See more' %}</button>
     <div class="loading-circle">
         <div class="primary-circle">
             <div class="secondary-circle"></div>

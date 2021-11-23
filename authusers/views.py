@@ -16,6 +16,8 @@ from interviewsquestions.utilities.authDecoratros import forActiveUser
 import requests
 from google.auth import jwt
 from django.utils.translation import get_language,gettext
+from django.core.cache import cache
+
 def genRandomStr():
     str=''
     for i in range(0,99):
@@ -75,8 +77,13 @@ def registerPage(request):
             messages.error(request,gettext('Confirm Password is requrid'),extra_tags='conf-pass')
         elif not password== confirmPassword:
             messages.error(request,gettext('Password does not match'),extra_tags='conf-pass')
+    language=get_language()[:2]
+    items=cache.get(f'R-page-{language}')
+    if items==None:
+        items=AuthList.objects.get(page='R',language=language)
+        cache.set(f'R-page-{language}',items)
     contxt={
-        'list':AuthList.objects.get(page='R',language=get_language()[:2])
+        'list':items
     }
  
     return render(request,'auth/register.html',contxt)
@@ -131,8 +138,13 @@ def loginPage(request):
                     messages.error(request,gettext('user baned'))
             else:
                 messages.error(request,gettext("email or passowrd in not valid"))
+    language=get_language()[:2]
+    items=cache.get(f'L-page-{language}')
+    if items==None:
+        items=AuthList.objects.get(page='L',language=language)
+        cache.set(f'L-page-{language}',items)
     contxt={
-        'list':AuthList.objects.get(page='L',language=get_language()[:2])
+        'list':items
     }
  
     return render(request,'auth/login.html',contxt)

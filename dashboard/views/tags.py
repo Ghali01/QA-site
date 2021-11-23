@@ -1,4 +1,3 @@
-from typing_extensions import TypeGuard
 from django.contrib import messages
 from django.shortcuts import render,redirect
 from django.urls import reverse
@@ -42,7 +41,7 @@ def addTag(request):
                 messages.error(request,'description can not be empty')
         else:
             messages.error(request,'values error')            
-        return redirect(reverse('dashboard:tags',kwargs={'language':category.language}))
+        return redirect(reverse('dashboard:tags',kwargs={'language':'en'}))
 
     else:
         return redirect(reverse('dashboard:login'))

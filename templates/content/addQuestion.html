@@ -12,7 +12,7 @@
         {% csrf_token %}
     
           
-        <div class="categoriis-lists">
+        <div class="categoriis-lists  ">
 
             <div class="custom-select category-select-toolbar" data-cur-val="1">
                 <button class="btn btn-primary btn-select">
@@ -37,9 +37,12 @@
                     {% endfor %}
                 </ul>
             </div>
-            <div class="custom-select category-select-toolbar" {% if category.getLvl >= 1 %}
-                style='visibility: visible;'
-                {% endif %}
+            <div class="custom-select category-select-toolbar
+            {% if category.getLvl >= 1 %}
+            showed
+            {% endif %}
+
+            " 
                 >
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
@@ -78,9 +81,12 @@
                     {% endif %}
                 </ul>
             </div>
-            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 2 %}
-                style='visibility: visible;'
-                {% endif %}>
+            <div class="custom-select category-select-toolbar
+            {% if category.getLvl >= 2 %}
+            showed
+            {% endif %}
+
+            " data-cur-val="1" >
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
 
@@ -118,9 +124,12 @@
 
                 </ul>
             </div>
-            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 3 %}
-                style='visibility: visible;'
-                {% endif %}>
+            <div class="custom-select category-select-toolbar
+            {% if category.getLvl >= 3 %}
+            showed
+            {% endif %}
+
+            " data-cur-val="1">
                 <button class="btn btn-primary btn-select">
                     <span class="selected-span">
 
@@ -180,7 +189,7 @@
     <input type="hidden" name="post-body" id="post-body">
     <div class="add-tag-to-que-div">
         <input id="que-tags-input" data-tags-div="#tags-div-ol" type="text"
-            class="form-control que-input que-tags-input" placeholder="{% translate 'Add Tags' %}" autocomplete="off">
+            class="form-control que-input que-tags-input" placeholder="{% translate 'Add Tags ex: ccs,html,javascript' %}" autocomplete="off">
         <ul class="tags-list custom-scrollbar" data-tags-div="#tags-div-ol">
             {% for tag in tags %}
             <li class="tags-list-item" data-tag-id="{{tag.id}}">{{tag.name}} </li>

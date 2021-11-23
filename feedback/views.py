@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models.query import QuerySet
 from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse
 from interviewsquestions.utilities.authDecoratros import forActiveUser,userHasTags
@@ -10,9 +11,9 @@ from django.contrib import messages
 @forActiveUser
 @userHasTags
 def suggestCategory(request):
+    currentLanguage =get_language()[:2]
     if request.method=='POST':
         if 'cate-name' in request.POST and 'cate-desc' in request.POST and 'category-id' in request.POST:
-            currentLanguage =get_language()[:2]
             try:
                 SuggestedCategory.objects.create(
                     suggester=request.user,
@@ -24,7 +25,7 @@ def suggestCategory(request):
             except (Category.DoesNotExist,ValueError):
                 pass
             messages.success(request,'Your suggest has been submited')
-    categories=Category.objects.filter(parent=None)
+    categories=Category.objects.filter(parent=None,language=currentLanguage)
     contxt={
         'categories':categories
     }
@@ -45,7 +46,8 @@ def suggestTag(request):
             except (Category.DoesNotExist,ValueError):
                 pass
             messages.success(request,'Your suggest has been submited')
-    categories=Category.objects.filter(parent=None)
+    currentLanguage =get_language()[:2]
+    categories=Category.objects.filter(parent=None,language=currentLanguage)
     contxt={
         'categories':categories
     }

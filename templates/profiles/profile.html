@@ -27,25 +27,18 @@
                                 <span class=" pers-reputation-w">{% translate 'REPUTATION' %}</span>
                             </div>
                             <div class="pers-badges-2">
-                                {% if user.profile.goldBadgesCount %}
                                 <div class="badge-div badge-div-gold">
                                     <div class="circular-badge"></div>
                                     <span class="badge-num-span">{{user.profile.goldBadgesCount}}</span>
                                 </div>
-                                {% endif %}
-                                {% if user.profile.silverBadgesCount %}
                                 <div class="badge-div badge-div-silver">
                                     <div class="circular-badge"></div>
                                     <span class="badge-num-span">{{user.profile.silverBadgesCount}}</span>
                                 </div>
-                                {% endif %}
-
-                                {% if user.profile.bronzeBadgesCount %}
                                 <div class="badge-div badge-div-bronze">
                                     <div class="circular-badge"></div>
                                     <span class="badge-num-span">{{user.profile.bronzeBadgesCount}}</span>
                                 </div>
-                                {% endif %}
 
                             </div>
                         </div>
@@ -274,7 +267,11 @@
                     <li class=" top-item-flex-p top-list-item">
                         <!-- <div class="col-12 col-sm-10"> -->
                             <div class="top-item-flex">
-                            <div class="votes-div">{{post.getVotes}}</div>
+                                <div class="votes-div-p">
+
+                                    <div class="votes-div">{{post.getVotes}}</div>
+
+                                </div>
                             <a class="question-title" href="{% url 'content:question-page' questionID=post.getQuestion.id %}{% if post.isAnswer %}#answer-{{post.answer.id}}{% endif %}">
                                 <!-- <p class="question-title"> -->
                                     {{post.getQuestion.title}}

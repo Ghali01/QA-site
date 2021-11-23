@@ -5,9 +5,13 @@ from django.urls import reverse
 from .models import InfoItem,Service,ContactMessage,AdvertisePage,AdvertistRequest, TermsPage
 from django.contrib import messages
 from django.utils.translation import get_language,gettext
+from django.core.cache import cache
 def InfoPage(request):
     language=get_language()[:2].upper()
-    items=InfoItem.objects.filter(language=language)
+    items=cache.get(f'info-{language}')
+    if items==None:
+        items=InfoItem.objects.filter(language=language)
+        cache.set(f'info-{language}',items)
     contxt={
         'items':items
     }
@@ -16,7 +20,10 @@ def InfoPage(request):
 
 def servicesPage(request):
     language=get_language()[:2].upper()
-    services=Service.objects.filter(language=language)
+    services=cache.get(f'services-{language}')
+    if services==None:   
+        services=Service.objects.filter(language=language)
+        cache.set(f'services-{language}',services)
     contxt={
         'services':services
     }
@@ -65,7 +72,11 @@ def advertiseWithUs(request):
             else:
                 messages.error(request,gettext("check empty fields"))
     try:
-        page=AdvertisePage.objects.get(language=language)
+
+        page=cache.get(f'advertise-{language}')
+        if page == None:
+            page=AdvertisePage.objects.get(language=language)
+            cache.set(f'advertise-{language}',page)
     except AdvertisePage.DoesNotExist:
         return HttpResponse('this page not created yet')
     contxt={
@@ -77,7 +88,10 @@ def advertiseWithUs(request):
 
 def terms(request):
     language=get_language()[:2]
-    page=TermsPage.objects.get(language=language)
+    page=cache.get(f'terms-{language}')
+    if page==None:
+        page=TermsPage.objects.get(language=language)
+        cache.set(f'terms-{language}',page)
     contxt={
         'terms':page.html
     }

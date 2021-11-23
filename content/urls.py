@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import addAnswer, addCommentToPost, addQuestionPage, allPostComment, categoriesPage, examPage, index, postVotes, questionPage, searchQuestionsAjax, seeMoreQueIndex, setLangage, similarQuestions, suggestPostEdit, tagsPage, toggQuestionFav, toggUserFollow, toggleTagToFav,generateExam
+from content.views import *
 app_name='content'
 urlpatterns=[
     path('',index,name='index'),
@@ -23,4 +23,7 @@ urlpatterns=[
     path('generate-exam',generateExam,name='generate-exam'),
     path('exam',examPage,name='exam-page'),
     path('set-language/<str:language>',setLangage,name='set-language'),
+    path('see-more-tags/<int:page>',seeMoreTagsPage,name='see-more-tags'),
+    path('tag-question/<int:tagID>',tagQuestions,name='tag-question'),
+    path('see-more-tag-questions/<int:tagID>/<int:page>',seeMoreTagQuestions,name='tag-question')
 ]

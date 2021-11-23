@@ -8,7 +8,9 @@
         active
     {% endif %}
     
-    " href="{% url 'content:tags-page' %}"><i class="fas fa-tags"></i> {% translate 'Tags' %}</a>
+    " href="{% url 'content:tags-page' %}"><i class="fas fa-tags"></i> {% translate 'Tags' %}
+    <div class="higtlight-o"></div>
+    </a>
     {% if request.user.is_authenticated and not request.user.is_anonymous %}
 
     {% polls request %}
@@ -18,7 +20,10 @@
         active
     {% endif %}
     
-    " href="{% url 'content:exam-page' %}"><i class="fas fa-graduation-cap"></i> {% translate 'Exams' %}</a>
+    " href="{% url 'content:exam-page' %}"><i class="fas fa-graduation-cap"></i> {% translate 'Exams' %}
+    <div class="higtlight-o"></div>
+    
+</a>
     
     <div class="left-bottom-column">
        {% load i18n %}

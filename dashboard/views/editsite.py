@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from random import randrange
 from django.core.files.storage import FileSystemStorage
 from misc.models import AdvertiseImage, AdvertisePage, Service,InfoItem, TermsPage
+from django.core.cache import cache
 from dashboard.decorators import forSuperAdmin
 
 def genRandomStr():
@@ -308,6 +309,8 @@ def saveAdvertise(request, language):
                 fs.save(fileName, img)
                 advertiseimage.imageFile.name = 'advertise/'+fileName
                 advertiseimage.save()
+        cache.delete(f'advertise-{language}')
+        
         return redirect('/dashboard/edit-advertise/'+language)
     else:
         return redirect("/dashboard/login")
@@ -362,6 +365,8 @@ def addService(request, language):
                 fs.save(fileName, request.FILES['figure'])
                 service.image.name = 'services/'+fileName
                 service.save()
+                cache.delete(f'services-{language}')
+
         return redirect('/dashboard/edit-services/'+language)
     else:
         return redirect("/dashboard/login")
@@ -402,6 +407,8 @@ def updateService(request):
                         fs.save(fileName, request.FILES['figure'])
                         service.image.name = 'services/'+fileName
                     service.save()
+                    cache.delete(f'services-{service.language}')
+
                 except (Service.DoesNotExist, ValueError):
                     return HttpResponse('invalid ID')
         return redirect('/dashboard/edit-service/'+request.POST['service-id'])
@@ -415,6 +422,8 @@ def deleteService(request, language):
             try:
                 Service.objects.get(
                     pk=int(request.POST['service-id'])).delete()
+                cache.delete(f'services-{language}')
+
             except (Service.DoesNotExist, ValueError):
                 return HttpResponse('invalid ID')
         return redirect('/dashboard/edit-services/'+language)
@@ -458,6 +467,8 @@ def addInfoItem(request, language):
                     text=request.POST['text'],
                     language=language
                 )
+                cache.delete(f'info-{language}')
+
         return redirect(reverse('dashboard:edit-info-page',kwargs={'language':language}))
     else:
         return redirect("/dashboard/login")
@@ -491,6 +502,8 @@ def updateInfoItem(request):
                     item.text = request.POST['text']
                   
                     item.save()
+                    cache.delete(f'info-{item.language}')
+
                 except (InfoItem.DoesNotExist, ValueError):
                     return HttpResponse('invalid ID')
         return redirect(reverse('dashboard:edit-info-item-page',kwargs={'itemID':request.POST['item-id']}))
@@ -503,6 +516,8 @@ def deleteInfoItem(request, language):
             try:
                 InfoItem.objects.get(
                     pk=int(request.POST['item-id'])).delete()
+                cache.delete(f'info-{language}')
+
             except (InfoItem.DoesNotExist, ValueError):
                 return HttpResponse('invalid ID')
         return redirect(reverse('dashboard:edit-info-page',kwargs={'language':language}))
@@ -519,6 +534,8 @@ def editAuthPage(request,page,language):
             List.title=request.POST['title']
             List.list=request.POST['items']
             List.save()
+            cache.set(f'{page}-page-{language}',List)
+
             return redirect(reverse('dashboard:edit-auth-page',kwargs={'page':page,'language':language}))
     contxt={
         'list':List
@@ -531,6 +548,8 @@ def editTermsAndPolicy(request,language):
     if request.method=='POST' and 'custom-html' in request.POST:
         page.html=request.POST['custom-html']
         page.save()
+        cache.set(f'terms-{language}',page)
+
         return redirect(reverse('dashboard:edit-terms',kwargs={'language':language}))
     contxt={
         'customHTML':page.html,

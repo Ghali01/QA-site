@@ -81,9 +81,12 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            <div class="custom-select category-select-toolbar" {% if category.getLvl >= 1 %}
-                                style='visibility: visible;'
-                                {% endif %}
+                            <div class="custom-select category-select-toolbar
+                            {% if category.getLvl >= 1 %}
+                            showed
+                            {% endif %}
+    " 
+                            
                                 >
                                 <button class="btn btn-primary btn-select">
                                     <span class="selected-span">
@@ -122,9 +125,12 @@
                                     {% endif %}
                                 </ul>
                             </div>
-                            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 2 %}
-                                style='visibility: visible;'
-                                {% endif %}>
+                            <div class="custom-select category-select-toolbar
+                            {% if category.getLvl >= 2 %}
+                                showed
+                            {% endif %}
+    
+                            " data-cur-val="1" >
                                 <button class="btn btn-primary btn-select">
                                     <span class="selected-span">
 
@@ -162,9 +168,12 @@
 
                                 </ul>
                             </div>
-                            <div class="custom-select category-select-toolbar" data-cur-val="1" {% if category.getLvl >= 3 %}
-                                style='visibility: visible;'
-                                {% endif %}>
+                            <div class="custom-select category-select-toolbar
+                            {% if category.getLvl >= 3 %}
+                            showed
+                            {% endif %}
+    
+                            " data-cur-val="1" >
                                 <button class="btn btn-primary btn-select">
                                     <span class="selected-span">
 
@@ -205,7 +214,7 @@
                         </div>
                         <div class="col-3">
                             <div class="sort-by-toolbar" style="display: inline;">
-                                <div class="custom-select filter" style="width: 40%; display: inline-block;">
+                                <div class="custom-select time-order-f-mod filter" style="width: 40%; display: inline-block;">
                                     <button class="btn btn-primary btn-select">
                                         <span class="selected-span">
                                             {% if order == 'O' %}

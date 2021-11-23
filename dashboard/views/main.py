@@ -1,4 +1,3 @@
-from typing import Callable
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout as  logoutAuth
@@ -9,9 +8,10 @@ from content.models import Category, Question, Tag
 from dashboard.decorators import forSuperAdmin
 from dashboard.models import BoolOption
 from feedback.models import SuggestedCategory, SuggestedTag
+from django.utils.translation import get_language
 def index(request):
     if request.user.is_authenticated and not request.user.is_anonymous and request.user.is_superuser:
-        return render(request,'utilities/dashboard/_base.html')
+        return redirect(reverse('dashboard:statistics',kwargs={'language':get_language()[:2]}))
     else:
         return redirect(reverse('dashboard:login'))
 def loginPage(request):

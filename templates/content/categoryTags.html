@@ -6,9 +6,9 @@
 {% block content %}
 <div class="column-no-border">
     {% if category %}
-<h2 class="center-title" style="float:none;">{{category.name}}</h2>
+<h2 class="center-title ml-12" style="float:none;">{{category.name}}</h2>
 {% endif %}
-    <div class="tags-dev-parent">
+    <div class="tags-dev-parent ml-10">
         <div class="questions-gird-toolbar">
 
             <div class="categoriis-lists filter one-click-filter">
@@ -180,7 +180,7 @@
                                     {% translate 'Least Questions' %}
                             </li>
                         </ul>
-                        <input type="hidden" name="questions" value="{% if queFilter == 'L' %}L{% else %}M{% endif %}">
+                        <input type="hidden" name="questions" id="que-filter" value="{% if queFilter == 'L' %}L{% else %}M{% endif %}">
                     </div>
                 </div>
                 <div class="col-5 col-sm-4 col-md-3">
@@ -206,7 +206,7 @@
                                 {% translate 'Least Answers' %}
                             </li>
                         </ul>
-                        <input type="hidden" name="answers" value="{% if ansFilter == 'L' %}L{% else %}M{% endif %}">
+                        <input type="hidden" name="answers" id="ans-filter" value="{% if ansFilter == 'L' %}L{% else %}M{% endif %}">
                     </div>
                 </div>
             </div>
@@ -215,28 +215,20 @@
         <div class="cate-tags-list">
             {% with request.user.profile.tags.all as usersTags %}
             {% for tag in tags %}
-            <div class="row tag-list-item">
-                <div class="col-3 tag-column">
-                    {% tagLink tag %}
-                    <button data-tag-id="{{tag.id}}" class="btn tag-star
-                    {% if tag in usersTags %}
-                    favorited
-                        {% endif %}
-                    ">
-                        <i class="fas fa-star"></i>
-                    </button>
-                </div>
-                <div class="col">
-                    <p class="tag-sumr  line-clamp-3">
-                        {{tag.description}}
-                    </p>
-                </div>
-            </div>
+                {% tagItem tag %}
             {% endfor %}
             {% endwith %}
         </div>
         <!-- center column end  -->
-
+        <button class="btn see-more-btn see-more-btn-tags" data-category-id="{% if categoryID %}{{categoryID}}{% endif %}">{% translate 'See more' %}</button>
+        <div class="loading-circle">
+            <div class="primary-circle">
+                <div class="secondary-circle"></div>
+                <div class="background-circle"></div>
+            </div>
+    
+        </div>
+        
     </div>
 </div>
 {% include 'utilities/_loginModal.html' %}

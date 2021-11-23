@@ -12,15 +12,12 @@
     {% translate 'Suggest Question' %}
 </a>
     
-<div class="qt-p">
     <h1 class="que-title center-title">{{question.title}}
 
         {% if not question.post.isPublished %}
          {% translate '(unPublished)' %}
         {% endif %}
     </h1>
-    <div class="q-t-s"></div>
-</div>
 <div class="que-data-div">
     <span class="que-data-title">{% translate 'Asked:' %} </span>
     <span class="que-data">{{question.getDuration}}</span>
@@ -63,12 +60,11 @@
 
                                 <div class="que-opts-spans">
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="link-button" data-bs-toggle="modal"
-                                        data-bs-target="#reportModal">
-                                        <a href="#" class="custom-link custom-link-sm primary-link que-opt">{% translate 'Report' %}</a>
-                                    </button>
-
-
+                                    <button type="button" class="link-button report-btn primary-link que-opt" data-report-on="{{ans.post.id}}" data-type="A" data-bs-toggle="modal"
+                                    data-bs-target="#A-reportModal">
+                                    {% translate 'Report' %}
+                                </button>
+                    z            
 
                                 </div>
                             </div>

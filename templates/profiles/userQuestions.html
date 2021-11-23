@@ -5,12 +5,12 @@
 {% block title %}{{username}} {% translate 'Questions' %}{% endblock %}
 
 {% block content %}
-<div class="column-no-border">
+<div class="column-no-border col-5-pd">
 <h2 class="center-title" style="float:none;">{{username}} {% translate 'Questions' %}</h2>
 <div class="question-dev-parent">
     <div class="questions-gird-toolbar">
-        <div class="row filters-row">
-            <div class="col-12 col-sm-4 col-md-12 col-lg-4">
+        <div class="row filters-row user-posts">
+            <div class="col-12 col-sm-4 col-md-12 col-lg-4 sh-col">
                 <div class="form-group has-search search-div-toolbar filter">
                     <span class="fa fa-search form-control-feedback"></span>
                     <input type="text" name="search" id="search-inp" class="form-control custom-input search-input-toolbar search-usr-que" placeholder="{% translate 'Search' %}" value="{{searchVal}}"

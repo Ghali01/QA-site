@@ -124,3 +124,35 @@ button.l-btn{
 .que-col{
     padding-right: 30px;
 }
+
+.fav-ques .fv-f-c:first-child{
+    padding-left: 8px;
+    padding-right: 0;
+}
+.circular-badge{
+    float: right;
+}
+.badge-num-span{
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.misc-title{
+    margin-left: 0px;
+    margin-right: -2px;
+}
+
+.ml-10{
+    margin-left: 10px;
+    margin-right: 0;
+}
+
+
+.ml-12{
+    margin-left: 0;
+    margin-right: 12px;
+}
+.side-link .higtlight-o{
+    right: unset;
+    left: 0;
+}

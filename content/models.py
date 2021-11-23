@@ -306,7 +306,10 @@ class Question(models.Model):
             return int(self.views/1000)+pgettext('count','K')
         else:
             return int(self.views/1000000)+pgettext('count','M')
-   
+    def favCount(self):
+        from authusers.models import UserProfile
+
+        return UserProfile.objects.filter(favQuestions=self).count()
 class SuggestedQuestion(models.Model):
     post=models.OneToOneField(Post,on_delete=models.CASCADE)
     title=models.CharField(max_length=200)

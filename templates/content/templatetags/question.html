@@ -27,6 +27,11 @@
             faved-que
             {% endif %}
             " data-que-id="{{question.id}}"></i>
+            <span class="bookmark-span
+            {% if question in request.user.profile.favQuestions.all %}
+            faved-que
+            {% endif %}
+            ">{{question.favCount}}</span>
             {% endwith %}
         </div>
         {% endif %}

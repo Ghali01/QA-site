@@ -3,14 +3,14 @@
 
 {% block title %}{% translate 'Suggest Category' %} {% endblock %}
 {% block content %}
-<div class="column-no-border">
+<div class="column-no-border col-5-pd">
     {% for msg in messages %}
     <p class="success-p-s">
         {{msg}}
     </p>
     {% endfor %}
     <h2 class="center-title" style="float:none;">{% translate 'Suggest Category' %}</h2>
-    <div class="categoriis-lists" style="margin-bottom: 10px;">
+    <div class="categoriis-lists ml-12" style="margin-bottom: 10px;">
 
         <div class="custom-select category-select-toolbar" data-cur-val="1">
             <button class="btn btn-primary btn-select">
@@ -27,13 +27,19 @@
 
             </ul>
         </div>
-        <div class="custom-select category-select-toolbar">
+        <div class="custom-select category-select-toolbar showed">
             <button class="btn btn-primary btn-select">
                 <span class="selected-span">{% translate 'Select Category' %}</span>
                 <i class="fas fa-caret-down select-arrow"></i>
 
             </button>
             <ul class="custom-select-list custom-scrollbar">
+           
+                {% for cate in categories.first.subCategoies %}
+                <li class="custom-select-item" data-cate-id="{{cate.id}}" data-sub='{{cate.subs}}'>
+                    {{cate.name}}
+                </li>
+                {% endfor %}
             </ul>
         </div>
         <div class="custom-select category-select-toolbar" data-cur-val="1">

@@ -6,7 +6,9 @@ active
 {{request.path}}
 " href="{% url 'content:categories-page' %}"><i class="fas fa-align-justify"></i> 
     
-{% if categoryName and active %}{{categoryName}}{% else %}{% translate 'categories' %}{% endif %}</a>
+{% if categoryName and active %}{{categoryName}}{% else %}{% translate 'categories' %}{% endif %}
+<div class="higtlight-o"></div>
+</a>
 <ul class="categores-list">
     {% for cate in categories %}
     <li class="category-li">

@@ -122,6 +122,93 @@ def seeMoreQueIndex(request,page,categoryID=-1):
         htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
     return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
         
+def tagQuestions(request,tagID):
+    viewsFilter=votesFilter=answersFilter=timeFilter=None
+    tag=get_object_or_404(Tag,id=tagID)
+    language=tag.category.language
+    activate(language)
+    questions=Question.objects.filter(tags=tag,category__language=language,post__isPublished=True)
+    if 'time' in request.GET:
+        timeFilter=request.GET['time']
+        if request.GET['time']=='T':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date=datetime.datetime.now().date())
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='W':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=7),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='M':               
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=30),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
+        
+        
+    questions=questions.annotate(Count(F('answers')))
+    orderFields=[
+        'post__votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-post__votes',
+        'views' if 'views' in request.GET and request.GET['views']=='L' else '-views',
+        'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count' ,
+        '-post__ActiveDate',
+
+    ]
+    questions=questions.order_by(*orderFields)
+    if 'votes' in request.GET:
+        votesFilter=request.GET['votes']
+    if 'views' in request.GET:
+        viewsFilter=request.GET['views']
+    if 'answers' in request.GET:
+        answersFilter=request.GET['answers']
+    pageCount=ceil(questions.count()/5)  
+    questions=questions[:5]
+    contxt={
+        'questions':questions,
+        'votesFilter':votesFilter,
+        'viewsFilter':viewsFilter,
+        'answersFilter':answersFilter,
+        'pageCount':pageCount,
+        'timeFilter':timeFilter,
+        'tag':tag
+    }
+    return render(request,'content/tagQuestions.html',contxt)
+
+def seeMoreTagQuestions(request,tagID,page):
+    tag=get_object_or_404(Tag,id=tagID)
+    language=tag.category.language
+    activate(language)
+
+    questions=Question.objects.filter(tags=tag,category__language=language,post__isPublished=True)
+
+    if 'time' in request.GET:
+        if request.GET['time']=='T':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date=datetime.datetime.now().date())
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='W':
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=7),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
+        elif request.GET['time']=='M':
+            
+            logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=30),datetime.datetime.now().date()))
+            questions=questions.filter(post__logs__in=logs)
+        
+    questions=questions.annotate(Count(F('answers')))
+    
+    orderFields=[
+
+   
+        'post__votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-post__votes',
+        'views' if 'views' in request.GET and request.GET['views']=='L' else '-views',
+        'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count',
+        '-post__ActiveDate',
+
+    ]
+    questions=questions.order_by(*orderFields)
+
+    remPages=int(ceil(questions.count()/5)-page-1)
+    questions=questions[page*5:(page*5)+5]
+
+    htmlStr=''
+    for que in questions:
+        htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
+    return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
+        
 @forActiveUser
 @userHasTags
 def addQuestionPage(request):
@@ -233,7 +320,14 @@ def postVotes(request):
                 countVotesBadges(post)
                 return HttpResponse(json.dumps({'resault':'done','votes':post.getVotes()}))
             else:
-                return HttpResponse(json.dumps({'resault':'alradey Voted'})) 
+                post.author.profile.rep =F('rep')-10
+                post.author.profile.save()
+                post.votes=F('votes')-1
+                post.save()
+                post.refresh_from_db()
+
+                Voter.objects.filter(user=request.user,post_id=request.GET['post-id'],type=Voter.types.Up).delete()
+                return HttpResponse(json.dumps({'resault':'undo','votes':post.getVotes()})) 
         elif type=='down':
             if not Voter.objects.filter(user=request.user,post_id=request.GET['post-id'],type=Voter.types.Down).exists():
                 Voter.objects.create(user=request.user,post=post,type=Voter.types.Down)
@@ -261,7 +355,13 @@ def postVotes(request):
 
                 return HttpResponse(json.dumps({'resault':'done','votes':post.getVotes()}))
             else:
-                return HttpResponse(json.dumps({'resault':'alradey Voted'}))
+                post.author.profile.rep =F('rep')+2
+                post.author.profile.save()
+                post.votes=F('votes')+1
+                post.save()
+                Voter.objects.filter(user=request.user,post_id=request.GET['post-id'],type=Voter.types.Down).delete()
+                post.refresh_from_db()
+                return HttpResponse(json.dumps({'resault':'undo','votes':post.getVotes()}))
     return HttpResponse(json.dumps({'resault':'error'}))
 
 @forActiveUser
@@ -368,7 +468,6 @@ def suggestPostEdit(request,postID):
     return render(request,'content/suggestEdit.html',contxt)
 def tagsPage(request):
     language=get_language()[:2]
-
     categories=Category.objects.filter(language=language,parent=None)
     tags=Tag.objects.filter(category__language=language)
     category=ansFilter=queFilter=None
@@ -391,8 +490,10 @@ def tagsPage(request):
         'questionsCount' if 'questions' in request.GET and request.GET['questions']=='L' else '-questionsCount'
 
     ]
-    tags=tags.order_by(*orderFields)
-    
+    tags=list(tags.order_by(*orderFields)) # should be list dont rmove the list
+    tags=tags[:5]
+    ansFilter= request.GET['answers'] if 'answers' in request.GET else None
+    queFilter= request.GET['questions'] if 'questions' in request.GET else None
     contxt={
         'categories':categories,
         'category':category,
@@ -401,6 +502,36 @@ def tagsPage(request):
         'tags':tags
     }
     return render(request,'content/categoryTags.html',contxt)
+def seeMoreTagsPage(request,page):
+    
+    language=get_language()[:2]
+
+    tags=Tag.objects.filter(category__language=language)
+    category=None
+    if 'category' in request.GET:
+        try:
+            category=Category.objects.get(pk=int(request.GET['category']))
+            activate(category.language)
+        except(Category.DoesNotExist,ValueError):
+            if request.user.is_authenticated and not request.user.is_anonymous:
+                category=request.user.profile.category
+    if category:
+        tags=tags.filter(Q(category=category)|Q(category__parent=category)|Q(category__parent__parent=category)|Q(category__parent__parent__parent=category))
+    
+    tags=tags.annotate(answersCount=Count(F('questions__answers')),questionsCount=Count(F('questions')))
+    orderFields=[
+        'answersCount' if 'answers' in request.GET and request.GET['answers']=='L' else '-answersCount',
+        'questionsCount' if 'questions' in request.GET and request.GET['questions']=='L' else '-questionsCount'
+    ]
+    remPages=int(ceil(tags.count()/5)-page-1)
+    
+    tags=tags.order_by(*orderFields)
+    tags=tags[5*(page):5*(page+1)]
+    html=''
+    for tag in tags:
+        html+=render_to_string('content/templatetags/tagItem.html',{'tag':tag})
+    return HttpResponse(json.dumps({'html':html, 'remPages':remPages}))
+
 @forActiveUser
 def toggleTagToFav(request):
     if 'tag-id' in request.POST:
@@ -663,3 +794,5 @@ def setLangage(request,language):
 def error404(request,exception):
     print(exception)
     return  render(request,'utilities/error404.html')
+
+    

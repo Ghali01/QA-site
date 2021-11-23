@@ -1,11 +1,12 @@
 {% extends 'utilities/_base_no_column.html' %}
+{% load i18n %}
 
-{% block title %}About Us{% endblock %}
+{% block title %}{% translate 'Our Services' %}{% endblock %}
 {% block content %} 
 
 <div class="row">
     <div class="col-12">
-     <h1 class="title center-text">Our Services</h1>
+     <h1 class="title center-text">{% translate 'Our Services' %}</h1>
         {% for service in services %}
      <div class="service">
      

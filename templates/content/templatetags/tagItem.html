@@ -1,0 +1,19 @@
+{% load contentUtilities %}
+
+            <div class="row tag-list-item">
+                <div class="col-3 tag-column">
+                    {% tagLink tag %}
+                    <button data-tag-id="{{tag.id}}" class="btn tag-star
+                    {% if tag in usersTags %}
+                    favorited
+                        {% endif %}
+                    ">
+                        <i class="fas fa-star"></i>
+                    </button>
+                </div>
+                <div class="col">
+                    <p class="tag-sumr  line-clamp-3">
+                        {{tag.description}}
+                    </p>
+                </div>
+            </div>

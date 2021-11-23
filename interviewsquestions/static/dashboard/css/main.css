@@ -673,3 +673,7 @@ input:checked + .slider:after{
  
     display: inline;
 }
+.site-logo{
+    width: 184px;
+    margin-left: 8px;
+}
