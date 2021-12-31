@@ -156,3 +156,16 @@ button.l-btn{
     right: unset;
     left: 0;
 }
+.nav-drop-down{
+    right: 40px;
+}
+
+.author-data .points-sp{
+    margin: 0;
+    margin-left: 6px;
+}
+
+.post-content-container.admin-v{
+    padding-right: 0;
+    padding-left: 40px;
+}

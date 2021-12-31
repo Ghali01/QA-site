@@ -8,7 +8,7 @@
     {% if category %}
 <h2 class="center-title ml-12" style="float:none;">{{category.name}}</h2>
 {% endif %}
-    <div class="tags-dev-parent ml-10">
+    <div class="tags-dev-parent ">
         <div class="questions-gird-toolbar">
 
             <div class="categoriis-lists filter one-click-filter">
@@ -215,7 +215,7 @@
         <div class="cate-tags-list">
             {% with request.user.profile.tags.all as usersTags %}
             {% for tag in tags %}
-                {% tagItem tag %}
+                {% tagItem tag request.user %}
             {% endfor %}
             {% endwith %}
         </div>

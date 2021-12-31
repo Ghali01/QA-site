@@ -4,7 +4,7 @@
                 <div class="col-3 tag-column">
                     {% tagLink tag %}
                     <button data-tag-id="{{tag.id}}" class="btn tag-star
-                    {% if tag in usersTags %}
+                    {% if tag in user.profile.tags.all %}
                     favorited
                         {% endif %}
                     ">

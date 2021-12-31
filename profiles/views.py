@@ -80,7 +80,8 @@ def userQuestions(request,userID):
         'answersFilter':answersFilter,
         'searchVal':searchVal if searchVal else '',
         'userID':userID,
-        'username':user.username
+        'username':user.username,
+        'tab':'user-questions'
 
     }
     return render(request,'profiles/userQuestions.html',contxt)
@@ -146,7 +147,9 @@ def userAnswers(request,userID):
         'viewsFilter':viewsFilter,
         'searchVal':searchVal if searchVal else '',
         'userID':userID,
-        'username':user.username
+        'username':user.username,
+        'tab':'user-answers'
+
     }
     return render(request,'profiles/userAnswers.html',contxt)
 

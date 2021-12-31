@@ -5,26 +5,27 @@
 {% block content %} 
 
 {% include 'profiles/_profileTabs.html' %}
-<div class="row">
-    
-    <div class="col-12">
-        <div class="tabs-btns">
-            <a class="btn tab-btn-a 
-            {% if 'settings' in request.path %} 
-            active
-            {% endif %}
-             
-             " href="{% url 'profiles:user-settings' %}">{% translate 'Profile' %}</a>
-            <a class="btn tab-btn-a
-            {% if 'my-tags' in request.path %} 
-            active
-            {% endif %}
-             
-            " href="{% url 'profiles:user-tags' %}">{% translate 'Your Tags' %}</a>
 
-        </div>
-</div>
-</div>
+<ul class="prof-sett-tabs">
+    <li>
+        <a class="btn tab-btn-a 
+        {% if 'settings' in request.path %} 
+        active
+        {% endif %}
+         
+         " href="{% url 'profiles:user-settings' %}">{% translate 'Profile' %}</a>
+    
+    </li>
+    <li>
+        <a class="btn 
+                {% if 'my-tags' in request.path %} 
+        active
+        {% endif %}
+         
+        " href="{% url 'profiles:user-tags' %}">{% translate 'Your Tags' %}</a>
+
+    </li>
+</ul>
 <div class="row">
                     <div class="col-12 col-sm-9 order-last order-sm-first">
 
@@ -38,7 +39,7 @@
                         </div>
                     </div>
                     <div class="col-12 col-sm-3 order-first order-sm-last">
-                        <div class="avt-container">
+                        <div class="avt-container settings">
                             <img class="avt-img" src="{{user.profile.image.url}}" alt="person name">
                             <button type="button" class="btn btn-primary primary-button edit-avatar-btn"
                                 >

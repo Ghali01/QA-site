@@ -970,7 +970,9 @@ function seeMoreTags() {
                 $(clicked).hide()
             }
             $(clicked).prev().append(data.html);
-        },
+            $(clicked).prev().find(".btn.tag-star").click(togTagToFav);
+}
+        ,
     );
 
 }

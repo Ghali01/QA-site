@@ -1,12 +1,17 @@
 {% extends 'utilities/_base_no_right.html' %}
 {% load profileLib %}
+{% load questions %}
 {% load i18n %}
 
-{% block  title %}{{user.username}} {% endblock %}
-
-{% block content %} 
+{% block title %}{{user.username}} | {% translate 'Badges' %}{% endblock %}
+{% block content %}
 {% include 'profiles/_profileTabs.html' %}
-
+<div class="prof-act-row">
+    <div class="prof-act-col-1">
+        {% include 'profiles/_sideList.html' %}
+    </div>
+    <div class="prof-act-col-2">
+     
 <div class="badget-content">
         <div class="badges-list-header badges-list-header-gold">
             <div class="badges-header-circural"></div>
@@ -70,4 +75,6 @@
         </div>
     </div>
     
+    </div>
+</div>
 {% endblock %}

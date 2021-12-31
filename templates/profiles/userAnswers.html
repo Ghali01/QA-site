@@ -1,13 +1,17 @@
-{% extends 'utilities/_base.html' %}
+{% extends 'utilities/_base_no_right.html' %}
+{% load profileLib %}
 {% load questions %}
 {% load i18n %}
 
-{% block title %}{{username}} {% translate 'Answers' %}{% endblock %}
-
+{% block title %}{{user.username}} | {% translate 'Answers' %}{% endblock %}
 {% block content %}
-<div class="column-no-border col-5-pd">
-<h2 class="center-title" style="float:none;">{{username}} {% translate 'Answers' %}</h2>
-<div class="question-dev-parent">
+{% include 'profiles/_profileTabs.html' %}
+<div class="prof-act-row">
+    <div class="prof-act-col-1">
+        {% include 'profiles/_sideList.html' %}
+    </div>
+    <div class="prof-act-col-2">
+     <div class="question-dev-parent">
     <div class="questions-gird-toolbar">
         <div class="row filters-row filters-row user-posts">
             <div class="col-12 col-sm-4 col-md-12 col-lg-4 sh-col">
@@ -21,7 +25,7 @@
             <div class="col-12 col-sm-8 u-q-r-f">
                 <div class="row mb-to-sm ">
 
-                    <div class="col-4    ">
+                    <div class="col-4 col-xl-3 ">
 
                         <div class="custom-select filter one-click-filter">
                             <button class="btn btn-primary btn-select">
@@ -47,7 +51,7 @@
                             <input type="hidden" id="votes-inp" name="votes" value="{% if votesFilter == 'L' %}L{% else %}M{% endif %}">
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-4 col-xl-3 ">
 
                         <div class="custom-select filter one-click-filter ">
                             <button class="btn btn-primary btn-select">
@@ -97,7 +101,6 @@
     </div>
 
 </div>
+    </div>
 </div>
-<!-- center column end  -->
-
 {% endblock %}

@@ -1,51 +1,56 @@
 {% load i18n %}
-
+<div class="prof-header">
+    <div class="pres-info">
+        <div class="avt-container">
+            <img class="avt-img" src="{% url 'profiles:image-profile' userID=user.profile.id %}" alt="person name">
+        </div>
+    </div>
+    <div class="">
+        <h1 class="pers-name" style="display: block;">{{user.username}}</h1>
+        
+        <div class="new-data-profile">
+            <div class="data-profile-row">
+                <i class="fas fa-birthday-cake"></i>
+                {% translate 'Member from' %} {{user.profile.joinData}}
+                <span class="data-profile-span"></span>
+            </div>
+            <div class="data-profile-row">
+                <i class="far fa-eye"></i>
+                {{user.profile.getViews}} {% translate 'profile views' %}
+                <span class="data-profile-span"></span>
+            </div>
+            <div class="data-profile-row">
+                <i class="far fa-clock"></i> 
+                {% if not user.profile.isOnline %}
+                {% translate 'Last seen' %} {{user.profile.lastSeen}} {% translate 'ago' %}
+                {% else %}
+                {% translate 'online now' %}
+                {% endif %}
+                <span class="data-profile-span"></span>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="tabs-btns profile-tabs">
         <a class="btn tab-btn-a 
         {% if tab == 'profile' %}
         active
         {% endif %}
         " href="{% url 'profiles:profile-page' userID=user.id %}">{% translate 'Profile' %}</a>
-        <a class="btn tab-btn-a
-        {% if tab == 'badges' %}
+        <a class="btn tab-btn-a 
+        {% if tab == 'user-questions' or tab == 'user-answers' or tab == 'badges' or tab == 'followers' or tab == 'favorite'  %}
         active
         {% endif %}
-      
-        " href="{% url 'profiles:badges' userID=user.id %}">{% translate 'Badges' %}</a>
-        <a class="btn tab-btn-a
-        {% if tab == 'followers' %}
-        active
-        {% endif %}
-      
-        " href="{% url 'profiles:user-followers' userID=user.id %}">{% translate 'Followres' %}</a>
-        <a class="btn tab-btn-a
-        {% if tab == 'favorite' %}
-        active
-        {% endif %}
-      
-        " href="{% url 'profiles:favorite-questions' userID=user.id %}" >{% translate 'Favorite Queestions' %}</a>
-        {% if request.user == user %}
+        " href="{% url 'profiles:user-questions' userID=request.user.id %}">
+            {% translate 'Activity' %}
+        </a>
+ 
+       {% if request.user == user %}
         <a class="btn tab-btn-a
         {% if tab == 'settings' %}
         active
         {% endif %}
         " href="{% url 'profiles:user-settings' %}" >{% translate 'Settings' %}</a>
         {% endif %}
-   
-        {% if not request.user == user %}
-       <div class="right-opts">
-        <button type="button" class="link-button report-btn primary-link txt-opt" data-report-on="{{user.id}}" data-type="U" data-bs-toggle="modal"
-        data-bs-target="#U-reportModal">
-        Report
-    </button>
-
-        <button class="btn btn-primary primary-button primary-button-radius follow-btn" data-user-id="{{user.id}}">
-            {% if request.user in user.profile.followers.all %}
-            <i class="fas fa-user-minus"></i> {% translate 'Unfollow' %}
-            {% else %}
-            <i class="fas fa-user-plus"></i> {% translate 'Follow' %}
-            {% endif %}
-        </button>
-       </div>
-        {% endif %}
+  
     </div>

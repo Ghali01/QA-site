@@ -30,11 +30,10 @@ def commentItem(comment,isSuperAdmin):
         'isSuperAdmin':isSuperAdmin
         }
 
-@register.inclusion_tag('utilities/_chLang.html' ,name='chLangAuthen')
-@register.inclusion_tag('utilities/auth/_chLang.html' ,name='chLangNoAuthen')
+@register.inclusion_tag('utilities/_chLang.html' ,name='chLang')
 def chLang(url):
     return{'arabicOn':BoolOption.arabicOn(),'url':url}
 
 @register.inclusion_tag('content/templatetags/tagItem.html')
-def tagItem(tag):
-    return {'tag':tag}
+def tagItem(tag,user):
+    return {'tag':tag,'user':user}

@@ -529,7 +529,7 @@ def seeMoreTagsPage(request,page):
     tags=tags[5*(page):5*(page+1)]
     html=''
     for tag in tags:
-        html+=render_to_string('content/templatetags/tagItem.html',{'tag':tag})
+        html+=render_to_string('content/templatetags/tagItem.html',{'tag':tag,'user':request.user})
     return HttpResponse(json.dumps({'html':html, 'remPages':remPages}))
 
 @forActiveUser

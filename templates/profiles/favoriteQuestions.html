@@ -1,11 +1,17 @@
 {% extends 'utilities/_base_no_right.html' %}
+{% load profileLib %}
 {% load questions %}
 {% load i18n %}
 
-{% block title %} {{user.username}} | {% translate 'Favorite Questions' %} {% endblock %}
+{% block title %}{{user.username}} | {% translate 'Favorite Queestions' %}{% endblock %}
 {% block content %}
 {% include 'profiles/_profileTabs.html' %}
-<div class="favque-content " id="favque-content">
+<div class="prof-act-row">
+    <div class="prof-act-col-1">
+        {% include 'profiles/_sideList.html' %}
+    </div>
+    <div class="prof-act-col-2">
+     <div class="favque-content " id="favque-content">
     <div class="question-dev-parent">
         <div class="questions-gird-toolbar">
 
@@ -258,5 +264,6 @@
     </div>
 
 </div>
-
+    </div>
+</div>
 {% endblock %}

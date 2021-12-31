@@ -40,54 +40,7 @@
                     <!-- search bar end -->
                     <ul class="navbar-nav ms-auto">
                         <!-- itemes on the right start -->
-                        <li class="nav-item drop-down-nl d-none d-md-block" >
-                            <button class="btn drop-down-icon" id="drop-d-btn-nav">
-                            <i class="far fa-caret-square-down "></i>
-
-                            </button>
-                            <ul class="nav-drop-down">
-                                <li>
-                                    <a href="{% url 'profiles:profile-page' userID=request.user.id %}" class="drop-link">
-                                     <p>{% translate 'My Profile' %}</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'profiles:user-questions' userID=request.user.id %}" class="drop-link">
-                                     <p>{% translate 'My Questions' %}</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'profiles:user-answers' userID=request.user.id %}" class="drop-link">
-                                     <p>{% translate 'My Answers' %}</p>
-                                    </a>
-                                </li>
-                                {% if request.user.profile.isModerator %}
-                                <li >
-                                    <span class="drop-link n-sl-btn">{% translate 'Moderator' %} <i class="fas fa-caret-down"></i></span>      
-                                    <ul class="n-sub-list">
-                                        <li>
-                                            <a href="{% url 'moderators:suggested-questions-await' page=1 %}" class="drop-link">
-                                                 <p>{% translate 'Questions' %}</p></a>
-                                        </li> <li>
-                                            <a href="{% url 'moderators:suggested-answers-await' page=1 %}" class="drop-link">
-                                                 <p>{% translate 'Answers' %}</p></a>
-                                        </li> <li>
-                                            <a href="{% url 'moderators:suggested-edits-await' page=1 %}" class="drop-link">
-                                                 <p>{% translate 'Edits' %}</p></a>
-                                        </li>
-                                    </ul>
-    
-                                </li>
-                                {% endif %}
-                               
-                                {% chLangAuthen request.build_absolute_uri %}
-                                <li>
-                                    <a href="{% url 'authusers:logout' %}" class="drop-link">
-                                        <i class="fas fa-sign-out-alt"></i> <p>{% translate 'Logout' %}</p></a>
-                                </li>
-                            
-                            </ul>
-                        </li>
+                        
                         <li class="nav-item cus-nav-item">
                             <a href="{% url 'profiles:profile-page' userID=request.user.id %}">
                             <img class="avatar-img" src="{% if request.user.profile %}{% smImgProfile request.user %}{% endif %}" alt="avatar">
@@ -110,6 +63,32 @@
 
                             </div>
 
+                        </li>
+                        
+                        <li class="nav-item nav-icons drop-down-nl d-none d-md-block" >
+                            {% chLang request.build_absolute_uri %}
+
+                            <button class="btn nav-icon drop-down-icon" id="drop-d-btn-nav">
+                            <i class="fas fa-users "></i>
+
+                            </button>
+                            {% if request.user.profile.isModerator %}
+                            <ul class="nav-drop-down">
+   
+                                        <li>
+                                            <a href="{% url 'moderators:suggested-questions-await' page=1 %}" class="drop-link">
+                                                 <p>{% translate 'Questions' %}</p></a>
+                                        </li> <li>
+                                            <a href="{% url 'moderators:suggested-answers-await' page=1 %}" class="drop-link">
+                                                 <p>{% translate 'Answers' %}</p></a>
+                                        </li> <li>
+                                            <a href="{% url 'moderators:suggested-edits-await' page=1 %}" class="drop-link">
+                                                 <p>{% translate 'Edits' %}</p></a>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                {% endif %}
                         </li>
                         <!-- itemes on the right start -->
                         <!-- cateagors on sm start -->

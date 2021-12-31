@@ -1,11 +1,17 @@
 {% extends 'utilities/_base_no_right.html' %}
 {% load profileLib %}
+{% load questions %}
 {% load i18n %}
 
 {% block title %}{{user.username}} | {% translate 'Followers' %}{% endblock %}
 {% block content %}
 {% include 'profiles/_profileTabs.html' %}
-<div class="followers-list">
+<div class="prof-act-row">
+    <div class="prof-act-col-1">
+        {% include 'profiles/_sideList.html' %}
+    </div>
+    <div class="prof-act-col-2">
+     <div class="followers-list">
     {% for person in followers %}
             {% followerItem person request.user %}
     {% endfor %}
@@ -21,4 +27,6 @@
     </div>
     {% endif %}
   
+    </div>
+</div>
 {% endblock %}

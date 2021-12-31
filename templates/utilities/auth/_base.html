@@ -17,6 +17,9 @@ dir="rtl"
     <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/font-all.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% get_media_prefix as media %}
+    <link rel="shortcut icon" href="{{media|add:'/favicon.ico'}}" type="image/x-icon">
+      
     {% if LC == 'ar' %}
     <link rel="stylesheet" href="{% static 'css/ar.css' %}">
     

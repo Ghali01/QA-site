@@ -1,53 +1,62 @@
 {% load i18n %}
 {% load contentUtilities %}
-<div class="  question-item ">
-    <div class=" que-nums-col">
-        <div class="que-nums-s">
-            <div class="col-4  nums-que">
-                <span class="que-num-span">{{question.post.votes}}</span>
-                <span class="que-word">{% translate 'votes' %}</span>
 
-            </div>
-            <div class="col-4  nums-que">
-                <span class="que-num-span">{{question.views}}</span>
-                <span class="que-word">{% translate 'views' %}</span>
-            </div>
-            <div class="col-4 answered-num-div nums-que">
-                <span class="answered-num-span">{{question.getPubliedAnswer.count}}</span>
-                <span class="answered-word">{% translate 'answers' %}</span>
-            </div>
+<div class="new-que-item">
+    <div class="vp-num-ques">
+        <div class="nums-que">
+            <span class="que-num-span">{{question.post.votes}}</span>
+            <span class="que-word">{% translate 'votes' %}</span>
+
+        </div>
+        <div class="nums-que">
+            <span class="que-num-span">{{question.views}}</span>
+            <span class="que-word">{% translate 'views' %}</span>
+        </div>
+        <div class="answered-num-div nums-que">
+            <span class="answered-num-span">{{question.getPubliedAnswer.count}}</span>
+            <span class="answered-word">{% translate 'answers' %}</span>
         </div>
         <div class="added-by-div">{% translate 'added by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
-    </div>
-    <div class=" que-col">
-        <div class="vp-num-ques">
-            <div class="nums-que">
-                <span class="que-num-span">{{question.post.votes}}</span>
-                <span class="que-word">{% translate 'votes' %}</span>
 
-            </div>
-            <div class="nums-que">
-                <span class="que-num-span">{{question.views}}</span>
-                <span class="que-word">{% translate 'views' %}</span>
-            </div>
-            <div class="answered-num-div nums-que">
-                <span class="answered-num-span">{{question.getPubliedAnswer.count}}</span>
-                <span class="answered-word">{% translate 'answers' %}</span>
-            </div>
+    </div>
+    <div class="flex-r-1">
+        <div class="flex-r-1-c-1">
+          
+            <div class=" que-nums-col">
+                <div class="que-nums-s">
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">{{question.post.votes}}</span>
+                        <span class="que-word">{% translate 'votes' %}</span>
+
+                    </div>
+                    <div class="col-4 answered-num-div nums-que">
+                        <span class="answered-num-span">{{question.getPubliedAnswer.count}}</span>
+                        <span class="answered-word">{% translate 'answers' %}</span>
+                    </div>
+                    <div class="col-4  nums-que">
+                        <span class="que-num-span">{{question.views}}</span>
+                        <span class="que-word">{% translate 'views' %}</span>
+                    </div>
+                </div>
+                <div class="added-by-div">{% translate 'added by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
+            </div> 
         </div>
-        <a href="{% url 'content:question-page' questionID=question.id %}" class="question-title line-clamp-3">
-            {{question.title}}
-        </a>
-        <div class="bottom-of-question">
+        <div class="flex-r-1-c-2">
+            <a href="{% url 'content:question-page' questionID=question.id %}" class="question-title line-clamp-3">
+                {{question.title}}
+            </a>
+            <div class="flex-r-2">
+                
             <div class="question-tags custom-scrollbar">
                 {% for tag in question.tags.all|slice:':5' %}
                 {% tagLink tag %}
                 {% endfor %}
             </div>
+      
             {% if question.getLastAnswerDate  %}
             <div class="question-date">{% translate 'last answer added in' %} {{question.getLastAnswerDate}} {% translate 'added by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=question.post.author.id %}">{{question.post.author.username}}</a></div>
             {% endif %}
-       
+             </div>
         </div>
     </div>
 </div>

@@ -1,24 +1,25 @@
 {% load profileLib %}
 
-<div>
-
-<img class="avatar-img" src="{% smImgProfile author %}" alt="avatar">
-<a class="by-user-name" href="{% url 'profiles:profile-page' userID=author.id %}">{{author.username}}</a>
-<span class="points-sp">{{author.profile.rep}}</span>
-</div>
-<div class="badges">
-<div class="badge ">
-    <div class=" circular-badge gold-badge"></div>
-    <span class="badge-num-span gold-badge-span">{{author.profile.goldBadgesCount}}</span>
-</div>
-
-<div class="badge ">
-    <div class=" circular-badge silver-badge"></div>
-    <span class=" badge-num-span silver-badge-span">{{author.profile.silverBadgesCount}}</span>
-</div>
-<div class="badge ">
-    <div class=" circular-badge bronze-badge"></div>
-    <span class="badge-num-span bronze-badge-span">{{author.profile.bronzeBadgesCount}}</span>
-</div>
-
+<div class="author-data">
+    <img class="avatar-img r-1" src="{% smImgProfile author %}" alt="avatar">
+    <div class="r-2">
+        <a class="by-user-name"  href="{% url 'profiles:profile-page' userID=author.id %}">{{author.username}}</a>
+        <div class="badges">
+            <span class="points-sp">{{author.profile.rep}}</span>
+            <div class="badge ">
+                <div class=" circular-badge gold-badge"></div>
+                <span class="badge-num-span gold-badge-span">{{author.profile.goldBadgesCount}}</span>
+            </div>
+            
+            <div class="badge ">
+                <div class=" circular-badge silver-badge"></div>
+                <span class=" badge-num-span silver-badge-span">{{author.profile.silverBadgesCount}}</span>
+            </div>
+            <div class="badge ">
+                <div class=" circular-badge bronze-badge"></div>
+                <span class="badge-num-span bronze-badge-span">{{author.profile.bronzeBadgesCount}}</span>
+            </div>
+            
+        </div>        
+    </div>
 </div>
