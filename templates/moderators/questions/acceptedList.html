@@ -4,9 +4,7 @@
     
     {% for que in questions %}
     <div class="await-item">
-        <div class="row  question-item ">
 
-            <div class="col-12">
                 <a href="{% url 'content:question-page' questionID=que.question.id %}" class="question-title line-clamp">
                     {{que.title}}
                 </a>
@@ -16,16 +14,18 @@
                         {% tagLink tag %}
                         {% endfor %}
                     </div>
-                    <div class="question-date">{% translate 'Acceptd by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.modeWhoAccept.id %}">{{que.modeWhoAccept.username}}</a> | {% translate 'suggested in' %} {{que.formatedDate}} </div>
+                    <div class="logs-data">
+                        <div class="question-date">{% translate 'Acceptd by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.modeWhoAccept.id %}">{{que.modeWhoAccept.username}}</a> | {% translate 'suggested in' %} {{que.formatedDate}} </div>
 
 
-                <div class="added-by-div added-by-div-2 ">{% translate 'add by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
+                        <div class="added-by-div added-by-div-2 ">{% translate 'add by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
+        
+                    </div>
                 </div>
                 </div>
 
-            </div>
-
-        </div>
+            
+                
 
     </div>
 

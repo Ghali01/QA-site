@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load contentUtilities %}
+<div class="new-que-item prof ">
+    <div class="num-ques">
+        <div class="nums-que">
+            <span class="que-word">{{question.post.votes}} {% translate 'votes' %}</span>
+
+        </div>
+        <div class="nums-que">
+            <span class="que-word">{{question.views}} {% translate 'views' %}</span>
+        </div>
+        <div class="answered-num-div nums-que">
+            <span class="answered-word">{{question.getPubliedAnswer.count}} {% translate 'answers' %}</span>
+        </div>
+
+    </div>
+    <div class="flex-r-1">
+        <div class="flex-r-1-c-2">
+            <a href="{% url 'content:question-page' questionID=question.id %}"
+                class="question-title line-clamp-3">
+                {{question.title}}
+            </a>
+            <div class="flex-r-2">
+
+                <div class="question-tags custom-scrollbar">
+                    {% for tag in question.tags.all|slice:':5' %}
+                    {% tagLink tag %}
+                    {% endfor %}
+                </div>
+
+                <div class="question-date">
+                    {{question.formatedDate}} 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

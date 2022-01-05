@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="order-2 order-md-1 offset-md-0 col-12 col-md-8">
+    <div class="order-2 order-md-1 ath-col-1 offset-md-0 col-12 col-md-8">
         <div class="side-content-p">
             <h2 class="side-conten-title">{{list.title}}</h2>
             <ul class="side-content-list">
@@ -15,11 +15,40 @@
             </ul>
         </div>
     </div>
-    <div class="order-1 order-md-2 col-12 col-md-4">
+    <div class="order-1 order-md-2 ath-col-2 col-12 col-md-4">
 
         <div class="form-parent">
             <form id="reg-form" autocomplete="on" method="POST" class="animeted-form auth-form">
+                <div class="soc-login-btns">
+
+                    <button type="button" class="fb l-btn connect" id="fb-login-btn">
+
+                        <img src="{% static 'img/icons/facebook.svg' %}" alt="">
+                        {% translate 'Log In with Facebook' %}</button>
+                    <!-- <button type="button" class="tw l-btn connect">
+                      <img src="{% static 'img/icons/twitter.svg' %}" alt="">
+                      
+                      {% translate 'Log In with Twitter' %}</button> -->
+                    <button type="button" class="gi l-btn connect" id="gi-login-btn">
+                        <img src="{% static 'img/icons/github.svg' %}" alt="">
+                        {% translate 'Log In with GitHub' %}</button>
+                    <button type="button" class="go l-btn connect" id="go-login-btn">
+                        <img src="{% static 'img/icons/google.svg' %}" alt="">
+                        {% translate 'Log In with Google' %}</button>
+                    <div id="g_id_onload"
+                        data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
+                        data-callback="googleLoginCallback" data-auto_prompt="false">
+                    </div>
+                    <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard"
+                        data-size="large" data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular"
+                        data-logo_alignment="left">
+                    </div>
+
+
+                </div>
+
                 {% csrf_token %}
+                <div class="form-fields">
                 <div class="mb-3">
                     <!-- register by email section start -->
                     <div class="">
@@ -28,16 +57,16 @@
                             <input type="text" class="form-control form-input" id="fullName-input" name="fullName"
                                 maxlength="40">
 
-                                <p class="error-p"  ><i class="fas fa-exclamation"></i>
-                                    <span class="error-val"></span>
-                                </p>
-                            <p class="error-p-s"  >
-                                
-                                    {% for msg in messages %}
-                                    {% if 'full-name' in msg.extra_tags %}
-                                    <i class="fas fa-exclamation"></i> {{msg}}
-                                    {% endif %}
-                                    {% endfor %}
+                            <p class="error-p"><i class="fas fa-exclamation"></i>
+                                <span class="error-val"></span>
+                            </p>
+                            <p class="error-p-s">
+
+                                {% for msg in messages %}
+                                {% if 'full-name' in msg.extra_tags %}
+                                <i class="fas fa-exclamation"></i> {{msg}}
+                                {% endif %}
+                                {% endfor %}
                             </p>
                         </div>
                         <div class="inp-div">
@@ -45,69 +74,69 @@
                             <input type="text" class="form-control form-input" id="userName-input" name="userName"
                                 maxlength="20">
 
-                                <P class="error-p"  ><i class="fas fa-exclamation"></i>
-                                    <span class="error-val"></span>
-                                </P>
-                                <p class="error-p-s" >
-    
-                                        {% for msg in messages %}
-                                        {% if 'user-name' in msg.extra_tags %}
-                                        <i class="fas fa-exclamation"></i> {{msg}}
-                                        {% endif %}
-                                        {% endfor %}
-                                </p>
+                            <P class="error-p"><i class="fas fa-exclamation"></i>
+                                <span class="error-val"></span>
+                            </P>
+                            <p class="error-p-s">
+
+                                {% for msg in messages %}
+                                {% if 'user-name' in msg.extra_tags %}
+                                <i class="fas fa-exclamation"></i> {{msg}}
+                                {% endif %}
+                                {% endfor %}
+                            </p>
                         </div>
                         <div class="inp-div">
                             <label class="lbl form-lable" id="lbl1">{% translate 'Email' %}</label>
                             <input type="email" class="form-control form-input" id="email-input" name="email">
-                            
-                            <p class="error-p" ><i class="fas fa-exclamation"></i>
+
+                            <p class="error-p"><i class="fas fa-exclamation"></i>
                                 <span class="error-val"></span>
                             </p>
-                            <p class="error-p-s"  >
+                            <p class="error-p-s">
 
-                                    {% for msg in messages %}
-                                    {% if 'email' in msg.extra_tags %}
-                                    <i class="fas fa-exclamation"></i> {{msg}}
-                                    {% endif %}
-                                    {% endfor %}
+                                {% for msg in messages %}
+                                {% if 'email' in msg.extra_tags %}
+                                <i class="fas fa-exclamation"></i> {{msg}}
+                                {% endif %}
+                                {% endfor %}
                             </p>
                         </div>
                         <div class="inp-div">
                             <label class="lbl form-lable" id="lbl1">{% translate 'Password' %}</label>
                             <input type="password" class="form-control form-input" id="password-input" name="password"
                                 maxlength="50">
-                                <p class="error-p"  ><i class="fas fa-exclamation"></i>
-                                    <span class="error-val"></span>
-                                </p>
-                                     <p class="error-p-s"  >
-    
-                                        {% for msg in messages %}
-                                        {% if 'password' in msg.extra_tags %}
-                                        <i class="fas fa-exclamation"></i> {{msg}}
-                                        {% endif %}
-                                        {% endfor %}
-                                    </span>
-                                </p>
-                           
+                            <p class="error-p"><i class="fas fa-exclamation"></i>
+                                <span class="error-val"></span>
+                            </p>
+                            <p class="error-p-s">
+
+                                {% for msg in messages %}
+                                {% if 'password' in msg.extra_tags %}
+                                <i class="fas fa-exclamation"></i> {{msg}}
+                                {% endif %}
+                                {% endfor %}
+                                </span>
+                            </p>
+
                         </div>
 
                         <div class="inp-div">
                             <label class="lbl form-lable" id="lbl1">{% translate 'Confirm Password' %}</label>
                             <input type="password" class="form-control form-input" id="confirmPassword-input"
                                 name="confirmPassword" maxlength="50">
-                                <p class="error-p"  ><i class="fas fa-exclamation"></i>
-                                    <span class="error-val"></span>
-                                </p>
-                                <p class="error-p-s">
-                                
-                                        {% for msg in messages %}
-                                        {% if 'conf-pass' in msg.extra_tags %}
-                                        <i class="fas fa-exclamation"></i> {{msg}}
-                                        {% endif %}
-                                        {% endfor %}
-                                </p>
-                       
+                            <p class="error-p"><i class="fas fa-exclamation"></i>
+                                <span class="error-val"></span>
+                            </p>
+                            <p class="error-p-s">
+
+                                {% for msg in messages %}
+                                {% if 'conf-pass' in msg.extra_tags %}
+                                <i class="fas fa-exclamation"></i> {{msg}}
+                                {% endif %}
+                                {% endfor %}
+                            </p>
+
                         </div>
                         <div class="inp-div">
                             <label class="lbl form-lable" id="lbl1">{% translate 'Website (Optional)' %}</label>
@@ -115,8 +144,7 @@
                                 maxlength="50">
                         </div>
 
-                        <p class="form-lable acc">{% translate 'By clicking Register, I agree that I have read and accepted our' %} <a
-                                href="{% url 'misc:terms' %}" class="acc-link">{% translate 'Terms of Use and Privacy Policy' %}</a></p>
+                        <p class="form-lable acc">{% translate 'By clicking Register, I agree that I have read and accepted our' %} <a href="{% url 'misc:terms' %}" class="acc-link">{% translate 'Terms ofUse and Privacy Policy' %}</a></p>
                         <input type="submit" class="btn btn-primary primary-button form-btn" id="reg-btn"
                             value="{% translate 'Sign Up' %}">
                     </div>
@@ -124,45 +152,15 @@
 
 
                 </div>
-                <div class="d-block or-div">
-                    <hr id="sp-hr">
-                    <span class="form-lable" id="or-span-sm">{% translate 'or' %}</span>
-                </div>
+            </div>
                 <!-- break (or) section end -->
 
                 <!-- media sign up section start -->
-                <div class="">
+            </form>
 
-                    <button type="button" class="fb l-btn connect" id="fb-login-btn">
-                      
-                      <img src="{% static 'img/icons/facebook.svg' %}" alt="">
-                      {% translate 'Log In with Facebook' %}</button>
-                    <!-- <button type="button" class="tw l-btn connect">
-                      <img src="{% static 'img/icons/twitter.svg' %}" alt="">
-                      
-                      {% translate 'Log In with Twitter' %}</button> -->
-                    <button type="button" class="gi l-btn connect" id="gi-login-btn">
-                      <img src="{% static 'img/icons/github.svg' %}" alt="">
-                      {% translate 'Log In with GitHub' %}</button>
-                    <button type="button" class="go l-btn connect" id="go-login-btn">
-                      <img src="{% static 'img/icons/google.svg' %}" alt="">
-                      {% translate 'Log In with Google' %}</button>
-                    <div id="g_id_onload"
-                      data-client_id="557756022910-en9ntsm096knv28ckrttkq9m74c2r6me.apps.googleusercontent.com"
-                      data-callback="googleLoginCallback" data-auto_prompt="false">
-                    </div>
-                    <div class="g_id_signin" style="display: none;" id="go-login-btn-api" data-type="standard" data-size="large"
-                      data-theme="filled_black" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
-                    </div>
-        
-        
-                  </div>
-        
-                </form>
-                
-      <form method="POST" id="social-form">
-        {% csrf_token %}
-      </form>
+            <form method="POST" id="social-form">
+                {% csrf_token %}
+            </form>
         </div>
     </div>
 </div>

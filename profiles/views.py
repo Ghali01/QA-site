@@ -70,16 +70,19 @@ def userQuestions(request,userID):
         viewsFilter=request.GET['views']
     if 'answers' in request.GET:
         answersFilter=request.GET['answers']
-    pageCount=ceil(questions.count()/15)  
+    questionsCount=questions.count()
+    pageCount=ceil(questionsCount/15)  
     questions=questions[:15]
     contxt={
         'questions':questions,
+        'questionsCount':questionsCount,
         'pageCount':pageCount,
         'votesFilter':votesFilter,
         'viewsFilter':viewsFilter,
         'answersFilter':answersFilter,
         'searchVal':searchVal if searchVal else '',
         'userID':userID,
+        'user':user,
         'username':user.username,
         'tab':'user-questions'
 
@@ -109,7 +112,7 @@ def seeMoreQuestions(request,userID,page):
 
     htmlStr=''
     for que in questions:
-        htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
+        htmlStr+= render_to_string('profiles/templatetags/question_item.html',{'question':que})
     return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
         
 def userAnswers(request,userID):
@@ -133,20 +136,26 @@ def userAnswers(request,userID):
         votesFilter=request.GET['votes']
     if 'views' in request.GET:
         viewsFilter=request.GET['views']
+    answersCount=answers.count()
     questions=[]
+
     for ans in answers:
-        if not ans.question in questions:
-            questions.append(ans.question)    
+        # if not ans.question in questions:
+            q=ans.question
+            q.theAns=ans
+            questions.append(q)    
     
     pageCount=ceil(len(questions)/15)
     questions=questions[:15]
     contxt={
         'questions':questions,
+        'answersCount':answersCount,
         'pageCount':pageCount,
         'votesFilter':votesFilter,
         'viewsFilter':viewsFilter,
         'searchVal':searchVal if searchVal else '',
         'userID':userID,
+        'user':user,
         'username':user.username,
         'tab':'user-answers'
 
@@ -168,16 +177,19 @@ def seeMoreAnswers(request,userID,page):
     ]
     answers=answers.order_by(*orderFields)
     questions=[]
+    
     for ans in answers:
-        if not ans.question in questions:
-            questions.append(ans.question)    
-        
+        # if not ans.question in questions:
+            q=ans.question
+            q.theAns=ans
+            questions.append(q)    
+    
     remPages=int(ceil(len(questions)/15)-page-1)
     questions=questions[page*15:(page*15)+15]
 
     htmlStr=''
     for que in questions:
-        htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
+        htmlStr+= render_to_string('profiles/templatetags/question_item_answer.html',{'question':que})
     return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
         
 

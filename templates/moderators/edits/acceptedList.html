@@ -2,8 +2,8 @@
 {% load contentUtilities %}
 <div class="await-list">
     {% for que in questions %}
-    <div class="await-item">
-        <div class="row  question-item ">
+    <div class="await-item edit">
+        <div class="row  question-item edit">
 
             <div class="col-12">
                 <a href="{% url 'content:question-page' questionID=que.id %}" class="question-title line-clamp">

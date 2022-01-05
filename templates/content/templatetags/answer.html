@@ -36,7 +36,7 @@
                 col-12
                 {% endif %}
     ">
-          <div class="post-content-container">
+          <div class="post-content-container  {% if request.user.profile.isSuperAdmin %}admin-v{% endif %}">
           
                 <div class="post-content">
                     {{ans.post.text|safe}}

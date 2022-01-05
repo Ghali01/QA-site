@@ -1,14 +1,8 @@
-{% extends 'utilities/_base.html' %}
+{% extends 'utilities/_question_base.html' %}
 {% load i18n %}
 {% load contentUtilities %}
 {% block title %}{{question.title}}{% endblock %}
-
-{% block content %} 
-<!-- TODO -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/agate.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
-
-<div class="column-no-border">
+{% block queTop %}
 <h1 class="que-title center-title">{{question.title}}</h1>
     
 <div class="que-data-div">
@@ -16,6 +10,13 @@
         <span class="que-data">{{question.getDuration}}</span>
         
     </div>
+ {% endblock %}
+{% block content %} 
+<!-- TODO -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/agate.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+
+<div class="column-no-border">
     <div class="question-await">
         <div class="question-div">
             <div class="row">
@@ -72,4 +73,14 @@
         </div>
     </div>
     </div>
+    <script>
+        document.querySelectorAll('.post-content pre code').forEach((el) => {
+            $(el).html($(el).html().trim());
+            hljs.highlightElement(el);
+          });
+          if(document.querySelector('.column-no-border'))
+            document.querySelector('.column-no-border').parentElement.style.border='none';
+    
+        </script>
+ 
 {% endblock %}

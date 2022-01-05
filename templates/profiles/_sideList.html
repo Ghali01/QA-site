@@ -2,27 +2,27 @@
 
 <ul class="prof-act-sid-list">
     <li>
-        <a class="{% if tab == 'user-questions' %}active{% endif %}" href="{% url 'profiles:user-questions' userID=request.user.id  %}">
+        <a class="{% if tab == 'user-questions' %}active{% endif %}" href="{% url 'profiles:user-questions' userID=user.id  %}">
             {% translate 'My Questions' %}
         </a>
     </li>
     <li>
-        <a class="{% if tab == 'user-answers' %}active{% endif %}" href="{% url 'profiles:user-answers' userID=request.user.id  %}">
+        <a class="{% if tab == 'user-answers' %}active{% endif %}" href="{% url 'profiles:user-answers' userID=user.id  %}">
             {% translate 'My Answers' %}
         </a>
     </li>
     <li>
-        <a class="{% if tab == 'badges' %}active{% endif %}" href="{% url 'profiles:badges' userID=request.user.id  %}">
+        <a class="{% if tab == 'badges' %}active{% endif %}" href="{% url 'profiles:badges' userID=user.id  %}">
             {% translate 'Badges' %}
         </a>
     </li>
     <li>
-        <a class="{% if tab == 'followers' %}active{% endif %}" href="{% url 'profiles:user-followers' userID=request.user.id  %}">
+        <a class="{% if tab == 'followers' %}active{% endif %}" href="{% url 'profiles:user-followers' userID=user.id  %}">
             {% translate 'Followers' %}
         </a>
     </li>
     <li>
-        <a class="{% if tab == 'favorite' %}active{% endif %}" href="{% url 'profiles:favorite-questions' userID=request.user.id  %}">
+        <a class="{% if tab == 'favorite' %}active{% endif %}" href="{% url 'profiles:favorite-questions' userID=user.id  %}">
             {% translate 'Favorite Queestions' %}
         </a>
     </li>

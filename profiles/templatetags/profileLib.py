@@ -53,3 +53,8 @@ def formatDate(date:datetime.datetime):
         ]
 
         return f'''{months[date.month-1]}, {date.strftime("%Y %d").replace(' 0',' ')}'''
+
+@register.inclusion_tag('profiles/templatetags/question_item.html')
+@register.inclusion_tag('profiles/templatetags/question_item_answer.html',name='profQuestionItemAnswer')
+def profQuestionItem(question):
+    return {'question':question}

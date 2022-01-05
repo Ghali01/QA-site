@@ -53,14 +53,14 @@
                 {% endif %}
             </div>
         </div>
+        <!-- <div class="col-12" style="background-color: white; ">hello world hello world hello world hello world hello world hello world </div> -->
         <div class="bottom-que-row">
+            <div class="tags-div ">
+                {% for tag in question.tags.all %}
+                {% tagLink tag %}
+                {% endfor %}
+            </div>
             <div class="post-l-col">
-                <div class="que-left-col">
-                    <div class="tags-div ">
-                        {% for tag in question.tags.all %}
-                        {% tagLink tag %}
-                        {% endfor %}
-                    </div>
                     <div class="que-opts-spans">
                         <a href="{% url 'content:suggest-post-edit' postID=question.post.id %}" class="custom-link custom-link-sm primary-link que-opt que-opt-sug">
                             {% translate 'Suggest Edit' %}</a>
@@ -85,7 +85,6 @@
                         
                     </div>
                 </div>
-            </div>
             <div class="post-r-col">
                 <div class="authors-dvs">
                     <div class="added-by-div-q que-added-by-div">

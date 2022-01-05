@@ -638,8 +638,8 @@ function removeTagBtn(e) {
 function onSelectCategory() {
     let parentC = $(this).parentsUntil(".category-select-toolbar").last().parent();
     parentC.data("cur-val", $(this).data("cate-id"));
-    parentC.nextAll(".category-select-toolbar").css('display', "none");
-    parentC.next(".category-select-toolbar").css('display', "block");
+    parentC.nextAll(".category-select-toolbar").css('visibility', 'hidden');
+    parentC.next(".category-select-toolbar").css('visibility', 'visible');
     let subs = $(this).data("sub");
     let nextList = parentC.next(".category-select-toolbar").find(".custom-select-list");
     $(nextList).html('');

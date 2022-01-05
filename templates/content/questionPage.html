@@ -8,16 +8,17 @@
 {% block title %}{{question.title}}{% endblock %}
 {% block queTop %}
 
-<a href="{% url 'content:add-question' %}" class="btn btn-primary btn-sm primary-button suggest-btn qp-mt">
-    {% translate 'Suggest Question' %}
-</a>
-    
+<div class="qt-f">
     <h1 class="que-title center-title">{{question.title}}
-
+        
         {% if not question.post.isPublished %}
-         {% translate '(unPublished)' %}
+        {% translate '(unPublished)' %}
         {% endif %}
     </h1>
+    <a href="{% url 'content:add-question' %}" class="btn btn-primary btn-sm primary-button suggest-btn qp-mt">
+        {% translate 'Suggest Question' %}
+    </a>
+</div>
 <div class="que-data-div">
     <span class="que-data-title">{% translate 'Asked:' %} </span>
     <span class="que-data">{{question.getDuration}}</span>

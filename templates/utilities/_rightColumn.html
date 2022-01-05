@@ -6,11 +6,11 @@
     <div class="cus-card tags-card">
         <div class="cus-card-header">
            <h5>{% translate 'Tags' %}</h5> 
-           <a href="{% url 'content:tags-page' %}" class="btn btn-outline-info btn-tag edit-tags-link">
-            <i class="fas fa-pen"></i>
+           <a href="{% url 'content:tags-page' %}" class="btn edit-tags-link">
+            <!-- <i class="fas fa-pen"></i> -->
+            {% translate 'edit' %}
             </a>
         </div>
-      
         <div class="cus-card-body tags-div">
             {% for tag in request.user.profile.tags.all %}
             {% tagLink tag %}

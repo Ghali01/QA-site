@@ -1,47 +1,10 @@
 {% load i18n %}
 {% load contentUtilities %}
+{% load questions %}
 <div class="await-list">
     {% for que in questions %}
-    <div class="await-item await-item-ans">
-        <div class="row  question-item ">
-            <div class="col-2">
-                <div class="row">
-                    <div class="col-5 votes-num-div nums-que">
-                        <span class="votes-num-span">{{que.post.getVotes}}</span>
-                        <span class="votes-word">{% translate 'votes' %}</span>
-
-                    </div>
-                    <div class="col-5 answers-num-div nums-que">
-                        <span class="answers-num-span">{{que.getPubliedAnswer.count}}</span>
-                        <span class="answers-word">{% translate 'answers' %}</span>
-                    </div>
-                </div>
-                <div class="added-by-div">{% translate 'add by' %} <a class="by-user-name" href="{% url 'profiles:profile-page' userID=que.post.author.id %}">{{que.post.author.username}}</a>
-                </div>
-                <!-- <span class="answers-num-span-grid">00 Answers</span> -->
-
-            </div>
-            <div class="col-10">
-                <a href="{% url 'content:question-page' questionID=que.id %}" class="question-title line-clamp">
-                    {{que.title}}
-                </a>
-                <div class="bottom-of-question">
-                    <div class="question-tags custom-scrollbar">
-                        {% for tag in que.tags.all %}
-                        {% tagLink tag %}
-                        {% endfor %}
-                    </div>
-                    {% if question.getLastAnswerDate  %}
-                    <div class="question-date">{% translate 'last answer added in' %} {{question.getLastAnswerDate}} </div>
-                    {% endif %}
-         
-                </div>
-
-            </div>
-        </div>
-
-
-    </div>
+    
+        {% questionItem que %}
     {% endfor %}
     
 

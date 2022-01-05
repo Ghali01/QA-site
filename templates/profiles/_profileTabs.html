@@ -41,7 +41,7 @@
         {% if tab == 'user-questions' or tab == 'user-answers' or tab == 'badges' or tab == 'followers' or tab == 'favorite'  %}
         active
         {% endif %}
-        " href="{% url 'profiles:user-questions' userID=request.user.id %}">
+        " href="{% url 'profiles:user-questions' userID=user.id %}">
             {% translate 'Activity' %}
         </a>
  

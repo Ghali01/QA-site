@@ -110,7 +110,7 @@ def suggestedAnswersAwait(request,page,mode):
 @forModerator
 def changeSuggestAnswers(request):
     if 'que-id' in request.POST and 'status' in request.POST and 'mode' in request.POST:
-        try:
+        # try:
             mode=request.POST['mode']
             status=request.POST['status']
             question=get_object_or_404(Question,id=int(request.POST['que-id']))
@@ -145,8 +145,8 @@ def changeSuggestAnswers(request):
                     )
                 return HttpResponse('done')
 
-        except ValueError:
-            return HttpResponse('error')
+        # except ValueError:
+        #     return HttpResponse('error')
             # return redirect(reverse('moderators:suggested-questions-await',kwargs={'page':1}))            
 
     return redirect(reverse('moderators:suggested-answers-await',kwargs={'page':1}))

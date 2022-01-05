@@ -169,3 +169,11 @@ button.l-btn{
     padding-right: 0;
     padding-left: 40px;
 }
+
+@media (max-width:550px) {
+ 
+    .que-top .qt-f .suggest-btn {
+        right: unset;
+        left: 0;
+    }
+}
