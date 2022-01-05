@@ -2297,6 +2297,7 @@ button.go{
 .data-profile{
     margin-top: 20px;
     color: var(--titles-colors);
+    
 }
 .data-profile-span{
     font-size: 15px;
@@ -2326,12 +2327,16 @@ button.go{
 
 }
 .badge-list-ws{
+    white-space: nowrap;
     font-size: 13px;
     color: var(--titles-colors);
 }
 .badge-row{
     position: relative;
     margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .badge-row .badge-grid-item{
@@ -2394,13 +2399,15 @@ button.go{
 .tops-toolbar{
     border-bottom: .5px solid var(--titles-colors);
     padding-bottom: 8px;
-
+    display: flex;
+    justify-content: space-between
 }
 
 .tops-toolbar-title{
     color: var(--titles-colors);
     display: inline-block;
     margin-top: 10px;
+    white-space: nowrap;
 }
 .toolbar-btn-groups{
     float: right;
@@ -2455,6 +2462,10 @@ button.go{
 .tops-list .question-date{
     position: static;
     padding: 0;
+    min-width: 60px;
+    max-width: 60px;
+    width: 60px;
+    text-align: start;
 }
 .prof-about{
     display: block;

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-23 15:53+0200\n"
+"POT-Creation-Date: 2022-01-05 22:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -44,8 +44,7 @@ msgid "Admin"
 msgstr "مشرف"
 
 #: .\authusers\models.py:37 .\templates\dashboard\postLogs.html:25
-#: .\templates\dashboard\users.html:119 .\templates\utilities\_header.html:66
-#: .\templates\utilities\_header.html:145
+#: .\templates\dashboard\users.html:119 .\templates\utilities\_header.html:124
 msgid "Moderator"
 msgstr "محرر"
 
@@ -55,31 +54,31 @@ msgid "User"
 msgstr "مستخدم"
 
 #: .\authusers\models.py:92 .\authusers\models.py:115 .\content\models.py:171
-#: .\content\models.py:187 .\content\models.py:327
+#: .\content\models.py:187 .\content\models.py:330
 msgid "today"
 msgstr "اليوم"
 
 #: .\authusers\models.py:94 .\authusers\models.py:117 .\content\models.py:173
-#: .\content\models.py:189 .\content\models.py:329
+#: .\content\models.py:189 .\content\models.py:332
 msgid "yesterday"
 msgstr "البارحة"
 
 #: .\authusers\models.py:96 .\authusers\models.py:119 .\content\models.py:175
-#: .\content\models.py:191 .\content\models.py:331
+#: .\content\models.py:191 .\content\models.py:334
 msgid "days"
 msgstr "ايام"
 
 #: .\authusers\models.py:98 .\authusers\models.py:103 .\authusers\models.py:121
 #: .\authusers\models.py:126 .\content\models.py:177 .\content\models.py:182
-#: .\content\models.py:193 .\content\models.py:198 .\content\models.py:333
-#: .\content\models.py:338
+#: .\content\models.py:193 .\content\models.py:198 .\content\models.py:336
+#: .\content\models.py:341
 msgid "months"
 msgstr "شهور"
 
 #: .\authusers\models.py:101 .\authusers\models.py:103
 #: .\authusers\models.py:124 .\authusers\models.py:126 .\content\models.py:180
 #: .\content\models.py:182 .\content\models.py:196 .\content\models.py:198
-#: .\content\models.py:336 .\content\models.py:338
+#: .\content\models.py:339 .\content\models.py:341
 msgid "years"
 msgstr "سنين"
 
@@ -111,7 +110,8 @@ msgid "Register"
 msgstr "تسجيل"
 
 #: .\authusers\models.py:202 .\templates\auth\login.html:4
-#: .\templates\content\index.html:15 .\templates\dashboard\login.html:4
+#: .\templates\content\index.html:15 .\templates\content\tagQuestions.html:15
+#: .\templates\dashboard\login.html:4
 #: .\templates\utilities\dashboard\_nav.html:252
 msgid "Login"
 msgstr "دخول"
@@ -173,70 +173,70 @@ msgstr "لا يوجد حساب بهذا البريد الالكتروني"
 msgid "invalid captcha"
 msgstr "تعذر النحقق من الهوية"
 
-#: .\content\models.py:97
+#: .\content\models.py:97 .\templates\profiles\userQuestions.html:17
 msgid "Question"
 msgstr "سؤال"
 
-#: .\content\models.py:98
+#: .\content\models.py:98 .\templates\profiles\userAnswers.html:17
 msgid "Answer"
 msgstr "جواب"
 
-#: .\content\models.py:472
+#: .\content\models.py:475
 msgctxt "choicse"
 msgid "Suggest"
 msgstr "اقتراح"
 
-#: .\content\models.py:473
+#: .\content\models.py:476
 msgctxt "choicse"
 msgid "Accept"
 msgstr "قبول"
 
-#: .\content\models.py:474
+#: .\content\models.py:477
 msgctxt "choicse"
 msgid "Reject"
 msgstr "رفض"
 
-#: .\content\models.py:475
+#: .\content\models.py:478
 msgctxt "choicse"
 msgid "Suggest Edit"
 msgstr "اقتراح تعديل"
 
-#: .\content\models.py:476
+#: .\content\models.py:479
 msgctxt "choicse"
 msgid "Accept Edit"
 msgstr "قبول تعديل"
 
-#: .\content\models.py:477
+#: .\content\models.py:480
 msgctxt "choicse"
 msgid "Reject Edit"
 msgstr "رفض تعديل"
 
-#: .\content\models.py:478
+#: .\content\models.py:481
 msgctxt "choicse"
 msgid "Publish"
 msgstr "نشر"
 
-#: .\content\models.py:479
+#: .\content\models.py:482
 msgctxt "choicse"
 msgid "Ubpunlish"
 msgstr "الغاء نشر"
 
-#: .\content\models.py:553 .\templates\dashboard\addEditBadge.html:23
-#: .\templates\dashboard\badges.html:26 .\templates\profiles\badges.html:13
+#: .\content\models.py:556 .\templates\dashboard\addEditBadge.html:23
+#: .\templates\dashboard\badges.html:26 .\templates\profiles\badges.html:18
 msgid "Gold"
 msgstr "ذهبية"
 
-#: .\content\models.py:554 .\templates\dashboard\addEditBadge.html:24
-#: .\templates\dashboard\badges.html:27 .\templates\profiles\badges.html:30
+#: .\content\models.py:557 .\templates\dashboard\addEditBadge.html:24
+#: .\templates\dashboard\badges.html:27 .\templates\profiles\badges.html:35
 msgid "Silver"
 msgstr "فضية"
 
-#: .\content\models.py:555 .\templates\dashboard\addEditBadge.html:25
-#: .\templates\dashboard\badges.html:28 .\templates\profiles\badges.html:52
+#: .\content\models.py:558 .\templates\dashboard\addEditBadge.html:25
+#: .\templates\dashboard\badges.html:28 .\templates\profiles\badges.html:57
 msgid "Bronze"
 msgstr "برونزية"
 
-#: .\content\models.py:558 .\feedback\models.py:26
+#: .\content\models.py:561 .\feedback\models.py:26
 #: .\templates\dashboard\flagReasons.html:17
 #: .\templates\dashboard\flagedQuestions.html:14
 #: .\templates\dashboard\flagedUsers.html:51
@@ -245,17 +245,16 @@ msgstr "برونزية"
 #: .\templates\dashboard\statistics.html:29
 #: .\templates\moderators\questions\questions.html:3
 #: .\templates\moderators\questions\questions.html:14
-#: .\templates\profiles\profile.html:67 .\templates\profiles\profile.html:257
-#: .\templates\profiles\userQuestions.html:5
-#: .\templates\profiles\userQuestions.html:9
-#: .\templates\utilities\_header.html:70 .\templates\utilities\_header.html:147
+#: .\templates\profiles\profile.html:46 .\templates\profiles\profile.html:228
+#: .\templates\profiles\userQuestions.html:7
+#: .\templates\utilities\_header.html:80 .\templates\utilities\_header.html:126
 #: .\templates\utilities\dashboard\_nav.html:119
 #: .\templates\utilities\dashboard\_nav.html:182
 msgid "Questions"
 msgstr "الاسئلة"
 
-#: .\content\models.py:559 .\feedback\models.py:27
-#: .\templates\content\questionPage.html:37
+#: .\content\models.py:562 .\feedback\models.py:27
+#: .\templates\content\questionPage.html:38
 #: .\templates\dashboard\addEditBadge.html:32
 #: .\templates\dashboard\answers.html:5 .\templates\dashboard\answers.html:15
 #: .\templates\dashboard\badges.html:33
@@ -270,22 +269,20 @@ msgstr "الاسئلة"
 #: .\templates\dashboard\questions.html:92
 #: .\templates\moderators\answers\answers.html:4
 #: .\templates\moderators\answers\answers.html:15
-#: .\templates\moderators\answers\awaitList.html:21
-#: .\templates\moderators\answers\rejectedList.html:21
-#: .\templates\profiles\profile.html:63 .\templates\profiles\profile.html:264
-#: .\templates\profiles\userAnswers.html:5
-#: .\templates\profiles\userAnswers.html:9
-#: .\templates\utilities\_header.html:73 .\templates\utilities\_header.html:148
+#: .\templates\moderators\answers\awaitList.html:45
+#: .\templates\profiles\profile.html:42 .\templates\profiles\profile.html:235
+#: .\templates\profiles\userAnswers.html:7
+#: .\templates\utilities\_header.html:83 .\templates\utilities\_header.html:127
 #: .\templates\utilities\dashboard\_nav.html:130
 #: .\templates\utilities\dashboard\_nav.html:192
 msgid "Answers"
 msgstr "الاجوبة"
 
-#: .\content\models.py:560
+#: .\content\models.py:563
 msgid "Self Answers"
 msgstr "الاجوبة على سؤال"
 
-#: .\content\models.py:561 .\templates\dashboard\addEditBadge.html:33
+#: .\content\models.py:564 .\templates\dashboard\addEditBadge.html:33
 #: .\templates\dashboard\answers.html:86 .\templates\dashboard\badges.html:34
 #: .\templates\dashboard\editAnswer.html:45
 #: .\templates\dashboard\editQuestion.html:52
@@ -296,39 +293,39 @@ msgstr "الاجوبة على سؤال"
 msgid "Comments"
 msgstr "التعليقات"
 
-#: .\content\models.py:562
+#: .\content\models.py:565
 msgid "Self Comments"
 msgstr "التعليقات على منشور"
 
-#: .\content\models.py:563 .\templates\dashboard\addEditBadge.html:36
+#: .\content\models.py:566 .\templates\dashboard\addEditBadge.html:36
 #: .\templates\dashboard\badges.html:37
 msgid "Views"
 msgstr "مشاهدة"
 
-#: .\content\models.py:564 .\templates\dashboard\addEditBadge.html:38
+#: .\content\models.py:567 .\templates\dashboard\addEditBadge.html:38
 #: .\templates\dashboard\badges.html:39
 msgid "Post Votes"
 msgstr "التصويت على منشور"
 
-#: .\content\models.py:565 .\templates\dashboard\addEditBadge.html:39
+#: .\content\models.py:568 .\templates\dashboard\addEditBadge.html:39
 #: .\templates\dashboard\badges.html:40
 msgid "Question Votes"
 msgstr "التصويت على الاسئلة"
 
-#: .\content\models.py:566 .\templates\dashboard\addEditBadge.html:40
+#: .\content\models.py:569 .\templates\dashboard\addEditBadge.html:40
 #: .\templates\dashboard\badges.html:41
 msgid "Answer Votes"
 msgstr "التصويت على اجوبة"
 
-#: .\content\models.py:567 .\templates\dashboard\addEditBadge.html:41
+#: .\content\models.py:570 .\templates\dashboard\addEditBadge.html:41
 #: .\templates\dashboard\badges.html:42
 #: .\templates\moderators\edits\edits.html:5
 #: .\templates\moderators\edits\edits.html:16
-#: .\templates\utilities\_header.html:76 .\templates\utilities\_header.html:149
+#: .\templates\utilities\_header.html:86 .\templates\utilities\_header.html:128
 msgid "Edits"
 msgstr "تعديلات"
 
-#: .\content\models.py:568 .\templates\dashboard\addEditBadge.html:43
+#: .\content\models.py:571 .\templates\dashboard\addEditBadge.html:43
 #: .\templates\dashboard\badges.html:44
 #: .\templates\dashboard\pollsManagement.html:14
 #: .\templates\utilities\_polls.html:7 .\templates\utilities\_polls_mob.html:6
@@ -336,58 +333,58 @@ msgstr "تعديلات"
 msgid "Polls"
 msgstr "استبيانات"
 
-#: .\content\models.py:569
+#: .\content\models.py:572
 msgid "Login times"
 msgstr "عدد مرات تسجيل الدخول"
 
-#: .\content\models.py:572 .\templates\dashboard\addEditBadge.html:53
+#: .\content\models.py:575 .\templates\dashboard\addEditBadge.html:53
 msgid "Tag"
 msgstr "وسم"
 
-#: .\content\models.py:573 .\templates\dashboard\addEditBadge.html:52
+#: .\content\models.py:576 .\templates\dashboard\addEditBadge.html:52
 #: .\templates\dashboard\suggestedCategories.html:30
 #: .\templates\dashboard\suggestedTags.html:30
 msgid "Category"
 msgstr "تصنيف"
 
-#: .\content\models.py:574 .\templates\dashboard\addEditBadge.html:54
+#: .\content\models.py:577 .\templates\dashboard\addEditBadge.html:54
 #: .\templates\dashboard\badges.html:50 .\templates\dashboard\badges.html:94
 msgid "General"
 msgstr "عام"
 
-#: .\content\views.py:149
+#: .\content\views.py:236
 msgid "The question has been submitted, it will be reviewed soon."
 msgstr "تم ارسال السؤال سيتم مراجعته قربياً"
 
-#: .\content\views.py:153
+#: .\content\views.py:240
 msgid "Category Not found"
 msgstr "التصنيف غير موجود"
 
-#: .\content\views.py:156
+#: .\content\views.py:243
 msgid "Title should not be empty"
 msgstr "لا يمكن ان يكون العنوان فارغ"
 
-#: .\content\views.py:158
+#: .\content\views.py:245
 msgid "Question Text should not be empty"
 msgstr "نص السؤال يجب ان لا يكون فارغ"
 
-#: .\content\views.py:160
+#: .\content\views.py:247
 msgid "You most add 1 tag or more"
 msgstr "يجب عليك اضافة وسم واحد على الاقل"
 
-#: .\content\views.py:276
+#: .\content\views.py:376
 msgid "The answer has been submitted, it will be reviewed soon."
 msgstr "تم ارسال الاجابة سيتم مراجعتها قريباً"
 
-#: .\content\views.py:278
+#: .\content\views.py:378
 msgid "Answer should not by empty"
 msgstr "الجواب يجب ان لا يكون فارغ"
 
-#: .\content\views.py:361
+#: .\content\views.py:461
 msgid "The edit has been submitted, it will be reviewed soon."
 msgstr "تم ارسال التعديل سيتم مراجعتها قربياً"
 
-#: .\content\views.py:667
+#: .\content\views.py:767
 msgid "no questions"
 msgstr "لا يوجد اسئلة"
 
@@ -550,8 +547,8 @@ msgstr "تم ارسال الرسالة"
 msgid "Change Your Email"
 msgstr "تغيير بريدك الالكتروني"
 
-#: .\templates\auth\changeEmail.html:12 .\templates\auth\login.html:30
-#: .\templates\auth\register.html:61 .\templates\auth\resetPassword.html:20
+#: .\templates\auth\changeEmail.html:12 .\templates\auth\login.html:58
+#: .\templates\auth\register.html:90 .\templates\auth\resetPassword.html:20
 #: .\templates\auth\socialRegister.html:67
 #: .\templates\dashboard\advertiseMessages.html:28
 #: .\templates\dashboard\contactMessages.html:30
@@ -574,13 +571,13 @@ msgstr "تغيير كلمة السر"
 msgid "Change Your Password"
 msgstr "تغيير كلمة السر"
 
-#: .\templates\auth\changePassword.html:12 .\templates\auth\login.html:35
-#: .\templates\auth\register.html:77 .\templates\auth\socialRegister.html:83
+#: .\templates\auth\changePassword.html:12 .\templates\auth\login.html:63
+#: .\templates\auth\register.html:106 .\templates\auth\socialRegister.html:83
 #: .\templates\dashboard\login.html:29
 msgid "Password"
 msgstr "كلمة السر"
 
-#: .\templates\auth\changePassword.html:30 .\templates\auth\register.html:96
+#: .\templates\auth\changePassword.html:30 .\templates\auth\register.html:125
 #: .\templates\auth\socialRegister.html:102
 msgid "Confirm Password"
 msgstr "تأكيد كلمة المرور"
@@ -605,72 +602,72 @@ msgstr "تغيير البريد الكتروني"
 msgid "Return to sign up"
 msgstr "عودة الى التسجيل"
 
-#: .\templates\auth\login.html:27
-msgid "can not login"
-msgstr "فشل تسجيل الدخول"
-
-#: .\templates\auth\login.html:45
-msgid "Forget Password?"
-msgstr "نسيت كلمة المرور؟"
-
-#: .\templates\auth\login.html:47 .\templates\dashboard\login.html:41
-msgid "Remember Me"
-msgstr "تذكرني"
-
-#: .\templates\auth\login.html:49 .\templates\dashboard\login.html:47
-#: .\templates\utilities\auth\_header.html:62
-msgid "Sign In"
-msgstr "دخول"
-
-#: .\templates\auth\login.html:56 .\templates\auth\register.html:129
-#: .\venv\Lib\site-packages\django\utils\text.py:240
-msgid "or"
-msgstr "او"
-
-#: .\templates\auth\login.html:65 .\templates\auth\register.html:139
+#: .\templates\auth\login.html:27 .\templates\auth\register.html:27
 #: .\templates\utilities\_loginModal.html:20
 msgid "Log In with Facebook"
 msgstr "تسجيل دخول عبر فيسبوك"
 
-#: .\templates\auth\login.html:68 .\templates\auth\register.html:143
+#: .\templates\auth\login.html:30 .\templates\auth\register.html:31
 #: .\templates\utilities\_loginModal.html:24
 msgid "Log In with Twitter"
 msgstr "تسجيل دخول عبر تويتر"
 
-#: .\templates\auth\login.html:72 .\templates\auth\register.html:146
+#: .\templates\auth\login.html:34 .\templates\auth\register.html:34
 #: .\templates\utilities\_loginModal.html:27
 msgid "Log In with GitHub"
 msgstr "تسجيل دخول عبر جيتهاب"
 
-#: .\templates\auth\login.html:75 .\templates\auth\register.html:149
+#: .\templates\auth\login.html:37 .\templates\auth\register.html:37
 #: .\templates\utilities\_loginModal.html:30
 msgid "Log In with Google"
 msgstr "تسجيل دخول عبر جوجل"
 
-#: .\templates\auth\register.html:27 .\templates\auth\socialRegister.html:30
+#: .\templates\auth\login.html:55
+msgid "can not login"
+msgstr "فشل تسجيل الدخول"
+
+#: .\templates\auth\login.html:73
+msgid "Forget Password?"
+msgstr "نسيت كلمة المرور؟"
+
+#: .\templates\auth\login.html:76 .\templates\dashboard\login.html:41
+msgid "Remember Me"
+msgstr "تذكرني"
+
+#: .\templates\auth\login.html:78 .\templates\dashboard\login.html:47
+#: .\templates\utilities\auth\_header.html:62
+msgid "Sign In"
+msgstr "دخول"
+
+#: .\templates\auth\login.html:85
+#: .\venv\Lib\site-packages\django\utils\text.py:240
+msgid "or"
+msgstr "او"
+
+#: .\templates\auth\register.html:56 .\templates\auth\socialRegister.html:30
 #: .\templates\misc\contactUs.html:17
 msgid "Full Name"
 msgstr "الاسم الكامل"
 
-#: .\templates\auth\register.html:44 .\templates\auth\socialRegister.html:50
+#: .\templates\auth\register.html:73 .\templates\auth\socialRegister.html:50
 #: .\templates\dashboard\contactMessages.html:27
 msgid "User Name"
 msgstr "اسم المستخدم"
 
-#: .\templates\auth\register.html:113 .\templates\auth\socialRegister.html:119
+#: .\templates\auth\register.html:142 .\templates\auth\socialRegister.html:119
 msgid "Website (Optional)"
 msgstr "موقع الويب (اختياري)"
 
-#: .\templates\auth\register.html:118 .\templates\auth\socialRegister.html:124
+#: .\templates\auth\register.html:147 .\templates\auth\socialRegister.html:124
 msgid "By clicking Register, I agree that I have read and accepted our"
 msgstr "بضغطك على تسجيل انت قرائت و توافق على"
 
-#: .\templates\auth\register.html:119 .\templates\auth\socialRegister.html:125
+#: .\templates\auth\register.html:147 .\templates\auth\socialRegister.html:125
 #: .\templates\misc\terms.html:3
 msgid "Terms of Use and Privacy Policy"
 msgstr "شروط الاستخدام و سياسة الخصوصية"
 
-#: .\templates\auth\register.html:121 .\templates\auth\socialRegister.html:126
+#: .\templates\auth\register.html:149 .\templates\auth\socialRegister.html:126
 #: .\templates\utilities\auth\_header.html:52
 msgid "Sign Up"
 msgstr "تسجيل"
@@ -701,9 +698,9 @@ msgstr "يرجى اختيار تصنيف"
 #: .\templates\auth\selectTags.html:135 .\templates\content\addQuestion.html:55
 #: .\templates\content\addQuestion.html:98
 #: .\templates\content\addQuestion.html:139
-#: .\templates\content\categories.html:52
-#: .\templates\content\categories.html:90
-#: .\templates\content\categories.html:126
+#: .\templates\content\categories.html:53
+#: .\templates\content\categories.html:91
+#: .\templates\content\categories.html:127
 #: .\templates\content\categoryTags.html:51
 #: .\templates\content\categoryTags.html:90
 #: .\templates\content\categoryTags.html:126 .\templates\exams\examPage.html:50
@@ -723,9 +720,9 @@ msgstr "يرجى اختيار تصنيف"
 #: .\templates\moderators\questions\questions.html:92
 #: .\templates\moderators\questions\questions.html:134
 #: .\templates\moderators\questions\questions.html:175
-#: .\templates\profiles\favoriteQuestions.html:50
-#: .\templates\profiles\favoriteQuestions.html:88
-#: .\templates\profiles\favoriteQuestions.html:124
+#: .\templates\profiles\favoriteQuestions.html:58
+#: .\templates\profiles\favoriteQuestions.html:96
+#: .\templates\profiles\favoriteQuestions.html:132
 msgid "Select Category"
 msgstr "اختر تصنيف"
 
@@ -790,12 +787,13 @@ msgstr "اسئلة مشابهة"
 
 #: .\templates\content\addQuestion.html:253
 #: .\templates\content\categoryTags.html:223 .\templates\content\index.html:172
-#: .\templates\profiles\badges.html:20 .\templates\profiles\badges.html:42
-#: .\templates\profiles\badges.html:63
-#: .\templates\profiles\favoriteQuestions.html:248
-#: .\templates\profiles\followers.html:14
-#: .\templates\profiles\userAnswers.html:89
-#: .\templates\profiles\userQuestions.html:117
+#: .\templates\content\tagQuestions.html:148
+#: .\templates\profiles\badges.html:25 .\templates\profiles\badges.html:47
+#: .\templates\profiles\badges.html:68
+#: .\templates\profiles\favoriteQuestions.html:291
+#: .\templates\profiles\followers.html:20
+#: .\templates\profiles\userAnswers.html:102
+#: .\templates\profiles\userQuestions.html:131
 msgid "See more"
 msgstr "رؤية المزيد"
 
@@ -807,12 +805,12 @@ msgstr "رؤية المزيد"
 msgid "Categories"
 msgstr "التصنيفات"
 
-#: .\templates\content\categories.html:156
+#: .\templates\content\categories.html:157
 msgid "Suggest Cateogry"
 msgstr "اقترح تصنيف"
 
-#: .\templates\content\categories.html:165
-#: .\templates\content\categories.html:180
+#: .\templates\content\categories.html:166
+#: .\templates\content\categories.html:181
 #: .\templates\moderators\answers\answers.html:221
 #: .\templates\moderators\answers\answers.html:234
 #: .\templates\moderators\edits\edits.html:221
@@ -822,25 +820,25 @@ msgstr "اقترح تصنيف"
 msgid "Oldest"
 msgstr "الاقدم"
 
-#: .\templates\content\categories.html:167
-#: .\templates\content\categories.html:177
+#: .\templates\content\categories.html:168
+#: .\templates\content\categories.html:178
 #: .\templates\moderators\answers\answers.html:223
 #: .\templates\moderators\answers\answers.html:231
 #: .\templates\moderators\edits\edits.html:224
 #: .\templates\moderators\edits\edits.html:233
 #: .\templates\moderators\questions\questions.html:216
 #: .\templates\moderators\questions\questions.html:224
-#: .\templates\profiles\profile.html:229
+#: .\templates\profiles\profile.html:200
 msgid "Newest"
 msgstr "الاجدد"
 
-#: .\templates\content\categories.html:192
-#: .\templates\content\categories.html:206
+#: .\templates\content\categories.html:193
+#: .\templates\content\categories.html:207
 msgid "Least Tags"
 msgstr "الاقل وسوم"
 
-#: .\templates\content\categories.html:194
-#: .\templates\content\categories.html:203
+#: .\templates\content\categories.html:195
+#: .\templates\content\categories.html:204
 msgid "Most Tags"
 msgstr "الاكثر وسوم"
 
@@ -862,25 +860,27 @@ msgstr "الاكثر اسئلة"
 
 #: .\templates\content\categoryTags.html:192
 #: .\templates\content\categoryTags.html:206 .\templates\content\index.html:108
-#: .\templates\content\index.html:122
-#: .\templates\profiles\favoriteQuestions.html:219
-#: .\templates\profiles\favoriteQuestions.html:233
-#: .\templates\profiles\userQuestions.html:84
-#: .\templates\profiles\userQuestions.html:99
+#: .\templates\content\index.html:122 .\templates\content\tagQuestions.html:84
+#: .\templates\content\tagQuestions.html:98
+#: .\templates\profiles\favoriteQuestions.html:227
+#: .\templates\profiles\favoriteQuestions.html:241
+#: .\templates\profiles\userQuestions.html:96
+#: .\templates\profiles\userQuestions.html:111
 msgid "Least Answers"
 msgstr "الاقل اجوبة"
 
 #: .\templates\content\categoryTags.html:194
 #: .\templates\content\categoryTags.html:203 .\templates\content\index.html:110
-#: .\templates\content\index.html:119
-#: .\templates\profiles\favoriteQuestions.html:221
-#: .\templates\profiles\favoriteQuestions.html:230
-#: .\templates\profiles\userQuestions.html:86
-#: .\templates\profiles\userQuestions.html:96
+#: .\templates\content\index.html:119 .\templates\content\tagQuestions.html:86
+#: .\templates\content\tagQuestions.html:95
+#: .\templates\profiles\favoriteQuestions.html:229
+#: .\templates\profiles\favoriteQuestions.html:238
+#: .\templates\profiles\userQuestions.html:98
+#: .\templates\profiles\userQuestions.html:108
 msgid "Most Answers"
 msgstr "الاكثر اجوبة"
 
-#: .\templates\content\index.html:4 .\templates\utilities\_header.html:119
+#: .\templates\content\index.html:4 .\templates\utilities\_header.html:98
 #: .\templates\utilities\dashboard\_nav.html:62
 msgid "Home"
 msgstr "الرئيسية"
@@ -889,7 +889,8 @@ msgstr "الرئيسية"
 msgid "Lastst Questions"
 msgstr "اخر الاسئلة"
 
-#: .\templates\content\index.html:11 .\templates\content\questionPage.html:12
+#: .\templates\content\index.html:11 .\templates\content\questionPage.html:19
+#: .\templates\content\tagQuestions.html:11
 msgid "Suggest Question"
 msgstr "اقترح سؤال"
 
@@ -899,108 +900,117 @@ msgid "My Tags"
 msgstr "وسومي"
 
 #: .\templates\content\index.html:33 .\templates\content\index.html:44
-#: .\templates\profiles\profile.html:250
+#: .\templates\profiles\profile.html:221
 msgid "All"
 msgstr "الكل"
 
 #: .\templates\content\index.html:56 .\templates\content\index.html:70
-#: .\templates\profiles\favoriteQuestions.html:164
-#: .\templates\profiles\favoriteQuestions.html:178
-#: .\templates\profiles\userAnswers.html:31
-#: .\templates\profiles\userAnswers.html:44
-#: .\templates\profiles\userQuestions.html:31
-#: .\templates\profiles\userQuestions.html:46
+#: .\templates\content\tagQuestions.html:32
+#: .\templates\content\tagQuestions.html:46
+#: .\templates\profiles\favoriteQuestions.html:172
+#: .\templates\profiles\favoriteQuestions.html:186
+#: .\templates\profiles\userAnswers.html:41
+#: .\templates\profiles\userAnswers.html:54
+#: .\templates\profiles\userQuestions.html:41
+#: .\templates\profiles\userQuestions.html:56
 msgid "Least Votes"
 msgstr "الاقل تصويت"
 
 #: .\templates\content\index.html:58 .\templates\content\index.html:67
-#: .\templates\profiles\favoriteQuestions.html:166
-#: .\templates\profiles\favoriteQuestions.html:175
-#: .\templates\profiles\userAnswers.html:33
-#: .\templates\profiles\userAnswers.html:41
-#: .\templates\profiles\userQuestions.html:34
-#: .\templates\profiles\userQuestions.html:43
+#: .\templates\content\tagQuestions.html:34
+#: .\templates\content\tagQuestions.html:43
+#: .\templates\profiles\favoriteQuestions.html:174
+#: .\templates\profiles\favoriteQuestions.html:183
+#: .\templates\profiles\userAnswers.html:43
+#: .\templates\profiles\userAnswers.html:51
+#: .\templates\profiles\userQuestions.html:44
+#: .\templates\profiles\userQuestions.html:53
 msgid "Most Votes"
 msgstr "الاكثر تصويت"
 
 #: .\templates\content\index.html:82 .\templates\content\index.html:96
-#: .\templates\profiles\favoriteQuestions.html:191
-#: .\templates\profiles\favoriteQuestions.html:205
-#: .\templates\profiles\userAnswers.html:56
-#: .\templates\profiles\userAnswers.html:70
-#: .\templates\profiles\userQuestions.html:58
-#: .\templates\profiles\userQuestions.html:72
+#: .\templates\content\tagQuestions.html:58
+#: .\templates\content\tagQuestions.html:72
+#: .\templates\profiles\favoriteQuestions.html:199
+#: .\templates\profiles\favoriteQuestions.html:213
+#: .\templates\profiles\userAnswers.html:67
+#: .\templates\profiles\userAnswers.html:81
+#: .\templates\profiles\userQuestions.html:69
+#: .\templates\profiles\userQuestions.html:83
 msgid "Least Views"
 msgstr "الاقل مشاهدة"
 
 #: .\templates\content\index.html:84 .\templates\content\index.html:93
-#: .\templates\profiles\favoriteQuestions.html:193
-#: .\templates\profiles\favoriteQuestions.html:202
-#: .\templates\profiles\userAnswers.html:58
-#: .\templates\profiles\userAnswers.html:67
-#: .\templates\profiles\userQuestions.html:60
-#: .\templates\profiles\userQuestions.html:69
+#: .\templates\content\tagQuestions.html:60
+#: .\templates\content\tagQuestions.html:69
+#: .\templates\profiles\favoriteQuestions.html:201
+#: .\templates\profiles\favoriteQuestions.html:210
+#: .\templates\profiles\userAnswers.html:69
+#: .\templates\profiles\userAnswers.html:78
+#: .\templates\profiles\userQuestions.html:71
+#: .\templates\profiles\userQuestions.html:80
 msgid "Most Views"
 msgstr "الاكثر مشاهدة"
 
-#: .\templates\content\index.html:140
+#: .\templates\content\index.html:140 .\templates\content\tagQuestions.html:116
 msgid "All time"
 msgstr "كل الاوقات"
 
-#: .\templates\content\index.html:146
+#: .\templates\content\index.html:146 .\templates\content\tagQuestions.html:122
 msgid "Today"
 msgstr "اليوم"
 
-#: .\templates\content\index.html:152
+#: .\templates\content\index.html:152 .\templates\content\tagQuestions.html:128
 msgid "This week"
 msgstr "هذا الاسبوع"
 
-#: .\templates\content\index.html:158
+#: .\templates\content\index.html:158 .\templates\content\tagQuestions.html:134
 msgid "This month"
 msgstr "هذا الشهر"
 
-#: .\templates\content\questionPage.html:18
+#: .\templates\content\questionPage.html:15
 msgid "(unPublished)"
 msgstr "(غير منشور)"
 
-#: .\templates\content\questionPage.html:22
+#: .\templates\content\questionPage.html:23
 #: .\templates\content\templatetags\questionTop.html:9
 #: .\templates\exams\question.html:20
 #: .\templates\moderators\edits\reviewEdit.html:19
-#: .\templates\moderators\questions\reviewQuestion.html:15
+#: .\templates\moderators\questions\reviewQuestion.html:9
 msgid "Asked:"
 msgstr "سئل مند:"
 
-#: .\templates\content\questionPage.html:24
+#: .\templates\content\questionPage.html:25
 #: .\templates\content\templatetags\questionTop.html:11
 #: .\templates\moderators\edits\reviewEdit.html:21
 msgid "Active:"
 msgstr "نشط منذ:"
 
-#: .\templates\content\questionPage.html:26
+#: .\templates\content\questionPage.html:27
 #: .\templates\content\templatetags\questionTop.html:13
 #: .\templates\moderators\edits\reviewEdit.html:23
 msgid "Viwes:"
 msgstr "المشاهدات:"
 
-#: .\templates\content\questionPage.html:65
+#: .\templates\content\questionPage.html:66
 #: .\templates\content\templatetags\answer.html:71
-#: .\templates\content\templatetags\question.html:74
+#: .\templates\content\templatetags\question.html:79
 #: .\templates\feedback\templatetags\reportModal.html:6
 #: .\templates\feedback\templatetags\reportModal.html:37
+#: .\templates\profiles\profile.html:14
 msgid "Report"
 msgstr "ابلاغ"
 
-#: .\templates\content\questionPage.html:78
+#: .\templates\content\questionPage.html:80
 #: .\templates\content\templatetags\answer.html:85
-#: .\templates\content\templatetags\question.html:88
+#: .\templates\content\templatetags\question.html:92
 #: .\templates\dashboard\reviewLog.html:43 .\templates\exams\question.html:51
 #: .\templates\exams\question.html:107
-#: .\templates\moderators\questions\reviewQuestion.html:49
+#: .\templates\moderators\questions\reviewQuestion.html:50
 msgid "Added in"
 msgstr "اضيف في"
 
-#: .\templates\content\questionPage.html:94
+#: .\templates\content\questionPage.html:97
 #: .\templates\dashboard\suggestedCategories.html:63
 #: .\templates\dashboard\suggestedCategories.html:151
 #: .\templates\dashboard\suggestedTags.html:63
@@ -1008,18 +1018,18 @@ msgstr "اضيف في"
 #: .\templates\moderators\edits\awaitList.html:31
 #: .\templates\moderators\edits\rejectedList.html:31
 #: .\templates\moderators\edits\reviewEdit.html:91
-#: .\templates\moderators\questions\awaitList.html:31
-#: .\templates\moderators\questions\rejectedList.html:33
-#: .\templates\moderators\questions\reviewQuestion.html:64
+#: .\templates\moderators\questions\awaitList.html:27
+#: .\templates\moderators\questions\rejectedList.html:31
+#: .\templates\moderators\questions\reviewQuestion.html:65
 msgid "Accept"
 msgstr "قبول"
 
-#: .\templates\content\questionPage.html:100
+#: .\templates\content\questionPage.html:103
 msgid "Ignore"
 msgstr "رفض"
 
-#: .\templates\content\questionPage.html:126
-#: .\templates\content\questionPage.html:138
+#: .\templates\content\questionPage.html:129
+#: .\templates\content\questionPage.html:141
 msgid "Add Answer"
 msgstr "اضف اجابة"
 
@@ -1027,82 +1037,104 @@ msgstr "اضف اجابة"
 #: .\templates\content\suggestEdit.html:10
 #: .\templates\content\suggestEdit.html:27
 #: .\templates\content\templatetags\answer.html:57
-#: .\templates\content\templatetags\question.html:61
+#: .\templates\content\templatetags\question.html:66
 msgid "Suggest Edit"
 msgstr "اقترح تعديل"
 
 #: .\templates\content\templatetags\answer.html:61
-#: .\templates\content\templatetags\question.html:65
-#: .\templates\profiles\_profileTabs.html:44
+#: .\templates\content\templatetags\question.html:70
+#: .\templates\profiles\profile.html:19
 #: .\templates\profiles\templateTags\followerItem.html:18
 msgid "Unfollow"
 msgstr "الغاء متابعة"
 
 #: .\templates\content\templatetags\answer.html:63
-#: .\templates\content\templatetags\question.html:67
-#: .\templates\profiles\_profileTabs.html:46
+#: .\templates\content\templatetags\question.html:72
+#: .\templates\profiles\profile.html:21
 #: .\templates\profiles\templateTags\followerItem.html:20
 msgid "Follow"
 msgstr "متابعة"
 
 #: .\templates\content\templatetags\answer.html:75
-#: .\templates\content\templatetags\question.html:78
+#: .\templates\content\templatetags\question.html:83
 msgid "Share"
 msgstr "مشاركة"
 
 #: .\templates\content\templatetags\answer.html:93
-#: .\templates\content\templatetags\question.html:96
+#: .\templates\content\templatetags\question.html:100
 #: .\templates\exams\question.html:65 .\templates\exams\question.html:121
 msgid "Edited in"
 msgstr "عدل في"
 
 #: .\templates\content\templatetags\answer.html:109
-#: .\templates\content\templatetags\question.html:112
+#: .\templates\content\templatetags\question.html:116
 msgid "All comment"
 msgstr "كل التعليقات"
 
 #: .\templates\content\templatetags\answer.html:117
 #: .\templates\content\templatetags\answer.html:121
-#: .\templates\content\templatetags\question.html:118
 #: .\templates\content\templatetags\question.html:122
+#: .\templates\content\templatetags\question.html:126
 msgid "Add comment"
 msgstr "اضافة تعليق"
 
 #: .\templates\content\templatetags\answer.html:119
-#: .\templates\content\templatetags\question.html:120
+#: .\templates\content\templatetags\question.html:124
 msgid "Add Comment..."
 msgstr "اضافة تعليق..."
 
 #: .\templates\content\templatetags\questionItem.html:8
-#: .\templates\content\templatetags\questionItem.html:26
-#: .\templates\moderators\answers\acceptedList.html:11
+#: .\templates\content\templatetags\questionItem.html:29
 #: .\templates\moderators\answers\awaitList.html:11
+#: .\templates\moderators\answers\awaitList.html:32
 #: .\templates\moderators\answers\rejectedList.html:11
+#: .\templates\moderators\answers\rejectedList.html:32
+#: .\templates\profiles\favoriteQuestions.html:256
+#: .\templates\profiles\templateTags\question_item.html:6
+#: .\templates\profiles\templateTags\question_item_answer.html:8
+#: .\templates\profiles\templateTags\question_item_answer.html:44
 msgid "votes"
 msgstr "صوت"
 
 #: .\templates\content\templatetags\questionItem.html:13
-#: .\templates\content\templatetags\questionItem.html:31
+#: .\templates\content\templatetags\questionItem.html:38
+#: .\templates\moderators\answers\awaitList.html:16
+#: .\templates\moderators\answers\awaitList.html:41
+#: .\templates\moderators\answers\rejectedList.html:16
+#: .\templates\moderators\answers\rejectedList.html:41
+#: .\templates\profiles\favoriteQuestions.html:260
+#: .\templates\profiles\templateTags\question_item.html:10
+#: .\templates\profiles\templateTags\question_item_answer.html:12
 msgid "views"
 msgstr "مشاهدة"
 
 #: .\templates\content\templatetags\questionItem.html:17
-#: .\templates\content\templatetags\questionItem.html:35
-#: .\templates\moderators\answers\acceptedList.html:16
-#: .\templates\moderators\answers\awaitList.html:16
-#: .\templates\moderators\answers\rejectedList.html:16
+#: .\templates\content\templatetags\questionItem.html:34
+#: .\templates\moderators\answers\awaitList.html:20
+#: .\templates\moderators\answers\awaitList.html:37
+#: .\templates\moderators\answers\rejectedList.html:20
+#: .\templates\moderators\answers\rejectedList.html:37
+#: .\templates\profiles\favoriteQuestions.html:263
+#: .\templates\profiles\templateTags\question_item.html:13
+#: .\templates\profiles\templateTags\question_item_answer.html:15
 msgid "answers"
 msgstr "اجابة"
 
-#: .\templates\content\templatetags\questionItem.html:20
-#: .\templates\content\templatetags\questionItem.html:47
+#: .\templates\content\templatetags\questionItem.html:19
+#: .\templates\content\templatetags\questionItem.html:41
+#: .\templates\content\templatetags\questionItem.html:57
+#: .\templates\moderators\answers\awaitList.html:22
+#: .\templates\moderators\answers\awaitList.html:44
+#: .\templates\moderators\answers\awaitList.html:62
+#: .\templates\moderators\answers\rejectedList.html:22
+#: .\templates\moderators\answers\rejectedList.html:44
+#: .\templates\moderators\answers\rejectedList.html:60
 msgid "added by"
 msgstr "اضيف بواسطة"
 
-#: .\templates\content\templatetags\questionItem.html:49
-#: .\templates\moderators\answers\acceptedList.html:35
-#: .\templates\moderators\answers\awaitList.html:37
-#: .\templates\moderators\answers\rejectedList.html:35
+#: .\templates\content\templatetags\questionItem.html:57
+#: .\templates\moderators\answers\awaitList.html:62
+#: .\templates\moderators\answers\rejectedList.html:60
 msgid "last answer added in"
 msgstr "اخر جواب اضيف في"
 
@@ -1861,9 +1893,9 @@ msgid "ID"
 msgstr "المعرف"
 
 #: .\templates\dashboard\flagedUsers.html:48
-#: .\templates\profiles\_profileTabs.html:8
-#: .\templates\profiles\editProfile.html:17
-#: .\templates\profiles\editTags.html:17
+#: .\templates\profiles\_profileTabs.html:39
+#: .\templates\profiles\editProfile.html:16
+#: .\templates\profiles\editTags.html:16
 msgid "Profile"
 msgstr "الملف الشخصي"
 
@@ -2196,15 +2228,6 @@ msgstr "عنا"
 msgid "Our Services"
 msgstr "خدماتنا"
 
-#: .\templates\moderators\answers\acceptedList.html:19
-#: .\templates\moderators\answers\awaitList.html:19
-#: .\templates\moderators\answers\rejectedList.html:19
-#: .\templates\moderators\questions\acceptedList.html:22
-#: .\templates\moderators\questions\awaitList.html:25
-#: .\templates\moderators\questions\rejectedList.html:20
-msgid "add by"
-msgstr "اضيف بواسطة"
-
 #: .\templates\moderators\answers\answers.html:6
 #: .\templates\moderators\answers\answers.html:17
 #: .\templates\moderators\edits\edits.html:7
@@ -2253,8 +2276,8 @@ msgstr "تم الرفض"
 #: .\templates\moderators\answers\answers.html:251
 #: .\templates\moderators\edits\edits.html:253
 #: .\templates\moderators\questions\questions.html:243
-#: .\templates\profiles\userAnswers.html:16
-#: .\templates\profiles\userQuestions.html:16
+#: .\templates\profiles\userAnswers.html:27
+#: .\templates\profiles\userQuestions.html:27
 #: .\templates\utilities\_header.html:25
 #: .\templates\utilities\auth\_header.html:23
 msgid "Search"
@@ -2266,12 +2289,12 @@ msgstr "بحث"
 msgid "Filter"
 msgstr "بحث"
 
-#: .\templates\moderators\answers\awaitList.html:47
-#: .\templates\moderators\answers\rejectedList.html:48
+#: .\templates\moderators\answers\awaitList.html:73
+#: .\templates\moderators\answers\rejectedList.html:70
 msgid "Accept All"
 msgstr "قبول الكل"
 
-#: .\templates\moderators\answers\awaitList.html:50
+#: .\templates\moderators\answers\awaitList.html:76
 msgid "Reject All"
 msgstr "رفض الكل"
 
@@ -2298,8 +2321,8 @@ msgstr "عرض التعديل"
 
 #: .\templates\moderators\edits\awaitList.html:33
 #: .\templates\moderators\edits\reviewEdit.html:95
-#: .\templates\moderators\questions\awaitList.html:34
-#: .\templates\moderators\questions\reviewQuestion.html:69
+#: .\templates\moderators\questions\awaitList.html:30
+#: .\templates\moderators\questions\reviewQuestion.html:70
 msgid "Reject"
 msgstr "رفض"
 
@@ -2307,19 +2330,25 @@ msgstr "رفض"
 msgid "Suggested Edit"
 msgstr "تعديل مقترح"
 
-#: .\templates\moderators\questions\acceptedList.html:19
+#: .\templates\moderators\questions\acceptedList.html:18
 msgid "Acceptd by"
 msgstr "تم القبول بواسطة"
 
-#: .\templates\moderators\questions\acceptedList.html:19
+#: .\templates\moderators\questions\acceptedList.html:18
 msgid "suggested in"
 msgstr "اقترح في"
 
-#: .\templates\moderators\questions\rejectedList.html:22
+#: .\templates\moderators\questions\acceptedList.html:21
+#: .\templates\moderators\questions\awaitList.html:21
+#: .\templates\moderators\questions\rejectedList.html:20
+msgid "add by"
+msgstr "اضيف بواسطة"
+
+#: .\templates\moderators\questions\rejectedList.html:19
 msgid "Rejected by"
 msgstr "رفض بواسطة"
 
-#: .\templates\moderators\questions\rejectedList.html:22
+#: .\templates\moderators\questions\rejectedList.html:19
 msgid "suggested  in"
 msgstr "اقترح في"
 
@@ -2332,96 +2361,119 @@ msgid "Submit"
 msgstr "ارسال"
 
 #: .\templates\profiles\_profileTabs.html:14
+msgid "Member from"
+msgstr "عضو منذ"
+
+#: .\templates\profiles\_profileTabs.html:19
+msgid "profile views"
+msgstr "مشاهدات الملف الشخصي"
+
+#: .\templates\profiles\_profileTabs.html:25
+msgid "Last seen"
+msgstr "اخر ظهور"
+
+#: .\templates\profiles\_profileTabs.html:25
+msgid "ago"
+msgstr " "
+
+#: .\templates\profiles\_profileTabs.html:27
+msgid "online now"
+msgstr "متصل الان"
+
+#: .\templates\profiles\_profileTabs.html:45
+msgid "Activity"
+msgstr "النشاط"
+
+#: .\templates\profiles\_profileTabs.html:53
+#: .\templates\utilities\dashboard\_nav.html:417
+msgid "Settings"
+msgstr "الاعدادات"
+
+#: .\templates\profiles\_sideList.html:6 .\templates\utilities\_header.html:105
+msgid "My Questions"
+msgstr "اسئلتي"
+
+#: .\templates\profiles\_sideList.html:11
+#: .\templates\utilities\_header.html:108
+msgid "My Answers"
+msgstr "اجاباتي"
+
+#: .\templates\profiles\_sideList.html:16 .\templates\profiles\badges.html:6
+#: .\templates\profiles\profile.html:61
 #: .\templates\utilities\dashboard\_nav.html:341
 msgid "Badges"
 msgstr "الشارات"
 
-#: .\templates\profiles\_profileTabs.html:20
-msgid "Followres"
+#: .\templates\profiles\_sideList.html:21 .\templates\profiles\followers.html:6
+msgid "Followers"
 msgstr "المتابعين"
 
-#: .\templates\profiles\_profileTabs.html:26
+#: .\templates\profiles\_sideList.html:26
+#: .\templates\profiles\favoriteQuestions.html:8
 msgid "Favorite Queestions"
 msgstr "الاسئلة المفضلة"
-
-#: .\templates\profiles\_profileTabs.html:32
-#: .\templates\utilities\dashboard\_nav.html:417
-msgid "Settings"
-msgstr "الاعدادات"
 
 #: .\templates\profiles\editProfile.html:4
 msgid "Profile Settings"
 msgstr "اعدادات الملف الشحصي"
 
-#: .\templates\profiles\editProfile.html:23
-#: .\templates\profiles\editTags.html:23
+#: .\templates\profiles\editProfile.html:25
+#: .\templates\profiles\editTags.html:25
 msgid "Your Tags"
 msgstr "وسومك"
 
-#: .\templates\profiles\editProfile.html:34
+#: .\templates\profiles\editProfile.html:35
 msgid "About You..."
 msgstr "عنك..."
 
-#: .\templates\profiles\editProfile.html:35
+#: .\templates\profiles\editProfile.html:36
 msgid "Website"
 msgstr "الموقع الالكتروني"
 
-#: .\templates\profiles\editProfile.html:36
+#: .\templates\profiles\editProfile.html:37
 msgid "Save Changes"
 msgstr "حفظ التغيرات"
 
-#: .\templates\profiles\favoriteQuestions.html:5
-msgid "Favorite Questions"
-msgstr "الاسئلة المفضلة"
+#: .\templates\profiles\profile.html:27 .\templates\utilities\_header.html:136
+msgid "Logout"
+msgstr "تسجيل خروج"
 
-#: .\templates\profiles\followers.html:5
-msgid "Followers"
-msgstr "المتابعين"
+#: .\templates\profiles\profile.html:38
+msgid "Stats"
+msgstr "الحالة"
 
-#: .\templates\profiles\profile.html:27
-msgid "REPUTATION"
+#: .\templates\profiles\profile.html:50
+msgid "Reputation"
 msgstr "الشعبية"
 
-#: .\templates\profiles\profile.html:73
-msgid "Member from"
-msgstr "عضو منذ"
+#: .\templates\profiles\profile.html:57
+msgid "About Me"
+msgstr "عني"
 
-#: .\templates\profiles\profile.html:78
-msgid "profile views"
-msgstr "مشاهدات الملف الشخصي"
-
-#: .\templates\profiles\profile.html:84
-msgid "Last seen"
-msgstr "اخر ظهور"
-
-#: .\templates\profiles\profile.html:84
-msgid "ago"
-msgstr " "
-
-#: .\templates\profiles\profile.html:86
-msgid "online now"
-msgstr "متصل الان"
-
-#: .\templates\profiles\profile.html:100
+#: .\templates\profiles\profile.html:71
 msgid "Gold Badges"
 msgstr "شارات ذهبية"
 
-#: .\templates\profiles\profile.html:122
+#: .\templates\profiles\profile.html:93
 msgid "Silver Badges"
 msgstr "شارات فضية"
 
-#: .\templates\profiles\profile.html:145
+#: .\templates\profiles\profile.html:116
 msgid "Bronze Badges"
 msgstr "شارات برونزية"
 
-#: .\templates\profiles\profile.html:219
+#: .\templates\profiles\profile.html:190
 msgid "Top Posts"
 msgstr "افضل المنشورات"
 
-#: .\templates\profiles\profile.html:236
+#: .\templates\profiles\profile.html:207
 msgctxt "filter"
 msgid "Votes"
 msgstr "الاكثر اصوات"
+
+#: .\templates\profiles\templateTags\question_item_answer.html:56
+msgid "View answer"
+msgstr "عرض الاجابة"
 
 #: .\templates\utilities\_categories.html:9
 msgid "categories"
@@ -2440,38 +2492,30 @@ msgstr "تواصل معنا"
 msgid "Advertise with us"
 msgstr "اعلن معنا"
 
-#: .\templates\utilities\_header.html:51 .\templates\utilities\_header.html:123
+#: .\templates\utilities\_header.html:102
 msgid "My Profile"
 msgstr "ملفي الشخصي"
 
-#: .\templates\utilities\_header.html:56 .\templates\utilities\_header.html:126
-msgid "My Questions"
-msgstr "اسئلتي"
-
-#: .\templates\utilities\_header.html:61 .\templates\utilities\_header.html:129
-msgid "My Answers"
-msgstr "اجاباتي"
-
-#: .\templates\utilities\_header.html:86 .\templates\utilities\_header.html:157
-msgid "Logout"
-msgstr "تسجيل خروج"
-
-#: .\templates\utilities\_header.html:133
+#: .\templates\utilities\_header.html:112
 msgid "All Categories"
 msgstr "كل التصنيفات"
 
-#: .\templates\utilities\_header.html:137
+#: .\templates\utilities\_header.html:116
 msgid "All Tags"
 msgstr "كل الوسوم"
 
-#: .\templates\utilities\_header.html:140
-#: .\templates\utilities\_leftColumn.html:21
+#: .\templates\utilities\_header.html:119
+#: .\templates\utilities\_leftColumn.html:23
 msgid "Exams"
 msgstr "اختبارات"
 
 #: .\templates\utilities\_loginModal.html:15
 msgid "Login with email"
 msgstr "تسجيل دخول عبر البريد الالكتروني"
+
+#: .\templates\utilities\_rightColumn.html:11
+msgid "edit"
+msgstr "تعديل"
 
 #: .\templates\utilities\dashboard\_nav.html:227
 msgid "Edit Site"
@@ -3713,6 +3757,18 @@ msgstr ""
 #: .\venv\Lib\site-packages\httplib2\__init__.py:1448
 msgid "Redirected but the response is missing a Location: header."
 msgstr ""
+
+#~ msgid "REPUTATION"
+#~ msgstr "الشعبية"
+
+#~ msgid "Terms ofUse and Privacy Policy"
+#~ msgstr "شروط الاستخدام و سياسة الخصوصية"
+
+#~ msgid "Followres"
+#~ msgstr "المتابعين"
+
+#~ msgid "Favorite Questions"
+#~ msgstr "الاسئلة المفضلة"
 
 #~ msgid "Site Title"
 #~ msgstr "عنوان الموقع"

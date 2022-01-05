@@ -47,7 +47,7 @@
         </div>
         <div class="num-profile-div">
             <span class="num-profile">{{user.profile.rep}}</span>
-            <span class="num-profile-word">{% translate 'REPUTATION' %}</span>
+            <span class="num-profile-word">{% translate 'Reputation' %}</span>
         </div>
     </div>
                  
@@ -243,7 +243,7 @@
         <ul class="tops-list">
             {% for post in topPosts %}
             <li class=" top-item-flex-p top-list-item">
-                    <div class="top-item-flex">
+                    <!-- <div class="top-item-flex"> -->
                         <div class="votes-div-p">
 
                             <div class="votes-div">{{post.getVotes}}</div>
@@ -253,8 +253,8 @@
                             {{post.getQuestion.title}}
 
                     </a>
-                </div>
-                <time class="question-date">{{post.suggestTime.date|date:'Y/j/n'}}</time>
+                    <time class="question-date">{{post.suggestTime.date|date:'Y/j/n'}}</time>
+                <!-- </div> -->
             </li>
             {% endfor %}
         </ul>
