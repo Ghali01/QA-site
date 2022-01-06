@@ -1108,7 +1108,8 @@ body{
     margin-bottom: 5%;
     width: 267px;
 }
-#reg-form .form-fields{
+#reg-form .form-fields,
+.borderd-form{
     padding: 5px 15px;
     border: 1.5px solid var(--primary-color);
     border-radius: 11px;
