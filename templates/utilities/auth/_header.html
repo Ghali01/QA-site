@@ -61,6 +61,12 @@
 
               <a class="nav-link" href="{% url 'authusers:login-page' %}">{% translate 'Sign In' %}</a>
             </li>
+          </li>
+
+          <li class="d-block d-md-none  nav-item ">
+
+            <a class="nav-link" href="{% url 'content:index' %}">{% translate 'Home' %}</a>
+          </li>
 
             {% chLang request.build_absolute_uri %}
           </ul>
