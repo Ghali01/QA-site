@@ -119,7 +119,7 @@ def seeMoreQueIndex(request,page,categoryID=-1):
 
     htmlStr=''
     for que in questions:
-        htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
+        htmlStr+= render_to_string('content/templatetags/questionItem.html',{'question':que})
     return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
         
 def tagQuestions(request,tagID):
