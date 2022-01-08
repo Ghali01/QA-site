@@ -206,7 +206,7 @@ def seeMoreTagQuestions(request,tagID,page):
 
     htmlStr=''
     for que in questions:
-        htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
+        htmlStr+= render_to_string('content/templatetags/questionItem.html',{'question':que})
     return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
         
 @forActiveUser
@@ -401,7 +401,7 @@ def similarQuestions(request,page):
             
             htmlStr=''
             for que in questions:
-                htmlStr+= render_to_string('content/templatetags/questionitem.html',{'question':que})
+                htmlStr+= render_to_string('content/templatetags/questionItem.html',{'question':que})
             return HttpResponse(json.dumps({'html':htmlStr,'remPages':remPages}))
             
 
