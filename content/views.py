@@ -226,13 +226,16 @@ def addQuestionPage(request):
                     
                     category=Category.objects.get(pk=request.POST['category-id']))
                     question.save()
+                    PostLog.objects.create(post=post,text=post.text,author=request.user,type=PostLog.types.Suggest)
                     tags=[] 
                     if tagsIds:
                         for tagID in tagsIds:
-                            tags.append(Tag.objects.get(pk=tagID))
+                            try:
+                               tags.append(Tag.objects.get(pk=tagID))
+                            except Tag.DoesNotExist:
+                                pass
                     question.tags.add(*tags)
                     question.save()
-                    PostLog.objects.create(post=post,text=post.text,author=request.user,type=PostLog.types.Suggest)
                     messages.success(request,gettext('The question has been submitted, it will be reviewed soon.'))
                     return redirect(reverse('content:index'))
 
