@@ -127,7 +127,7 @@ class Post(models.Model):
         if self.type==Post.types.Question:
             return self.question
         else:
-            return Answer.objects.get(post=self).question
+            return self.answer.question
     def isEdited(self):
         return self.logs.filter(type=PostLog.types.AcceptEdit).exists()
     def getLastEditAuthor(self):

@@ -68,11 +68,11 @@
                         <li class="nav-item nav-icons drop-down-nl d-none d-md-block" >
                             {% chLang request.build_absolute_uri %}
 
+                            {% if request.user.profile.isModerator %}
                             <button class="btn nav-icon drop-down-icon" id="drop-d-btn-nav">
                             <i class="fas fa-users "></i>
 
                             </button>
-                            {% if request.user.profile.isModerator %}
                             <ul class="nav-drop-down">
    
                                         <li>

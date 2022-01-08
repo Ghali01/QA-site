@@ -1315,6 +1315,7 @@ function seeMoreUserFollowers() {
             }
             
             $(clicked).prev().append(data.html);
+            $(clicked).prev().find('.follow-btn').off('click');
             $(clicked).prev().find('.follow-btn').click(folloUserQueBtn);
         
         },

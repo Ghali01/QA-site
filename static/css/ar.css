@@ -55,9 +55,6 @@ button.l-btn{
     left: unset;
     right: 18px;
 }
-.mod-title,.mod-btns{
-    float: right;
-}
 /* .await-item .question-date{
     right: unset;
     left: 8px;
@@ -181,6 +178,8 @@ button.l-btn{
 .center-column{
     border-left: none;
     border-right: .5px solid var(--black-100);
+    padding-left: 30px;
+    padding-right: 0;
 }
 .btn-group .btn {
     border-radius: 0;
@@ -203,4 +202,10 @@ button.l-btn{
 
 .btn-tag{
     margin: 0 0 8px 8px;   
+}
+.my-btn-group{
+    float: left;
+}
+.mod-title,.mod-btns{
+    float: right;
 }

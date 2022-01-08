@@ -970,6 +970,7 @@ function seeMoreTags() {
                 $(clicked).hide()
             }
             $(clicked).prev().append(data.html);
+            $(clicked).prev().find(".btn.tag-star").off('click');
             $(clicked).prev().find(".btn.tag-star").click(togTagToFav);
 }
         ,
@@ -1178,6 +1179,7 @@ function searchUsrAnswers() {
 }
 
 function togTagToFav(e) {
+    console.log('l');
     let tagId = $(this).data('tag-id');
     let clicked = this;
     function f() {
@@ -1313,6 +1315,7 @@ function seeMoreUserFollowers() {
             }
             
             $(clicked).prev().append(data.html);
+            $(clicked).prev().find('.follow-btn').off('click');
             $(clicked).prev().find('.follow-btn').click(folloUserQueBtn);
         
         },

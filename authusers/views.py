@@ -377,7 +377,8 @@ def regisetSocialUser(request):
                     socialUser.delete()
 
                     login(request,user)
-
+                    
+                    return redirect(reverse('authusers:auth-index'))
 
                     
                 except IntegrityError:

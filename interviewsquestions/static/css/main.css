@@ -3074,7 +3074,7 @@ button.go{
     visibility: hidden;
 }
 .category-select-toolbar.showed{
-    display: block;
+    visibility: visible;
 }
 
 .filters-row{
@@ -5201,4 +5201,15 @@ body{
         width: 100%;
         text-align: end;
     }
+}
+
+#login-error{
+    position: relative;
+    top: 16px;
+}
+.fav-ques .fv-f-c.ans{
+    width: 145px;
+}
+.sugg-it-btn{
+    margin-bottom: 16px;
 }

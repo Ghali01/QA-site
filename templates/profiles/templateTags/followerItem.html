@@ -12,7 +12,9 @@
         </div>
     </div>
     <div class="col-6">
+        {% if not user == person %}
         <button
+
             class="btn btn-primary primary-button primary-button-radius follow-btn"data-user-id="{{person.id}}">
             {% if user in person.profile.followers.all %}
             <i class="fas fa-user-minus"></i> {% translate 'Unfollow' %}
@@ -20,6 +22,8 @@
             <i class="fas fa-user-plus"></i> {% translate 'Follow' %}
             {% endif %}
         </button>
+        {% endif %}
+
     </div>
 </div>
 
