@@ -25,8 +25,10 @@ class Poll(models.Model):
         countP+=len(tagsUser)
         return countP
     def rate(self):
-        
-        return ('%.2f' % ((self.resaults.count()*100)/self.userTargeted()))+'%'
+        if self.userTargeted():
+            return ('%.2f' % ((self.resaults.count()*100)/self.userTargeted()))+'%'
+        else :
+            return '0%'
 class PollItem(models.Model):
     typeChoices=[ 
         ('R',gettext('Radio List')),
