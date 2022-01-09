@@ -49,7 +49,7 @@ def profilePage(request,userID):
 def userQuestions(request,userID):
     user=get_object_or_404(User,id=userID)
     votesFilter=answersFilter=viewsFilter=searchVal=None
-    questions=Question.objects.filter(post__author__id=userID)
+    questions=Question.objects.filter(post__author__id=userID,post__isPublished=True)
     if 'search' in request.GET and request.GET['search']:
         searchVal=request.GET['search']
         questions=questions.filter(title__contains=request.GET['search'])
@@ -91,7 +91,7 @@ def userQuestions(request,userID):
 
 
 def seeMoreQuestions(request,userID,page):
-    questions=Question.objects.filter(post__author__id=userID)
+    questions=Question.objects.filter(post__author__id=userID,post__isPublished=True)
     if 'search' in request.GET and request.GET['search']:
         questions=questions.filter(title__contains=request.GET['search'])
     

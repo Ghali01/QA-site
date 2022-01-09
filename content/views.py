@@ -707,7 +707,7 @@ def countViewBadge(question):
 
 def searchQuestionsAjax(request):
     if 'search' in request.GET:
-        questions=Question.objects.filter(title__icontains=request.GET['search'])[:5]
+        questions=Question.objects.filter(title__icontains=request.GET['search'],post__isPublished=True)[:5]
         htmlStr=''
         for que in questions:
             htmlStr+=render_to_string('content/templatetags/searchItem.html',{'question':que})
