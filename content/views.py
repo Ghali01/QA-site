@@ -105,22 +105,26 @@ def seeMoreQueIndex(request,page,categoryID=-1):
             logs=PostLog.objects.filter(type=PostLog.types.Accept,post__type=Post.types.Question,time__date__range=(datetime.datetime.now().date()-datetime.timedelta(days=30),datetime.datetime.now().date()))
             questions=questions.filter(post__logs__in=logs)
         
-    if 'tags' in request.GET and request.GET['tags']=='M':
-        for tag in request.user.profile.tags.all():
-            questions=questions.filter(tags=tag)
-    questions=questions.annotate(Count(F('answers')))
+    questions=questions.annotate(Count(F('answers')),votes=F('post__votes'),ActiveDate=F('post__ActiveDate'))
+
+    if 'tags' in request.GET and request.GET['tags']=='M' and request.user.is_authenticated and not request.user.is_anonymous:
+        usrTags=request.user.profile.tags.all()
+        filtered=Question.objects.none()
+
+        for tag in usrTags:
+            filtered=filtered.union(questions.filter(tags=tag))
+        questions=filtered
     
     orderFields=[
-
-   
-        'post__votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-post__votes',
+        'votes' if 'votes' in request.GET and request.GET['votes']=='L' else '-votes',
         'views' if 'views' in request.GET and request.GET['views']=='L' else '-views',
-        'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count',
-        '-post__ActiveDate',
+        'answers__count' if 'answers' in request.GET and request.GET['answers']=='L' else '-answers__count' ,
+        '-ActiveDate',
 
     ]
+    # print(questions)
     questions=questions.order_by(*orderFields)
-
+   
     remPages=int(ceil(questions.count()/15)-page-1)
     questions=questions[page*15:(page*15)+15]
 
