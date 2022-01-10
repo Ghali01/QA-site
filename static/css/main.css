@@ -340,7 +340,7 @@ body{
     padding-top: 5px;
     display: block;
     text-decoration: none;   
-    width: 100%;
+    width: auto;
 }
 .subcategories-list{
     list-style: none;
@@ -359,6 +359,12 @@ body{
 .category-li{
     /* position: relative; */
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+.subcategories-list{
+    width: 100%;
 }
 .category-li .down-icon{
     /* position: absolute; */

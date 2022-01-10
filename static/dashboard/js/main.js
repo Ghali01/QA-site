@@ -221,7 +221,8 @@ $(document).ready(function () {
     // tag list end
 
 
-    $(".remove-tag-btn ,.remove-cate-btn").click(removeTagBtn);
+    $(".remove-tag-btn").click(removeTagBtn);
+    $(".remove-cate-btn").click(removeCateBtn);
     $(".del-cate-btn").click(deleteCateBtn);
     $(".ban-user-btn").click(banUserBtn);
     $(".cate-select").change(onCateSelectChange);
@@ -377,6 +378,22 @@ function removeTagBtn(e) {
     let aniTimeOut = setTimeout(aniCallBack, 185);
 }
 
+function removeCateBtn(e) {
+    let tagId = $(this).parent().data('cate-id');
+    let tagsId = JSON.parse($("#cates-input").val());
+    tagsId.splice(tagsId.indexOf(tagId));
+    $("#cates-input").val(JSON.stringify(tagsId)).trigger('change');
+
+    $(this).parent().addClass("remove-grid-item");
+    let clicked = this;
+    function aniCallBack() {
+        $(clicked).parent().remove();
+        // $(clicked).parent().css("display","none");
+
+    }
+    let aniTimeOut = setTimeout(aniCallBack, 185);
+}
+
 
 function deleteCateBtn() {
     $("#del-cate-id").val($(this).parent().data("cate-id"));
@@ -451,7 +468,10 @@ function addCateBtnClick() {
         let removeBtn = document.createElement("div");
         $(removeBtn).addClass(["btn", "remove-cate-btn"]);
         $(removeBtn).append("<i class=\"fas fa-times\"></i>");
+        $(removeBtn).click(removeCateBtn);
+
         $(buttonTag).append(removeBtn);
+        $(buttonTag).data('cate-id',cateId);
         $("#cate-div-ol").append(buttonTag);
         $(removeBtn).click(function (e) {
             $(this).parent().addClass("remove-grid-item");
