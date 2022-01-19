@@ -540,6 +540,10 @@ class Answer(models.Model):
     
         return self.post.getReports()
 
+    def delete(self, *args, **kwargs):
+    
+        self.post.delete()
+        return super(self.__class__, self).delete(*args, **kwargs)
 class Comment(models.Model):
     text= models.CharField(max_length=300)
     author=models.ForeignKey(User,on_delete=models.CASCADE)

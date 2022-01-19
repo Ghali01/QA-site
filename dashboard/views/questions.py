@@ -55,6 +55,8 @@ def deleteQuestion(request):
         try:
             try:
                 post=Post.objects.get(question__id=int(request.POST['del-id']))
+                for answer in post.question.answers.all():
+                    answer.post.delete()
                 post.delete()
                 messages.success(request,gettext('question was delete'))
             except Post.DoesNotExist:
